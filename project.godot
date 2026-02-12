@@ -15,6 +15,10 @@ run/main_scene="uid://wxalwh8to6sn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
+[global_group]
+
+PlayerObject="The main game group for players"
+
 [input]
 
 move_left={
