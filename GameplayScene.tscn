@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://wxalwh8to6sn"]
+
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="1_eqhe0"]
+[ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/PlayerScript.gd" id="1_haeiw"]
+[ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://EnemyInstances/Enemy.tscn" id="2_k77ap"]
+[ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
+[ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://wall.tscn" id="5_8jkjp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jkjp"]
+radius = 36.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k77ap"]
+vertices = PackedVector2Array(1692.9922, -297.04688, 1692, 843.4297, 624.9922, 890.9922, -394.79688, 859.2969, -372.1875, -308.9375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-382, -319, -405, 869, 625, 901, 1702, 853, 1703, -307)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f30"]
+size = Vector2(93, 91)
+
+[node name="Node2D" type="Node2D" unique_id=908512217]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=493787089]
+
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=760553956]
+script = ExtResource("4_b5kf5")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581]
+position = Vector2(591, 278)
+script = ExtResource("1_haeiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=608356456]
+position = Vector2(1, 1)
+scale = Vector2(0.578125, 0.57812476)
+texture = ExtResource("1_eqhe0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=569352554]
+shape = SubResource("CircleShape2D_8jkjp")
+
+[node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("2_k77ap")]
+position = Vector2(337, 480)
+
+[node name="Enemy2" parent="." unique_id=283172414 instance=ExtResource("2_k77ap")]
+position = Vector2(948, 459)
+
+[node name="Enemy3" parent="." unique_id=637577156 instance=ExtResource("2_k77ap")]
+position = Vector2(483, 114)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1020116929]
+position = Vector2(-65, 15)
+navigation_polygon = SubResource("NavigationPolygon_k77ap")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2011297985]
+
+[node name="Label4" type="Label" parent="CanvasLayer" unique_id=1798433667]
+offset_left = 31.0
+offset_top = 70.0
+offset_right = 326.0
+offset_bottom = 103.0
+text = "Score:"
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=733283776]
+offset_left = 575.0
+offset_top = 16.0
+offset_right = 870.0
+offset_bottom = 48.0
+text = "Beat Indicator"
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=557591456]
+offset_left = 24.0
+offset_top = 593.0
+offset_right = 319.0
+offset_bottom = 642.0
+text = "Experience
+"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1692553793]
+offset_left = 32.0
+offset_top = 22.0
+offset_right = 327.0
+offset_bottom = 70.0
+text = "Player Name:"
+
+[node name="Wall" type="Area2D" parent="." unique_id=90166056]
+position = Vector2(71, 263)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1699552142]
+shape = SubResource("RectangleShape2D_y4f30")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=1980399428]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.77050775, 0.77050775)
+texture = ExtResource("1_eqhe0")
+
+[node name="Wall2" parent="." unique_id=372310501 instance=ExtResource("5_8jkjp")]
+position = Vector2(143, 610)
