@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://73el6u0pp3v6"]
+
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="1_jbg7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
+size = Vector2(26, 10.5)
+
+[node name="PlayerBullet" type="Area2D" unique_id=132848767]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
+position = Vector2(0, 5.9604645e-08)
+scale = Vector2(0.20312501, 0.08705358)
+texture = ExtResource("1_jbg7j")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1654839371]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_wix7r")

@@ -44,7 +44,13 @@ func _physics_process(delta):
 	velocity = new_velocity
 	if (navAgent.avoidance_enabled):
 		navAgent.set_velocity(new_velocity)
+	else:
+		_on_navigation_agent_2d_velocity_computed(new_velocity)
 	move_and_slide()
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+	pass # Replace with function body.
 
 
 
