@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ct8plkb2tiyxh"]
+
+[ext_resource type="Script" uid="uid://bifds3vvuqib" path="res://Scripts/PauseScript.gd" id="1_gkx8r"]
+
+[node name="PauseScreen" type="Control" unique_id=1347961824]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gkx8r")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=245152519]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 126.0
+offset_right = 1008.0
+offset_bottom = 515.0
+
+[node name="GamePausedText" type="Label" parent="PanelContainer" unique_id=1560795430]
+layout_mode = 2
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="PanelContainer/GamePausedText" unique_id=1817500599]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 76.0
+offset_right = 313.0
+offset_bottom = 107.0
+text = "Exit
+"
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/GamePausedText" unique_id=1378675360]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 75.0
+offset_right = 622.0
+offset_bottom = 106.0
+text = "Resume"
+
+[connection signal="pressed" from="PanelContainer/GamePausedText/ResumeButton" to="." method="_on_resume_button_pressed"]

@@ -7,7 +7,7 @@
 radius = 46.702705
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
-radius = 30.149628
+radius = 25.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType"]]
 script = ExtResource("1_s7bn3")
@@ -26,9 +26,9 @@ position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("2_2hac7")
 
-[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyObject", "FodderType"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550]
 shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 

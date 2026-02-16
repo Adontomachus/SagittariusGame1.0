@@ -2,10 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="1_xxgf6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
-size = Vector2(121.99747, 123.29532)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmg0a"]
+size = Vector2(202.4639, 205.05957)
 
-[node name="Wall" type="StaticBody2D" unique_id=430981844]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
+size = Vector2(125.89101, 124.59317)
+
+[node name="Wall" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
 
@@ -15,6 +18,13 @@ radius = 70.18
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
 texture = ExtResource("1_xxgf6")
 
+[node name="CollisionShapeTest" type="CollisionShape2D" parent="." unique_id=2019855486]
+visible = false
+position = Vector2(-1.2377219e-06, -6.1886094e-06)
+shape = SubResource("RectangleShape2D_rmg0a")
+disabled = true
+debug_color = Color(0.9485412, 4.6205523e-06, 0.580177, 0.41960785)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
-position = Vector2(-1.2377219e-06, -0.64892656)
+position = Vector2(0, 3.867881e-07)
 shape = SubResource("RectangleShape2D_me4gi")

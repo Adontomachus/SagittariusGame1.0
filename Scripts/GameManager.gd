@@ -1,28 +1,29 @@
-extends AudioStreamPlayer
+extends Node2D
 
-# AUDIO VARIABLES TEST
-var startTime
-var delayTime
+@onready var beatIndicator: Panel = $InterfaceElements/HUD/BeatIndicator
 
-var songposition:float = 0
-var songbpm = 120
-var songbps = 60 / songbpm
+@onready var animation_player: AnimationPlayer = beatIndicator.get_node("AnimationPlayer")
 
-var notesPassed = 0
-var timer = 0
+#LEVEL VARIABLES
+var level_wave: int = 1
+const DIFFICULTY_SCALE: float = 0.15
+const DROP_WEIGHT_SCALE: float = 0.05
+var difficultyMeter = 1
+var pointDropWeight = 0.25
+var comboCount = 0
+
+#SPAWNING VARIABLES
+var playerSpawnDistance = 200
 
 func _ready():
-	startTime = Time.get_ticks_usec()
-	delayTime = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	animation_player.play("Pulse")
 
-func _process(delta):
-	songposition = get_playback_position() + AudioServer.get_time_since_last_mix()
+#TEMPORARY FUNCTIONS, SUBJECT TO CHANGE	
+func _spawnEnemies():
+	return
 
-	print(delayTime)
-	
-	# For this part, we would be first going to test incrementing passed notes by
-	# 1 for every second using the delta timer. This could give insights on how to implement pulsing environment to the game music's tempo
-	# before using Godot's Audio Stream Player.
-	timer += delta
-	print(timer)
+func _nextWave():
+	return
+
+func _increaseIncrements():
 	return

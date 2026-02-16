@@ -4,15 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_fhy58"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8jkjp"]
-radius = 22.022715
+radius = 18.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1972557133]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nxw3"]
+radius = 21.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1972557133 groups=["PlayerObject"]]
 script = ExtResource("1_0nxw3")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1485135698]
-position = Vector2(9.536743e-07, 1.4305115e-06)
-scale = Vector2(0.34375, 0.34374985)
-texture = ExtResource("2_fhy58")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631417600]
 shape = SubResource("CircleShape2D_8jkjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1485135698]
+position = Vector2(-5.9604645e-07, 1.0728836e-06)
+scale = Vector2(0.265625, 0.26562485)
+texture = ExtResource("2_fhy58")
+
+[node name="EnemyCollision" type="Area2D" parent="." unique_id=406461024 groups=["PlayerObject"]]
+
+[node name="MeleeHitbox" type="CollisionShape2D" parent="EnemyCollision" unique_id=411804383 groups=["PlayerObject"]]
+shape = SubResource("CircleShape2D_0nxw3")
+debug_color = Color(0.941486, 9.337366e-06, 0.6125818, 0.41960785)
+
+[connection signal="area_entered" from="EnemyCollision" to="." method="_on_enemy_collision_area_entered"]

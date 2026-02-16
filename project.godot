@@ -13,11 +13,19 @@ config_version=5
 config/name="SagittariusGame"
 run/main_scene="uid://wxalwh8to6sn"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.14117648, 0.13725491, 0.2, 1)
+boot_splash/image="uid://bo3fr61fwrhr"
 config/icon="res://Sprites/icon.svg"
 
 [global_group]
 
 PlayerObject="The main game group for players"
+EnemyObject="Group for all hostile entities"
+FodderType="The weakest enemy type."
+PlayerProjectile=""
+EnemyMelee=""
+EnemyProjectile=""
+MapObstacle=""
 
 [input]
 
@@ -46,6 +54,15 @@ fire_weapon={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(205, 21),"global_position":Vector2(214, 69),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+pause_action={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
+]
+}
+
+[navigation]
+
+2d/default_cell_size=4.0
 
 [physics]
 
