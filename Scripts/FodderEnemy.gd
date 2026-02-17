@@ -29,13 +29,19 @@ enum EnemyBehavior {
 
 # STATISTICS
 var stamina
-var maxStamina = 8
-# Velocity
+var maxStamina = randf_range(6,25)
+
+# VELOCITY
 var currentMoveSpeed
 var maxMoveSpeed = 100
+
+# VITALITY
 var healthPoints
 var maxHealthPoints = 80
 var meleeTickRate = 60
+
+# HEALTH BAR
+@onready var hpBar: ProgressBar = $HealthBar
 
 # START
 func _ready():
@@ -45,7 +51,8 @@ func _ready():
 	pass
 
 func _process(delta):
-	print(stamina)
+	hpBar.max_value = maxHealthPoints
+	hpBar.value = healthPoints
 	player = get_tree().get_first_node_in_group("PlayerObject")
 	if (healthPoints < 0):
 		queue_free()
@@ -96,5 +103,5 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func _on_projectile_hitbox_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("PlayerProjectile")):
-		queue_free()
+		healthPoints -= 36
 	pass # Replace with function body.

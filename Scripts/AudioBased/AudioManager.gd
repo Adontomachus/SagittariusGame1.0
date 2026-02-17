@@ -18,11 +18,11 @@ func _ready():
 func _process(delta):
 	songposition = get_playback_position() + AudioServer.get_time_since_last_mix()
 
-	print(delayTime)
+	#print(delayTime)
 	
 	# This is for temporary testing purposes using Delta time. For this part, we would be first going to test incrementing passed notes by
 	# 1 for every second using the delta timer. This could give insights on how to implement pulsing environment to the game music's tempo
 	# before using Godot's Audio Stream Player.
 	timer += delta
-	print(timer)
+	#print(timer)
 	return

@@ -3,12 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="1_eqhe0"]
 [ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/PlayerScript.gd" id="1_haeiw"]
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/GameManager.gd" id="1_onpmq"]
-[ext_resource type="Script" uid="uid://bhs3knt2yeecr" path="res://Scripts/AudioManager.gd" id="1_wckvk"]
+[ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
+[ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/BeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://b1wxyrowpye4" path="res://Objects/EnemyProjectile.tscn" id="9_b4qan"]
+[ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -21,7 +23,7 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335, 0.1, 0.26666668),
+"times": PackedFloat32Array(-0.033333335, 0, 0.26666668),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.35, 1.35), Vector2(1, 1)]
@@ -62,6 +64,8 @@ agent_radius = 32.0
 script = ExtResource("1_onpmq")
 
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
+
+[node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
 
 [node name="LevelDirector" type="Node" parent="InterfaceElements" unique_id=1584734885]
 
@@ -123,10 +127,11 @@ offset_top = 525.0
 offset_right = 611.0
 offset_bottom = 598.0
 pivot_offset = Vector2(36, 36)
+script = ExtResource("3_30wor")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/HUD/BeatIndicator" unique_id=543492491]
 libraries/ = SubResource("AnimationLibrary_onpmq")
-speed_scale = 0.5
+speed_scale = 0.6
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/HUD" unique_id=271453503]
 offset_left = 20.0
@@ -134,8 +139,11 @@ offset_top = 13.0
 offset_right = 410.0
 offset_bottom = 40.0
 
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="InterfaceElements/HUD" unique_id=493787089]
-script = ExtResource("1_wckvk")
+[node name="MetronomeTest" type="AudioStreamPlayer2D" parent="InterfaceElements/HUD" unique_id=1667154894]
+position = Vector2(20, 13)
+stream = ExtResource("2_30wor")
+volume_db = -2.743
+autoplay = true
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 groups=["PlayerObject"]]
 position = Vector2(591, 278)
@@ -202,9 +210,13 @@ position = Vector2(656, 569)
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=970544753]
 z_index = -20
-position = Vector2(730.00006, 384)
-scale = Vector2(1.5568627, 1.5568627)
+position = Vector2(468.00003, 295)
+scale = Vector2(1.6364708, 1.6364708)
 texture = ExtResource("8_f1byq")
 
 [node name="EnemyBullet" parent="." unique_id=132848767 instance=ExtResource("9_b4qan")]
 position = Vector2(432, 257)
+
+[node name="Sagittarius" type="Sprite2D" parent="." unique_id=1329080866]
+position = Vector2(99, 453)
+texture = ExtResource("11_umdcf")

@@ -29,4 +29,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if (projectileSide == ProjectileSide.Enemy):
 		if (area.is_in_group("PlayerObject")):
 			queue_free()
+	if (area.is_in_group("MapObstacle")):
+		queue_free()
 	pass # Replace with function body.

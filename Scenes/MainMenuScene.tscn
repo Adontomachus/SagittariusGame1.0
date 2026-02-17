@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://cxbjgj1w2uj4g"]
+[gd_scene format=3 uid="uid://b7it44ybvgvxf"]
 
-[node name="MainMenuScene" type="Node2D" unique_id=46170487]
+[node name="Node2D" type="Node2D" unique_id=544361199]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
+offset_left = 43.0
+offset_top = 159.0
+offset_right = 339.0
+offset_bottom = 615.0
+
+[node name="Button" type="Button" parent="PanelContainer" unique_id=122259125]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Label" type="Label" parent="." unique_id=1559997822]
+offset_left = 45.0
+offset_top = 28.0
+offset_right = 373.0
+offset_bottom = 91.0
+text = "GAME TITLE"

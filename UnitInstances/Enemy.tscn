@@ -32,4 +32,10 @@ texture = ExtResource("2_2hac7")
 shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]
+offset_left = -45.0
+offset_top = -62.0
+offset_right = 46.0
+offset_bottom = -35.0
+
 [connection signal="area_entered" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_area_entered"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsh7kuwbmi8sf"]
 
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="1_xxgf6"]
+[ext_resource type="Texture2D" uid="uid://ct8ikya1sy0cc" path="res://Sprites/Rock.png" id="1_me4gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmg0a"]
 size = Vector2(202.4639, 205.05957)
@@ -12,11 +12,8 @@ size = Vector2(125.89101, 124.59317)
 position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1939634722]
-radius = 70.18
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
-texture = ExtResource("1_xxgf6")
+texture = ExtResource("1_me4gi")
 
 [node name="CollisionShapeTest" type="CollisionShape2D" parent="." unique_id=2019855486]
 visible = false

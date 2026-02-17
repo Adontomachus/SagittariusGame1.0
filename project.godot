@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0.14117648, 0.13725491, 0.2, 1)
 boot_splash/image="uid://bo3fr61fwrhr"
 config/icon="res://Sprites/icon.svg"
 
+[autoload]
+
+BeatSync="*uid://bl63oe4fsqd87"
+
 [global_group]
 
 PlayerObject="The main game group for players"
