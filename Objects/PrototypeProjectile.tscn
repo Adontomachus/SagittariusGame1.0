@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://73el6u0pp3v6"]
+
+[ext_resource type="Script" uid="uid://dq1ac3k2s8p6w" path="res://Scripts/ProjectileCollision.gd" id="1_78pnn"]
+[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/placeholder_bullet.png" id="2_78pnn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
+size = Vector2(16, 16)
+
+[node name="PlayerBullet" type="Area2D" unique_id=132848767 groups=["PlayerProjectile"]]
+script = ExtResource("1_78pnn")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
+position = Vector2(0, 5.9604645e-08)
+texture = ExtResource("2_78pnn")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1654839371]
+shape = SubResource("RectangleShape2D_wix7r")
+
+[connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

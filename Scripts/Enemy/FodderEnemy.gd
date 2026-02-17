@@ -1,3 +1,4 @@
+class_name EnemyCommon
 extends CharacterBody2D
 
 # ENEMY TYPE
@@ -16,16 +17,16 @@ enum EnemyBehavior {
 }
 
 # ENUMERATOR TYPE
-@export var _enemyType = EnemyType.Fodder
-@export var _enemyBehavior = EnemyBehavior.Chasing
-# TEMPORARY
-@onready var node: Node2D = $".."
-@export var player: CharacterBody2D
-
+@export var _enemyType: EnemyType = EnemyType.Fodder
+@export var _enemyBehavior: EnemyBehavior = EnemyBehavior.Chasing
 
 @onready var selfEnemySprite: Sprite2D = $Sprite
 @onready var navAgent: NavigationAgent2D = $Pathfinding
 @onready var projectile_hitbox: Area2D = $ProjectileHitbox
+
+# The enemy's target. Usually the player, but it could also be an objective.
+var target: CharacterBody2D
+
 
 # STATISTICS
 var stamina
@@ -36,7 +37,7 @@ var currentMoveSpeed
 var maxMoveSpeed = 100
 
 # VITALITY
-var healthPoints
+var healthPoints: int
 var maxHealthPoints = 80
 var meleeTickRate = 60
 
@@ -45,29 +46,27 @@ var meleeTickRate = 60
 
 # START
 func _ready():
+	# Set enemy stats
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
 	healthPoints = maxHealthPoints
-	pass
 
-func _process(delta):
+	# Setup healthbar
 	hpBar.max_value = maxHealthPoints
 	hpBar.value = healthPoints
-	player = get_tree().get_first_node_in_group("PlayerObject")
-	if (healthPoints < 0):
-		queue_free()
+
+	# Get player for navigation and targeting
+	target = get_tree().get_first_node_in_group("PlayerObject")
 		
-	#FINDING TARGET FUNCTION
+#FINDING TARGET FUNCTION
 func find_target() -> void:
-	if (player):
-		navAgent.target_position = player.global_position
-
-
+	if (target):
+		navAgent.target_position = target.global_position
 
 # FINDING TARGET FUNCTION, NAVIGATION AGENT SETUP
 func _navigationsetup():
 	await get_tree().physics_frame
-	if player:
+	if target:
 		return
 
 	# CHASE PLAYER
@@ -78,7 +77,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	
 	# Chasing Script
-	elif (_enemyBehavior == EnemyBehavior.Chasing):
+	if (_enemyBehavior == EnemyBehavior.Chasing):
 		stamina -= delta
 		
 		find_target()
@@ -96,12 +95,15 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
+func modify_health(increment: int) -> void:
+	healthPoints += increment
+	hpBar.value = healthPoints
+	if (healthPoints < 0):
+		queue_free()
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
-	pass # Replace with function body.
 
-func _on_projectile_hitbox_area_entered(area: Area2D) -> void:
-	if (area.is_in_group("PlayerProjectile")):
-		healthPoints -= 36
-	pass # Replace with function body.
+#func _on_projectile_hitbox_area_entered(area: Area2D) -> void:
+#	if (area.is_in_group("PlayerProjectile")):
+#		healthPoints -= 36

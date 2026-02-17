@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cn424tg6fsbhv"]
 
-[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/FodderEnemy.gd" id="1_s7bn3"]
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/FodderEnemy.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_2hac7"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_rvq43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -27,6 +28,7 @@ scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("2_2hac7")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+script = ExtResource("3_rvq43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 shape = SubResource("CircleShape2D_mepa4")
@@ -38,4 +40,4 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
-[connection signal="area_entered" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_area_entered"]
+[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
