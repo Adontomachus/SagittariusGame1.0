@@ -87,7 +87,7 @@ func damage_modifier(timing: float) -> float:
 func projectile_color(timing: float) -> Color:
 	# Perfect
 	if timing > perfect_hit:
-		return Color.html("rgba(32, 255, 255, 1)")
+		return Color.html("#1ce1ebff")
 
 	# Good
 	if timing > good_hit:
