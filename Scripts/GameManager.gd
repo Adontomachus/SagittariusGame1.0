@@ -1,11 +1,12 @@
 extends Node2D
 
-@onready var beatIndicator: Panel = $InterfaceElements/HUD/BeatIndicator
+
+@export var beatIndicator: Panel# = $InterfaceElements/HUD/BeatIndicator
 var spawnTimer = randf_range(5,10)
-@onready var player: Node2D = $"../Player"
+@export var player: Node2D# = $"../Player"
 
 # MUSICAL UI
-@onready var animation_player: AnimationPlayer = beatIndicator.get_node("AnimationPlayer")
+@export var animation_player: AnimationPlayer# = beatIndicator.get_node("AnimationPlayer")
 
 #LEVEL VARIABLES
 var level_wave: int = 1
@@ -14,7 +15,7 @@ const DROP_WEIGHT_SCALE: float = 0.05
 var difficultyMeter = 1
 var pointDropWeight = 0.25
 var comboCount = 0
-@onready var player_target: Marker2D = $InterfaceElements/PlayerTarget
+@export var player_target: Marker2D# = $InterfaceElements/PlayerTarget
 
 
 #SPAWNING VARIABLES
@@ -22,7 +23,8 @@ const enemyToSpawn = preload("res://UnitInstances/Enemy.tscn")
 var playerSpawnDistance = 200
 
 func _ready():
-	animation_player.play("Pulse")
+	#animation_player.play("Pulse")
+	pass
 
 #TEMPORARY FUNCTIONS, SUBJECT TO CHANGE	
 func _spawnEnemies():
@@ -34,30 +36,20 @@ func _nextWave():
 func _increaseIncrements():
 	return
 
-
-
-
-
-#SPAWNING WIP
-
-
-
+# SPAWNING WIP #
 var randomNumber = randf_range(0,1)
 
 var playerRadius = 300
 var instantiationPositions: Vector2
 
 func _process(delta):
-	# print(spawnTimer)
-	#Spawning Enemies
+	# Spawning Enemies
 	spawnTimer -= delta
 	if (spawnTimer < 0):
 		print("Spawned Enemy!")
 		spawnTimer = randf_range(5,6)
 		_spawn_enemy()
-	pass
-	
-	
+		
 func _spawn_enemy():
 	var enemy = enemyToSpawn.instantiate()
 	enemy.position = self.global_position
@@ -67,4 +59,4 @@ func _spawn_enemy():
 	#	enemy.unitType = enemy.EnemyType.Fodder
 	#get_tree().get_root().call_deferred("add_child", enemy)
 	#spawnTimer = randf_range(5,10)
-	pass
+	add_child(enemy)

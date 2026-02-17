@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ct8ikya1sy0cc" path="res://Sprites/Rock.png" id="1_me4gi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmg0a"]
-size = Vector2(202.4639, 205.05957)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(125.89101, 124.59317)
 
@@ -14,13 +11,6 @@ scale = Vector2(0.77050775, 0.77050775)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
 texture = ExtResource("1_me4gi")
-
-[node name="CollisionShapeTest" type="CollisionShape2D" parent="." unique_id=2019855486]
-visible = false
-position = Vector2(-1.2377219e-06, -6.1886094e-06)
-shape = SubResource("RectangleShape2D_rmg0a")
-disabled = true
-debug_color = Color(0.9485412, 4.6205523e-06, 0.580177, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
 position = Vector2(0, 3.867881e-07)
