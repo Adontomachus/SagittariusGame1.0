@@ -1,3 +1,5 @@
+class_name CameraControl
+
 extends Camera2D
 
 

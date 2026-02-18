@@ -7,7 +7,10 @@
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/BeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
+[ext_resource type="Script" uid="uid://cr36qvnvdg6ka" path="res://Scripts/Enemy/BossHealthUI.gd" id="5_ssy3j"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
+[ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
+[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
@@ -98,9 +101,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Points: "
 
-[node name="PlayerName" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
+[node name="ComboCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
 layout_mode = 2
-text = "Player Name:"
+text = "Combo:"
 
 [node name="WaveCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=388203173]
 layout_mode = 2
@@ -161,6 +164,23 @@ offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Beat Indicator"
+horizontal_alignment = 1
+
+[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1272322535]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 497.0
+offset_right = 995.0
+offset_bottom = 524.0
+script = ExtResource("5_ssy3j")
+
+[node name="Label" type="Label" parent="InterfaceElements/HUD/UI/BossHealthBar" unique_id=1757781328]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 31.0
+offset_right = 584.0
+offset_bottom = 54.0
+text = "Boss Health"
 horizontal_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("healthBar") groups=["PlayerObject"]]
@@ -229,3 +249,9 @@ z_index = -20
 position = Vector2(468.00003, 295)
 scale = Vector2(1.6364708, 1.6364708)
 texture = ExtResource("8_f1byq")
+
+[node name="Enemy4" parent="." unique_id=995601 instance=ExtResource("10_30wor")]
+position = Vector2(838, 29)
+
+[node name="Enemy5" parent="." unique_id=336309580 instance=ExtResource("11_ssy3j")]
+position = Vector2(1046, 210)

@@ -30,6 +30,8 @@ PlayerProjectile=""
 EnemyMelee=""
 EnemyProjectile=""
 MapObstacle=""
+BossType=""
+EliteType=""
 
 [input]
 

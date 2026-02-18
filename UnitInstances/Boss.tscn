@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d24063yq0kgko"]
+
+[ext_resource type="Script" uid="uid://bd1q1mu5uxrx7" path="res://Scripts/Enemy/BossEnemy.gd" id="1_wg85l"]
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_g16c8"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w0bs6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
+radius = 46.734726
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
+radius = 34.0147
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType"]]
+script = ExtResource("1_wg85l")
+
+[node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
+avoidance_enabled = true
+radius = 120.0
+debug_enabled = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
+scale = Vector2(0.578125, 0.578125)
+shape = SubResource("CircleShape2D_s7bn3")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
+scale = Vector2(1.1328125, 1.1328125)
+texture = ExtResource("2_g16c8")
+
+[node name="Sprite" type="Sprite2D" parent="Sprite" unique_id=1101179799]
+position = Vector2(-43.255177, 60.91035)
+scale = Vector2(0.2974407, 0.2974407)
+texture = ExtResource("2_g16c8")
+
+[node name="Sprite2" type="Sprite2D" parent="Sprite" unique_id=2088960222]
+position = Vector2(45.020687, 61.793102)
+scale = Vector2(0.2974407, 0.2974407)
+texture = ExtResource("2_g16c8")
+
+[node name="Sprite3" type="Sprite2D" parent="Sprite" unique_id=2021201370]
+position = Vector2(-45.020687, -52.08276)
+scale = Vector2(0.2974407, 0.2974407)
+texture = ExtResource("2_g16c8")
+
+[node name="Sprite4" type="Sprite2D" parent="Sprite" unique_id=1484638533]
+position = Vector2(48.551716, -52.082764)
+scale = Vector2(0.2974407, 0.2974407)
+texture = ExtResource("2_g16c8")
+
+[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+script = ExtResource("3_w0bs6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+shape = SubResource("CircleShape2D_mepa4")
+debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]
+offset_left = -45.0
+offset_top = -62.0
+offset_right = 46.0
+offset_bottom = -35.0
+
+[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

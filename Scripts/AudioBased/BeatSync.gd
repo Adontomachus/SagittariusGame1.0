@@ -17,15 +17,29 @@ var beat_precise: float
 var audio_latency: float = 0.0
 #endregion
 
+#region UI Combo Counter along with the actual combo counter
+
+@onready var combo_counter: Label = $"../PlayerInfo/ComboCounter"
+@export var comboCounter = 0
+#endregion
+#region other UI elements to beat sync for diegetic effects
+@onready var player_health_bar: ProgressBar = $"../PlayerInfo/PlayerHealthBar"
+@onready var score: Label = $"../PlayerInfo/Score"
+@onready var wave_counter: Label = $"../PlayerInfo/WaveCounter"
+#endregion
 #region Indicator Variables
 @export var starting_scale: float = 1.35
 var tween: Tween
 #endregion
 
+
+
+
 #region Damage Variables
 @export_category("Damage Output")
 ## The window for a perfect shot. The closer the timing is to this number, the better the score.
 @export var fire_window: float = 0.5
+
 
 @export_category("Fire Timings")
 @export var perfect_hit: float = 0.42
@@ -44,6 +58,9 @@ func _ready() -> void:
 	scale = Vector2(starting_scale, starting_scale)
 	
 func _process(_delta) -> void:
+	
+	# For combo text
+	combo_counter.text = "Combo: " + str(comboCounter)
 	if metronome_test.playing == false:
 		return
 
@@ -58,8 +75,9 @@ func _process(_delta) -> void:
 	beat = floorf(beat_precise)
 
 	if lastBeat < beat:
-		#print("Note passed!")
+		print("Note passed!")
 		indicator_pulse()
+		#ui_pulse()
 		lastBeat = beat
 
 func _input(event: InputEvent) -> void:
@@ -87,18 +105,25 @@ func damage_modifier(timing: float) -> float:
 func projectile_color(timing: float) -> Color:
 	# Perfect
 	if timing > perfect_hit:
+		comboCounter += 1
 		return Color.html("#1ce1ebff")
 
 	# Good
 	if timing > good_hit:
+		comboCounter += 1	
 		return Color.html("#53bc07ff")
-	
+
 	# OK
 	if timing > ok_hit:
+		comboCounter += 1
 		return Color.html("#f0f816ff")
-
+		
 	# BAD
+	comboCounter = 0
 	return Color.html("#ff3b2dff")
+
+
+
 
 func indicator_pulse() -> void:
 	if tween:
@@ -107,3 +132,11 @@ func indicator_pulse() -> void:
 
 	scale = Vector2(starting_scale, starting_scale)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat / 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
+
+#func ui_pulse() -> void:
+#	if tween:
+#		tween.kill()
+#	tween = create_tween()
+#	scale = Vector2(starting_scale, starting_scale)
+#	
+#	return
