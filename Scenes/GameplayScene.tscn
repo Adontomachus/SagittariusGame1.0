@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://wxalwh8to6sn"]
 
 [ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/PlayerScript.gd" id="1_haeiw"]
-[ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/GameManager.gd" id="1_onpmq"]
+[ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/AudioBased/GameManager.gd" id="1_onpmq"]
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
-[ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/BeatSync.gd" id="3_30wor"]
+[ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
+[ext_resource type="Script" uid="uid://cr36qvnvdg6ka" path="res://Scripts/Enemy/BossHealthUI.gd" id="5_ssy3j"]
+[ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
+[ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
+[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
+[ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -84,6 +89,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="WaveNotification" type="Label" parent="InterfaceElements/HUD/UI" unique_id=120682287]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 86.0
+offset_right = 841.5652
+offset_bottom = 115.0
+text = "WAVE INCOMING!"
+horizontal_alignment = 1
+
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/HUD/UI" unique_id=952983668]
 layout_mode = 0
 offset_left = 11.0
@@ -98,9 +112,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Points: "
 
-[node name="PlayerName" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
+[node name="ComboCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
 layout_mode = 2
-text = "Player Name:"
+text = "Combo:"
 
 [node name="WaveCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=388203173]
 layout_mode = 2
@@ -162,6 +176,27 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Beat Indicator"
 horizontal_alignment = 1
+
+[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1272322535]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 497.0
+offset_right = 995.0
+offset_bottom = 524.0
+script = ExtResource("5_ssy3j")
+
+[node name="Label" type="Label" parent="InterfaceElements/HUD/UI/BossHealthBar" unique_id=1757781328]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 31.0
+offset_right = 584.0
+offset_bottom = 54.0
+text = "Boss Health"
+horizontal_alignment = 1
+
+[node name="PauseScreen" parent="InterfaceElements/HUD/UI" unique_id=1347961824 instance=ExtResource("6_jwrfw")]
+visible = false
+layout_mode = 1
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("healthBar") groups=["PlayerObject"]]
 position = Vector2(591, 278)
@@ -229,3 +264,12 @@ z_index = -20
 position = Vector2(468.00003, 295)
 scale = Vector2(1.6364708, 1.6364708)
 texture = ExtResource("8_f1byq")
+
+[node name="Enemy4" parent="." unique_id=995601 groups=["GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
+position = Vector2(838, 29)
+
+[node name="Enemy5" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
+position = Vector2(1046, 210)
+
+[node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
+position = Vector2(235, 225)

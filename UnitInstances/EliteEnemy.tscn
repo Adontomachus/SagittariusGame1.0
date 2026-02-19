@@ -1,17 +1,20 @@
-[gd_scene format=3 uid="uid://cn424tg6fsbhv"]
+[gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
-[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/FodderEnemy.gd" id="1_s7bn3"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_2hac7"]
-[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_rvq43"]
+[ext_resource type="Script" uid="uid://dxxy3ilhc425d" path="res://Scripts/Enemy/EliteEnemy.gd" id="1_ugnea"]
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_6b6pn"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_tx5hf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
-radius = 46.702705
+radius = 46.734726
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
-radius = 30.149628
+radius = 34.0147
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
-script = ExtResource("1_s7bn3")
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType"]]
+script = ExtResource("1_ugnea")
+_enemyBehavior = 1
+maxHealthPoints = 500
+attackPower = 14.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -23,12 +26,12 @@ scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
-position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("2_2hac7")
+position = Vector2(-7.1525574e-07, 1.0000005)
+scale = Vector2(0.515625, 0.515625)
+texture = ExtResource("2_6b6pn")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
-script = ExtResource("3_rvq43")
+script = ExtResource("3_tx5hf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 shape = SubResource("CircleShape2D_mepa4")
@@ -39,5 +42,7 @@ offset_left = -45.0
 offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=278116846]
 
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

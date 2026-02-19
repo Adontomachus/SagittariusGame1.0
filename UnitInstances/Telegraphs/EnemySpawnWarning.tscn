@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bamuq5osqtp76"]
+
+[ext_resource type="Script" uid="uid://c78qsvqbiiip" path="res://Scripts/EnemySpawnScript.gd" id="1_m54ri"]
+[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/SpawnIcon.png" id="2_t83xd"]
+
+[node name="Node2D" type="Node2D" unique_id=1957876012]
+script = ExtResource("1_m54ri")
+
+[node name="Telegraph" type="Sprite2D" parent="." unique_id=2060875926]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_t83xd")
