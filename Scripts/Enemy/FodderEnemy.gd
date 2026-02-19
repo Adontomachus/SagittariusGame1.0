@@ -29,7 +29,7 @@ var maxMoveSpeed = 100
 
 # VITALITY
 @export_category("Vitality Stats")
-@export var healthPoints: int
+@export var healthPoints: float
 @export var maxHealthPoints = 80
 @export var meleeTickRate = 60
 
@@ -38,6 +38,7 @@ var maxMoveSpeed = 100
 
 # START
 func _ready():
+	# maxHealthPoints = BeatSync.tempo
 	# Hide the health bar until damaged
 	hpBar.visible = false
 	
@@ -96,7 +97,9 @@ func _physics_process(delta):
 		else:
 			_on_navigation_agent_2d_velocity_computed(new_velocity)
 			
-			
+	# TESTING PURPOSES
+	#if (BeatSync.lastBeat < BeatSync.beat):
+	#	print("Attack!")
 		
 	move_and_slide()
 

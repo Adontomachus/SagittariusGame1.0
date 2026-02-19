@@ -47,6 +47,10 @@ var tween: Tween
 @export var ok_hit: float = 0.28
 #endregion
 
+#region Global synchronization (TEMPORARY)
+var delay: float = 0
+#endregion
+
 func _ready() -> void:
 	# Connect the shooting response to the player shoot function
 	var player = get_tree().get_first_node_in_group("PlayerObject")
@@ -70,12 +74,17 @@ func _process(_delta) -> void:
 
 	if time < 0.1:
 		lastBeat = 0
+		GlobalBeatSync.lastBeat = lastBeat
 
 	beat_precise = time / pulsePerBeat
 	beat = floorf(beat_precise)
-
+	GlobalBeatSync.beat = beat
+	# Take actions when a note has passed
 	if lastBeat < beat:
 		print("Note passed!")
+		GlobalBeatSync.notesPassed += 1
+		GlobalBeatSync.executeAction = true
+		print("Added Note!")
 		indicator_pulse()
 		#ui_pulse()
 		lastBeat = beat

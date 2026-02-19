@@ -93,6 +93,9 @@ func reposition(playerRadius):
 
 func _physics_process(delta):
 	
+	# Makes the unit's shoot point to point at the player
+	shoot_point.look_at(target.global_position)
+	
 	#region For constant navigation agent checking
 	var targetLocation = navAgent.get_next_path_position()
 	var new_velocity = global_position.direction_to(targetLocation) * currentMoveSpeed
@@ -103,13 +106,14 @@ func _physics_process(delta):
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
 	#endregion
 	
-		
+	#region Sets the health bar to visible when damaged, and reposition when timer runs out
 	if (healthPoints < maxHealthPoints):
 		hpBar.visible = true
 	repositioningTimer -= 8 * delta
 	if repositioningTimer < 0:
 		repositioningTimer = maxRepositioningTimer
 		reposition(aroundPlayerRadius)
+	#endregion
 	
 	# Checks if the navigation agent has reached its destination and stops
 	if navAgent.is_navigation_finished():
@@ -122,14 +126,15 @@ func _physics_process(delta):
 
 #SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.RED):
-	var projectile_instance = projectile.instantiate()
-	projectile_instance.change_damage(attackPower * modifier)
-	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
-	projectile_instance.change_projectile_modulation(color)
-	projectile_instance.position = self.get_global_position()
-	projectile_instance.rotation_degrees = self.rotation_degrees
-	get_tree().get_root().call_deferred("add_child", projectile_instance)
-	print_debug("Damage: %s" % (attackPower * modifier))
+	if (GlobalBeatSync.executeAction):
+		var projectile_instance = projectile.instantiate()
+		projectile_instance.change_damage(attackPower * modifier)
+		projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
+		projectile_instance.change_projectile_modulation(color)
+		projectile_instance.position = shoot_point.get_global_position()
+		projectile_instance.rotation_degrees = shoot_point.rotation_degrees
+		get_tree().get_root().call_deferred("add_child", projectile_instance)
+		print_debug("Damage: %s" % (attackPower * modifier))
 
 # RECOVERY MODE
 func recoveryMode(recoverySpeed: float) -> void:

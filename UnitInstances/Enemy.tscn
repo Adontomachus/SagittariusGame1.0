@@ -10,9 +10,8 @@ radius = 46.702705
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 30.149628
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 script = ExtResource("1_s7bn3")
-healthPoints = 80
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true

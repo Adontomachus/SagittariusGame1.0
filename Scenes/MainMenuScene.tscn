@@ -1,20 +1,64 @@
 [gd_scene format=3 uid="uid://b7it44ybvgvxf"]
 
+[ext_resource type="Script" uid="uid://bkent1jhnqg5y" path="res://Scripts/Scene Management/MainMenuScript.gd" id="1_sb72h"]
+
 [node name="Node2D" type="Node2D" unique_id=544361199]
+script = ExtResource("1_sb72h")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
-offset_left = 43.0
-offset_top = 159.0
-offset_right = 339.0
-offset_bottom = 615.0
+offset_left = 57.0
+offset_top = 283.0
+offset_right = 311.0
+offset_bottom = 606.0
 
-[node name="Button" type="Button" parent="PanelContainer" unique_id=122259125]
-layout_mode = 2
-text = "Start Game"
+[node name="StoryMode" type="Button" parent="." unique_id=930228544]
+offset_left = 78.0
+offset_top = 303.0
+offset_right = 282.0
+offset_bottom = 345.0
+text = "Start Game
+"
+
+[node name="StartButton" type="Button" parent="." unique_id=122259125]
+offset_left = 78.0
+offset_top = 362.0
+offset_right = 282.0
+offset_bottom = 404.0
+text = "Story Mode"
+
+[node name="SettingsButton" type="Button" parent="." unique_id=963021667]
+offset_left = 78.0
+offset_top = 423.0
+offset_right = 282.0
+offset_bottom = 465.0
+text = "Settings"
+
+[node name="CalibrationButton" type="Button" parent="." unique_id=1190364207]
+offset_left = 79.0
+offset_top = 484.0
+offset_right = 283.0
+offset_bottom = 526.0
+text = "Calibration"
+
+[node name="ExitButton" type="Button" parent="." unique_id=2085939534]
+offset_left = 79.0
+offset_top = 543.0
+offset_right = 283.0
+offset_bottom = 585.0
+text = "Exit
+"
 
 [node name="Label" type="Label" parent="." unique_id=1559997822]
 offset_left = 45.0
 offset_top = 28.0
-offset_right = 373.0
-offset_bottom = 91.0
-text = "GAME TITLE"
+offset_right = 558.0
+offset_bottom = 152.0
+text = "Sagittarius: The Game"
+
+[node name="Test" type="Label" parent="Label" unique_id=196103953]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 257.0
+offset_right = 887.0
+offset_bottom = 299.0
+text = "Background Splash Art"

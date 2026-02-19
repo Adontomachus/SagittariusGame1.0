@@ -19,7 +19,7 @@ config/icon="res://Sprites/icon.svg"
 
 [autoload]
 
-BeatSync="*uid://bl63oe4fsqd87"
+GlobalBeatSync="*uid://b6by13j1adlil"
 
 [global_group]
 
@@ -32,6 +32,7 @@ EnemyProjectile=""
 MapObstacle=""
 BossType=""
 EliteType=""
+GeneralEnemyInstance="The lead group for anything that can be labeled as an enemy object."
 
 [input]
 
