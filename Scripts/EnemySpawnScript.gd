@@ -11,6 +11,7 @@ var redness = 0
 
 func _ready() -> void:
 	return
+	
 func _process(delta: float) -> void:
 	beatLifetime -= 2 * delta
 	redness += 0.4 * delta
