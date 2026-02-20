@@ -12,8 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
 [ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
+[ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
 [ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
+[ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -57,9 +59,9 @@ _data = {
 radius = 22.022715
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k77ap"]
-vertices = PackedVector2Array(884.5, 815, 1806.4063, 992.8906, 611.8672, 1066.8828, 681.5, 816, 1824.5469, -316.45313, 884.5, 655, 781.5, 617, 781.5, 457, -524.35156, -349.5625, 574.5, 456, 419.5, 656, 419.5, 816, 109.5, 690, 109.5, 230, 413.5, 616, 574.5, 457, 413.5, 456, 515.5, 616, 515.5, 617, 622.5, 655, 622.5, 656, 681.5, 815, -578.7578, 926.6875, -51.5, 690, -51.5, 230)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 5, 6, 7), PackedInt32Array(8, 4, 7, 9), PackedInt32Array(10, 11, 12, 13, 14), PackedInt32Array(7, 15, 9), PackedInt32Array(8, 9, 16, 13), PackedInt32Array(14, 17, 18, 10), PackedInt32Array(19, 20, 10, 18), PackedInt32Array(3, 21, 0), PackedInt32Array(11, 3, 2, 22), PackedInt32Array(12, 11, 22, 23), PackedInt32Array(23, 22, 8, 24), PackedInt32Array(1, 0, 5), PackedInt32Array(6, 5, 19, 18), PackedInt32Array(16, 14, 13), PackedInt32Array(8, 13, 24)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-555, -382, -612, 955, 611, 1099, 1838, 1023, 1857, -348)])
+vertices = PackedVector2Array(781.5, 617, 1510.5, 591, 1671.5, 591, 1424.5, 657, 1263.5, 657, 884.5, 655, 2274.3672, -381.78906, 2241.5469, 1267.7734, 2237.5, 221, 2237.5, 61, 1862.5, 395, 2076.5, 221, 1605.5, 1349.3438, 580.4219, 1480.8125, 1146.5, 1289, 1605.5, 1219, 985.5, 1289, 1671.5, 431, 1701.5, 395, 1862.5, 235, 2076.5, 61, 1766.5, 1219, 1424.5, 817, 1146.5, 1129, 1263.5, 817, 1766.5, 1328.6875, 985.5, 1129, 884.5, 815, 419.5, 656, 419.5, 816, 109.5, 690, 109.5, 230, 413.5, 616, -558.25, -451.2578, 781.5, 457, 1510.5, 431, 622.5, 655, 515.5, 617, 574.5, 457, 574.5, 456, 515.5, 616, 622.5, 656, 413.5, 456, 681.5, 816, 681.5, 815, 1701.5, 235, -51.5, 230, -687.84375, 1363.0313, -51.5, 690)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(2, 10, 11, 8, 7), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 14, 13), PackedInt32Array(10, 2, 17, 18), PackedInt32Array(11, 10, 19, 20), PackedInt32Array(2, 7, 21, 22, 3), PackedInt32Array(22, 15, 14, 23, 24), PackedInt32Array(7, 25, 21), PackedInt32Array(22, 21, 15), PackedInt32Array(4, 24, 23, 26, 27, 5), PackedInt32Array(28, 29, 30, 31, 32), PackedInt32Array(33, 6, 9, 20), PackedInt32Array(1, 0, 34, 35), PackedInt32Array(0, 5, 36, 37), PackedInt32Array(34, 38, 39), PackedInt32Array(32, 40, 37, 28), PackedInt32Array(36, 41, 28, 37), PackedInt32Array(42, 32, 31), PackedInt32Array(43, 44, 27, 26, 16), PackedInt32Array(33, 20, 19, 45), PackedInt32Array(33, 45, 18, 17, 35), PackedInt32Array(33, 35, 34, 39), PackedInt32Array(33, 39, 42, 31), PackedInt32Array(33, 31, 46), PackedInt32Array(47, 33, 46, 48), PackedInt32Array(13, 47, 48, 30, 29), PackedInt32Array(13, 29, 43, 16)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-588, -484, -722, 1392, 581, 1513, 2273, 1296, 2307, -413)])
 cell_size = 2.0
 agent_radius = 32.0
 
@@ -70,13 +72,15 @@ player = NodePath("Player")
 animation_player = NodePath("InterfaceElements/HUD/UI/BeatIndicator/AnimationPlayer")
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
+[node name="MouseLocator" type="Marker2D" parent="." unique_id=1641650591]
+
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
 
 [node name="LevelDirector" type="Node" parent="InterfaceElements" unique_id=1584734885]
 
-[node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956]
+[node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
 script = ExtResource("4_b5kf5")
 
 [node name="HUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
@@ -177,7 +181,7 @@ grow_vertical = 0
 text = "Beat Indicator"
 horizontal_alignment = 1
 
-[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1272322535]
+[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1272322535 groups=["BossUI"]]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 497.0
@@ -259,13 +263,46 @@ position = Vector2(551, 569)
 [node name="Wall11" parent="NavigationRegion/Obstacles" unique_id=22576572 instance=ExtResource("5_nt06h")]
 position = Vector2(656, 569)
 
+[node name="Wall" parent="NavigationRegion" unique_id=1501938174 instance=ExtResource("5_nt06h")]
+position = Vector2(1344, 737)
+
+[node name="Wall2" parent="NavigationRegion" unique_id=1286809218 instance=ExtResource("5_nt06h")]
+position = Vector2(1591, 511)
+
+[node name="Wall3" parent="NavigationRegion" unique_id=1580122650 instance=ExtResource("5_nt06h")]
+position = Vector2(1782, 315)
+
+[node name="Wall4" parent="NavigationRegion" unique_id=1832107586 instance=ExtResource("5_nt06h")]
+position = Vector2(2157, 141)
+
+[node name="Wall5" parent="NavigationRegion" unique_id=533129430 instance=ExtResource("5_nt06h")]
+position = Vector2(1686, 1299)
+
+[node name="Wall6" parent="NavigationRegion" unique_id=1837305217 instance=ExtResource("5_nt06h")]
+position = Vector2(1066, 1209)
+
+[node name="Pillar" parent="NavigationRegion" unique_id=2023383986 instance=ExtResource("11_t0ujt")]
+position = Vector2(-269, 132)
+
+[node name="Pillar2" parent="NavigationRegion" unique_id=1075066830 instance=ExtResource("11_t0ujt")]
+position = Vector2(1787, -19)
+
+[node name="Pillar3" parent="NavigationRegion" unique_id=42987309 instance=ExtResource("11_t0ujt")]
+position = Vector2(-524, 829)
+
+[node name="Pillar4" parent="NavigationRegion" unique_id=1608234008 instance=ExtResource("11_t0ujt")]
+position = Vector2(1965, 999)
+
+[node name="Pillar5" parent="NavigationRegion" unique_id=212914912 instance=ExtResource("11_t0ujt")]
+position = Vector2(2473, 490)
+
 [node name="Ground" type="Sprite2D" parent="." unique_id=970544753]
 z_index = -20
-position = Vector2(468.00003, 295)
-scale = Vector2(1.6364708, 1.6364708)
+position = Vector2(727, 345.00006)
+scale = Vector2(1.9325491, 1.9325489)
 texture = ExtResource("8_f1byq")
 
-[node name="Enemy4" parent="." unique_id=995601 groups=["GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
+[node name="Enemy4" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)
 
 [node name="Enemy5" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
@@ -273,3 +310,12 @@ position = Vector2(1046, 210)
 
 [node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
 position = Vector2(235, 225)
+
+[node name="Tree" parent="." unique_id=1319257251 instance=ExtResource("16_tedqt")]
+position = Vector2(1229, -338)
+
+[node name="Tree2" parent="." unique_id=1060008991 instance=ExtResource("16_tedqt")]
+position = Vector2(2720, 1295)
+
+[node name="Tree3" parent="." unique_id=456805315 instance=ExtResource("16_tedqt")]
+position = Vector2(-69, 1334)

@@ -16,3 +16,9 @@ func _process(delta):
 	else:
 		self.visible = true
 	return
+	
+# Function to get the boss unit health points to display on the interface
+func _get_boss_current_health(currentValue, maximumValue):
+	value = currentValue
+	max_value = maximumValue
+	return

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cnger75m0yom3"]
+
+[ext_resource type="Texture2D" uid="uid://bkfvna52fbeyp" path="res://Sprites/balete.png" id="1_c4m88"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtr1u"]
+radius = 118.132454
+
+[node name="Tree" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.77050775, 0.77050775)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+position = Vector2(-4.7683716e-07, -51.91382)
+scale = Vector2(0.37097576, 0.37097585)
+texture = ExtResource("1_c4m88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
+position = Vector2(-1.1920929e-06, 25.95691)
+shape = SubResource("CircleShape2D_rtr1u")

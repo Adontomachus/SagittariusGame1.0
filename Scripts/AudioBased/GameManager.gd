@@ -14,6 +14,7 @@ var gamePaused: int
 @export var animation_player: AnimationPlayer # = beatIndicator.get_node("AnimationPlayer")
 
 #LEVEL VARIABLES
+
 var level_wave: int = 1
 const DIFFICULTY_SCALE: float = 0.15
 const DROP_WEIGHT_SCALE: float = 0.05
@@ -23,15 +24,16 @@ var comboCount = 0
 @export var player_target: Marker2D # = $InterfaceElements/PlayerTarget
 
 
-#SPAWNING VARIABLES
+#SPAWNING VARIABLES AND STATS
 const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn")
 var playerSpawnDistance = 200
+var enemySpawnCounter: int
 
 #region UI Elements for displaying values along with game notifications
 @onready var score: Label = $InterfaceElements/HUD/UI/PlayerInfo/Score
 @onready var wave_counter: Label = $InterfaceElements/HUD/UI/PlayerInfo/WaveCounter
 @onready var wave_notification: Label = $InterfaceElements/HUD/UI/WaveNotification
-var notifDuration
+var notifDuration: float
 #endregion
 
 #region Enumerators for enemy spawning behaviors
@@ -40,12 +42,15 @@ enum spawningBehavior {
 	Spawning,
 	FinalAggressive
 }
-@export var _spawningBehavior: spawningBehavior = spawningBehavior.Preparation
 
+@export var _spawningBehavior: spawningBehavior = spawningBehavior.Preparation
 #endregion
+# Locate the mouse position for the mouse locator
+var actualMousePosition: Vector2
+@onready var cursorLocator: Marker2D = $MouseLocator
 
 func _ready():
-	
+	actualMousePosition = get_global_mouse_position()
 	notifDuration = 8
 	wave_notification.self_modulate.a = 0
 	pause_screen.visible = false
@@ -135,6 +140,8 @@ func _process(delta):
 	instantiationPositions = Vector2(player.global_position.x + randf_range(155,455), player.global_position.y + randf_range(155,455))
 	#global_position = player_target.global_position
 	#endregion
+	
+	
 func _spawn_enemy():
 	var enemy = enemyToSpawn.instantiate()
 	enemy.position = instantiationPositions
@@ -145,3 +152,7 @@ func _spawn_enemy():
 	#get_tree().get_root().call_deferred("add_child", enemy)
 	#spawnTimer = randf_range(5,10)
 	add_child(enemy)
+	
+func _locate_mouse_pointer():
+	cursorLocator.global_position = (player_target.global_position + actualMousePosition) / 2
+	return
