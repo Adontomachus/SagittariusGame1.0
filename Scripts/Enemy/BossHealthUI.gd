@@ -1,10 +1,6 @@
 # TEMPORARY SCRIPT
 class_name BossHealthInterface
-
 extends ProgressBar
-
-
-
 
 func _ready():
 	return

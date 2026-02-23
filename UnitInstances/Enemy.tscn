@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cn424tg6fsbhv"]
 
-[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/FodderEnemy.gd" id="1_s7bn3"]
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Enemy.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_2hac7"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_rvq43"]
 
@@ -10,8 +10,9 @@ radius = 46.702705
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 30.149628
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 script = ExtResource("1_s7bn3")
+navAgent = NodePath("Pathfinding")
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -40,4 +41,7 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
+[connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
+[connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
+[connection signal="toggle_healthbar_visibility" from="." to="HealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
