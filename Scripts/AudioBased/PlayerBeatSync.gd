@@ -142,6 +142,8 @@ func indicator_pulse() -> void:
 	scale = Vector2(starting_scale, starting_scale)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat / 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 
+func perfect_pulse_feedback() -> void:
+	return
 #func ui_pulse() -> void:
 #	if tween:
 #		tween.kill()

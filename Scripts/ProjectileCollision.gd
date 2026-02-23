@@ -12,7 +12,7 @@ enum ProjectileSide {
 var projectileVelocity
 # Measured in seconds
 var projectileLifetime
-var projectile_damage: int = 5
+var projectile_damage: float = 5
 
 func _ready():
 	projectileVelocity = 762
@@ -31,8 +31,8 @@ func _ready():
 				queue_free()
 
 		if (projectileSide == ProjectileSide.Enemy):
-			if area is PlayerCharacter: #(area.is_in_group("PlayerObject")):
-				area.increment_player_health(-projectile_damage)
+			if area is PlayerProjectileHitbox: #(area.is_in_group("PlayerObject")):
+				area.modify_player_health(-projectile_damage)
 				queue_free()
 	)
 	
