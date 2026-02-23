@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
-[ext_resource type="Script" uid="uid://dxxy3ilhc425d" path="res://Scripts/Enemy/EliteEnemy.gd" id="1_ugnea"]
+[ext_resource type="Script" uid="uid://dxxy3ilhc425d" path="res://Scripts/Enemy/Types/EliteEnemy.gd" id="1_ugnea"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_6b6pn"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_tx5hf"]
 
