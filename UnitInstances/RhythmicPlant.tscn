@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cr4cdt8k115vb"]
+
+[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/rhythmplant.png" id="1_ljkxo"]
+
+[sub_resource type="Environment" id="Environment_ucr1o"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.81
+
+[node name="Rhythmplant" type="Sprite2D" unique_id=1580102396]
+self_modulate = Color(1.6197081, 1.6197081, 1.6197081, 1)
+position = Vector2(1.1920929e-07, 0)
+scale = Vector2(0.4185185, 0.4185185)
+texture = ExtResource("1_ljkxo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=42631087]
+environment = SubResource("Environment_ucr1o")

@@ -3,12 +3,12 @@ extends CharacterBody2D
 
 signal camera_shake(shakeDuration)
 
-var healthPoints: int:
+var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
 		return healthPoints
-var maxHealthPoints: int = 100
+var maxHealthPoints: float = 100
 
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
@@ -57,5 +57,11 @@ func _on_enemy_collision_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("EnemyProjectile")):
 		print("Player has collided with enemy!")
 
-func increment_player_health(increment: int) -> void:
-	healthPoints += increment
+#func increment_player_health(increment: int) -> void:
+#	healthPoints += increment
+
+
+
+func modify_current_player_health(modification: int) -> void:
+	healthPoints += modification
+	pass # Replace with function body.

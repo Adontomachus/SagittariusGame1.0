@@ -130,7 +130,7 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.RED):
 		var projectile_instance = projectile.instantiate()
 		projectile_instance.change_damage(attackPower * modifier)
 		projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
-		projectile_instance.change_projectile_modulation(color)
+		# projectile_instance.change_projectile_modulation(color)
 		projectile_instance.position = shoot_point.get_global_position()
 		projectile_instance.rotation_degrees = shoot_point.rotation_degrees
 		get_tree().get_root().call_deferred("add_child", projectile_instance)

@@ -5,21 +5,20 @@
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
-[ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
+[ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scenes/UIFeedback.gd" id="3_exhb5"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
 [ext_resource type="Script" uid="uid://cr36qvnvdg6ka" path="res://Scripts/Enemy/BossHealthUI.gd" id="5_ssy3j"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
-[ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
+[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/rhythmplant.png" id="14_1h3wi"]
 [ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/floordecoration.png" id="17_x4iy2"]
-[ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://UnitInstances/RhythmicPlant.tscn" id="19_exhb5"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -59,21 +58,15 @@ _data = {
 &"RESET": SubResource("Animation_onpmq")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
-radius = 18.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b4hlm"]
-radius = 21.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fklr0"]
-radius = 19.104973
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jkjp"]
+radius = 22.022715
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k77ap"]
-vertices = PackedVector2Array(789.5, 625, 2366, 599, 2580, 599, 1432.5, 649, 1255.5, 649, 892.5, 647, 1679.5, 599, 429.42188, 1597.9922, 90.6875, 1388.2109, 108.42969, 1322, 977.5, 1297, 1154.5, 1297, 1597.5, 1387, 1502.5, 599, 2072, 883, 1858, 883, 1432.5, 825, -417, 938, 1255.5, 825, 1858, 1108, 1154.5, 1121, 977.5, 1121, 892.5, 823, 689.5, 824, 2765, 1150.5703, 2698.789, 1168.3125, 2072, 1108, 3030.6719, -575.4375, 2580, 374, 2366, 374, 2245.5, 229, 2245.5, 53, 3124.2422, 1592.0938, 2879.6875, 1216.7891, 1774.5, 1387, 2650.3125, 1349.2109, 2698.789, 1397.6875, 2650.3125, 1216.7891, 2879.6875, 1349.2109, 2897.4297, 1283, 1870.5, 403, 2068.5, 229, 1870.5, 227, 1894, 90, 2068.5, 53, 2632.5703, 1283, 1774.5, 1211, 1894, -135, 1597.5, 1211, -162, 241, -162, 16, -59.5, 222, -59.5, 698, 1680, 90, 1693.5, 227, 411.5, 648, 411.5, 824, 117.5, 698, 117.5, 222, 405.5, 624, 1679.5, 423, 1693.5, 403, 789.5, 449, 1502.5, 423, 1159.3125, -283.78906, 582.5, 449, 582.5, 448, 1141.5703, -350, 507.5, 624, 507.5, 625, 614.5, 647, 614.5, 648, 689.5, 823, -417, 713, -376, 241, -631, 713, 2831.211, 1397.6875, 90.6875, 1255.7891, 1406.4297, -350, 1388.6875, -416.21094, 1388.6875, -283.78906, 1680, -135, 1159.3125, -416.21094, 42.210938, 1207.3125, 1340.2109, -464.6875, 1340.2109, -235.3125, 2765, 1415.4297, 42.210938, 1436.6875, 1274, -217.57031, 1207.7891, -235.3125, 405.5, 448, -24, 1454.4297, -782.3828, 1446.7578, -90.21094, 1436.6875, -138.6875, 1388.2109, -156.42969, 1322, -138.6875, 1255.7891, -631, 938, -24, 1189.5703, -90.21094, 1207.3125, -746.6875, -619.53125, -376, 16, 1207.7891, -464.6875, 2831.211, 1168.3125, 1274, -482.4297)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 1, 0), PackedInt32Array(7, 8, 9, 10, 11, 12), PackedInt32Array(13, 6, 0), PackedInt32Array(14, 15, 16, 3, 2), PackedInt32Array(17, 18, 16, 15, 19, 20, 21), PackedInt32Array(22, 18, 17, 23), PackedInt32Array(24, 25, 26, 14, 2), PackedInt32Array(27, 28, 29, 30, 31), PackedInt32Array(27, 32, 33, 2, 28), PackedInt32Array(34, 35, 36, 7), PackedInt32Array(26, 25, 37), PackedInt32Array(38, 39, 32), PackedInt32Array(40, 41, 30, 29, 1, 6), PackedInt32Array(41, 40, 42, 43, 44), PackedInt32Array(26, 45, 35, 34, 46, 19), PackedInt32Array(44, 43, 47), PackedInt32Array(11, 20, 48, 12), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(53, 43, 42, 54), PackedInt32Array(55, 56, 57, 58, 59), PackedInt32Array(26, 37, 45), PackedInt32Array(40, 6, 60, 61), PackedInt32Array(13, 0, 62, 63), PackedInt32Array(4, 18, 22, 5), PackedInt32Array(64, 62, 65, 66, 67), PackedInt32Array(59, 68, 69, 55), PackedInt32Array(70, 71, 55, 69), PackedInt32Array(23, 72, 22), PackedInt32Array(56, 23, 17), PackedInt32Array(52, 57, 56, 17, 73), PackedInt32Array(74, 49, 52, 73, 75), PackedInt32Array(76, 38, 32), PackedInt32Array(21, 10, 9, 77), PackedInt32Array(27, 78, 79), PackedInt32Array(80, 78, 27, 47, 81), PackedInt32Array(58, 51, 50, 82), PackedInt32Array(54, 61, 60, 63, 53), PackedInt32Array(21, 77, 83), PackedInt32Array(19, 46, 48, 20), PackedInt32Array(27, 79, 84), PackedInt32Array(80, 81, 53, 63, 62, 85), PackedInt32Array(86, 76, 32), PackedInt32Array(86, 32, 7, 36), PackedInt32Array(12, 34, 7), PackedInt32Array(87, 8, 7), PackedInt32Array(31, 44, 47, 27), PackedInt32Array(88, 85, 62), PackedInt32Array(89, 88, 62), PackedInt32Array(64, 89, 62), PackedInt32Array(82, 67, 66, 90, 58), PackedInt32Array(91, 87, 7), PackedInt32Array(91, 7, 92, 93), PackedInt32Array(94, 93, 92), PackedInt32Array(95, 94, 92), PackedInt32Array(17, 96, 95, 92, 97), PackedInt32Array(17, 21, 83, 98), PackedInt32Array(17, 98, 99), PackedInt32Array(17, 99, 96), PackedInt32Array(97, 92, 100, 75), PackedInt32Array(74, 75, 100, 101), PackedInt32Array(82, 50, 101, 100, 102), PackedInt32Array(32, 39, 33), PackedInt32Array(2, 33, 103), PackedInt32Array(2, 103, 24), PackedInt32Array(0, 5, 70, 69), PackedInt32Array(90, 59, 58), PackedInt32Array(104, 102, 100), PackedInt32Array(104, 100, 27), PackedInt32Array(104, 27, 84)])
+vertices = PackedVector2Array(781.5, 617, 2374, 591, 2572, 591, 1424.5, 657, 1263.5, 657, 884.5, 655, 1671.5, 591, 1510.5, 591, 428.92188, 1605.9922, 83.52344, 1384.0703, 100.14844, 1322, 985.5, 1289, 1146.5, 1289, 1605.5, 1379, 2064, 891, 1866, 891, 1424.5, 817, -425, 930, 1263.5, 817, 1866, 1100, 1146.5, 1129, 985.5, 1129, 884.5, 815, 681.5, 816, 2765, 1158.8516, 2702.9297, 1175.4766, 2064, 1100, 3038.3281, -583.35156, 2572, 382, 2374, 382, 2237.5, 221, 2237.5, 61, 3132.5938, 1600.0703, 2872.5234, 1220.9297, 1766.5, 1379, 2657.4766, 1345.0703, 2702.9297, 1390.5234, 1862.5, 395, 2076.5, 221, 1862.5, 235, 1886, 82, 2076.5, 61, 2657.4766, 1220.9297, 2872.5234, 1345.0703, 2889.1484, 1283, 2640.8516, 1283, 1766.5, 1219, 1605.5, 1219, 1886, -127, 1688, 82, 1701.5, 235, 419.5, 656, 419.5, 816, 109.5, 690, 109.5, 230, 413.5, 616, 781.5, 457, 1510.5, 431, 1671.5, 431, 1701.5, 395, -170, 233, -170, 24, -51.5, 230, -51.5, 690, 1166.4766, -287.9297, 574.5, 457, 574.5, 456, 1149.8516, -350, 515.5, 616, 515.5, 617, 622.5, 655, 622.5, 656, 681.5, 815, -425, 721, -368, 233, -623, 721, 2827.0703, 1390.5234, 83.52344, 1259.9297, 1398.1484, -350, 1381.5234, -412.0703, 1381.5234, -287.9297, 1688, -127, 1166.4766, -412.0703, 38.070313, 1214.4766, 1336.0703, -457.52344, 2765, 1407.1484, 38.070313, 1429.5234, 1336.0703, -242.47656, 1274, -225.85156, 1211.9297, -242.47656, 413.5, 456, -24, 1446.1484, -790.5, 1453.8125, -86.07031, 1429.5234, -131.52344, 1384.0703, -148.14844, 1322, -131.52344, 1259.9297, -623, 930, -24, 1197.8516, -86.07031, 1214.4766, -754.53906, -627.6172, -368, 24, 1211.9297, -457.52344, 2827.0703, 1175.4766, 1274, -474.14844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 1, 0), PackedInt32Array(7, 6, 0), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 3, 2), PackedInt32Array(17, 18, 16, 15, 19, 20, 21), PackedInt32Array(22, 18, 17, 23), PackedInt32Array(24, 25, 26, 14, 2), PackedInt32Array(27, 28, 29, 30, 31), PackedInt32Array(27, 32, 33, 2, 28), PackedInt32Array(34, 35, 36, 8), PackedInt32Array(37, 38, 30, 29, 1, 6), PackedInt32Array(38, 37, 39, 40, 41), PackedInt32Array(26, 25, 42), PackedInt32Array(43, 44, 32), PackedInt32Array(26, 45, 35, 34, 46, 19), PackedInt32Array(12, 20, 47, 13), PackedInt32Array(41, 40, 48), PackedInt32Array(49, 40, 39, 50), PackedInt32Array(51, 52, 53, 54, 55), PackedInt32Array(26, 42, 45), PackedInt32Array(7, 0, 56, 57), PackedInt32Array(37, 6, 58, 59), PackedInt32Array(60, 61, 62, 63), PackedInt32Array(4, 18, 22, 5), PackedInt32Array(64, 56, 65, 66, 67), PackedInt32Array(55, 68, 69, 51), PackedInt32Array(70, 71, 51, 69), PackedInt32Array(23, 72, 22), PackedInt32Array(52, 23, 17), PackedInt32Array(63, 53, 52, 17, 73), PackedInt32Array(74, 60, 63, 73, 75), PackedInt32Array(76, 43, 32), PackedInt32Array(21, 11, 10, 77), PackedInt32Array(27, 78, 79), PackedInt32Array(80, 78, 27, 48, 81), PackedInt32Array(54, 62, 61, 82), PackedInt32Array(21, 77, 83), PackedInt32Array(27, 79, 84), PackedInt32Array(50, 59, 58, 57, 49), PackedInt32Array(19, 46, 47, 20), PackedInt32Array(85, 76, 32), PackedInt32Array(85, 32, 8, 36), PackedInt32Array(13, 34, 8), PackedInt32Array(86, 9, 8), PackedInt32Array(80, 81, 49, 57, 56, 87), PackedInt32Array(31, 41, 48, 27), PackedInt32Array(88, 87, 56), PackedInt32Array(89, 88, 56), PackedInt32Array(64, 89, 56), PackedInt32Array(82, 67, 66, 90, 54), PackedInt32Array(91, 86, 8), PackedInt32Array(91, 8, 92, 93), PackedInt32Array(94, 93, 92), PackedInt32Array(95, 94, 92), PackedInt32Array(17, 96, 95, 92, 97), PackedInt32Array(17, 21, 83, 98), PackedInt32Array(17, 98, 99), PackedInt32Array(17, 99, 96), PackedInt32Array(97, 92, 100, 75), PackedInt32Array(74, 75, 100, 101), PackedInt32Array(82, 61, 101, 100, 102), PackedInt32Array(32, 44, 33), PackedInt32Array(2, 33, 103), PackedInt32Array(2, 103, 24), PackedInt32Array(0, 5, 70, 69), PackedInt32Array(90, 55, 54), PackedInt32Array(104, 102, 100), PackedInt32Array(104, 100, 27), PackedInt32Array(104, 27, 84)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-786, -660, -823, 1482, 427, 1638, 3166, 1632, 3069, -615)])
 cell_size = 2.0
-agent_radius = 40.0
+agent_radius = 32.0
 
 [node name="Node2D" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "animation_player", "player_target")]
 script = ExtResource("1_onpmq")
@@ -226,21 +219,8 @@ position = Vector2(1, 1)
 scale = Vector2(0.578125, 0.57812476)
 texture = ExtResource("11_umdcf")
 
-[node name="CollisionHitbox" type="CollisionShape2D" parent="Player" unique_id=1154990945]
-shape = SubResource("CircleShape2D_ydlo6")
-
-[node name="EnemyCollision" type="Area2D" parent="Player" unique_id=324191404 groups=["PlayerObject"]]
-
-[node name="MeleeHitbox" type="CollisionShape2D" parent="Player/EnemyCollision" unique_id=180021306 groups=["PlayerObject"]]
-shape = SubResource("CircleShape2D_b4hlm")
-debug_color = Color(0.941486, 9.337366e-06, 0.6125818, 0.41960785)
-
-[node name="ProjectileHitbox" type="Area2D" parent="Player" unique_id=221594311]
-script = ExtResource("10_bbunm")
-
-[node name="BulletHitbox" type="CollisionShape2D" parent="Player/ProjectileHitbox" unique_id=675715082]
-shape = SubResource("CircleShape2D_fklr0")
-debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=569352554]
+shape = SubResource("CircleShape2D_8jkjp")
 
 [node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("2_k77ap")]
 position = Vector2(337, 480)
@@ -356,6 +336,21 @@ position = Vector2(1920, 1031)
 [node name="Pillar5" parent="NavigationRegion/Obstacles" unique_id=212914912 instance=ExtResource("11_t0ujt")]
 position = Vector2(2428, 522)
 
+[node name="Rhythmplant2" type="Sprite2D" parent="NavigationRegion/Obstacles" unique_id=179331275]
+position = Vector2(930.071, 1030.75)
+scale = Vector2(0.36419752, 0.36419752)
+texture = ExtResource("14_1h3wi")
+
+[node name="Rhythmplant3" type="Sprite2D" parent="NavigationRegion/Obstacles" unique_id=1026434200]
+position = Vector2(1174.4846, 468.25)
+scale = Vector2(0.34691358, 0.34691358)
+texture = ExtResource("14_1h3wi")
+
+[node name="Rhythmplant" type="Sprite2D" parent="NavigationRegion/Obstacles" unique_id=243743323]
+position = Vector2(24.361115, 1198.25)
+scale = Vector2(0.3222222, 0.32222223)
+texture = ExtResource("14_1h3wi")
+
 [node name="Ground" type="Sprite2D" parent="." unique_id=970544753]
 z_index = -20
 position = Vector2(672, 414)
@@ -370,11 +365,3 @@ position = Vector2(1046, 210)
 
 [node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
 position = Vector2(235, 225)
-
-[node name="Rhythmplant" parent="." unique_id=1580102396 instance=ExtResource("19_exhb5")]
-position = Vector2(1240, 581)
-
-[node name="Rhythmplant2" parent="." unique_id=1943416272 instance=ExtResource("19_exhb5")]
-position = Vector2(281, 727)
-
-[connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]

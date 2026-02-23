@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
 size = Vector2(16, 16)
 
-[node name="PlayerBullet" type="Area2D" unique_id=132848767 groups=["PlayerProjectile"]]
+[node name="PlayerBullet" type="Area2D" unique_id=132848767]
 script = ExtResource("1_78pnn")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
