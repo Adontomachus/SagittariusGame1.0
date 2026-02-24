@@ -13,6 +13,8 @@ var projectileVelocity
 # Measured in seconds
 var projectileLifetime
 var projectile_damage: float = 5
+var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
+var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
 
 func _ready():
 	projectileVelocity = 762
@@ -21,6 +23,9 @@ func _ready():
 	# Used for world collision
 	self.body_entered.connect(func(body: Node2D) -> void:
 		if (body.is_in_group("MapObstacle")):
+			var hitEffect = wallHitEffects.instantiate()
+			hitEffect.position = self.get_global_position()
+			get_tree().get_root().call_deferred("add_child", hitEffect)
 			queue_free()
 	)
 
@@ -28,10 +33,16 @@ func _ready():
 		if (projectileSide == ProjectileSide.Player):
 			if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
 				area.modify_enemy_health(-projectile_damage)
+				var hitEffect = unitHitEffects.instantiate()
+				hitEffect.position = self.get_global_position()
+				get_tree().get_root().call_deferred("add_child", hitEffect)
 				queue_free()
 
 		if (projectileSide == ProjectileSide.Enemy):
 			if area is PlayerProjectileHitbox: #(area.is_in_group("PlayerObject")):
+				var hitEffect = unitHitEffects.instantiate()
+				hitEffect.position = self.get_global_position()
+				get_tree().get_root().call_deferred("add_child", hitEffect)
 				area.modify_player_health(-projectile_damage)
 				queue_free()
 	)

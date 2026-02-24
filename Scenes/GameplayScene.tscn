@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
+[ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="4_b4hlm"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
+[ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="5_fklr0"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
 [ext_resource type="Script" uid="uid://cr36qvnvdg6ka" path="res://Scripts/Enemy/BossHealthUI.gd" id="5_ssy3j"]
+[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/placeholder_bullet.png" id="6_fklr0"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
@@ -20,6 +23,14 @@
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://UnitInstances/RhythmicPlant.tscn" id="19_exhb5"]
+
+[sub_resource type="Environment" id="Environment_buuuh"]
+glow_enabled = true
+glow_intensity = 0.8
+
+[sub_resource type="Environment" id="Environment_qvp00"]
+glow_enabled = true
+glow_intensity = 0.89
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -58,6 +69,11 @@ _data = {
 &"Pulse": SubResource("Animation_wckvk"),
 &"RESET": SubResource("Animation_onpmq")
 }
+
+[sub_resource type="Environment" id="Environment_b4hlm"]
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
 radius = 18.0
@@ -113,29 +129,53 @@ offset_bottom = 115.0
 text = "WAVE INCOMING!"
 horizontal_alignment = 1
 
+[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1415002962]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 317.7143
+offset_bottom = 131.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_b4hlm")
+texture_progress = ExtResource("5_fklr0")
+
+[node name="GlowingGem" type="Sprite2D" parent="InterfaceElements/HUD/UI" unique_id=1356242961]
+modulate = Color(0.7294118, 1, 0.11764706, 1)
+self_modulate = Color(1.6124506, 1.6124506, 1.6124506, 1)
+position = Vector2(56, 57.5)
+scale = Vector2(0.12499987, 0.18750004)
+texture = ExtResource("6_fklr0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="InterfaceElements/HUD/UI/GlowingGem" unique_id=172224696]
+environment = SubResource("Environment_buuuh")
+
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/HUD/UI" unique_id=952983668]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 16.0
-offset_right = 431.0
-offset_bottom = 124.0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1415002962]
-layout_mode = 2
+offset_left = 22.0
+offset_top = 130.0
+offset_right = 481.0
+offset_bottom = 238.0
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=271453503]
+visible = false
 layout_mode = 2
 
 [node name="Score" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1798433667]
+self_modulate = Color(1.6040841, 1.6040841, 1.6124506, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Points: "
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="InterfaceElements/HUD/UI/PlayerInfo/Score" unique_id=1934673801]
+environment = SubResource("Environment_qvp00")
 
 [node name="ComboCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Combo:"
 
 [node name="WaveCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=388203173]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Wave:"
 
 [node name="Pause" type="Button" parent="InterfaceElements/HUD/UI" unique_id=1148087537]
@@ -222,9 +262,13 @@ script = ExtResource("1_haeiw")
 healthBar = NodePath("../InterfaceElements/HUD/UI/PlayerInfo/PlayerHealthBar")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=608356456]
+self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
 position = Vector2(1, 1)
 scale = Vector2(0.578125, 0.57812476)
 texture = ExtResource("11_umdcf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Player" unique_id=1718222834]
+environment = SubResource("Environment_b4hlm")
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="Player" unique_id=1154990945]
 shape = SubResource("CircleShape2D_ydlo6")
@@ -252,6 +296,7 @@ position = Vector2(948, 459)
 position = Vector2(483, 114)
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="." unique_id=1020116929]
+visible = false
 position = Vector2(-45, 32)
 navigation_polygon = SubResource("NavigationPolygon_k77ap")
 

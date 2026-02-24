@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b8vf75a3gvdxo"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_5nsfc"]
+_limits = [-500.0, 500.0, 0.0, 1.0]
+_data = [Vector2(0, 500), 0.0, 0.0, 0, 0, Vector2(0.42702705, -500), 0.0, 0.0, 0, 0, Vector2(1, -500), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="GDScript" id="GDScript_h052y"]
+script/source = "extends CPUParticles2D
+
+var timedShot = 0.45
+
+func _process(delta):
+	timedShot -= delta
+	if (timedShot < 0):
+		queue_free()
+
+func _ready():
+	print(\"Particles emitted!\")
+
+func _on_finished() -> void:
+	queue_free()
+	pass # Replace with function body.
+"
+
+[node name="UnitHitEffect" type="CPUParticles2D" unique_id=1427452623]
+amount = 50
+texture = SubResource("CanvasTexture_jhxfm")
+lifetime = 0.5
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.29
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 444.44
+angular_velocity_min = 176.6
+angular_velocity_max = 285.29
+orbit_velocity_curve = SubResource("Curve_5nsfc")
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_t5oqc")
+color = Color(0.78431374, 0.89411765, 0.18039216, 1)
+anim_speed_curve = SubResource("Curve_jhxfm")
+script = SubResource("GDScript_h052y")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

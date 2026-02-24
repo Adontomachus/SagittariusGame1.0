@@ -104,13 +104,17 @@ func _process(delta):
 	wave_counter.text = "Wave: " + str(level_wave)
 	#endregion
 	
-	#region notification for the next wave
+	
+	#region NOTIFICATION FOR THE NEXT WAVE
 	wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
 	if _spawningBehavior == spawningBehavior.Preparation && wave_notification.self_modulate.a <= 1 && notifDuration > 1:
 		wave_notification.self_modulate.a += 1 * delta
 	else:
 		_spawningBehavior == spawningBehavior.Spawning
 		wave_notification.self_modulate.a -= 1 * delta
+		if wave_notification.self_modulate.a < 0: 
+			wave_notification.visible = false
+			wave_notification.self_modulate.a = 0
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat

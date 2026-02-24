@@ -15,9 +15,11 @@ var moveSpeed: float = 300.0
 var playerDirection: Vector2
 var projectile_damage: float = 30.0
 var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
 
 # UI VARIABLES
 @export var healthBar: ProgressBar #= $"../InterfaceElements/HUD/PlayerHealthBar"
+@onready var updatedHealthBar: TextureProgressBar = $"../InterfaceElements/HUD/UI/UpdatedPlayerHealthBar"
 
 func _ready():
 	# Connecting the camera shake signal
@@ -34,10 +36,14 @@ func _process(delta):
 	look_at(get_global_mouse_position())
 		
 	#HEALTH BAR SCRIPT
-	healthBar.value = healthPoints
-	healthBar.max_value = maxHealthPoints
+	updatedHealthBar.value = healthPoints
+	updatedHealthBar.max_value = maxHealthPoints
 	
 func _physics_process(delta):
+	var shotEffect = projectileShotEffect.instantiate()
+	shotEffect.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", projectileShotEffect)
+	
 	get_input()
 	move_and_slide()
 	return
@@ -52,6 +58,9 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	projectile_instance.rotation_degrees = self.rotation_degrees
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
 	print_debug("Damage: %s" % (projectile_damage * modifier))
+	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+
+
 	
 func _on_enemy_collision_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("EnemyProjectile")):
