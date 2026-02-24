@@ -1,4 +1,4 @@
-class_name EnemyCommon
+class_name Enemy
 extends CharacterBody2D
 
 # HP Bar Stuff #
@@ -6,54 +6,57 @@ signal toggle_healthbar_visibility(visible: bool)
 signal send_maximum_health_value(max_health: int)
 signal send_current_health_value(health: int)
 
-# BEHAVIOR TYPE
-enum EnemyBehavior {
-	Chasing,
-	Circling,
-	Patrolling,
-	Recovering,
-	Shooting,
-	Strafing,
-	Closing,
-	Positioning
-}
-
-# BEHAVIOR ENUMERATOR TYPE
-@export var _enemyBehavior: EnemyBehavior = EnemyBehavior.Chasing
-@export var navAgent: NavigationAgent2D #= $Pathfinding
-
-# The enemy's target. Usually the player, but it could also be an objective.
+@export var state_machine: EnemyStateMachine
+@export var navAgent: NavigationAgent2D
+## The enemy's target. Usually the player, but it could also be an objective.
 var target: CharacterBody2D
 
-# STATISTICS
+# STAMINA
+@export_group("Movement Stats")
+## The random range of the entity's maximum stamina
+@export var stamina_range: Vector2 = Vector2(2, 5)
+@export var stamina_regeneration_rate: float = 1.0
+@export var maxMoveSpeed: float = 100.0
 var stamina: float:
 	set(value):
 		stamina = clampf(value, 0.0, maxStamina)
 	get:
 		return stamina
-## The random range of the entity's maximum stamina
-@export var stamina_range: Vector2 = Vector2(2, 5)
 var maxStamina: float = randf_range(2,5)
-
-# VELOCITY
 var currentMoveSpeed
-@export var maxMoveSpeed: float = 100.0
 
 # VITALITY
 @export_group("Vitality Stats")
-@export var healthPoints: int
 @export var maxHealthPoints: int = 80
 @export var meleeTickRate: int = 60
+var healthPoints: int = 80
 
 # PATHFINDING MECHANICS
 @export_group("Pathfinding Variables")
-@export var aroundPlayerRadius = 300
+@export var aroundPlayerRadius: float = 300.0
 @export var repositioningTimer: float
-@export var maxRepositioningTimer: float = 30
+@export var maxRepositioningTimer: float = 30.0
+
+# SHOOTING
+@export_group("Shooting")
+@export var shoot_point: Marker2D
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+@export var attackPower: float
+@export var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+## How many times will the enemy try to shoot the player
+@export var fire_rate: int = 5
+## The minimum required roll to shoot from 0.0 to 10.0
+@export_range(0.0, 10.0) var successfulChanceToAttack: float
+## This variable is rolled randomly from 0, 10. Higher values 
+## give the unit more chance to shoot the player for each beat.
+var chanceToAttack: float
+
 
 # START
 func _ready():
 	# maxHealthPoints = BeatSync.tempo
+	state_machine.init(self)#, animations, audio_sfx)
 
 	# Set enemy stats
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
@@ -68,87 +71,47 @@ func _ready():
 	
 	# Get player for navigation and targeting
 	target = get_tree().get_first_node_in_group("PlayerObject")
-		
-#FINDING TARGET FUNCTION
-func find_target() -> void:
-	if (target):
-		navAgent.target_position = target.global_position
 
-# FINDING TARGET FUNCTION, NAVIGATION AGENT SETUP
-func _navigationsetup():
-	await get_tree().physics_frame
-	if target:
-		return
+func _physics_process(delta: float) -> void:
+	if target and shoot_point:
+		shoot_point.look_at(target.global_position)
 
-func reposition(playerRadius):
-	#print(stamina)
-	if target:
-		var randomPosition = Vector2(randf_range(-playerRadius,playerRadius), randf_range(-playerRadius,playerRadius))
-		navAgent.target_position = target.global_position + randomPosition
-	#var randomPosition = Vector2(randf_range(-maxPathRange,maxPathRange), randf_range(-maxPathRange,maxPathRange))
-	#navTimer = 0
-	#navPosition = player.global_position + randomPosition
-	#navAgent.target_position = player.global_position + randomPosition
-
-# CHASE PLAYER
-func _physics_process(delta):
-	#print(stamina)
+	state_machine.process_physics(delta)
 	
-	# Recovery Mode
-	if (_enemyBehavior == EnemyBehavior.Recovering):
-		recoveryMode(2 * delta)
-		return
-	
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
+
+func move_enemy(delta: float) -> void:
 	stamina -= delta
 
-	#Enter Recovery Mode when stamina reaches zero
-	if stamina <= 0:
-		_enemyBehavior = EnemyBehavior.Recovering
-		velocity = Vector2.ZERO
-		return
-	
-	# Chasing Mode
-	if (_enemyBehavior == EnemyBehavior.Chasing):
-		find_target()
-
-	# Movement
 	var targetLocation = navAgent.get_next_path_position()
 	var new_velocity = global_position.direction_to(targetLocation) * currentMoveSpeed
+	
 	velocity = new_velocity
+	
 	if (navAgent.avoidance_enabled):
 		navAgent.set_velocity(new_velocity)
-	else:
-		_on_navigation_agent_2d_velocity_computed(new_velocity)
-	
-	# Positioning Mode
-	if _enemyBehavior == EnemyBehavior.Positioning:
-		repositioningTimer -= 8 * delta
-		if repositioningTimer < 0:
-			repositioningTimer = maxRepositioningTimer
-			reposition(aroundPlayerRadius)
-		
-	# TESTING PURPOSES
-	#if (BeatSync.lastBeat < BeatSync.beat):
-	#	print("Attack!")
-		
+
 	move_and_slide()
 
 # RECOVERY MODE
-func recoveryMode(recoverySpeed: float) -> void:
-	stamina += recoverySpeed
-	if stamina >= maxStamina:
-		recovered_mode()
+func recovery_mode(delta: float) -> bool:
+	stamina += stamina_regeneration_rate * delta
+	return stamina >= maxStamina
 
-## Behaviour after recovery
-func recovered_mode() -> void:
-	_enemyBehavior = EnemyBehavior.Chasing
+func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
+	var projectile_instance = projectile.instantiate()
+	projectile_instance.change_damage(attackPower * modifier)
+	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
+	projectile_instance.change_projectile_modulation(color)
+	projectile_instance.position = shoot_point.get_global_position()
+	projectile_instance.rotation_degrees = shoot_point.rotation_degrees
+	get_tree().get_root().call_deferred("add_child", projectile_instance)
+	print_debug("Damage: %s" % (attackPower * modifier))
 
 func modify_health(increment: int) -> void:
 	healthPoints += increment
 	send_current_health_value.emit(healthPoints)
 	toggle_healthbar_visibility.emit(healthPoints < maxHealthPoints)
 	if (healthPoints < 0):
-		queue_free()
-
-func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	velocity = safe_velocity
+		call_deferred("queue_free")

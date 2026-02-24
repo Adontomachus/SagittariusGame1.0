@@ -21,6 +21,12 @@ config/icon="res://Sprites/icon.svg"
 
 GlobalBeatSync="*uid://b6by13j1adlil"
 
+[file_customization]
+
+folder_colors={
+"res://Scripts/Enemy/Legacy/": "gray"
+}
+
 [global_group]
 
 PlayerObject="The main game group for players"

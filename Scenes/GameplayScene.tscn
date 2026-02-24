@@ -28,10 +28,6 @@
 glow_enabled = true
 glow_intensity = 0.8
 
-[sub_resource type="Environment" id="Environment_qvp00"]
-glow_enabled = true
-glow_intensity = 0.89
-
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
 length = 0.26666668
@@ -120,6 +116,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=271453503]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 13.0
+offset_bottom = 33.0
+
 [node name="WaveNotification" type="Label" parent="InterfaceElements/HUD/UI" unique_id=120682287]
 layout_mode = 0
 offset_left = 312.0
@@ -128,15 +132,6 @@ offset_right = 841.5652
 offset_bottom = 115.0
 text = "WAVE INCOMING!"
 horizontal_alignment = 1
-
-[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1415002962]
-layout_mode = 0
-offset_top = 3.0
-offset_right = 317.7143
-offset_bottom = 131.0
-nine_patch_stretch = true
-texture_under = ExtResource("4_b4hlm")
-texture_progress = ExtResource("5_fklr0")
 
 [node name="GlowingGem" type="Sprite2D" parent="InterfaceElements/HUD/UI" unique_id=1356242961]
 modulate = Color(0.7294118, 1, 0.11764706, 1)
@@ -150,23 +145,22 @@ environment = SubResource("Environment_buuuh")
 
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/HUD/UI" unique_id=952983668]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 130.0
-offset_right = 481.0
-offset_bottom = 238.0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 468.0
+offset_bottom = 293.0
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=271453503]
-visible = false
+[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1415002962]
+custom_minimum_size = Vector2(0, 170)
 layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("4_b4hlm")
+texture_progress = ExtResource("5_fklr0")
 
 [node name="Score" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1798433667]
-self_modulate = Color(1.6040841, 1.6040841, 1.6124506, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Points: "
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="InterfaceElements/HUD/UI/PlayerInfo/Score" unique_id=1934673801]
-environment = SubResource("Environment_qvp00")
 
 [node name="ComboCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
 layout_mode = 2
@@ -256,10 +250,9 @@ horizontal_alignment = 1
 visible = false
 layout_mode = 1
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("healthBar") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 groups=["PlayerObject"]]
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
-healthBar = NodePath("../InterfaceElements/HUD/UI/PlayerInfo/PlayerHealthBar")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=608356456]
 self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
@@ -422,4 +415,6 @@ position = Vector2(1240, 581)
 [node name="Rhythmplant2" parent="." unique_id=1943416272 instance=ExtResource("19_exhb5")]
 position = Vector2(281, 727)
 
+[connection signal="send_current_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
+[connection signal="send_maximum_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
