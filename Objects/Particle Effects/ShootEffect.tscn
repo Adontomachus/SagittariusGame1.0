@@ -2,17 +2,42 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
 
-[sub_resource type="Curve" id="Curve_t5oqc"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
-point_count = 2
-
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="CurveTexture" id="CurveTexture_oxw88"]
+curve = SubResource("Curve_jhxfm")
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7qp03"]
+curve = SubResource("Curve_t5oqc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ghqw"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.29
+angle_min = 1.0
+angle_max = 1.0
+direction = Vector3(6, 6, 0)
+spread = 180.0
+initial_velocity_max = 158.76
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_7qp03")
+color = Color(0.7294118, 0.85882354, 0.13725491, 1)
+anim_speed_curve = SubResource("CurveTexture_oxw88")
+
 [sub_resource type="GDScript" id="GDScript_h052y"]
-script/source = "extends CPUParticles2D
+script/source = "extends GPUParticles2D
 
 var timedShot = lifetime - 0.05
 
@@ -29,28 +54,15 @@ func _on_finished() -> void:
 	pass # Replace with function body.
 "
 
-[node name="ShootEffect" type="CPUParticles2D" unique_id=1427452623]
+[node name="ShootEffect" type="GPUParticles2D" unique_id=952870438]
 amount = 25
 texture = SubResource("CanvasTexture_jhxfm")
 lifetime = 0.5
 explosiveness = 1.0
 randomness = 1.0
-lifetime_randomness = 1.0
-emission_shape = 1
-emission_sphere_radius = 2.29
-direction = Vector2(6, 6)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_max = 158.76
-orbit_velocity_min = 1.0
-orbit_velocity_max = 1.0
-angle_min = 1.0
-angle_max = 1.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
-scale_amount_curve = SubResource("Curve_t5oqc")
-color = Color(0.7294118, 0.85882354, 0.13725491, 1)
-anim_speed_curve = SubResource("Curve_jhxfm")
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_1ghqw")
 script = SubResource("GDScript_h052y")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

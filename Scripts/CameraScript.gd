@@ -36,9 +36,6 @@ func _physics_process(delta):
 			cameraPosition = playerTarget.global_position
 		global_position = global_position.lerp(cameraPosition, delta * camMoveSpeed)
 		
-	
-	pass
-	
 func _shake_camera_on_shoot(duration):
 	cameraShakeEffect = duration
 	return

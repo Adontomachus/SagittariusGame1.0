@@ -1,9 +1,10 @@
 extends CanvasLayer
 var tween: Tween
-@onready var texture_progress_bar: TextureProgressBar = $UI/PlayerInfo/TextureProgressBar
+
+#@onready var texture_progress_bar: TextureProgressBar = $UI/PlayerInfo/TextureProgressBar
 @onready var wave_notification: Label = $UI/WaveNotification
 
-@onready var updated_player_health_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar
+#@onready var updated_player_health_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar
 
 #@onready var player_health_bar: ProgressBar = $UI/PlayerInfo/PlayerHealthBar
 @onready var score: Label = $UI/PlayerInfo/Score
@@ -22,5 +23,5 @@ func ui_indicator_pulse() -> void:
 		tween.kill()
 	tween = create_tween()
 
-	updated_player_health_bar.scale = Vector2(starting_scale, starting_scale)
+	#updated_player_health_bar.scale = Vector2(starting_scale, starting_scale)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat / 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)

@@ -3,12 +3,15 @@ extends CharacterBody2D
 
 signal camera_shake(shakeDuration)
 
+signal send_maximum_health(max_health: float)
+signal send_current_health(health: float)
+
 var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
 		return healthPoints
-var maxHealthPoints: float = 100
+var maxHealthPoints: float = 100.0
 
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
@@ -17,16 +20,15 @@ var projectile_damage: float = 30.0
 var projectile := preload("res://Objects/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
 
-# UI VARIABLES
-@export var healthBar: ProgressBar #= $"../InterfaceElements/HUD/PlayerHealthBar"
-@onready var updatedHealthBar: TextureProgressBar = $"../InterfaceElements/HUD/UI/UpdatedPlayerHealthBar"
-
 func _ready():
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
-	camera_shake.connect(camera._shake_camera_on_shoot)
+	if camera_shake.is_connected(camera._shake_camera_on_shoot) == false:
+		camera_shake.connect(camera._shake_camera_on_shoot)
 	
-	healthPoints = maxHealthPoints	
+	healthPoints = maxHealthPoints
+	send_maximum_health.emit(maxHealthPoints)
+	send_current_health.emit(healthPoints)
 	
 func get_input():
 	playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -34,19 +36,10 @@ func get_input():
 	
 func _process(delta):
 	look_at(get_global_mouse_position())
-		
-	#HEALTH BAR SCRIPT
-	updatedHealthBar.value = healthPoints
-	updatedHealthBar.max_value = maxHealthPoints
 	
 func _physics_process(delta):
-	var shotEffect = projectileShotEffect.instantiate()
-	shotEffect.position = self.get_global_position()
-	get_tree().get_root().call_deferred("add_child", projectileShotEffect)
-	
 	get_input()
 	move_and_slide()
-	return
 	
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.2)
@@ -56,7 +49,14 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	projectile_instance.change_projectile_modulation(color)
 	projectile_instance.position = self.get_global_position()
 	projectile_instance.rotation_degrees = self.rotation_degrees
+
+	var shotEffect = projectileShotEffect.instantiate()
+	shotEffect.position = self.get_global_position()
+
+	
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
+	get_tree().get_root().call_deferred("add_child", shotEffect)
+
 	print_debug("Damage: %s" % (projectile_damage * modifier))
 	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
 
@@ -73,4 +73,4 @@ func _on_enemy_collision_area_entered(area: Area2D) -> void:
 
 func modify_current_player_health(modification: int) -> void:
 	healthPoints += modification
-	pass # Replace with function body.
+	send_current_health.emit(healthPoints)

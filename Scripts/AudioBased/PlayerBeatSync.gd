@@ -23,7 +23,7 @@ var audio_latency: float = 0.0
 @export var comboCounter = 0
 #endregion
 #region other UI elements to beat sync for diegetic effects
-@onready var player_health_bar: ProgressBar = $"../PlayerInfo/PlayerHealthBar"
+#@onready var player_health_bar: ProgressBar = $"../PlayerInfo/PlayerHealthBar"
 @onready var score: Label = $"../PlayerInfo/Score"
 @onready var wave_counter: Label = $"../PlayerInfo/WaveCounter"
 #endregion

@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
-[ext_resource type="Script" uid="uid://dxxy3ilhc425d" path="res://Scripts/Enemy/Types/EliteEnemy.gd" id="1_ugnea"]
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Enemy.gd" id="1_cyyc4"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_6b6pn"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_tx5hf"]
+[ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_gngj8"]
+[ext_resource type="Script" uid="uid://dnh5knxqvb7bk" path="res://Scripts/Enemy/States/Closing.gd" id="5_cyyc4"]
+[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Recovery.gd" id="6_22t2l"]
+[ext_resource type="Script" uid="uid://di0vbq11imssp" path="res://Scripts/Enemy/States/Shooting.gd" id="7_ilcit"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.734726
@@ -10,14 +14,16 @@ radius = 46.734726
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 34.0147
 
-[node name="Elite" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("shoot_point", "navAgent") groups=["EnemyObject", "FodderType"]]
-script = ExtResource("1_ugnea")
+[node name="Elite" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType"]]
+script = ExtResource("1_cyyc4")
+state_machine = NodePath("EnemyStateMachine")
+navAgent = NodePath("Pathfinding")
+maxMoveSpeed = 150.0
+maxHealthPoints = 200
+aroundPlayerRadius = 200.0
 shoot_point = NodePath("ShootPoint")
 attackPower = 14.0
-_enemyBehavior = 6
-navAgent = NodePath("Pathfinding")
-maxHealthPoints = 200
-aroundPlayerRadius = 500
+successfulChanceToAttack = 3.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -48,7 +54,37 @@ offset_bottom = -35.0
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=278116846]
 
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=937708422 node_paths=PackedStringArray("starting_state")]
+script = ExtResource("4_gngj8")
+starting_state = NodePath("EnemyStateClosing")
+metadata/_custom_type_script = "uid://4nb635ctjjm"
+
+[node name="EnemyStateClosing" type="Node" parent="EnemyStateMachine" unique_id=121788740 node_paths=PackedStringArray("after_closing_state", "recovery_state")]
+script = ExtResource("5_cyyc4")
+after_closing_state = NodePath("../EnemyStateShoot")
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://dnh5knxqvb7bk"
+
+[node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=718416026 node_paths=PackedStringArray("state_to_return")]
+script = ExtResource("6_22t2l")
+state_to_return = NodePath("../EnemyStateClosing")
+metadata/_custom_type_script = "uid://djhvfb78j0d1i"
+
+[node name="EnemyStateShoot" type="Node" parent="EnemyStateMachine" unique_id=14085184 node_paths=PackedStringArray("after_shoot_state", "recovery_state")]
+script = ExtResource("7_ilcit")
+after_shoot_state = NodePath("../EnemyStateClosing")
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://di0vbq11imssp"
+
+[node name="Label" type="Label" parent="." unique_id=1557014478]
+offset_left = -55.0
+offset_top = 34.0
+offset_right = 55.0
+offset_bottom = 57.0
+text = "Positioning"
+
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="HealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]
