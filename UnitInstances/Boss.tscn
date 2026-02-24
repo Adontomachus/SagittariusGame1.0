@@ -1,17 +1,21 @@
 [gd_scene format=3 uid="uid://d24063yq0kgko"]
 
-[ext_resource type="Script" uid="uid://bd1q1mu5uxrx7" path="res://Scripts/Enemy/BossEnemy.gd" id="1_wg85l"]
+[ext_resource type="Script" uid="uid://bd1q1mu5uxrx7" path="res://Scripts/Enemy/Types/BossEnemy.gd" id="1_wg85l"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_g16c8"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w0bs6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
-radius = 46.734726
+radius = 141.88004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
-radius = 34.0147
+radius = 83.02409
 
-[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType"]]
+[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("navAgent") groups=["EnemyObject", "FodderType"]]
 script = ExtResource("1_wg85l")
+_enemyBehavior = 7
+navAgent = NodePath("Pathfinding")
+stamina_range = Vector2(200, 500)
+maxHealthPoints = 4000
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -59,4 +63,7 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
+[connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
+[connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
+[connection signal="toggle_healthbar_visibility" from="." to="HealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

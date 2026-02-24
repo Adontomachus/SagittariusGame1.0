@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
-[ext_resource type="Script" uid="uid://dxxy3ilhc425d" path="res://Scripts/Enemy/EliteEnemy.gd" id="1_ugnea"]
+[ext_resource type="Script" uid="uid://dxxy3ilhc425d" path="res://Scripts/Enemy/Types/EliteEnemy.gd" id="1_ugnea"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_6b6pn"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_tx5hf"]
 
@@ -10,11 +10,14 @@ radius = 46.734726
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 34.0147
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 groups=["EnemyObject", "FodderType"]]
+[node name="Elite" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("shoot_point", "navAgent") groups=["EnemyObject", "FodderType"]]
 script = ExtResource("1_ugnea")
-_enemyBehavior = 1
-maxHealthPoints = 500
+shoot_point = NodePath("ShootPoint")
 attackPower = 14.0
+_enemyBehavior = 6
+navAgent = NodePath("Pathfinding")
+maxHealthPoints = 200
+aroundPlayerRadius = 500
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -45,4 +48,7 @@ offset_bottom = -35.0
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=278116846]
 
+[connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
+[connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
+[connection signal="toggle_healthbar_visibility" from="." to="HealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

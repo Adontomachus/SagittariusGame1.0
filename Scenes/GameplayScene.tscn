@@ -407,10 +407,10 @@ position = Vector2(672, 414)
 scale = Vector2(1.9325491, 1.9325489)
 texture = ExtResource("8_f1byq")
 
-[node name="Enemy4" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
+[node name="Boss" parent="." unique_id=995601 groups=["GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)
 
-[node name="Enemy5" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
+[node name="Elite" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
 position = Vector2(1046, 210)
 
 [node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
