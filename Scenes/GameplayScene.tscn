@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="5_fklr0"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
 [ext_resource type="Script" uid="uid://cr36qvnvdg6ka" path="res://Scripts/Enemy/BossHealthUI.gd" id="5_ssy3j"]
-[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/placeholder_bullet.png" id="6_fklr0"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
+[ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
@@ -22,11 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/floordecoration.png" id="17_x4iy2"]
-[ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://UnitInstances/RhythmicPlant.tscn" id="19_exhb5"]
-
-[sub_resource type="Environment" id="Environment_buuuh"]
-glow_enabled = true
-glow_intensity = 0.8
+[ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/RhythmicPlant.tscn" id="19_exhb5"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -65,11 +61,6 @@ _data = {
 &"Pulse": SubResource("Animation_wckvk"),
 &"RESET": SubResource("Animation_onpmq")
 }
-
-[sub_resource type="Environment" id="Environment_b4hlm"]
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
 radius = 18.0
@@ -132,16 +123,6 @@ offset_right = 841.5652
 offset_bottom = 115.0
 text = "WAVE INCOMING!"
 horizontal_alignment = 1
-
-[node name="GlowingGem" type="Sprite2D" parent="InterfaceElements/HUD/UI" unique_id=1356242961]
-modulate = Color(0.7294118, 1, 0.11764706, 1)
-self_modulate = Color(1.6124506, 1.6124506, 1.6124506, 1)
-position = Vector2(56, 57.5)
-scale = Vector2(0.12499987, 0.18750004)
-texture = ExtResource("6_fklr0")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="InterfaceElements/HUD/UI/GlowingGem" unique_id=172224696]
-environment = SubResource("Environment_buuuh")
 
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/HUD/UI" unique_id=952983668]
 layout_mode = 0
@@ -229,6 +210,11 @@ grow_vertical = 0
 text = "Beat Indicator"
 horizontal_alignment = 1
 
+[node name="GlowingGem2" parent="InterfaceElements/HUD/UI" unique_id=2110462969 instance=ExtResource("8_fklr0")]
+self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
+position = Vector2(101.5, 93)
+scale = Vector2(0.31249994, 0.37499982)
+
 [node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1272322535 groups=["BossUI"]]
 layout_mode = 0
 offset_left = 155.0
@@ -259,9 +245,6 @@ self_modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
 position = Vector2(1, 1)
 scale = Vector2(0.578125, 0.57812476)
 texture = ExtResource("11_umdcf")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Player" unique_id=1718222834]
-environment = SubResource("Environment_b4hlm")
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="Player" unique_id=1154990945]
 shape = SubResource("CircleShape2D_ydlo6")
@@ -400,7 +383,7 @@ position = Vector2(672, 414)
 scale = Vector2(1.9325491, 1.9325489)
 texture = ExtResource("8_f1byq")
 
-[node name="Boss" parent="." unique_id=995601 groups=["GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
+[node name="Boss" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)
 
 [node name="Elite" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
@@ -412,9 +395,11 @@ position = Vector2(235, 225)
 [node name="Rhythmplant" parent="." unique_id=1580102396 instance=ExtResource("19_exhb5")]
 position = Vector2(1240, 581)
 
-[node name="Rhythmplant2" parent="." unique_id=1943416272 instance=ExtResource("19_exhb5")]
-position = Vector2(281, 727)
+[node name="Rhythmplant2" parent="." unique_id=286901970 instance=ExtResource("19_exhb5")]
+position = Vector2(332, 1378)
 
 [connection signal="send_current_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_maximum_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
+[connection signal="update_current_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="_on_boss_update_current_health_value"]
+[connection signal="update_max_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="_on_boss_update_max_health_value"]

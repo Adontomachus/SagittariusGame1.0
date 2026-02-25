@@ -27,6 +27,7 @@ var comboCount = 0
 #SPAWNING VARIABLES AND STATS
 const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn")
 var playerSpawnDistance = 200
+var enemySpawnWweightCounter: int
 var enemySpawnCounter: int
 
 #region UI Elements for displaying values along with game notifications
@@ -59,7 +60,10 @@ func _ready():
 	pass
 
 #region TEMPORARY FUNCTIONS, SUBJECT TO CHANGE	
-func _nextWave():
+func _next_wave() -> void:
+	return
+	
+func _finish_wave() -> void:
 	return
 
 func _increaseIncrements():

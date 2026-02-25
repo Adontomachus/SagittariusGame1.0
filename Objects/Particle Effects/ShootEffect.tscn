@@ -54,7 +54,14 @@ func _on_finished() -> void:
 	pass # Replace with function body.
 "
 
+[sub_resource type="Environment" id="Environment_oxw88"]
+glow_enabled = true
+glow_intensity = 3.86
+glow_strength = 0.95
+
 [node name="ShootEffect" type="GPUParticles2D" unique_id=952870438]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+self_modulate = Color(1.685791, 1.685791, 1.685791, 1)
 amount = 25
 texture = SubResource("CanvasTexture_jhxfm")
 lifetime = 0.5
@@ -64,5 +71,8 @@ fixed_fps = 0
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_1ghqw")
 script = SubResource("GDScript_h052y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1499304876]
+environment = SubResource("Environment_oxw88")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

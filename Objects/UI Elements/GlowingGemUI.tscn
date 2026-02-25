@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://coenikilhyj6y"]
+
+[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/placeholder_bullet.png" id="1_8be3h"]
+
+[sub_resource type="Environment" id="Environment_xn2c8"]
+background_mode = 3
+glow_enabled = true
+
+[node name="GlowingGem" type="Sprite2D" unique_id=2110462969]
+modulate = Color(0.7294118, 1, 0.11764706, 1)
+self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
+position = Vector2(0, 7.6293945e-06)
+scale = Vector2(0.25, 0.31250033)
+texture = ExtResource("1_8be3h")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=444388577]
+environment = SubResource("Environment_xn2c8")

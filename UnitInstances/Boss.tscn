@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d24063yq0kgko"]
 
-[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Enemy.gd" id="1_t5eiy"]
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/FodderEnemy.gd" id="1_t5eiy"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_g16c8"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w0bs6"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
@@ -19,7 +19,6 @@ state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(200, 500)
 maxHealthPoints = 4000
-projectile = null
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -83,6 +82,7 @@ state_to_return = NodePath("../EnemyStatePositioning")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
+[connection signal="send_maximum_health_value" from="." to="." method="_on_send_maximum_health_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="HealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

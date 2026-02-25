@@ -27,4 +27,3 @@ func process_frame(delta: float) -> EnemyState:
 
 func process_physics(delta: float) -> EnemyState:
 	return null
-

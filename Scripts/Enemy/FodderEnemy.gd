@@ -6,6 +6,11 @@ signal toggle_healthbar_visibility(visible: bool)
 signal send_maximum_health_value(max_health: int)
 signal send_current_health_value(health: int)
 
+#region
+# TESTING: HP Bar for enemy boss units #
+signal update_max_health_value(max_boss_health: int)
+signal update_current_health_value(boss_health: int)
+#endregion
 @export var state_machine: EnemyStateMachine
 @export var navAgent: NavigationAgent2D
 ## The enemy's target. Usually the player, but it could also be an objective.
@@ -67,6 +72,11 @@ func _ready():
 	# Setup healthbar
 	toggle_healthbar_visibility.emit(false) # Hide the health bar until damaged
 	send_maximum_health_value.emit(maxHealthPoints)
+	
+	# For bosses 
+	update_max_health_value.emit(maxHealthPoints)
+	# For bosses
+	
 	send_current_health_value.emit(healthPoints)
 	
 	# Get player for navigation and targeting
@@ -112,6 +122,14 @@ func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
 func modify_health(increment: int) -> void:
 	healthPoints += increment
 	send_current_health_value.emit(healthPoints)
+	
 	toggle_healthbar_visibility.emit(healthPoints < maxHealthPoints)
+	update_max_health_value.emit(healthPoints)
+	#update_current_health_value(boss_health: int)
 	if (healthPoints < 0):
-		call_deferred("queue_free")
+		_delete_and_emit_effects()
+		
+# DESTROY EFFECTS
+func _delete_and_emit_effects():
+	call_deferred("queue_free")
+	return

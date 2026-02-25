@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cr4cdt8k115vb"]
+
+[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/rhythmplant.png" id="1_ljkxo"]
+[ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/AudioBased/BeatGlowEffect.gd" id="2_knn8v"]
+
+[sub_resource type="Environment" id="Environment_knn8v"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.21
+glow_hdr_threshold = 1.08
+glow_hdr_luminance_cap = 72.08
+glow_map_strength = 1.0
+
+[node name="Rhythmplant" type="Sprite2D" unique_id=1580102396]
+position = Vector2(1.1920929e-07, 0)
+scale = Vector2(0.4185185, 0.4185185)
+texture = ExtResource("1_ljkxo")
+script = ExtResource("2_knn8v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1897050038]
+environment = SubResource("Environment_knn8v")
+
+[connection signal="glow_on_beat" from="." to="." method="_on_glow_on_beat"]

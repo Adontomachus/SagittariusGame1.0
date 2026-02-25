@@ -29,7 +29,13 @@ func _on_finished() -> void:
 	pass # Replace with function body.
 "
 
+[sub_resource type="Environment" id="Environment_h052y"]
+glow_enabled = true
+glow_intensity = 3.86
+glow_strength = 0.95
+
 [node name="WallHitEffect" type="CPUParticles2D" unique_id=1427452623]
+self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
 amount = 50
 texture = SubResource("CanvasTexture_jhxfm")
 lifetime = 0.5
@@ -48,5 +54,8 @@ scale_amount_curve = SubResource("Curve_t5oqc")
 color = Color(0.9110635, 0.6722518, 0.2685797, 1)
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1764725689]
+environment = SubResource("Environment_h052y")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
