@@ -98,7 +98,7 @@ func _input(event: InputEvent) -> void:
 func damage_modifier(timing: float) -> float:
 	# Perfect
 	if timing > perfect_hit:
-		return 1.2
+		return 1.45
 
 	# Good
 	if timing > good_hit:
@@ -106,10 +106,10 @@ func damage_modifier(timing: float) -> float:
 	
 	# OK
 	if timing > ok_hit:
-		return 0.9
+		return 0.8
 	
 	# BAD
-	return 0.3
+	return 0.1
 
 func projectile_color(timing: float) -> Color:
 	# Perfect

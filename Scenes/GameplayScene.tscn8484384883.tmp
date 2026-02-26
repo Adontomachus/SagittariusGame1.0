@@ -408,5 +408,5 @@ position = Vector2(332, 1378)
 [connection signal="send_current_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_maximum_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
-[connection signal="update_current_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="set_value"]
-[connection signal="update_max_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="set_max"]
+[connection signal="update_current_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="_on_boss_update_current_health_value"]
+[connection signal="update_max_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="_on_boss_update_max_health_value"]

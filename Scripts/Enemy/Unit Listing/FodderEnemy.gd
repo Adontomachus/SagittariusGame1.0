@@ -49,6 +49,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 @export var attackPower: float
 @export var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn")
 ## How many times will the enemy try to shoot the player
 @export var fire_rate: int = 5
 ## The minimum required roll to shoot from 0.0 to 10.0
@@ -72,12 +73,13 @@ func _ready():
 	# Setup healthbar
 	toggle_healthbar_visibility.emit(false) # Hide the health bar until damaged
 	send_maximum_health_value.emit(maxHealthPoints)
-	
-	# For bosses 
-	update_max_health_value.emit(maxHealthPoints)
-	# For bosses
-	
 	send_current_health_value.emit(healthPoints)
+	
+	# For the boss healthbar
+	update_max_health_value.emit(maxHealthPoints)
+	update_current_health_value.emit(healthPoints )
+	
+
 	
 	# Get player for navigation and targeting
 	target = get_tree().get_first_node_in_group("PlayerObject")
@@ -89,6 +91,7 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	
 func _process(delta: float) -> void:
+
 	state_machine.process_frame(delta)
 
 func move_enemy(delta: float) -> void:
@@ -123,13 +126,19 @@ func modify_health(increment: int) -> void:
 	healthPoints += increment
 	send_current_health_value.emit(healthPoints)
 	
+	# Boss
+	update_current_health_value.emit(healthPoints)
+	
 	toggle_healthbar_visibility.emit(healthPoints < maxHealthPoints)
-	update_max_health_value.emit(healthPoints)
+	#update_max_health_value.emit(healthPoints)
 	#update_current_health_value(boss_health: int)
 	if (healthPoints < 0):
 		_delete_and_emit_effects()
 		
 # DESTROY EFFECTS
 func _delete_and_emit_effects():
+	var deathEffect = destroyEffect.instantiate()
+	deathEffect.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", deathEffect)
 	call_deferred("queue_free")
 	return

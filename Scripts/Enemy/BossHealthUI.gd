@@ -28,10 +28,10 @@ func _process(delta):
 
 #region 
 # Signals for updating the boss health UI #
-func _on_boss_update_current_health_value(boss_health: int) -> void:
-	pass # Replace with function body.
+#func _on_boss_update_current_health_value(boss_health: int) -> void:
+#	pass # Replace with function body.
 
 
-func _on_boss_update_max_health_value(max_boss_health: int) -> void:
-	pass # Replace with function body.
+#func _on_boss_update_max_health_value(max_boss_health: int) -> void:
+#	pass # Replace with function body.
 #endregion

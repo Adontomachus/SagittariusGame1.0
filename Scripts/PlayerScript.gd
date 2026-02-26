@@ -27,6 +27,7 @@ func _ready():
 		camera_shake.connect(camera._shake_camera_on_shoot)
 	
 	healthPoints = maxHealthPoints
+	
 	send_maximum_health.emit(maxHealthPoints)
 	send_current_health.emit(healthPoints)
 	

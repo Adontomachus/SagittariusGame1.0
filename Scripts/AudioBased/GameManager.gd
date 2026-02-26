@@ -13,35 +13,44 @@ var gamePaused: int
 # MUSICAL UI
 @export var animation_player: AnimationPlayer # = beatIndicator.get_node("AnimationPlayer")
 
-#LEVEL VARIABLES
 
-var level_wave: int = 1
+#LEVEL VARIABLES
+var level_wave: int
 const DIFFICULTY_SCALE: float = 0.15
 const DROP_WEIGHT_SCALE: float = 0.05
 var difficultyMeter = 1
 var pointDropWeight = 0.25
 var comboCount = 0
 @export var player_target: Marker2D # = $InterfaceElements/PlayerTarget
-
+#LEVEL VARIABLES
 
 #SPAWNING VARIABLES AND STATS
 const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn")
 var playerSpawnDistance = 200
-var enemySpawnWweightCounter: int
+var enemySpawnWeightCounter: int
 var enemySpawnCounter: int
+var enemyCount: int
+
+# This checks if its eligible for the next wave to spawn as well as points.
+var waveCompleted: bool
+var playerPoints: int
+#SPAWNING VARIABLES AND STATS
 
 #region UI Elements for displaying values along with game notifications
 @onready var score: Label = $InterfaceElements/HUD/UI/PlayerInfo/Score
 @onready var wave_counter: Label = $InterfaceElements/HUD/UI/PlayerInfo/WaveCounter
+@onready var enemy_counter: Label = $InterfaceElements/HUD/UI/PlayerInfo/EnemyCounter
 @onready var wave_notification: Label = $InterfaceElements/HUD/UI/WaveNotification
 var notifDuration: float
+var nextDuration: float
 #endregion
 
 #region Enumerators for enemy spawning behaviors
 enum spawningBehavior {
 	Preparation,
 	Spawning,
-	FinalAggressive
+	FinalAggressive,
+	NextWave
 }
 
 @export var _spawningBehavior: spawningBehavior = spawningBehavior.Preparation
@@ -51,8 +60,12 @@ var actualMousePosition: Vector2
 @onready var cursorLocator: Marker2D = $MouseLocator
 
 func _ready():
+	level_wave = 1
+	waveCompleted = false
+	enemySpawnCounter = 5
 	actualMousePosition = get_global_mouse_position()
-	notifDuration = 8
+	notifDuration = 6
+	nextDuration = 6
 	wave_notification.self_modulate.a = 0
 	pause_screen.visible = false
 	gamePaused = 0
@@ -103,27 +116,38 @@ var instantiationPositions: Vector2
 func _process(delta):
 	
 	# Gets the number of enemies present in the screen
-	var enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
+	enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
 	#region value display for UI
 	wave_counter.text = "Wave: " + str(level_wave)
+	enemy_counter.text = "Enemies Left: " + str(enemyCount)
 	#endregion
 	
 	
 	#region NOTIFICATION FOR THE NEXT WAVE
-	wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
-	if _spawningBehavior == spawningBehavior.Preparation && wave_notification.self_modulate.a <= 1 && notifDuration > 1:
+	
+	if _spawningBehavior == spawningBehavior.Preparation:
 		wave_notification.self_modulate.a += 1 * delta
-	else:
-		_spawningBehavior == spawningBehavior.Spawning
+		if wave_notification.self_modulate.a >= 1: wave_notification.self_modulate.a = 1
+	if notifDuration < 1 && _spawningBehavior == spawningBehavior.Spawning:
+		_change_spawning_state(spawningBehavior.Spawning)
 		wave_notification.self_modulate.a -= 1 * delta
 		if wave_notification.self_modulate.a < 0: 
-			wave_notification.visible = false
+			#wave_notification.visible = false
 			wave_notification.self_modulate.a = 0
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
-		print("Testing! Beat Synced! Notification Duration: ", notifDuration)
+		print("Testing! Beat Synced! Notification Duration: ")
+		if _spawningBehavior == spawningBehavior.Preparation: print("Preparation")
+		if _spawningBehavior == spawningBehavior.Spawning: print("Spawning")
 		notifDuration -= 1
+		if enemyCount == 0 && enemySpawnCounter == 0:
+			_change_spawning_state(spawningBehavior.NextWave)
+			notifDuration = 8
+			wave_notification.self_modulate.a += 1 * delta
+			wave_notification.text = "WAVE " + str(level_wave) + " COMPLETED!"
+		else:
+			wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
 		
 	#endregion
 	
@@ -139,9 +163,10 @@ func _process(delta):
 	# Spawning Enemies
 	spawnTimer -= delta
 	#if _spawningBehavior == spawningBehavior.Spawning:
-	if (spawnTimer < 0):
+	if (spawnTimer < 0 && enemySpawnCounter != 0):
 		print("Spawned Enemy!")
 		spawnTimer = randf_range(2,3)
+		enemySpawnCounter -= 1
 		_spawn_enemy()
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
@@ -151,16 +176,34 @@ func _process(delta):
 	
 	
 func _spawn_enemy():
-	var enemy = enemyToSpawn.instantiate()
-	enemy.position = instantiationPositions
-	#if (randomNumber < 0.25):
-	#	enemy.unitType = enemy.EnemyType.Normal				
-	#else:
-	#	enemy.unitType = enemy.EnemyType.Fodder
-	#get_tree().get_root().call_deferred("add_child", enemy)
-	#spawnTimer = randf_range(5,10)
-	add_child(enemy)
 	
+	if enemySpawnCounter >= 0:
+		var enemy = enemyToSpawn.instantiate()
+		enemy.position = instantiationPositions
+		#if (randomNumber < 0.25):
+		#	enemy.unitType = enemy.EnemyType.Normal				
+		#else:
+		#	enemy.unitType = enemy.EnemyType.Fodder
+		#get_tree().get_root().call_deferred("add_child", enemy)
+		#spawnTimer = randf_range(5,10)
+		add_child(enemy)
+		
 func _locate_mouse_pointer():
 	cursorLocator.global_position = (player_target.global_position + actualMousePosition) / 2
 	return
+
+#TEMPORARY
+func _check_if_eligible_next_wave(): 
+	if enemySpawnCounter && enemyCount == 0:
+		return
+	return
+#TEMPORARY
+
+func _change_spawning_state(changeBehavior: spawningBehavior):
+	_spawningBehavior = changeBehavior
+	return
+	
+
+
+func set_value(boss_health: int) -> void:
+	pass # Replace with function body.
