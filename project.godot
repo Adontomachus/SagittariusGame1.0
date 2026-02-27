@@ -20,6 +20,7 @@ config/icon="res://Sprites/icon.svg"
 [autoload]
 
 GlobalBeatSync="*uid://b6by13j1adlil"
+PointSystemScript="*uid://0djl3e1qunrm"
 
 [file_customization]
 

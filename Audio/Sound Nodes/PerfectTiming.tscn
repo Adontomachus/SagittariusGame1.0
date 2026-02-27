@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://duniyu2tpmtao"]
+
+[ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="1_kpsnq"]
+
+[node name="EnhancerSound" type="AudioStreamPlayer2D" unique_id=295916544]
+position = Vector2(-2014, 149)
+stream = ExtResource("1_kpsnq")
+pitch_scale = 2.0
+autoplay = true

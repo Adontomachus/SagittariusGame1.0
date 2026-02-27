@@ -2,6 +2,7 @@ class_name GManager
 extends Node2D
 
 
+
 @export var beatIndicator: Panel # = $InterfaceElements/HUD/BeatIndicator
 var spawnTimer = randf_range(5,10)
 @export var player: Node2D # = $"../Player"
@@ -12,7 +13,6 @@ var gamePaused: int
 
 # MUSICAL UI
 @export var animation_player: AnimationPlayer # = beatIndicator.get_node("AnimationPlayer")
-
 
 #LEVEL VARIABLES
 var level_wave: int
@@ -33,7 +33,7 @@ var enemyCount: int
 
 # This checks if its eligible for the next wave to spawn as well as points.
 var waveCompleted: bool
-var playerPoints: int
+#var playerPoints: int
 #SPAWNING VARIABLES AND STATS
 
 #region UI Elements for displaying values along with game notifications
@@ -120,6 +120,7 @@ func _process(delta):
 	#region value display for UI
 	wave_counter.text = "Wave: " + str(level_wave)
 	enemy_counter.text = "Enemies Left: " + str(enemyCount)
+	score.text = "Score: " + str(PointSystemScript.playerScore)
 	#endregion
 	
 	
@@ -128,7 +129,7 @@ func _process(delta):
 	if _spawningBehavior == spawningBehavior.Preparation:
 		wave_notification.self_modulate.a += 1 * delta
 		if wave_notification.self_modulate.a >= 1: wave_notification.self_modulate.a = 1
-	if notifDuration < 1 && _spawningBehavior == spawningBehavior.Spawning:
+	if notifDuration < 1:
 		_change_spawning_state(spawningBehavior.Spawning)
 		wave_notification.self_modulate.a -= 1 * delta
 		if wave_notification.self_modulate.a < 0: 
@@ -140,16 +141,22 @@ func _process(delta):
 		print("Testing! Beat Synced! Notification Duration: ")
 		if _spawningBehavior == spawningBehavior.Preparation: print("Preparation")
 		if _spawningBehavior == spawningBehavior.Spawning: print("Spawning")
+		if _spawningBehavior == spawningBehavior.NextWave: nextDuration -= 1
 		notifDuration -= 1
-		if enemyCount == 0 && enemySpawnCounter == 0:
-			_change_spawning_state(spawningBehavior.NextWave)
-			notifDuration = 8
-			wave_notification.self_modulate.a += 1 * delta
-			wave_notification.text = "WAVE " + str(level_wave) + " COMPLETED!"
-		else:
-			wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
+
+	if enemyCount == 0 && enemySpawnCounter == 0 && _spawningBehavior == spawningBehavior.Spawning:
+		_change_spawning_state(spawningBehavior.NextWave)
+	if (_spawningBehavior == spawningBehavior.NextWave):
+		if wave_notification.self_modulate.a >= 1: wave_notification.self_modulate.a = 1
+		notifDuration = 8
+		wave_notification.self_modulate.a += 1 * delta
+		wave_notification.text = "WAVE " + str(level_wave) + " COMPLETED!"
+	else:
+		_spawningBehavior == spawningBehavior.Preparation
+		wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
 		
 	#endregion
+	
 	
 	#region Pause Menu
 	if Input.is_action_just_pressed("pause_action"):
@@ -207,3 +214,7 @@ func _change_spawning_state(changeBehavior: spawningBehavior):
 
 func set_value(boss_health: int) -> void:
 	pass # Replace with function body.
+	
+#func modify_player_score(modification: int) -> void:
+#	playerPoints += modification
+#	score_modify.emit(modification)

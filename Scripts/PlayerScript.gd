@@ -19,6 +19,8 @@ var playerDirection: Vector2
 var projectile_damage: float = 30.0
 var projectile := preload("res://Objects/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
+@onready var shot_sound: AudioStreamPlayer = $ShotAudio
+
 
 func _ready():
 	# Connecting the camera shake signal
@@ -45,6 +47,7 @@ func _physics_process(delta):
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.2)
 	var projectile_instance = projectile.instantiate()
+	shot_sound.play()
 	projectile_instance.change_damage(projectile_damage * modifier)
 	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
 	projectile_instance.change_projectile_modulation(color)
@@ -75,3 +78,5 @@ func _on_enemy_collision_area_entered(area: Area2D) -> void:
 func modify_current_player_health(modification: int) -> void:
 	healthPoints += modification
 	send_current_health.emit(healthPoints)
+
+	

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/PlayerScript.gd" id="1_0nxw3"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_fhy58"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/PlayerProjectileHitbox.gd" id="3_fhy58"]
+[ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="4_kpdv2"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="5_amksl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8jkjp"]
 radius = 18.0
@@ -36,6 +38,15 @@ script = ExtResource("3_fhy58")
 [node name="BulletHitbox" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=227898168]
 shape = SubResource("CircleShape2D_kpdv2")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
+
+[node name="ShotAudio" type="AudioStreamPlayer" parent="." unique_id=1331729390]
+stream = ExtResource("4_kpdv2")
+autoplay = true
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=788464497]
+stream = ExtResource("5_amksl")
+volume_db = -7.5
+pitch_scale = 0.75
 
 [connection signal="area_entered" from="EnemyCollision" to="." method="_on_enemy_collision_area_entered"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_projectile_health_modify"]

@@ -34,6 +34,7 @@ var currentMoveSpeed
 @export_group("Vitality Stats")
 @export var maxHealthPoints: int = 80
 @export var meleeTickRate: int = 60
+@export var amountOfPointOrbs: int = 3
 var healthPoints: int = 80
 
 # PATHFINDING MECHANICS
@@ -49,7 +50,11 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 @export var attackPower: float
 @export var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+
+# OBJECTS SPAWNS ON DELETION
 var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn")
+var pointObject := preload("res://UnitInstances/ScoreOrb.tscn")
+
 ## How many times will the enemy try to shoot the player
 @export var fire_rate: int = 5
 ## The minimum required roll to shoot from 0.0 to 10.0
@@ -57,6 +62,7 @@ var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn
 ## This variable is rolled randomly from 0, 10. Higher values 
 ## give the unit more chance to shoot the player for each beat.
 var chanceToAttack: float
+@onready var hit_sound: AudioStreamPlayer = $HitSound
 
 
 # START
@@ -123,6 +129,7 @@ func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
 	print_debug("Damage: %s" % (attackPower * modifier))
 
 func modify_health(increment: int) -> void:
+	hit_sound.play()
 	healthPoints += increment
 	send_current_health_value.emit(healthPoints)
 	
@@ -140,5 +147,11 @@ func _delete_and_emit_effects():
 	var deathEffect = destroyEffect.instantiate()
 	deathEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", deathEffect)
+	for xp in range(amountOfPointOrbs):
+		print("ENEMY DESTROYED AND PLAYER REWARDED")
+		var rewards = pointObject.instantiate()
+		rewards.position = self.get_global_position()
+		get_tree().get_root().call_deferred("add_child", rewards)
+		
 	call_deferred("queue_free")
 	return

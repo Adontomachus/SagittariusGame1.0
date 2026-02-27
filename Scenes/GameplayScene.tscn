@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/AudioBased/GameManager.gd" id="1_onpmq"]
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
+[ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/PointSystemScript.gd" id="2_qvp00"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="4_b4hlm"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
 [ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
+[ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/RhythmicPlant.tscn" id="19_exhb5"]
@@ -84,6 +86,17 @@ beatIndicator = NodePath("InterfaceElements/HUD/UI/BeatIndicator")
 player = NodePath("Player")
 animation_player = NodePath("InterfaceElements/HUD/UI/BeatIndicator/AnimationPlayer")
 player_target = NodePath("InterfaceElements/PlayerTarget")
+
+[node name="SpawningState" type="Node" parent="." unique_id=944259588]
+
+[node name="Recovery" type="Node" parent="SpawningState" unique_id=363654248]
+
+[node name="Spawning" type="Node" parent="SpawningState" unique_id=1968364714]
+
+[node name="NextWave" type="Node" parent="SpawningState" unique_id=916580382]
+
+[node name="PointSystem" type="Node" parent="." unique_id=1418465354]
+script = ExtResource("2_qvp00")
 
 [node name="MouseLocator" type="Marker2D" parent="." unique_id=1641650591]
 
@@ -266,6 +279,10 @@ script = ExtResource("10_bbunm")
 [node name="BulletHitbox" type="CollisionShape2D" parent="Player/ProjectileHitbox" unique_id=675715082]
 shape = SubResource("CircleShape2D_fklr0")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
+
+[node name="ShotAudio" type="AudioStreamPlayer" parent="Player" unique_id=166549679]
+stream = ExtResource("15_buuuh")
+volume_db = -15.0
 
 [node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("2_k77ap")]
 position = Vector2(337, 480)

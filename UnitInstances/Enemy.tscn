@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_pnojx"]
 [ext_resource type="Script" uid="uid://bu5go608c7dqq" path="res://Scripts/Enemy/States/Chase.gd" id="5_15gep"]
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Recovery.gd" id="6_iah0i"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_15gep"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -59,6 +60,11 @@ metadata/_custom_type_script = "uid://bu5go608c7dqq"
 script = ExtResource("6_iah0i")
 state_to_return = NodePath("../EnemyStateChase")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=257206988]
+stream = ExtResource("7_15gep")
+volume_db = -7.5
+pitch_scale = 0.75
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]

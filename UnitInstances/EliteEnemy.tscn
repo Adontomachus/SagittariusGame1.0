@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dnh5knxqvb7bk" path="res://Scripts/Enemy/States/Closing.gd" id="5_cyyc4"]
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Recovery.gd" id="6_22t2l"]
 [ext_resource type="Script" uid="uid://di0vbq11imssp" path="res://Scripts/Enemy/States/Shooting.gd" id="7_ilcit"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="8_gngj8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.734726
@@ -82,6 +83,11 @@ offset_top = 34.0
 offset_right = 55.0
 offset_bottom = 57.0
 text = "Positioning"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=351288729]
+stream = ExtResource("8_gngj8")
+volume_db = -7.5
+pitch_scale = 0.75
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
