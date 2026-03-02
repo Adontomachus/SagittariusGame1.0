@@ -16,15 +16,19 @@
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
+[ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="10_32gqm"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
+[ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
 [ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/RhythmicPlant.tscn" id="19_exhb5"]
+[ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/floordecals.png" id="28_agm15"]
+[ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/baleterootdecals.png" id="29_xxi0v"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -82,9 +86,9 @@ agent_radius = 40.0
 
 [node name="Node2D" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "animation_player", "player_target")]
 script = ExtResource("1_onpmq")
-beatIndicator = NodePath("InterfaceElements/HUD/UI/BeatIndicator")
+beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator")
 player = NodePath("Player")
-animation_player = NodePath("InterfaceElements/HUD/UI/BeatIndicator/AnimationPlayer")
+animation_player = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator/AnimationPlayer")
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="SpawningState" type="Node" parent="." unique_id=944259588]
@@ -109,10 +113,10 @@ script = ExtResource("2_qvp00")
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
 script = ExtResource("4_b5kf5")
 
-[node name="HUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
+[node name="NewHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=1380499986]
 script = ExtResource("3_exhb5")
 
-[node name="UI" type="Control" parent="InterfaceElements/HUD" unique_id=275107756]
+[node name="UI" type="Control" parent="InterfaceElements/NewHUD" unique_id=275107756]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +124,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=271453503]
+[node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=271453503]
 visible = false
 layout_mode = 0
 offset_left = 9.0
@@ -128,7 +132,7 @@ offset_top = 6.0
 offset_right = 13.0
 offset_bottom = 33.0
 
-[node name="WaveNotification" type="Label" parent="InterfaceElements/HUD/UI" unique_id=120682287]
+[node name="WaveNotification" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=120682287]
 layout_mode = 0
 offset_left = 312.0
 offset_top = 86.0
@@ -137,41 +141,41 @@ offset_bottom = 115.0
 text = "WAVE INCOMING!"
 horizontal_alignment = 1
 
-[node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/HUD/UI" unique_id=952983668]
+[node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 6.0
 offset_right = 468.0
 offset_bottom = 293.0
 
-[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1415002962]
+[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1415002962]
 custom_minimum_size = Vector2(0, 170)
 layout_mode = 2
 nine_patch_stretch = true
 texture_under = ExtResource("4_b4hlm")
 texture_progress = ExtResource("5_fklr0")
 
-[node name="Score" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1798433667]
+[node name="Score" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1798433667]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Points: "
 
-[node name="ComboCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=1692553793]
+[node name="ComboCounter" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1692553793]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Combo:"
 
-[node name="WaveCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=388203173]
+[node name="WaveCounter" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=388203173]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Wave:"
 
-[node name="EnemyCounter" type="Label" parent="InterfaceElements/HUD/UI/PlayerInfo" unique_id=997734829]
+[node name="EnemyCounter" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=997734829]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 
-[node name="Pause" type="Button" parent="InterfaceElements/HUD/UI" unique_id=1148087537]
+[node name="Pause" type="Button" parent="InterfaceElements/NewHUD/UI" unique_id=1148087537]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -183,7 +187,7 @@ offset_bottom = 65.0
 grow_horizontal = 0
 text = "Pause Menu"
 
-[node name="BeatIndicator" type="Panel" parent="InterfaceElements/HUD/UI" unique_id=243769503 node_paths=PackedStringArray("metronome_test")]
+[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI" unique_id=243769503 node_paths=PackedStringArray("metronome_test")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -203,16 +207,16 @@ perfect_hit = 0.4
 good_hit = 0.32
 ok_hit = 0.2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/HUD/UI/BeatIndicator" unique_id=543492491]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=543492491]
 libraries/ = SubResource("AnimationLibrary_onpmq")
 speed_scale = 0.6
 
-[node name="MetronomeTest" type="AudioStreamPlayer" parent="InterfaceElements/HUD/UI/BeatIndicator" unique_id=812856403]
+[node name="MetronomeTest" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=812856403]
 stream = ExtResource("2_30wor")
 volume_db = -2.743
 autoplay = true
 
-[node name="Indicator" type="Label" parent="InterfaceElements/HUD/UI" unique_id=733283776]
+[node name="Indicator" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=733283776]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -228,12 +232,39 @@ grow_vertical = 0
 text = "Beat Indicator"
 horizontal_alignment = 1
 
-[node name="GlowingGem2" parent="InterfaceElements/HUD/UI" unique_id=2110462969 instance=ExtResource("8_fklr0")]
+[node name="GlowingGem2" parent="InterfaceElements/NewHUD/UI" unique_id=2110462969 instance=ExtResource("8_fklr0")]
 self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
 position = Vector2(101.5, 93)
 scale = Vector2(0.31249994, 0.37499982)
 
-[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/HUD/UI" unique_id=1272322535 groups=["BossUI"]]
+[node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1513060166 groups=["BossUI"]]
+layout_mode = 0
+offset_left = 94.00001
+offset_top = 453.0
+offset_right = 2406.4998
+offset_bottom = 808.0
+scale = Vector2(0.4, 0.4)
+value = 55.0
+nine_patch_stretch = true
+texture_under = ExtResource("10_32gqm")
+texture_progress = ExtResource("11_wjss6")
+
+[node name="Label2" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" unique_id=1757781328]
+layout_mode = 0
+offset_left = 922.4999
+offset_top = 200.0
+offset_right = 1497.4999
+offset_bottom = 285.0
+theme_override_font_sizes/font_size = 40
+text = "Boss Health"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" unique_id=1262861346]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1272322535 groups=["BossUI"]]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 497.0
@@ -241,18 +272,12 @@ offset_right = 995.0
 offset_bottom = 524.0
 script = ExtResource("5_ssy3j")
 
-[node name="Label" type="Label" parent="InterfaceElements/HUD/UI/BossHealthBar" unique_id=1757781328]
-layout_mode = 0
-offset_left = 258.0
-offset_top = 31.0
-offset_right = 584.0
-offset_bottom = 54.0
-text = "Boss Health"
-horizontal_alignment = 1
-
-[node name="PauseScreen" parent="InterfaceElements/HUD/UI" unique_id=1347961824 instance=ExtResource("6_jwrfw")]
+[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" unique_id=1347961824 instance=ExtResource("6_jwrfw")]
 visible = false
 layout_mode = 1
+
+[node name="LegacyHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
+visible = false
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 groups=["PlayerObject"]]
 position = Vector2(591, 278)
@@ -415,15 +440,81 @@ position = Vector2(1046, 210)
 [node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
 position = Vector2(235, 225)
 
-[node name="Rhythmplant" parent="." unique_id=1580102396 instance=ExtResource("19_exhb5")]
+[node name="BGDecals" type="Node" parent="." unique_id=1231745277]
+
+[node name="Rhythmplant" parent="BGDecals" unique_id=1580102396 instance=ExtResource("19_exhb5")]
 position = Vector2(1240, 581)
 
-[node name="Rhythmplant2" parent="." unique_id=286901970 instance=ExtResource("19_exhb5")]
+[node name="Rhythmplant2" parent="BGDecals" unique_id=286901970 instance=ExtResource("19_exhb5")]
 position = Vector2(332, 1378)
 
-[connection signal="change_color" from="InterfaceElements/HUD" to="InterfaceElements/HUD" method="_on_change_color"]
-[connection signal="send_current_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
-[connection signal="send_maximum_health" from="Player" to="InterfaceElements/HUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
+[node name="Floordecals" type="Sprite2D" parent="BGDecals" unique_id=1520428884]
+z_index = -17
+position = Vector2(464, 348)
+scale = Vector2(0.59313726, 0.5931372)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecals2" type="Sprite2D" parent="BGDecals" unique_id=970244171]
+z_index = -17
+position = Vector2(1034.2355, 868)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecals3" type="Sprite2D" parent="BGDecals" unique_id=1370759437]
+z_index = -17
+position = Vector2(-297, 503.99994)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecals4" type="Sprite2D" parent="BGDecals" unique_id=1831284785]
+z_index = -17
+position = Vector2(248, -178.00006)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecals5" type="Sprite2D" parent="BGDecals" unique_id=485021051]
+z_index = -17
+position = Vector2(1407, 136)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecoration" type="Sprite2D" parent="BGDecals" unique_id=82272627]
+position = Vector2(1939, 447)
+scale = Vector2(0.21513353, 0.21513353)
+texture = ExtResource("17_x4iy2")
+
+[node name="Baleterootdecals" type="Sprite2D" parent="BGDecals" unique_id=1647709559]
+z_index = -15
+position = Vector2(1140.1777, 498)
+scale = Vector2(0.42222223, 0.42222223)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals2" type="Sprite2D" parent="BGDecals" unique_id=268215315]
+z_index = -15
+position = Vector2(131.66296, 870.5)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals3" type="Sprite2D" parent="BGDecals" unique_id=1295257982]
+z_index = -15
+position = Vector2(-832.6037, 1312.5)
+scale = Vector2(0.33703703, 0.33703703)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals4" type="Sprite2D" parent="BGDecals" unique_id=874249156]
+z_index = -15
+position = Vector2(-918.363, 126)
+scale = Vector2(0.42962965, 0.42962962)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals5" type="Sprite2D" parent="BGDecals" unique_id=622519522]
+z_index = -15
+position = Vector2(660.5852, -261)
+scale = Vector2(0.34814814, 0.34814814)
+texture = ExtResource("29_xxi0v")
+
+[connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
+[connection signal="send_maximum_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
-[connection signal="update_current_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="set_value"]
-[connection signal="update_max_health_value" from="Boss" to="InterfaceElements/HUD/UI/BossHealthBar" method="set_max"]
+[connection signal="update_current_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_value"]
+[connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_max"]

@@ -83,7 +83,7 @@ func _ready():
 	
 	# For the boss healthbar
 	update_max_health_value.emit(maxHealthPoints)
-	update_current_health_value.emit(healthPoints )
+	update_current_health_value.emit(healthPoints)
 	
 
 	

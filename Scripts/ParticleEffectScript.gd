@@ -3,7 +3,7 @@ extends CPUParticles2D
 
 	
 func _ready():
-	print("Effect Instantiated!")
+	pass
 
 func _on_shot_effect_finished() -> void:
 	queue_free()

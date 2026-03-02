@@ -1,3 +1,2 @@
 class_name EnemyFodder
 extends EnemyCommon
-

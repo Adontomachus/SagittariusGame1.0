@@ -8,7 +8,7 @@ var spawnTimer = randf_range(5,10)
 @export var player: Node2D # = $"../Player"
 
 # PAUSE UI
-@onready var pause_screen: Control = $InterfaceElements/HUD/UI/PauseScreen
+@onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
 var gamePaused: int
 
 # MUSICAL UI
@@ -28,6 +28,7 @@ var comboCount = 0
 const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn")
 var playerSpawnDistance = 200
 var enemySpawnWeightCounter: int
+var rarityWeight: float
 var enemySpawnCounter: int
 var enemyCount: int
 
@@ -37,10 +38,10 @@ var waveCompleted: bool
 #SPAWNING VARIABLES AND STATS
 
 #region UI Elements for displaying values along with game notifications
-@onready var score: Label = $InterfaceElements/HUD/UI/PlayerInfo/Score
-@onready var wave_counter: Label = $InterfaceElements/HUD/UI/PlayerInfo/WaveCounter
-@onready var enemy_counter: Label = $InterfaceElements/HUD/UI/PlayerInfo/EnemyCounter
-@onready var wave_notification: Label = $InterfaceElements/HUD/UI/WaveNotification
+@onready var score: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/Score
+@onready var wave_counter: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/WaveCounter
+@onready var enemy_counter: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/EnemyCounter
+@onready var wave_notification: Label = $InterfaceElements/NewHUD/UI/WaveNotification
 var notifDuration: float
 var nextDuration: float
 #endregion
@@ -61,6 +62,7 @@ var actualMousePosition: Vector2
 
 func _ready():
 	level_wave = 1
+	rarityWeight = 3
 	waveCompleted = false
 	enemySpawnCounter = 5
 	actualMousePosition = get_global_mouse_position()
@@ -124,7 +126,7 @@ func _process(delta):
 	#endregion
 	
 	
-	#region NOTIFICATION FOR THE NEXT WAVE
+#region NOTIFICATION FOR THE NEXT WAVE
 	
 	if _spawningBehavior == spawningBehavior.Preparation:
 		wave_notification.self_modulate.a += 1 * delta
@@ -138,24 +140,40 @@ func _process(delta):
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
-		print("Testing! Beat Synced! Notification Duration: ")
-		if _spawningBehavior == spawningBehavior.Preparation: print("Preparation")
+		print("Testing! Beat Synced! Spawns Remaining: ", enemySpawnCounter)
+		if _spawningBehavior == spawningBehavior.Preparation:
+			print("Preparation")
+			wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
 		if _spawningBehavior == spawningBehavior.Spawning: print("Spawning")
-		if _spawningBehavior == spawningBehavior.NextWave: nextDuration -= 1
+		if _spawningBehavior == spawningBehavior.NextWave:
+			print("Completed. Next Wave: ", nextDuration)
+			nextDuration -= 1
 		notifDuration -= 1
 
 	if enemyCount == 0 && enemySpawnCounter == 0 && _spawningBehavior == spawningBehavior.Spawning:
 		_change_spawning_state(spawningBehavior.NextWave)
-	if (_spawningBehavior == spawningBehavior.NextWave):
+		
+	# If the current wave is completed
+	if (_spawningBehavior == spawningBehavior.NextWave && nextDuration >= 1):
 		if wave_notification.self_modulate.a >= 1: wave_notification.self_modulate.a = 1
 		notifDuration = 8
 		wave_notification.self_modulate.a += 1 * delta
 		wave_notification.text = "WAVE " + str(level_wave) + " COMPLETED!"
-	else:
-		_spawningBehavior == spawningBehavior.Preparation
-		wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
+	if (_spawningBehavior == spawningBehavior.NextWave && nextDuration < 1):
+		wave_notification.self_modulate.a -= 1 * delta
 		
-	#endregion
+		# IF THE COMPLETED NOTIF ENDS, GO TO THE NEXT WAVE AND INCREMENT WEIGHTS
+		if wave_notification.self_modulate.a < 0:
+			_change_spawning_state(spawningBehavior.Preparation)
+			enemySpawnCounter = 5 + level_wave
+			level_wave += 1
+			nextDuration = 8
+
+	# If the current wave is completed
+		
+
+		
+#endregion
 	
 	
 	#region Pause Menu
@@ -170,14 +188,14 @@ func _process(delta):
 	# Spawning Enemies
 	spawnTimer -= delta
 	#if _spawningBehavior == spawningBehavior.Spawning:
-	if (spawnTimer < 0 && enemySpawnCounter != 0):
+	if (spawnTimer < 0 && enemySpawnCounter != 0 && _spawningBehavior == spawningBehavior.Spawning):
 		print("Spawned Enemy!")
 		spawnTimer = randf_range(2,3)
 		enemySpawnCounter -= 1
 		_spawn_enemy()
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
-	instantiationPositions = Vector2(player.global_position.x + randf_range(155,455), player.global_position.y + randf_range(155,455))
+	instantiationPositions = Vector2(player.global_position.x + randf_range(200,600), player.global_position.y + randf_range(155,455))
 	#global_position = player_target.global_position
 	#endregion
 	
