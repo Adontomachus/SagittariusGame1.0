@@ -6,7 +6,7 @@ signal glow_on_beat()
 
 func _ready() -> void:
 	
-	glow_on_beat.emit(self.name)
+#	glow_on_beat.emit(self.name)
 	return
 
 

@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="5_fklr0"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Wall.tscn" id="5_nt06h"]
-[ext_resource type="Script" uid="uid://cr36qvnvdg6ka" path="res://Scripts/Enemy/BossHealthUI.gd" id="5_ssy3j"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
@@ -22,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Sagittarius.png" id="11_umdcf"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
+[ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scenes/UpdatedBossHealthUI.gd" id="12_xxi0v"]
 [ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/RhythmicPlant.tscn" id="19_exhb5"]
 [ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/floordecals.png" id="28_agm15"]
 [ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/baleterootdecals.png" id="29_xxi0v"]
+[ext_resource type="Texture2D" uid="uid://gg2hyp501kug" path="res://Sprites/floordecal3.png" id="30_81sgd"]
+[ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/floordecal2.png" id="31_40ckn"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -248,6 +250,7 @@ value = 55.0
 nine_patch_stretch = true
 texture_under = ExtResource("10_32gqm")
 texture_progress = ExtResource("11_wjss6")
+script = ExtResource("12_xxi0v")
 
 [node name="Label2" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" unique_id=1757781328]
 layout_mode = 0
@@ -264,13 +267,13 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1272322535 groups=["BossUI"]]
+[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1272322535]
+visible = false
 layout_mode = 0
 offset_left = 155.0
 offset_top = 497.0
 offset_right = 995.0
 offset_bottom = 524.0
-script = ExtResource("5_ssy3j")
 
 [node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" unique_id=1347961824 instance=ExtResource("6_jwrfw")]
 visible = false
@@ -449,31 +452,31 @@ position = Vector2(1240, 581)
 position = Vector2(332, 1378)
 
 [node name="Floordecals" type="Sprite2D" parent="BGDecals" unique_id=1520428884]
-z_index = -17
+z_index = -15
 position = Vector2(464, 348)
 scale = Vector2(0.59313726, 0.5931372)
 texture = ExtResource("28_agm15")
 
 [node name="Floordecals2" type="Sprite2D" parent="BGDecals" unique_id=970244171]
-z_index = -17
+z_index = -15
 position = Vector2(1034.2355, 868)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
 [node name="Floordecals3" type="Sprite2D" parent="BGDecals" unique_id=1370759437]
-z_index = -17
+z_index = -15
 position = Vector2(-297, 503.99994)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
 [node name="Floordecals4" type="Sprite2D" parent="BGDecals" unique_id=1831284785]
-z_index = -17
+z_index = -15
 position = Vector2(248, -178.00006)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
 [node name="Floordecals5" type="Sprite2D" parent="BGDecals" unique_id=485021051]
-z_index = -17
+z_index = -15
 position = Vector2(1407, 136)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
@@ -513,8 +516,46 @@ position = Vector2(660.5852, -261)
 scale = Vector2(0.34814814, 0.34814814)
 texture = ExtResource("29_xxi0v")
 
+[node name="Floordecal3" type="Sprite2D" parent="BGDecals" unique_id=1573082069]
+z_index = -17
+position = Vector2(-788, 1081)
+scale = Vector2(0.7517648, 0.7517647)
+texture = ExtResource("30_81sgd")
+
+[node name="Floordecal4" type="Sprite2D" parent="BGDecals" unique_id=289766780]
+z_index = -17
+position = Vector2(1356, 1260)
+texture = ExtResource("30_81sgd")
+
+[node name="Floordecal2" type="Sprite2D" parent="BGDecals" unique_id=796330826]
+z_index = -17
+position = Vector2(-735, 350)
+texture = ExtResource("31_40ckn")
+
+[node name="Floordecal5" type="Sprite2D" parent="BGDecals" unique_id=482214515]
+z_index = -17
+position = Vector2(1285, 293)
+texture = ExtResource("31_40ckn")
+
+[node name="Floordecal6" type="Sprite2D" parent="BGDecals" unique_id=335813050]
+z_index = -17
+position = Vector2(1733, -124)
+texture = ExtResource("30_81sgd")
+
+[node name="Floordecal7" type="Sprite2D" parent="BGDecals" unique_id=1026887323]
+z_index = -17
+position = Vector2(610, -506)
+texture = ExtResource("30_81sgd")
+
+[node name="Floordecal8" type="Sprite2D" parent="BGDecals" unique_id=978311149]
+z_index = -17
+position = Vector2(378, 1071)
+texture = ExtResource("31_40ckn")
+
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_maximum_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
+[connection signal="update_current_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" method="set_value"]
 [connection signal="update_current_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_value"]
+[connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" method="set_max"]
 [connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_max"]

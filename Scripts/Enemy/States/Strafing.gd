@@ -1,5 +1,5 @@
 class_name EnemyStateStrafing
-extends Node
+extends EnemyState
 
 
 # Called when the node enters the scene tree for the first time.

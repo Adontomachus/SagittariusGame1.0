@@ -76,7 +76,11 @@ func _on_enemy_collision_area_entered(area: Area2D) -> void:
 
 
 func modify_current_player_health(modification: int) -> void:
+	print("Player HP is now: ", healthPoints)
 	healthPoints += modification
+	if (healthPoints <= 0):
+		print("Game Over!")
+		get_tree().paused = true
 	send_current_health.emit(healthPoints)
 
 	
