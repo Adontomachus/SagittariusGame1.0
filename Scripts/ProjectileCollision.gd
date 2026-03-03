@@ -16,6 +16,9 @@ var projectile_damage: float = 5
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
 
+#TESTING PURPOSES
+var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
+
 func _ready():
 	projectileVelocity = 762
 	projectileLifetime = 50

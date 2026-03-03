@@ -19,6 +19,8 @@ var playerDirection: Vector2
 var projectile_damage: float = 30.0
 var projectile := preload("res://Objects/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
+@onready var player_sprite: Sprite2D = $PlayerSprite
+
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 
 
@@ -38,9 +40,19 @@ func get_input():
 	velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
 	
 func _process(delta):
+	# SPRITE FLIPPING WHEN TURNING AROUND
+	if get_global_mouse_position().x < global_position.x:
+		#player_sprite.flip_h = true
+		# shotgun = global_position + weaponOffset
+		#shotgun.flip_v = true
+		pass
+	#else:
+	#	player_sprite.flip_h = false
+		#shotgun.flip_v = false
 	look_at(get_global_mouse_position())
 	
 func _physics_process(delta):
+
 	get_input()
 	move_and_slide()
 	

@@ -12,6 +12,17 @@ glow_hdr_threshold = 1.08
 glow_hdr_luminance_cap = 72.08
 glow_map_strength = 1.0
 
+[sub_resource type="Gradient" id="Gradient_knn8v"]
+colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
+gradient = SubResource("Gradient_knn8v")
+width = 70
+height = 70
+fill = 1
+fill_from = Vector2(0.50220263, 0.4889868)
+fill_to = Vector2(0.74449337, 0.24091409)
+
 [node name="Rhythmplant" type="Sprite2D" unique_id=1580102396]
 position = Vector2(1.1920929e-07, 0)
 scale = Vector2(0.4185185, 0.4185185)
@@ -20,5 +31,11 @@ script = ExtResource("2_knn8v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1897050038]
 environment = SubResource("Environment_knn8v")
+
+[node name="GlowEffect" type="PointLight2D" parent="." unique_id=400889616]
+position = Vector2(31.061947, -74.0708)
+scale = Vector2(5.6001105, 6.300124)
+energy = 4.0
+texture = SubResource("GradientTexture2D_8hfiw")
 
 [connection signal="glow_on_beat" from="." to="." method="_on_glow_on_beat"]

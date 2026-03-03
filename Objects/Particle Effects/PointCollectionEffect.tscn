@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b5rfw5yevcye0"]
+
+[ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/ParticleEffectScript.gd" id="1_1buvx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1buvx"]
+offsets = PackedFloat32Array(0, 0.6289308)
+colors = PackedColorArray(0.29951698, 0.8714004, 0.97723854, 1, 0.19311532, 0.42918321, 1, 1)
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Environment" id="Environment_g5tee"]
+glow_enabled = true
+glow_intensity = 4.5
+glow_strength = 1.25
+
+[node name="HitEffect" type="Node2D" unique_id=1692245273]
+script = ExtResource("1_1buvx")
+
+[node name="ShotEffect" type="CPUParticles2D" parent="." unique_id=538343073]
+amount = 50
+texture = SubResource("CanvasTexture_jhxfm")
+lifetime = 0.35000000000000003
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 70.71
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_t5oqc")
+color_ramp = SubResource("Gradient_1buvx")
+anim_speed_curve = SubResource("Curve_jhxfm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1369163071]
+environment = SubResource("Environment_g5tee")
+
+[connection signal="finished" from="ShotEffect" to="." method="_on_shot_effect_finished"]

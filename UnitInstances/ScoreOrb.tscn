@@ -11,10 +11,10 @@ background_mode = 3
 glow_enabled = true
 glow_intensity = 1.0
 
-[node name="Area2D" type="Area2D" unique_id=934945096]
+[node name="AreaCollision" type="Area2D" unique_id=934945096]
 script = ExtResource("2_nniwd")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1535145071]
+[node name="OrbSprite" type="Sprite2D" parent="." unique_id=1535145071]
 self_modulate = Color(1.3135986, 2.8157141, 2.8157141, 1)
 scale = Vector2(0.81249994, 0.81249994)
 texture = ExtResource("1_3piun")
