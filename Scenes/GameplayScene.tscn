@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/floordecoration.png" id="17_x4iy2"]
+[ext_resource type="PackedScene" uid="uid://cfkii0111wady" path="res://UnitInstances/ShootingFodderEnemy.tscn" id="19_40ckn"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/RhythmicPlant.tscn" id="19_exhb5"]
 [ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/floordecals.png" id="28_agm15"]
 [ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/baleterootdecals.png" id="29_xxi0v"]
@@ -568,6 +569,9 @@ texture = ExtResource("30_81sgd")
 z_index = -18
 position = Vector2(1678, 691)
 texture = ExtResource("31_40ckn")
+
+[node name="ShootingEnemy" parent="." unique_id=1443761029 instance=ExtResource("19_40ckn")]
+position = Vector2(888, 366)
 
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_maximum_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]

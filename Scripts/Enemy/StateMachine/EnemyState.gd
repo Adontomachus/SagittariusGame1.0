@@ -6,6 +6,9 @@ class_name EnemyState
 
 @export var recovery_state: EnemyStateRecovery
 
+#Test
+@export var strafing_state: EnemyStateStrafing
+
 var parent: Enemy
 var animations: AnimationPlayer
 var audio: AudioStreamPlayer2D

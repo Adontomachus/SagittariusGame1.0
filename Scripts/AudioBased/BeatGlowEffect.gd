@@ -11,10 +11,10 @@ func _ready() -> void:
 
 func _process(delta):
 	energyIntensity -= 0.5 * delta
-	glow_on_beat.emit(self.name)
+
 	pass
 
 func _on_glow_on_beat() -> void:
 	glow_effect.energy = energyIntensity
-	self_modulate = Color(1.0, 1.0, 0.0, 2.0)
+
 	pass # Replace with function body.

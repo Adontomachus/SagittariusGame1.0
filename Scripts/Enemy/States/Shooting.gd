@@ -2,10 +2,11 @@ class_name EnemyStateShoot
 extends EnemyState
 
 const CHANCE_RANGE: Vector2 = Vector2(0.0, 10.0)
+var shot_times: int = 0
 
 @export var after_shoot_state: EnemyState
 
-var shot_times: int = 0
+
 
 func enter() -> void:
 	super()

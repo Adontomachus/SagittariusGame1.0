@@ -19,7 +19,7 @@ var playerDirection: Vector2
 var projectile_damage: float = 30.0
 var projectile := preload("res://Objects/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
-@onready var player_sprite: Sprite2D = $PlayerSprite
+# @onready var player_sprite: Sprite2D = $PlayerSprite
 
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 

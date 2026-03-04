@@ -39,7 +39,7 @@ var healthPoints: int = 80
 
 # PATHFINDING MECHANICS
 @export_group("Pathfinding Variables")
-@export var aroundPlayerRadius: float = 300.0
+@export var aroundPlayerRadius: float = 175.0
 @export var repositioningTimer: float
 @export var maxRepositioningTimer: float = 30.0
 
