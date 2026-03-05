@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpydlq50ud6dt"
-path="res://.godot/imported/SpawnIcon.png-4923a9954fcc39ff55fa26a0536bb1d1.ctex"
+uid="uid://d2omvbimwq6vb"
+path="res://.godot/imported/enemyhpbarfill.png-e69d3c7cd828220a5707f74473d6785c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/SpawnIcon.png"
-dest_files=["res://.godot/imported/SpawnIcon.png-4923a9954fcc39ff55fa26a0536bb1d1.ctex"]
+source_file="res://Sprites/UI/enemyhpbarfill.png"
+dest_files=["res://.godot/imported/enemyhpbarfill.png-e69d3c7cd828220a5707f74473d6785c.ctex"]
 
 [params]
 

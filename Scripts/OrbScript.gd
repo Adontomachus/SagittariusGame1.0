@@ -15,6 +15,7 @@ func _ready():
 	print("Found: ", objectTarget)
 	rotation_degrees = randf_range(0,360)
 	pass
+	
 	self.area_entered.connect(func(area) -> void:
 		if area is PlayerProjectileHitbox:
 		# Since the player score script is global and autoloaded, we will increment it from here
@@ -39,9 +40,9 @@ func _physics_process(delta):
 		movespeed -=  300 * delta
 	if (movespeed <= 0):
 		chaseTarget = true
-		if (chaseTarget):
-			movespeed += 355 * delta
-			look_at(objectTarget.global_position)
+	if (chaseTarget):
+		movespeed += 355 * delta
+		look_at(objectTarget.global_position)
 
 		#if (chaseTarget):
 

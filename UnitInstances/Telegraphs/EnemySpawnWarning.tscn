@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bamuq5osqtp76"]
 
 [ext_resource type="Script" uid="uid://c78qsvqbiiip" path="res://Scripts/EnemySpawnScript.gd" id="1_m54ri"]
-[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/SpawnIcon.png" id="2_t83xd"]
+[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="2_t83xd"]
 
 [node name="Node2D" type="Node2D" unique_id=1957876012]
 script = ExtResource("1_m54ri")

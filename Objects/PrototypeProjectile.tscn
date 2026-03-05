@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://73el6u0pp3v6"]
 
 [ext_resource type="Script" uid="uid://dq1ac3k2s8p6w" path="res://Scripts/ProjectileCollision.gd" id="1_78pnn"]
-[ext_resource type="Texture2D" uid="uid://lusulpgvi3ek" path="res://Sprites/projectilesprite.png" id="2_78pnn"]
+[ext_resource type="Texture2D" uid="uid://lusulpgvi3ek" path="res://Sprites/Game Elements/projectilesprite.png" id="2_78pnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
 size = Vector2(16, 16)

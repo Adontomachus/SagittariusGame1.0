@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gg2hyp501kug"
-path="res://.godot/imported/floordecal3.png-bc2ba6d0c54a3be846bebc5c6e544b85.ctex"
+uid="uid://c4j7vifn1y5ut"
+path="res://.godot/imported/PhysicsSolutions.png-840edb67b1a97d79d94f5fe2e33fcdc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/floordecal3.png"
-dest_files=["res://.godot/imported/floordecal3.png-bc2ba6d0c54a3be846bebc5c6e544b85.ctex"]
+source_file="res://Sprites/Game Elements/PhysicsSolutions.png"
+dest_files=["res://.godot/imported/PhysicsSolutions.png-840edb67b1a97d79d94f5fe2e33fcdc1.ctex"]
 
 [params]
 

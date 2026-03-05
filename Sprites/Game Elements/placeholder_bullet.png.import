@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct8ikya1sy0cc"
-path="res://.godot/imported/Rock.png-95ae564435d802a7d0216ac2115963c1.ctex"
+uid="uid://y0lc5umawlqs"
+path="res://.godot/imported/placeholder_bullet.png-afd373a858fc3e25d8b6f408cddfea67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rock.png"
-dest_files=["res://.godot/imported/Rock.png-95ae564435d802a7d0216ac2115963c1.ctex"]
+source_file="res://Sprites/Game Elements/placeholder_bullet.png"
+dest_files=["res://.godot/imported/placeholder_bullet.png-afd373a858fc3e25d8b6f408cddfea67.ctex"]
 
 [params]
 

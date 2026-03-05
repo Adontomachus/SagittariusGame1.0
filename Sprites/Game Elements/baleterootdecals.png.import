@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkfvna52fbeyp"
-path="res://.godot/imported/balete.png-cfc53cc2c3b0053e4eb9f1437007a2fa.ctex"
+uid="uid://cq7ait0ynoass"
+path="res://.godot/imported/baleterootdecals.png-c91e192b8d5edd767305a62507c7c6b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/balete.png"
-dest_files=["res://.godot/imported/balete.png-cfc53cc2c3b0053e4eb9f1437007a2fa.ctex"]
+source_file="res://Sprites/Game Elements/baleterootdecals.png"
+dest_files=["res://.godot/imported/baleterootdecals.png-c91e192b8d5edd767305a62507c7c6b4.ctex"]
 
 [params]
 

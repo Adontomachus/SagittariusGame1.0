@@ -25,7 +25,9 @@ func _ready() -> void:
 
 	return
 
-func _process(delta: float):
+func _process(delta):
+	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
+		print("THE INTERFACE HAS BEEN SYNCED TO THE BEAT OF THE MUSIC")
 	timeToChangeColor -= 1 * delta
 	#print (GlobalBeatSync.lastBeat)
 	if current_glow_strength < glow_strength: current_glow_strength = glow_strength

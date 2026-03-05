@@ -15,7 +15,7 @@ run/main_scene="uid://wxalwh8to6sn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.14117648, 0.13725491, 0.2, 1)
 boot_splash/image="uid://bo3fr61fwrhr"
-config/icon="res://Sprites/icon.svg"
+config/icon="res://Sprites/Game Elements/icon.svg"
 
 [autoload]
 
@@ -25,7 +25,10 @@ PointSystemScript="*uid://0djl3e1qunrm"
 [file_customization]
 
 folder_colors={
-"res://Scripts/Enemy/Legacy/": "gray"
+"res://Scripts/Enemy/Legacy/": "gray",
+"res://Sprites/Game Elements/": "blue",
+"res://Sprites/UI/": "teal",
+"res://UnitInstances/Miscellaneous/": "yellow"
 }
 
 [global_group]

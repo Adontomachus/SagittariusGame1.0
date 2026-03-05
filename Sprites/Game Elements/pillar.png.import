@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lusulpgvi3ek"
-path="res://.godot/imported/projectilesprite.png-0c37ac7d9bdd01e3fb81c39539376fc9.ctex"
+uid="uid://dtfy0oa2fi5gp"
+path="res://.godot/imported/pillar.png-48e075702a8e9f4a4d97700e842a8226.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/projectilesprite.png"
-dest_files=["res://.godot/imported/projectilesprite.png-0c37ac7d9bdd01e3fb81c39539376fc9.ctex"]
+source_file="res://Sprites/Game Elements/pillar.png"
+dest_files=["res://.godot/imported/pillar.png-48e075702a8e9f4a4d97700e842a8226.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq7ait0ynoass"
-path="res://.godot/imported/baleterootdecals.png-3427f2cb73b3e7430c3f65d0fd0a3ec7.ctex"
+uid="uid://bkqmqcy2d2wk5"
+path="res://.godot/imported/floordecal2.png-018f2258c74eaa6b32841c2f00407d4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/baleterootdecals.png"
-dest_files=["res://.godot/imported/baleterootdecals.png-3427f2cb73b3e7430c3f65d0fd0a3ec7.ctex"]
+source_file="res://Sprites/Game Elements/floordecal2.png"
+dest_files=["res://.godot/imported/floordecal2.png-018f2258c74eaa6b32841c2f00407d4a.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnger75m0yom3"]
 
-[ext_resource type="Texture2D" uid="uid://bkfvna52fbeyp" path="res://Sprites/balete.png" id="1_c4m88"]
+[ext_resource type="Texture2D" uid="uid://bkfvna52fbeyp" path="res://Sprites/Game Elements/balete.png" id="1_c4m88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rtr1u"]
 radius = 118.132454

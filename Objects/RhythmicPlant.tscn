@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr4cdt8k115vb"]
 
-[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/rhythmplant.png" id="1_ljkxo"]
+[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/Game Elements/rhythmplant.png" id="1_ljkxo"]
 [ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/AudioBased/BeatGlowEffect.gd" id="2_knn8v"]
 
 [sub_resource type="Environment" id="Environment_knn8v"]

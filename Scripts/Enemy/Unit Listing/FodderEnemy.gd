@@ -53,7 +53,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 # OBJECTS SPAWNS ON DELETION
 var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn")
-var pointObject := preload("res://UnitInstances/ScoreOrb.tscn")
+var pointObject := preload("res://UnitInstances/Miscellaneous/ScoreOrb.tscn")
 
 ## How many times will the enemy try to shoot the player
 @export var fire_rate: int = 5

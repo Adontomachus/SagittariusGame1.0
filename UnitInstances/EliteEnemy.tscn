@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_cyyc4"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/icon.svg" id="2_6b6pn"]
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_6b6pn"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_tx5hf"]
+[ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_22t2l"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_gngj8"]
 [ext_resource type="Script" uid="uid://dnh5knxqvb7bk" path="res://Scripts/Enemy/States/Closing.gd" id="5_cyyc4"]
+[ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_ilcit"]
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Recovery.gd" id="6_22t2l"]
 [ext_resource type="Script" uid="uid://di0vbq11imssp" path="res://Scripts/Enemy/States/Shooting.gd" id="7_ilcit"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="8_gngj8"]
@@ -47,7 +49,18 @@ script = ExtResource("3_tx5hf")
 shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 
+[node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=852058756]
+offset_left = -119.0
+offset_top = 32.000004
+offset_right = 18.772583
+offset_bottom = 103.930466
+rotation = -0.99837506
+nine_patch_stretch = true
+texture_under = ExtResource("4_22t2l")
+texture_progress = ExtResource("5_ilcit")
+
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]
+visible = false
 offset_left = -45.0
 offset_top = -62.0
 offset_right = 46.0
@@ -89,8 +102,8 @@ stream = ExtResource("8_gngj8")
 volume_db = -7.5
 pitch_scale = 0.75
 
-[connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
-[connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
-[connection signal="toggle_healthbar_visibility" from="." to="HealthBar" method="set_visible"]
+[connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
+[connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
+[connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
 [connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

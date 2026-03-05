@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2sn722adgr3s"
-path="res://.godot/imported/rhythmplant.png-f62db4f5de734b092fdf5e19fa7fdfdb.ctex"
+uid="uid://ceqllopkut21u"
+path="res://.godot/imported/point_orb.png-36e41aee1d487bc106abfd130d88f26b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/rhythmplant.png"
-dest_files=["res://.godot/imported/rhythmplant.png-f62db4f5de734b092fdf5e19fa7fdfdb.ctex"]
+source_file="res://Sprites/Game Elements/point_orb.png"
+dest_files=["res://.godot/imported/point_orb.png-36e41aee1d487bc106abfd130d88f26b.ctex"]
 
 [params]
 

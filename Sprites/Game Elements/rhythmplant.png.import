@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4j7vifn1y5ut"
-path="res://.godot/imported/PhysicsSolutions.png-6f2bc6de323d06579e44009d93df4fea.ctex"
+uid="uid://2sn722adgr3s"
+path="res://.godot/imported/rhythmplant.png-1ed392511721ce4b731e11e5c3fa8435.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PhysicsSolutions.png"
-dest_files=["res://.godot/imported/PhysicsSolutions.png-6f2bc6de323d06579e44009d93df4fea.ctex"]
+source_file="res://Sprites/Game Elements/rhythmplant.png"
+dest_files=["res://.godot/imported/rhythmplant.png-1ed392511721ce4b731e11e5c3fa8435.ctex"]
 
 [params]
 

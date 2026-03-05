@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlxsple886mcf"]
 
-[ext_resource type="Texture2D" uid="uid://dtfy0oa2fi5gp" path="res://Sprites/pillar.png" id="1_qm1x1"]
+[ext_resource type="Texture2D" uid="uid://dtfy0oa2fi5gp" path="res://Sprites/Game Elements/pillar.png" id="1_qm1x1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(173.9113, 188.18759)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtfy0oa2fi5gp"
-path="res://.godot/imported/pillar.png-c2bdcd17cc63db6a43caff65adaaf4b5.ctex"
+uid="uid://bpydlq50ud6dt"
+path="res://.godot/imported/SpawnIcon.png-2f77512fb427d4ce4875707079558b00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/pillar.png"
-dest_files=["res://.godot/imported/pillar.png-c2bdcd17cc63db6a43caff65adaaf4b5.ctex"]
+source_file="res://Sprites/Game Elements/SpawnIcon.png"
+dest_files=["res://.godot/imported/SpawnIcon.png-2f77512fb427d4ce4875707079558b00.ctex"]
 
 [params]
 

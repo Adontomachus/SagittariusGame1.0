@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkmhm6uwhmeo4"
-path="res://.godot/imported/Sagittarius.png-7926f95f5b93f290c58675ef275dc60b.ctex"
+uid="uid://ct8ikya1sy0cc"
+path="res://.godot/imported/Rock.png-6400b2b1c6453c7fc961d2c03e2a0a20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Sagittarius.png"
-dest_files=["res://.godot/imported/Sagittarius.png-7926f95f5b93f290c58675ef275dc60b.ctex"]
+source_file="res://Sprites/Game Elements/Rock.png"
+dest_files=["res://.godot/imported/Rock.png-6400b2b1c6453c7fc961d2c03e2a0a20.ctex"]
 
 [params]
 

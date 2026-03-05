@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpvuw4qc3gpsv"
-path="res://.godot/imported/floordecoration.png-a5ddf9f44650a70b94d51751c8de53a6.ctex"
+uid="uid://dkmhm6uwhmeo4"
+path="res://.godot/imported/Sagittarius.png-c17dba0fe5c94d7c763689dcd8fa1fef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/floordecoration.png"
-dest_files=["res://.godot/imported/floordecoration.png-a5ddf9f44650a70b94d51751c8de53a6.ctex"]
+source_file="res://Sprites/Game Elements/Sagittarius.png"
+dest_files=["res://.godot/imported/Sagittarius.png-c17dba0fe5c94d7c763689dcd8fa1fef.ctex"]
 
 [params]
 
