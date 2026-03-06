@@ -95,6 +95,14 @@ player = NodePath("Player")
 animation_player = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator/AnimationPlayer")
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
+[node name="BeatSyncNotes" type="Node" parent="." unique_id=820838427]
+
+[node name="WholeNote" type="Node" parent="BeatSyncNotes" unique_id=207437856]
+
+[node name="HalfNote" type="Node" parent="BeatSyncNotes" unique_id=1103635388]
+
+[node name="QuarterNote" type="Node" parent="BeatSyncNotes" unique_id=2129994750]
+
 [node name="SpawningState" type="Node" parent="." unique_id=944259588]
 
 [node name="Recovery" type="Node" parent="SpawningState" unique_id=363654248]
@@ -443,6 +451,7 @@ maxHealthPoints = 750
 
 [node name="Elite" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
 position = Vector2(1046, 210)
+successfulChanceToAttack = 1.0
 
 [node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
 position = Vector2(235, 225)

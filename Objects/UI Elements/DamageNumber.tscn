@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dow0gqpjempmf"]
+
+[ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_idwpu"]
+
+[sub_resource type="Environment" id="Environment_ctvt5"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+
+[node name="DamageNumber" type="Node" unique_id=1836654256]
+script = ExtResource("1_idwpu")
+
+[node name="DamageText" type="Label" parent="." unique_id=1522098737]
+self_modulate = Color(1.3652279, 1.6357207, 1.6852883, 1)
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+text = "80"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DamageText" unique_id=1806514149]
+environment = SubResource("Environment_ctvt5")

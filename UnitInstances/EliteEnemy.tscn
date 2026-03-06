@@ -25,7 +25,7 @@ maxMoveSpeed = 150.0
 maxHealthPoints = 200
 aroundPlayerRadius = 200.0
 shoot_point = NodePath("ShootPoint")
-attackPower = 14.0
+attackPower = 16.0
 successfulChanceToAttack = 5.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
@@ -50,10 +50,10 @@ shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=852058756]
-offset_left = -119.0
-offset_top = 32.000004
-offset_right = 18.772583
-offset_bottom = 103.930466
+offset_left = -85.0
+offset_top = 18.999998
+offset_right = -21.017517
+offset_bottom = 52.40497
 rotation = -0.99837506
 nine_patch_stretch = true
 texture_under = ExtResource("4_22t2l")

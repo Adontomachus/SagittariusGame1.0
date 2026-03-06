@@ -46,6 +46,7 @@ var healthPoints: int = 80
 # SHOOTING
 @export_group("Shooting")
 @export var shoot_point: Marker2D
+@export	var	inaccuracy: float = 12
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 @export var attackPower: float
@@ -124,7 +125,7 @@ func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
 	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
 	projectile_instance.change_projectile_modulation(color)
 	projectile_instance.position = shoot_point.get_global_position()
-	projectile_instance.rotation_degrees = shoot_point.rotation_degrees
+	projectile_instance.rotation_degrees = shoot_point.rotation_degrees + randf_range(-inaccuracy,inaccuracy)
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
 	print_debug("Damage: %s" % (attackPower * modifier))
 

@@ -22,12 +22,16 @@ background_mode = 3
 glow_enabled = true
 glow_intensity = 2.85
 
-[node name="StationaryTurretEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="StationaryTurretEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 script = ExtResource("1_j2xs3")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 maxHealthPoints = 300
 amountOfPointOrbs = 5
+shoot_point = NodePath("ShootPoint")
+inaccuracy = 35.0
+attackPower = 7.0
+successfulChanceToAttack = 5.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -45,6 +49,8 @@ position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.5625, 0.56249994)
 texture = ExtResource("2_k64of")
 
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1064146345]
+
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_0ar4y")
 
@@ -60,14 +66,21 @@ offset_right = 46.0
 offset_bottom = -35.0
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=2135190990]
-offset_left = -118.0
-offset_top = 30.0
-offset_right = 4.499794
-offset_bottom = 94.291855
+offset_left = -96.82109
+offset_top = 20.200672
+offset_right = -16.750511
+offset_bottom = 62.224308
 rotation = -0.99837506
 nine_patch_stretch = true
 texture_under = ExtResource("4_ukt1m")
 texture_progress = ExtResource("5_3aqhm")
+
+[node name="Label" type="Label" parent="." unique_id=1865937429]
+offset_left = -40.0
+offset_top = 35.0
+offset_right = 40.0
+offset_bottom = 58.0
+horizontal_alignment = 1
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("4_dacm3")
@@ -99,3 +112,4 @@ environment = SubResource("Environment_k64of")
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

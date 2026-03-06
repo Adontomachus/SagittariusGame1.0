@@ -17,13 +17,16 @@ radius = 46.702705
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 32.0
 
-[node name="ShooterEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="ShooterEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 script = ExtResource("1_ont4m")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(4, 8)
 maxMoveSpeed = 125.0
 maxHealthPoints = 135
+aroundPlayerRadius = 180.0
+shoot_point = NodePath("ShootPoint")
+attackPower = 9.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -47,11 +50,14 @@ script = ExtResource("3_w8dmg")
 shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=495462547]
+position = Vector2(1, -1)
+
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=1971254556]
-offset_left = -82.0
-offset_top = 19.000002
-offset_right = -4.5998154
-offset_bottom = 59.622116
+offset_left = -72.0
+offset_top = 14.999998
+offset_right = -13.699577
+offset_bottom = 45.597946
 rotation = -0.99837506
 nine_patch_stretch = true
 texture_under = ExtResource("4_f1sqj")
@@ -64,9 +70,16 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
+[node name="Label" type="Label" parent="." unique_id=1283275294]
+offset_left = -35.0
+offset_top = 23.0
+offset_right = 37.0
+offset_bottom = 46.0
+horizontal_alignment = 1
+
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("4_el5wn")
-starting_state = NodePath("EnemyStateChase")
+starting_state = NodePath("EnemyStateStrafing")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("recovery_state")]
@@ -93,3 +106,4 @@ pitch_scale = 0.75
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]
