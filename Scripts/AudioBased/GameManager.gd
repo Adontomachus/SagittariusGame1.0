@@ -29,9 +29,9 @@ const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.t
 var playerSpawnDistance = 200
 var enemySpawnWeightCounter: int
 var rarityWeight: float
+@export var maxRarityValue: float
 var enemySpawnCounter: int
 var enemyCount: int
-
 # This checks if its eligible for the next wave to spawn as well as points.
 var waveCompleted: bool
 #var playerPoints: int
@@ -75,7 +75,8 @@ func _ready():
 	pass
 
 #region TEMPORARY FUNCTIONS, SUBJECT TO CHANGE	
-func _next_wave() -> void:
+func _next_wave(rarityIncrement) -> void:
+	rarityWeight += rarityIncrement
 	return
 	
 func _finish_wave() -> void:
@@ -140,6 +141,10 @@ func _process(delta):
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
+		#Testing enemy spawning
+		#if randf_range(rarityWeight, maxRarityValue) >= 5:
+			#parent.shoot_projectile()
+			#pass
 		print("Testing! Beat Synced! Spawns Remaining: ", enemySpawnCounter)
 		if _spawningBehavior == spawningBehavior.Preparation:
 			print("Preparation")
@@ -168,6 +173,7 @@ func _process(delta):
 			enemySpawnCounter = 5 + level_wave
 			level_wave += 1
 			nextDuration = 8
+			_next_wave(1)
 
 	# If the current wave is completed
 		

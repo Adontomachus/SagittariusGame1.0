@@ -15,8 +15,9 @@ radius = 21.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpdv2"]
 radius = 19.104973
 
-[node name="Player" type="CharacterBody2D" unique_id=1972557133 groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" unique_id=1972557133 node_paths=PackedStringArray("player_sprite") groups=["PlayerObject"]]
 script = ExtResource("1_0nxw3")
+player_sprite = NodePath("PlayerSprite")
 
 [node name="ShotPoint" type="Marker2D" parent="." unique_id=329104356]
 

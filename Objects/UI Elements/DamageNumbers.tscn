@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://darl8yp86wpbm"]
+
+[ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_jnfq4"]
+
+[sub_resource type="Environment" id="Environment_y60un"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.76
+
+[node name="DamageNumberUpdated" type="Label" unique_id=1560617677]
+self_modulate = Color(1.6804099, 1.9316802, 0.91063404, 1)
+offset_top = -1.0
+offset_right = 105.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 28
+text = "50"
+script = ExtResource("1_jnfq4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526374861]
+environment = SubResource("Environment_y60un")

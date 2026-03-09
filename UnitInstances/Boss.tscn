@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_g16c8"]
+[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_oc4nc"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w0bs6"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_kdy0d"]
@@ -33,25 +34,29 @@ scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
-scale = Vector2(1.1328125, 1.1328125)
-texture = ExtResource("2_g16c8")
+scale = Vector2(0.24122807, 0.24122804)
+texture = ExtResource("2_oc4nc")
 
 [node name="Sprite" type="Sprite2D" parent="Sprite" unique_id=1101179799]
+visible = false
 position = Vector2(-43.255177, 60.91035)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
 
 [node name="Sprite2" type="Sprite2D" parent="Sprite" unique_id=2088960222]
+visible = false
 position = Vector2(45.020687, 61.793102)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
 
 [node name="Sprite3" type="Sprite2D" parent="Sprite" unique_id=2021201370]
+visible = false
 position = Vector2(-45.020687, -52.08276)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
 
 [node name="Sprite4" type="Sprite2D" parent="Sprite" unique_id=1484638533]
+visible = false
 position = Vector2(48.551716, -52.082764)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
@@ -80,9 +85,10 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
-[node name="EnemyStateMachine" type="Node" parent="." unique_id=1146269158 node_paths=PackedStringArray("starting_state")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1146269158 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_b7mrf")
 starting_state = NodePath("EnemyStatePositioning")
+sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("recovery_state")]

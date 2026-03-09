@@ -12,6 +12,7 @@ script = ExtResource("1_idwpu")
 
 [node name="DamageText" type="Label" parent="." unique_id=1522098737]
 self_modulate = Color(1.3652279, 1.6357207, 1.6852883, 1)
+z_index = 25
 offset_left = -24.0
 offset_top = -16.0
 offset_right = 24.0

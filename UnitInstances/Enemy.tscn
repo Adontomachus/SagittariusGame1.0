@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cn424tg6fsbhv"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_s7bn3"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_2hac7"]
+[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_3oa7e"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_rvq43"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_3oa7e"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_pnojx"]
@@ -32,8 +32,8 @@ shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("2_2hac7")
+scale = Vector2(0.0745614, 0.07456144)
+texture = ExtResource("2_3oa7e")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_rvq43")
@@ -59,9 +59,10 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_3oa7e")
 texture_progress = ExtResource("5_jj52o")
 
-[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_pnojx")
 starting_state = NodePath("EnemyStateChase")
+sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("recovery_state")]

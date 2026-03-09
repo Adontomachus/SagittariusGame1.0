@@ -3,6 +3,8 @@ extends EnemyState
 
 @export var after_closing_state: EnemyState
 
+
+
 func enter() -> void:
 	super()
 	reposition(parent.aroundPlayerRadius)

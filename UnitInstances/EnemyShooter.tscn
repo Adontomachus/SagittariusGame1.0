@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgxrqck134vr5"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_ont4m"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_taj0e"]
+[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_el5wn"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w8dmg"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_el5wn"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_f1sqj"]
@@ -21,12 +21,13 @@ radius = 32.0
 script = ExtResource("1_ont4m")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
-stamina_range = Vector2(4, 8)
-maxMoveSpeed = 125.0
+stamina_range = Vector2(3, 5)
+maxMoveSpeed = 140.0
 maxHealthPoints = 135
 aroundPlayerRadius = 180.0
 shoot_point = NodePath("ShootPoint")
 attackPower = 9.0
+successfulChanceToAttack = 5.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -40,8 +41,8 @@ shape = SubResource("CircleShape2D_s7bn3")
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 modulate = Color(1, 0.41687015, 0, 1)
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.4375, 0.43749994)
-texture = ExtResource("2_taj0e")
+scale = Vector2(0.083333336, 0.083333366)
+texture = ExtResource("2_el5wn")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_w8dmg")
@@ -77,9 +78,10 @@ offset_right = 37.0
 offset_bottom = 46.0
 horizontal_alignment = 1
 
-[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_el5wn")
 starting_state = NodePath("EnemyStateStrafing")
+sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("recovery_state")]
@@ -89,7 +91,7 @@ metadata/_custom_type_script = "uid://bu5go608c7dqq"
 
 [node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1587728838 node_paths=PackedStringArray("state_to_return")]
 script = ExtResource("6_ty1mq")
-state_to_return = NodePath("../EnemyStateChase")
+state_to_return = NodePath("../EnemyStateStrafing")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
 [node name="EnemyStateStrafing" type="Node" parent="EnemyStateMachine" unique_id=1393360863 node_paths=PackedStringArray("recovery_state")]

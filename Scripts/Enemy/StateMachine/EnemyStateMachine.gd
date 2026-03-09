@@ -4,6 +4,7 @@ extends Node
 signal state_changed(state_name: String)
 
 @export var starting_state: EnemyState
+@export var sprite: Sprite2D
 var current_state: EnemyState
 
 func init(parent: Enemy, animations: AnimationPlayer = null, audio: AudioStreamPlayer2D = null):

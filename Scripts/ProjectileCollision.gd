@@ -15,6 +15,7 @@ var projectileLifetime
 var projectile_damage: float = 5
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
+var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 
 #TESTING PURPOSES
 var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
@@ -36,16 +37,24 @@ func _ready():
 		if (projectileSide == ProjectileSide.Player):
 			if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
 				area.modify_enemy_health(-projectile_damage)
+				#Hit feedback
 				var hitEffect = unitHitEffects.instantiate()
 				hitEffect.position = self.get_global_position()
 				get_tree().get_root().call_deferred("add_child", hitEffect)
+				# Damage Number Feedback
+				var damageFeedback = damageNumber.instantiate()
+				damageFeedback.position = self.get_global_position()
+				get_tree().get_root().call_deferred("add_child", damageFeedback)
 				queue_free()
 
 		if (projectileSide == ProjectileSide.Enemy):
 			if area is PlayerProjectileHitbox: #(area.is_in_group("PlayerObject")):
+				# Hit feedback
 				var hitEffect = unitHitEffects.instantiate()
 				hitEffect.position = self.get_global_position()
 				get_tree().get_root().call_deferred("add_child", hitEffect)
+				# Damage Number Feedback
+
 				area.modify_player_health(-projectile_damage)
 				queue_free()
 	)

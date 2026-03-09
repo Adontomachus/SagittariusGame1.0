@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_cyyc4"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_6b6pn"]
+[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_22t2l"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_tx5hf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_22t2l"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_gngj8"]
@@ -39,8 +39,8 @@ shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 position = Vector2(-7.1525574e-07, 1.0000005)
-scale = Vector2(0.515625, 0.515625)
-texture = ExtResource("2_6b6pn")
+scale = Vector2(0.08114035, 0.08114033)
+texture = ExtResource("2_22t2l")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_tx5hf")
@@ -68,9 +68,10 @@ offset_bottom = -35.0
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=278116846]
 
-[node name="EnemyStateMachine" type="Node" parent="." unique_id=937708422 node_paths=PackedStringArray("starting_state")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=937708422 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_gngj8")
 starting_state = NodePath("EnemyStateClosing")
+sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateClosing" type="Node" parent="EnemyStateMachine" unique_id=121788740 node_paths=PackedStringArray("after_closing_state", "recovery_state")]

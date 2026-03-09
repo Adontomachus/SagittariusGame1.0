@@ -4,6 +4,7 @@ extends Area2D
 var movespeed = randf_range(5,500)
 var velocity: Vector2
 var pointsAmount = 150
+var healAmount: float = 1
 var homeTowardsPlayer = false
 var chaseTarget: bool = false
 @onready var player: Node2D
@@ -25,6 +26,7 @@ func _ready():
 			get_tree().get_root().call_deferred("add_child", hitEffect)
 			PointSystemScript.playerScore += pointsAmount
 			emit_effects()
+			area.modify_player_health(healAmount)
 			queue_free()
 		)
 

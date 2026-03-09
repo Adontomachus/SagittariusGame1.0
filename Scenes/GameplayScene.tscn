@@ -292,9 +292,10 @@ layout_mode = 1
 [node name="LegacyHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
 visible = false
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("player_sprite") groups=["PlayerObject"]]
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
+player_sprite = NodePath("Sprite2D")
 
 [node name="ShotPoint" type="Marker2D" parent="Player" unique_id=1755826713]
 
@@ -582,6 +583,7 @@ texture = ExtResource("31_40ckn")
 
 [node name="ShooterEnemy" parent="." unique_id=1677205273 instance=ExtResource("32_40ckn")]
 position = Vector2(1064, 401)
+successfulChanceToAttack = 5.0
 
 [node name="StationaryTurretEnemy" parent="." unique_id=141205280 instance=ExtResource("33_r8kr6")]
 position = Vector2(1180, 47)

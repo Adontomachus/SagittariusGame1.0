@@ -19,8 +19,10 @@ var playerDirection: Vector2
 var projectile_damage: float = 30.0
 var projectile := preload("res://Objects/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
-# @onready var player_sprite: Sprite2D = $PlayerSprite
+@export var player_sprite: Sprite2D
 
+# Shot properties
+@onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 
 
@@ -42,14 +44,15 @@ func get_input():
 func _process(delta):
 	# SPRITE FLIPPING WHEN TURNING AROUND
 	if get_global_mouse_position().x < global_position.x:
-		#player_sprite.flip_h = true
+		player_sprite.flip_h = true
 		# shotgun = global_position + weaponOffset
 		#shotgun.flip_v = true
 		pass
-	#else:
-	#	player_sprite.flip_h = false
+	else:
+		player_sprite.flip_h = false
 		#shotgun.flip_v = false
-	look_at(get_global_mouse_position())
+	#look_at(get_global_mouse_position())
+	shot_point.look_at(get_global_mouse_position())
 	
 func _physics_process(delta):
 
@@ -63,8 +66,8 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	projectile_instance.change_damage(projectile_damage * modifier)
 	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
 	projectile_instance.change_projectile_modulation(color)
-	projectile_instance.position = self.get_global_position()
-	projectile_instance.rotation_degrees = self.rotation_degrees
+	projectile_instance.position = shot_point.get_global_position()
+	projectile_instance.rotation_degrees = shot_point.rotation_degrees
 
 	var shotEffect = projectileShotEffect.instantiate()
 	shotEffect.position = self.get_global_position()
@@ -90,6 +93,7 @@ func _on_enemy_collision_area_entered(area: Area2D) -> void:
 func modify_current_player_health(modification: int) -> void:
 	print("Player HP is now: ", healthPoints)
 	healthPoints += modification
+	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	if (healthPoints <= 0):
 		print("Game Over!")
 		get_tree().paused = true

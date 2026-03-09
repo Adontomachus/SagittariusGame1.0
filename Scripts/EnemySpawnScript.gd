@@ -7,7 +7,11 @@ var measuresBeforeSpawning = 4
 var beatLifetime = 4
 #COLOR VALUES
 var redness = 0
+const SCALING = preload("res://Scripts/AudioBased/GameManager.gd")
 @export var enemyToSpawn = preload("res://UnitInstances/Enemy.tscn")
+@export var altEnemy = preload("res://UnitInstances/EnemyShooter.tscn")
+@export var eliteEnemyToSpawn = preload("res://UnitInstances/EliteEnemy.tscn")
+@export var bossSpawn = preload("res://UnitInstances/Boss.tscn")
 
 func _ready() -> void:
 	return
