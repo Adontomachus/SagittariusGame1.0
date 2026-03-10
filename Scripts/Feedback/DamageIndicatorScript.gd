@@ -6,13 +6,15 @@ enum DamageSide {
 }
 
 @export var indicator_side = DamageSide.Player
-@onready var damage_text: Label = $DamageText
 
-@export var damage_value: int = 50
+@onready var damage_text: Label = $"."
+
+@export var damage_value: int = 46
 @export var damage_crit: bool
 @export var fade_duration: float = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	damage_text.text = str(round(damage_value))
 	_fade_out(fade_duration)
 	pass # Replace with function body.
 

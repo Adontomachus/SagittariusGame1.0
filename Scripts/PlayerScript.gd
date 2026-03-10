@@ -11,7 +11,11 @@ var healthPoints: float:
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
 		return healthPoints
+		
 var maxHealthPoints: float = 100.0
+
+var experiencePoints: float = 0
+var maxExperiencePoints: float = 200
 
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0

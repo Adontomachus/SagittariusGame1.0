@@ -110,6 +110,7 @@ func _pause_and_unpause_input():
 			_resumeGame()
 #endregion
 	
+	
 # SPAWNING WIP #
 var randomNumber = randf_range(0,1)
 
@@ -117,7 +118,6 @@ var playerRadius = 300
 var instantiationPositions: Vector2
 
 func _process(delta):
-	
 	# Gets the number of enemies present in the screen
 	enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
 	#region value display for UI
@@ -176,9 +176,7 @@ func _process(delta):
 			_next_wave(1)
 
 	# If the current wave is completed
-		
-
-		
+				
 #endregion
 	
 	
@@ -206,11 +204,14 @@ func _process(delta):
 	#endregion
 	
 	
+#region ENEMY SPAWNING FUNCTION	
 func _spawn_enemy():
-	
 	if enemySpawnCounter >= 0:
 		var enemy = enemyToSpawn.instantiate()
+		enemy.rarityWeight = rarityWeight
+		#if (enemyoverlaps_area())
 		enemy.position = instantiationPositions
+	
 		#if (randomNumber < 0.25):
 		#	enemy.unitType = enemy.EnemyType.Normal				
 		#else:
@@ -218,10 +219,13 @@ func _spawn_enemy():
 		#get_tree().get_root().call_deferred("add_child", enemy)
 		#spawnTimer = randf_range(5,10)
 		add_child(enemy)
-		
+#endregion		
+
+#region FUNCTION FOR MOUSE LOCATION		
 func _locate_mouse_pointer():
 	cursorLocator.global_position = (player_target.global_position + actualMousePosition) / 2
 	return
+#endregion
 
 #TEMPORARY
 func _check_if_eligible_next_wave(): 

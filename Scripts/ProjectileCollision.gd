@@ -44,6 +44,7 @@ func _ready():
 				# Damage Number Feedback
 				var damageFeedback = damageNumber.instantiate()
 				damageFeedback.position = self.get_global_position()
+				damageFeedback.damage_value = projectile_damage
 				get_tree().get_root().call_deferred("add_child", damageFeedback)
 				queue_free()
 
@@ -53,6 +54,7 @@ func _ready():
 				var hitEffect = unitHitEffects.instantiate()
 				hitEffect.position = self.get_global_position()
 				get_tree().get_root().call_deferred("add_child", hitEffect)
+				
 				# Damage Number Feedback
 
 				area.modify_player_health(-projectile_damage)

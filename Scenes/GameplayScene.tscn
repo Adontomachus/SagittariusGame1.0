@@ -167,6 +167,16 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_b4hlm")
 texture_progress = ExtResource("5_fklr0")
 
+[node name="ProgressBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=787785722]
+modulate = Color(0, 0.60124344, 1, 1)
+layout_mode = 0
+offset_left = 146.0
+offset_top = 118.0
+offset_right = 406.0
+offset_bottom = 131.0
+theme_override_font_sizes/font_size = 6
+value = 2.1
+
 [node name="Score" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1798433667]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
@@ -573,7 +583,7 @@ texture = ExtResource("30_81sgd")
 
 [node name="Floordecal10" type="Sprite2D" parent="BGDecals" unique_id=1820229916]
 z_index = -18
-position = Vector2(224, 232)
+position = Vector2(221, 259)
 texture = ExtResource("30_81sgd")
 
 [node name="Floordecal11" type="Sprite2D" parent="BGDecals" unique_id=871525315]
@@ -583,7 +593,6 @@ texture = ExtResource("31_40ckn")
 
 [node name="ShooterEnemy" parent="." unique_id=1677205273 instance=ExtResource("32_40ckn")]
 position = Vector2(1064, 401)
-successfulChanceToAttack = 5.0
 
 [node name="StationaryTurretEnemy" parent="." unique_id=141205280 instance=ExtResource("33_r8kr6")]
 position = Vector2(1180, 47)
