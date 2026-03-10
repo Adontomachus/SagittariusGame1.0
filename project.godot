@@ -25,6 +25,8 @@ PointSystemScript="*uid://0djl3e1qunrm"
 [file_customization]
 
 folder_colors={
+"res://Scenes/Gameplay/": "blue",
+"res://Scenes/Interface/": "purple",
 "res://Scripts/Enemy/Legacy/": "gray",
 "res://Sprites/Game Elements/": "blue",
 "res://Sprites/UI/": "teal",

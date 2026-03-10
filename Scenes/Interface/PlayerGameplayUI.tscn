@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="6_o8lrg"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="7_lhccn"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="8_fxcfy"]
-[ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scenes/UpdatedBossHealthUI.gd" id="9_br76c"]
-[ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/pause_screen.tscn" id="10_6e1x5"]
+[ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="9_br76c"]
+[ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="10_6e1x5"]
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
