@@ -26,19 +26,18 @@ func _ready() -> void:
 	return
 
 func _process(delta):
-	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
-		print("THE INTERFACE HAS BEEN SYNCED TO THE BEAT OF THE MUSIC")
+	#if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
+	#	print("THE INTERFACE HAS BEEN SYNCED TO THE BEAT OF THE MUSIC")
 	timeToChangeColor -= 1 * delta
 	#print (GlobalBeatSync.lastBeat)
 	if current_glow_strength < glow_strength: current_glow_strength = glow_strength
 	else: current_glow_strength -= 1 * delta
 
-		
 	change_color()
-	if timeToChangeColor < 0:
-		timeToChangeColor = 0.5
-		current_glow_strength = 1.15
-		return
+	#if timeToChangeColor < 0:
+	#	timeToChangeColor = 0.5
+	#	current_glow_strength = 1.15
+	#	return
 	pass
 
 func ui_indicator_pulse() -> void:
@@ -50,7 +49,8 @@ func ui_indicator_pulse() -> void:
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat / 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 
 
-	
+func glow_on_beat() -> void:
+	current_glow_strength = 1.2
 
 func change_color() -> void:
 	updated_boss_health_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)

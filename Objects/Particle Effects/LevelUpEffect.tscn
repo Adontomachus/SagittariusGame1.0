@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bgn7itqb3g2bv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_5nsfc"]
+_limits = [-500.0, 500.0, 0.0, 1.0]
+_data = [Vector2(0, 500), 0.0, 0.0, 0, 0, Vector2(0.42702705, -500), 0.0, 0.0, 0, 0, Vector2(1, -500), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cd7wm"]
+offsets = PackedFloat32Array(0, 0.8679245)
+colors = PackedColorArray(0.89325845, 0.9218727, 0.35692585, 1, 0.58648556, 0.46254948, 0.1428257, 1)
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="GDScript" id="GDScript_h052y"]
+script/source = "extends CPUParticles2D
+
+var timedShot = lifetime - 0.05
+
+func _process(delta):
+	timedShot -= delta
+	if (timedShot < 0):
+		queue_free()
+
+func _ready():
+	print(\"Particles emitted!\")
+
+func _on_finished() -> void:
+	queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="Environment" id="Environment_5nsfc"]
+glow_enabled = true
+glow_intensity = 4.4
+glow_strength = 0.95
+
+[node name="LevelUpEffect" type="CPUParticles2D" unique_id=1427452623]
+self_modulate = Color(1.9418397, 3.2944162, 1.4935573, 1)
+amount = 75
+texture = SubResource("CanvasTexture_jhxfm")
+lifetime = 0.75
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 4.28
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 131.31
+angular_velocity_min = 176.6
+angular_velocity_max = 285.29
+orbit_velocity_curve = SubResource("Curve_5nsfc")
+linear_accel_max = 22.6
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_t5oqc")
+color_ramp = SubResource("Gradient_cd7wm")
+anim_speed_curve = SubResource("Curve_jhxfm")
+script = SubResource("GDScript_h052y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=802354431]
+environment = SubResource("Environment_5nsfc")
+
+[node name="LevelUpLabel" type="Label" parent="." unique_id=238317789]
+offset_left = -34.434784
+offset_top = 26.0
+offset_right = 34.434784
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 20
+text = "Lv UP!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="finished" from="." to="." method="_on_finished"]

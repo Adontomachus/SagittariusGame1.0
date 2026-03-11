@@ -50,7 +50,7 @@ var healthPoints: int = 80
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 @export var attackPower: float
-@export var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+@export var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 
 # OBJECTS SPAWNS ON DELETION
 var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn")

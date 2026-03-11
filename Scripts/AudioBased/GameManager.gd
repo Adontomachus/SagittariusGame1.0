@@ -24,7 +24,7 @@ var comboCount = 0
 @export var player_target: Marker2D # = $InterfaceElements/PlayerTarget
 #LEVEL VARIABLES
 
-#SPAWNING VARIABLES AND STATS
+#region SPAWNING VARIABLES AND STATS
 const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn")
 var playerSpawnDistance = 200
 var enemySpawnWeightCounter: int
@@ -35,7 +35,11 @@ var enemyCount: int
 # This checks if its eligible for the next wave to spawn as well as points.
 var waveCompleted: bool
 #var playerPoints: int
-#SPAWNING VARIABLES AND STATS
+#endregion
+
+#region SIGNALS FOR BEAT PULSE AESTHETICS
+signal pulse_on_beat
+#endregion
 
 #region UI Elements for displaying values along with game notifications
 @onready var score: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/Score
@@ -140,6 +144,8 @@ func _process(delta):
 			wave_notification.self_modulate.a = 0
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
+		# Emit game feel signals for the game
+		pulse_on_beat.emit()
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
 		#Testing enemy spawning
 		#if randf_range(rarityWeight, maxRarityValue) >= 5:
@@ -189,7 +195,7 @@ func _process(delta):
 		get_tree().paused = false
 	#endregion
 	
-	# Spawning Enemies
+	#region Spawning Enemies
 	spawnTimer -= delta
 	#if _spawningBehavior == spawningBehavior.Spawning:
 	if (spawnTimer < 0 && enemySpawnCounter != 0 && _spawningBehavior == spawningBehavior.Spawning):
@@ -197,6 +203,7 @@ func _process(delta):
 		spawnTimer = randf_range(2,3)
 		enemySpawnCounter -= 1
 		_spawn_enemy()
+	#endregion Spawning Enemies		
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
 	instantiationPositions = Vector2(player.global_position.x + randf_range(200,600), player.global_position.y + randf_range(155,455))

@@ -3,8 +3,13 @@ extends CharacterBody2D
 
 signal camera_shake(shakeDuration)
 
+# Health bar signals
 signal send_maximum_health(max_health: float)
 signal send_current_health(health: float)
+
+# Experience bar signals
+signal send_maximum_xp(max_xp: float)
+signal send_current_xp(xp: float)
 
 var healthPoints: float:
 	set(value):
@@ -14,15 +19,16 @@ var healthPoints: float:
 		
 var maxHealthPoints: float = 100.0
 
-var experiencePoints: float = 0
-var maxExperiencePoints: float = 200
+var experiencePoints: int = 0
+var maxExperiencePoints: int = 60
 
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
 var playerDirection: Vector2
 var projectile_damage: float = 30.0
-var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
+var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
 @export var player_sprite: Sprite2D
 
 # Shot properties
@@ -38,8 +44,14 @@ func _ready():
 	
 	healthPoints = maxHealthPoints
 	
+	# Player experience bar
+	send_maximum_xp.emit(maxExperiencePoints)
+	send_current_xp.emit(experiencePoints)
+
+	# Player health bar
 	send_maximum_health.emit(maxHealthPoints)
 	send_current_health.emit(healthPoints)
+	
 	
 func get_input():
 	playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -75,8 +87,6 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 
 	var shotEffect = projectileShotEffect.instantiate()
 	shotEffect.position = self.get_global_position()
-
-	
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
 	get_tree().get_root().call_deferred("add_child", shotEffect)
 
@@ -102,5 +112,30 @@ func modify_current_player_health(modification: int) -> void:
 		print("Game Over!")
 		get_tree().paused = true
 	send_current_health.emit(healthPoints)
+	
+func modify_current_xp(modification: int) -> void:
+	print("Player XP is now: ", experiencePoints)
+	experiencePoints += modification
+	if (experiencePoints > maxExperiencePoints): 
+		upgrade_player_stats()
+	send_current_xp.emit(experiencePoints)
+
+# Function for upgrading player stats upon levelling up
+func upgrade_player_stats() -> void:
+	# Increases health and damage by 4% and maximum XP requirement by 6%
+	# Heals player for 15 HP and resets current experience points by 0
+	maxHealthPoints = maxHealthPoints * 1.04
+	projectile_damage = projectile_damage * 1.04
+	maxExperiencePoints = maxExperiencePoints * 1.06
+	experiencePoints = 0
+	# Level up effects
+	var levelUpEffect = upgradeEffect.instantiate()
+	levelUpEffect.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", levelUpEffect)
+	# Updates maximum health values
+	send_current_xp.emit(experiencePoints)
+	send_maximum_xp.emit(maxExperiencePoints)
+	send_maximum_health.emit(maxHealthPoints)
+	pass
 
 	

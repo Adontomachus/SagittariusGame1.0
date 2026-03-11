@@ -7,6 +7,11 @@ var measuresBeforeSpawning = 4
 var beatLifetime = 4
 var rarityWeight: float
 var eliteRarityWeight: float
+
+@export_category("Enemy Statistic Modifiers before Spawn")
+@export var unitHealthPoints = 60
+@export var maxUnitHealthPoints = 60
+@export var unitAttackPower = 14
 #COLOR VALUES
 var redness = 0
 
@@ -16,6 +21,7 @@ const SCALING = preload("res://Scripts/AudioBased/GameManager.gd")
 # Const value for enemy spawn rarities
 const CHANCE_RANGE: Vector2 = Vector2(0, 10)
 
+@export_category("Enemy Instance to Spawn")
 @export var enemyToSpawn = preload("res://UnitInstances/Enemy.tscn")
 @export var altEnemy = preload("res://UnitInstances/EnemyShooter.tscn")
 @export var eliteEnemy = preload("res://UnitInstances/EliteEnemy.tscn")

@@ -5,15 +5,19 @@
 [sub_resource type="Environment" id="Environment_y60un"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 0.76
+glow_intensity = 1.0
+glow_strength = 2.0
 
 [node name="DamageNumberUpdated" type="Label" unique_id=1560617677]
-self_modulate = Color(1.6804099, 1.9316802, 0.91063404, 1)
-offset_top = -1.0
-offset_right = 105.0
-offset_bottom = 38.0
-theme_override_font_sizes/font_size = 28
+self_modulate = Color(2.1357718, 2.454227, 1.1645384, 1)
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 375.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 80
 text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("1_jnfq4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526374861]

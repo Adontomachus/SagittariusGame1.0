@@ -8,12 +8,16 @@ enum DamageSide {
 @export var indicator_side = DamageSide.Player
 
 @onready var damage_text: Label = $"."
+var starting_font_size = 80
+
 
 @export var damage_value: int = 46
 @export var damage_crit: bool
-@export var fade_duration: float = 1
+@export var fade_duration: float = 0.4
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	starting_font_size += damage_value / 2
+	fade_duration += damage_value / 75
 	damage_text.text = str(round(damage_value))
 	_fade_out(fade_duration)
 	pass # Replace with function body.
@@ -27,7 +31,10 @@ func _process(delta: float) -> void:
 
 func _fade_out(fadeDuration):
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "self_modulate:a", 1, fadeDuration)
+	tween.tween_property(self, "theme_override_font_sizes/font_size", 80 + damage_value / 2, 0.001)
+	tween.tween_property(self, "theme_override_font_sizes/font_size", 25 + damage_value / 3, 0.11)
+	tween.tween_property(self, "modulate:a", 0, fadeDuration)
+	tween.tween_property(self, "self_modulate:a", 0, fadeDuration)
 	tween.play()
 	await tween.finished
 	tween.kill()
