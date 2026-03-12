@@ -1,3 +1,4 @@
+class_name PointSystems
 extends Node
 
 var playerScore: int

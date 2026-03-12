@@ -22,6 +22,12 @@ config/icon="res://Sprites/Game Elements/icon.svg"
 GlobalBeatSync="*uid://b6by13j1adlil"
 PointSystemScript="*uid://0djl3e1qunrm"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
 [file_customization]
 
 folder_colors={

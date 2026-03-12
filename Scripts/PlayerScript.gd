@@ -25,7 +25,7 @@ var maxExperiencePoints: int = 60
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
 var playerDirection: Vector2
-var projectile_damage: float = 30.0
+var projectile_damage: float = 30
 var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
@@ -123,11 +123,13 @@ func modify_current_xp(modification: int) -> void:
 # Function for upgrading player stats upon levelling up
 func upgrade_player_stats() -> void:
 	# Increases health and damage by 4% and maximum XP requirement by 6%
-	# Heals player for 15 HP and resets current experience points by 0
+	# Heals player for 20% max HP and resets current experience points by 0
 	maxHealthPoints = maxHealthPoints * 1.04
 	projectile_damage = projectile_damage * 1.04
 	maxExperiencePoints = maxExperiencePoints * 1.06
 	experiencePoints = 0
+	healthPoints += maxHealthPoints / 5
+	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	# Level up effects
 	var levelUpEffect = upgradeEffect.instantiate()
 	levelUpEffect.position = self.get_global_position()

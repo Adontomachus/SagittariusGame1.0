@@ -13,6 +13,9 @@ signal update_current_health_value(boss_health: int)
 #endregion
 @export var state_machine: EnemyStateMachine
 @export var navAgent: NavigationAgent2D
+
+
+
 ## The enemy's target. Usually the player, but it could also be an objective.
 var target: CharacterBody2D
 
@@ -22,6 +25,7 @@ var target: CharacterBody2D
 @export var stamina_range: Vector2 = Vector2(2, 5)
 @export var stamina_regeneration_rate: float = 1.0
 @export var maxMoveSpeed: float = 100.0
+
 var stamina: float:
 	set(value):
 		stamina = clampf(value, 0.0, maxStamina)
@@ -35,7 +39,7 @@ var currentMoveSpeed
 @export var maxHealthPoints: int = 80
 @export var meleeTickRate: int = 60
 @export var amountOfPointOrbs: int = 3
-var healthPoints: int = 80
+var baseHealthPoints: int = 80
 
 # PATHFINDING MECHANICS
 @export_group("Pathfinding Variables")
@@ -68,23 +72,22 @@ var chanceToAttack: float
 
 # START
 func _ready():
-	# maxHealthPoints = BeatSync.tempo
 	state_machine.init(self)#, animations, audio_sfx)
 
 	# Set enemy stats
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
-	healthPoints = maxHealthPoints
+	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar
 	toggle_healthbar_visibility.emit(false) # Hide the health bar until damaged
 	send_maximum_health_value.emit(maxHealthPoints)
-	send_current_health_value.emit(healthPoints)
+	send_current_health_value.emit(baseHealthPoints)
 	
 	# For the boss healthbar
 	update_max_health_value.emit(maxHealthPoints)
-	update_current_health_value.emit(healthPoints)
+	update_current_health_value.emit(baseHealthPoints)
 	
 
 	
@@ -140,16 +143,16 @@ func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
 
 func modify_health(increment: int) -> void:
 	hit_sound.play()
-	healthPoints += increment
-	send_current_health_value.emit(healthPoints)
+	baseHealthPoints += increment
+	send_current_health_value.emit(baseHealthPoints)
 	
 	# Boss
-	update_current_health_value.emit(healthPoints)
+	update_current_health_value.emit(baseHealthPoints)
 	
-	toggle_healthbar_visibility.emit(healthPoints < maxHealthPoints)
+	toggle_healthbar_visibility.emit(baseHealthPoints < maxHealthPoints)
 	#update_max_health_value.emit(healthPoints)
 	#update_current_health_value(boss_health: int)
-	if (healthPoints < 0):
+	if (baseHealthPoints < 0):
 		_delete_and_emit_effects()
 		
 # DESTROY EFFECTS
@@ -165,3 +168,6 @@ func _delete_and_emit_effects():
 		
 	call_deferred("queue_free")
 	return
+	
+# CHANGE STATS ON SPAWN (TENTATIVE)
+#func change_unit_stats(health: int, new_damage: int) -> void:

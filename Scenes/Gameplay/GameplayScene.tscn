@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
 [ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/PointSystemScript.gd" id="2_qvp00"]
+[ext_resource type="Script" uid="uid://d1e13o8vj8tni" path="res://Scenes/Gameplay/ScalingSystemScript.gd" id="3_0voen"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="4_b4hlm"]
@@ -88,7 +89,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1275, -604, -1687, 780
 cell_size = 2.0
 agent_radius = 40.0
 
-[node name="Node2D" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "animation_player", "player_target")]
+[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "animation_player", "player_target")]
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator")
 player = NodePath("Player")
@@ -116,6 +117,9 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 [node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354]
 script = ExtResource("2_qvp00")
 
+[node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101]
+script = ExtResource("3_0voen")
+
 [node name="MouseLocator" type="Marker2D" parent="GameSystems" unique_id=1641650591]
 
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
@@ -135,6 +139,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 13.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -148,17 +154,17 @@ offset_bottom = 33.0
 
 [node name="WaveNotification" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=120682287]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 86.0
-offset_right = 841.5652
-offset_bottom = 115.0
+offset_left = 698.0
+offset_top = 105.0
+offset_right = 1227.5652
+offset_bottom = 134.0
 text = "WAVE INCOMING!"
 horizontal_alignment = 1
 
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
+offset_left = 21.0
+offset_top = 16.0
 offset_right = 468.0
 offset_bottom = 293.0
 
@@ -204,10 +210,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -118.0
-offset_top = 19.0
-offset_right = -15.0
-offset_bottom = 65.0
+offset_left = -151.0
+offset_top = 30.0
+offset_right = -48.0
+offset_bottom = 76.0
 grow_horizontal = 0
 text = "Pause Menu"
 
@@ -218,10 +224,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -26.0
-offset_top = -102.0
-offset_right = 24.0
-offset_bottom = -52.0
+offset_left = -25.5
+offset_top = -107.0
+offset_right = 24.5
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(25, 25)
@@ -258,15 +264,15 @@ horizontal_alignment = 1
 
 [node name="GlowingGem2" parent="InterfaceElements/NewHUD/UI" unique_id=2110462969 instance=ExtResource("8_fklr0")]
 self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
-position = Vector2(101.5, 93)
-scale = Vector2(0.31249994, 0.37499982)
+position = Vector2(111.5, 103.5)
+scale = Vector2(0.3125001, 0.43749982)
 
 [node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1513060166 groups=["BossUI"]]
 layout_mode = 0
-offset_left = 94.00001
-offset_top = 453.0
-offset_right = 2406.4998
-offset_bottom = 808.0
+offset_left = 502.99997
+offset_top = 814.0
+offset_right = 2815.4998
+offset_bottom = 1169.0
 scale = Vector2(0.4, 0.4)
 value = 55.0
 nine_patch_stretch = true
@@ -274,10 +280,10 @@ texture_under = ExtResource("10_32gqm")
 texture_progress = ExtResource("11_wjss6")
 script = ExtResource("12_xxi0v")
 
-[node name="Label2" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" unique_id=1757781328]
+[node name="BossLabel" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" unique_id=1757781328]
 layout_mode = 0
-offset_left = 922.4999
-offset_top = 200.0
+offset_left = 822.4999
+offset_top = 205.0
 offset_right = 1497.4999
 offset_bottom = 285.0
 theme_override_font_sizes/font_size = 40
@@ -485,7 +491,7 @@ texture = ExtResource("28_agm15")
 
 [node name="Floordecals2" type="Sprite2D" parent="BGDecals" unique_id=970244171]
 z_index = -15
-position = Vector2(1034.2355, 868)
+position = Vector2(1025, 870.99994)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
@@ -565,7 +571,7 @@ texture = ExtResource("31_40ckn")
 
 [node name="Floordecal6" type="Sprite2D" parent="BGDecals" unique_id=335813050]
 z_index = -17
-position = Vector2(1733, -124)
+position = Vector2(1754, -156)
 texture = ExtResource("30_81sgd")
 
 [node name="Floordecal7" type="Sprite2D" parent="BGDecals" unique_id=1026887323]

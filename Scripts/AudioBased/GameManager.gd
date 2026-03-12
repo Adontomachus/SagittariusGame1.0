@@ -16,10 +16,10 @@ var gamePaused: int
 
 #LEVEL VARIABLES
 var level_wave: int
-const DIFFICULTY_SCALE: float = 0.15
-const DROP_WEIGHT_SCALE: float = 0.05
-var difficultyMeter = 1
-var pointDropWeight = 0.25
+# const DIFFICULTY_SCALE: float = 0.15
+# const DROP_WEIGHT_SCALE: float = 0.05
+# var difficultyMeter = 1
+# var pointDropWeight = 0.25
 var comboCount = 0
 @export var player_target: Marker2D # = $InterfaceElements/PlayerTarget
 #LEVEL VARIABLES

@@ -8,10 +8,6 @@ var beatLifetime = 4
 var rarityWeight: float
 var eliteRarityWeight: float
 
-@export_category("Enemy Statistic Modifiers before Spawn")
-@export var unitHealthPoints = 60
-@export var maxUnitHealthPoints = 60
-@export var unitAttackPower = 14
 #COLOR VALUES
 var redness = 0
 
