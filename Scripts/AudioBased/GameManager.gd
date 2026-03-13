@@ -16,10 +16,6 @@ var gamePaused: int
 
 #LEVEL VARIABLES
 var level_wave: int
-# const DIFFICULTY_SCALE: float = 0.15
-# const DROP_WEIGHT_SCALE: float = 0.05
-# var difficultyMeter = 1
-# var pointDropWeight = 0.25
 var comboCount = 0
 @export var player_target: Marker2D # = $InterfaceElements/PlayerTarget
 #LEVEL VARIABLES
@@ -37,8 +33,9 @@ var waveCompleted: bool
 #var playerPoints: int
 #endregion
 
-#region SIGNALS FOR BEAT PULSE AESTHETICS
+#region Signals Section
 signal pulse_on_beat
+signal scale_on_next_wave
 #endregion
 
 #region UI Elements for displaying values along with game notifications
@@ -144,14 +141,13 @@ func _process(delta):
 			wave_notification.self_modulate.a = 0
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
-		# Emit game feel signals for the game
+		# Emit rhythmic signals for the game aesthetics
 		pulse_on_beat.emit()
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
-		#Testing enemy spawning
-		#if randf_range(rarityWeight, maxRarityValue) >= 5:
-			#parent.shoot_projectile()
-			#pass
+
 		print("Testing! Beat Synced! Spawns Remaining: ", enemySpawnCounter)
+		
+		# If statements to check which enumerator the spawn manager currently is
 		if _spawningBehavior == spawningBehavior.Preparation:
 			print("Preparation")
 			wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
@@ -173,9 +169,10 @@ func _process(delta):
 	if (_spawningBehavior == spawningBehavior.NextWave && nextDuration < 1):
 		wave_notification.self_modulate.a -= 1 * delta
 		
-		# IF THE COMPLETED NOTIF ENDS, GO TO THE NEXT WAVE AND INCREMENT WEIGHTS
+	# If the completed notification ends, go to the next wave and increase stat increments
 		if wave_notification.self_modulate.a < 0:
 			_change_spawning_state(spawningBehavior.Preparation)
+			scale_on_next_wave.emit()
 			enemySpawnCounter = 5 + level_wave
 			level_wave += 1
 			nextDuration = 8

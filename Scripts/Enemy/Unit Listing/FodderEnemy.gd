@@ -74,10 +74,11 @@ var chanceToAttack: float
 func _ready():
 	state_machine.init(self)#, animations, audio_sfx)
 
-	# Set enemy stats
+	# Set enemy stat
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
+	maxHealthPoints = maxHealthPoints * ScalingSystemScript.health_scaling
 	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar

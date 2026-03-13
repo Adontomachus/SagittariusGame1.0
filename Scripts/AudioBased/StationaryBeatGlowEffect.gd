@@ -1,5 +1,5 @@
-class_name SpriteBeatGlow
-extends Sprite2D
+
+extends StaticBody2D
 
 
 

@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cr4cdt8k115vb"]
+[gd_scene format=3 uid="uid://bhvw2s00lemop"]
 
-[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/Game Elements/rhythmplant.png" id="1_ljkxo"]
-[ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/AudioBased/BeatGlowEffect.gd" id="2_knn8v"]
+[ext_resource type="Texture2D" uid="uid://c1xj708uxc0x6" path="res://Sprites/Game Elements/glowingpattern.png" id="1_xb6j2"]
+[ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/AudioBased/BeatGlowEffect.gd" id="2_6ww5o"]
 
 [sub_resource type="Environment" id="Environment_knn8v"]
 background_mode = 3
@@ -13,7 +13,7 @@ glow_hdr_luminance_cap = 72.08
 glow_map_strength = 1.0
 
 [sub_resource type="Gradient" id="Gradient_knn8v"]
-colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
 gradient = SubResource("Gradient_knn8v")
@@ -23,19 +23,20 @@ fill = 1
 fill_from = Vector2(0.50220263, 0.4889868)
 fill_to = Vector2(0.7008547, 0.32478634)
 
-[node name="Rhythmplant" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect")]
+[node name="GlowingPlatform" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect")]
+z_index = -10
 position = Vector2(1.1920929e-07, 0)
 scale = Vector2(0.4185185, 0.4185185)
-texture = ExtResource("1_ljkxo")
-script = ExtResource("2_knn8v")
+texture = ExtResource("1_xb6j2")
+script = ExtResource("2_6ww5o")
 glow_effect = NodePath("GlowEffect")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1897050038]
 environment = SubResource("Environment_knn8v")
 
 [node name="GlowEffect" type="PointLight2D" parent="." unique_id=400889616]
-position = Vector2(31.061947, -74.0708)
-scale = Vector2(5.6001105, 6.300124)
-color = Color(3.294, 3.294, 3.294, 1)
+position = Vector2(-6.866455e-05, -14.336281)
+scale = Vector2(17.340075, 8.260429)
+color = Color(2.702384, 3.2944162, 1.6543248, 1)
 energy = 4.0
 texture = SubResource("GradientTexture2D_8hfiw")

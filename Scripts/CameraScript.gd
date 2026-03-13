@@ -2,16 +2,20 @@ class_name CameraControl
 
 extends Camera2D
 
+enum CameraMode {
+	PlayerView,
+	BossView,
+	SpawnView,
+	CinematicView
+}
 
+@export var camera_mode: CameraMode = CameraMode.PlayerView
 @onready var playerTarget: CharacterBody2D = $"../../Player"
 @onready var mouse_locator: Marker2D = $"../../MouseLocator"
 
-var target
-var speed
 var cameraShakeEffect = 0
 var cameraPosition: Vector2
 var camMoveSpeed = 20
-
 
 var cameraShakeTimer = 1
 var mousePosition: Vector2

@@ -4,6 +4,7 @@ extends Panel
 signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Color)
 @export_category("Beat Settings")
 @export var metronome_test: AudioStreamPlayer# = $"../MetronomeTest"
+@onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
 
 #region Beat Variables
 @export var tempo: float = 120.0
