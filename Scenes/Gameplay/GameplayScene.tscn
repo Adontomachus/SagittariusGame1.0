@@ -582,14 +582,14 @@ texture = ExtResource("26_y1plk")
 [node name="Floorpattern13" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=993277019]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
-position = Vector2(594, 1554)
+position = Vector2(658, 1535)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
 [node name="Floorpattern14" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1439420963]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
-position = Vector2(748, 1648)
+position = Vector2(811, 1609)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
