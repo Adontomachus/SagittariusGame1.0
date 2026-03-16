@@ -4,6 +4,7 @@ extends Sprite2D
 
 
 @onready var glow_effect: PointLight2D
+
 var energyIntensity: float
 
 func _ready() -> void:

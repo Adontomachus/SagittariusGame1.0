@@ -10,45 +10,45 @@ script = ExtResource("1_1ae2a")
 visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
-offset_left = 57.0
-offset_top = 283.0
-offset_right = 311.0
-offset_bottom = 606.0
+offset_left = 60.0
+offset_top = 523.0
+offset_right = 431.0
+offset_bottom = 1034.0
 
 [node name="StoryMode" type="Button" parent="." unique_id=930228544]
-offset_left = 78.0
-offset_top = 303.0
-offset_right = 282.0
-offset_bottom = 345.0
+offset_left = 146.0
+offset_top = 601.0
+offset_right = 350.0
+offset_bottom = 643.0
 text = "Start Game
 "
 
 [node name="StartButton" type="Button" parent="." unique_id=122259125]
-offset_left = 78.0
-offset_top = 362.0
-offset_right = 282.0
-offset_bottom = 404.0
+offset_left = 146.0
+offset_top = 660.0
+offset_right = 350.0
+offset_bottom = 702.0
 text = "Story Mode"
 
 [node name="SettingsButton" type="Button" parent="." unique_id=963021667]
-offset_left = 78.0
-offset_top = 423.0
-offset_right = 282.0
-offset_bottom = 465.0
+offset_left = 146.0
+offset_top = 721.0
+offset_right = 350.0
+offset_bottom = 763.0
 text = "Settings"
 
 [node name="CalibrationButton" type="Button" parent="." unique_id=1190364207]
-offset_left = 79.0
-offset_top = 484.0
-offset_right = 283.0
-offset_bottom = 526.0
+offset_left = 147.0
+offset_top = 782.0
+offset_right = 351.0
+offset_bottom = 824.0
 text = "Calibration"
 
 [node name="ExitButton" type="Button" parent="." unique_id=2085939534]
-offset_left = 79.0
-offset_top = 543.0
-offset_right = 283.0
-offset_bottom = 585.0
+offset_left = 147.0
+offset_top = 841.0
+offset_right = 351.0
+offset_bottom = 883.0
 text = "Exit
 "
 
@@ -61,10 +61,10 @@ text = "Sagittarius: The Game"
 
 [node name="Test" type="Label" parent="Label" unique_id=196103953]
 layout_mode = 0
-offset_left = 664.0
-offset_top = 257.0
-offset_right = 887.0
-offset_bottom = 299.0
+offset_left = 1063.0
+offset_top = 480.0
+offset_right = 1286.0
+offset_bottom = 522.0
 text = "Background Splash Art"
 
 [connection signal="pressed" from="StoryMode" to="." method="_on_story_mode_pressed"]

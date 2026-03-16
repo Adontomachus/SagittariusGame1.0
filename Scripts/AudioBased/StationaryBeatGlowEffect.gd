@@ -3,11 +3,11 @@ extends StaticBody2D
 
 
 
-@onready var glow_effect: PointLight2D
 var energyIntensity: float
+@onready var glow_effect: PointLight2D = $PointLight2D
 
 func _ready() -> void:
-	_glow_on_beat()
+	#_glow_on_beat()
 	return
 
 

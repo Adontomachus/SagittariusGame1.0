@@ -11,7 +11,7 @@ signal send_current_health(health: float)
 signal send_maximum_xp(max_xp: float)
 signal send_current_xp(xp: float)
 
-var healthPoints: float:
+@export var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
@@ -25,7 +25,7 @@ var maxExperiencePoints: int = 60
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
 var playerDirection: Vector2
-var projectile_damage: float = 30
+@export var projectile_damage: float = 30
 var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
@@ -57,7 +57,7 @@ func get_input():
 	playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
 	
-func _process(delta):
+func _process(_delta):
 	# SPRITE FLIPPING WHEN TURNING AROUND
 	if get_global_mouse_position().x < global_position.x:
 		player_sprite.flip_h = true
