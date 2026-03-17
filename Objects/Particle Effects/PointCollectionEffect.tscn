@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5rfw5yevcye0"]
 
-[ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/ParticleEffectScript.gd" id="1_1buvx"]
+[ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/Visuals/ParticleEffectScript.gd" id="1_1buvx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
 

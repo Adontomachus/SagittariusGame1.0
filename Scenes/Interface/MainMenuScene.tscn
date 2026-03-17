@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://b7it44ybvgvxf"]
+
+[ext_resource type="Script" uid="uid://bkent1jhnqg5y" path="res://Scripts/Scene Management/MainMenuScript.gd" id="1_xamtj"]
+[ext_resource type="PackedScene" uid="uid://ctnoi5oldo47k" path="res://Scenes/Interface/TutorialInterface.tscn" id="2_o310p"]
+[ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="3_o310p"]
+
+[node name="MainMenu" type="Node2D" unique_id=544361199 node_paths=PackedStringArray("settings", "tutorial")]
+script = ExtResource("1_xamtj")
+settings = NodePath("Settings")
+tutorial = NodePath("Tutorial")
+
+[node name="Tutorial" parent="." unique_id=90296623 node_paths=PackedStringArray("main_menu_node") instance=ExtResource("2_o310p")]
+unique_name_in_owner = true
+visible = false
+offset_left = 968.0
+offset_top = 543.0
+offset_right = 968.0
+offset_bottom = 543.0
+main_menu_node = NodePath("../MainMenuContainer")
+
+[node name="Settings" parent="." unique_id=750193702 instance=ExtResource("3_o310p")]
+unique_name_in_owner = true
+visible = false
+offset_left = 953.0
+offset_top = 530.0
+offset_right = 953.0
+offset_bottom = 530.0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
+visible = false
+offset_left = 1452.0
+offset_top = 493.0
+offset_right = 1823.0
+offset_bottom = 1004.0
+
+[node name="StoryMode" type="Button" parent="." unique_id=930228544]
+visible = false
+offset_left = 1538.0
+offset_top = 571.0
+offset_right = 1742.0
+offset_bottom = 613.0
+text = "Start Game
+"
+
+[node name="StartButton" type="Button" parent="." unique_id=122259125]
+visible = false
+offset_left = 1538.0
+offset_top = 630.0
+offset_right = 1742.0
+offset_bottom = 672.0
+text = "Story Mode"
+
+[node name="SettingsButton" type="Button" parent="." unique_id=963021667]
+visible = false
+offset_left = 1538.0
+offset_top = 691.0
+offset_right = 1742.0
+offset_bottom = 733.0
+text = "Settings"
+
+[node name="CalibrationButton" type="Button" parent="." unique_id=1190364207]
+visible = false
+offset_left = 1539.0
+offset_top = 752.0
+offset_right = 1743.0
+offset_bottom = 794.0
+text = "Calibration"
+
+[node name="ExitButton" type="Button" parent="." unique_id=2085939534]
+visible = false
+offset_left = 1539.0
+offset_top = 811.0
+offset_right = 1743.0
+offset_bottom = 853.0
+text = "Exit
+"
+
+[node name="Label" type="Label" parent="." unique_id=1559997822]
+offset_left = 45.0
+offset_top = 28.0
+offset_right = 558.0
+offset_bottom = 152.0
+text = "Sagittarius: The Game"
+
+[node name="Test" type="Label" parent="Label" unique_id=196103953]
+layout_mode = 0
+offset_left = 1063.0
+offset_top = 480.0
+offset_right = 1286.0
+offset_bottom = 522.0
+text = "Background Splash Art"
+
+[node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=879553533]
+offset_left = 86.0
+offset_top = 834.0
+offset_right = 495.0
+offset_bottom = 1011.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuContainer" unique_id=572890874]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer" unique_id=1933681317]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=530956135]
+layout_mode = 2
+text = "Start Game"
+
+[node name="StoryButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=1664087111]
+layout_mode = 2
+text = "Story Mode
+"
+
+[node name="SettingsButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=926610218]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="HowToPlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=706086452]
+layout_mode = 2
+text = "Learn to Play
+"
+
+[node name="Exit" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=909026264]
+layout_mode = 2
+text = "Exit
+"
+
+[connection signal="pressed" from="StoryMode" to="." method="_on_story_mode_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CalibrationButton" to="." method="_on_calibration_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/VBoxContainer/StoryButton" to="." method="_on_story_mode_pressed"]
+[connection signal="pressed" from="MainMenuContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/VBoxContainer/HowToPlayButton" to="." method="_on_calibration_button_pressed"]
+[connection signal="pressed" from="MainMenuContainer/VBoxContainer/Exit" to="." method="_on_exit_button_pressed"]

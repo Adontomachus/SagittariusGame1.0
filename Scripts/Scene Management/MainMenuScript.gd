@@ -2,6 +2,12 @@ class_name MainMenuSystems
 
 extends Node2D
 
+# Panels for options
+@export var settings: Control 
+@export var tutorial: Control
+# Main menu container
+@onready var main_menu: MarginContainer = $MainMenuContainer
+
 
 
 func _on_start_button_pressed() -> void:
@@ -13,12 +19,20 @@ func _on_story_mode_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_settings_button_pressed() -> void:
+	settings.visible = true
+	main_menu.visible = false
 	pass # Replace with function body.
 
 
 func _on_calibration_button_pressed() -> void:
+	tutorial.visible = true
+	main_menu.visible = false
 	pass # Replace with function body.
 
 
 func _on_exit_button_pressed() -> void:
+	get_tree().quit()
 	pass # Replace with function body.
+	
+func _on_settings_back_button_pressed() -> void:
+	pass

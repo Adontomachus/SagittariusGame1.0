@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dcc1dbqhjva1s"]
+
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="1_sf37u"]
+[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="2_rhexa"]
+
+[sub_resource type="Environment" id="Environment_ruq0j"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.8
+
+[node name="SagittariusCatSprite" type="Sprite2D" unique_id=383792231]
+self_modulate = Color(1.8984075, 1.5961368, 0.71777445, 1)
+position = Vector2(0.9999999, 1.1368684e-13)
+scale = Vector2(0.265625, 0.26562485)
+texture = ExtResource("1_sf37u")
+script = ExtResource("2_rhexa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1945984570]
+environment = SubResource("Environment_ruq0j")

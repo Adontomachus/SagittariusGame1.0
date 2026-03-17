@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_b7mrf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
-radius = 141.88004
+radius = 103.84142
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 83.02409

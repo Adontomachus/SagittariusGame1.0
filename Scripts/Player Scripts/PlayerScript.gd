@@ -31,10 +31,13 @@ var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
 @export var player_sprite: Sprite2D
 
-# Shot properties
+# Shot properties and number of perfect shots for a powered shot
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
-
+@export_category("Number of perfect shots for enhanced attack")
+# Amount for a charged AoE attack
+@export var max_shots_for_charged = 8
+var shots_for_charged
 
 func _ready():
 	# Connecting the camera shake signal

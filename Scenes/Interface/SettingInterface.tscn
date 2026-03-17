@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://c0ad3cbk073wt"]
+
+[ext_resource type="Script" uid="uid://dgnpxwho28imx" path="res://Scripts/Scene Management/SettingsInterface.gd" id="1_xicv1"]
+
+[node name="Settings" type="Control" unique_id=90296623]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xicv1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=382433727]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -870.5
+offset_top = -475.0
+offset_right = 870.5
+offset_bottom = 475.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsPanel" type="PanelContainer" parent="MarginContainer" unique_id=1576924487]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1306154043]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1554798014]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="MasterVolume" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1704932568]
+layout_mode = 2
+text = "Master Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1573173841]
+layout_mode = 2
+value = 50.0
+
+[node name="VolumeValue" type="Label" parent="MarginContainer/VBoxContainer/VolumeSlider" unique_id=949821583]
+layout_mode = 0
+offset_left = 1693.5
+offset_top = -23.0
+offset_right = 1736.5
+offset_bottom = 26.0
+text = "100
+"
+horizontal_alignment = 1
+
+[node name="SoundEffects" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2042417301]
+layout_mode = 2
+text = "Sound Effects"
+vertical_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1010870216]
+layout_mode = 2
+value = 50.0
+
+[node name="SoundValue" type="Label" parent="MarginContainer/VBoxContainer/SoundSlider" unique_id=1485526240]
+layout_mode = 0
+offset_left = 1693.5
+offset_top = -23.0
+offset_right = 1736.5
+offset_bottom = 26.0
+text = "100
+"
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="Label" parent="MarginContainer/VBoxContainer" unique_id=199493240]
+layout_mode = 2
+text = "Music Volume"
+vertical_alignment = 1
+
+[node name="MusicValue" type="Label" parent="MarginContainer/VBoxContainer/MusicVolume" unique_id=1249375906]
+layout_mode = 0
+offset_left = 1693.5
+offset_top = 1.0
+offset_right = 1736.5
+offset_bottom = 50.0
+text = "100
+"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=338461723]
+layout_mode = 2
+value = 50.0
+
+[node name="ConfirmationButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1499250184]
+layout_mode = 2
+text = "CONFIRM SETTINGS"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=792248223]
+layout_mode = 2
+text = "BACK
+"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_progress_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SoundSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

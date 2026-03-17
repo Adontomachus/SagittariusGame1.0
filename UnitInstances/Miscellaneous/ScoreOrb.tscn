@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bxrvqcxt4j3gv"]
 
-[ext_resource type="Script" uid="uid://bpw6c53jd7tjv" path="res://Scripts/OrbScript.gd" id="1_hrftc"]
+[ext_resource type="Script" uid="uid://bpw6c53jd7tjv" path="res://Scripts/Player Scripts/OrbScript.gd" id="1_hrftc"]
 [ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="2_k480p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4og7"]

@@ -17,7 +17,7 @@ radius = 46.734726
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 34.0147
 
-[node name="Elite" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType"]]
+[node name="Elite" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 script = ExtResource("1_cyyc4")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")

@@ -18,10 +18,10 @@ const SCALING = preload("res://Scripts/AudioBased/GameManager.gd")
 const CHANCE_RANGE: Vector2 = Vector2(0, 10)
 
 @export_category("Enemy Instance to Spawn")
-@export var enemyToSpawn = preload("res://UnitInstances/Enemy.tscn")
-@export var altEnemy = preload("res://UnitInstances/EnemyShooter.tscn")
-@export var eliteEnemy = preload("res://UnitInstances/EliteEnemy.tscn")
-@export var bossSpawn = preload("res://UnitInstances/Boss.tscn")
+@export var enemyToSpawn = preload("res://UnitInstances/Gameplay Instances/Enemy.tscn")
+@export var altEnemy = preload("res://UnitInstances/Gameplay Instances/EnemyShooter.tscn")
+@export var eliteEnemy = preload("res://UnitInstances/Gameplay Instances/EliteEnemy.tscn")
+@export var bossSpawn = preload("res://UnitInstances/Gameplay Instances/Boss.tscn")
 
 func _ready() -> void:
 	print("Chance Range: ", CHANCE_RANGE)

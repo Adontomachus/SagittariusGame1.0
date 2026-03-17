@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://wxalwh8to6sn"]
 
-[ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/PlayerScript.gd" id="1_haeiw"]
+[ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/Player Scripts/PlayerScript.gd" id="1_haeiw"]
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/AudioBased/GameManager.gd" id="1_onpmq"]
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
-[ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Enemy.tscn" id="2_k77ap"]
-[ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/PointSystemScript.gd" id="2_qvp00"]
+[ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Gameplay Instances/Enemy.tscn" id="2_k77ap"]
+[ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/Player Scripts/PointSystemScript.gd" id="2_qvp00"]
 [ext_resource type="Script" uid="uid://d1e13o8vj8tni" path="res://Scripts/ScalingSystemScript.gd" id="3_0voen"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="4_b4hlm"]
-[ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/CameraScript.gd" id="4_b5kf5"]
+[ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/Player Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="5_fklr0"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Instances With Collision/Wall.tscn" id="5_nt06h"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="8_81epe"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
-[ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Boss.tscn" id="10_30wor"]
+[ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Gameplay Instances/Boss.tscn" id="10_30wor"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="10_32gqm"]
-[ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
-[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/EliteEnemy.tscn" id="11_ssy3j"]
+[ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
+[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Gameplay Instances/EliteEnemy.tscn" id="11_ssy3j"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
@@ -34,8 +34,8 @@
 [ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/Game Elements/baleterootdecals.png" id="29_xxi0v"]
 [ext_resource type="Texture2D" uid="uid://gg2hyp501kug" path="res://Sprites/Game Elements/floordecal3.png" id="30_81sgd"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
-[ext_resource type="PackedScene" uid="uid://dgxrqck134vr5" path="res://UnitInstances/EnemyShooter.tscn" id="32_40ckn"]
-[ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/StationaryEnemy.tscn" id="33_r8kr6"]
+[ext_resource type="PackedScene" uid="uid://dgxrqck134vr5" path="res://UnitInstances/Gameplay Instances/EnemyShooter.tscn" id="32_40ckn"]
+[ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Gameplay Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 
@@ -216,6 +216,16 @@ layout_mode = 2
 nine_patch_stretch = true
 texture_under = ExtResource("4_b4hlm")
 texture_progress = ExtResource("5_fklr0")
+
+[node name="ChargeUpBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=1212998886]
+modulate = Color(2.210482, 2.5032542, 0, 1)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 144.0
+offset_right = 125.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 6
+value = 2.1
 
 [node name="ExperienceBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=787785722]
 modulate = Color(0, 0.60124344, 1, 1)
@@ -721,6 +731,27 @@ position = Vector2(1407, 136)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
+[node name="Floordecals6" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=604450429]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-393, 1716)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecals7" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1662335490]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(2930, 473.99988)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
+[node name="Floordecals8" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=2063570366]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1692.0001, -501)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("28_agm15")
+
 [node name="Floordecoration" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=82272627]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 position = Vector2(1939, 447)
@@ -745,6 +776,27 @@ texture = ExtResource("29_xxi0v")
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1899, 219)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals8" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=725660107]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(247, 1749)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals9" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=834549591]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(2601, 1601)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("29_xxi0v")
+
+[node name="Baleterootdecals10" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=913397112]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1800, 1559)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
@@ -857,6 +909,18 @@ z_index = -18
 position = Vector2(2789, 795)
 texture = ExtResource("31_40ckn")
 
+[node name="Floordecal15" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1739102698]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(525, 1994)
+texture = ExtResource("31_40ckn")
+
+[node name="Floordecal16" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1874244983]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(2025, 1852)
+texture = ExtResource("31_40ckn")
+
 [node name="AreaLight" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=529271008]
 position = Vector2(1853, 984.9998)
 scale = Vector2(31.062504, 31.062504)
@@ -900,12 +964,33 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight3" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1141918270]
-position = Vector2(-599, 1305.5)
+position = Vector2(-1478, 1220)
 scale = Vector2(30.218752, -29.078125)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
 [node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight3" unique_id=2001628919]
+amount = 15
+texture = SubResource("GradientTexture2D_1q4m6")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_y268v")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_6uhl4")
+
+[node name="AreaLight5" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1587209368]
+position = Vector2(2620.9995, 2044.0001)
+scale = Vector2(30.218752, -29.078125)
+energy = 1.23
+texture = SubResource("GradientTexture2D_y1plk")
+
+[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight5" unique_id=1973902487]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -957,11 +1042,68 @@ scale = Vector2(0.55727535, 0.55727535)
 position = Vector2(102.000015, -380.99994)
 scale = Vector2(0.55727535, 0.55727535)
 
+[node name="MapEdgeObstacles" type="Node" parent="NavigationRegion/Map Objects" unique_id=76741644]
+
+[node name="Wall" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1640904457 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-2214, 306.00006)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall2" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1826536178 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-2221.0002, 1808)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall3" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=677092983 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-719.00037, 2918)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall4" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=363350674 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(797.99976, 2977.0002)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall5" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=708792417 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2330, 2984.0002)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall6" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=2067173200 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3817, 1748.0001)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall7" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=816452865 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3950, 253.00012)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall8" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1803098296 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3173, -1250)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall9" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=706709999 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1656.0001, -1339.0001)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall10" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1838353034 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(125.000046, -1376)
+scale = Vector2(12.053431, 12.053431)
+
+[node name="Wall11" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1754002218 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1407.0001, -1213)
+scale = Vector2(12.053431, 12.053431)
+
 [node name="Boss" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)
 maxHealthPoints = 750
 
-[node name="Elite" parent="." unique_id=336309580 groups=["GeneralEnemyInstance"] instance=ExtResource("11_ssy3j")]
+[node name="Elite" parent="." unique_id=336309580 instance=ExtResource("11_ssy3j")]
 position = Vector2(1046, 210)
 successfulChanceToAttack = 1.0
 
@@ -978,6 +1120,10 @@ position = Vector2(1180, 47)
 position = Vector2(1391, 309)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall21" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
@@ -986,10 +1132,6 @@ position = Vector2(1391, 309)
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform2" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall21" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar/ExperienceBar" method="set_value"]

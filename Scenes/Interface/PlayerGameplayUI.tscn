@@ -91,13 +91,23 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_54ovd")
 texture_progress = ExtResource("3_n3v0n")
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=1720846821]
+[node name="ExperienceProgressBar" type="ProgressBar" parent="UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=1720846821]
 modulate = Color(0, 0.60124344, 1, 1)
 layout_mode = 0
 offset_left = 146.0
 offset_top = 118.0
 offset_right = 406.0
 offset_bottom = 131.0
+theme_override_font_sizes/font_size = 6
+value = 2.1
+
+[node name="ChargedAttackProgressBar" type="ProgressBar" parent="UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=100894644]
+modulate = Color(0.93670046, 1, 0, 1)
+layout_mode = 0
+offset_left = 63.0
+offset_top = 146.0
+offset_right = 121.0
+offset_bottom = 159.0
 theme_override_font_sizes/font_size = 6
 value = 2.1
 

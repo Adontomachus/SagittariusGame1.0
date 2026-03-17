@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ckv1chx8ihr1e"]
+
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="1_cq5j8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cq5j8"]
+radius = 76.07
+
+[sub_resource type="Environment" id="Environment_ruq0j"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.8
+
+[node name="SagittariusCatSprite" type="Sprite2D" unique_id=383792231]
+self_modulate = Color(1.8984075, 1.5961368, 0.71777445, 1)
+position = Vector2(0.9999999, 1.1368684e-13)
+scale = Vector2(0.265625, 0.26562485)
+texture = ExtResource("1_cq5j8")
+
+[node name="AttackRadius" type="Area2D" parent="." unique_id=1491728015]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="AttackHurtbox" type="CollisionShape2D" parent="AttackRadius" unique_id=249621279]
+shape = SubResource("CircleShape2D_cq5j8")
+debug_color = Color(0.91440684, 0.7431028, 0.10135851, 0.41960785)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1945984570]
+environment = SubResource("Environment_ruq0j")

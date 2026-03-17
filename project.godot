@@ -35,10 +35,21 @@ folder_colors={
 "res://Objects/Particle Effects/": "purple",
 "res://Scenes/Gameplay/": "blue",
 "res://Scenes/Interface/": "purple",
+"res://Scripts/AudioBased/": "purple",
+"res://Scripts/Companion/": "yellow",
+"res://Scripts/Enemy/": "purple",
 "res://Scripts/Enemy/Legacy/": "gray",
+"res://Scripts/Feedback/": "purple",
+"res://Scripts/Player Scripts/": "purple",
+"res://Scripts/Scene Management/": "purple",
+"res://Scripts/UI Menu and Settings/": "teal",
+"res://Scripts/Visuals/": "pink",
 "res://Sprites/Game Elements/": "blue",
 "res://Sprites/UI/": "teal",
-"res://UnitInstances/Miscellaneous/": "yellow"
+"res://UnitInstances/Gameplay Instances/": "red",
+"res://UnitInstances/Gameplay Instances/Player Companions/": "orange",
+"res://UnitInstances/Miscellaneous/": "yellow",
+"res://UnitInstances/Telegraphs/": "purple"
 }
 
 [global_group]

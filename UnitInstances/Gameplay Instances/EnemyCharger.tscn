@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://csoo2afoaf6s6"]
+
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_f54ak"]
+[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_t52mc"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_4dvsj"]
+[ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_tgimn"]
+[ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_flwud"]
+[ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="6_qd2d0"]
+[ext_resource type="Script" uid="uid://bu5go608c7dqq" path="res://Scripts/Enemy/States/Chase.gd" id="7_46dy1"]
+[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Recovery.gd" id="8_u8650"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="9_dj6py"]
+[ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy/EnemyMelee.gd" id="10_68cbe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
+radius = 46.702705
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
+radius = 30.149628
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3oa7e"]
+radius = 47.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+modulate = Color(0.4834036, 0.29748532, 1, 1)
+scale = Vector2(1.1199993, 1.1199993)
+script = ExtResource("1_f54ak")
+state_machine = NodePath("EnemyStateMachine")
+navAgent = NodePath("Pathfinding")
+maxHealthPoints = 400
+meleeTickRate = 20
+attackPower = 28.0
+
+[node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
+avoidance_enabled = true
+radius = 120.0
+debug_enabled = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
+scale = Vector2(0.578125, 0.578125)
+shape = SubResource("CircleShape2D_s7bn3")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.0745614, 0.07456144)
+texture = ExtResource("2_t52mc")
+
+[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+script = ExtResource("3_4dvsj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+shape = SubResource("CircleShape2D_mepa4")
+debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]
+visible = false
+offset_left = -45.0
+offset_top = -62.0
+offset_right = 46.0
+offset_bottom = -35.0
+
+[node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=86192602]
+offset_left = -67.171234
+offset_top = 16.228966
+offset_right = -11.231728
+offset_bottom = 45.587814
+rotation = -0.99837506
+nine_patch_stretch = true
+texture_under = ExtResource("4_tgimn")
+texture_progress = ExtResource("5_flwud")
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
+script = ExtResource("6_qd2d0")
+starting_state = NodePath("EnemyStateChase")
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://4nb635ctjjm"
+
+[node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("recovery_state")]
+script = ExtResource("7_46dy1")
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://bu5go608c7dqq"
+
+[node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1587728838 node_paths=PackedStringArray("state_to_return")]
+script = ExtResource("8_u8650")
+state_to_return = NodePath("../EnemyStateChase")
+metadata/_custom_type_script = "uid://djhvfb78j0d1i"
+
+[node name="EnemyStateRushing" type="Node" parent="EnemyStateMachine" unique_id=1835527761]
+
+[node name="EnemyStateCharging" type="Node" parent="EnemyStateMachine" unique_id=860352299]
+
+[node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=1784402702]
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=257206988]
+stream = ExtResource("9_dj6py")
+volume_db = -7.5
+pitch_scale = 0.75
+
+[node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("enemy_node")]
+script = ExtResource("10_68cbe")
+enemy_node = NodePath("..")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="MeleeRange" unique_id=595028766]
+shape = SubResource("CircleShape2D_3oa7e")
+debug_color = Color(1, 0.47785366, 0.41005647, 0.042000003)
+
+[connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
+[connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
+[connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
+[connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
+[connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
+[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
