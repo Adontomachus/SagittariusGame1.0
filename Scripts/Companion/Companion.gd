@@ -5,7 +5,9 @@ extends Node
 @export var attack_power: float
 @export var move_speed: float
 
-@export var player_target: Node2D
+@export_group("Player Master")
+@export var player_target: CharacterBody2D
+@export var time_to_relocate: float = 5
 
 @export_group("State Machine")
 @export var state_machine: CompanionStateMachine

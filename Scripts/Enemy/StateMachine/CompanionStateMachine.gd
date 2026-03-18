@@ -35,5 +35,5 @@ func process_frame(delta: float) -> void:
 	if new_state:
 		change_state(new_state)
 
-func manual_state_override(new_state: EnemyState) -> void:
+func manual_state_override(new_state: CompanionState) -> void:
 	change_state(new_state)

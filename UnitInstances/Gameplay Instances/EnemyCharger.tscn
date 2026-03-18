@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_tgimn"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_flwud"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="6_qd2d0"]
-[ext_resource type="Script" uid="uid://bu5go608c7dqq" path="res://Scripts/Enemy/States/Chase.gd" id="7_46dy1"]
-[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Recovery.gd" id="8_u8650"]
+[ext_resource type="Script" uid="uid://bu5go608c7dqq" path="res://Scripts/Enemy/States/Enemy States/Chase.gd" id="7_46dy1"]
+[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Enemy States/Recovery.gd" id="8_u8650"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="9_dj6py"]
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy/EnemyMelee.gd" id="10_68cbe"]
 

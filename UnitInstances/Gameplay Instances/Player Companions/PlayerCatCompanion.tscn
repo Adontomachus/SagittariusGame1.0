@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="1_sf37u"]
 [ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="2_rhexa"]
+[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Enemy/StateMachine/CompanionStateMachine.gd" id="3_obfrp"]
 
 [sub_resource type="Environment" id="Environment_ruq0j"]
 background_mode = 3
@@ -17,3 +18,19 @@ script = ExtResource("2_rhexa")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1945984570]
 environment = SubResource("Environment_ruq0j")
+
+[node name="TargetLooker" type="Marker2D" parent="." unique_id=232689275]
+
+[node name="MasterTargetLocation" type="Marker2D" parent="." unique_id=1168870957]
+
+[node name="CompanionStateMachine" type="Node" parent="." unique_id=1863259170]
+script = ExtResource("3_obfrp")
+metadata/_custom_type_script = "uid://bcfn444ui4txm"
+
+[node name="CompanionFollow" type="Node" parent="CompanionStateMachine" unique_id=1106419649]
+
+[node name="CompanionIdle" type="Node" parent="CompanionStateMachine" unique_id=292104184]
+
+[node name="CompanionPosition" type="Node" parent="CompanionStateMachine" unique_id=2109370340]
+
+[node name="Node" type="Node" parent="CompanionStateMachine" unique_id=289159005]

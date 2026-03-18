@@ -6,7 +6,7 @@ extends Node2D
 @export var settings: Control 
 @export var tutorial: Control
 # Main menu container
-@onready var main_menu: MarginContainer = $MainMenuContainer
+@export var main_menu: MarginContainer
 
 
 

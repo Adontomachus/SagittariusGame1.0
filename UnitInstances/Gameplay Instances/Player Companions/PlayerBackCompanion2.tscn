@@ -25,3 +25,5 @@ debug_color = Color(0.91440684, 0.7431028, 0.10135851, 0.41960785)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1945984570]
 environment = SubResource("Environment_ruq0j")
+
+[node name="TargetLooker" type="Marker2D" parent="." unique_id=544466726]
