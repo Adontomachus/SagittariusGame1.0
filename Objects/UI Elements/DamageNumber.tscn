@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://dow0gqpjempmf"]
 
 [ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_idwpu"]
+[ext_resource type="FontFile" uid="uid://da3bvoqomfsre" path="res://Fonts/DamageNumber.ttf" id="2_yta81"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_alvto"]
+font = ExtResource("2_yta81")
+font_size = 25
 
 [sub_resource type="Environment" id="Environment_ctvt5"]
 background_mode = 3
@@ -19,6 +24,7 @@ offset_right = 68.541664
 offset_bottom = 48.0
 theme_override_font_sizes/font_size = 75
 text = "80"
+label_settings = SubResource("LabelSettings_alvto")
 horizontal_alignment = 1
 vertical_alignment = 1
 

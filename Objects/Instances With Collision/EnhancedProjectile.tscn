@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dq1ac3k2s8p6w" path="res://Scripts/ProjectileCollision.gd" id="1_bc5k8"]
 [ext_resource type="Texture2D" uid="uid://lusulpgvi3ek" path="res://Sprites/Game Elements/projectilesprite.png" id="2_7a4nw"]
+[ext_resource type="Script" uid="uid://btryh5rw6b10x" path="res://Scripts/Visuals/SpriteTrailEffect.gd" id="3_7a4nw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
 size = Vector2(31, 18)
@@ -11,18 +12,36 @@ background_mode = 3
 glow_enabled = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bc5k8"]
-radius = 72.06247
+radius = 168.00298
+
+[sub_resource type="Gradient" id="Gradient_7a4nw"]
+colors = PackedColorArray(0.7177011, 0.88313174, 0.16656345, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ky0l"]
+gradient = SubResource("Gradient_7a4nw")
+width = 25
+height = 25
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.77777785, 0.34188035)
+
+[sub_resource type="Curve" id="Curve_7a4nw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.95894426, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="SplashBullet" type="Area2D" unique_id=132848767]
 modulate = Color(1.4954206, 1.4954206, 0.8693227, 1)
 self_modulate = Color(4.165, 4.165, 4.165, 1)
 script = ExtResource("1_bc5k8")
+projectileVelocity = 876.0
+projectileLifetime = 85.0
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
+[node name="BulletSprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
 position = Vector2(0, 5.9604645e-08)
 scale = Vector2(0.17857145, 0.17857143)
 texture = ExtResource("2_7a4nw")
+script = ExtResource("3_7a4nw")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1654839371]
 position = Vector2(5.5, 0)
@@ -31,10 +50,23 @@ shape = SubResource("RectangleShape2D_wix7r")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1978019399]
 environment = SubResource("Environment_hex5x")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=523554107]
+[node name="AreaOfEffect" type="Area2D" parent="." unique_id=523554107]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1838492635]
+[node name="SplashDamage" type="CollisionShape2D" parent="AreaOfEffect" unique_id=1838492635]
 shape = SubResource("CircleShape2D_bc5k8")
 debug_color = Color(0.87530273, 0.3033373, 0.4333256, 0.41960785)
 
-[connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]
+[node name="TrailEffect" type="CPUParticles2D" parent="." unique_id=1530671543]
+modulate = Color(1, 1, 1, 0.5)
+self_modulate = Color(3.2944162, 3.2944162, 3.2944162, 0.25)
+amount = 200
+texture = SubResource("GradientTexture2D_5ky0l")
+lifetime = 1.25
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 15.0
+scale_amount_curve = SubResource("Curve_7a4nw")
+color = Color(0.9309246, 1, 0.677051, 1)
+
+[connection signal="set_projectile_modulate" from="." to="BulletSprite" method="set_modulate"]

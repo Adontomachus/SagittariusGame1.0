@@ -8,10 +8,21 @@ enum ProjectileSide {
 	Enemy
 }
 
+enum DamageType {
+	SingleTarget,
+	AreaOfEffect
+}
+
+#
+@export_category("")
 @export var projectileSide = ProjectileSide.Player
-var projectileVelocity
-# Measured in seconds
-var projectileLifetime
+@export var damage_type = DamageType.SingleTarget
+
+# Projectile Statistics
+@export_category("Projectile Statistics")
+@export var projectileVelocity: float
+@export var projectileLifetime: float
+@export var splash_damage: Area2D
 var projectile_damage: float = 5
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
@@ -22,8 +33,8 @@ var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 var initPosition: Vector2 = Vector2(-125, -105)
 
 func _ready():
-	projectileVelocity = 762
-	projectileLifetime = 50
+	# projectileVelocity = 762
+	# projectileLifetime = 50
 	
 	# Used for world collision
 	self.body_entered.connect(func(body: Node2D) -> void:

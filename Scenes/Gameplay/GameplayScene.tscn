@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="5_fklr0"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Instances With Collision/Wall.tscn" id="5_nt06h"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="6_jwrfw"]
+[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="6_y268v"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="8_81epe"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
@@ -23,11 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
-[ext_resource type="PackedScene" uid="uid://bamuq5osqtp76" path="res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn" id="14_prjhx"]
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
+[ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="17_6uhl4"]
 [ext_resource type="Texture2D" uid="uid://cb111p34fn0vm" path="res://Sprites/Game Elements/updatedsagittariussprite.png" id="17_81epe"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
+[ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="18_ve3xx"]
+[ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="19_0cpi2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
 [ext_resource type="Texture2D" uid="uid://wfyey75sv4g6" path="res://Sprites/Game Elements/floorpattern.png" id="26_y1plk"]
 [ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/Game Elements/floordecals.png" id="28_agm15"]
@@ -38,6 +41,22 @@
 [ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Gameplay Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6uhl4"]
+font = ExtResource("6_y268v")
+font_size = 60
+outline_size = 20
+outline_color = Color(0.28680092, 0.16756532, 7.219613e-08, 1)
+shadow_size = 25
+shadow_color = Color(0.15170373, 0.03876, 0, 0.934)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ve3xx"]
+font = ExtResource("6_y268v")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_0cpi2"]
+font = ExtResource("6_y268v")
+font_size = 25
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -195,67 +214,77 @@ offset_right = 13.0
 offset_bottom = 33.0
 
 [node name="WaveNotification" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=120682287]
+self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
 offset_left = 698.0
 offset_top = 105.0
 offset_right = 1227.5652
 offset_bottom = 134.0
 text = "WAVE INCOMING!"
+label_settings = SubResource("LabelSettings_6uhl4")
 horizontal_alignment = 1
 
-[node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 16.0
-offset_right = 468.0
-offset_bottom = 293.0
-
-[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1415002962]
+[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1415002962]
 custom_minimum_size = Vector2(0, 170)
-layout_mode = 2
+layout_mode = 0
+offset_left = -6.0
+offset_top = 3.0
+offset_right = 648.7236
+offset_bottom = 252.0
 nine_patch_stretch = true
 texture_under = ExtResource("4_b4hlm")
 texture_progress = ExtResource("5_fklr0")
 
-[node name="ChargeUpBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=1212998886]
+[node name="ChargeUpBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=1212998886]
 modulate = Color(2.210482, 2.5032542, 0, 1)
 layout_mode = 0
-offset_left = 56.0
-offset_top = 144.0
-offset_right = 125.0
-offset_bottom = 157.0
+offset_left = 96.0
+offset_top = 236.0
+offset_right = 165.0
+offset_bottom = 249.0
 theme_override_font_sizes/font_size = 6
 value = 2.1
 
-[node name="ExperienceBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" unique_id=787785722]
+[node name="ExperienceBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=787785722]
 modulate = Color(0, 0.60124344, 1, 1)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 118.0
-offset_right = 406.0
-offset_bottom = 131.0
+offset_left = 217.0
+offset_top = 173.0
+offset_right = 477.0
+offset_bottom = 186.0
 theme_override_font_sizes/font_size = 6
 value = 2.1
+
+[node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 732.0
+offset_right = 475.0
+offset_bottom = 890.0
 
 [node name="Score" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1798433667]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Points: "
+label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="ComboCounter" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1692553793]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Combo:"
+label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="WaveCounter" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=388203173]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Wave:"
+label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="EnemyCounter" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=997734829]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
+label_settings = SubResource("LabelSettings_0cpi2")
 
 [node name="Pause" type="Button" parent="InterfaceElements/NewHUD/UI" unique_id=1148087537]
 layout_mode = 1
@@ -330,7 +359,7 @@ texture = SubResource("GradientTexture2D_8hfiw")
 
 [node name="GlowingGem2" parent="InterfaceElements/NewHUD/UI" unique_id=2110462969 instance=ExtResource("8_fklr0")]
 self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
-position = Vector2(111.5, 103.5)
+position = Vector2(126, 131)
 scale = Vector2(0.3125001, 0.43749982)
 
 [node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1513060166 groups=["BossUI"]]
@@ -373,6 +402,21 @@ offset_bottom = 524.0
 visible = false
 layout_mode = 1
 
+[node name="UpdatedExperienceBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=22508432]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 937.0
+offset_right = 892.6024
+offset_bottom = 1095.0
+nine_patch_stretch = true
+texture_under = ExtResource("17_6uhl4")
+texture_progress = ExtResource("18_ve3xx")
+
+[node name="Companionprogress" type="Sprite2D" parent="InterfaceElements/NewHUD/UI" unique_id=900042723]
+position = Vector2(1749.0001, 910)
+scale = Vector2(0.36671528, 0.36671528)
+texture = ExtResource("19_0cpi2")
+
 [node name="LegacyHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
 visible = false
 
@@ -414,15 +458,6 @@ volume_db = -15.0
 scale = Vector2(32.781254, 32.781254)
 energy = 2.37
 texture = SubResource("GradientTexture2D_y1plk")
-
-[node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("2_k77ap")]
-position = Vector2(337, 480)
-
-[node name="Enemy2" parent="." unique_id=283172414 instance=ExtResource("2_k77ap")]
-position = Vector2(948, 459)
-
-[node name="Enemy3" parent="." unique_id=637577156 instance=ExtResource("2_k77ap")]
-position = Vector2(483, 114)
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="." unique_id=1020116929]
 visible = false
@@ -1027,18 +1062,22 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="GlowingPlatform" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1709142336 instance=ExtResource("33_y268v")]
+visible = false
 position = Vector2(-373.00006, -582)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform2" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1528962324 instance=ExtResource("33_y268v")]
+visible = false
 position = Vector2(-212.99995, -513.99994)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform3" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1706417956 instance=ExtResource("33_y268v")]
+visible = false
 position = Vector2(-53.99997, -446)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform4" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1322612330 instance=ExtResource("33_y268v")]
+visible = false
 position = Vector2(102.000015, -380.99994)
 scale = Vector2(0.55727535, 0.55727535)
 
@@ -1107,8 +1146,14 @@ maxHealthPoints = 750
 position = Vector2(1046, 210)
 successfulChanceToAttack = 1.0
 
-[node name="Node2D" parent="." unique_id=1957876012 instance=ExtResource("14_prjhx")]
-position = Vector2(235, 225)
+[node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("2_k77ap")]
+position = Vector2(337, 480)
+
+[node name="Enemy2" parent="." unique_id=283172414 instance=ExtResource("2_k77ap")]
+position = Vector2(948, 459)
+
+[node name="Enemy3" parent="." unique_id=637577156 instance=ExtResource("2_k77ap")]
+position = Vector2(483, 114)
 
 [node name="ShooterEnemy" parent="." unique_id=1677205273 instance=ExtResource("32_40ckn")]
 position = Vector2(1064, 401)
@@ -1133,10 +1178,11 @@ position = Vector2(1391, 309)
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
-[connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_value"]
-[connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar/ExperienceBar" method="set_value"]
-[connection signal="send_maximum_health" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar" method="set_max"]
-[connection signal="send_maximum_xp" from="Player" to="InterfaceElements/NewHUD/UI/PlayerInfo/UpdatedPlayerHealthBar/ExperienceBar" method="set_max"]
+[connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="Player" method="increment_player_charge_attack"]
+[connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]
+[connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/ExperienceBar" method="set_value"]
+[connection signal="send_maximum_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_max"]
+[connection signal="send_maximum_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/ExperienceBar" method="set_max"]
 [connection signal="experience_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_xp"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
 [connection signal="update_current_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" method="set_value"]

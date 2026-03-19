@@ -5,7 +5,7 @@ var tween: Tween
 @onready var wave_notification: Label = $UI/WaveNotification
 
 # Color & Glow Effects
-@onready var updated_player_health_bar: TextureProgressBar = $UI/PlayerInfo/UpdatedPlayerHealthBar
+@onready var updated_player_health_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar
 @onready var updated_boss_health_bar: TextureProgressBar = $UI/UpdatedBossHealthBar
 
 

@@ -2,6 +2,7 @@ class_name BeatSync_Script
 extends Panel
 
 signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Color)
+signal increase_player_attack_charge
 @export_category("Beat Settings")
 @export var metronome_test: AudioStreamPlayer# = $"../MetronomeTest"
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
@@ -14,7 +15,6 @@ var lastBeat = 0
 var time: float
 var beat: float
 var beat_precise: float
-
 var audio_latency: float = 0.0
 #endregion
 
@@ -99,6 +99,7 @@ func _input(event: InputEvent) -> void:
 func damage_modifier(timing: float) -> float:
 	# Perfect
 	if timing > perfect_hit:
+		increase_player_attack_charge.emit()
 		return 1.45
 
 	# Good

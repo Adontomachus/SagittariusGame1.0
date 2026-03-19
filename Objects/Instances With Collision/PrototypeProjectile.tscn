@@ -12,6 +12,8 @@ glow_enabled = true
 
 [node name="PlayerBullet" type="Area2D" unique_id=132848767]
 script = ExtResource("1_5eb27")
+projectileVelocity = 762.0
+projectileLifetime = 60.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(5.912981, 5.912981, 5.912981, 1)

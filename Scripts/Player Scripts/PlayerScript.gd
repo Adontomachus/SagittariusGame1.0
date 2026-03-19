@@ -1,7 +1,7 @@
 class_name PlayerCharacter
 extends CharacterBody2D
 
-signal camera_shake(shakeDuration)
+signal camera_shake(shakeDuration, shakeStrength)
 
 # Health bar signals
 signal send_maximum_health(max_health: float)
@@ -26,7 +26,10 @@ var maxExperiencePoints: int = 60
 var moveSpeed: float = 300.0
 var playerDirection: Vector2
 @export var projectile_damage: float = 30
+# Projectile types
 var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
+# Enhanced version
+var powered_projectile := preload("res://Objects/Instances With Collision/EnhancedProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
 @export var player_sprite: Sprite2D
@@ -35,9 +38,10 @@ var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn"
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 @export_category("Number of perfect shots for enhanced attack")
+
 # Amount for a charged AoE attack
-@export var max_shots_for_charged = 8
-var shots_for_charged
+@export var max_shots_for_charged: int = 8
+var shots_for_charged: int = 8
 
 func _ready():
 	# Connecting the camera shake signal
@@ -80,33 +84,39 @@ func _physics_process(delta):
 	
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.2)
-	var projectile_instance = projectile.instantiate()
-	shot_sound.play()
-	projectile_instance.change_damage(projectile_damage * modifier)
-	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
-	projectile_instance.change_projectile_modulation(color)
-	projectile_instance.position = shot_point.get_global_position()
-	projectile_instance.rotation_degrees = shot_point.rotation_degrees
+	if shots_for_charged >= max_shots_for_charged:
+		# Shoots the enhanced projectile and sets the charge to 0
+		var enhanced_projectile = powered_projectile.instantiate()
+		shot_sound.play()
+		enhanced_projectile.change_damage((projectile_damage * modifier) * 4)
+		enhanced_projectile.position = shot_point.get_global_position()
+		enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
+		get_tree().get_root().call_deferred("add_child", enhanced_projectile)
+		shots_for_charged = 0
+	else:
+		# Shoots the normal projectile
+		var projectile_instance = projectile.instantiate()
+		shot_sound.play()
+		projectile_instance.change_damage(projectile_damage * modifier)
+		projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+		projectile_instance.change_projectile_modulation(color)
+		projectile_instance.position = shot_point.get_global_position()
+		projectile_instance.rotation_degrees = shot_point.rotation_degrees
+		get_tree().get_root().call_deferred("add_child", projectile_instance)
 
 	var shotEffect = projectileShotEffect.instantiate()
 	shotEffect.position = self.get_global_position()
-	get_tree().get_root().call_deferred("add_child", projectile_instance)
+
 	get_tree().get_root().call_deferred("add_child", shotEffect)
 
 	print_debug("Damage: %s" % (projectile_damage * modifier))
 	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-
-
 	
 func _on_enemy_collision_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("EnemyProjectile")):
 		print("Player has collided with enemy!")
 
-#func increment_player_health(increment: int) -> void:
-#	healthPoints += increment
-
-
-
+# Modifies current player health
 func modify_current_player_health(modification: int) -> void:
 	print("Player HP is now: ", healthPoints)
 	healthPoints += modification
@@ -116,6 +126,7 @@ func modify_current_player_health(modification: int) -> void:
 		get_tree().paused = true
 	send_current_health.emit(healthPoints)
 	
+# Modifies player experience points
 func modify_current_xp(modification: int) -> void:
 	print("Player XP is now: ", experiencePoints)
 	experiencePoints += modification
@@ -143,4 +154,8 @@ func upgrade_player_stats() -> void:
 	send_maximum_health.emit(maxHealthPoints)
 	pass
 
+# Charge up powered shot, up to 8 times
+func increment_player_charge_attack() -> void:
+	print("CHARGING SHOT: ", shots_for_charged)
+	shots_for_charged += 1
 	
