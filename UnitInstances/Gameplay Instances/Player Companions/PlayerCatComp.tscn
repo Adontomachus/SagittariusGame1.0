@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://3d11rnfax46i"]
+
+[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="1_53ufe"]
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_ek3bn"]
+[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Enemy/StateMachine/CompanionStateMachine.gd" id="3_35cl0"]
+[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Enemy/States/CompanionStates/Follow.gd" id="4_xjnx0"]
+
+[sub_resource type="Environment" id="Environment_vhhx4"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53ufe"]
+radius = 24.083189
+
+[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("companion_sprite", "state_machine")]
+script = ExtResource("1_53ufe")
+companion_sprite = NodePath("CatSprite")
+attack_power = 17.0
+move_speed = 85.0
+player_radius = 100.0
+state_machine = NodePath("CompanionStateMachine")
+
+[node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
+
+[node name="NearestEnemyTarget" type="Marker2D" parent="." unique_id=2016037628]
+
+[node name="PlayerTarget" type="Marker2D" parent="." unique_id=535261400]
+
+[node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
+self_modulate = Color(1.753959, 1.753959, 0.7517638, 1)
+scale = Vector2(0.37500003, 0.37500003)
+texture = ExtResource("2_ek3bn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CatSprite" unique_id=1454122288]
+environment = SubResource("Environment_vhhx4")
+
+[node name="CompanionStateMachine" type="Node" parent="." unique_id=1767462109]
+script = ExtResource("3_35cl0")
+metadata/_custom_type_script = "uid://bcfn444ui4txm"
+
+[node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=1318845052]
+script = ExtResource("4_xjnx0")
+metadata/_custom_type_script = "uid://4htspv80okg1"
+
+[node name="AreaEffect" type="Area2D" parent="." unique_id=199372774]
+
+[node name="Hitbox" type="CollisionShape2D" parent="AreaEffect" unique_id=1082545218]
+shape = SubResource("CircleShape2D_53ufe")

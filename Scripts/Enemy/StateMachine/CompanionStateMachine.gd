@@ -7,7 +7,7 @@ signal state_changed(state_name: String)
 @export var sprite: Sprite2D
 var current_state: CompanionState
 
-func init(parent: Enemy, animations: AnimationPlayer = null, audio: AudioStreamPlayer2D = null):
+func init(parent: CompanionGroup, animations: AnimationPlayer = null, audio: AudioStreamPlayer2D = null):
 	for child in get_children():
 		child.parent = parent
 		child.animations = animations

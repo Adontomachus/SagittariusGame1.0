@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dq342v2lkbm8s"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="GDScript" id="GDScript_h052y"]
+script/source = "extends CPUParticles2D
+
+var timedShot = 0.45
+
+func _process(delta):
+	timedShot -= delta
+	if (timedShot < 0):
+		queue_free()
+
+func _ready():
+	print(\"Particles emitted!\")
+
+func _on_finished() -> void:
+	queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="Environment" id="Environment_5nsfc"]
+glow_enabled = true
+glow_intensity = 3.86
+glow_strength = 0.95
+
+[node name="AoEEffect" type="CPUParticles2D" unique_id=1427452623]
+self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)
+amount = 25
+texture = SubResource("CanvasTexture_jhxfm")
+lifetime = 0.5
+preprocess = 0.13
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.29
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 335.24
+angular_velocity_min = -240.0
+angular_velocity_max = 138.85
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.5
+scale_amount_min = 5.0
+scale_amount_max = 15.65
+scale_amount_curve = SubResource("Curve_t5oqc")
+color = Color(0.78431374, 0.89411765, 0.18039216, 1)
+anim_speed_curve = SubResource("Curve_jhxfm")
+script = SubResource("GDScript_h052y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=802354431]
+environment = SubResource("Environment_5nsfc")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

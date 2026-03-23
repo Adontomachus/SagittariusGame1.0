@@ -7,6 +7,8 @@ var tween: Tween
 # Color & Glow Effects
 @onready var updated_player_health_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar
 @onready var updated_boss_health_bar: TextureProgressBar = $UI/UpdatedBossHealthBar
+@onready var updated_experience_bar: TextureProgressBar = $UI/UpdatedExperienceBar
+@onready var companion_progress_bar: TextureProgressBar = $UI/CompanionProgressBar
 
 
 @onready var score: Label = $UI/PlayerInfo/Score
@@ -53,6 +55,8 @@ func glow_on_beat() -> void:
 	current_glow_strength = 1.2
 
 func change_color() -> void:
+	updated_experience_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
+	companion_progress_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
 	updated_boss_health_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
 	updated_player_health_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
 	#pass # Replace with function body.

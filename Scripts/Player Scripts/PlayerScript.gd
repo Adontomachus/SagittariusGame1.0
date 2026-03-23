@@ -39,9 +39,16 @@ var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn"
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 @export_category("Number of perfect shots for enhanced attack")
 
+#region This section consists of player active abilities (requires player input rather than automatic)
 # Amount for a charged AoE attack
 @export var max_shots_for_charged: int = 8
 var shots_for_charged: int = 8
+@export var can_use_ability: bool
+@export var ability_cooldown: int
+@export var can_use_companion_ability: bool
+@export var max_companion_ability_charge: float
+var companion_ability_charge: float
+#endregion
 
 func _ready():
 	# Connecting the camera shake signal

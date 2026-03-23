@@ -4,7 +4,7 @@ extends Node2D
 
 
 @export var beatIndicator: Panel # = $InterfaceElements/HUD/BeatIndicator
-var spawnTimer = randf_range(5,10)
+var spawnTimer = randf_range(2,5)
 @export var player: Node2D # = $"../Player"
 
 # PAUSE UI
@@ -22,12 +22,14 @@ var comboCount = 0
 
 #region SPAWNING VARIABLES AND STATS
 const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.tscn")
-var playerSpawnDistance = 200
+var playerSpawnDistance = 250
+var shapeCast: ShapeCast2D
 var enemySpawnWeightCounter: int
 var rarityWeight: float
 @export var maxRarityValue: float
 var enemySpawnCounter: int
 var enemyCount: int
+
 # This checks if its eligible for the next wave to spawn as well as points.
 var waveCompleted: bool
 #var playerPoints: int
@@ -65,7 +67,7 @@ func _ready():
 	level_wave = 1
 	rarityWeight = 3
 	waveCompleted = false
-	enemySpawnCounter = 5
+	enemySpawnCounter = 10
 	actualMousePosition = get_global_mouse_position()
 	notifDuration = 6
 	nextDuration = 6
@@ -173,7 +175,7 @@ func _process(delta):
 		if wave_notification.self_modulate.a < 0:
 			_change_spawning_state(spawningBehavior.Preparation)
 			scale_on_next_wave.emit()
-			enemySpawnCounter = 5 + level_wave
+			enemySpawnCounter = 10 + (level_wave * 2)
 			level_wave += 1
 			nextDuration = 8
 			_next_wave(1)
@@ -209,20 +211,18 @@ func _process(delta):
 	
 	
 #region ENEMY SPAWNING FUNCTION	
+func _check_if_area_free(area_position):
+	
+	
+	return
 func _spawn_enemy():
 	if enemySpawnCounter >= 0:
 		var enemy = enemyToSpawn.instantiate()
 		enemy.rarityWeight = rarityWeight
 		#if (enemyoverlaps_area())
 		enemy.position = instantiationPositions
-	
-		#if (randomNumber < 0.25):
-		#	enemy.unitType = enemy.EnemyType.Normal				
-		#else:
-		#	enemy.unitType = enemy.EnemyType.Fodder
-		#get_tree().get_root().call_deferred("add_child", enemy)
-		#spawnTimer = randf_range(5,10)
 		add_child(enemy)
+
 #endregion		
 
 #region FUNCTION FOR MOUSE LOCATION		

@@ -166,7 +166,6 @@ func _delete_and_emit_effects():
 		var rewards = pointObject.instantiate()
 		rewards.position = self.get_global_position()
 		get_tree().get_root().call_deferred("add_child", rewards)
-		
 	call_deferred("queue_free")
 	return
 	
