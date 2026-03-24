@@ -7,11 +7,9 @@ signal state_changed(state_name: String)
 @export var sprite: Sprite2D
 var current_state: CompanionState
 
-func init(parent: CompanionGroup, animations: AnimationPlayer = null, audio: AudioStreamPlayer2D = null):
+func init(parent: CompanionGroup):
 	for child in get_children():
 		child.parent = parent
-		child.animations = animations
-		child.audio = audio
 	
 	# Initialize to the default state
 	change_state(starting_state)

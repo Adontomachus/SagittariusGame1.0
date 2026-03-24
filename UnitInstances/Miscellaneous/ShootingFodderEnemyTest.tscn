@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cfkii0111wady"]
+[gd_scene format=3 uid="uid://be63vqgonsq87"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_x4pj5"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_ufj5f"]

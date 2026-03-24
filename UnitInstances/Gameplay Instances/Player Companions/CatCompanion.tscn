@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="1_ey86f"]
 [ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="2_rrv2v"]
-[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Enemy/StateMachine/CompanionStateMachine.gd" id="3_uuewk"]
-[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Enemy/States/CompanionStates/Follow.gd" id="4_fvhcw"]
+[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_uuewk"]
+[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_fvhcw"]
 
 [sub_resource type="Environment" id="Environment_ruq0j"]
 background_mode = 3

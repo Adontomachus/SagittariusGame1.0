@@ -17,6 +17,7 @@ func _ready() -> void:
 	health_scaling += difficulty_scale
 	
 func _process(delta) -> void:
+	#if get_tree().current_scene.scene_file_path == "res://Scenes/Gameplay/GameplayScene.tscn":
 	health_scaling += 0.004 * delta
 	print("Testing health scaling mechanic: ", health_scaling)
 	return

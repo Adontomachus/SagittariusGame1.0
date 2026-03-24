@@ -43,7 +43,6 @@
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="43_p0i5v"]
-[ext_resource type="PackedScene" uid="uid://dcr6f72csq2gb" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompBack.tscn" id="44_ni7mq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6uhl4"]
 font = ExtResource("6_y268v")
@@ -133,6 +132,22 @@ gradient = SubResource("Gradient_81epe")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.75641024, 0.20512821)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0i5v"]
+radius = 316.8359
+
+[sub_resource type="Gradient" id="Gradient_p0i5v"]
+colors = PackedColorArray(1, 1, 0.2716998, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ni7mq"]
+gradient = SubResource("Gradient_p0i5v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.517094, 0.46581197)
+
+[sub_resource type="Curve" id="Curve_t1mfx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49853373, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k77ap"]
 vertices = PackedVector2Array(789.5, 625, 2366, 599, 2580, 599, 1432.5, 649, 1255.5, 649, 892.5, 647, 1679.5, 599, 1274.5, 1593, 124.71094, 2095.1094, 90.6875, 1388.2109, 108.42969, 1322, 977.5, 1297, 1154.5, 1297, 1597.5, 1387, 1502.5, 599, 3196.289, 925.1094, 3063.289, 925.1094, 2072, 883, 1432.5, 825, 2765, 1150.5703, 2698.789, 1168.3125, 2437.5, 1160, 2072, 1108, 2580, 374, 2366, 374, 2245.5, 229, 2245.5, 53, 2492.5, -59, 2897.4297, 1283, 3063.289, 2161.1094, 2879.6875, 1349.2109, 2437.5, 1476, 2698.789, 1397.6875, 2765, 1415.4297, 1603.5, 1909, 2879.6875, 1216.7891, 1870.5, 403, 2068.5, 229, 1870.5, 227, 1894, 90, 2068.5, 53, 2831.211, 1397.6875, 2492.5, -375, 3196.289, -491.10938, 2419.289, -491.10938, 2163.5, -375, -136.5, 782, -136.5, 1098, -417, 938, -417, 713, -376, 241, 2650.3125, 1349.2109, 2632.5703, 1283, 1641.7109, 2154.1094, 2108.5, 1476, 1603.5, 1593, 1774.5, 1387, 2108.5, 1160, 2650.3125, 1216.7891, 1774.5, 1211, 1858, 1108, 2831.211, 1168.3125, 1894, -135, 2163.5, -59, 1154.5, 1121, 1597.5, 1211, -162, 241, -162, 16, -59.5, 222, -59.5, 698, 1680, 90, 1693.5, 227, 117.5, 698, 117.5, 222, 405.5, 624, 411.5, 648, 411.5, 824, 192.5, 782, 1679.5, 423, 1693.5, 403, 1274, -217.57031, 1502.5, 423, 789.5, 449, 1207.7891, -235.3125, 1406.4297, -350, 1388.6875, -416.21094, 1388.6875, -283.78906, 1858, 883, 977.5, 1121, 192.5, 1098, 1255.5, 825, 892.5, 823, 614.5, 647, 507.5, 625, 902.28906, -580.1094, 2419.289, -580.1094, 1274, -482.4297, 1159.3125, -283.78906, 582.5, 449, 582.5, 448, 1141.5703, -350, 507.5, 624, 614.5, 648, 405.5, 448, 689.5, 824, 689.5, 823, 1641.7109, 2161.1094, 1274.5, 1909, 124.71094, 2154.1094, -90.21094, 1436.6875, -1377.2891, 2095.1094, -1377.2891, 1064.8906, -1370.2891, 1064.8906, -138.6875, 1388.2109, -631, 713, -1370.2891, -454.10938, -563.28906, -454.10938, -376, 16, -563.28906, -617.1094, 902.28906, -617.1094, 90.6875, 1255.7891, 42.210938, 1436.6875, -24, 1454.4297, 1159.3125, -416.21094, 1680, -135, 1340.2109, -235.3125, -156.42969, 1322, -138.6875, 1255.7891, -90.21094, 1207.3125, -631, 938, 42.210938, 1207.3125, 1340.2109, -464.6875, -24, 1189.5703, 1207.7891, -464.6875)
@@ -492,6 +507,29 @@ volume_db = -15.0
 scale = Vector2(32.781254, 32.781254)
 energy = 2.37
 texture = SubResource("GradientTexture2D_y1plk")
+
+[node name="AbillityAoE" type="Area2D" parent="Player" unique_id=1762094847]
+
+[node name="AoEHurtbox" type="CollisionShape2D" parent="Player/AbillityAoE" unique_id=367302589]
+shape = SubResource("CircleShape2D_p0i5v")
+debug_color = Color(0.5036662, 0.42920431, 0.12006802, 0.011764706)
+
+[node name="AbilityParticles" type="CPUParticles2D" parent="Player/AbillityAoE" unique_id=1200254873]
+scale = Vector2(2.4399977, 2.4399977)
+amount = 25
+texture = SubResource("GradientTexture2D_ni7mq")
+lifetime = 0.85
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 10.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_t1mfx")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="." unique_id=1020116929]
 visible = false
@@ -1201,22 +1239,7 @@ position = Vector2(1391, 309)
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("43_p0i5v")]
 position = Vector2(754, 389)
 
-[node name="PlayerCatCompRed" parent="." unique_id=1363492460 instance=ExtResource("44_ni7mq")]
-position = Vector2(646, 410)
-
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall21" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant4" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform2" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="Player" method="increment_player_charge_attack"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]

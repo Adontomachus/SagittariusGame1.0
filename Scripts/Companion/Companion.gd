@@ -1,8 +1,11 @@
 class_name CompanionGroup
 extends CharacterBody2D
+@export_group("State Machine")
+@export var state_machine: CompanionStateMachine
 
+@export_group("Other Variables")
 @export var companion_sprite: Sprite2D
-@onready var pathfinding: NavigationAgent2D = $Pathfinding
+@export var pathfinding: NavigationAgent2D
 
 @export_group("Companion Stats")
 @export var attack_power: float
@@ -14,8 +17,7 @@ var player_target: CharacterBody2D
 var enemy_target: CharacterBody2D
 # @export var time_to_relocate: float = 5
 
-@export_group("State Machine")
-@export var state_machine: CompanionStateMachine
+
 	
 # Targets for location points
 @onready var target_looker: Marker2D = $NearestEnemyTarget
@@ -23,6 +25,7 @@ var enemy_target: CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	state_machine.init(self)
 	player_target = get_tree().get_first_node_in_group("PlayerObject")
 	pass # Replace with function body.
 
@@ -31,11 +34,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
-	pathfinding.target_position = player_target.global_position
-	target_looker.look_at(player_target.global_position)
-	companion_sprite.look_at(player_target.global_position)
-	
+func move_companion(delta: float) -> void:
 	var targetLocation = pathfinding.get_next_path_position()
 	var new_velocity = global_position.direction_to(targetLocation) * move_speed
 	
@@ -44,5 +43,15 @@ func _physics_process(delta: float) -> void:
 	if (pathfinding.avoidance_enabled):
 		pathfinding.set_velocity(new_velocity)
 	move_and_slide()
+	
+	
+	pass
+
+func _physics_process(delta: float) -> void:
+	#pathfinding.target_position = player_target.global_position
+	target_looker.look_at(player_target.global_position)
+	companion_sprite.look_at(player_target.global_position)
+	
+
 
 	pass

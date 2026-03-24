@@ -7,7 +7,7 @@ extends EnemyCommon
 # OFFENSIVE STATISTICS
 @export_category("Offense Stats")
 @export var attackPower: float
-@export var projectile := preload("res://Objects/PrototypeProjectile.tscn")
+@export var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 # This variable is rolled randomly from 0, 10. Higher values 
 # give the unit more chance to shoot the player for each beat.
 @export var chanceToAttack: float

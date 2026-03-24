@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="1_05v6t"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_pnvxl"]
-[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Enemy/StateMachine/CompanionStateMachine.gd" id="3_l0nh8"]
-[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Enemy/States/CompanionStates/Follow.gd" id="4_reteg"]
+[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_l0nh8"]
+[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_reteg"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
@@ -13,13 +13,13 @@ glow_intensity = 0.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_05v6t"]
 radius = 24.083189
 
-[node name="PlayerCatCompRed" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("companion_sprite", "state_machine")]
+[node name="PlayerCatCompRed" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite")]
 script = ExtResource("1_05v6t")
+state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 attack_power = 14.0
 move_speed = 85.0
 player_radius = 100.0
-state_machine = NodePath("CompanionStateMachine")
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 
@@ -41,7 +41,6 @@ metadata/_custom_type_script = "uid://bcfn444ui4txm"
 
 [node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=1318845052]
 script = ExtResource("4_reteg")
-metadata/_custom_type_script = "uid://4htspv80okg1"
 
 [node name="AreaEffect" type="Area2D" parent="." unique_id=1895616528]
 
