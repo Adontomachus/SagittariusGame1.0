@@ -61,7 +61,7 @@ enum spawningBehavior {
 #endregion
 # Locate the mouse position for the mouse locator
 var actualMousePosition: Vector2
-@onready var cursorLocator: Marker2D = $MouseLocator
+#@onready var cursorLocator: Marker2D = $MouseLocator
 
 func _ready():
 	level_wave = 1
@@ -206,7 +206,6 @@ func _process(delta):
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
 	instantiationPositions = Vector2(player.global_position.x + randf_range(200,600), player.global_position.y + randf_range(155,455))
-	#global_position = player_target.global_position
 	#endregion
 	
 	
@@ -226,27 +225,15 @@ func _spawn_enemy():
 #endregion		
 
 #region FUNCTION FOR MOUSE LOCATION		
-func _locate_mouse_pointer():
-	cursorLocator.global_position = (player_target.global_position + actualMousePosition) / 2
-	return
+#func _locate_mouse_pointer():
+#	cursorLocator.global_position = (player_target.global_position + actualMousePosition) / 2
+#	return
 #endregion
 
-#TEMPORARY
-func _check_if_eligible_next_wave(): 
-	if enemySpawnCounter && enemyCount == 0:
-		return
-	return
-#TEMPORARY
 
 func _change_spawning_state(changeBehavior: spawningBehavior):
 	_spawningBehavior = changeBehavior
 	return
 	
-
-
 func set_value(boss_health: int) -> void:
 	pass # Replace with function body.
-	
-#func modify_player_score(modification: int) -> void:
-#	playerPoints += modification
-#	score_modify.emit(modification)

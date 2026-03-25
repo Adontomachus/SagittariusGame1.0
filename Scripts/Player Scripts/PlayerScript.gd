@@ -34,28 +34,41 @@ var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
 @export var player_sprite: Sprite2D
 
-# Shot properties and number of perfect shots for a powered shot
+# Shot properties and point
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 @export_category("Number of perfect shots for enhanced attack")
 
-#region This section consists of player active abilities (requires player input rather than automatic)
+#region This section consists of player abilities
 # Amount for a charged AoE attack
 @export var max_shots_for_charged: int = 8
 var shots_for_charged: int = 8
+
+# Booleans and conditions for using player abilities
 @export var can_use_ability: bool
-@export var ability_cooldown: int
+var ability_active: bool
+var ability_cooldown: int
+@onready var ability_aoe_node: Area2D = $AbilityAoE
 @export var can_use_companion_ability: bool
 @export var max_companion_ability_charge: float
 var companion_ability_charge: float
+
+
+
 #endregion
 
 func _ready():
+	
+
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
 	if camera_shake.is_connected(camera._shake_camera_on_shoot) == false:
 		camera_shake.connect(camera._shake_camera_on_shoot)
 	
+	# Setting the current health from max HP value and disabling active ability on start
+	ability_active = false
+	if !ability_active:
+		ability_aoe_node.hide()
 	healthPoints = maxHealthPoints
 	
 	# Player experience bar
@@ -89,13 +102,14 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	
+#region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.2)
 	if shots_for_charged >= max_shots_for_charged:
 		# Shoots the enhanced projectile and sets the charge to 0
 		var enhanced_projectile = powered_projectile.instantiate()
 		shot_sound.play()
-		enhanced_projectile.change_damage((projectile_damage * modifier) * 4)
+		enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
 		enhanced_projectile.position = shot_point.get_global_position()
 		enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
 		get_tree().get_root().call_deferred("add_child", enhanced_projectile)
@@ -118,11 +132,12 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 
 	print_debug("Damage: %s" % (projectile_damage * modifier))
 	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-	
-func _on_enemy_collision_area_entered(area: Area2D) -> void:
-	if (area.is_in_group("EnemyProjectile")):
-		print("Player has collided with enemy!")
+#endregion
+#func _on_enemy_collision_area_entered(area: Area2D) -> void:
+#	if (area.is_in_group("EnemyProjectile")):
+#		print("Player has collided with enemy!")
 
+#region Player stat modifications
 # Modifies current player health
 func modify_current_player_health(modification: int) -> void:
 	print("Player HP is now: ", healthPoints)
@@ -140,7 +155,6 @@ func modify_current_xp(modification: int) -> void:
 	if (experiencePoints > maxExperiencePoints): 
 		upgrade_player_stats()
 	send_current_xp.emit(experiencePoints)
-
 # Function for upgrading player stats upon levelling up
 func upgrade_player_stats() -> void:
 	# Increases health and damage by 4% and maximum XP requirement by 6%
@@ -160,6 +174,7 @@ func upgrade_player_stats() -> void:
 	send_maximum_xp.emit(maxExperiencePoints)
 	send_maximum_health.emit(maxHealthPoints)
 	pass
+#endregion
 
 # Charge up powered shot, up to 8 times
 func increment_player_charge_attack() -> void:

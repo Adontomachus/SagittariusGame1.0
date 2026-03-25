@@ -10,6 +10,11 @@ settings = NodePath("Settings")
 tutorial = NodePath("Tutorial")
 main_menu = NodePath("MainMenuContainer")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=176429304]
+offset_right = 1920.0
+offset_bottom = 1088.0
+color = Color(0.05193362, 0.0035419262, 0.17472742, 1)
+
 [node name="Tutorial" parent="." unique_id=90296623 node_paths=PackedStringArray("main_menu_node") instance=ExtResource("2_o310p")]
 unique_name_in_owner = true
 visible = false

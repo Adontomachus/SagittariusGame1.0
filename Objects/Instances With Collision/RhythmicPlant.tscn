@@ -23,7 +23,7 @@ fill = 1
 fill_from = Vector2(0.50220263, 0.4889868)
 fill_to = Vector2(0.7008547, 0.32478634)
 
-[node name="Rhythmplant" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect")]
+[node name="Rhythmplant" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect") groups=["ReactiveObstacle"]]
 position = Vector2(1.1920929e-07, 0)
 scale = Vector2(0.4185185, 0.4185185)
 texture = ExtResource("1_ljkxo")

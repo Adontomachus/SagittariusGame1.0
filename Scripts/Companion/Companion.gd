@@ -32,6 +32,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
 	pass
 
 func move_companion(delta: float) -> void:
@@ -42,16 +43,14 @@ func move_companion(delta: float) -> void:
 	
 	if (pathfinding.avoidance_enabled):
 		pathfinding.set_velocity(new_velocity)
+		
 	move_and_slide()
-	
-	
-	pass
 
 func _physics_process(delta: float) -> void:
 	#pathfinding.target_position = player_target.global_position
 	target_looker.look_at(player_target.global_position)
 	companion_sprite.look_at(player_target.global_position)
-	
+	state_machine.process_physics(delta)
 
 
 	pass

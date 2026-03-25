@@ -42,7 +42,9 @@
 [ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Gameplay Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
+[ext_resource type="PackedScene" uid="uid://cuubh55jmexqb" path="res://Objects/Instances With Collision/AoEEffectTest.tscn" id="38_ni7mq"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="43_p0i5v"]
+[ext_resource type="PackedScene" uid="uid://drcst5ug65lgl" path="res://Objects/Instances With Collision/EnhancedProjectile.tscn" id="45_t1mfx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6uhl4"]
 font = ExtResource("6_y268v")
@@ -175,6 +177,7 @@ offsets = PackedFloat32Array(0, 0.52063495, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0.66743076, 0.86981654, 0.1428257, 0.521, 1, 1, 1, 0)
 
 [node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "animation_player", "player_target")]
+position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator")
 player = NodePath("Player")
@@ -508,13 +511,13 @@ scale = Vector2(32.781254, 32.781254)
 energy = 2.37
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="AbillityAoE" type="Area2D" parent="Player" unique_id=1762094847]
+[node name="AbilityAoE" type="Area2D" parent="Player" unique_id=1762094847]
 
-[node name="AoEHurtbox" type="CollisionShape2D" parent="Player/AbillityAoE" unique_id=367302589]
+[node name="AoEHurtbox" type="CollisionShape2D" parent="Player/AbilityAoE" unique_id=367302589]
 shape = SubResource("CircleShape2D_p0i5v")
 debug_color = Color(0.5036662, 0.42920431, 0.12006802, 0.011764706)
 
-[node name="AbilityParticles" type="CPUParticles2D" parent="Player/AbillityAoE" unique_id=1200254873]
+[node name="AbilityParticles" type="CPUParticles2D" parent="Player/AbilityAoE" unique_id=1200254873]
 scale = Vector2(2.4399977, 2.4399977)
 amount = 25
 texture = SubResource("GradientTexture2D_ni7mq")
@@ -1091,6 +1094,27 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
+[node name="AreaLight6" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=998284555]
+position = Vector2(122.999756, 1737.0001)
+scale = Vector2(30.218752, -29.078125)
+energy = 1.23
+texture = SubResource("GradientTexture2D_y1plk")
+
+[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight6" unique_id=1360000092]
+amount = 15
+texture = SubResource("GradientTexture2D_1q4m6")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_y268v")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_6uhl4")
+
 [node name="AreaLight5" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1587209368]
 position = Vector2(2620.9995, 2044.0001)
 scale = Vector2(30.218752, -29.078125)
@@ -1134,24 +1158,23 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="GlowingPlatform" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1709142336 instance=ExtResource("33_y268v")]
-visible = false
-position = Vector2(-373.00006, -582)
+position = Vector2(-831, 501.00015)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform2" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1528962324 instance=ExtResource("33_y268v")]
-visible = false
-position = Vector2(-212.99995, -513.99994)
+position = Vector2(2524, 1162)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform3" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1706417956 instance=ExtResource("33_y268v")]
-visible = false
-position = Vector2(-53.99997, -446)
+position = Vector2(501.9999, 1439)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform4" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1322612330 instance=ExtResource("33_y268v")]
-visible = false
-position = Vector2(102.000015, -380.99994)
+position = Vector2(1569.0002, 399.00006)
 scale = Vector2(0.55727535, 0.55727535)
+
+[node name="SplashEffect" parent="NavigationRegion/Map Objects/BGDecals" unique_id=132848767 instance=ExtResource("38_ni7mq")]
+position = Vector2(1217, 200)
 
 [node name="MapEdgeObstacles" type="Node" parent="NavigationRegion/Map Objects" unique_id=76741644]
 
@@ -1212,7 +1235,7 @@ scale = Vector2(12.053431, 12.053431)
 
 [node name="Boss" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)
-maxHealthPoints = 750
+maxHealthPoints = 2100
 
 [node name="Elite" parent="." unique_id=336309580 instance=ExtResource("11_ssy3j")]
 position = Vector2(1046, 210)
@@ -1239,7 +1262,22 @@ position = Vector2(1391, 309)
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("43_p0i5v")]
 position = Vector2(754, 389)
 
+[node name="SplashBullet" parent="." unique_id=48414543 instance=ExtResource("45_t1mfx")]
+position = Vector2(903, 310)
+
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall21" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant4" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform2" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="Player" method="increment_player_charge_attack"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]

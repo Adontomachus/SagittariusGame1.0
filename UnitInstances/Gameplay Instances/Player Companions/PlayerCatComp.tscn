@@ -13,16 +13,13 @@ glow_intensity = 0.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_53ufe"]
 radius = 24.083189
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ek3bn"]
-radius = 20.0
-
 [node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
 script = ExtResource("1_53ufe")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
 attack_power = 17.0
-move_speed = 65.0
+move_speed = 120.0
 player_radius = 100.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
@@ -53,10 +50,6 @@ metadata/_custom_type_script = "uid://4htspv80okg1"
 
 [node name="Hitbox" type="CollisionShape2D" parent="AreaEffect" unique_id=1082545218]
 shape = SubResource("CircleShape2D_53ufe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1635736434]
-shape = SubResource("CircleShape2D_ek3bn")
-debug_color = Color(0.28483376, 0.5205632, 0.9352514, 0.41960785)
 
 [node name="Label" type="Label" parent="." unique_id=1079927306]
 offset_left = -19.0

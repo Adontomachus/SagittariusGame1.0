@@ -23,12 +23,13 @@ fill = 1
 fill_from = Vector2(0.50220263, 0.4889868)
 fill_to = Vector2(0.7008547, 0.32478634)
 
-[node name="GlowingPlatform" type="Sprite2D" unique_id=1580102396]
+[node name="GlowingPlatform" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect")]
 z_index = -10
 position = Vector2(1.1920929e-07, 0)
 scale = Vector2(0.4185185, 0.4185185)
 texture = ExtResource("1_xb6j2")
 script = ExtResource("2_6ww5o")
+glow_effect = NodePath("GlowEffect")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1897050038]
 environment = SubResource("Environment_knn8v")
