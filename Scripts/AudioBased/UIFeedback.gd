@@ -10,12 +10,15 @@ var tween: Tween
 @onready var updated_experience_bar: TextureProgressBar = $UI/UpdatedExperienceBar
 @onready var companion_progress_bar: TextureProgressBar = $UI/CompanionProgressBar
 
+@onready var updated_combo_counter: Label = $UI/UpdatedComboCounter
+
 
 @onready var score: Label = $UI/PlayerInfo/Score
 @onready var wave_counter: Label = $UI/PlayerInfo/WaveCounter
 @onready var combo_counter: Label = $UI/PlayerInfo/ComboCounter
 @export var starting_scale: float =  3
 @export var tempo: float = 120.0
+@export var animation_pulse: AnimationPlayer
 var pulsePerBeat = 60.0 / tempo
 
 #TESTING PURPOSES
@@ -60,3 +63,6 @@ func change_color() -> void:
 	updated_boss_health_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
 	updated_player_health_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
 	#pass # Replace with function body.
+	
+func pulse_combo_counter() -> void:
+	animation_pulse.play("UIBeatPulse")

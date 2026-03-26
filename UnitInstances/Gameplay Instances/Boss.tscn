@@ -23,6 +23,7 @@ state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(200, 500)
 maxHealthPoints = 2400
+amountOfPointOrbs = 15
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true

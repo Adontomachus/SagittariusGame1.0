@@ -25,6 +25,7 @@ navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(3, 5)
 maxMoveSpeed = 140.0
 maxHealthPoints = 135
+amountOfPointOrbs = 4
 aroundPlayerRadius = 180.0
 shoot_point = NodePath("ShootPoint")
 attackPower = 9.0

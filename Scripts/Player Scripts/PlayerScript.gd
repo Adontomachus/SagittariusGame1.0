@@ -58,8 +58,6 @@ var companion_ability_charge: float
 #endregion
 
 func _ready():
-	
-
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
 	if camera_shake.is_connected(camera._shake_camera_on_shoot) == false:
@@ -79,13 +77,26 @@ func _ready():
 	send_maximum_health.emit(maxHealthPoints)
 	send_current_health.emit(healthPoints)
 	
-	
-func get_input():
+#region Movement and ability inputs
+func get_input() -> void:
 	playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
+func get_ability_inputs() -> void:
+	if Input.is_action_pressed("use_ability"):
+		activate_player_ability()
 	
+
+func activate_player_ability() -> void:
+	ability_active = true
+	ability_aoe_node.show()
+	pass
+#endregion
+
+#region Main processes
 func _process(_delta):
-	# SPRITE FLIPPING WHEN TURNING AROUND
+	# Ability functions
+	get_ability_inputs()
+	# Sprite flipping on turnarounds
 	if get_global_mouse_position().x < global_position.x:
 		player_sprite.flip_h = true
 		# shotgun = global_position + weaponOffset
@@ -102,6 +113,8 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	
+#endregion
+
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.2)

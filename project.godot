@@ -107,7 +107,7 @@ use_ability={
 }
 use_companion_ability={
 "deadzone": 0.2,
-"events": []
+]
 }
 
 [navigation]

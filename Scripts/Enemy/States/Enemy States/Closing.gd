@@ -7,7 +7,7 @@ extends EnemyState
 
 func enter() -> void:
 	super()
-	reposition(parent.aroundPlayerRadius)
+	reposition()
 
 func process_physics(delta: float) -> EnemyState:
 	parent.move_enemy(delta)
@@ -20,7 +20,7 @@ func process_physics(delta: float) -> EnemyState:
 
 	return null
 
-func reposition(playerRadius) -> void:
+func reposition() -> void:
 	if parent.target:
-		var randomPosition = Vector2(randf_range(-playerRadius,playerRadius), randf_range(-playerRadius,playerRadius))
+		var randomPosition = Vector2(randf_range(-parent.aroundPlayerRadius,parent.aroundPlayerRadius), randf_range(-parent.aroundPlayerRadius,parent.aroundPlayerRadius))
 		parent.navAgent.target_position = parent.target.global_position + randomPosition

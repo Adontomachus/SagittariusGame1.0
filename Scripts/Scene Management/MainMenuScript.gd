@@ -7,8 +7,10 @@ extends Node2D
 @export var tutorial: Control
 # Main menu container
 @export var main_menu: MarginContainer
+@export var main_menu_transition: AnimationPlayer
 
-
+func _ready() -> void:
+	main_menu_transition.play("MainMenuTransitions")
 
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Gameplay/GameplayScene.tscn")

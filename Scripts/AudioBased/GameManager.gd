@@ -43,7 +43,7 @@ signal scale_on_next_wave
 #region UI Elements for displaying values along with game notifications
 @onready var score: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/Score
 @onready var wave_counter: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/WaveCounter
-@onready var enemy_counter: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/EnemyCounter
+@onready var enemy_counter: Label = $InterfaceElements/NewHUD/UI/EnemyCounter
 @onready var wave_notification: Label = $InterfaceElements/NewHUD/UI/WaveNotification
 var notifDuration: float
 var nextDuration: float

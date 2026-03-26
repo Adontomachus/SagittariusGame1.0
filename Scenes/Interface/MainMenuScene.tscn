@@ -3,12 +3,200 @@
 [ext_resource type="Script" uid="uid://bkent1jhnqg5y" path="res://Scripts/Scene Management/MainMenuScript.gd" id="1_xamtj"]
 [ext_resource type="PackedScene" uid="uid://ctnoi5oldo47k" path="res://Scenes/Interface/TutorialInterface.tscn" id="2_o310p"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="3_o310p"]
+[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_1dxah"]
 
-[node name="MainMenu" type="Node2D" unique_id=544361199 node_paths=PackedStringArray("settings", "tutorial", "main_menu")]
+[sub_resource type="LabelSettings" id="LabelSettings_wikew"]
+line_spacing = 4.0
+font = ExtResource("4_1dxah")
+font_size = 63
+
+[sub_resource type="Animation" id="Animation_o310p"]
+resource_name = "MainMenuTransitions"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuContainer/VBoxContainer/PlayButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenuContainer/VBoxContainer/StoryButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuContainer/VBoxContainer/SettingsButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenuContainer/VBoxContainer/HowToPlayButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainMenuContainer/VBoxContainer/Exit:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-678, 32), Vector2(98, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_1dxah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuContainer/VBoxContainer/PlayButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenuContainer/VBoxContainer/StoryButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuContainer/VBoxContainer/SettingsButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenuContainer/VBoxContainer/HowToPlayButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainMenuContainer/VBoxContainer/Exit:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Sagittarius: The Game"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-682, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dxah"]
+_data = {
+&"MainMenuTransitions": SubResource("Animation_o310p"),
+&"RESET": SubResource("Animation_1dxah")
+}
+
+[node name="MainMenu" type="Node2D" unique_id=544361199 node_paths=PackedStringArray("settings", "tutorial", "main_menu", "main_menu_transition")]
 script = ExtResource("1_xamtj")
 settings = NodePath("Settings")
 tutorial = NodePath("Tutorial")
 main_menu = NodePath("MainMenuContainer")
+main_menu_transition = NodePath("MainMenuAnimations")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=176429304]
 offset_right = 1920.0
@@ -82,18 +270,18 @@ text = "Exit
 "
 
 [node name="Label" type="Label" parent="." unique_id=1559997822]
-offset_left = 45.0
-offset_top = 28.0
-offset_right = 558.0
-offset_bottom = 152.0
+offset_left = -682.0
+offset_top = 32.0
+offset_right = -15.0
+offset_bottom = 155.99997
 text = "Sagittarius: The Game"
+label_settings = SubResource("LabelSettings_wikew")
 
-[node name="Test" type="Label" parent="Label" unique_id=196103953]
-layout_mode = 0
-offset_left = 1063.0
-offset_top = 480.0
-offset_right = 1286.0
-offset_bottom = 522.0
+[node name="BGSplash" type="Label" parent="." unique_id=196103953]
+offset_left = 1108.0
+offset_top = 508.0
+offset_right = 1331.0
+offset_bottom = 550.0
 text = "Background Splash Art"
 
 [node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=879553533]
@@ -109,28 +297,36 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=530956135]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "Start Game"
 
 [node name="StoryButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=1664087111]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "Story Mode
 "
 
 [node name="SettingsButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=926610218]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "Settings
 "
 
 [node name="HowToPlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=706086452]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "Learn to Play
 "
 
 [node name="Exit" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=909026264]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "Exit
 "
+
+[node name="MainMenuAnimations" type="AnimationPlayer" parent="." unique_id=1968643926]
+libraries/ = SubResource("AnimationLibrary_1dxah")
 
 [connection signal="pressed" from="StoryMode" to="." method="_on_story_mode_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

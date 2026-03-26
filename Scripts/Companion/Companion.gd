@@ -1,5 +1,7 @@
 class_name CompanionGroup
 extends CharacterBody2D
+
+#region Variables with export groups
 @export_group("State Machine")
 @export var state_machine: CompanionStateMachine
 
@@ -10,15 +12,16 @@ extends CharacterBody2D
 @export_group("Companion Stats")
 @export var attack_power: float
 @export var move_speed: float
+@export var move_duration: float
 
+# These are the main destination points for the companion to follow
 @export_group("Player Master and Nearest Target")
 var player_target: CharacterBody2D
 @export var player_radius: float
 var enemy_target: CharacterBody2D
+#endregion
 # @export var time_to_relocate: float = 5
 
-
-	
 # Targets for location points
 @onready var target_looker: Marker2D = $NearestEnemyTarget
 @onready var master_target_location: Marker2D = $PlayerTarget
@@ -49,8 +52,6 @@ func move_companion(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	#pathfinding.target_position = player_target.global_position
 	target_looker.look_at(player_target.global_position)
+	master_target_location.look_at(player_target.global_position)
 	companion_sprite.look_at(player_target.global_position)
 	state_machine.process_physics(delta)
-
-
-	pass
