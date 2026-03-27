@@ -69,6 +69,13 @@ var pointObject := preload("res://UnitInstances/Miscellaneous/ScoreOrb.tscn")
 var chanceToAttack: float
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 
+## Damage number that spawns on side of the object's center
+## when the object takes damage from AoE sources
+var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
+
+# Damage number positioning and feedback visuals
+var initPosition: Vector2 = Vector2(-55, -45)
+var splash_damage_effect := preload("res://Objects/Particle Effects/AoEHitEffect.tscn")
 
 # START
 func _ready():
@@ -90,15 +97,12 @@ func _ready():
 	update_max_health_value.emit(maxHealthPoints)
 	update_current_health_value.emit(baseHealthPoints)
 	
-
-	
 	# Get player for navigation and targeting
 	target = get_tree().get_first_node_in_group("PlayerObject")
 
 func _physics_process(delta: float) -> void:
 	if target and shoot_point:
 		shoot_point.look_at(target.global_position)
-		
 	# SPRITE FLIPPING
 	if target.get_global_position().x < global_position.x:
 		state_machine.sprite.flip_h = true
@@ -107,11 +111,10 @@ func _physics_process(delta: float) -> void:
 		pass
 	else:
 		state_machine.sprite.flip_h = false
-		
+
 	state_machine.process_physics(delta)
 	
 func _process(delta: float) -> void:
-
 	state_machine.process_frame(delta)
 
 func move_enemy(delta: float) -> void:
@@ -146,13 +149,11 @@ func modify_health(increment: int) -> void:
 	hit_sound.play()
 	baseHealthPoints += increment
 	send_current_health_value.emit(baseHealthPoints)
-	
+
 	# Boss
 	update_current_health_value.emit(baseHealthPoints)
-	
 	toggle_healthbar_visibility.emit(baseHealthPoints < maxHealthPoints)
-	#update_max_health_value.emit(healthPoints)
-	#update_current_health_value(boss_health: int)
+	
 	if (baseHealthPoints < 0):
 		_delete_and_emit_effects()
 		
@@ -169,5 +170,17 @@ func _delete_and_emit_effects():
 	call_deferred("queue_free")
 	return
 	
+func _aoe_damage_feedback(increment: int):
+	## Damage Number
+	var damageFeedback = damageNumber.instantiate()
+	damageFeedback.position = self.get_global_position() + initPosition
+	damageFeedback.damage_value = increment
+	get_tree().get_root().call_deferred("add_child", damageFeedback)
+	## Damage visuals
+	var hitEffect = splash_damage_effect.instantiate()
+	hitEffect.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", hitEffect)
+
+	pass
 # CHANGE STATS ON SPAWN (TENTATIVE)
 #func change_unit_stats(health: int, new_damage: int) -> void:

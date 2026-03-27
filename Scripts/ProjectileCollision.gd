@@ -22,15 +22,19 @@ enum DamageType {
 @export_category("Projectile Statistics")
 @export var projectileVelocity: float
 @export var projectileLifetime: float
+@export var criticalHit: bool
 #@export var splash_damage: Area2D
 @export var projectile_damage: float = 5
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
+
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
+#Damage number positioning
+var initPosition: Vector2 = Vector2(-125, -105)
 
 #TESTING PURPOSES
 var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
-var initPosition: Vector2 = Vector2(-125, -105)
+
 
 func _ready():
 	# projectileVelocity = 762
@@ -86,6 +90,7 @@ func _ready():
 					var damageFeedback = damageNumber.instantiate()
 					damageFeedback.position = self.get_global_position() + initPosition
 					damageFeedback.damage_value = projectile_damage
+					if criticalHit: damageFeedback.is_critical_hit = true
 					get_tree().get_root().call_deferred("add_child", damageFeedback)
 
 

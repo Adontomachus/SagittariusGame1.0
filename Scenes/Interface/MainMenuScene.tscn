@@ -285,10 +285,10 @@ offset_bottom = 550.0
 text = "Background Splash Art"
 
 [node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=879553533]
-offset_left = 86.0
-offset_top = 834.0
-offset_right = 495.0
-offset_bottom = 1011.0
+offset_left = 93.0
+offset_top = 692.0
+offset_right = 502.0
+offset_bottom = 993.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenuContainer" unique_id=572890874]
 layout_mode = 2
@@ -299,29 +299,44 @@ layout_mode = 2
 [node name="PlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=530956135]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.85646725, 0.90982777, 0.2400937, 1)
+theme_override_fonts/font = ExtResource("4_1dxah")
+theme_override_font_sizes/font_size = 32
 text = "Start Game"
 
 [node name="StoryButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=1664087111]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.849211, 0.93130827, 0.30403528, 1)
+theme_override_fonts/font = ExtResource("4_1dxah")
+theme_override_font_sizes/font_size = 32
 text = "Story Mode
 "
 
 [node name="SettingsButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=926610218]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.81352156, 0.91330606, 0.28060427, 1)
+theme_override_fonts/font = ExtResource("4_1dxah")
+theme_override_font_sizes/font_size = 32
 text = "Settings
 "
 
 [node name="HowToPlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=706086452]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.84648824, 0.93378747, 0.2541813, 1)
+theme_override_fonts/font = ExtResource("4_1dxah")
+theme_override_font_sizes/font_size = 32
 text = "Learn to Play
 "
 
 [node name="Exit" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=909026264]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.87332916, 0.92027265, 0.36795154, 1)
+theme_override_fonts/font = ExtResource("4_1dxah")
+theme_override_font_sizes/font_size = 32
 text = "Exit
 "
 

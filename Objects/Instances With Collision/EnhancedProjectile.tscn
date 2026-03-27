@@ -33,6 +33,7 @@ script = ExtResource("1_bc5k8")
 damage_type = 1
 projectileVelocity = 851.0
 projectileLifetime = 90.0
+criticalHit = true
 
 [node name="BulletSprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(18.892157, 18.892157, 18.892157, 1)

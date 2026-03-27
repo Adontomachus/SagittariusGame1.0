@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="2_30wor"]
 [ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Gameplay Instances/Enemy.tscn" id="2_k77ap"]
 [ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/Player Scripts/PointSystemScript.gd" id="2_qvp00"]
+[ext_resource type="Script" uid="uid://c810xbguv6vjc" path="res://Scripts/Player Scripts/ComboSystemScript.gd" id="2_vwi3h"]
 [ext_resource type="Script" uid="uid://d1e13o8vj8tni" path="res://Scripts/ScalingSystemScript.gd" id="3_0voen"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
@@ -361,13 +362,14 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278]
 
-[node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354]
+[node name="ComboSystem" type="Node" parent="GameSystems" unique_id=1947735173 groups=["PlayerSystems"]]
+script = ExtResource("2_vwi3h")
+
+[node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354 groups=["PlayerSystems"]]
 script = ExtResource("2_qvp00")
 
-[node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101]
+[node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101 groups=["PlayerSystems"]]
 script = ExtResource("3_0voen")
-
-[node name="MouseLocator" type="Marker2D" parent="GameSystems" unique_id=1641650591]
 
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
@@ -467,10 +469,10 @@ value = 2.1
 
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
 layout_mode = 0
-offset_left = 25.99999
-offset_top = 786.0
-offset_right = 472.0
-offset_bottom = 954.0
+offset_left = 28.999998
+offset_top = 767.0
+offset_right = 475.0
+offset_bottom = 935.0
 rotation = -0.08058332
 
 [node name="Score" type="Label" parent="InterfaceElements/NewHUD/UI/PlayerInfo" unique_id=1798433667]
@@ -641,14 +643,30 @@ value = 5.0
 texture_under = ExtResource("19_0cpi2")
 texture_progress = ExtResource("18_0cpi2")
 
-[node name="BoxContainer" type="BoxContainer" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar" unique_id=1590566531]
+[node name="Ability1Container" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar" unique_id=811078322]
+layout_mode = 0
+offset_left = -321.15057
+offset_top = 463.884
+offset_right = -86.235535
+offset_bottom = 726.6157
+
+[node name="AbililtyKey2" type="Label" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability1Container" unique_id=470776032]
+layout_mode = 0
+offset_left = 98.129326
+offset_top = 288.4407
+offset_right = 141.12933
+offset_bottom = 408.4407
+text = "Q"
+label_settings = SubResource("LabelSettings_48svx")
+
+[node name="Ability2Container" type="BoxContainer" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar" unique_id=1590566531]
 layout_mode = 0
 offset_left = 460.91034
 offset_top = 758.2718
 offset_right = 576.9103
 offset_bottom = 878.2718
 
-[node name="AbililtyKey" type="Label" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar/BoxContainer" unique_id=2061306330]
+[node name="AbililtyKey" type="Label" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability2Container" unique_id=2061306330]
 layout_mode = 2
 text = "E"
 label_settings = SubResource("LabelSettings_48svx")
@@ -1574,8 +1592,8 @@ position = Vector2(754, 389)
 [node name="SplashBullet" parent="." unique_id=48414543 instance=ExtResource("45_t1mfx")]
 position = Vector2(903, 310)
 
-[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="pulse_combo_counter"]
+[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
