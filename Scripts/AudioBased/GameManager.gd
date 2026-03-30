@@ -143,8 +143,11 @@ func _process(delta):
 			wave_notification.self_modulate.a = 0
 		
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
+		#region Signal emitters for beat synchronization
 		# Emit rhythmic signals for the game aesthetics
 		pulse_on_beat.emit()
+		#endregion
+	
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
 
 		print("Testing! Beat Synced! Spawns Remaining: ", enemySpawnCounter)

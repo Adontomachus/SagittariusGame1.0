@@ -111,11 +111,14 @@ func _process(delta):
 func _physics_process(delta):
 	position += transform.x * projectileVelocity * delta
 
+# Function for changing damage value outside of exported value
 func change_damage(damage: int) -> void:
 	projectile_damage = damage
 
+# Changes the projectile's alignment
 func change_projectile_side(new_side: ProjectileSide) -> void:
 	projectileSide = new_side
 
+# Changes the projectile's color for identification
 func change_projectile_modulation(color: Color) -> void:
 	set_projectile_modulate.emit(color)

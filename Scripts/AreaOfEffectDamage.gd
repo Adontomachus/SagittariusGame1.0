@@ -8,10 +8,7 @@ enum ProjectileSide {
 
 @export_category("Area of Effect Statistics")
 @export var aoe_damage: float = 25
-var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
-var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
-var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
-
+@export var lifetime: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.area_entered.connect(func(area) -> void:
@@ -19,7 +16,13 @@ func _ready() -> void:
 			area.modify_enemy_health(-aoe_damage)
 			area.show_aoe_feedback(aoe_damage)
 	)
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+# Function to change damage outside of exported value
+func change_damage(damage: int) -> void:
+	aoe_damage = damage

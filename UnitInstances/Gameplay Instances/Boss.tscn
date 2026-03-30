@@ -111,4 +111,5 @@ pitch_scale = 0.75
 [connection signal="send_maximum_health_value" from="." to="." method="_on_send_maximum_health_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
+[connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

@@ -69,14 +69,12 @@ var pointObject := preload("res://UnitInstances/Miscellaneous/ScoreOrb.tscn")
 var chanceToAttack: float
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 
+# Damage number positioning and feedback visuals
+var initPosition: Vector2 = Vector2(-133 ,-133)
+var splash_damage_effect := preload("res://Objects/Particle Effects/AoEHitEffect.tscn")
 ## Damage number that spawns on side of the object's center
 ## when the object takes damage from AoE sources
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
-
-# Damage number positioning and feedback visuals
-var initPosition: Vector2 = Vector2(-55, -45)
-var splash_damage_effect := preload("res://Objects/Particle Effects/AoEHitEffect.tscn")
-
 # START
 func _ready():
 	state_machine.init(self)#, animations, audio_sfx)

@@ -109,4 +109,5 @@ debug_color = Color(1, 0.47785366, 0.41005647, 0.042000003)
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
+[connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]

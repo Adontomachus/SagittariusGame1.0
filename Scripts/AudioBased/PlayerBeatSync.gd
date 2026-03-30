@@ -3,6 +3,7 @@ extends Panel
 
 signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Color)
 signal increase_player_attack_charge
+signal increment_combo_meter(strength_value: float)
 @export_category("Beat Settings")
 @export var metronome_test: AudioStreamPlayer# = $"../MetronomeTest"
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
@@ -100,10 +101,12 @@ func damage_modifier(timing: float) -> float:
 	# Perfect
 	if timing > perfect_hit:
 		increase_player_attack_charge.emit()
+		increment_combo_meter.emit(40)
 		return 1.45
 
 	# Good
 	if timing > good_hit:
+		increment_combo_meter.emit(15)
 		return 1.0
 	
 	# OK

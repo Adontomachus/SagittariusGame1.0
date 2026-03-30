@@ -32,6 +32,8 @@ var projectile := preload("res://Objects/Instances With Collision/PrototypeProje
 var powered_projectile := preload("res://Objects/Instances With Collision/EnhancedProjectile.tscn")
 var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.tscn")
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
+# Pulsing AoE instance for abililty
+var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.tscn")
 @export var player_sprite: Sprite2D
 
 # Shot properties and point
@@ -52,9 +54,6 @@ var ability_cooldown: int
 @export var can_use_companion_ability: bool
 @export var max_companion_ability_charge: float
 var companion_ability_charge: float
-
-
-
 #endregion
 
 func _ready():
@@ -114,12 +113,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 #endregion
-
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
-	camera_shake.emit(0.2)
+	camera_shake.emit(0.3)
 	if shots_for_charged >= max_shots_for_charged:
-		# Shoots the enhanced projectile and sets the charge to 0
+		# Shoots the enhanced projectile and sets the beat charge to 0
 		var enhanced_projectile = powered_projectile.instantiate()
 		shot_sound.play()
 		enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
@@ -137,18 +135,37 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 		projectile_instance.position = shot_point.get_global_position()
 		projectile_instance.rotation_degrees = shot_point.rotation_degrees
 		get_tree().get_root().call_deferred("add_child", projectile_instance)
-
+	
+	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
 	var shotEffect = projectileShotEffect.instantiate()
 	shotEffect.position = self.get_global_position()
-
 	get_tree().get_root().call_deferred("add_child", shotEffect)
-
-	print_debug("Damage: %s" % (projectile_damage * modifier))
 	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+	
+	# Prints the damage value of instantiated shot for debug
+	print_debug("Damage: %s" % (projectile_damage * modifier))
+
+	# Charge up powered shot, up to 8 times
+	## This function is signaled through the beat indicator
+func increment_player_charge_attack() -> void:
+	print("CHARGING SHOT: ", shots_for_charged)
+	shots_for_charged += 1
+	
 #endregion
-#func _on_enemy_collision_area_entered(area: Area2D) -> void:
-#	if (area.is_in_group("EnemyProjectile")):
-#		print("Player has collided with enemy!")
+
+#region Checking if Sagittarrius's AoE is active or not
+# This function is also connected to the global beat synchronization script
+func _ability_pulse_checker() -> void:
+	## AoE effect instantiates for every note. Faster tempos mean faster damage instances
+	## The 'if statement' checks if the ability is active or not.
+	if ability_active:
+		var aoe_damage = pulse_aoe.instantiate()
+		#shot_sound.play()
+		aoe_damage.change_damage(projectile_damage / randf_range(1.4, 1.6))
+		aoe_damage.position = shot_point.get_global_position()
+		get_tree().get_root().call_deferred("add_child", aoe_damage)
+		return 
+#endregion
 
 #region Player stat modifications
 # Modifies current player health
@@ -188,9 +205,3 @@ func upgrade_player_stats() -> void:
 	send_maximum_health.emit(maxHealthPoints)
 	pass
 #endregion
-
-# Charge up powered shot, up to 8 times
-func increment_player_charge_attack() -> void:
-	print("CHARGING SHOT: ", shots_for_charged)
-	shots_for_charged += 1
-	
