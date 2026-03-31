@@ -16,7 +16,8 @@ signal send_current_xp(xp: float)
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
 		return healthPoints
-		
+
+#region General Player Statistics		
 var maxHealthPoints: float = 100.0
 
 var experiencePoints: int = 0
@@ -35,7 +36,7 @@ var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn"
 # Pulsing AoE instance for abililty
 var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.tscn")
 @export var player_sprite: Sprite2D
-
+#endregion
 # Shot properties and point
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
@@ -49,6 +50,7 @@ var shots_for_charged: int = 8
 # Booleans and conditions for using player abilities
 @export var can_use_ability: bool
 var ability_active: bool
+var ability_duration: int
 var ability_cooldown: int
 @onready var ability_aoe_node: Area2D = $AbilityAoE
 @export var can_use_companion_ability: bool
@@ -64,9 +66,9 @@ func _ready():
 	
 	# Setting the current health from max HP value and disabling active ability on start
 	ability_active = false
-	if !ability_active:
-		ability_aoe_node.hide()
 	healthPoints = maxHealthPoints
+	# Hides the AoE ability effect on start since it is disabled
+	ability_aoe_node.hide()
 	
 	# Player experience bar
 	send_maximum_xp.emit(maxExperiencePoints)
@@ -86,6 +88,7 @@ func get_ability_inputs() -> void:
 	
 
 func activate_player_ability() -> void:
+	ability_duration = 20
 	ability_active = true
 	ability_aoe_node.show()
 	pass
@@ -159,11 +162,15 @@ func _ability_pulse_checker() -> void:
 	## AoE effect instantiates for every note. Faster tempos mean faster damage instances
 	## The 'if statement' checks if the ability is active or not.
 	if ability_active:
+		ability_duration -= 1
 		var aoe_damage = pulse_aoe.instantiate()
 		#shot_sound.play()
 		aoe_damage.change_damage(projectile_damage / randf_range(1.4, 1.6))
 		aoe_damage.position = shot_point.get_global_position()
 		get_tree().get_root().call_deferred("add_child", aoe_damage)
+		if ability_duration <= 0:
+			ability_aoe_node.hide()
+			ability_active = false
 		return 
 #endregion
 

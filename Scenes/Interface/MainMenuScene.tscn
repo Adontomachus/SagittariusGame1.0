@@ -10,6 +10,27 @@ line_spacing = 4.0
 font = ExtResource("4_1dxah")
 font_size = 63
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dxah"]
+bg_color = Color(0.15662736, 0.109438084, 0.034887142, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wikew"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e17d6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5x3o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xkfm1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xaw1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c23qf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_suju0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2eqr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0c00"]
+
 [sub_resource type="Animation" id="Animation_o310p"]
 resource_name = "MainMenuTransitions"
 length = 2.5
@@ -285,13 +306,11 @@ offset_bottom = 550.0
 text = "Background Splash Art"
 
 [node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=879553533]
-offset_left = 93.0
-offset_top = 692.0
-offset_right = 502.0
-offset_bottom = 993.0
-
-[node name="PanelContainer" type="PanelContainer" parent="MainMenuContainer" unique_id=572890874]
-layout_mode = 2
+offset_left = 112.00001
+offset_top = 622.0
+offset_right = 521.0
+offset_bottom = 1005.0
+rotation = -0.08609183
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer" unique_id=1933681317]
 layout_mode = 2
@@ -301,7 +320,17 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85646725, 0.90982777, 0.2400937, 1)
 theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_1dxah")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wikew")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_e17d6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b5x3o")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_xkfm1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_xaw1t")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_c23qf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_suju0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_t2eqr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e0c00")
 text = "Start Game"
 
 [node name="StoryButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=1664087111]
@@ -309,7 +338,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.849211, 0.93130827, 0.30403528, 1)
 theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
 text = "Story Mode
 "
 
@@ -318,7 +347,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81352156, 0.91330606, 0.28060427, 1)
 theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
 text = "Settings
 "
 
@@ -327,7 +356,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.84648824, 0.93378747, 0.2541813, 1)
 theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
 text = "Learn to Play
 "
 
@@ -336,7 +365,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87332916, 0.92027265, 0.36795154, 1)
 theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
 text = "Exit
 "
 

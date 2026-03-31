@@ -6,7 +6,7 @@ var velocity: Vector2
 @export_category("Orb Stats")
 @export var pointsAmount = 150
 @export var experienceAmount: int = 6
-@export var healAmount: float = 1
+@export var healAmount: float = 0.4
 var homeTowardsPlayer = false
 var chaseTarget: bool = false
 @onready var player: Node2D
@@ -49,27 +49,8 @@ func _physics_process(delta):
 		movespeed += 355 * delta
 		look_at(objectTarget.global_position)
 
-		#if (chaseTarget):
-
-			#movespeed += 750 * delta
-	#	velocity = Vector2.ZERO
-	#	movespeed += 800 * delta
-	#	var objectdirection = global_position.direction_to(objectTarget.global_position)
-	#	var target = objectTarget.global_position
-	#	position = position.move_toward(target, movespeed * delta)
-	#	movespeed -= 300 * delta
-
-
 
 func emit_effects():
 	var collectEffect = collEffect.instantiate()
 	collectEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", collEffect)
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-
-
-
-	

@@ -1362,7 +1362,7 @@ position = Vector2(2025, 1852)
 texture = ExtResource("31_40ckn")
 
 [node name="AreaLight" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=529271008]
-position = Vector2(1836, 984.99994)
+position = Vector2(1853, 984.9998)
 scale = Vector2(31.062504, 31.062504)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
@@ -1383,7 +1383,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight2" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1127818380]
-position = Vector2(-721.99994, 247)
+position = Vector2(-645.99994, -242)
 scale = Vector2(30.546873, 30.624998)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
@@ -1535,7 +1535,7 @@ scale = Vector2(12.053431, 12.053431)
 
 [node name="Wall6" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=2067173200 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(3846, 1734)
+position = Vector2(3817, 1748.0001)
 scale = Vector2(12.053431, 12.053431)
 
 [node name="Wall7" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=816452865 instance=ExtResource("5_nt06h")]

@@ -119,6 +119,7 @@ _data = {
 }
 
 [node name="Landing" type="Node2D" unique_id=1802944112 node_paths=PackedStringArray("transition_animation")]
+position = Vector2(0, -3)
 script = ExtResource("1_0ptka")
 transition_animation = NodePath("AnimationPlayer")
 

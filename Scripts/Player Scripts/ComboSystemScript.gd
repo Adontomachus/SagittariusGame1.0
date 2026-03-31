@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	## This combo decrement scales the higher the combo values are
 	## which results in faster combo value dropping
-	combo_strength -= (20 - combo_strength / 50) * delta
+	combo_strength -= (50) * delta
 	if combo_strength < 0: combo_strength = 0
 	_update_combo()
 	pass
