@@ -18,6 +18,15 @@ radius = 305.0
 background_mode = 3
 glow_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_e2ygo"]
+colors = PackedColorArray(0.9395707, 0.9960334, 0.28918967, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ncenu"]
+gradient = SubResource("Gradient_e2ygo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7606838, 0.25641027)
+
 [node name="SplashEffect" type="Area2D" unique_id=132848767]
 script = ExtResource("1_e3p8s")
 lifetime = 0.2
@@ -34,3 +43,9 @@ debug_color = Color(0.67486864, 0.41063866, 0.37164152, 0.060000002)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1978019399]
 environment = SubResource("Environment_hex5x")
+
+[node name="AoEIndicator" type="PointLight2D" parent="." unique_id=983406535]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
+scale = Vector2(7.96875, 7.96875)
+texture = SubResource("GradientTexture2D_ncenu")
