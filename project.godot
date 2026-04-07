@@ -46,6 +46,7 @@ folder_colors={
 "res://Scripts/Visuals/": "pink",
 "res://Sprites/Game Elements/": "blue",
 "res://Sprites/Legacy/": "gray",
+"res://Sprites/Player Sprites/": "blue",
 "res://Sprites/UI/": "teal",
 "res://UnitInstances/Gameplay Instances/": "red",
 "res://UnitInstances/Gameplay Instances/Player Companions/": "orange",

@@ -58,6 +58,17 @@ var ability_cooldown: int
 var companion_ability_charge: float
 #endregion
 
+## Sprites for the orthographic direction to face where the player's cursor is
+@export_category("Orthographic Sprite Rotations")
+@export var sprite_up: Sprite2D
+@export var sprite_up_right: Sprite2D
+@export var sprite_right: Sprite2D
+@export var sprite_down_right: Sprite2D
+@export var sprite_down: Sprite2D
+@export var sprite_down_left: Sprite2D
+@export var sprite_left: Sprite2D
+@export var sprite_left_up: Sprite2D
+
 func _ready():
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")

@@ -48,6 +48,8 @@ metadata/_custom_type_script = "uid://bcfn444ui4txm"
 
 [node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=1318845052]
 script = ExtResource("4_xjnx0")
+time_before_expiration = 5.0
+start_time_before_expiration = 5.0
 metadata/_custom_type_script = "uid://4htspv80okg1"
 
 [node name="CompanionStateStationary" type="Node" parent="CompanionStateMachine" unique_id=839745333]

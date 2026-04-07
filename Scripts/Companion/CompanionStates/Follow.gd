@@ -2,10 +2,11 @@ class_name CompanionStateFollowing
 extends CompanionState
 
 @export var after_position_state: CompanionState
-
-
+@export var time_before_expiration: float
+@export var start_time_before_expiration: float
 
 func enter() -> void:
+
 	print("Companion Started!")
 	reposition(parent.player_radius)
 	super()
@@ -14,7 +15,7 @@ func enter() -> void:
 func process_physics(delta: float) -> CompanionState:
 	var randomPosition = Vector2(randf_range(-parent.player_radius,parent.player_radius), randf_range(-parent.player_radius,parent.player_radius))
 	parent.pathfinding.target_position = parent.player_target.global_position # + randomPosition
-	# reposition(parent.player_radius)
+	reposition(parent.player_radius)
 	parent.move_companion(delta)
 	
 
