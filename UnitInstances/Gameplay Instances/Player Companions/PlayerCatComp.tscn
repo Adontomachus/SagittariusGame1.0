@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_ek3bn"]
 [ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_35cl0"]
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
-[ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="5_ek3bn"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
@@ -32,6 +31,15 @@ debug_path_custom_color = Color(0.7547807, 1, 0, 1)
 
 [node name="PlayerTarget" type="Marker2D" parent="." unique_id=535261400]
 
+[node name="CompanionStateMachine" type="Node" parent="." unique_id=1036948619 node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_35cl0")
+starting_state = NodePath("CompanionStateFollowing")
+
+[node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=563748157]
+script = ExtResource("4_xjnx0")
+start_time_before_expiration = 4.0
+metadata/_custom_type_script = "uid://4htspv80okg1"
+
 [node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
 self_modulate = Color(1.753959, 1.753959, 0.7517638, 1)
 scale = Vector2(0.37500003, 0.37500003)
@@ -39,21 +47,6 @@ texture = ExtResource("2_ek3bn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CatSprite" unique_id=1454122288]
 environment = SubResource("Environment_vhhx4")
-
-[node name="CompanionStateMachine" type="Node" parent="." unique_id=1767462109 node_paths=PackedStringArray("starting_state", "sprite")]
-script = ExtResource("3_35cl0")
-starting_state = NodePath("CompanionStateFollowing")
-sprite = NodePath("../CatSprite")
-metadata/_custom_type_script = "uid://bcfn444ui4txm"
-
-[node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=1318845052]
-script = ExtResource("4_xjnx0")
-time_before_expiration = 5.0
-start_time_before_expiration = 5.0
-metadata/_custom_type_script = "uid://4htspv80okg1"
-
-[node name="CompanionStateStationary" type="Node" parent="CompanionStateMachine" unique_id=839745333]
-script = ExtResource("5_ek3bn")
 
 [node name="AreaEffect" type="Area2D" parent="." unique_id=199372774]
 
@@ -67,5 +60,3 @@ offset_right = 21.0
 offset_bottom = 48.0
 text = "Test"
 horizontal_alignment = 1
-
-[connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

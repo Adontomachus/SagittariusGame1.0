@@ -1,12 +1,12 @@
 class_name CompanionStateFollowing
 extends CompanionState
 
-@export var after_position_state: CompanionState
-@export var time_before_expiration: float
+@export var after_following_state: CompanionState
 @export var start_time_before_expiration: float
+var time_before_expiration: float
 
 func enter() -> void:
-
+	time_before_expiration = start_time_before_expiration
 	print("Companion Started!")
 	reposition(parent.player_radius)
 	super()
@@ -20,8 +20,10 @@ func process_physics(delta: float) -> CompanionState:
 	
 
 
-	if parent.pathfinding.is_navigation_finished() and after_position_state:
-		return after_position_state
+	if parent.pathfinding.is_navigation_finished() and after_following_state:
+		return after_following_state
+	#await get_tree().create_timer(time_before_expiration).timeout
+
 	return null
 
 func reposition(playerRadius) -> void:

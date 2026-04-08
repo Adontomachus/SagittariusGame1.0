@@ -35,7 +35,7 @@ var projectileShotEffect := preload("res://Objects/Particle Effects/ShootEffect.
 var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn")
 # Pulsing AoE instance for abililty
 var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.tscn")
-@export var player_sprite: Sprite2D
+
 #endregion
 # Shot properties and point
 @onready var shot_point: Marker2D = $ShotPoint
@@ -58,7 +58,9 @@ var ability_cooldown: int
 var companion_ability_charge: float
 #endregion
 
+#region Sprites section
 ## Sprites for the orthographic direction to face where the player's cursor is
+## There are 8 directions mimicking the compass directions
 @export_category("Orthographic Sprite Rotations")
 @export var sprite_up: Sprite2D
 @export var sprite_up_right: Sprite2D
@@ -67,8 +69,8 @@ var companion_ability_charge: float
 @export var sprite_down: Sprite2D
 @export var sprite_down_left: Sprite2D
 @export var sprite_left: Sprite2D
-@export var sprite_left_up: Sprite2D
-
+@export var sprite_up_left: Sprite2D
+#endregion
 func _ready():
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
@@ -110,16 +112,117 @@ func _process(_delta):
 	# Ability functions
 	get_ability_inputs()
 	# Sprite flipping on turnarounds
-	if get_global_mouse_position().x < global_position.x:
-		player_sprite.flip_h = true
-		# shotgun = global_position + weaponOffset
-		#shotgun.flip_v = true
-		pass
-	else:
-		player_sprite.flip_h = false
-		#shotgun.flip_v = false
-	#look_at(get_global_mouse_position())
+	##if get_global_mouse_position().x < global_position.x:
+	##	player_sprite.flip_h = true
+	##	pass
+	##else:
+	##	player_sprite.flip_h = false
+
+	#region Testing sprite orthographic rotations
+	var mouse_direction = get_global_mouse_position() - global_position
+	var look_angle = rad_to_deg(mouse_direction.angle())
+	if look_angle > -22.5 and look_angle <= 22.5: # RIGHT
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = false
+		sprite_right.visible = true
+		sprite_down_right.visible = false
+		sprite_down.visible =  false
+		sprite_down_left.visible = false
+		sprite_left.visible = false
+		sprite_up_left.visible =false
+		#endregion
+	elif look_angle > 22.5 and look_angle <= 67.5: # DOWN RIGHT
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = false
+		sprite_right.visible = false
+		sprite_down_right.visible = true
+		sprite_down.visible =  false
+		sprite_down_left.visible = false
+		sprite_left.visible = false
+		sprite_up_left.visible = false
+		#endregion
+	elif look_angle > 67.5 and look_angle <= 112.5: # DOWN
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = false
+		sprite_right.visible = false
+		sprite_down_right.visible = false
+		sprite_down.visible =  true
+		sprite_down_left.visible = false
+		sprite_left.visible = false
+		sprite_up_left.visible = false
+		#endregion
+	elif look_angle > 112.5 and look_angle <= 157.5: # DOWN LEFT
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = false
+		sprite_right.visible = false
+		sprite_down_right.visible = false
+		sprite_down.visible =  false
+		sprite_down_left.visible = true
+		sprite_left.visible = false
+		sprite_up_left.visible = false
+		#endregion
+	elif look_angle > 157.5 or look_angle <= -157.5: # LEFT
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = false
+		sprite_right.visible = false
+		sprite_down_right.visible = false
+		sprite_down.visible =  false
+		sprite_down_left.visible = false
+		sprite_left.visible = true
+		sprite_up_left.visible = false
+		#endregion
+	elif look_angle > -157.5 and look_angle <= -112.5: # UP LEFT
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = false
+		sprite_right.visible = false
+		sprite_down_right.visible = false
+		sprite_down.visible =  false
+		sprite_down_left.visible = false
+		sprite_left.visible = false
+		sprite_up_left.visible = true
+		#endregion
+	elif look_angle > -112.5 and look_angle <= -67.5: # UP
+		#region Sprite listing
+		sprite_up.visible = true
+		sprite_up_right.visible = false
+		sprite_right.visible = false
+		sprite_down_right.visible = false
+		sprite_down.visible =  false
+		sprite_down_left.visible = false
+		sprite_left.visible = false
+		sprite_up_left.visible = false
+		#endregion
+	elif look_angle > -67.5 and look_angle <= -22.5: # UP RIGHT
+		#region Sprite listing
+		sprite_up.visible = false
+		sprite_up_right.visible = true
+		sprite_right.visible = false
+		sprite_down_right.visible = false
+		sprite_down.visible =  false
+		sprite_down_left.visible = false
+		sprite_left.visible = false
+		sprite_up_left.visible = false
+		#endregion
+	#else:
+		#region Sprite listing
+	#	sprite_up.visible = true
+	#	sprite_up_right.visible = false
+	#	sprite_right.visible = false
+	#	sprite_down_right.visible = false
+	#	sprite_down.visible =  false
+	#	sprite_down_left.visible = false
+	#	sprite_left.visible = false
+	#	sprite_up_left.visible = false
+		#endregion
+	#endregion
 	shot_point.look_at(get_global_mouse_position())
+	
 	
 func _physics_process(delta):
 
@@ -165,6 +268,14 @@ func increment_player_charge_attack() -> void:
 	print("CHARGING SHOT: ", shots_for_charged)
 	shots_for_charged += 1
 	
+#endregion
+
+#region Sprite rotation functions
+func update_sprite_rotations(cursor_direction):
+	var mouse_angle = rad_to_deg(cursor_direction)
+	
+
+	pass
 #endregion
 
 #region Checking if Sagittarrius's AoE is active or not

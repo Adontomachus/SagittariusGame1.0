@@ -9,7 +9,7 @@ signal increment_combo_meter(strength_value: float)
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
 
 #region Beat Variables
-@export var tempo: float = 120.0
+@export var tempo: float = 107
 var pulsePerBeat = 60.0 / tempo
 var lastBeat = 0
 

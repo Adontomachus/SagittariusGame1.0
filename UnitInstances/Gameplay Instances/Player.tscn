@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ddx81y7qa0a2"]
 
 [ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/Player Scripts/PlayerScript.gd" id="1_0nxw3"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_fhy58"]
+[ext_resource type="Texture2D" uid="uid://b2nmgvvaxsn4k" path="res://Sprites/Player Sprites/Beta/TestAngle1.png" id="2_5otj8"]
+[ext_resource type="Texture2D" uid="uid://cm0bwhlcstfpj" path="res://Sprites/Player Sprites/Beta/TestAngle3.png" id="3_2iabu"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="3_fhy58"]
+[ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Beta/TestAngle2.png" id="4_bskou"]
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="4_kpdv2"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="5_amksl"]
 
@@ -18,19 +20,28 @@ radius = 19.104973
 [sub_resource type="CircleShape2D" id="CircleShape2D_4k6ra"]
 radius = 230.07
 
-[node name="Player" type="CharacterBody2D" unique_id=1972557133 node_paths=PackedStringArray("player_sprite") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" unique_id=1972557133 groups=["PlayerObject"]]
 script = ExtResource("1_0nxw3")
-player_sprite = NodePath("PlayerSprite")
 
 [node name="ShotPoint" type="Marker2D" parent="." unique_id=329104356]
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="." unique_id=1631417600]
 shape = SubResource("CircleShape2D_8jkjp")
 
-[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1485135698]
+[node name="PlayerSpriteSystem" type="Node" parent="." unique_id=461050602]
+
+[node name="PlayerSprite" type="Sprite2D" parent="PlayerSpriteSystem" unique_id=1485135698]
 position = Vector2(-5.9604645e-07, 1.0728836e-06)
 scale = Vector2(0.265625, 0.26562485)
-texture = ExtResource("2_fhy58")
+texture = ExtResource("2_5otj8")
+
+[node name="PlayerSpriteRight" type="Sprite2D" parent="PlayerSpriteSystem" unique_id=1766385790]
+scale = Vector2(0.256, 0.256)
+texture = ExtResource("3_2iabu")
+
+[node name="PlayerSpriteUpRight" type="Sprite2D" parent="PlayerSpriteSystem" unique_id=1044719925]
+scale = Vector2(0.256, 0.256)
+texture = ExtResource("4_bskou")
 
 [node name="EnemyCollision" type="Area2D" parent="." unique_id=406461024 groups=["PlayerObject"]]
 
