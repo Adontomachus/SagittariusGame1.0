@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	# if get_tree().current_scene.name == "GameplayScene":
 	health_scaling += 0.006 * delta
-	print("Testing health scaling mechanic: ", health_scaling)
+	## print("Testing health scaling mechanic: ", health_scaling)
 	return
 	
 #For scaling purposes

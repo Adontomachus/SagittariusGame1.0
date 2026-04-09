@@ -4,8 +4,9 @@ extends Node
 @export_category("Combo Statistics")
 @export var combo_level: int = 1
 @export var combo_strength: float = 0
-
+var combo_upgrade_feedback: bool = true
 @onready var combo_count_ui: Label = $"../../InterfaceElements/NewHUD/UI/UpdatedComboCounter"
+@onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachPulse"
 
 
 # Called when the node enters the scene tree for the first time.

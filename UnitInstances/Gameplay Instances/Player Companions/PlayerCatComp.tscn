@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="1_53ufe"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_ek3bn"]
 [ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_35cl0"]
+[ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_ek3bn"]
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
@@ -35,10 +36,14 @@ debug_path_custom_color = Color(0.7547807, 1, 0, 1)
 script = ExtResource("3_35cl0")
 starting_state = NodePath("CompanionStateFollowing")
 
-[node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=563748157]
+[node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=563748157 node_paths=PackedStringArray("after_following_state")]
 script = ExtResource("4_xjnx0")
+after_following_state = NodePath("../CompanionStateStationary")
 start_time_before_expiration = 4.0
 metadata/_custom_type_script = "uid://4htspv80okg1"
+
+[node name="CompanionStateStationary" type="Node" parent="CompanionStateMachine" unique_id=510679203]
+script = ExtResource("4_ek3bn")
 
 [node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
 self_modulate = Color(1.753959, 1.753959, 0.7517638, 1)

@@ -13,6 +13,9 @@ extends CharacterBody2D
 @export var attack_power: float
 @export var move_speed: float
 @export var move_duration: float
+@export var maxStamina: float
+var stamina: float
+var stamina_regeneration_rate: float = 1
 
 # These are the main destination points for the companion to follow
 @export_group("Player Master and Nearest Target")
@@ -55,3 +58,7 @@ func _physics_process(delta: float) -> void:
 	master_target_location.look_at(player_target.global_position)
 	companion_sprite.look_at(player_target.global_position)
 	state_machine.process_physics(delta)
+
+func recovery_mode(delta: float) -> bool:
+	stamina += stamina_regeneration_rate * delta
+	return stamina >= maxStamina

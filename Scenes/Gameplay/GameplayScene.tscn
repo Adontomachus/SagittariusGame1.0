@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/Player Scripts/PlayerScript.gd" id="1_haeiw"]
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/AudioBased/GameManager.gd" id="1_onpmq"]
-[ext_resource type="PackedScene" uid="uid://cn424tg6fsbhv" path="res://UnitInstances/Gameplay Instances/Enemy.tscn" id="2_k77ap"]
 [ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/Player Scripts/PointSystemScript.gd" id="2_qvp00"]
 [ext_resource type="Script" uid="uid://c810xbguv6vjc" path="res://Scripts/Player Scripts/ComboSystemScript.gd" id="2_vwi3h"]
 [ext_resource type="Script" uid="uid://d1e13o8vj8tni" path="res://Scripts/ScalingSystemScript.gd" id="3_0voen"]
@@ -21,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Gameplay Instances/Boss.tscn" id="10_30wor"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="10_32gqm"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
-[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Gameplay Instances/EliteEnemy.tscn" id="11_ssy3j"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
@@ -47,7 +45,6 @@
 [ext_resource type="Texture2D" uid="uid://dh27chreavtjo" path="res://Sprites/Player Sprites/Beta/TestAngle7.png" id="30_mtruf"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
 [ext_resource type="Texture2D" uid="uid://dqmjfk5081pn0" path="res://Sprites/Player Sprites/Beta/TestAngle8.png" id="31_rr6op"]
-[ext_resource type="PackedScene" uid="uid://dgxrqck134vr5" path="res://UnitInstances/Gameplay Instances/EnemyShooter.tscn" id="32_40ckn"]
 [ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Gameplay Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
@@ -200,6 +197,44 @@ shader = ExtResource("6_uyhx3")
 shader_parameter/aberration_x = 0.04
 shader_parameter/aberration_y = 0.04
 
+[sub_resource type="Animation" id="Animation_xcrri"]
+resource_name = "ComboIncreaseFeedback"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.706985, 1, 0, 0.156), Color(0.706985, 1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1vk04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.706985, 1, 0, 0.156)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu6i5"]
+_data = {
+&"ComboIncreaseFeedback": SubResource("Animation_xcrri"),
+&"RESET": SubResource("Animation_1vk04")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_6uhl4"]
 font = ExtResource("6_y268v")
 font_size = 60
@@ -347,7 +382,7 @@ position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator")
 player = NodePath("Player")
-animation_player = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator/AnimationPlayer")
+animation_player = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator/BeatPulse")
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="BeatSyncNotes" type="Node" parent="." unique_id=820838427]
@@ -417,11 +452,15 @@ root_node = NodePath("../UpdatedComboCounter")
 libraries/ = SubResource("AnimationLibrary_7yb2d")
 
 [node name="ColorRect" type="ColorRect" parent="InterfaceElements/NewHUD/UI" unique_id=968248692]
-visible = false
 material = SubResource("ShaderMaterial_uyhx3")
 layout_mode = 0
 offset_right = 1924.0
 offset_bottom = 1078.0
+color = Color(0.706985, 1, 0, 0.156)
+
+[node name="ComboReachPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI" unique_id=42244393]
+root_node = NodePath("../ColorRect")
+libraries/ = SubResource("AnimationLibrary_fu6i5")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=271453503]
 visible = false
@@ -549,7 +588,7 @@ perfect_hit = 0.4
 good_hit = 0.32
 ok_hit = 0.2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=543492491]
+[node name="BeatPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=543492491]
 libraries/ = SubResource("AnimationLibrary_onpmq")
 speed_scale = 0.6
 
@@ -801,629 +840,629 @@ scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_t1mfx")
 
-[node name="NavigationRegion" type="NavigationRegion2D" parent="." unique_id=1020116929]
+[node name="EnemyNavRegion" type="NavigationRegion2D" parent="." unique_id=1020116929]
 visible = false
 position = Vector2(-45, 32)
 navigation_polygon = SubResource("NavigationPolygon_k77ap")
 
-[node name="Map Objects" type="Node" parent="NavigationRegion" unique_id=150445177]
+[node name="Map Objects" type="Node" parent="EnemyNavRegion" unique_id=150445177]
 
-[node name="Ground" type="Sprite2D" parent="NavigationRegion/Map Objects" unique_id=970544753]
+[node name="Ground" type="Sprite2D" parent="EnemyNavRegion/Map Objects" unique_id=970544753]
 modulate = Color(0.50638646, 0.50638646, 0.50638646, 1)
 z_index = -20
 position = Vector2(742.00006, 554)
 scale = Vector2(3.148575, 3.1485739)
 texture = ExtResource("8_f1byq")
 
-[node name="Obstacles" type="Node" parent="NavigationRegion/Map Objects" unique_id=2099223545]
+[node name="Obstacles" type="Node" parent="EnemyNavRegion/Map Objects" unique_id=2099223545]
 
-[node name="Wall" parent="NavigationRegion/Map Objects/Obstacles" unique_id=430981844 instance=ExtResource("5_nt06h")]
+[node name="Wall" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=430981844 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-15.999999, 642)
 
-[node name="Wall2" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1369542608 instance=ExtResource("5_nt06h")]
+[node name="Wall2" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1369542608 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-16, 542)
 
-[node name="Wall3" parent="NavigationRegion/Map Objects/Obstacles" unique_id=221904683 instance=ExtResource("5_nt06h")]
+[node name="Wall3" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=221904683 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-16, 441)
 
-[node name="Wall4" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1661139557 instance=ExtResource("5_nt06h")]
+[node name="Wall4" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1661139557 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(556, 768)
 
-[node name="Wall5" parent="NavigationRegion/Map Objects/Obstacles" unique_id=470109116 instance=ExtResource("5_nt06h")]
+[node name="Wall5" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=470109116 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(658, 767)
 
-[node name="Wall6" parent="NavigationRegion/Map Objects/Obstacles" unique_id=737682561 instance=ExtResource("5_nt06h")]
+[node name="Wall6" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=737682561 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-15.999999, 342)
 
-[node name="Wall7" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1495814750 instance=ExtResource("5_nt06h")]
+[node name="Wall7" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1495814750 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(455, 768)
 
-[node name="Wall8" parent="NavigationRegion/Map Objects/Obstacles" unique_id=971025487 instance=ExtResource("5_nt06h")]
+[node name="Wall8" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=971025487 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(759, 767)
 
-[node name="Wall9" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1882345351 instance=ExtResource("5_nt06h")]
+[node name="Wall9" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1882345351 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(449, 568)
 
-[node name="Wall10" parent="NavigationRegion/Map Objects/Obstacles" unique_id=316081175 instance=ExtResource("5_nt06h")]
+[node name="Wall10" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=316081175 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(551, 569)
 
-[node name="Wall11" parent="NavigationRegion/Map Objects/Obstacles" unique_id=22576572 instance=ExtResource("5_nt06h")]
+[node name="Wall11" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=22576572 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(656, 569)
 
-[node name="Tree" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1319257251 instance=ExtResource("16_tedqt")]
+[node name="Tree" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1319257251 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1229, -338)
 
-[node name="Tree2" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1060008991 instance=ExtResource("16_tedqt")]
+[node name="Tree2" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1060008991 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2720, 1295)
 
-[node name="Tree4" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1860589901 instance=ExtResource("16_tedqt")]
+[node name="Tree4" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1860589901 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-649, 1929)
 
-[node name="Tree5" parent="NavigationRegion/Map Objects/Obstacles" unique_id=777331384 instance=ExtResource("16_tedqt")]
+[node name="Tree5" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=777331384 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-1060, 811)
 
-[node name="Tree6" parent="NavigationRegion/Map Objects/Obstacles" unique_id=2047009934 instance=ExtResource("16_tedqt")]
+[node name="Tree6" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=2047009934 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-821, -139.99994)
 
-[node name="Tree7" parent="NavigationRegion/Map Objects/Obstacles" unique_id=793741920 instance=ExtResource("16_tedqt")]
+[node name="Tree7" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=793741920 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2037, 2062)
 
-[node name="Tree8" parent="NavigationRegion/Map Objects/Obstacles" unique_id=428997927 instance=ExtResource("16_tedqt")]
+[node name="Tree8" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=428997927 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2882, -123)
 
-[node name="Tree3" parent="NavigationRegion/Map Objects/Obstacles" unique_id=456805315 instance=ExtResource("16_tedqt")]
+[node name="Tree3" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=456805315 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-69, 1334)
 
-[node name="Floordecoration" type="Sprite2D" parent="NavigationRegion/Map Objects/Obstacles" unique_id=2103623591]
+[node name="Floordecoration" type="Sprite2D" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=2103623591]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 z_index = -2
 position = Vector2(67.83904, -13.499973)
 scale = Vector2(0.14391698, 0.14391698)
 texture = ExtResource("17_x4iy2")
 
-[node name="Floordecoration2" type="Sprite2D" parent="NavigationRegion/Map Objects/Obstacles" unique_id=255453842]
+[node name="Floordecoration2" type="Sprite2D" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=255453842]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 z_index = -2
 position = Vector2(466, 1181.9999)
 scale = Vector2(0.13056332, 0.1305633)
 texture = ExtResource("17_x4iy2")
 
-[node name="Floordecoration3" type="Sprite2D" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1468736820]
+[node name="Floordecoration3" type="Sprite2D" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1468736820]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 z_index = -2
 position = Vector2(2077, 1569)
 scale = Vector2(0.11572719, 0.11572718)
 texture = ExtResource("17_x4iy2")
 
-[node name="Floordecoration4" type="Sprite2D" parent="NavigationRegion/Map Objects/Obstacles" unique_id=2141459531]
+[node name="Floordecoration4" type="Sprite2D" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=2141459531]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 z_index = -2
 position = Vector2(2476, -228)
 scale = Vector2(0.0979229, 0.09792287)
 texture = ExtResource("17_x4iy2")
 
-[node name="Wall12" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1501938174 instance=ExtResource("5_nt06h")]
+[node name="Wall12" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1501938174 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1299, 769)
 
-[node name="Wall13" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1286809218 instance=ExtResource("5_nt06h")]
+[node name="Wall13" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1286809218 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1546, 543)
 
-[node name="Wall14" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1580122650 instance=ExtResource("5_nt06h")]
+[node name="Wall14" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1580122650 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1737, 347)
 
-[node name="Wall15" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1832107586 instance=ExtResource("5_nt06h")]
+[node name="Wall15" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1832107586 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2112, 173)
 
-[node name="Wall16" parent="NavigationRegion/Map Objects/Obstacles" unique_id=533129430 instance=ExtResource("5_nt06h")]
+[node name="Wall16" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=533129430 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1641, 1331)
 
-[node name="Wall17" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1837305217 instance=ExtResource("5_nt06h")]
+[node name="Wall17" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1837305217 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1021, 1241)
 
-[node name="Pillar" parent="NavigationRegion/Map Objects/Obstacles" unique_id=2023383986 instance=ExtResource("11_t0ujt")]
+[node name="Pillar" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=2023383986 instance=ExtResource("11_t0ujt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-314, 164)
 
-[node name="Pillar2" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1075066830 instance=ExtResource("11_t0ujt")]
+[node name="Pillar2" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1075066830 instance=ExtResource("11_t0ujt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1742, 13)
 
-[node name="Pillar3" parent="NavigationRegion/Map Objects/Obstacles" unique_id=42987309 instance=ExtResource("11_t0ujt")]
+[node name="Pillar3" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=42987309 instance=ExtResource("11_t0ujt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-569, 861)
 
-[node name="Pillar4" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1608234008 instance=ExtResource("11_t0ujt")]
+[node name="Pillar4" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1608234008 instance=ExtResource("11_t0ujt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1920, 1031)
 
-[node name="Pillar5" parent="NavigationRegion/Map Objects/Obstacles" unique_id=212914912 instance=ExtResource("11_t0ujt")]
+[node name="Pillar5" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=212914912 instance=ExtResource("11_t0ujt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2428, 522)
 
-[node name="Wall18" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1061853617 instance=ExtResource("37_1q4m6")]
+[node name="Wall18" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1061853617 instance=ExtResource("37_1q4m6")]
 position = Vector2(-9, 963)
 
-[node name="Wall19" parent="NavigationRegion/Map Objects/Obstacles" unique_id=266387192 instance=ExtResource("37_1q4m6")]
+[node name="Wall19" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=266387192 instance=ExtResource("37_1q4m6")]
 position = Vector2(1402, 1774)
 
-[node name="Wall20" parent="NavigationRegion/Map Objects/Obstacles" unique_id=22221003 instance=ExtResource("37_1q4m6")]
+[node name="Wall20" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=22221003 instance=ExtResource("37_1q4m6")]
 position = Vector2(2236, 1341)
 
-[node name="Wall21" parent="NavigationRegion/Map Objects/Obstacles" unique_id=1217167005 instance=ExtResource("37_1q4m6")]
+[node name="Wall21" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1217167005 instance=ExtResource("37_1q4m6")]
 position = Vector2(2291, -194)
 
-[node name="BGDecals" type="Node" parent="NavigationRegion/Map Objects" unique_id=1231745277]
+[node name="BGDecals" type="Node" parent="EnemyNavRegion/Map Objects" unique_id=1231745277]
 
-[node name="Floorpattern" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1788947627]
+[node name="Floorpattern" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1788947627]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(688, 1369)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern13" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=993277019]
+[node name="Floorpattern13" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=993277019]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(658, 1535)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern14" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1439420963]
+[node name="Floorpattern14" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1439420963]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(811, 1609)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern2" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1394773655]
+[node name="Floorpattern2" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1394773655]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(823.0001, 1446)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern3" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1270650235]
+[node name="Floorpattern3" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1270650235]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(962, 1523)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern4" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1262360679]
+[node name="Floorpattern4" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1262360679]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(1117.9999, 1609)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern5" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1809411738]
+[node name="Floorpattern5" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1809411738]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(1948.7137, 855.00006)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern6" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1359736385]
+[node name="Floorpattern6" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1359736385]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(2083.7139, 932.00006)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern7" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=394531867]
+[node name="Floorpattern7" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=394531867]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(2222.7139, 1009.00006)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern8" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1654920450]
+[node name="Floorpattern8" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1654920450]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(2378.7136, 1095)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern9" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1490773883]
+[node name="Floorpattern9" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1490773883]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-671.2861, 596)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern10" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=2134628844]
+[node name="Floorpattern10" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=2134628844]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-536.28595, 673)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern11" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=43919762]
+[node name="Floorpattern11" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=43919762]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-397.28595, 750)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Floorpattern12" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1555453778]
+[node name="Floorpattern12" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1555453778]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-241.2862, 835.99994)
 scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("26_y1plk")
 
-[node name="Rhythmplant" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1580102396 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
+[node name="Rhythmplant" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1580102396 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 position = Vector2(1240, 581)
 
-[node name="Rhythmplant2" parent="NavigationRegion/Map Objects/BGDecals" unique_id=286901970 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
+[node name="Rhythmplant2" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=286901970 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 position = Vector2(332, 1378)
 
-[node name="Rhythmplant3" parent="NavigationRegion/Map Objects/BGDecals" unique_id=197684335 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
+[node name="Rhythmplant3" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=197684335 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 position = Vector2(595, -126.000015)
 
-[node name="Rhythmplant4" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1224466097 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
+[node name="Rhythmplant4" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1224466097 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 position = Vector2(-591, 74.999985)
 
-[node name="Floordecals" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1520428884]
+[node name="Floordecals" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1520428884]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(464, 348)
 scale = Vector2(0.59313726, 0.5931372)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals2" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=970244171]
+[node name="Floordecals2" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=970244171]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1025, 870.99994)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals3" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1370759437]
+[node name="Floordecals3" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1370759437]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-297, 503.99994)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals4" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1831284785]
+[node name="Floordecals4" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1831284785]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(248, -178.00006)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals5" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=485021051]
+[node name="Floordecals5" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=485021051]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1407, 136)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals6" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=604450429]
+[node name="Floordecals6" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=604450429]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-393, 1716)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals9" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1739616715]
+[node name="Floordecals9" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1739616715]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-1355, 486.99988)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals10" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1808332527]
+[node name="Floordecals10" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1808332527]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-1260, 1849)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals11" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=293164048]
+[node name="Floordecals11" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=293164048]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1980, 1187)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals12" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=763497600]
+[node name="Floordecals12" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=763497600]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(2677, 2040)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals13" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=456332770]
+[node name="Floordecals13" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=456332770]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1358, 2133)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals7" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1662335490]
+[node name="Floordecals7" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1662335490]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(2930, 473.99988)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecals8" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=2063570366]
+[node name="Floordecals8" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=2063570366]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1692.0001, -501)
 scale = Vector2(0.6274511, 0.62745106)
 texture = ExtResource("28_agm15")
 
-[node name="Floordecoration" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=82272627]
+[node name="Floordecoration" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=82272627]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 position = Vector2(1939, 447)
 scale = Vector2(0.21513353, 0.21513353)
 texture = ExtResource("17_x4iy2")
 
-[node name="Baleterootdecals" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1647709559]
+[node name="Baleterootdecals" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1647709559]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1140.1777, 498)
 scale = Vector2(0.42222223, 0.42222223)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals2" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=268215315]
+[node name="Baleterootdecals2" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=268215315]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(131.66296, 870.5)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals14" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1604129218]
+[node name="Baleterootdecals14" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1604129218]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-319, 2078)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals6" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=557294039]
+[node name="Baleterootdecals6" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=557294039]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1899, 219)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals8" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=725660107]
+[node name="Baleterootdecals8" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=725660107]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(247, 1749)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals9" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=834549591]
+[node name="Baleterootdecals9" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=834549591]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(2601, 1601)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals10" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=913397112]
+[node name="Baleterootdecals10" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=913397112]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(1800, 1559)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals7" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1929422043]
+[node name="Baleterootdecals7" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1929422043]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(2847, 491)
 scale = Vector2(0.47037038, 0.47037038)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals3" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1295257982]
+[node name="Baleterootdecals3" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1295257982]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-832.6037, 1312.5)
 scale = Vector2(0.33703703, 0.33703703)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals4" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=874249156]
+[node name="Baleterootdecals4" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=874249156]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-918.363, 126)
 scale = Vector2(0.42962965, 0.42962962)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals5" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=622519522]
+[node name="Baleterootdecals5" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=622519522]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(660.5852, -261)
 scale = Vector2(0.34814814, 0.34814814)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals11" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1925571698]
+[node name="Baleterootdecals11" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1925571698]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-1251, 736)
 scale = Vector2(0.34814814, 0.34814814)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals12" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1191386235]
+[node name="Baleterootdecals12" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1191386235]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-1343, 1099)
 scale = Vector2(0.34814814, 0.34814814)
 texture = ExtResource("29_xxi0v")
 
-[node name="Baleterootdecals13" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=8642332]
+[node name="Baleterootdecals13" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=8642332]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -15
 position = Vector2(-929, -192)
 scale = Vector2(0.34814814, 0.34814814)
 texture = ExtResource("29_xxi0v")
 
-[node name="Floordecal3" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1573082069]
+[node name="Floordecal3" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1573082069]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(-788, 1081)
 scale = Vector2(0.7517648, 0.7517647)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal4" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=289766780]
+[node name="Floordecal4" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=289766780]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(1356, 1260)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal2" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=796330826]
+[node name="Floordecal2" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=796330826]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(-735, 350)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal21" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1468042014]
+[node name="Floordecal21" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1468042014]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(-429, -301)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal22" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=380453935]
+[node name="Floordecal22" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=380453935]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(-1446, 199)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal12" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=475721386]
+[node name="Floordecal12" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=475721386]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(143.99998, 534.00006)
 scale = Vector2(0.60772836, 0.60772836)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal5" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=482214515]
+[node name="Floordecal5" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=482214515]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(1285, 293)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal6" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=335813050]
+[node name="Floordecal6" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=335813050]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(1754, -156)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal7" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1026887323]
+[node name="Floordecal7" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1026887323]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(610, -506)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal13" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=105692878]
+[node name="Floordecal13" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=105692878]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(2574.9998, 175.00005)
 scale = Vector2(0.9064016, 0.68588233)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal8" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=978311149]
+[node name="Floordecal8" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=978311149]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -17
 position = Vector2(399, 1073)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal9" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=353048391]
+[node name="Floordecal9" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=353048391]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(563, 673)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal20" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=145574389]
+[node name="Floordecal20" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=145574389]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(-1406, -293)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal10" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1820229916]
+[node name="Floordecal10" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1820229916]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(221, 259)
 texture = ExtResource("30_81sgd")
 
-[node name="Floordecal11" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=871525315]
+[node name="Floordecal11" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=871525315]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(1678, 691)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal14" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1496039502]
+[node name="Floordecal14" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1496039502]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(2789, 795)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal15" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1739102698]
+[node name="Floordecal15" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1739102698]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(525, 1994)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal17" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=2023077891]
+[node name="Floordecal17" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=2023077891]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(-1187, 2110)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal18" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=2064169970]
+[node name="Floordecal18" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=2064169970]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(-1383, 1456)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal19" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=2039021196]
+[node name="Floordecal19" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=2039021196]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(2868, -311)
 texture = ExtResource("31_40ckn")
 
-[node name="Floordecal16" type="Sprite2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1874244983]
+[node name="Floordecal16" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1874244983]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
 z_index = -18
 position = Vector2(2025, 1852)
 texture = ExtResource("31_40ckn")
 
-[node name="AreaLight" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=529271008]
+[node name="AreaLight" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=529271008]
 position = Vector2(1836, 984.99994)
 scale = Vector2(31.062504, 31.062504)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight" unique_id=1374544328]
+[node name="LightParticles" type="CPUParticles2D" parent="EnemyNavRegion/Map Objects/BGDecals/AreaLight" unique_id=1374544328]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1438,13 +1477,13 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight2" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1127818380]
+[node name="AreaLight2" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1127818380]
 position = Vector2(-721.99994, 247)
 scale = Vector2(30.546873, 30.624998)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight2" unique_id=785227373]
+[node name="LightParticles" type="CPUParticles2D" parent="EnemyNavRegion/Map Objects/BGDecals/AreaLight2" unique_id=785227373]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1459,13 +1498,13 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight3" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1141918270]
+[node name="AreaLight3" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1141918270]
 position = Vector2(-1478, 1220)
 scale = Vector2(30.218752, -29.078125)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight3" unique_id=2001628919]
+[node name="LightParticles" type="CPUParticles2D" parent="EnemyNavRegion/Map Objects/BGDecals/AreaLight3" unique_id=2001628919]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1480,13 +1519,13 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight6" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=998284555]
+[node name="AreaLight6" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=998284555]
 position = Vector2(122.999756, 1737.0001)
 scale = Vector2(30.218752, -29.078125)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight6" unique_id=1360000092]
+[node name="LightParticles" type="CPUParticles2D" parent="EnemyNavRegion/Map Objects/BGDecals/AreaLight6" unique_id=1360000092]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1501,13 +1540,13 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight5" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1587209368]
+[node name="AreaLight5" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1587209368]
 position = Vector2(2620.9995, 2044.0001)
 scale = Vector2(30.218752, -29.078125)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight5" unique_id=1973902487]
+[node name="LightParticles" type="CPUParticles2D" parent="EnemyNavRegion/Map Objects/BGDecals/AreaLight5" unique_id=1973902487]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1522,13 +1561,13 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight4" type="PointLight2D" parent="NavigationRegion/Map Objects/BGDecals" unique_id=628114623]
+[node name="AreaLight4" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=628114623]
 position = Vector2(3048, 678)
 scale = Vector2(42.81249, -41.196503)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="NavigationRegion/Map Objects/BGDecals/AreaLight4" unique_id=499920227]
+[node name="LightParticles" type="CPUParticles2D" parent="EnemyNavRegion/Map Objects/BGDecals/AreaLight4" unique_id=499920227]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1543,78 +1582,78 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="GlowingPlatform" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1709142336 instance=ExtResource("33_y268v")]
+[node name="GlowingPlatform" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1709142336 instance=ExtResource("33_y268v")]
 position = Vector2(-831, 501.00015)
 scale = Vector2(0.55727535, 0.55727535)
 
-[node name="GlowingPlatform2" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1528962324 instance=ExtResource("33_y268v")]
+[node name="GlowingPlatform2" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1528962324 instance=ExtResource("33_y268v")]
 position = Vector2(2524, 1162)
 scale = Vector2(0.55727535, 0.55727535)
 
-[node name="GlowingPlatform3" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1706417956 instance=ExtResource("33_y268v")]
+[node name="GlowingPlatform3" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1706417956 instance=ExtResource("33_y268v")]
 position = Vector2(501.9999, 1439)
 scale = Vector2(0.55727535, 0.55727535)
 
-[node name="GlowingPlatform4" parent="NavigationRegion/Map Objects/BGDecals" unique_id=1322612330 instance=ExtResource("33_y268v")]
+[node name="GlowingPlatform4" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1322612330 instance=ExtResource("33_y268v")]
 position = Vector2(1569.0002, 399.00006)
 scale = Vector2(0.55727535, 0.55727535)
 
-[node name="SplashEffect" parent="NavigationRegion/Map Objects/BGDecals" unique_id=132848767 instance=ExtResource("38_ni7mq")]
+[node name="SplashEffect" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=132848767 instance=ExtResource("38_ni7mq")]
 position = Vector2(1217, 200)
 
-[node name="MapEdgeObstacles" type="Node" parent="NavigationRegion/Map Objects" unique_id=76741644]
+[node name="MapEdgeObstacles" type="Node" parent="EnemyNavRegion/Map Objects" unique_id=76741644]
 
-[node name="Wall" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1640904457 instance=ExtResource("5_nt06h")]
+[node name="Wall" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1640904457 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-2214, 306.00006)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall2" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1826536178 instance=ExtResource("5_nt06h")]
+[node name="Wall2" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1826536178 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-2221.0002, 1808)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall3" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=677092983 instance=ExtResource("5_nt06h")]
+[node name="Wall3" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=677092983 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-719.00037, 2918)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall4" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=363350674 instance=ExtResource("5_nt06h")]
+[node name="Wall4" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=363350674 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(797.99976, 2977.0002)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall5" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=708792417 instance=ExtResource("5_nt06h")]
+[node name="Wall5" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=708792417 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2330, 2984.0002)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall6" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=2067173200 instance=ExtResource("5_nt06h")]
+[node name="Wall6" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2067173200 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(3846, 1734)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall7" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=816452865 instance=ExtResource("5_nt06h")]
+[node name="Wall7" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=816452865 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(3950, 253.00012)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall8" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1803098296 instance=ExtResource("5_nt06h")]
+[node name="Wall8" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1803098296 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(3173, -1250)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall9" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=706709999 instance=ExtResource("5_nt06h")]
+[node name="Wall9" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=706709999 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(1656.0001, -1339.0001)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall10" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1838353034 instance=ExtResource("5_nt06h")]
+[node name="Wall10" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1838353034 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(125.000046, -1376)
 scale = Vector2(12.053431, 12.053431)
 
-[node name="Wall11" parent="NavigationRegion/Map Objects/MapEdgeObstacles" unique_id=1754002218 instance=ExtResource("5_nt06h")]
+[node name="Wall11" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1754002218 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-1407.0001, -1213)
 scale = Vector2(12.053431, 12.053431)
@@ -1622,22 +1661,6 @@ scale = Vector2(12.053431, 12.053431)
 [node name="Boss" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)
 maxHealthPoints = 2100
-
-[node name="Elite" parent="." unique_id=336309580 instance=ExtResource("11_ssy3j")]
-position = Vector2(1046, 210)
-successfulChanceToAttack = 1.0
-
-[node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("2_k77ap")]
-position = Vector2(337, 480)
-
-[node name="Enemy2" parent="." unique_id=283172414 instance=ExtResource("2_k77ap")]
-position = Vector2(948, 459)
-
-[node name="Enemy3" parent="." unique_id=637577156 instance=ExtResource("2_k77ap")]
-position = Vector2(483, 114)
-
-[node name="ShooterEnemy" parent="." unique_id=1677205273 instance=ExtResource("32_40ckn")]
-position = Vector2(1064, 401)
 
 [node name="StationaryTurretEnemy" parent="." unique_id=141205280 instance=ExtResource("33_r8kr6")]
 position = Vector2(1180, 47)
@@ -1651,18 +1674,18 @@ position = Vector2(753, 383)
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="pulse_combo_counter"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="Player" method="_ability_pulse_checker"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/Obstacles/Wall21" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/Rhythmplant4" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform2" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="NavigationRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/Obstacles/Wall20" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/Obstacles/Wall21" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/Rhythmplant4" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform2" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
+[connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="Player" method="increment_player_charge_attack"]
 [connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]

@@ -1,11 +1,10 @@
 class_name CompanionStateStationary
 extends CompanionState
 
+@export var returning_state: CompanionState
 
 # Called when the node enters the scene tree for the first time.
 
-func enter() -> void:
-	super()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func process_physics(delta: float) -> CompanionState:
+
+	return null
