@@ -3,8 +3,15 @@ extends CompanionState
 
 @export var returning_state: CompanionState
 
-# Called when the node enters the scene tree for the first time.
+@export var starting_rest_duration: float = 3
+var rest_duration: float
+
+
+func enter() -> void:
+	rest_duration = starting_rest_duration 
 
 func process_physics(delta: float) -> CompanionState:
-
+	rest_duration -= 1 * delta
+	if rest_duration < 0:
+		return returning_state
 	return null

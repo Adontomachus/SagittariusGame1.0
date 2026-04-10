@@ -6,11 +6,15 @@ extends Node
 @export var combo_strength: float = 0
 var combo_upgrade_feedback: bool = true
 @onready var combo_count_ui: Label = $"../../InterfaceElements/NewHUD/UI/UpdatedComboCounter"
-@onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachPulse"
+@onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachFeedback/AnimationPlayer"
+
+## Green Pulse animation feedback for when the player's combo gets upgraded
+# @onready var cssombo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachPulse"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	combo_reach_pulse.play("LightPulse")
 	_update_combo()
 	pass # Replace with function body.
 
@@ -19,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	## This combo decrement scales the higher the combo values are
 	## which results in faster combo value dropping
-	combo_strength -= (30) * delta
+	combo_strength -= (25) * delta
 	if combo_strength < 0: combo_strength = 0
 	_update_combo()
 	pass
@@ -34,7 +38,11 @@ func _add_combo_level(level_value) -> void:
 func _update_combo() -> void:
 	# Statements for combo levels
 	if combo_strength < 100: combo_level = 1
-	elif combo_strength >= 100 and combo_strength <= 250: combo_level = 2
+	elif combo_strength >= 100 and combo_strength <= 250:
+		if combo_upgrade_feedback:
+			combo_reach_pulse.play("LightPulse")
+			combo_upgrade_feedback = false
+		combo_level = 2
 	elif combo_strength >= 250 and combo_strength <= 450: combo_level = 3
 	elif combo_strength >= 450 and combo_strength <= 700: combo_level = 4
 	elif combo_strength >= 750 and combo_strength: combo_level = 5

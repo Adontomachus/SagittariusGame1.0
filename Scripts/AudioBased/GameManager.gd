@@ -142,6 +142,10 @@ func _process(delta):
 			#wave_notification.visible = false
 			wave_notification.self_modulate.a = 0
 		
+	## This if statement comes from the global beat synchronization script's last beat
+	## If the Last Beat variable is lower than the Beat value, Last Beat's value would
+	## be higher than beat to ensure only a singlaaaae frame is updated.
+	## Note that this might change for better optimization purposes.
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 		#region Signal emitters for beat synchronization
 		# Emit rhythmic signals for the game aesthetics

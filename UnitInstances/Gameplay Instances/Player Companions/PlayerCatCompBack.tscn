@@ -1,21 +1,121 @@
 [gd_scene format=3 uid="uid://c4aoh5553wqt7"]
 
-[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion/Companion.gd" id="1_05v6t"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_pnvxl"]
-[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_l0nh8"]
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_reteg"]
 [ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="5_pnvxl"]
+
+[sub_resource type="GDScript" id="GDScript_8m822"]
+script/source = "class_name CompanionGroup
+extends CharacterBody2D
+
+#region Variables with export groups
+@export_group(\"State Machine\")
+@export var state_machine: CompanionStateMachine
+
+@export_group(\"Other Variables\")
+@export var companion_sprite: Sprite2D
+@export var pathfinding: NavigationAgent2D
+
+@export_group(\"Companion Stats\")
+@export var attack_power: float
+@export var move_speed: float
+@export var move_duration: float
+
+# These are the main destination points for the companion to follow
+@export_group(\"Player Master and Nearest Target\")
+var player_target: CharacterBody2D
+@export var player_radius: float
+var enemy_target: CharacterBody2D
+#endregion
+# @export var time_to_relocate: float = 5
+
+# Targets for location points
+@onready var target_looker: Marker2D = $NearestEnemyTarget
+@onready var master_target_location: Marker2D = $PlayerTarget
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	state_machine.init(self)
+	player_target = get_tree().get_first_node_in_group(\"PlayerObject\")
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
+	pass
+
+func move_companion(delta: float) -> void:
+	var targetLocation = pathfinding.get_next_path_position()
+	var new_velocity = global_position.direction_to(targetLocation) * move_speed
+	
+	velocity = new_velocity
+	
+	if (pathfinding.avoidance_enabled):
+		pathfinding.set_velocity(new_velocity)
+		
+	move_and_slide()
+
+func _physics_process(delta: float) -> void:
+	#pathfinding.target_position = player_target.global_position
+	target_looker.look_at(player_target.global_position)
+	master_target_location.look_at(player_target.global_position)
+	companion_sprite.look_at(player_target.global_position)
+	state_machine.process_physics(delta)
+"
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
 glow_enabled = true
 glow_intensity = 0.5
 
+[sub_resource type="GDScript" id="GDScript_53ufe"]
+script/source = "class_name CompanionStateMachine
+extends Node
+
+signal state_changed(state_name: String)
+
+@export var starting_state: CompanionState
+@export var sprite: Sprite2D
+var current_state: CompanionState
+
+func init(parent: CompanionGroup, animations: AnimationPlayer = null, audio: AudioStreamPlayer2D = null):
+	for child in get_children():
+		child.parent = parent
+		child.animations = animations
+		child.audio = audio
+	
+	# Initialize to the default state
+	change_state(starting_state)
+
+# Change to the new state by first calling any exit logic on the current state.
+func change_state(new_state: CompanionState) -> void:
+	if current_state:
+		current_state.exit()
+
+	current_state = new_state
+	current_state.enter()
+	state_changed.emit(current_state.name)
+
+func process_physics(delta: float) -> void:
+	var new_state = current_state.process_physics(delta)
+	if new_state:
+		change_state(new_state)
+
+func process_frame(delta: float) -> void:
+	var new_state = current_state.process_frame(delta)
+	if new_state:
+		change_state(new_state)
+
+func manual_state_override(new_state: CompanionState) -> void:
+	change_state(new_state)
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_53ufe"]
 radius = 24.083189
 
 [node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
-script = ExtResource("1_05v6t")
+script = SubResource("GDScript_8m822")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
@@ -41,7 +141,7 @@ texture = ExtResource("2_pnvxl")
 environment = SubResource("Environment_vhhx4")
 
 [node name="CompanionStateMachine" type="Node" parent="." unique_id=1767462109 node_paths=PackedStringArray("starting_state", "sprite")]
-script = ExtResource("3_l0nh8")
+script = SubResource("GDScript_53ufe")
 starting_state = NodePath("CompanionStateFollowing")
 sprite = NodePath("../CatSprite")
 metadata/_custom_type_script = "uid://bcfn444ui4txm"

@@ -3,11 +3,11 @@ extends CompanionState
 
 @export var after_following_state: CompanionState
 @export var start_time_before_expiration: float
+const CHANCE_TO_ATTACK: Vector2 = Vector2(0.0, 5.0)
 var time_before_expiration: float
 
 func enter() -> void:
 	time_before_expiration = start_time_before_expiration
-
 	print("Companion Started!")
 	reposition(parent.player_radius)
 	super()
@@ -18,13 +18,15 @@ func process_physics(delta: float) -> CompanionState:
 #	parent.pathfinding.target_position = parent.player_target.global_position # + randomPosition
 	reposition(parent.player_radius)
 	parent.move_companion(delta)
-	
+		
+	#if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
+	print("Notes before resting: ", time_before_expiration)
 	time_before_expiration -= 1 * delta
 	if time_before_expiration < 0:
 		return after_following_state
 
-	if parent.pathfinding.is_navigation_finished() and after_following_state:
-		return after_following_state
+	#if parent.pathfinding.is_navidgation_finished() and after_following_state:
+	#	return after_following_state
 	#await get_tree().create_timer(time_before_expiration).timeout
 	return
 

@@ -4,7 +4,7 @@ class_name CompanionState
 @export var animation_name: String
 @export var audio_to_play: AudioStream
 
-@export var stationary_state: CompanionStateStationary
+# @export var stationary_state: CompanionStateStationary
 
 #Test
 # @export var strafing_state: EnemyStateStrafing
