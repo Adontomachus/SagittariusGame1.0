@@ -17,6 +17,7 @@ var gamePaused: int
 #LEVEL VARIABLES
 var level_wave: int
 var comboCount = 0
+@export var waves_remaining: int
 @export var player_target: Marker2D # = $InterfaceElements/PlayerTarget
 #LEVEL VARIABLES
 
@@ -32,7 +33,6 @@ var enemyCount: int
 
 # This checks if its eligible for the next wave to spawn as well as points.
 var waveCompleted: bool
-#var playerPoints: int
 #endregion
 
 #region Signals Section
@@ -132,6 +132,8 @@ func _process(delta):
 	
 #region NOTIFICATION FOR THE NEXT WAVE
 	
+	## This section handles the notification text that appear during wave
+	## start and completion on top of the screen
 	if _spawningBehavior == spawningBehavior.Preparation:
 		wave_notification.self_modulate.a += 1 * delta
 		if wave_notification.self_modulate.a >= 1: wave_notification.self_modulate.a = 1
@@ -142,7 +144,7 @@ func _process(delta):
 			#wave_notification.visible = false
 			wave_notification.self_modulate.a = 0
 		
-	## This if statement comes from the global beat synchronization script's last beat
+	## This 'if' statement comes from the global beat synchronization script's last beat
 	## If the Last Beat variable is lower than the Beat value, Last Beat's value would
 	## be higher than beat to ensure only a singlaaaae frame is updated.
 	## Note that this might change for better optimization purposes.
@@ -156,7 +158,7 @@ func _process(delta):
 
 		print("Testing! Beat Synced! Spawns Remaining: ", enemySpawnCounter)
 		
-		# If statements to check which enumerator the spawn manager currently is
+		# 'If' statements to check which enumerator the spawn manager currently is
 		if _spawningBehavior == spawningBehavior.Preparation:
 			print("Preparation")
 			wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
@@ -179,11 +181,12 @@ func _process(delta):
 		wave_notification.self_modulate.a -= 1 * delta
 		
 	# If the completed notification ends, go to the next wave and increase stat increments
-		if wave_notification.self_modulate.a < 0:
+		if wave_notification.self_modulate.a < 0 && waves_remaining != 0:
 			_change_spawning_state(spawningBehavior.Preparation)
 			scale_on_next_wave.emit()
 			enemySpawnCounter = 10 + (level_wave * 2)
 			level_wave += 1
+			waves_remaining -= 1
 			nextDuration = 8
 			_next_wave(1)
 

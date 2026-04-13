@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="18_48svx"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="19_0cpi2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
+[ext_resource type="Texture2D" uid="uid://oo48xtre3sec" path="res://Sprites/Game Elements/abilityfeedback.png" id="22_yt4p3"]
 [ext_resource type="Texture2D" uid="uid://b2nmgvvaxsn4k" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle1.png" id="24_vwi3h"]
 [ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="25_41o6w"]
 [ext_resource type="Texture2D" uid="uid://wfyey75sv4g6" path="res://Sprites/Game Elements/floorpattern.png" id="26_y1plk"]
@@ -49,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="PackedScene" uid="uid://cuubh55jmexqb" path="res://Objects/Instances With Collision/SplashDamage.tscn" id="38_ni7mq"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
+[ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 
 [sub_resource type="Animation" id="Animation_41o6w"]
 resource_name = "LightPulse"
@@ -310,6 +312,66 @@ font_size = 80
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
+[sub_resource type="Animation" id="Animation_6uw2w"]
+resource_name = "AbilityActivationVisual"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 635), Vector2(161.73, 635)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_figfh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 635)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xcrri"]
+_data = {
+&"AbilityActivationVisual": SubResource("Animation_6uw2w"),
+&"RESET": SubResource("Animation_figfh")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
 radius = 18.0
 
@@ -375,15 +437,8 @@ script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator")
 player = NodePath("Player")
 animation_player = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator/BeatPulse")
+waves_remaining = 15
 player_target = NodePath("InterfaceElements/PlayerTarget")
-
-[node name="BeatSyncNotes" type="Node" parent="." unique_id=820838427]
-
-[node name="WholeNote" type="Node" parent="BeatSyncNotes" unique_id=207437856]
-
-[node name="HalfNote" type="Node" parent="BeatSyncNotes" unique_id=1103635388]
-
-[node name="QuarterNote" type="Node" parent="BeatSyncNotes" unique_id=2129994750]
 
 [node name="SpawningState" type="Node" parent="." unique_id=944259588]
 
@@ -707,19 +762,22 @@ layout_mode = 2
 text = "E"
 label_settings = SubResource("LabelSettings_48svx")
 
-[node name="CompanionProgress" type="Sprite2D" parent="InterfaceElements/NewHUD/UI" unique_id=900042723]
-visible = false
-position = Vector2(1749.0001, 910)
-scale = Vector2(0.36671528, 0.36671528)
-texture = ExtResource("19_0cpi2")
+[node name="AbilityActivationFeedback" type="Sprite2D" parent="InterfaceElements/NewHUD" unique_id=443124248]
+position = Vector2(-200, 635)
+scale = Vector2(0.11847557, 0.11847555)
+texture = ExtResource("22_yt4p3")
+
+[node name="ActivationAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/AbilityActivationFeedback" unique_id=455023363]
+libraries/ = SubResource("AnimationLibrary_xcrri")
 
 [node name="LegacyHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
 visible = false
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left") groups=["PlayerObject"]]
 unique_name_in_owner = true
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
+ability_visual_feedback = NodePath("../InterfaceElements/NewHUD/AbilityActivationFeedback/ActivationAnimation")
 sprite_up = NodePath("PlayerSpriteUp")
 sprite_up_right = NodePath("PlayerSpriteUpRight")
 sprite_right = NodePath("PlayerSpriteRight")
@@ -1108,18 +1166,22 @@ texture = ExtResource("26_y1plk")
 
 [node name="Rhythmplant" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1580102396 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
 position = Vector2(1240, 581)
 
 [node name="Rhythmplant2" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=286901970 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
 position = Vector2(332, 1378)
 
 [node name="Rhythmplant3" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=197684335 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
 position = Vector2(595, -126.000015)
 
 [node name="Rhythmplant4" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1224466097 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
 position = Vector2(-591, 74.999985)
 
 [node name="Floordecals" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1520428884]
@@ -1660,6 +1722,9 @@ position = Vector2(1391, 309)
 
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("47_vwi3h")]
 position = Vector2(753, 383)
+
+[node name="PlayerCatComp2" parent="." unique_id=1653798 instance=ExtResource("51_6uw2w")]
+position = Vector2(447, 398)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="pulse_combo_counter"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]

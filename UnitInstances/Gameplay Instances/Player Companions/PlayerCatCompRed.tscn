@@ -1,12 +1,11 @@
-[gd_scene format=3 uid="uid://3d11rnfax46i"]
+[gd_scene format=3 uid="uid://blyjqr3kvhq5w"]
 
-[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion.gd" id="1_ek3bn"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_ek3bn"]
-[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_35cl0"]
-[ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_ek3bn"]
-[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
-[ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_35cl0"]
-[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_xjnx0"]
+[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion.gd" id="1_12uow"]
+[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="2_s2ofs"]
+[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="3_bnakq"]
+[ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_7gthd"]
+[ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_ng4rp"]
+[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="6_f5lb1"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
@@ -17,7 +16,7 @@ glow_intensity = 0.5
 radius = 24.083189
 
 [node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
-script = ExtResource("1_ek3bn")
+script = ExtResource("1_12uow")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
@@ -35,12 +34,12 @@ debug_path_custom_color = Color(0.7547807, 1, 0, 1)
 [node name="PlayerTarget" type="Marker2D" parent="." unique_id=535261400]
 
 [node name="CompanionStateMachine" type="Node" parent="." unique_id=1036948619 node_paths=PackedStringArray("starting_state", "sprite")]
-script = ExtResource("3_35cl0")
+script = ExtResource("2_s2ofs")
 starting_state = NodePath("CompanionStateFollowing")
 sprite = NodePath("../CatSprite")
 
 [node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=563748157 node_paths=PackedStringArray("after_following_state", "attacking_state")]
-script = ExtResource("4_xjnx0")
+script = ExtResource("3_bnakq")
 after_following_state = NodePath("../CompanionStateStationary")
 attacking_state = NodePath("../CompanionStateAttacking")
 successful_chance_to_attack = 4.5
@@ -48,17 +47,17 @@ start_time_before_expiration = 2.0
 metadata/_custom_type_script = "uid://4htspv80okg1"
 
 [node name="CompanionStateStationary" type="Node" parent="CompanionStateMachine" unique_id=510679203 node_paths=PackedStringArray("returning_state")]
-script = ExtResource("4_ek3bn")
+script = ExtResource("4_7gthd")
 returning_state = NodePath("../CompanionStateFollowing")
 starting_rest_duration = 1.5
 
 [node name="CompanionStateAttacking" type="Node" parent="CompanionStateMachine" unique_id=2067948106]
-script = ExtResource("5_35cl0")
+script = ExtResource("5_ng4rp")
 
 [node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
-self_modulate = Color(1.753959, 1.753959, 0.7517638, 1)
+self_modulate = Color(1.753959, 0.7923444, 0.7517638, 1)
 scale = Vector2(0.37500003, 0.37500003)
-texture = ExtResource("2_ek3bn")
+texture = ExtResource("6_f5lb1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CatSprite" unique_id=1454122288]
 environment = SubResource("Environment_vhhx4")
@@ -75,10 +74,5 @@ offset_right = 21.0
 offset_bottom = 48.0
 text = "Test"
 horizontal_alignment = 1
-
-[node name="TargetMarkerSprite" type="Sprite2D" parent="." unique_id=1231818989]
-modulate = Color(0, 0.91206443, 1.1291975, 1)
-self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
-texture = ExtResource("7_xjnx0")
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

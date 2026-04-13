@@ -10,7 +10,6 @@ signal send_current_health(health: float)
 # Experience bar signals
 signal send_maximum_xp(max_xp: float)
 signal send_current_xp(xp: float)
-
 @export var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
@@ -56,6 +55,7 @@ var ability_cooldown: int
 @export var can_use_companion_ability: bool
 @export var max_companion_ability_charge: float
 var companion_ability_charge: float
+@export var ability_visual_feedback: AnimationPlayer
 #endregion
 
 #region Sprites section
@@ -98,6 +98,7 @@ func get_input() -> void:
 func get_ability_inputs() -> void:
 	if Input.is_action_pressed("use_ability"):
 		activate_player_ability()
+		ability_visual_feedback.play("AbilityActivationVisual")
 	
 
 func activate_player_ability() -> void:

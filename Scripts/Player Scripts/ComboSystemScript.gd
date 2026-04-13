@@ -4,10 +4,14 @@ extends Node
 @export_category("Combo Statistics")
 @export var combo_level: int = 1
 @export var combo_strength: float = 0
-var combo_upgrade_feedback: bool = true
 @onready var combo_count_ui: Label = $"../../InterfaceElements/NewHUD/UI/UpdatedComboCounter"
 @onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachFeedback/AnimationPlayer"
 
+## Glow pulse
+var combo_upgrade_feedback: bool = true
+var combo_upgrade_feedback_two: bool = true
+var combo_upgrade_feedback_three: bool = true
+var combo_upgrade_feedback_four: bool = true
 ## Green Pulse animation feedback for when the player's combo gets upgraded
 # @onready var cssombo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachPulse"
 
@@ -37,15 +41,35 @@ func _add_combo_level(level_value) -> void:
 # Function for updating the combo levels
 func _update_combo() -> void:
 	# Statements for combo levels
-	if combo_strength < 100: combo_level = 1
+	if combo_strength < 100: 
+		combo_level = 1
+		combo_upgrade_feedback = true
+		
 	elif combo_strength >= 100 and combo_strength <= 250:
 		if combo_upgrade_feedback:
 			combo_reach_pulse.play("LightPulse")
 			combo_upgrade_feedback = false
 		combo_level = 2
-	elif combo_strength >= 250 and combo_strength <= 450: combo_level = 3
-	elif combo_strength >= 450 and combo_strength <= 700: combo_level = 4
-	elif combo_strength >= 750 and combo_strength: combo_level = 5
+		combo_upgrade_feedback_two = true
+		
+	elif combo_strength >= 250 and combo_strength <= 450: 
+		if combo_upgrade_feedback_two:
+			combo_reach_pulse.play("LightPulse")
+			combo_upgrade_feedback_two = false
+		combo_level = 3
+		combo_upgrade_feedback_three = true
+		
+	elif combo_strength >= 450 and combo_strength <= 700: 
+		if combo_upgrade_feedback_three:
+			combo_reach_pulse.play("LightPulse")
+			combo_upgrade_feedback_three = false
+		combo_upgrade_feedback_four = true		
+		combo_level = 4
+	elif combo_strength >= 750 and combo_strength:
+		if combo_upgrade_feedback_four:
+			combo_reach_pulse.play("LightPulse")
+			combo_upgrade_feedback_four = false
+		combo_level = 5
 	match combo_level:
 		1:
 			combo_count_ui.text = "1x"

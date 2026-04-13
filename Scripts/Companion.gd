@@ -25,6 +25,12 @@ var enemy_target: CharacterBody2D
 @onready var target_looker: Marker2D = $NearestEnemyTarget
 @onready var master_target_location: Marker2D = $PlayerTarget
 
+@onready var nearest_enemy_target: Marker2D = $"../../NearestEnemyTarget"
+var nearest_enemy = null
+var minimum_distance: float
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine.init(self)
@@ -34,6 +40,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var targets = get_tree().get_nodes_in_group("GeneralEnemyInstance")
+	for target in targets:
+		var distance = global_position.distance_to(target.global_position)
+		if distance < minimum_distance:
+			nearest_enemy = target
 	state_machine.process_frame(delta)
 	pass
 
