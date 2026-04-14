@@ -76,9 +76,10 @@ offset_bottom = 48.0
 text = "Test"
 horizontal_alignment = 1
 
-[node name="TargetMarkerSprite" type="Sprite2D" parent="." unique_id=1231818989]
+[node name="EnemyTargetMarker" type="Sprite2D" parent="." unique_id=1231818989]
 modulate = Color(0, 0.91206443, 1.1291975, 1)
 self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
+z_index = 20
 texture = ExtResource("7_xjnx0")
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

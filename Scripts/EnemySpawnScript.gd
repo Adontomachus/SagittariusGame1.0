@@ -7,6 +7,7 @@ var measuresBeforeSpawning = 4
 var beatLifetime = 4
 var rarityWeight: float
 var eliteRarityWeight: float
+var final_wave: bool = false
 
 #COLOR VALUES
 var redness = 0
@@ -40,29 +41,39 @@ func _process(delta: float) -> void:
 		# If it succeeds, the telegraphed location will spawn an alternate enemy
 		# which becomes more commmon on later enemy waves	
 		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight - 3:
-			_spawnEliteEnemy()
+			_spawn_elite_enemy()
 		elif randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight:
-			_spawnAltEnemy()
+			_spawn_alt_enemy()
+		elif final_wave:
+			_spawn_boss_enemy()
 		else:
-			_spawnEnemy()
+			_spawn_enemy()
 		return
 	return
 
-func _spawnEnemy():
+#region Enemy type spawns
+func _spawn_enemy():
 	var enemy = enemyToSpawn.instantiate()
 	enemy.global_position = self.global_position
 	get_tree().current_scene.add_child(enemy)
 	queue_free()
 	return
-func _spawnAltEnemy():
+func _spawn_alt_enemy():
 	var enemy = altEnemy.instantiate()
 	enemy.global_position = self.global_position
 	get_tree().current_scene.add_child(enemy)
 	queue_free()
 	return
-func _spawnEliteEnemy():
+func _spawn_elite_enemy():
 	var enemy = eliteEnemy.instantiate()
 	enemy.global_position = self.global_position
 	get_tree().current_scene.add_child(enemy)
 	queue_free()
 	return
+func _spawn_boss_enemy():
+	var enemy = bossSpawn.instantiate()
+	enemy.global_position = self.global_position
+	get_tree().current_scene.add_child(enemy)
+	queue_free()
+	return
+#endregion

@@ -2,8 +2,9 @@ class_name CompanionStateAttacking
 extends CompanionState
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-
+func enter() -> void:
+	super()
+	# parent.pathfinding.enabled = false
 			
 		
 	pass # Replace with function body.

@@ -25,9 +25,13 @@ var enemy_target: CharacterBody2D
 @onready var target_looker: Marker2D = $NearestEnemyTarget
 @onready var master_target_location: Marker2D = $PlayerTarget
 
-@onready var nearest_enemy_target: Marker2D = $"../../NearestEnemyTarget"
+@onready var nearest_enemy_target: Marker2D = $NearestEnemyTarget
+
+## Marker sprite where it positions itself to the companion's targeted enemy
+@onready var enemy_target_marker: Sprite2D = $EnemyTargetMarker
+
+
 var nearest_enemy = null
-var minimum_distance: float
 
 
 
@@ -40,11 +44,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var targets = get_tree().get_nodes_in_group("GeneralEnemyInstance")
-	for target in targets:
-		var distance = global_position.distance_to(target.global_position)
-		if distance < minimum_distance:
-			nearest_enemy = target
+	nearest_enemy = _find_closest_enemy()
+	enemy_target_marker.global_position = nearest_enemy.global_position
+	print("Nearest: ", nearest_enemy)
 	state_machine.process_frame(delta)
 	pass
 
@@ -60,8 +62,21 @@ func move_companion(delta: float) -> void:
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
-	#pathfinding.target_position = player_target.global_position
+	# enemy_target_marker.position = nearest_enemy.global_position
+	
 	target_looker.look_at(player_target.global_position)
 	master_target_location.look_at(player_target.global_position)
 	companion_sprite.look_at(player_target.global_position)
 	state_machine.process_physics(delta)
+	
+## Function for finding the nearest enemy target
+func _find_closest_enemy() -> Object:
+	var enemy_target = get_tree().get_nodes_in_group("GeneralEnemyInstance")
+	var minimum_distance = INF
+	for enemy in enemy_target:
+		var target_distance = global_position.distance_squared_to(enemy.global_position)
+		# print("Distance: ", dstarget_distance)
+		if target_distance < minimum_distance:
+			minimum_distance = target_distance
+			nearest_enemy = enemy
+	return nearest_enemy

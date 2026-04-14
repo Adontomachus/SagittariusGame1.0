@@ -32,7 +32,7 @@ func process_physics(delta: float) -> CompanionState:
 		else:
 			return after_following_state
 	
-	#if parent.pathfinding.is_navidgastion_finished() and after_following_state:
+	#if parent.pathfinding.is_navigation_finished() and after_following_state:
 	#	return after_following_state
 	#await get_tree().create_timer(time_before_expiration).timeout
 	return

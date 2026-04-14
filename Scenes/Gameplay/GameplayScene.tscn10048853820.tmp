@@ -1736,8 +1736,6 @@ position = Vector2(447, 398)
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="Player" method="increment_player_charge_attack"]
 [connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
-[connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_exitGame"]
-[connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_resumeGame"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/ExperienceBar" method="set_value"]
 [connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" method="set_value"]
@@ -1750,8 +1748,3 @@ position = Vector2(447, 398)
 [connection signal="update_current_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_value"]
 [connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" method="set_max"]
 [connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_max"]
-
-[editable path="InterfaceElements/NewHUD/UI/PauseScreen"]
-[editable path="Boss"]
-[editable path="PlayerCatComp"]
-[editable path="PlayerCatComp2"]

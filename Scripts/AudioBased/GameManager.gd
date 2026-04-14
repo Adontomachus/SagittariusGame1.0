@@ -7,6 +7,9 @@ extends Node2D
 var spawnTimer = randf_range(2,5)
 @export var player: Node2D # = $"../Player"
 
+## Temporary for main menu animations
+# @export var main_menu_transition: AnimationPlayer
+
 # PAUSE UI
 @onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
 var gamePaused: int
@@ -63,6 +66,7 @@ enum spawningBehavior {
 var actualMousePosition: Vector2
 #@onready var cursorLocator: Marker2D = $MouseLocator
 
+## Sets up the spawning mechanics and pause
 func _ready():
 	level_wave = 1
 	rarityWeight = 3
@@ -93,6 +97,11 @@ func _increaseIncrements():
 func _resumeGame():
 	gamePaused = 0
 	get_tree().paused = false
+	pause_screen.visible = false
+	pass
+	
+func _exitGame():
+	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")
 	pass
 	
 func _pauseGame():
@@ -229,16 +238,12 @@ func _spawn_enemy():
 		var enemy = enemyToSpawn.instantiate()
 		enemy.rarityWeight = rarityWeight
 		#if (enemyoverlaps_area())
+		if waves_remaining == 0:
+			enemy.final_wave = true
 		enemy.position = instantiationPositions
 		add_child(enemy)
 
 #endregion		
-
-#region FUNCTION FOR MOUSE LOCATION		
-#func _locate_mouse_pointer():
-#	cursorLocator.global_position = (player_target.global_position + actualMousePosition) / 2
-#	return
-#endregion
 
 
 func _change_spawning_state(changeBehavior: spawningBehavior):

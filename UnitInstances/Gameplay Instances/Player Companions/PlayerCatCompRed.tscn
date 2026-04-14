@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_7gthd"]
 [ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_ng4rp"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="6_f5lb1"]
+[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_s2ofs"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
@@ -74,5 +75,10 @@ offset_right = 21.0
 offset_bottom = 48.0
 text = "Test"
 horizontal_alignment = 1
+
+[node name="EnemyTargetMarker" type="Sprite2D" parent="." unique_id=1836650500]
+modulate = Color(0, 0.91206443, 1.1291975, 1)
+self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
+texture = ExtResource("7_s2ofs")
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]
