@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://3d11rnfax46i"]
 
 [ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion.gd" id="1_ek3bn"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_ek3bn"]
 [ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_35cl0"]
 [ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_ek3bn"]
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
 [ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_35cl0"]
+[ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Legacy/Sagittarius.png" id="6_xjnx0"]
 [ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_xjnx0"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
@@ -57,8 +57,8 @@ script = ExtResource("5_35cl0")
 
 [node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
 self_modulate = Color(1.753959, 1.753959, 0.7517638, 1)
-scale = Vector2(0.37500003, 0.37500003)
-texture = ExtResource("2_ek3bn")
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("6_xjnx0")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CatSprite" unique_id=1454122288]
 environment = SubResource("Environment_vhhx4")

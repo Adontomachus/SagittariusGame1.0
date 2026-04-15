@@ -604,7 +604,7 @@ position = Vector2(964.99994, 941.5)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("8_81epe")
 
-[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI" unique_id=243769503 node_paths=PackedStringArray("metronome_test")]
+[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI" unique_id=243769503 node_paths=PackedStringArray("level_song")]
 self_modulate = Color(0.5137255, 0.5137255, 0.5137255, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -620,7 +620,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(25, 25)
 script = ExtResource("3_30wor")
-metronome_test = NodePath("MetronomeTest")
+level_song = NodePath("GameMusic")
 perfect_hit = 0.4
 good_hit = 0.32
 ok_hit = 0.2
@@ -629,10 +629,11 @@ ok_hit = 0.2
 libraries/ = SubResource("AnimationLibrary_onpmq")
 speed_scale = 0.6
 
-[node name="MetronomeTest" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=812856403]
+[node name="GameMusic" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=812856403]
 stream = ExtResource("13_7yb2d")
 volume_db = -13.69
 autoplay = true
+parameters/looping = true
 
 [node name="IndicatorText" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=733283776]
 layout_mode = 1

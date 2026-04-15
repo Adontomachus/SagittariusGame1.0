@@ -215,22 +215,20 @@ func _process(delta):
 	
 	#region Spawning Enemies
 	spawnTimer -= delta
-	#if _spawningBehavior == spawningBehavior.Spawning:
 	if (spawnTimer < 0 && enemySpawnCounter != 0 && _spawningBehavior == spawningBehavior.Spawning):
 		print("Spawned Enemy!")
 		spawnTimer = randf_range(2,3)
 		enemySpawnCounter -= 1
 		_spawn_enemy()
-	#endregion Spawning Enemies		
+	#endregion 
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
-	instantiationPositions = Vector2(player.global_position.x + randf_range(200,600), player.global_position.y + randf_range(155,455))
+	instantiationPositions = Vector2(player.global_position.x + randf_range(400,900), player.global_position.y + randf_range(155,455))
 	#endregion
 	
 	
 #region ENEMY SPAWNING FUNCTION	
 func _check_if_area_free(area_position):
-	
 	
 	return
 func _spawn_enemy():

@@ -5,7 +5,7 @@ signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Co
 signal increase_player_attack_charge
 signal increment_combo_meter(strength_value: float)
 @export_category("Beat Settings")
-@export var metronome_test: AudioStreamPlayer# = $"../MetronomeTest"
+@export var level_song: AudioStreamPlayer # = $"../MetronomeTest"
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
 
 #region Beat Variables
@@ -67,10 +67,10 @@ func _process(_delta) -> void:
 	
 	# For combo text
 	combo_counter.text = "Combo: " + str(comboCounter)
-	if metronome_test.playing == false:
+	if level_song.playing == false:
 		return
 
-	time = metronome_test.get_playback_position() + AudioServer.get_time_since_last_mix()
+	time = level_song.get_playback_position() + AudioServer.get_time_since_last_mix()
 	time -= audio_latency
 	time = max(0, time)
 

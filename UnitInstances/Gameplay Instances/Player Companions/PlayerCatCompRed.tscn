@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="3_bnakq"]
 [ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_7gthd"]
 [ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_ng4rp"]
-[ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="6_f5lb1"]
+[ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Legacy/Sagittarius.png" id="6_s2ofs"]
 [ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_s2ofs"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
@@ -15,6 +15,9 @@ glow_intensity = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_53ufe"]
 radius = 24.083189
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2ofs"]
+radius = 34.234486
 
 [node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
 script = ExtResource("1_12uow")
@@ -57,8 +60,8 @@ script = ExtResource("5_ng4rp")
 
 [node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
 self_modulate = Color(1.753959, 0.7923444, 0.7517638, 1)
-scale = Vector2(0.37500003, 0.37500003)
-texture = ExtResource("6_f5lb1")
+scale = Vector2(0.5799999, 0.5799999)
+texture = ExtResource("6_s2ofs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="CatSprite" unique_id=1454122288]
 environment = SubResource("Environment_vhhx4")
@@ -80,5 +83,11 @@ horizontal_alignment = 1
 modulate = Color(0, 0.91206443, 1.1291975, 1)
 self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
 texture = ExtResource("7_s2ofs")
+
+[node name="DashHurtbox" type="Area2D" parent="." unique_id=1924008216]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHurtbox" unique_id=538643482]
+shape = SubResource("CircleShape2D_s2ofs")
+debug_color = Color(0.43832985, 0.56671304, 0.046371195, 0.066)
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

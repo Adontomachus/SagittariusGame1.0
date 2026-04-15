@@ -30,6 +30,13 @@ var enemy_target: CharacterBody2D
 ## Marker sprite where it positions itself to the companion's targeted enemy
 @onready var enemy_target_marker: Sprite2D = $EnemyTargetMarker
 
+## Variables for companion attack statistics
+@export_group("Attacking Stats")
+@export var dash_speed: float = 500
+@export var companion_damage: int = 65
+@export var dash_duration: float = 0.5
+@onready var dash_hurtbox: Area2D = $DashHurtbox
+var is_dashing: bool = false
 
 var nearest_enemy = null
 
@@ -80,3 +87,9 @@ func _find_closest_enemy() -> Object:
 			minimum_distance = target_distance
 			nearest_enemy = enemy
 	return nearest_enemy
+
+func _dash_towards_target() -> void:
+	var dash_direction = global_position.direction_to(nearest_enemy)
+	velocity = dash_direction * dash_speed
+	is_dashing = true
+	return
