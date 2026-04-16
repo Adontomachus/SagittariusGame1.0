@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Instances With Collision/Wall.tscn" id="5_nt06h"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="6_y268v"]
-[ext_resource type="Script" uid="uid://bsi28hfemc0xs" path="res://Scripts/AudioBased/BorderBeatIndicator.gd" id="7_figfh"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="8_81epe"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
@@ -48,7 +47,6 @@
 [ext_resource type="Texture2D" uid="uid://dqmjfk5081pn0" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle8.png" id="31_rr6op"]
 [ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Gameplay Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
-[ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="PackedScene" uid="uid://cuubh55jmexqb" path="res://Objects/Instances With Collision/SplashDamage.tscn" id="38_ni7mq"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
@@ -64,7 +62,7 @@ tracks/0/path = NodePath("BeatPulseIndicatorLeft:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
@@ -76,7 +74,7 @@ tracks/1/path = NodePath("BeatPulseIndicatorLeft3:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
@@ -88,7 +86,7 @@ tracks/2/path = NodePath("BeatPulseIndicatorLeft2:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
@@ -100,7 +98,7 @@ tracks/3/path = NodePath("BeatPulseIndicatorLeft4:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
@@ -586,22 +584,19 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Border Pulse" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=1184264804]
-script = ExtResource("7_figfh")
 
 [node name="PulseFeedbackEffect" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=915768018]
 libraries/ = SubResource("AnimationLibrary_fu6i5")
 
 [node name="BeatPulseIndicatorLeft" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=182041352]
-offset_top = 12.0
 offset_right = 12.0
-offset_bottom = 1068.0
+offset_bottom = 1080.0
 color = Color(0.7509483, 1, 0, 1)
 
 [node name="BeatPulseIndicatorLeft3" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=1708954990]
 offset_left = 1908.0
-offset_top = 12.0
 offset_right = 1920.0
-offset_bottom = 1068.0
+offset_bottom = 1080.0
 color = Color(0.7509483, 1, 0, 1)
 
 [node name="BeatPulseIndicatorLeft2" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=462928805]
@@ -908,11 +903,10 @@ libraries/ = SubResource("AnimationLibrary_xcrri")
 [node name="LegacyHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=2011297985]
 visible = false
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left") groups=["PlayerObject"]]
 unique_name_in_owner = true
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
-pulse_sound_effect = NodePath("PulseSoundEffect")
 ability_visual_feedback = NodePath("../InterfaceElements/NewHUD/AbilityActivationFeedback/ActivationAnimation")
 sprite_up = NodePath("PlayerSpriteUp")
 sprite_up_right = NodePath("PlayerSpriteUpRight")
@@ -991,11 +985,6 @@ script = ExtResource("10_bbunm")
 [node name="BulletHitbox" type="CollisionShape2D" parent="Player/ProjectileHitbox" unique_id=675715082]
 shape = SubResource("CircleShape2D_fklr0")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
-
-[node name="PulseSoundEffect" type="AudioStreamPlayer" parent="Player" unique_id=1605933517]
-stream = ExtResource("34_xcrri")
-volume_db = -10.0
-pitch_scale = 4.0
 
 [node name="ShotAudio" type="AudioStreamPlayer" parent="Player" unique_id=166549679]
 stream = ExtResource("15_buuuh")
@@ -1671,7 +1660,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight2" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1127818380]
-position = Vector2(-721, 255)
+position = Vector2(-721.99994, 247)
 scale = Vector2(30.546873, 30.624998)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
@@ -1869,7 +1858,6 @@ position = Vector2(447, 398)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="pulse_combo_counter"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
 [connection signal="pulse_on_beat" from="." to="Player" method="_ability_pulse_checker"]
 [connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="EnemyNavRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]

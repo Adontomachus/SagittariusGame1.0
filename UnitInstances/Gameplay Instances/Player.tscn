@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="4_bskou"]
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="4_kpdv2"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="5_amksl"]
+[ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="8_2iabu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8jkjp"]
 radius = 18.0
@@ -56,8 +57,15 @@ script = ExtResource("3_fhy58")
 shape = SubResource("CircleShape2D_kpdv2")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 
+[node name="UltimateAreaOfEffect" type="Area2D" parent="." unique_id=661872516]
+
+[node name="AreaHurtbox" type="CollisionShape2D" parent="UltimateAreaOfEffect" unique_id=235718903]
+shape = SubResource("CircleShape2D_4k6ra")
+debug_color = Color(0.962128, 0.89471775, 0.32086813, 0.043)
+
 [node name="ShotAudio" type="AudioStreamPlayer" parent="." unique_id=1331729390]
 stream = ExtResource("4_kpdv2")
+volume_db = 8.0
 autoplay = true
 
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=788464497]
@@ -65,11 +73,10 @@ stream = ExtResource("5_amksl")
 volume_db = -7.5
 pitch_scale = 0.75
 
-[node name="UltimateAreaOfEffect" type="Area2D" parent="." unique_id=661872516]
-
-[node name="AreaHurtbox" type="CollisionShape2D" parent="UltimateAreaOfEffect" unique_id=235718903]
-shape = SubResource("CircleShape2D_4k6ra")
-debug_color = Color(0.962128, 0.89471775, 0.32086813, 0.043)
+[node name="PulseSoundEffect" type="AudioStreamPlayer" parent="." unique_id=1727118954]
+stream = ExtResource("8_2iabu")
+volume_db = -10.0
+pitch_scale = 4.0
 
 [connection signal="area_entered" from="EnemyCollision" to="." method="_on_enemy_collision_area_entered"]
 [connection signal="experience_modify" from="ProjectileHitbox" to="." method="modify_current_xp"]

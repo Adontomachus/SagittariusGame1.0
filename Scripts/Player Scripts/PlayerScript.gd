@@ -37,6 +37,7 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 
 #endregion
 # Shot properties and point
+@export var pulse_sound_effect: AudioStreamPlayer
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 @export_category("Number of perfect shots for enhanced attack")
@@ -287,6 +288,7 @@ func _ability_pulse_checker() -> void:
 	if ability_active:
 		ability_duration -= 1
 		var aoe_damage = pulse_aoe.instantiate()
+		pulse_sound_effect.play()
 		#shot_sound.play()
 		aoe_damage.change_damage(projectile_damage / randf_range(1.4, 1.6))
 		aoe_damage.position = shot_point.get_global_position()

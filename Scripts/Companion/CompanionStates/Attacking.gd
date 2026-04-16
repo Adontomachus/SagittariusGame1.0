@@ -10,14 +10,8 @@ func enter() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+
+
+func _dash_towards_target(dash_target) -> void:
+	parent.is_dashing = true
 	pass
-
-
-# Function to find the nearest opponent
-func attack_nearest_opponent() -> void:
-	return
-	
-func position_to_attack() -> void:
-	return

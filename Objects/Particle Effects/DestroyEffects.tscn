@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://diypl25rxjr1"]
 
+[ext_resource type="AudioStream" uid="uid://dse548yh0l2yx" path="res://Audio/Sounds/Destroyed1.wav" id="1_iidq2"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
 
 [sub_resource type="Curve" id="Curve_t5oqc"]
@@ -18,6 +20,7 @@ point_count = 4
 script/source = "extends CPUParticles2D
 
 var timedShot = lifetime - 0.05
+@onready var explosion_effect: AudioStreamPlayer2D = $ExplosionEffect
 
 func _process(delta):
 	timedShot -= delta
@@ -25,6 +28,7 @@ func _process(delta):
 		queue_free()
 
 func _ready():
+	explosion_effect.play()
 	print(\"Particles emitted!\")
 
 func _on_finished() -> void:
@@ -62,5 +66,8 @@ script = SubResource("GDScript_h052y")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1764725689]
 environment = SubResource("Environment_h052y")
+
+[node name="ExplosionEffect" type="AudioStreamPlayer2D" parent="." unique_id=1700633985]
+stream = ExtResource("1_iidq2")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
