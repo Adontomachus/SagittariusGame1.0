@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
 [ext_resource type="AudioStream" uid="uid://gel8f0x45m7d" path="res://Audio/Music/Bebot.mp3" id="13_7yb2d"]
+[ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="14_u1twm"]
 [ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="17_6uhl4"]
@@ -37,15 +38,22 @@
 [ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="25_41o6w"]
 [ext_resource type="Texture2D" uid="uid://wfyey75sv4g6" path="res://Sprites/Game Elements/floorpattern.png" id="26_y1plk"]
 [ext_resource type="Texture2D" uid="uid://cm0bwhlcstfpj" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle3.png" id="26_yt4p3"]
+[ext_resource type="Texture2D" uid="uid://dsrkwoaiqe2t7" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE1.png" id="27_exwru"]
 [ext_resource type="Texture2D" uid="uid://cri0hallrmbk" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle4.png" id="27_xcrri"]
 [ext_resource type="Texture2D" uid="uid://cxj1hws4lau1f" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle5.png" id="28_1vk04"]
 [ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/Game Elements/floordecals.png" id="28_agm15"]
+[ext_resource type="Texture2D" uid="uid://djbmwi1cobm76" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE2.png" id="28_u1twm"]
 [ext_resource type="Texture2D" uid="uid://24r8oon6nn5l" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle6.png" id="29_fu6i5"]
+[ext_resource type="Texture2D" uid="uid://l1ta4lap8311" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE3.png" id="29_jgp33"]
 [ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/Game Elements/baleterootdecals.png" id="29_xxi0v"]
 [ext_resource type="Texture2D" uid="uid://gg2hyp501kug" path="res://Sprites/Game Elements/floordecal3.png" id="30_81sgd"]
+[ext_resource type="Texture2D" uid="uid://dlur8r0o6a22r" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE4.png" id="30_110ka"]
 [ext_resource type="Texture2D" uid="uid://dh27chreavtjo" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle7.png" id="30_mtruf"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
 [ext_resource type="Texture2D" uid="uid://dqmjfk5081pn0" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle8.png" id="31_rr6op"]
+[ext_resource type="Texture2D" uid="uid://gr14w16h7rfg" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE5.png" id="31_vj1fp"]
+[ext_resource type="Texture2D" uid="uid://bkx8e0olqi6lr" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE6.png" id="32_o710q"]
+[ext_resource type="Texture2D" uid="uid://d1iell8esy6nw" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE7.png" id="33_hlum5"]
 [ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Gameplay Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
@@ -105,6 +113,54 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1vk04"]
 length = 0.001
@@ -156,11 +212,264 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(0.7509483, 1, 0, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fu6i5"]
 _data = {
 &"BeatIndicatorEffect": SubResource("Animation_xcrri"),
 &"RESET": SubResource("Animation_1vk04")
+}
+
+[sub_resource type="Animation" id="Animation_u1twm"]
+resource_name = "PerfectPulse"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatPulseIndicatorLeft:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93929464, 0.9131191, 0.63476855, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeatPulseIndicatorLeft3:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft2:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft4:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_jgp33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatPulseIndicatorLeft:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.93929464, 0.9131191, 0.63476855, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeatPulseIndicatorLeft3:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft2:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft4:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_110ka"]
+_data = {
+&"PerfectPulse": SubResource("Animation_u1twm"),
+&"RESET": SubResource("Animation_jgp33")
 }
 
 [sub_resource type="Animation" id="Animation_41o6w"]
@@ -483,6 +792,37 @@ _data = {
 &"RESET": SubResource("Animation_figfh")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4t4xv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8aea"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("27_exwru")
+}, {
+"duration": 0.5,
+"texture": ExtResource("28_u1twm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("29_jgp33")
+}, {
+"duration": 0.5,
+"texture": ExtResource("30_110ka")
+}, {
+"duration": 0.5,
+"texture": ExtResource("31_vj1fp")
+}, {
+"duration": 0.5,
+"texture": ExtResource("32_o710q")
+}, {
+"duration": 0.5,
+"texture": ExtResource("33_hlum5")
+}],
+"loop": true,
+"name": &"NorthEastWalking",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
 radius = 18.0
 
@@ -591,29 +931,36 @@ script = ExtResource("7_figfh")
 [node name="PulseFeedbackEffect" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=915768018]
 libraries/ = SubResource("AnimationLibrary_fu6i5")
 
+[node name="PerfectPulseFeedback" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=1544381403]
+libraries/ = SubResource("AnimationLibrary_110ka")
+
 [node name="BeatPulseIndicatorLeft" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=182041352]
 offset_top = 12.0
 offset_right = 12.0
 offset_bottom = 1068.0
-color = Color(0.7509483, 1, 0, 1)
+scale = Vector2(2, 1)
+color = Color(0.93929464, 0.9131191, 0.63476855, 1)
 
 [node name="BeatPulseIndicatorLeft3" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=1708954990]
 offset_left = 1908.0
-offset_top = 12.0
+offset_top = 10.0
 offset_right = 1920.0
-offset_bottom = 1068.0
-color = Color(0.7509483, 1, 0, 1)
+offset_bottom = 1066.0
+scale = Vector2(2, 1)
+color = Color(0.9411765, 0.9137255, 0.63529414, 1)
 
 [node name="BeatPulseIndicatorLeft2" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=462928805]
 offset_top = 1068.0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.7509483, 1, 0, 1)
+scale = Vector2(1, 2)
+color = Color(0.9411765, 0.9137255, 0.63529414, 1)
 
 [node name="BeatPulseIndicatorLeft4" type="ColorRect" parent="InterfaceElements/NewHUD/UI/Border Pulse" unique_id=226567956]
 offset_right = 1920.0
 offset_bottom = 12.0
-color = Color(0.7509483, 1, 0, 1)
+scale = Vector2(1, 2)
+color = Color(0.9411765, 0.9137255, 0.63529414, 1)
 
 [node name="ComboReachFeedback" type="ColorRect" parent="InterfaceElements/NewHUD/UI" unique_id=896892625]
 layout_mode = 0
@@ -776,6 +1123,9 @@ volume_db = -13.69
 autoplay = true
 parameters/looping = true
 
+[node name="PerfectShotComboSound" type="AudioStreamPlayer2D" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=460988706]
+stream = ExtResource("14_u1twm")
+
 [node name="IndicatorText" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=733283776]
 visible = false
 layout_mode = 1
@@ -932,11 +1282,20 @@ self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
 scale = Vector2(0.22399989, 0.2239997)
 texture = ExtResource("24_vwi3h")
 
+[node name="PlayerSpriteUpWalking" type="AnimatedSprite2D" parent="Player/PlayerSpriteUp" unique_id=875403186]
+sprite_frames = SubResource("SpriteFrames_4t4xv")
+
 [node name="PlayerSpriteUpRight" type="Sprite2D" parent="Player" unique_id=1759715147]
 visible = false
 self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
 scale = Vector2(0.22399989, 0.2239997)
 texture = ExtResource("25_41o6w")
+
+[node name="PlayerSpriteUpRightWalking" type="AnimatedSprite2D" parent="Player" unique_id=1668159534]
+scale = Vector2(0.22399989, 0.2239997)
+sprite_frames = SubResource("SpriteFrames_e8aea")
+animation = &"NorthEastWalking"
+frame_progress = 0.64611644
 
 [node name="PlayerSpriteRight" type="Sprite2D" parent="Player" unique_id=1544387780]
 visible = false

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bgn7itqb3g2bv"]
 
+[ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="1_1trqd"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
 
 [sub_resource type="Curve" id="Curve_5nsfc"]
@@ -24,6 +26,7 @@ point_count = 4
 script/source = "extends CPUParticles2D
 
 var timedShot = lifetime - 0.05
+@onready var level_up_sound_effect: AudioStreamPlayer2D = $LevelUpSoundEffect
 
 func _process(delta):
 	timedShot -= delta
@@ -31,6 +34,7 @@ func _process(delta):
 		queue_free()
 
 func _ready():
+	level_up_sound_effect.play()
 	print(\"Particles emitted!\")
 
 func _on_finished() -> void:
@@ -80,5 +84,9 @@ theme_override_font_sizes/font_size = 20
 text = "Lv UP!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LevelUpSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=1483775225]
+stream = ExtResource("1_1trqd")
+volume_db = 2.0
 
 [connection signal="finished" from="." to="." method="_on_finished"]

@@ -57,6 +57,7 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	pass
 
+## Function for follow movement
 func move_companion(delta: float) -> void:
 	var targetLocation = pathfinding.get_next_path_position()
 	var new_velocity = global_position.direction_to(targetLocation) * move_speed
@@ -87,3 +88,15 @@ func _find_closest_enemy() -> Object:
 			minimum_distance = target_distance
 			nearest_enemy = enemy
 	return nearest_enemy
+
+## Function for dashing towards the marked enemy target
+func _rush_towards_target() -> void:
+	var targetLocation = pathfinding.get_next_path_position()
+	var new_velocity = global_position.direction_to(nearest_enemy.global_position) * move_speed
+	
+	velocity = new_velocity
+	
+	if (pathfinding.avoidance_enabled):
+		pathfinding.set_velocity(new_velocity)
+		
+	move_and_slide()

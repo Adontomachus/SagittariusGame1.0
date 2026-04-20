@@ -59,6 +59,9 @@ var companion_ability_charge: float
 @export var ability_visual_feedback: AnimationPlayer
 #endregion
 
+## TESTING PURPOSES
+@onready var player_sprite_up_right_walking: AnimatedSprite2D = $PlayerSpriteUpRightWalking
+
 #region Sprites section
 ## Sprites for the orthographic direction to face where the player's cursor is
 ## There are 8 directions mimicking the compass directions
@@ -73,6 +76,9 @@ var companion_ability_charge: float
 @export var sprite_up_left: Sprite2D
 #endregion
 func _ready():
+	
+	## TESTING PURPOSES
+	player_sprite_up_right_walking.play("NorthEastWalking")
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
 	if camera_shake.is_connected(camera._shake_camera_on_shoot) == false:

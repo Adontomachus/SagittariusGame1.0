@@ -4,6 +4,8 @@ extends Panel
 signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Color)
 signal increase_player_attack_charge
 signal increment_combo_meter(strength_value: float)
+signal border_pulse
+
 @export_category("Beat Settings")
 @export var level_song: AudioStreamPlayer # = $"../MetronomeTest"
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
@@ -20,20 +22,22 @@ var audio_latency: float = 0.0
 #endregion
 
 #region UI Combo Counter along with the actual combo counter
-
-@onready var combo_counter: Label = $"../PlayerInfo/ComboCounter"
 @export var comboCounter = 0
+var combo_audio_pitch: float = 1
+@onready var p_combo_sound: AudioStreamPlayer2D = $PerfectShotComboSound
 #endregion
+
 #region other UI elements to beat sync for diegetic effects
-#@onready var player_health_bar: ProgressBar = $"../PlayerInfo/PlayerHealthBar"
 @onready var score: Label = $"../PlayerInfo/Score"
 @onready var wave_counter: Label = $"../PlayerInfo/WaveCounter"
+@onready var p_feedback: AnimationPlayer = $"../Border Pulse/PerfectPulseFeedback"
+
 #endregion
+
 #region Indicator Variables
 @export var starting_scale: float = 1.35
 var tween: Tween
 #endregion
-
 
 
 
@@ -48,6 +52,7 @@ var tween: Tween
 @export var good_hit: float = 0.34
 @export var ok_hit: float = 0.28
 #endregion
+
 
 #region Global synchronization (TEMPORARY)
 var delay: float = 0
@@ -64,9 +69,10 @@ func _ready() -> void:
 	scale = Vector2(starting_scale, starting_scale)
 	
 func _process(_delta) -> void:
+	p_combo_sound.pitch_scale = combo_audio_pitch
+	combo_audio_pitch = 1 + (comboCounter * 0.06)
 	
 	# For combo text
-	combo_counter.text = "Combo: " + str(comboCounter)
 	if level_song.playing == false:
 		return
 
@@ -100,20 +106,26 @@ func _input(event: InputEvent) -> void:
 func damage_modifier(timing: float) -> float:
 	# Perfect
 	if timing > perfect_hit:
+		p_feedback.play("PerfectPulse")
+		border_pulse.emit()
+		p_combo_sound.play()
 		increase_player_attack_charge.emit()
 		increment_combo_meter.emit(40)
 		return 1.45
 
 	# Good
 	if timing > good_hit:
+		comboCounter = 0
 		increment_combo_meter.emit(15)
 		return 1.0
 	
 	# OK
 	if timing > ok_hit:
+		comboCounter = 0
 		return 0.8
 	
 	# BAD
+	comboCounter = 0
 	return 0.1
 
 func projectile_color(timing: float) -> Color:

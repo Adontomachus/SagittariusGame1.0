@@ -55,8 +55,9 @@ script = ExtResource("4_7gthd")
 returning_state = NodePath("../CompanionStateFollowing")
 starting_rest_duration = 1.5
 
-[node name="CompanionStateAttacking" type="Node" parent="CompanionStateMachine" unique_id=2067948106]
+[node name="CompanionStateAttacking" type="Node" parent="CompanionStateMachine" unique_id=2067948106 node_paths=PackedStringArray("after_attacking_state")]
 script = ExtResource("5_ng4rp")
+after_attacking_state = NodePath("../CompanionStateStationary")
 
 [node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
 self_modulate = Color(1.753959, 0.7923444, 0.7517638, 1)

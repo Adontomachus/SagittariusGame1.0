@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://biq7xii20vqo1"]
 
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="1_eu4u2"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
 
 [sub_resource type="Curve" id="Curve_5nsfc"]
@@ -24,6 +26,8 @@ point_count = 4
 script/source = "extends CPUParticles2D
 
 var timedShot = lifetime - 0.05
+@onready var collect_sound: AudioStreamPlayer2D = $CollectSound
+
 
 func _process(delta):
 	timedShot -= delta
@@ -31,6 +35,7 @@ func _process(delta):
 		queue_free()
 
 func _ready():
+	collect_sound.play()
 	print(\"Particles emitted!\")
 
 func _on_finished() -> void:
@@ -68,5 +73,10 @@ script = SubResource("GDScript_h052y")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=802354431]
 environment = SubResource("Environment_5nsfc")
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="." unique_id=867014591]
+stream = ExtResource("1_eu4u2")
+volume_db = 5.0
+pitch_scale = 4.0
 
 [connection signal="finished" from="." to="." method="_on_finished"]
