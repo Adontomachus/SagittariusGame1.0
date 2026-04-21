@@ -35,8 +35,9 @@ var player_target: CharacterBody2D
 @export var dash_speed: float = 750
 @export var companion_damage: int = 65
 @export var dash_duration: float = 0.5
-@onready var dash_hurtbox: Area2D = $DashHurtbox
 var is_dashing: bool = false
+@onready var slash_area: Area2D = $SlashArea
+@onready var slash_hurtbox: CollisionShape2D = $SlashArea/SlashHurtbox
 
 var nearest_enemy: CharacterBody2D = null
 

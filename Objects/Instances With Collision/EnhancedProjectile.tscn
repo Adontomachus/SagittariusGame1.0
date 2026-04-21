@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drcst5ug65lgl"]
 
-[ext_resource type="Script" uid="uid://dq1ac3k2s8p6w" path="res://Scripts/ProjectileCollision.gd" id="1_bc5k8"]
+[ext_resource type="Script" uid="uid://dq1ac3k2s8p6w" path="res://Scripts/Miscellaneous/ProjectileCollision.gd" id="1_bc5k8"]
 [ext_resource type="Texture2D" uid="uid://lusulpgvi3ek" path="res://Sprites/Game Elements/projectilesprite.png" id="2_7a4nw"]
 [ext_resource type="Script" uid="uid://btryh5rw6b10x" path="res://Scripts/Visuals/SpriteTrailEffect.gd" id="3_7a4nw"]
 

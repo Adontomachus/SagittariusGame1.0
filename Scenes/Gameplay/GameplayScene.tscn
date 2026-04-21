@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/AudioBased/GameManager.gd" id="1_onpmq"]
 [ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/Player Scripts/PointSystemScript.gd" id="2_qvp00"]
 [ext_resource type="Script" uid="uid://c810xbguv6vjc" path="res://Scripts/Player Scripts/ComboSystemScript.gd" id="2_vwi3h"]
-[ext_resource type="Script" uid="uid://d1e13o8vj8tni" path="res://Scripts/ScalingSystemScript.gd" id="3_0voen"]
+[ext_resource type="Script" uid="uid://d1e13o8vj8tni" path="res://Scripts/Miscellaneous/ScalingSystemScript.gd" id="3_0voen"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="3_30wor"]
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="3_exhb5"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="4_b4hlm"]
@@ -910,6 +910,8 @@ script = ExtResource("2_qvp00")
 
 [node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101 groups=["PlayerSystems"]]
 script = ExtResource("3_0voen")
+
+[node name="DynamicTerrainSystem" type="Node" parent="GameSystems" unique_id=1982384762]
 
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 

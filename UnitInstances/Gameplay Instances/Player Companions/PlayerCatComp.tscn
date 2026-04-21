@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3d11rnfax46i"]
 
-[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion.gd" id="1_ek3bn"]
+[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Miscellaneous/Companion.gd" id="1_ek3bn"]
 [ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_35cl0"]
 [ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_ek3bn"]
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
@@ -14,7 +14,10 @@ glow_enabled = true
 glow_intensity = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_53ufe"]
-radius = 24.083189
+radius = 23.021729
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjnx0"]
+radius = 34.058773
 
 [node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
 script = ExtResource("1_ek3bn")
@@ -76,6 +79,13 @@ offset_right = 21.0
 offset_bottom = 48.0
 text = "Test"
 horizontal_alignment = 1
+
+[node name="SlashArea" type="Area2D" parent="." unique_id=468419870]
+
+[node name="SlashHurtbox" type="CollisionShape2D" parent="SlashArea" unique_id=2089765813]
+shape = SubResource("CircleShape2D_xjnx0")
+disabled = true
+debug_color = Color(0.80855644, 0.35864526, 0.54431385, 0.41960785)
 
 [node name="EnemyTargetMarker" type="Sprite2D" parent="." unique_id=1231818989]
 modulate = Color(0, 0.91206443, 1.1291975, 1)

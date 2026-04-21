@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blyjqr3kvhq5w"]
 
-[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Companion.gd" id="1_12uow"]
+[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Miscellaneous/Companion.gd" id="1_12uow"]
 [ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="2_s2ofs"]
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="3_bnakq"]
 [ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_7gthd"]
