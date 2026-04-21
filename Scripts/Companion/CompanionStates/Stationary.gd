@@ -8,7 +8,6 @@ var rest_duration: float
 
 
 func enter() -> void:
-	reposition(parent.player_radius)
 	rest_duration = starting_rest_duration 
 
 func process_physics(delta: float) -> CompanionState:
@@ -16,8 +15,3 @@ func process_physics(delta: float) -> CompanionState:
 	if rest_duration < 0:
 		return returning_state
 	return null
-	
-func reposition(playerRadius) -> void:
-	if parent.player_target:
-		var randomPosition = Vector2(randf_range(-playerRadius,playerRadius), randf_range(-playerRadius,playerRadius))
-		parent.pathfinding.target_position = parent.player_target.global_position + randomPosition

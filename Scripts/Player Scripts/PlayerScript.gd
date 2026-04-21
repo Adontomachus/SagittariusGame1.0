@@ -51,7 +51,8 @@ var shots_for_charged: int = 8
 @export var can_use_ability: bool
 var ability_active: bool
 var ability_duration: int
-var ability_cooldown: int
+var ability_cooldown: float
+@export var max_ability_cooldown: float
 @onready var ability_aoe_node: Area2D = $AbilityAoE
 @export var can_use_companion_ability: bool
 @export var max_companion_ability_charge: float
@@ -75,6 +76,12 @@ var companion_ability_charge: float
 @export var sprite_left: Sprite2D
 @export var sprite_up_left: Sprite2D
 #endregion
+
+#region Ability UI elements
+@onready var ability_1_container: ColorRect = $InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability1Container
+@onready var ability_2_container: BoxContainer = $InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability2Container
+
+#endregion
 func _ready():
 	
 	## TESTING PURPOSES
@@ -87,6 +94,7 @@ func _ready():
 	# Setting the current health from max HP value and disabling active ability on start
 	ability_active = false
 	healthPoints = maxHealthPoints
+	
 	# Hides the AoE ability effect on start since it is disabled
 	ability_aoe_node.hide()
 	
@@ -104,8 +112,11 @@ func get_input() -> void:
 	velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
 func get_ability_inputs() -> void:
 	if Input.is_action_pressed("use_ability"):
-		activate_player_ability()
-		ability_visual_feedback.play("AbilityActivationVisual")
+		if can_use_ability:
+			ability_cooldown = max_ability_cooldown
+			activate_player_ability()
+			can_use_ability = false
+			ability_visual_feedback.play("AbilityActivationVisual")
 	
 
 func activate_player_ability() -> void:
@@ -116,16 +127,22 @@ func activate_player_ability() -> void:
 #endregion
 
 #region Main processes
-func _process(_delta):
+func _process(delta):
 	# Ability functions
 	get_ability_inputs()
 	# Sprite flipping on turnarounds
-	##if get_global_mouse_position().x < global_position.x:
-	##	player_sprite.flip_h = true
-	##	pass
-	##else:
-	##	player_sprite.flip_h = false
-
+	
+	## Decrement cooldown in delta when the AoE ability is used
+	ability_cooldown -= 1 * delta
+	print ("Cooldown: ", ability_cooldown)
+	
+	if ability_cooldown < 0: can_use_ability = true
+	
+	## Player ability UI feedback
+	#if can_use_ability == false: ability_1_container.color = Color("414138ff")
+	#else: ability_1_container.color = Color("ffffffff")
+	
+	
 	#region Testing sprite orthographic rotations
 	var mouse_direction = get_global_mouse_position() - global_position
 	var look_angle = rad_to_deg(mouse_direction.angle())

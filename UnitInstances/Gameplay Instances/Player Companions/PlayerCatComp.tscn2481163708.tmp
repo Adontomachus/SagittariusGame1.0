@@ -43,7 +43,7 @@ sprite = NodePath("../CatSprite")
 script = ExtResource("4_xjnx0")
 after_following_state = NodePath("../CompanionStateStationary")
 attacking_state = NodePath("../CompanionStateAttacking")
-successful_chance_to_attack = 3.0
+successful_chance_to_attack = 4.5
 start_time_before_expiration = 2.0
 metadata/_custom_type_script = "uid://4htspv80okg1"
 

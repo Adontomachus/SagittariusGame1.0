@@ -11,9 +11,6 @@ func _ready():
 func _process(delta):
 	var bossUnit = get_tree().get_first_node_in_group("BossType")
 	if !bossUnit:
-#		if "maxHealthPoints" in bossUnit && "healthPoints" in bossUnit:
-#			update_max_health_value.emit(bossUnit.maxHealthPoints)
-#			update_current_health_value.emit(bossUnit.healthPoints)
 		self.visible = false
 	else:
 		self.visible = true

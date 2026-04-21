@@ -18,9 +18,6 @@ func enter() -> void:
 
 	
 func process_physics(delta: float) -> CompanionState:
-#	var randomPosition = Vector2(randf_range(-parent.player_radius,parent.player_radius), randf_range(-parent.player_radius,parent.player_radius))
-#	parent.pathfinding.target_position = parent.player_target.global_position # + randomPosition
-#	reposition(parent.player_radius)
 	parent.move_companion(delta)
 		
 	#if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:

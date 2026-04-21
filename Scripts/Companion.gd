@@ -14,10 +14,10 @@ extends CharacterBody2D
 @export var move_speed: float
 
 # These are the main destination points for the companion to follow
-@export_group("Player Master and Nearest Target")
+@export_group("Player Master")
 var player_target: CharacterBody2D
 @export var player_radius: float
-var enemy_target: CharacterBody2D
+# dvar enemy_target: CharacterBody2D
 #endregion
 # @export var time_to_relocate: float = 5
 
@@ -25,7 +25,7 @@ var enemy_target: CharacterBody2D
 @onready var target_looker: Marker2D = $NearestEnemyTarget
 @onready var master_target_location: Marker2D = $PlayerTarget
 
-@onready var nearest_enemy_target: Marker2D = $NearestEnemyTarget
+# @onready var nearest_enemy_target: Marker2D = $NearestEnemyTarget
 
 ## Marker sprite where it positions itself to the companion's targeted enemy
 @onready var enemy_target_marker: Sprite2D = $EnemyTargetMarker
@@ -38,7 +38,7 @@ var enemy_target: CharacterBody2D
 @onready var dash_hurtbox: Area2D = $DashHurtbox
 var is_dashing: bool = false
 
-var nearest_enemy = null
+var nearest_enemy: CharacterBody2D = null
 
 
 
@@ -53,10 +53,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	nearest_enemy = _find_closest_enemy()
 	enemy_target_marker.global_position = nearest_enemy.global_position
-	print("Nearest: ", nearest_enemy)
+	# print("Nearest: ", nearest_enemy)
 	state_machine.process_frame(delta)
 	pass
 
+#region Pathfinding functions
 ## Function for follow movement
 func move_companion(delta: float) -> void:
 	var targetLocation = pathfinding.get_next_path_position()
@@ -68,6 +69,19 @@ func move_companion(delta: float) -> void:
 		pathfinding.set_velocity(new_velocity)
 		
 	move_and_slide()
+
+## Function for dashing towards the marked enemy target
+func _rush_towards_target(delta: float) -> void:
+	var targetLocation = pathfinding.get_next_path_position()
+	var new_velocity = global_position.direction_to(targetLocation) * dash_speed
+	
+	velocity = new_velocity
+	
+	if (pathfinding.avoidance_enabled):
+		pathfinding.set_velocity(new_velocity)
+		
+	move_and_slide()
+#endregion
 
 func _physics_process(delta: float) -> void:
 	# enemy_target_marker.position = nearest_enemy.global_position
@@ -88,15 +102,3 @@ func _find_closest_enemy() -> Object:
 			minimum_distance = target_distance
 			nearest_enemy = enemy
 	return nearest_enemy
-
-## Function for dashing towards the marked enemy target
-func _rush_towards_target() -> void:
-	var targetLocation = pathfinding.get_next_path_position()
-	var new_velocity = global_position.direction_to(nearest_enemy.global_position) * move_speed
-	
-	velocity = new_velocity
-	
-	if (pathfinding.avoidance_enabled):
-		pathfinding.set_velocity(new_velocity)
-		
-	move_and_slide()

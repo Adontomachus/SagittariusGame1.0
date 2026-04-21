@@ -48,6 +48,9 @@ signal scale_on_next_wave
 @onready var wave_counter: Label = $InterfaceElements/NewHUD/UI/PlayerInfo/WaveCounter
 @onready var enemy_counter: Label = $InterfaceElements/NewHUD/UI/EnemyCounter
 @onready var wave_notification: Label = $InterfaceElements/NewHUD/UI/WaveNotification
+#@onready var ability_1_container: ColorRect = $InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability1Container
+#@onready var ability_2_container: BoxContainer = $InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability2Container
+
 var notifDuration: float
 var nextDuration: float
 #endregion
