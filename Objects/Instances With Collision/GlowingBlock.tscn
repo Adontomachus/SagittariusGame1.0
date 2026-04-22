@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjc8btakp3jbf"]
 
 [ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/AudioBased/StationaryBeatGlowEffect.gd" id="1_c7hfc"]
-[ext_resource type="Texture2D" uid="uid://eafkugyq58q6" path="res://Sprites/Game Elements/glowingobstacle.png" id="2_6pvpb"]
+[ext_resource type="Texture2D" uid="uid://ljxuuo125qi0" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8611.PNG" id="2_c7hfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(323.1635, 306.2915)
@@ -22,8 +22,9 @@ scale = Vector2(0.77050775, 0.77050775)
 script = ExtResource("1_c7hfc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
-scale = Vector2(0.7104846, 0.7104845)
-texture = ExtResource("2_6pvpb")
+position = Vector2(-7.7870746, 20.765526)
+scale = Vector2(0.9344487, 0.9344485)
+texture = ExtResource("2_c7hfc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
 position = Vector2(-10.382765, 11.680608)

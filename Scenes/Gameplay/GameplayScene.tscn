@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="4_b4hlm"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/Player Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="5_fklr0"]
+[ext_resource type="Script" uid="uid://bsk5nfp8klfyc" path="res://Scripts/Level Based/DynamicLevelScript.gd" id="5_jgp33"]
 [ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Instances With Collision/Wall.tscn" id="5_nt06h"]
+[ext_resource type="Script" uid="uid://crr4fdev6qi70" path="res://Scripts/Miscellaneous/CinematicsHandler.gd" id="6_110ka"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="6_jwrfw"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="6_y268v"]
 [ext_resource type="Script" uid="uid://bsi28hfemc0xs" path="res://Scripts/AudioBased/BorderBeatIndicator.gd" id="7_figfh"]
@@ -36,7 +38,6 @@
 [ext_resource type="Texture2D" uid="uid://oo48xtre3sec" path="res://Sprites/Game Elements/abilityfeedback.png" id="22_yt4p3"]
 [ext_resource type="Texture2D" uid="uid://b2nmgvvaxsn4k" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle1.png" id="24_vwi3h"]
 [ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="25_41o6w"]
-[ext_resource type="Texture2D" uid="uid://wfyey75sv4g6" path="res://Sprites/Game Elements/floorpattern.png" id="26_y1plk"]
 [ext_resource type="Texture2D" uid="uid://cm0bwhlcstfpj" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle3.png" id="26_yt4p3"]
 [ext_resource type="Texture2D" uid="uid://dsrkwoaiqe2t7" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE1.png" id="27_exwru"]
 [ext_resource type="Texture2D" uid="uid://cri0hallrmbk" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle4.png" id="27_xcrri"]
@@ -61,6 +62,7 @@
 [ext_resource type="PackedScene" uid="uid://cuubh55jmexqb" path="res://Objects/Instances With Collision/SplashDamage.tscn" id="38_ni7mq"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
+[ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
 
 [sub_resource type="Animation" id="Animation_xcrri"]
 resource_name = "BeatIndicatorEffect"
@@ -841,6 +843,22 @@ radius = 21.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_fklr0"]
 radius = 19.104973
 
+[sub_resource type="Animation" id="Animation_110ka"]
+resource_name = "Walking"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vj1fp"]
+_data = {
+&"Walking": SubResource("Animation_110ka")
+}
+
+[sub_resource type="Animation" id="Animation_o710q"]
+resource_name = "Walking"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlum5"]
+_data = {
+&"Walking": SubResource("Animation_o710q")
+}
+
 [sub_resource type="Gradient" id="Gradient_81epe"]
 colors = PackedColorArray(0.8634428, 1, 0.432765, 1, 0, 0, 0, 1)
 
@@ -867,8 +885,8 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49853373, 1), 0.0, 0.0, 0, 0, 
 point_count = 3
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k77ap"]
-vertices = PackedVector2Array(1899, -137, 1685, -137, -638.5703, -154, -656.3125, -220.21094, 794.5, 623, 2371, 597, 2585, 597, 1437.5, 647, 1260.5, 647, 897.5, 645, 1684.5, 597, 1608.5, 1907, 2087, 1915.5703, 2020.7891, 1933.3125, -466.5703, 1915, 1279.5, 1907, 113.42969, 1320, 982.5, 1295, 1159.5, 1295, 95.6875, 1386.2109, 1507.5, 597, 3201.289, 923.1094, 3068.289, 923.1094, 2077, 881, 1437.5, 823, 2250.5, 227, 2932, -4.5703125, 2998.211, -22.3125, 2585, 372, 2371, 372, 2770, 1148.5703, 2703.789, 1166.3125, 2442.5, 1158, 2077, 1106, 3064.4297, -137, 3201.289, -493.10938, 3046.6875, -70.78906, 2902.4297, 1281, 3068.289, 2159.1094, 2884.6875, 1347.2109, 2442.5, 1474, 2703.789, 1395.6875, 2770, 1413.4297, 2219.4297, 2048, 2201.6875, 1981.7891, 2865.789, -22.3125, 3046.6875, -203.21094, 2884.6875, 1214.7891, 2156.789, 2159.1094, 2201.6875, 2114.211, 1972.3125, 2114.211, 2017.2109, 2159.1094, 1646.7109, 2159.1094, 1646.7109, 2152.1094, 1972.3125, 1981.7891, 1875.5, 401, 2073.5, 227, 1875.5, 225, 1899, 88, 2073.5, 51, 2836.211, 1395.6875, -412, 936, -412, 711, -371, 239, -131.5, 780, -131.5, 1096, -133.6875, 1253.7891, -151.42969, 1320, 2655.3125, 1347.2109, 2637.5703, 1281, 2497.5, -61, 2817.3125, -70.78906, 2250.5, 51, 2168.5, -61, 2113.5, 1474, 2153.211, 1933.3125, 1779.5, 1385, 1608.5, 1591, 1602.5, 1385, -626, 711, -626, 936, -877.5703, 797, -895.3125, 730.78906, 2655.3125, 1214.7891, 2998.211, -251.6875, 2424.289, -493.10938, 2932, -269.4297, 2865.789, -251.6875, 2817.3125, -203.21094, 2497.5, -377, 2113.5, 1158, 1779.5, 1209, 1863, 1106, -895.3125, 863.21094, 1954.5703, 2048, 129.71094, 2093.1094, -484.3125, 1981.2109, 2799.5703, -137, 907.28906, -582.1094, 2168.5, -377, 1279, -484.4297, 2836.211, 1166.3125, 1159.5, 1119, 1602.5, 1209, 1279.5, 1591, -157, 239, -157, 14, -54.5, 220, -54.5, 696, 1685, 88, 1698.5, 225, 122.5, 696, 122.5, 220, 410.5, 622, 416.5, 646, 416.5, 822, 197.5, 780, 1411.4297, -352, 1393.6875, -418.21094, 1393.6875, -285.78906, 1684.5, 421, 1698.5, 401, 794.5, 447, 1507.5, 421, 1863, 881, 982.5, 1119, 197.5, 1096, 1260.5, 823, 897.5, 821, 619.5, 645, 512.5, 623, 2424.289, -582.1094, 587.5, 447, 587.5, 446, 512.5, 622, 619.5, 646, 410.5, 446, 694.5, 822, 694.5, 821, 129.71094, 2152.1094, -713.6875, 1981.2109, -1372.2891, 2093.1094, -1372.2891, 1062.8906, -1365.2891, 1062.8906, -731.4297, 1915, -558.28906, -456.10938, -558.28906, -619.1094, 907.28906, -619.1094, -484.3125, 1848.7891, -656.3125, -87.78906, 95.6875, 1253.7891, 47.210938, 1434.6875, -532.78906, 1800.3125, -19, 1452.4297, 1345.2109, -237.3125, -943.78906, 911.6875, -599, 1782.5703, -665.21094, 1800.3125, -943.78906, 682.3125, -532.78906, 2029.6875, 47.210938, 1205.3125, -1010, 664.5703, -371, 14, -704.78906, -268.6875, 1279, -219.57031, 1345.2109, -466.6875, -85.21094, 1434.6875, -133.6875, 1386.2109, -19, 1187.5703, -85.21094, 1205.3125, -1010, 929.4297, -713.6875, 1848.7891, -1076.2109, 911.6875, -1076.2109, 682.3125, -704.78906, -39.3125, -1124.6875, 863.21094, -771, -21.570313, -837.21094, -39.3125, -885.6875, -87.78906, -1124.6875, 730.78906, -903.4297, -154, -1365.2891, -456.10938, 1212.7891, -237.3125, 1164.3125, -285.78906, 1146.5703, -352, 1164.3125, -418.21094, 1212.7891, -466.6875, -771, -286.4297, -599, 2047.4297, -665.21094, 2029.6875, -1142.4297, 797, -885.6875, -220.21094, -837.21094, -268.6875)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(10, 5, 4), PackedInt32Array(11, 12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 10, 4), PackedInt32Array(6, 21, 22, 23, 24, 7), PackedInt32Array(25, 26, 27, 28, 29), PackedInt32Array(30, 31, 32, 33, 23, 22), PackedInt32Array(34, 35, 21, 36), PackedInt32Array(37, 22, 38, 39), PackedInt32Array(40, 41, 42, 43, 44), PackedInt32Array(45, 26, 25), PackedInt32Array(35, 34, 46), PackedInt32Array(22, 37, 47), PackedInt32Array(38, 48, 49), PackedInt32Array(50, 51, 52, 53), PackedInt32Array(14, 13, 54), PackedInt32Array(36, 21, 6, 27), PackedInt32Array(27, 6, 28), PackedInt32Array(55, 56, 25, 29, 5, 10), PackedInt32Array(56, 55, 57, 58, 59), PackedInt32Array(60, 39, 38, 49, 43), PackedInt32Array(61, 62, 63, 64, 65, 66, 67), PackedInt32Array(68, 41, 40, 32), PackedInt32Array(69, 68, 32), PackedInt32Array(70, 71, 45, 25, 72), PackedInt32Array(73, 70, 72, 59), PackedInt32Array(42, 60, 43), PackedInt32Array(74, 40, 44, 75), PackedInt32Array(76, 74, 75, 12, 77, 78), PackedInt32Array(79, 80, 81, 82), PackedInt32Array(83, 69, 32), PackedInt32Array(35, 46, 84), PackedInt32Array(85, 35, 84, 86), PackedInt32Array(85, 86, 87), PackedInt32Array(85, 87, 88, 89), PackedInt32Array(33, 90, 74, 76, 91, 92), PackedInt32Array(93, 81, 80), PackedInt32Array(14, 54, 94, 53, 95, 96), PackedInt32Array(97, 71, 70, 89), PackedInt32Array(88, 97, 89), PackedInt32Array(98, 85, 89, 99, 100), PackedInt32Array(22, 47, 101), PackedInt32Array(73, 59, 58, 0, 99), PackedInt32Array(18, 102, 103, 78, 104), PackedInt32Array(105, 106, 107, 108), PackedInt32Array(109, 58, 57, 110), PackedInt32Array(111, 112, 113, 114, 115, 116), PackedInt32Array(94, 50, 53), PackedInt32Array(99, 0, 117, 118), PackedInt32Array(119, 117, 0), PackedInt32Array(55, 10, 120, 121), PackedInt32Array(20, 4, 122, 123), PackedInt32Array(24, 124, 92, 102, 125, 126, 127), PackedInt32Array(8, 127, 128, 9), PackedInt32Array(4, 9, 129, 130), PackedInt32Array(98, 131, 85), PackedInt32Array(122, 132, 133), PackedInt32Array(113, 134, 130, 114), PackedInt32Array(129, 135, 114, 130), PackedInt32Array(136, 113, 112), PackedInt32Array(137, 138, 128), PackedInt32Array(53, 139, 95), PackedInt32Array(140, 141, 142, 143, 144), PackedInt32Array(145, 146, 147, 98), PackedInt32Array(18, 104, 15, 14, 148), PackedInt32Array(2, 1, 109, 149), PackedInt32Array(12, 11, 77), PackedInt32Array(78, 77, 104), PackedInt32Array(125, 17, 16, 150), PackedInt32Array(149, 109, 110, 106), PackedInt32Array(63, 105, 108, 64), PackedInt32Array(151, 18, 148, 152, 153), PackedInt32Array(112, 107, 106), PackedInt32Array(154, 119, 0), PackedInt32Array(22, 101, 30), PackedInt32Array(155, 93, 80, 156, 157), PackedInt32Array(31, 83, 32), PackedInt32Array(33, 32, 90), PackedInt32Array(24, 23, 124), PackedInt32Array(128, 127, 126, 137), PackedInt32Array(115, 137, 126), PackedInt32Array(115, 126, 116), PackedInt32Array(111, 116, 64, 108), PackedInt32Array(63, 62, 79), PackedInt32Array(63, 79, 82, 158), PackedInt32Array(159, 96, 95), PackedInt32Array(121, 120, 123, 110), PackedInt32Array(125, 150, 160, 126), PackedInt32Array(63, 158, 161, 162), PackedInt32Array(92, 91, 103, 102), PackedInt32Array(110, 123, 122, 133, 112, 106), PackedInt32Array(0, 3, 163, 164), PackedInt32Array(99, 118, 165), PackedInt32Array(151, 19, 18), PackedInt32Array(166, 153, 152), PackedInt32Array(167, 166, 152, 156), PackedInt32Array(61, 67, 167, 156, 80), PackedInt32Array(133, 136, 112), PackedInt32Array(65, 126, 160, 168), PackedInt32Array(65, 168, 169), PackedInt32Array(65, 169, 66), PackedInt32Array(170, 155, 157, 171), PackedInt32Array(172, 170, 171, 144), PackedInt32Array(149, 162, 161, 173, 174), PackedInt32Array(175, 172, 144, 143), PackedInt32Array(149, 106, 162), PackedInt32Array(176, 174, 173), PackedInt32Array(177, 176, 173), PackedInt32Array(178, 177, 173, 179), PackedInt32Array(180, 178, 179, 181), PackedInt32Array(164, 154, 0), PackedInt32Array(182, 164, 163), PackedInt32Array(183, 182, 163), PackedInt32Array(184, 183, 163), PackedInt32Array(185, 184, 163), PackedInt32Array(186, 185, 163, 187, 145, 98), PackedInt32Array(188, 159, 95), PackedInt32Array(188, 95, 141), PackedInt32Array(189, 188, 141), PackedInt32Array(140, 189, 141), PackedInt32Array(190, 175, 143), PackedInt32Array(190, 143, 181, 179), PackedInt32Array(191, 180, 181), PackedInt32Array(192, 191, 181), PackedInt32Array(192, 181, 145, 187), PackedInt32Array(100, 186, 98), PackedInt32Array(100, 99, 165)])
+vertices = PackedVector2Array(1899, -137, 1685, -137, -638.5703, -154, -656.3125, -220.21094, 1608.5, 1907, 2087, 1915.5703, 2020.7891, 1933.3125, -466.5703, 1915, 1279.5, 1907, 647.5, 697, 859.5, 692, 924.5, 692, 924.5, 732, 113.42969, 1320, 982.5, 1295, 1159.5, 1295, 95.6875, 1386.2109, -61.5, 601, 71.5, 592, 248.5, 592, 324.5, 613, 397.5, 655, 2585, 597, 3201.289, 909.1094, 3097.289, 909.1094, 2077, 881, 1437.5, 823, 2371, 597, 2250.5, 227, 2932, -4.5703125, 2998.211, -22.3125, 2585, 372, 2371, 372, 2770, 1148.5703, 2703.789, 1166.3125, 2442.5, 1158, 2077, 1106, 3064.4297, -137, 3201.289, -493.10938, 3046.6875, -70.78906, 1684.5, 597, 2442.5, 1474, 2703.789, 1395.6875, 2770, 1413.4297, 2219.4297, 2048, 2201.6875, 1981.7891, 2902.4297, 1281, 3097.289, 2159.1094, 2884.6875, 1347.2109, 2865.789, -22.3125, 3046.6875, -203.21094, 1507.5, 597, 1437.5, 647, 2884.6875, 1214.7891, 2156.789, 2159.1094, 2201.6875, 2114.211, 1972.3125, 2114.211, 2017.2109, 2159.1094, 1646.7109, 2159.1094, 1646.7109, 2152.1094, 1972.3125, 1981.7891, 1875.5, 401, 2073.5, 227, 1875.5, 225, 1899, 88, 2073.5, 51, 2836.211, 1395.6875, 1260.5, 647, 1260.5, 823, 1165.5, 770, 1165.5, 594, -412, 936, -412, 711, -131.5, 780, -131.5, 1096, -133.6875, 1253.7891, -151.42969, 1320, 2655.3125, 1347.2109, 2637.5703, 1281, 2497.5, -61, 2817.3125, -70.78906, 2250.5, 51, 2168.5, -61, 2113.5, 1474, 2153.211, 1933.3125, 1779.5, 1385, 1608.5, 1591, 1602.5, 1385, -626, 711, -626, 936, -877.5703, 797, -895.3125, 730.78906, 2655.3125, 1214.7891, 2998.211, -251.6875, 2424.289, -493.10938, 2932, -269.4297, 2865.789, -251.6875, 2817.3125, -203.21094, 2497.5, -377, 324.5, 437, 248.5, 416, 2113.5, 1158, 1779.5, 1209, 1863, 1106, -895.3125, 863.21094, 1954.5703, 2048, 129.71094, 2093.1094, -484.3125, 1981.2109, 2799.5703, -137, 907.28906, -582.1094, 2168.5, -377, 1279, -484.4297, 1159.5, 1119, 1602.5, 1209, 1279.5, 1591, 2836.211, 1166.3125, 1685, 88, 1698.5, 225, 248.5, 207, 1411.4297, -352, 1393.6875, -418.21094, 1393.6875, -285.78906, 71.5, 416, -61.5, 425, -49.5, 376, 1684.5, 421, 1698.5, 401, 1507.5, 421, 248.5, 383, 71.5, 207, 71.5, 383, -49.5, 200, 1863, 881, 982.5, 1119, 197.5, 1096, 197.5, 780, 2424.289, -582.1094, -157, 200, -157, 14, -371, 239, -226.5, 239, -226.5, 376, -238.5, 425, 1101.5, 594, 1101.5, 556, 1036.5, 556, 1036.5, 516, 966.5, 516, 966.5, 477, 789.5, 653, 859.5, 653, 647.5, 521, 789.5, 477, 574.5, 521, 574.5, 479, 501.5, 479, 501.5, 437, 397.5, 613, 470.5, 655, 470.5, 697, 988.5, 732, 988.5, 770, 129.71094, 2152.1094, -713.6875, 1981.2109, -1372.2891, 2093.1094, -1372.2891, 1062.8906, -1365.2891, 1062.8906, -731.4297, 1915, -558.28906, -456.10938, -558.28906, -619.1094, 907.28906, -619.1094, -484.3125, 1848.7891, -656.3125, -87.78906, 95.6875, 1253.7891, 47.210938, 1434.6875, -532.78906, 1800.3125, -19, 1452.4297, 1345.2109, -237.3125, -943.78906, 911.6875, -599, 1782.5703, -665.21094, 1800.3125, -532.78906, 2029.6875, 47.210938, 1205.3125, -704.78906, -39.3125, -943.78906, 682.3125, -1365.2891, -456.10938, -704.78906, -268.6875, 1279, -219.57031, 1345.2109, -466.6875, -85.21094, 1434.6875, -133.6875, 1386.2109, -19, 1187.5703, -85.21094, 1205.3125, -1010, 929.4297, -713.6875, 1848.7891, -1076.2109, 911.6875, -771, -21.570313, -238.5, 601, -837.21094, -39.3125, -371, 14, -1124.6875, 863.21094, 1212.7891, -237.3125, 1164.3125, -285.78906, 1146.5703, -352, 1164.3125, -418.21094, 1212.7891, -466.6875, -771, -286.4297, -599, 2047.4297, -665.21094, 2029.6875, -1142.4297, 797, -1124.6875, 730.78906, -1076.2109, 682.3125, -1010, 664.5703, -885.6875, -87.78906, -837.21094, -268.6875, -885.6875, -220.21094, -903.4297, -154)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31, 32), PackedInt32Array(33, 34, 35, 36, 25, 24), PackedInt32Array(37, 38, 23, 39), PackedInt32Array(40, 27, 26), PackedInt32Array(41, 42, 43, 44, 45), PackedInt32Array(46, 24, 47, 48), PackedInt32Array(49, 29, 28), PackedInt32Array(38, 37, 50), PackedInt32Array(51, 40, 26, 52), PackedInt32Array(24, 46, 53), PackedInt32Array(47, 54, 55), PackedInt32Array(56, 57, 58, 59), PackedInt32Array(7, 6, 60), PackedInt32Array(30, 39, 23, 22), PackedInt32Array(30, 22, 31), PackedInt32Array(61, 62, 28, 32, 27, 40), PackedInt32Array(62, 61, 63, 64, 65), PackedInt32Array(66, 48, 47, 55, 44), PackedInt32Array(67, 68, 69, 70), PackedInt32Array(71, 72, 73, 74, 75, 76), PackedInt32Array(77, 42, 41, 35), PackedInt32Array(78, 77, 35), PackedInt32Array(79, 80, 49, 28, 81), PackedInt32Array(82, 79, 81, 65), PackedInt32Array(43, 66, 44), PackedInt32Array(83, 41, 45, 84), PackedInt32Array(85, 83, 84, 5, 86, 87), PackedInt32Array(88, 89, 90, 91), PackedInt32Array(92, 78, 35), PackedInt32Array(38, 50, 93), PackedInt32Array(94, 38, 93, 95), PackedInt32Array(94, 95, 96), PackedInt32Array(94, 96, 97, 98), PackedInt32Array(99, 20, 19, 100), PackedInt32Array(36, 101, 83, 85, 102, 103), PackedInt32Array(104, 90, 89), PackedInt32Array(7, 60, 105, 59, 106, 107), PackedInt32Array(108, 80, 79, 98), PackedInt32Array(97, 108, 98), PackedInt32Array(109, 94, 98, 110, 111), PackedInt32Array(82, 65, 64, 0, 110), PackedInt32Array(15, 112, 113, 87, 114), PackedInt32Array(24, 53, 115), PackedInt32Array(116, 64, 63, 117, 118), PackedInt32Array(105, 56, 59), PackedInt32Array(110, 0, 119, 120), PackedInt32Array(121, 119, 0), PackedInt32Array(122, 18, 17, 123, 124), PackedInt32Array(61, 40, 125, 126), PackedInt32Array(117, 126, 125, 127, 128, 118), PackedInt32Array(129, 130, 124, 131), PackedInt32Array(132, 103, 112, 133, 134, 135, 68), PackedInt32Array(109, 136, 94), PackedInt32Array(131, 137, 138), PackedInt32Array(139, 140, 141, 142), PackedInt32Array(70, 143, 144, 127), PackedInt32Array(144, 145, 146, 127), PackedInt32Array(146, 147, 148, 127), PackedInt32Array(149, 150, 10, 9), PackedInt32Array(149, 9, 151, 152), PackedInt32Array(151, 153, 154, 152), PackedInt32Array(154, 155, 156, 152), PackedInt32Array(20, 157, 21), PackedInt32Array(21, 158, 159), PackedInt32Array(12, 160, 161), PackedInt32Array(59, 162, 106), PackedInt32Array(163, 164, 165, 166, 167), PackedInt32Array(168, 169, 170, 109), PackedInt32Array(15, 114, 8, 7, 171), PackedInt32Array(2, 1, 116, 172), PackedInt32Array(5, 4, 86), PackedInt32Array(87, 86, 114), PackedInt32Array(133, 14, 13, 173), PackedInt32Array(174, 15, 171, 175, 176), PackedInt32Array(177, 121, 0), PackedInt32Array(178, 104, 89, 179, 180), PackedInt32Array(34, 92, 35), PackedInt32Array(36, 35, 101), PackedInt32Array(24, 115, 33), PackedInt32Array(26, 25, 132, 68), PackedInt32Array(118, 129, 131, 138, 116), PackedInt32Array(181, 107, 106), PackedInt32Array(127, 51, 52, 67, 70), PackedInt32Array(133, 173, 182, 134), PackedInt32Array(103, 102, 113, 112), PackedInt32Array(183, 172, 116, 138), PackedInt32Array(88, 91, 184, 185), PackedInt32Array(0, 3, 186, 187), PackedInt32Array(110, 120, 188), PackedInt32Array(128, 127, 148, 152, 156), PackedInt32Array(174, 16, 15), PackedInt32Array(189, 176, 175), PackedInt32Array(190, 189, 175, 179), PackedInt32Array(71, 76, 190, 179, 89), PackedInt32Array(74, 134, 182, 191), PackedInt32Array(74, 191, 192), PackedInt32Array(74, 192, 75), PackedInt32Array(193, 178, 180, 194), PackedInt32Array(195, 193, 194, 167), PackedInt32Array(128, 156, 99, 100), PackedInt32Array(130, 128, 100, 122), PackedInt32Array(124, 130, 122), PackedInt32Array(141, 124, 123, 142), PackedInt32Array(196, 139, 142, 197, 198), PackedInt32Array(183, 138, 199), PackedInt32Array(183, 199, 139, 196), PackedInt32Array(161, 69, 68, 135), PackedInt32Array(200, 195, 167, 166), PackedInt32Array(187, 177, 0), PackedInt32Array(201, 187, 186), PackedInt32Array(202, 201, 186), PackedInt32Array(203, 202, 186), PackedInt32Array(204, 203, 186), PackedInt32Array(205, 204, 186, 206), PackedInt32Array(159, 9, 12, 161, 135, 73), PackedInt32Array(207, 181, 106), PackedInt32Array(207, 106, 164), PackedInt32Array(208, 207, 164), PackedInt32Array(163, 208, 164), PackedInt32Array(209, 200, 166), PackedInt32Array(209, 166, 185, 210), PackedInt32Array(211, 210, 185), PackedInt32Array(212, 211, 185), PackedInt32Array(184, 212, 185), PackedInt32Array(72, 88, 185), PackedInt32Array(73, 72, 185, 213, 198, 197), PackedInt32Array(197, 17, 21, 159, 73), PackedInt32Array(109, 111, 205, 206, 168), PackedInt32Array(110, 188, 111), PackedInt32Array(185, 168, 206, 214), PackedInt32Array(185, 214, 215), PackedInt32Array(185, 215, 216), PackedInt32Array(185, 216, 213)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1923, -1106, -2272, 818, -1842, 2261, -51, 2521, 3056, 2494, 3629, 2055, 3866, 525, 3548, -1016, 1525, -1133, -759, -1177)])
 cell_size = 2.0
 agent_radius = 40.0
@@ -911,7 +929,11 @@ script = ExtResource("2_qvp00")
 [node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101 groups=["PlayerSystems"]]
 script = ExtResource("3_0voen")
 
-[node name="DynamicTerrainSystem" type="Node" parent="GameSystems" unique_id=1982384762]
+[node name="DynamicTerrainSystem" type="Node" parent="GameSystems" unique_id=1982384762 groups=["PlayerSystems"]]
+script = ExtResource("5_jgp33")
+
+[node name="SceneHandler" type="Node" parent="GameSystems" unique_id=1974294335 groups=["PlayerSystems"]]
+script = ExtResource("6_110ka")
 
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
@@ -935,6 +957,13 @@ offset_right = 13.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CutsceneUI" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=854879103]
+
+[node name="CutsceneBackground" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CutsceneUI" unique_id=91659015]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="Border Pulse" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=1184264804]
 script = ExtResource("7_figfh")
@@ -1278,6 +1307,7 @@ scale = Vector2(0.22399989, 0.2239997)
 texture = ExtResource("24_vwi3h")
 
 [node name="PlayerSpriteUpWalking" type="AnimatedSprite2D" parent="Player/PlayerSpriteUp" unique_id=875403186]
+visible = false
 sprite_frames = SubResource("SpriteFrames_4t4xv")
 
 [node name="PlayerSpriteUpRight" type="Sprite2D" parent="Player" unique_id=1759715147]
@@ -1287,6 +1317,7 @@ scale = Vector2(0.22399989, 0.2239997)
 texture = ExtResource("25_41o6w")
 
 [node name="PlayerSpriteUpRightWalking" type="AnimatedSprite2D" parent="Player" unique_id=1668159534]
+visible = false
 scale = Vector2(0.22399989, 0.2239997)
 sprite_frames = SubResource("SpriteFrames_e8aea")
 animation = &"NorthEastWalking"
@@ -1328,8 +1359,6 @@ self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
 scale = Vector2(0.22399989, 0.2239997)
 texture = ExtResource("31_rr6op")
 
-[node name="Sprites" type="Node" parent="Player" unique_id=1567959411]
-
 [node name="CollisionHitbox" type="CollisionShape2D" parent="Player" unique_id=1154990945]
 shape = SubResource("CircleShape2D_ydlo6")
 
@@ -1345,6 +1374,13 @@ script = ExtResource("10_bbunm")
 [node name="BulletHitbox" type="CollisionShape2D" parent="Player/ProjectileHitbox" unique_id=675715082]
 shape = SubResource("CircleShape2D_fklr0")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=227337243]
+libraries/ = SubResource("AnimationLibrary_vj1fp")
+
+[node name="AnimationTree" type="AnimationTree" parent="Player" unique_id=963998033]
+root_node = NodePath("../PlayerSpriteUp")
+libraries/ = SubResource("AnimationLibrary_hlum5")
 
 [node name="PulseSoundEffect" type="AudioStreamPlayer" parent="Player" unique_id=1605933517]
 stream = ExtResource("34_xcrri")
@@ -1401,47 +1437,47 @@ texture = ExtResource("8_f1byq")
 
 [node name="Wall" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=430981844 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-15.999999, 642)
+position = Vector2(-200, 547)
 
 [node name="Wall2" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1369542608 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-16, 542)
+position = Vector2(110, 538)
 
 [node name="Wall3" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=221904683 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-16, 441)
+position = Vector2(-188, 322)
 
 [node name="Wall4" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1661139557 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(556, 768)
+position = Vector2(828, 599)
 
 [node name="Wall5" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=470109116 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(658, 767)
+position = Vector2(898, 638)
 
 [node name="Wall6" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=737682561 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-15.999999, 342)
+position = Vector2(110, 329)
 
 [node name="Wall7" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1495814750 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(455, 768)
+position = Vector2(963, 678)
 
 [node name="Wall8" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=971025487 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(759, 767)
+position = Vector2(1027, 716)
 
 [node name="Wall9" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1882345351 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(449, 568)
+position = Vector2(363, 559)
 
 [node name="Wall10" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=316081175 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(551, 569)
+position = Vector2(436, 601)
 
 [node name="Wall11" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=22576572 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(656, 569)
+position = Vector2(509, 643)
 
 [node name="Tree" parent="EnemyNavRegion/Map Objects/Obstacles" unique_id=1319257251 instance=ExtResource("16_tedqt")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
@@ -1566,98 +1602,98 @@ modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(688, 1369)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern13" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=993277019]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(658, 1535)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern14" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1439420963]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(811, 1609)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern2" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1394773655]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(823.0001, 1446)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern3" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1270650235]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(962, 1523)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern4" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1262360679]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(1117.9999, 1609)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern5" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1809411738]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(1948.7137, 855.00006)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern6" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1359736385]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(2083.7139, 932.00006)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern7" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=394531867]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(2222.7139, 1009.00006)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern8" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1654920450]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(2378.7136, 1095)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern9" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1490773883]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-671.2861, 596)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern10" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=2134628844]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-536.28595, 673)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern11" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=43919762]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-397.28595, 750)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Floorpattern12" type="Sprite2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1555453778]
 modulate = Color(0.735357, 0.735357, 0.735357, 1)
 z_index = -15
 position = Vector2(-241.2862, 835.99994)
 scale = Vector2(0.43544304, 0.43544304)
-texture = ExtResource("26_y1plk")
+texture = ExtResource("52_vj1fp")
 
 [node name="Rhythmplant" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1580102396 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
@@ -2004,8 +2040,8 @@ position = Vector2(2025, 1852)
 texture = ExtResource("31_40ckn")
 
 [node name="AreaLight" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=529271008]
-position = Vector2(1836, 984.99994)
-scale = Vector2(31.062504, 31.062504)
+position = Vector2(2014.5, 1267.5001)
+scale = Vector2(23.609377, 23.609377)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
 
@@ -2067,7 +2103,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight6" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=998284555]
-position = Vector2(122.999756, 1737.0001)
+position = Vector2(116, 1845.0001)
 scale = Vector2(30.218752, -29.078125)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
@@ -2109,7 +2145,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight4" type="PointLight2D" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=628114623]
-position = Vector2(2806, 182.00003)
+position = Vector2(2706, 43.99997)
 scale = Vector2(42.81249, -41.196503)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
@@ -2134,16 +2170,16 @@ position = Vector2(-831, 501.00015)
 scale = Vector2(0.55727535, 0.55727535)
 
 [node name="GlowingPlatform2" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1528962324 instance=ExtResource("33_y268v")]
-position = Vector2(2524, 1162)
-scale = Vector2(0.55727535, 0.55727535)
+position = Vector2(2512.3406, 1173.6594)
+scale = Vector2(0.5106378, 0.5106378)
 
 [node name="GlowingPlatform3" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1706417956 instance=ExtResource("33_y268v")]
-position = Vector2(501.9999, 1439)
-scale = Vector2(0.55727535, 0.55727535)
+position = Vector2(521.00006, 1448.0001)
+scale = Vector2(0.46800014, 0.46800014)
 
 [node name="GlowingPlatform4" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=1322612330 instance=ExtResource("33_y268v")]
-position = Vector2(1569.0002, 399.00006)
-scale = Vector2(0.55727535, 0.55727535)
+position = Vector2(1546, 403)
+scale = Vector2(0.4946371, 0.4946371)
 
 [node name="SplashEffect" parent="EnemyNavRegion/Map Objects/BGDecals" unique_id=132848767 instance=ExtResource("38_ni7mq")]
 position = Vector2(1217, 200)
@@ -2152,58 +2188,123 @@ position = Vector2(1217, 200)
 
 [node name="Wall" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1640904457 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-2214, 306.00006)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(-2278.9998, 339.00006)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall12" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=154640181 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1970, -451.00012)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall13" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1043574198 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-699.99976, -1257.0001)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall14" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1011616912 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(782.0001, -1306)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall15" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1136861045 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2353, -1264.9999)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall16" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=585270852 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3647, -474.99988)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall17" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1370809625 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3931.9998, 1047.0002)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall18" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=454677730 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3280.9998, 2447)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall19" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2025744781 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1473.9995, 2992)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall20" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1129463978 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2833, 2805)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall21" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=429107870 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-41.000244, 2960)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall22" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1335058214 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1270.0001, 2731.9998)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall23" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=494319243 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1881, 2357.9998)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall24" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=591910852 instance=ExtResource("5_nt06h")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-2337, 1079.9999)
+scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall2" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1826536178 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-2221.0002, 1808)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(-2286, 1841)
+scale = Vector2(5.5631194, 5.5631194)
 
 [node name="Wall3" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=677092983 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-719.00037, 2918)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(-784.0001, 2951)
+scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall4" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=363350674 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(797.99976, 2977.0002)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(733, 3010.0002)
+scale = Vector2(5.563773, 5.563773)
 
 [node name="Wall5" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=708792417 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(2330, 2984.0002)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(2265.0002, 3017.0002)
+scale = Vector2(5.5629597, 5.5629597)
 
 [node name="Wall6" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2067173200 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(3846, 1734)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(3781.0002, 1767)
+scale = Vector2(5.5650973, 5.5650973)
 
 [node name="Wall7" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=816452865 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(3950, 253.00012)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(4029.0002, 343.00003)
+scale = Vector2(5.564267, 5.564267)
 
 [node name="Wall8" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1803098296 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(3173, -1250)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(3108.0002, -1217)
+scale = Vector2(5.564427, 5.564427)
 
 [node name="Wall9" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=706709999 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(1656.0001, -1339.0001)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(1591.0004, -1306.0001)
+scale = Vector2(5.5639324, 5.5639324)
 
 [node name="Wall10" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1838353034 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(125.000046, -1376)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(60.00029, -1343)
+scale = Vector2(5.5634384, 5.5634384)
 
 [node name="Wall11" parent="EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1754002218 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(-1407.0001, -1213)
-scale = Vector2(12.053431, 12.053431)
+position = Vector2(-1471.9999, -1180)
+scale = Vector2(5.5627837, 5.5627837)
 
 [node name="Boss" parent="." unique_id=995601 groups=["BossType", "GeneralEnemyInstance"] instance=ExtResource("10_30wor")]
 position = Vector2(838, 29)

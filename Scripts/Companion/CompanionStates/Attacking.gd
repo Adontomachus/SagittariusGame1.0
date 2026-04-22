@@ -6,7 +6,6 @@ extends CompanionState
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
 	super()
-
 	pass # Replace with function body.
 	
 func process_physics(delta: float) -> CompanionState:

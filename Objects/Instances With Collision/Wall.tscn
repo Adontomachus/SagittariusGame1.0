@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsh7kuwbmi8sf"]
 
-[ext_resource type="Texture2D" uid="uid://ct8ikya1sy0cc" path="res://Sprites/Game Elements/Rock.png" id="1_me4gi"]
+[ext_resource type="Texture2D" uid="uid://b8j5qm001upke" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8609.PNG" id="1_k0q1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(125.89101, 124.59317)
@@ -10,7 +10,8 @@ position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
-texture = ExtResource("1_me4gi")
+scale = Vector2(0.394545, 0.39454505)
+texture = ExtResource("1_k0q1r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
 position = Vector2(0, 3.867881e-07)

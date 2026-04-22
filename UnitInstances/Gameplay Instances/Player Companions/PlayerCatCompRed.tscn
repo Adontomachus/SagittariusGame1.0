@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_ng4rp"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Legacy/Sagittarius.png" id="6_s2ofs"]
 [ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_s2ofs"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="8_bnakq"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
@@ -90,5 +91,10 @@ texture = ExtResource("7_s2ofs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashHurtbox" unique_id=538643482]
 shape = SubResource("CircleShape2D_s2ofs")
 debug_color = Color(0.43832985, 0.56671304, 0.046371195, 0.066)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=625434190]
+stream = ExtResource("8_bnakq")
+volume_db = -7.5
+pitch_scale = 0.75
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

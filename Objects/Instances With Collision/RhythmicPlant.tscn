@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr4cdt8k115vb"]
 
-[ext_resource type="Texture2D" uid="uid://2sn722adgr3s" path="res://Sprites/Game Elements/rhythmplant.png" id="1_ljkxo"]
+[ext_resource type="Texture2D" uid="uid://dqy04sl0pioas" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8613.PNG" id="1_p054l"]
 [ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/AudioBased/BeatGlowEffect.gd" id="2_knn8v"]
 
 [sub_resource type="Environment" id="Environment_knn8v"]
@@ -24,9 +24,9 @@ fill_from = Vector2(0.50220263, 0.4889868)
 fill_to = Vector2(0.7008547, 0.32478634)
 
 [node name="Rhythmplant" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect") groups=["ReactiveObstacle"]]
-position = Vector2(1.1920929e-07, 0)
-scale = Vector2(0.4185185, 0.4185185)
-texture = ExtResource("1_ljkxo")
+position = Vector2(1.1920929e-07, 3)
+scale = Vector2(0.46000004, 0.46000007)
+texture = ExtResource("1_p054l")
 script = ExtResource("2_knn8v")
 glow_effect = NodePath("GlowEffect")
 
@@ -34,7 +34,7 @@ glow_effect = NodePath("GlowEffect")
 environment = SubResource("Environment_knn8v")
 
 [node name="GlowEffect" type="PointLight2D" parent="." unique_id=400889616]
-position = Vector2(31.061947, -74.0708)
+position = Vector2(21.739128, -32.60868)
 scale = Vector2(5.6001105, 6.300124)
 color = Color(3.294, 3.294, 3.294, 1)
 energy = 4.0

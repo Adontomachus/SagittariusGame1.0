@@ -18,18 +18,18 @@ enum DamageType {
 @export var projectileSide = ProjectileSide.Player
 @export var damage_type = DamageType.SingleTarget
 
-# Projectile Statistics
+# Projectile Statistics containing velocity, lifetime and damage with critical hit boolean
 @export_category("Projectile Statistics")
 @export var projectileVelocity: float
 @export var projectileLifetime: float
 @export var criticalHit: bool
-#@export var splash_damage: Area2D
 @export var projectile_damage: float = 5
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
 
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
-#Damage number positioning
+var enemyDamageNumber := preload("res://Objects/UI Elements/EnemyDamageNumbers.tscn")
+# Damage number positioning
 var initPosition: Vector2 = Vector2(-125, -105)
 
 #TESTING PURPOSES
@@ -72,8 +72,12 @@ func _ready():
 					hitEffect.position = self.get_global_position()
 					get_tree().get_root().call_deferred("add_child", hitEffect)
 					
-					# Damage Number Feedback
-
+					# Enemy Damage Number Feedback
+					var enemyDamageFeedback = enemyDamageNumber.instantiate()
+					enemyDamageFeedback.position = self.get_global_position() + initPosition
+					enemyDamageFeedback.damage_value = projectile_damage
+					get_tree().get_root().call_deferred("add_child", enemyDamageFeedback)
+					
 					area.modify_player_health(-projectile_damage)
 					queue_free()
 		)

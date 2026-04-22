@@ -13,13 +13,13 @@ var time_before_expiration: float
 func enter() -> void:
 	time_before_expiration = start_time_before_expiration
 	print("Companion Started!")
-	reposition(parent.player_radius)
+	reposition(parent.player_radius)	
 	super()
 
 	
 func process_physics(delta: float) -> CompanionState:
 	parent.move_companion(delta)
-		
+
 	#if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 	print("Notes before resting: ", time_before_expiration)
 	time_before_expiration -= 1 * delta

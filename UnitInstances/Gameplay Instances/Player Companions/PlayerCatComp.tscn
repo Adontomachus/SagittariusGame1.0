@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
 [ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_35cl0"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Legacy/Sagittarius.png" id="6_xjnx0"]
+[ext_resource type="Script" uid="uid://bhrs82e6q3cak" path="res://Scripts/Companion/CompanionMelee.gd" id="7_vhhx4"]
 [ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_xjnx0"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="9_2ef6j"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
 background_mode = 3
@@ -80,7 +82,9 @@ offset_bottom = 48.0
 text = "Test"
 horizontal_alignment = 1
 
-[node name="SlashArea" type="Area2D" parent="." unique_id=468419870]
+[node name="SlashArea" type="Area2D" parent="." unique_id=468419870 node_paths=PackedStringArray("companion_node")]
+script = ExtResource("7_vhhx4")
+companion_node = NodePath("..")
 
 [node name="SlashHurtbox" type="CollisionShape2D" parent="SlashArea" unique_id=2089765813]
 shape = SubResource("CircleShape2D_xjnx0")
@@ -92,5 +96,10 @@ modulate = Color(0, 0.91206443, 1.1291975, 1)
 self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
 z_index = 20
 texture = ExtResource("7_xjnx0")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1921605043]
+stream = ExtResource("9_2ef6j")
+volume_db = -7.5
+pitch_scale = 0.75
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

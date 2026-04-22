@@ -84,8 +84,9 @@ var companion_ability_charge: float
 #endregion
 func _ready():
 	
-	## TESTING PURPOSES
-	player_sprite_up_right_walking.play("NorthEastWalking")
+	## TESTING PURPOSES (TEMPORARY)
+	## player_sprite_up_right_walking.play("NorthEastWalking")
+	
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
 	if camera_shake.is_connected(camera._shake_camera_on_shoot) == false:

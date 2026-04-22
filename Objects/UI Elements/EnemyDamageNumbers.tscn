@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bkwunmb026mpw"]
+
+[ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_34dvv"]
+
+[sub_resource type="Environment" id="Environment_y60un"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 2.0
+
+[node name="EnemyDamageNumber" type="Label" unique_id=1560617677]
+self_modulate = Color(1.9901952, 1.0511132, 1.10903, 1)
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 375.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 80
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_34dvv")
+indicator_side = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526374861]
+environment = SubResource("Environment_y60un")

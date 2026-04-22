@@ -85,8 +85,9 @@ stream = ExtResource("7_15gep")
 volume_db = -7.5
 pitch_scale = 0.75
 
-[node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("enemy_node")]
+[node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("hit_sound", "enemy_node")]
 script = ExtResource("10_jj52o")
+hit_sound = NodePath("../HitSound")
 enemy_node = NodePath("..")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="MeleeRange" unique_id=595028766]

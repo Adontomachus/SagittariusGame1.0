@@ -1,6 +1,7 @@
 extends Node
 
 var current_wave_level: int = 1
+signal shake_screen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

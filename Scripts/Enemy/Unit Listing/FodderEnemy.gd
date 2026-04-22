@@ -101,7 +101,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if target and shoot_point:
 		shoot_point.look_at(target.global_position)
-	# SPRITE FLIPPING
+	# SPRITE FLIPPINGaw
 	if target.get_global_position().x < global_position.x:
 		state_machine.sprite.flip_h = true
 		# shotgun = global_position + weaponOffset
