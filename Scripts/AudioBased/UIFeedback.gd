@@ -37,7 +37,6 @@ func _process(delta):
 	#print (GlobalBeatSync.lastBeat)
 	if current_glow_strength < glow_strength: current_glow_strength = glow_strength
 	else: current_glow_strength -= 1 * delta
-
 	change_color()
 	#if timeToChangeColor < 0:
 	#	timeToChangeColor = 0.5
@@ -45,6 +44,7 @@ func _process(delta):
 	#	return
 	pass
 
+#region This section controls visual pulses with music's synchronization
 func ui_indicator_pulse() -> void:
 	if tween:
 		tween.kill()
@@ -52,7 +52,6 @@ func ui_indicator_pulse() -> void:
 
 	updated_player_health_bar.scale = Vector2(starting_scale, starting_scale)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat / 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
-
 
 func glow_on_beat() -> void:
 	current_glow_strength = 1.2
@@ -66,3 +65,4 @@ func change_color() -> void:
 	
 func pulse_combo_counter() -> void:
 	animation_pulse.play("UIBeatPulse")
+#endregion

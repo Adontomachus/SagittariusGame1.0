@@ -5,7 +5,7 @@ extends Node
 @export var combo_level: int = 1
 @export var combo_strength: float = 0
 @onready var combo_count_ui: Label = $"../../InterfaceElements/NewHUD/UI/UpdatedComboCounter"
-@onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachFeedback/AnimationPlayer"
+@onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachFeedback/GlowEffect"
 
 ## Glow pulse
 var combo_upgrade_feedback: bool = true

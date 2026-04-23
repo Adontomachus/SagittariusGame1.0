@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_ng4rp"]
 [ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Legacy/Sagittarius.png" id="6_s2ofs"]
 [ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_s2ofs"]
+[ext_resource type="Script" uid="uid://bhrs82e6q3cak" path="res://Scripts/Companion/CompanionMelee.gd" id="8_7gthd"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="8_bnakq"]
 
 [sub_resource type="Environment" id="Environment_vhhx4"]
@@ -20,7 +21,7 @@ radius = 24.083189
 [sub_resource type="CircleShape2D" id="CircleShape2D_s2ofs"]
 radius = 34.234486
 
-[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
+[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding", "slash_area", "slash_hurtbox")]
 script = ExtResource("1_12uow")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
@@ -28,6 +29,8 @@ pathfinding = NodePath("Pathfinding")
 attack_power = 15.0
 move_speed = 350.0
 player_radius = 300.0
+slash_area = NodePath("SlashArea")
+slash_hurtbox = NodePath("SlashArea/SlashHurtbox")
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true
@@ -86,9 +89,11 @@ modulate = Color(0, 0.91206443, 1.1291975, 1)
 self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
 texture = ExtResource("7_s2ofs")
 
-[node name="DashHurtbox" type="Area2D" parent="." unique_id=1924008216]
+[node name="SlashArea" type="Area2D" parent="." unique_id=1924008216 node_paths=PackedStringArray("companion_node")]
+script = ExtResource("8_7gthd")
+companion_node = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHurtbox" unique_id=538643482]
+[node name="SlashHurtbox" type="CollisionShape2D" parent="SlashArea" unique_id=538643482]
 shape = SubResource("CircleShape2D_s2ofs")
 debug_color = Color(0.43832985, 0.56671304, 0.046371195, 0.066)
 

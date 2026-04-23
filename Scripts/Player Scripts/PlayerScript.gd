@@ -17,8 +17,12 @@ signal send_current_xp(xp: float)
 		return healthPoints
 
 #region General Player Statistics		
-var maxHealthPoints: float = 100.0
 
+## This variable determines if the player can provide inputs for the player character
+## This boolean is usually set true when 
+var can_control_unit: bool = true
+
+var maxHealthPoints: float = 100.0
 var experiencePoints: int = 0
 var maxExperiencePoints: int = 60
 
@@ -26,6 +30,9 @@ var maxExperiencePoints: int = 60
 var moveSpeed: float = 300.0
 var playerDirection: Vector2
 @export var projectile_damage: float = 30
+#endregion
+
+#region Reference object 
 # Projectile types
 var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 # Enhanced version
@@ -35,7 +42,6 @@ var upgradeEffect := preload("res://Objects/Particle Effects/LevelUpEffect.tscn"
 # Pulsing AoE instance for abililty
 var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.tscn")
 
-#endregion
 # Shot properties and point
 @export var pulse_sound_effect: AudioStreamPlayer
 @onready var shot_point: Marker2D = $ShotPoint
@@ -109,16 +115,18 @@ func _ready():
 	
 #region Movement and ability inputs
 func get_input() -> void:
-	playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
+	if can_control_unit:
+		playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
 func get_ability_inputs() -> void:
-	if Input.is_action_pressed("use_ability"):
-		if can_use_ability:
-			ability_cooldown = max_ability_cooldown
-			activate_player_ability()
-			can_use_ability = false
-			ability_visual_feedback.play("AbilityActivationVisual")
-	
+	if can_control_unit:
+		if Input.is_action_pressed("use_ability"):
+			if can_use_ability:
+				ability_cooldown = max_ability_cooldown
+				activate_player_ability()
+				can_use_ability = false
+				ability_visual_feedback.play("AbilityActivationVisual")
+		
 
 func activate_player_ability() -> void:
 	ability_duration = 20

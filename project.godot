@@ -34,6 +34,7 @@ window/size/viewport_height=1080
 folder_colors={
 "res://Objects/Instances With Collision/": "green",
 "res://Objects/Particle Effects/": "purple",
+"res://Objects/Particle Effects/Damaged Feedback/": "blue",
 "res://Scenes/Gameplay/": "blue",
 "res://Scenes/Interface/": "purple",
 "res://Scripts/AudioBased/": "purple",

@@ -33,11 +33,11 @@ var player_target: CharacterBody2D
 ## Variables for companion attack statistics
 @export_group("Attacking Stats")
 @export var dash_speed: float = 750
-@export var companion_damage: int = 65
+@export var companion_damage: int = 30
 @export var dash_duration: float = 0.5
 var is_dashing: bool = false
-@onready var slash_area: Area2D = $SlashArea
-@onready var slash_hurtbox: CollisionShape2D = $SlashArea/SlashHurtbox
+@export var slash_area: Area2D
+@export var slash_hurtbox: CollisionShape2D
 
 var nearest_enemy: CharacterBody2D = null
 
