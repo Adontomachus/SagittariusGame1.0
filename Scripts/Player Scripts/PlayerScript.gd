@@ -47,6 +47,7 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 @export_category("Number of perfect shots for enhanced attack")
+#endregion
 
 #region This section consists of player abilities
 # Amount for a charged AoE attack
@@ -83,11 +84,8 @@ var companion_ability_charge: float
 @export var sprite_up_left: Sprite2D
 #endregion
 
-#region Ability UI elements
-@onready var ability_1_container: ColorRect = $InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability1Container
-@onready var ability_2_container: BoxContainer = $InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability2Container
-
-#endregion
+## CUTSCENE TESTING
+@export var cutscene_handler: Node
 func _ready():
 	
 	## TESTING PURPOSES (TEMPORARY)
@@ -148,8 +146,7 @@ func _process(delta):
 	if ability_cooldown < 0: can_use_ability = true
 	
 	## Player ability UI feedback
-	#if can_use_ability == false: ability_1_container.color = Color("414138ff")
-	#else: ability_1_container.color = Color("ffffffff")
+
 	
 	
 	#region Testing sprite orthographic rotations
@@ -339,6 +336,7 @@ func modify_current_player_health(modification: int) -> void:
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	if (healthPoints <= 0):
 		print("Game Over!")
+		cutscene_handler.game_is_over = true
 		get_tree().paused = true
 	send_current_health.emit(healthPoints)
 	

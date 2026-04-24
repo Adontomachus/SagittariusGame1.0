@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://djpbi3ti2qmdk"]
+
+[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="1_fup76"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
+line_spacing = 25.0
+paragraph_spacing = 14.0
+font = ExtResource("1_fup76")
+font_size = 100
+font_color = Color(0.8602326, 0.4249097, 0.2716998, 1)
+outline_size = 25
+outline_color = Color(0.49010885, 0.14733289, 0, 1)
+shadow_size = 18
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_15wqq"]
+line_spacing = 0.0
+font = ExtResource("1_fup76")
+font_size = 52
+font_color = Color(1, 0.8059726, 0, 1)
+outline_size = 18
+outline_color = Color(0.17997457, 0.08508608, 0, 1)
+
+[node name="LoseScreen" type="Control" unique_id=1347961824]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LosePanel" type="PanelContainer" parent="." unique_id=245152519]
+modulate = Color(1, 0.11207495, 0.37804863, 1)
+layout_mode = 0
+offset_left = 115.0
+offset_top = 75.0
+offset_right = 1816.0
+offset_bottom = 996.0
+
+[node name="StatisticsScreen" type="Node" parent="LosePanel" unique_id=931030158]
+
+[node name="BigLoseText" type="Label" parent="." unique_id=1560795430]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 82.0
+offset_right = 1816.0
+offset_bottom = 272.0
+text = "Sagittarius has been defeated..."
+label_settings = SubResource("LabelSettings_8oq8g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="BigLoseText" unique_id=1817500599]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 787.0
+offset_right = 569.9032
+offset_bottom = 868.0
+theme_override_colors/font_color = Color(0.9297204, 0.8936606, 0.46166497, 1)
+theme_override_fonts/font = ExtResource("1_fup76")
+theme_override_font_sizes/font_size = 25
+text = "Back to Main Menu
+"
+
+[node name="ResumeButton" type="Button" parent="BigLoseText" unique_id=1378675360]
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 793.0
+offset_right = 1295.871
+offset_bottom = 870.0
+theme_override_colors/font_color = Color(0.9296975, 0.8968749, 0.40425283, 1)
+theme_override_fonts/font = ExtResource("1_fup76")
+theme_override_font_sizes/font_size = 38
+text = "Try Again
+"
+
+[node name="ScoreStats" type="Label" parent="BigLoseText" unique_id=1698478150]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 200.0
+offset_right = 1617.0
+offset_bottom = 296.0
+text = "Total Score:"
+label_settings = SubResource("LabelSettings_15wqq")
+vertical_alignment = 1
+
+[node name="RhythmAccuracy" type="Label" parent="BigLoseText" unique_id=1119409431]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 316.0
+offset_right = 1617.0
+offset_bottom = 412.0
+text = "Timing Accuracy:"
+label_settings = SubResource("LabelSettings_15wqq")
+vertical_alignment = 1
+
+[node name="DamageDealt" type="Label" parent="BigLoseText" unique_id=505090490]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 430.0
+offset_right = 1617.0
+offset_bottom = 526.0
+text = "Damage Dealt:"
+label_settings = SubResource("LabelSettings_15wqq")
+vertical_alignment = 1
+
+[node name="HighestLevelReached" type="Label" parent="BigLoseText" unique_id=1826464257]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 549.0
+offset_right = 1617.0
+offset_bottom = 645.0
+text = "Highest Level Reached:"
+label_settings = SubResource("LabelSettings_15wqq")
+vertical_alignment = 1

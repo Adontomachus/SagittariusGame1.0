@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Gameplay Instances/Boss.tscn" id="10_30wor"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="10_32gqm"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
+[ext_resource type="PackedScene" uid="uid://baq8lvbpwxgpg" path="res://Scenes/Interface/WinInterface.tscn" id="10_hlum5"]
+[ext_resource type="PackedScene" uid="uid://djpbi3ti2qmdk" path="res://Scenes/Interface/DefeatInterface.tscn" id="11_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
@@ -64,6 +66,90 @@
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
+
+[sub_resource type="Animation" id="Animation_vj1fp"]
+resource_name = "GameOver"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025962181, 0.033333335, 0.7500671),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0035705566, 0.012617111, 0, 0), Color(8.674749, 14.716483, 0, 0), Color(11.142518, 18.892157, 0, 1), Color(0.003570664, 0.012617188, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverNode/CutsceneBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.020553393),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverNode/LoseScreen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03292173, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hlum5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(11.142518, 18.892157, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverNode/CutsceneBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverNode/LoseScreen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o710q"]
+_data = {
+&"GameOver": SubResource("Animation_vj1fp"),
+&"RESET": SubResource("Animation_hlum5")
+}
 
 [sub_resource type="Animation" id="Animation_xcrri"]
 resource_name = "BeatIndicatorEffect"
@@ -938,8 +1024,10 @@ script = ExtResource("3_0voen")
 [node name="DynamicTerrainSystem" type="Node" parent="GameSystems" unique_id=1982384762 groups=["PlayerSystems"]]
 script = ExtResource("5_jgp33")
 
-[node name="SceneHandler" type="Node" parent="GameSystems" unique_id=1974294335 groups=["PlayerSystems"]]
+[node name="SceneHandler" type="Node" parent="GameSystems" unique_id=1974294335 node_paths=PackedStringArray("game_over_animations") groups=["PlayerSystems"]]
+process_mode = 3
 script = ExtResource("6_110ka")
+game_over_animations = NodePath("../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/GameOverAnimations")
 
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
@@ -963,12 +1051,29 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CutsceneUI" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=854879103]
+process_mode = 3
 
-[node name="CutsceneBackground" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CutsceneUI" unique_id=91659015]
+[node name="GameOverNode" type="Node" parent="InterfaceElements/NewHUD/UI/CutsceneUI" unique_id=923449886]
+process_mode = 3
+
+[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1347961824 instance=ExtResource("10_hlum5")]
 visible = false
+
+[node name="CutsceneBackground" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=91659015]
+process_mode = 3
+visible = false
+modulate = Color(11.142518, 18.892157, 0, 1)
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.06966573, 0.06966571, 9.024516e-09, 1)
+color = Color(0.07016479, 0.07016479, 0, 1)
+
+[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 instance=ExtResource("11_4t4xv")]
+modulate = Color(1, 1, 1, 0)
+
+[node name="GameOverAnimations" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1479518595]
+process_mode = 3
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_o710q")
 
 [node name="Border Pulse" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=1184264804]
 script = ExtResource("7_figfh")
@@ -1221,7 +1326,7 @@ offset_top = 497.0
 offset_right = 995.0
 offset_bottom = 524.0
 
-[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" unique_id=1347961824 instance=ExtResource("6_jwrfw")]
+[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" unique_id=502541165 instance=ExtResource("6_jwrfw")]
 visible = false
 layout_mode = 1
 
@@ -1284,7 +1389,7 @@ texture = ExtResource("22_yt4p3")
 [node name="ActivationAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/AbilityActivationFeedback" unique_id=455023363]
 libraries/ = SubResource("AnimationLibrary_xcrri")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
@@ -1301,6 +1406,7 @@ sprite_down = NodePath("PlayerSpriteDown")
 sprite_down_left = NodePath("PlayerSpriteDownLeft")
 sprite_left = NodePath("PlayerSpriteLeft")
 sprite_up_left = NodePath("PlayerSpriteUpLeft")
+cutscene_handler = NodePath("../GameSystems/SceneHandler")
 
 [node name="ShotPoint" type="Marker2D" parent="Player" unique_id=1755826713]
 position = Vector2(11, -4)

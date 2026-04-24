@@ -222,6 +222,8 @@ func _process(delta):
 		print("Spawned Enemy!")
 		spawnTimer = randf_range(2,3)
 		enemySpawnCounter -= 1
+		## Only spawn one enemy instance if it is the last wave
+		if waves_remaining == 0: enemySpawnCounter = 0
 		_spawn_enemy()
 	#endregion 
 			

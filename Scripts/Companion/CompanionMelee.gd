@@ -8,7 +8,7 @@ extends Area2D
 @export var melee_effect := preload("res://Objects/Particle Effects/MeleeHitEffect.tscn")
 
 ## Damage numbers section
-var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
+@export var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 ## Sets the position of the damage number
 var initPosition: Vector2 = Vector2(-225, -205)
 # Called when the node enters the scene tree for the first time.
