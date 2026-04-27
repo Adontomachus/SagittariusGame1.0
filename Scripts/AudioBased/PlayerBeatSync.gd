@@ -8,6 +8,9 @@ signal border_pulse
 
 @export_category("Beat Settings")
 @export var level_song: AudioStreamPlayer # = $"../MetronomeTest"
+##TEMPORARY
+var can_play: bool = true
+##TEMPORARY
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
 
 #region Beat Variables
@@ -31,7 +34,9 @@ var combo_audio_pitch: float = 1
 @onready var score: Label = $"../PlayerInfo/Score"
 @onready var wave_counter: Label = $"../PlayerInfo/WaveCounter"
 @onready var p_feedback: AnimationPlayer = $"../Border Pulse/PerfectPulseFeedback"
-
+## This variable is for the combo pulse effect where its speed dynamically
+## aligns with the tempo
+@export var combo_animation_pulse: AnimationPlayer
 #endregion
 
 #region Indicator Variables
@@ -69,6 +74,12 @@ func _ready() -> void:
 	scale = Vector2(starting_scale, starting_scale)
 	
 func _process(_delta) -> void:
+	## TEMPORARY
+	#song_delay -= 1 * _delta
+	#if song_delay < 0 and can_play:
+	#	can_play = false
+	#level_song.play()
+
 	p_combo_sound.pitch_scale = combo_audio_pitch
 	combo_audio_pitch = 1 + (comboCounter * 0.06)
 	
@@ -161,6 +172,10 @@ func indicator_pulse() -> void:
 
 func perfect_pulse_feedback() -> void:
 	return
+	
+func _combo_pulse() -> void:
+	combo_animation_pulse.speed_scale = tempo / 235
+	combo_animation_pulse.play("UIBeatPulse")
 #func ui_pulse() -> void:
 #	if tween:
 #		tween.kill()

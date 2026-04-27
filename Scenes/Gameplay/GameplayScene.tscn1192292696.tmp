@@ -690,10 +690,10 @@ tracks/1/path = NodePath(".:label_settings:font_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-3.7252903e-09, 0.1, 0.23333333),
+"times": PackedFloat32Array(0, 0.03333333, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [125, 100, 125]
+"values": [100, 125, 100]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -702,10 +702,10 @@ tracks/2/path = NodePath("../PlayerInfo/Score:label_settings:font_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"times": PackedFloat32Array(0, 0.033333335, 0.19528005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [44, 42, 44]
+"values": [42, 44, 42]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1035,8 +1035,9 @@ script = ExtResource("4_b5kf5")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
 
-[node name="NewHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=1380499986]
+[node name="NewHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=1380499986 node_paths=PackedStringArray("animation_pulse")]
 script = ExtResource("3_exhb5")
+animation_pulse = NodePath("UI/ComboNumberPulse")
 
 [node name="UI" type="Control" parent="InterfaceElements/NewHUD" unique_id=275107756]
 layout_mode = 3
@@ -1246,7 +1247,7 @@ position = Vector2(974, 976)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("8_81epe")
 
-[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI" unique_id=243769503 node_paths=PackedStringArray("level_song", "combo_animation_pulse")]
+[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI" unique_id=243769503 node_paths=PackedStringArray("level_song")]
 self_modulate = Color(0.5137611, 0.5137611, 0.5137611, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -1263,37 +1264,9 @@ grow_vertical = 0
 pivot_offset = Vector2(25, 25)
 script = ExtResource("3_30wor")
 level_song = NodePath("GameMusic")
-combo_animation_pulse = NodePath("../ComboNumberPulse")
 perfect_hit = 0.4
 good_hit = 0.32
 ok_hit = 0.2
-
-[node name="BeatIndicatorLine" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=1655635407]
-z_index = -1
-layout_mode = 0
-offset_left = -217.0
-offset_top = 14.0
-offset_right = 284.0
-offset_bottom = 22.0
-color = Color(0.12968418, 0.04763417, 0.005845576, 1)
-
-[node name="RhythmLines" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=480950299]
-z_index = -1
-layout_mode = 0
-offset_left = -217.0
-offset_top = -7.0
-offset_right = -208.0
-offset_bottom = 43.0
-color = Color(0.85559684, 1, 0.64379185, 1)
-
-[node name="RhythmLines2" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=1219654488]
-z_index = -1
-layout_mode = 0
-offset_left = 274.0
-offset_top = -7.0
-offset_right = 283.0
-offset_bottom = 43.0
-color = Color(0.85559684, 1, 0.64379185, 1)
 
 [node name="BeatPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=543492491]
 libraries/ = SubResource("AnimationLibrary_onpmq")
@@ -1302,7 +1275,6 @@ speed_scale = 0.6
 [node name="GameMusic" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=812856403]
 stream = ExtResource("13_7yb2d")
 volume_db = -13.69
-autoplay = true
 parameters/looping = true
 
 [node name="PerfectShotComboSound" type="AudioStreamPlayer2D" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=460988706]
@@ -2244,7 +2216,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight6" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=998284555]
-position = Vector2(125, 1841)
+position = Vector2(116, 1845.0001)
 scale = Vector2(30.218752, -29.078125)
 energy = 1.23
 texture = SubResource("GradientTexture2D_y1plk")
@@ -2463,9 +2435,9 @@ position = Vector2(753, 383)
 [node name="PlayerCatComp2" parent="." unique_id=1653798 instance=ExtResource("51_6uw2w")]
 position = Vector2(447, 398)
 
+[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="pulse_combo_counter"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
-[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/BeatIndicator" method="_combo_pulse"]
 [connection signal="pulse_on_beat" from="." to="Player" method="_ability_pulse_checker"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]

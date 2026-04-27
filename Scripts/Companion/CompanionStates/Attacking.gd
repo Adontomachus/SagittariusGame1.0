@@ -9,12 +9,13 @@ func enter() -> void:
 	pass # Replace with function body.
 	
 func process_physics(delta: float) -> CompanionState:
-	parent._rush_towards_target(delta)
-	target_chase()
-	duration -= 1 * delta
-	if duration < 0:
-		return after_attacking_state
-	return
+	if parent.enemy_target_marker:
+		parent._rush_towards_target(delta)
+		target_chase()
+		duration -= 1 * delta
+		if duration < 0:
+			return after_attacking_state
+	return after_attacking_state
 
 func target_chase() -> void:
 	if parent.enemy_target_marker:

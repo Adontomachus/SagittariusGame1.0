@@ -52,8 +52,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
 	nearest_enemy = _find_closest_enemy()
-	enemy_target_marker.global_position = nearest_enemy.global_position
+	if nearest_enemy:
+		enemy_target_marker.global_position = nearest_enemy.global_position
 	# print("Nearest: ", nearest_enemy)
 	state_machine.process_frame(delta)
 	pass
@@ -85,6 +87,7 @@ func _rush_towards_target(delta: float) -> void:
 #endregion
 
 func _physics_process(delta: float) -> void:
+	
 	# enemy_target_marker.position = nearest_enemy.global_position
 	
 	target_looker.look_at(player_target.global_position)
@@ -95,6 +98,7 @@ func _physics_process(delta: float) -> void:
 ## Function for finding the nearest enemy target
 func _find_closest_enemy() -> Object:
 	var enemy_target = get_tree().get_nodes_in_group("GeneralEnemyInstance")
+	nearest_enemy = null
 	var minimum_distance = INF
 	for enemy in enemy_target:
 		var target_distance = global_position.distance_squared_to(enemy.global_position)

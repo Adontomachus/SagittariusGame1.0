@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://3d11rnfax46i"]
+
+[ext_resource type="Script" uid="uid://b4gcay3ijkamb" path="res://Scripts/Miscellaneous/Companion.gd" id="1_ek3bn"]
+[ext_resource type="Script" uid="uid://bcfn444ui4txm" path="res://Scripts/Companion/CompanionStates/CompanionStateMachine.gd" id="3_35cl0"]
+[ext_resource type="Script" uid="uid://dtink7ige34js" path="res://Scripts/Companion/CompanionStates/Stationary.gd" id="4_ek3bn"]
+[ext_resource type="Script" uid="uid://4htspv80okg1" path="res://Scripts/Companion/CompanionStates/Follow.gd" id="4_xjnx0"]
+[ext_resource type="Script" uid="uid://y7qqyxqsty66" path="res://Scripts/Companion/CompanionStates/Attacking.gd" id="5_35cl0"]
+[ext_resource type="Texture2D" uid="uid://dkmhm6uwhmeo4" path="res://Sprites/Legacy/Sagittarius.png" id="6_xjnx0"]
+[ext_resource type="Script" uid="uid://bhrs82e6q3cak" path="res://Scripts/Companion/CompanionMelee.gd" id="7_vhhx4"]
+[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="7_xjnx0"]
+[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="9_2ef6j"]
+
+[sub_resource type="Environment" id="Environment_vhhx4"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53ufe"]
+radius = 23.021729
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjnx0"]
+radius = 46.043457
+
+[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding", "slash_area", "slash_hurtbox")]
+script = ExtResource("1_ek3bn")
+state_machine = NodePath("CompanionStateMachine")
+companion_sprite = NodePath("CatSprite")
+pathfinding = NodePath("Pathfinding")
+attack_power = 15.0
+move_speed = 350.0
+player_radius = 300.0
+slash_area = NodePath("SlashArea")
+slash_hurtbox = NodePath("SlashArea/SlashHurtbox")
+
+[node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.7547807, 1, 0, 1)
+
+[node name="NearestEnemyTarget" type="Marker2D" parent="." unique_id=2016037628]
+
+[node name="PlayerTarget" type="Marker2D" parent="." unique_id=535261400]
+
+[node name="CompanionStateMachine" type="Node" parent="." unique_id=1036948619 node_paths=PackedStringArray("starting_state", "sprite")]
+script = ExtResource("3_35cl0")
+starting_state = NodePath("CompanionStateFollowing")
+sprite = NodePath("../CatSprite")
+
+[node name="CompanionStateFollowing" type="Node" parent="CompanionStateMachine" unique_id=563748157 node_paths=PackedStringArray("after_following_state", "attacking_state")]
+script = ExtResource("4_xjnx0")
+after_following_state = NodePath("../CompanionStateStationary")
+attacking_state = NodePath("../CompanionStateAttacking")
+successful_chance_to_attack = 3.0
+start_time_before_expiration = 2.0
+metadata/_custom_type_script = "uid://4htspv80okg1"
+
+[node name="CompanionStateStationary" type="Node" parent="CompanionStateMachine" unique_id=510679203 node_paths=PackedStringArray("returning_state")]
+script = ExtResource("4_ek3bn")
+returning_state = NodePath("../CompanionStateFollowing")
+starting_rest_duration = 1.5
+
+[node name="CompanionStateAttacking" type="Node" parent="CompanionStateMachine" unique_id=2067948106 node_paths=PackedStringArray("after_attacking_state")]
+script = ExtResource("5_35cl0")
+after_attacking_state = NodePath("../CompanionStateStationary")
+
+[node name="CatSprite" type="Sprite2D" parent="." unique_id=927494965]
+self_modulate = Color(1.753959, 1.753959, 0.7517638, 1)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("6_xjnx0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="CatSprite" unique_id=1454122288]
+environment = SubResource("Environment_vhhx4")
+
+[node name="AreaEffect" type="Area2D" parent="." unique_id=199372774]
+
+[node name="Hitbox" type="CollisionShape2D" parent="AreaEffect" unique_id=1082545218]
+shape = SubResource("CircleShape2D_53ufe")
+
+[node name="Label" type="Label" parent="." unique_id=1079927306]
+offset_left = -19.0
+offset_top = 25.0
+offset_right = 21.0
+offset_bottom = 48.0
+text = "Test"
+horizontal_alignment = 1
+
+[node name="SlashArea" type="Area2D" parent="." unique_id=468419870 node_paths=PackedStringArray("companion_node")]
+script = ExtResource("7_vhhx4")
+companion_node = NodePath("..")
+
+[node name="SlashHurtbox" type="CollisionShape2D" parent="SlashArea" unique_id=2089765813]
+shape = SubResource("CircleShape2D_xjnx0")
+disabled = true
+debug_color = Color(0.7784596, 0.4561587, 0.6860478, 0.42000002)
+
+[node name="EnemyTargetMarker" type="Sprite2D" parent="." unique_id=1231818989]
+modulate = Color(0, 0.91206443, 1.1291975, 1)
+self_modulate = Color(2.4061394, 2.4061394, 2.4061394, 1)
+z_index = 20
+texture = ExtResource("7_xjnx0")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1921605043]
+stream = ExtResource("9_2ef6j")
+volume_db = -7.5
+pitch_scale = 0.75
+
+[connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

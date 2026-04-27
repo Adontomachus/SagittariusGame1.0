@@ -14,8 +14,7 @@ var spawnTimer = randf_range(2,5)
 @onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
 var gamePaused: int
 
-# MUSICAL UI
-@export var animation_player: AnimationPlayer # = beatIndicator.get_node("AnimationPlayer")
+
 
 #LEVEL VARIABLES
 var level_wave: int
@@ -81,7 +80,6 @@ func _ready():
 	wave_notification.self_modulate.a = 0
 	pause_screen.visible = false
 	gamePaused = 0
-	#animation_player.play("Pulse")
 	pass
 
 #region TEMPORARY FUNCTIONS, SUBJECT TO CHANGE	

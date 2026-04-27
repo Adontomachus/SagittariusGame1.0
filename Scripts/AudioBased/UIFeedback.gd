@@ -18,7 +18,7 @@ var tween: Tween
 @onready var combo_counter: Label = $UI/PlayerInfo/ComboCounter
 @export var starting_scale: float =  3
 @export var tempo: float = 120.0
-@export var animation_pulse: AnimationPlayer
+#@export var animation_pulse: AnimationPlayer
 var pulsePerBeat = 60.0 / tempo
 
 #TESTING PURPOSES
@@ -63,6 +63,7 @@ func change_color() -> void:
 	updated_player_health_bar.self_modulate = Color(current_glow_strength,current_glow_strength,current_glow_strength,current_glow_strength)
 	#pass # Replace with function body.
 	
-func pulse_combo_counter() -> void:
-	animation_pulse.play("UIBeatPulse")
+#func pulse_combo_counter() -> void:
+	#animation_pulse.play("UIBeatPulse")
+	#return
 #endregion

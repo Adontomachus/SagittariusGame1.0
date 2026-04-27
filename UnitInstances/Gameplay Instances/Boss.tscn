@@ -102,6 +102,12 @@ script = ExtResource("6_kdy0d")
 state_to_return = NodePath("../EnemyStatePositioning")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
+[node name="EnemyStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1962372584]
+
+[node name="EnemyStateIdle" type="Node" parent="EnemyStateMachine" unique_id=732527017]
+
+[node name="EnemyStateBulletBarrage" type="Node" parent="EnemyStateMachine" unique_id=2060164638]
+
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=12022442]
 stream = ExtResource("7_b7mrf")
 volume_db = -7.5
