@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_8hj4s"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_7a1ga"]
-[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_yjjxy"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_yjjxy"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_ciy0g"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_rakrl"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="6_utpns"]

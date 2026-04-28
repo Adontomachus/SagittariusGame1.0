@@ -36,8 +36,10 @@ var player_target: CharacterBody2D
 @export var companion_damage: int = 30
 @export var dash_duration: float = 0.5
 var is_dashing: bool = false
-@export var slash_area: Area2D
-@export var slash_hurtbox: CollisionShape2D
+# @export var slash_area: Area2D
+# @export var slash_hurtbox: CollisionShape2D
+## Damage numbers
+var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 
 var nearest_enemy: CharacterBody2D = null
 

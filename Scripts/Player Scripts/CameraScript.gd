@@ -11,7 +11,7 @@ enum CameraMode {
 
 @export var camera_mode: CameraMode = CameraMode.PlayerView
 @onready var playerTarget: CharacterBody2D = $"../../Player"
-@onready var mouse_locator: Marker2D = $"../../MouseLocator"
+# @onready var mouse_locator: Marker2D = $"../../MouseLocator"
 
 var cameraShakeEffect = 0
 var cameraPosition: Vector2

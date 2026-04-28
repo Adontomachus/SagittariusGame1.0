@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_g16c8"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_oc4nc"]
-[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w0bs6"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_w0bs6"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_kdy0d"]
 [ext_resource type="Script" uid="uid://bj6o7bxu2nywc" path="res://Scripts/Enemy/States/Enemy States/Position.gd" id="5_4yo34"]
@@ -86,6 +86,12 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
+[node name="EnemyStateBarrage" type="Node" parent="." unique_id=1962372584]
+
+[node name="EnemyStateIdle" type="Node" parent="." unique_id=732527017]
+
+[node name="EnemyStateBulletBarrage" type="Node" parent="." unique_id=2060164638]
+
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=1146269158 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_b7mrf")
 starting_state = NodePath("EnemyStatePositioning")
@@ -101,12 +107,6 @@ metadata/_custom_type_script = "uid://bj6o7bxu2nywc"
 script = ExtResource("6_kdy0d")
 state_to_return = NodePath("../EnemyStatePositioning")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
-
-[node name="EnemyStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1962372584]
-
-[node name="EnemyStateIdle" type="Node" parent="EnemyStateMachine" unique_id=732527017]
-
-[node name="EnemyStateBulletBarrage" type="Node" parent="EnemyStateMachine" unique_id=2060164638]
 
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=12022442]
 stream = ExtResource("7_b7mrf")

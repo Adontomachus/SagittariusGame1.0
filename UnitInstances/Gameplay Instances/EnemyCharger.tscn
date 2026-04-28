@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_f54ak"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_t52mc"]
-[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_4dvsj"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_4dvsj"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_tgimn"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_flwud"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="6_qd2d0"]
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Enemy States/Recovery.gd" id="8_u8650"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="9_dj6py"]
-[ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy/EnemyMelee.gd" id="10_68cbe"]
+[ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_68cbe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -68,15 +68,13 @@ texture_under = ExtResource("4_tgimn")
 texture_progress = ExtResource("5_flwud")
 metadata/_edit_use_anchors_ = true
 
-[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("sprite")]
 script = ExtResource("6_qd2d0")
-starting_state = NodePath("")
 sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
-[node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1587728838 node_paths=PackedStringArray("state_to_return")]
+[node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1587728838]
 script = ExtResource("8_u8650")
-state_to_return = NodePath("")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
 [node name="EnemyStateRushing" type="Node" parent="EnemyStateMachine" unique_id=1835527761]

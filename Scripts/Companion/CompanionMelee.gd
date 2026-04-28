@@ -6,11 +6,12 @@ extends Area2D
 @export_category("Enemy Variable Getter")
 @export var companion_node: CompanionGroup
 @export var melee_effect := preload("res://Objects/Particle Effects/MeleeHitEffect.tscn")
+## This variable is to get the position of the enemy target, in order to spawn the damage numbers
+@onready var nearest_enemy_target: Marker2D = $"../NearestEnemyTarget"
 
 ## Damage numbers section
-@export var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 ## Sets the position of the damage number
-var initPosition: Vector2 = Vector2(-225, -205)
+var initPosition: Vector2 = Vector2(-200, -200)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -19,9 +20,10 @@ func _ready() -> void:
 		if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
 
 			## Damage number section
-			var damageFeedback = damageNumber.instantiate()
+			var damageFeedback = companion_node.damageNumber.instantiate()
 			damageFeedback.position = self.get_global_position() + initPosition
-			damageFeedback.damage_value = companion_node.companion_damage
+			damageFeedback.damage_value = companion_node.attack_power
+			get_tree().get_root().call_deferred("add_child", damageFeedback)
 			
 			area.modify_enemy_health(-companion_node.companion_damage)
 			var hitEffect = melee_effect.instantiate()

@@ -16,11 +16,18 @@ var can_play: bool = true
 #region Beat Variables
 @export var tempo: float = 107
 var pulsePerBeat = 60.0 / tempo
+var halfPulsePerBeat = 60 / (tempo * 2)
 var lastBeat = 0
 
+## Variables for the full note
 var time: float
 var beat: float
 var beat_precise: float
+## Variables for half note
+var half_time: float
+var half_beat: float
+var half_beat_precise: float
+## Variables for half note
 var audio_latency: float = 0.0
 #endregion
 
@@ -33,7 +40,8 @@ var combo_audio_pitch: float = 1
 #region other UI elements to beat sync for diegetic effects
 @onready var score: Label = $"../PlayerInfo/Score"
 @onready var wave_counter: Label = $"../PlayerInfo/WaveCounter"
-@onready var p_feedback: AnimationPlayer = $"../Border Pulse/PerfectPulseFeedback"
+@onready var p_feedback: AnimationPlayer = $"../../Border Pulse/PerfectPulseFeedback"
+
 ## This variable is for the combo pulse effect where its speed dynamically
 ## aligns with the tempo
 @export var combo_animation_pulse: AnimationPlayer
@@ -59,8 +67,9 @@ var tween: Tween
 #endregion
 
 
-#region Global synchronization (TEMPORARY)
-var delay: float = 0
+#region Region for beat indicator animations for players to follow through
+@onready var beat_indicator_animation: AnimationPlayer = $"../BeatIndicatorAnimation"
+
 #endregion
 
 func _ready() -> void:
@@ -74,11 +83,6 @@ func _ready() -> void:
 	scale = Vector2(starting_scale, starting_scale)
 	
 func _process(_delta) -> void:
-	## TEMPORARY
-	#song_delay -= 1 * _delta
-	#if song_delay < 0 and can_play:
-	#	can_play = false
-	#level_song.play()
 
 	p_combo_sound.pitch_scale = combo_audio_pitch
 	combo_audio_pitch = 1 + (comboCounter * 0.06)
@@ -87,6 +91,7 @@ func _process(_delta) -> void:
 	if level_song.playing == false:
 		return
 
+	# Time
 	time = level_song.get_playback_position() + AudioServer.get_time_since_last_mix()
 	time -= audio_latency
 	time = max(0, time)
@@ -95,8 +100,13 @@ func _process(_delta) -> void:
 		lastBeat = 0
 		GlobalBeatSync.lastBeat = lastBeat
 
+	## Full note precision
 	beat_precise = time / pulsePerBeat
 	beat = floorf(beat_precise)
+	## Half note precision
+	half_beat_precise = time / halfPulsePerBeat
+	half_beat = floorf(half_beat_precise)
+	
 	GlobalBeatSync.beat = beat
 	# Take actions when a note has passed
 	if lastBeat < beat:
@@ -176,6 +186,8 @@ func perfect_pulse_feedback() -> void:
 func _combo_pulse() -> void:
 	combo_animation_pulse.speed_scale = tempo / 235
 	combo_animation_pulse.play("UIBeatPulse")
+	beat_indicator_animation.speed_scale = tempo / 32
+	beat_indicator_animation.play("RhythmIndicator")
 #func ui_pulse() -> void:
 #	if tween:
 #		tween.kill()

@@ -766,6 +766,115 @@ shadow_size = 6
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5.12, 2.305)
 
+[sub_resource type="Animation" id="Animation_4t4xv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RhythmLines:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.85559684, 1, 0.64379185, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RhythmLines2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.85559684, 1, 0.64379185, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RhythmLines2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1216, 969)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RhythmLines:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(724, 969)]
+}
+
+[sub_resource type="Animation" id="Animation_e8aea"]
+resource_name = "RhythmIndicator"
+length = 1.66
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RhythmLines:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85559684, 1, 0.64379185, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RhythmLines2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85538745, 1, 0.6437342, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RhythmLines2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1216, 969), Vector2(988, 969)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RhythmLines:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(724, 969), Vector2(952, 969)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
+_data = {
+&"RESET": SubResource("Animation_4t4xv"),
+&"RhythmIndicator": SubResource("Animation_e8aea")
+}
+
 [sub_resource type="Gradient" id="Gradient_u1twm"]
 colors = PackedColorArray(0.97969264, 0.97969264, 6.160736e-06, 1, 1, 1, 1, 0)
 
@@ -930,22 +1039,6 @@ radius = 21.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_fklr0"]
 radius = 19.104973
 
-[sub_resource type="Animation" id="Animation_110ka"]
-resource_name = "Walking"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vj1fp"]
-_data = {
-&"Walking": SubResource("Animation_110ka")
-}
-
-[sub_resource type="Animation" id="Animation_o710q"]
-resource_name = "Walking"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlum5"]
-_data = {
-&"Walking": SubResource("Animation_o710q")
-}
-
 [sub_resource type="Gradient" id="Gradient_81epe"]
 colors = PackedColorArray(0.8634428, 1, 0.432765, 1, 0, 0, 0, 1)
 
@@ -999,7 +1092,7 @@ colors = PackedColorArray(0, 0, 0, 0, 0.66743076, 0.86981654, 0.1428257, 0.521, 
 [node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target")]
 position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
-beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicator")
+beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
 waves_remaining = 15
 player_target = NodePath("InterfaceElements/PlayerTarget")
@@ -1235,77 +1328,78 @@ offset_bottom = 76.0
 grow_horizontal = 0
 text = "Pause Menu"
 
-[node name="PointLight2D" type="PointLight2D" parent="InterfaceElements/NewHUD/UI" unique_id=1425690003]
-z_index = 176
-position = Vector2(974, 993.2817)
-scale = Vector2(1.7500001, 2.0329173)
-texture = SubResource("GradientTexture2D_jgp33")
+[node name="BeatIndicatorElements" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=854384362]
 
-[node name="IndicatorSprite" type="Sprite2D" parent="InterfaceElements/NewHUD/UI" unique_id=2085851220]
+[node name="IndicatorSprite" type="Sprite2D" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=2085851220]
 position = Vector2(974, 976)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("8_81epe")
 
-[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI" unique_id=243769503 node_paths=PackedStringArray("level_song", "combo_animation_pulse")]
+[node name="BeatIndicatorLine" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=1655635407]
+z_index = -1
+offset_left = 724.0
+offset_top = 990.0
+offset_right = 1225.0
+offset_bottom = 998.0
+color = Color(0.12968418, 0.04763417, 0.005845576, 1)
+
+[node name="RhythmLines" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=480950299]
+z_index = -1
+offset_left = 724.0
+offset_top = 969.0
+offset_right = 733.0
+offset_bottom = 1019.0
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="RhythmLines2" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=1219654488]
+z_index = -1
+offset_left = 1216.0
+offset_top = 969.0
+offset_right = 1225.0
+offset_bottom = 1019.0
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="BeatIndicatorAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=136563884]
+libraries/ = SubResource("AnimationLibrary_rp1p4")
+
+[node name="BeatIndicator" type="Panel" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=243769503 node_paths=PackedStringArray("level_song", "combo_animation_pulse")]
 self_modulate = Color(0.5137611, 0.5137611, 0.5137611, 0)
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -25.5
-offset_top = -107.0
-offset_right = 24.5
-offset_bottom = -57.0
+offset_left = -19.0
+offset_top = -104.0
+offset_right = 31.0
+offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(25, 25)
 script = ExtResource("3_30wor")
 level_song = NodePath("GameMusic")
-combo_animation_pulse = NodePath("../ComboNumberPulse")
+combo_animation_pulse = NodePath("../../ComboNumberPulse")
 perfect_hit = 0.4
 good_hit = 0.32
 ok_hit = 0.2
 
-[node name="BeatIndicatorLine" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=1655635407]
-z_index = -1
-layout_mode = 0
-offset_left = -217.0
-offset_top = 14.0
-offset_right = 284.0
-offset_bottom = 22.0
-color = Color(0.12968418, 0.04763417, 0.005845576, 1)
+[node name="BeatIndicatorLight" type="PointLight2D" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" unique_id=1425690003]
+z_index = 176
+position = Vector2(33, 17.281677)
+scale = Vector2(1.7500001, 2.0329173)
+texture = SubResource("GradientTexture2D_jgp33")
 
-[node name="RhythmLines" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=480950299]
-z_index = -1
-layout_mode = 0
-offset_left = -217.0
-offset_top = -7.0
-offset_right = -208.0
-offset_bottom = 43.0
-color = Color(0.85559684, 1, 0.64379185, 1)
-
-[node name="RhythmLines2" type="ColorRect" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=1219654488]
-z_index = -1
-layout_mode = 0
-offset_left = 274.0
-offset_top = -7.0
-offset_right = 283.0
-offset_bottom = 43.0
-color = Color(0.85559684, 1, 0.64379185, 1)
-
-[node name="BeatPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=543492491]
+[node name="BeatPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" unique_id=543492491]
 libraries/ = SubResource("AnimationLibrary_onpmq")
 speed_scale = 0.6
 
-[node name="GameMusic" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=812856403]
+[node name="GameMusic" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" unique_id=812856403]
 stream = ExtResource("13_7yb2d")
 volume_db = -13.69
 autoplay = true
 parameters/looping = true
 
-[node name="PerfectShotComboSound" type="AudioStreamPlayer2D" parent="InterfaceElements/NewHUD/UI/BeatIndicator" unique_id=460988706]
+[node name="PerfectShotComboSound" type="AudioStreamPlayer2D" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" unique_id=460988706]
 stream = ExtResource("14_u1twm")
 
 [node name="GlowEffect" type="PointLight2D" parent="InterfaceElements/NewHUD/UI" unique_id=1863279212]
@@ -1511,13 +1605,6 @@ script = ExtResource("10_bbunm")
 [node name="BulletHitbox" type="CollisionShape2D" parent="Player/ProjectileHitbox" unique_id=675715082]
 shape = SubResource("CircleShape2D_fklr0")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=227337243]
-libraries/ = SubResource("AnimationLibrary_vj1fp")
-
-[node name="AnimationTree" type="AnimationTree" parent="Player" unique_id=963998033]
-root_node = NodePath("../PlayerSpriteUp")
-libraries/ = SubResource("AnimationLibrary_hlum5")
 
 [node name="PulseSoundEffect" type="AudioStreamPlayer" parent="Player" unique_id=1605933517]
 stream = ExtResource("34_xcrri")
@@ -2465,7 +2552,7 @@ position = Vector2(447, 398)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
-[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/BeatIndicator" method="_combo_pulse"]
+[connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" method="_combo_pulse"]
 [connection signal="pulse_on_beat" from="." to="Player" method="_ability_pulse_checker"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles/Wall18" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles/Wall19" method="_glow_on_beat"]
@@ -2480,8 +2567,8 @@ position = Vector2(447, 398)
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
-[connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="Player" method="increment_player_charge_attack"]
-[connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
+[connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="increment_player_charge_attack"]
+[connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_exitGame"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_resumeGame"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]
