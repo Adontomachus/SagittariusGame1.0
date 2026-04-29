@@ -27,6 +27,52 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7606838, 0.25641027)
 
+[sub_resource type="Gradient" id="Gradient_ncenu"]
+colors = PackedColorArray(0.49010885, 0.4072413, 0.3282248, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v7bmb"]
+gradient = SubResource("Gradient_ncenu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Animation" id="Animation_e2ygo"]
+resource_name = "PulseEffect"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PulseEffect:texture:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("Gradient_ncenu"), SubResource("Gradient_ncenu"), SubResource("Gradient_ncenu")]
+}
+
+[sub_resource type="Animation" id="Animation_ncenu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PulseEffect:texture:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_ncenu")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7bmb"]
+_data = {
+&"PulseEffect": SubResource("Animation_e2ygo"),
+&"RESET": SubResource("Animation_ncenu")
+}
+
 [node name="SplashEffect" type="Area2D" unique_id=132848767]
 script = ExtResource("1_e3p8s")
 lifetime = 0.2
@@ -49,3 +95,10 @@ modulate = Color(1.353256, 1.353256, 1.353256, 1)
 self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 scale = Vector2(7.96875, 7.96875)
 texture = SubResource("GradientTexture2D_ncenu")
+
+[node name="PulseEffect" type="Sprite2D" parent="." unique_id=752873976]
+scale = Vector2(9.90625, 9.906251)
+texture = SubResource("GradientTexture2D_v7bmb")
+
+[node name="AreaIndicator" type="AnimationPlayer" parent="." unique_id=1466085024]
+libraries/ = SubResource("AnimationLibrary_v7bmb")

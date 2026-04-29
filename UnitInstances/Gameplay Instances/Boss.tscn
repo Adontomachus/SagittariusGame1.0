@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_oc4nc"]
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Enemy States/Recovery.gd" id="6_kdy0d"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_b7mrf"]
+[ext_resource type="Script" uid="uid://bgnnb24rgbqra" path="res://Scripts/Enemy/States/Exclusive Boss States/Barrage.gd" id="8_wouom"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 103.84142
@@ -79,14 +80,19 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_kdy0d")
 texture_progress = ExtResource("5_oc4nc")
 
+[node name="Label" type="Label" parent="." unique_id=571004718]
+offset_left = -35.0
+offset_top = -169.0
+offset_right = 37.0
+offset_bottom = -146.0
+horizontal_alignment = 1
+
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]
 visible = false
 offset_left = -45.0
 offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
-
-[node name="EnemyStateBarrage" type="Node" parent="." unique_id=1962372584]
 
 [node name="EnemyStateIdle" type="Node" parent="." unique_id=732527017]
 
@@ -98,8 +104,15 @@ starting_state = NodePath("EnemyStatePositioning")
 sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
-[node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("recovery_state")]
+[node name="EnemyStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1962372584]
+script = ExtResource("8_wouom")
+successful_chance_to_attack = 2.0
+
+[node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("after_position_state", "attack_state", "recovery_state")]
 script = ExtResource("5_4yo34")
+after_position_state = NodePath("../EnemyStateRecovery")
+attack_state = NodePath("../EnemyStateRecovery")
+successful_chance_to_attack = 4.0
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://bj6o7bxu2nywc"
 
@@ -119,3 +132,4 @@ pitch_scale = 0.75
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

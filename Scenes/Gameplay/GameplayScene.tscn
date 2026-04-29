@@ -62,7 +62,6 @@
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
-[ext_resource type="PackedScene" uid="uid://cuubh55jmexqb" path="res://Objects/Instances With Collision/SplashDamage.tscn" id="38_ni7mq"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
@@ -1040,7 +1039,7 @@ radius = 21.0
 radius = 19.104973
 
 [sub_resource type="Gradient" id="Gradient_81epe"]
-colors = PackedColorArray(0.8634428, 1, 0.432765, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y1plk"]
 gradient = SubResource("Gradient_81epe")
@@ -1071,6 +1070,15 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1923, -1106, -2272, 81
 cell_size = 2.0
 agent_radius = 40.0
 
+[sub_resource type="Gradient" id="Gradient_rp1p4"]
+colors = PackedColorArray(0, 0.28493494, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wkher"]
+gradient = SubResource("Gradient_rp1p4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
 [sub_resource type="Gradient" id="Gradient_y1plk"]
 colors = PackedColorArray(0.6890013, 0.78235406, 0.19316462, 0.50600004, 0.66288584, 0.66288584, 0.66288584, 0)
 
@@ -1088,6 +1096,54 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_6uhl4"]
 offsets = PackedFloat32Array(0, 0.52063495, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0.66743076, 0.86981654, 0.1428257, 0.521, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_e8aea"]
+colors = PackedColorArray(1.353256, 0.11207495, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b8xms"]
+gradient = SubResource("Gradient_e8aea")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o710q"]
+gradient = SubResource("Gradient_81epe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75641024, 0.20512821)
+
+[sub_resource type="Gradient" id="Gradient_4t4xv"]
+colors = PackedColorArray(0.94337994, 0.54004896, 0.76612836, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rp1p4"]
+gradient = SubResource("Gradient_4t4xv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_o710q"]
+colors = PackedColorArray(0.75934714, 0.3913462, 0.5542111, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hlum5"]
+gradient = SubResource("Gradient_o710q")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_hlum5"]
+colors = PackedColorArray(0.3108299, 0.46240625, 1.2528917, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4t4xv"]
+gradient = SubResource("Gradient_hlum5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7905983, 0.2905983)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e8aea"]
+gradient = SubResource("Gradient_hlum5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.83760685, 0.23504274)
 
 [node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target")]
 position = Vector2(-5, 2)
@@ -1316,18 +1372,6 @@ theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
 
-[node name="Pause" type="Button" parent="InterfaceElements/NewHUD/UI" unique_id=1148087537]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -151.0
-offset_top = 30.0
-offset_right = -48.0
-offset_bottom = 76.0
-grow_horizontal = 0
-text = "Pause Menu"
-
 [node name="BeatIndicatorElements" type="Node" parent="InterfaceElements/NewHUD/UI" unique_id=854384362]
 
 [node name="IndicatorSprite" type="Sprite2D" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=2085851220]
@@ -1474,18 +1518,19 @@ texture_progress = ExtResource("18_0cpi2")
 
 [node name="Ability1Container" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar" unique_id=811078322]
 layout_mode = 0
-offset_left = 475.7782
-offset_top = -490.6464
-offset_right = 710.69324
-offset_bottom = -227.91467
+offset_left = 446.04205
+offset_top = -523.35614
+offset_right = 680.9571
+offset_bottom = -260.62442
+rotation = 0.113265686
 
 [node name="AbililtyKey2" type="Label" parent="InterfaceElements/NewHUD/UI/CompanionProgressBar/Ability1Container" unique_id=470776032]
 layout_mode = 0
-offset_left = 112.997406
-offset_top = 279.51987
-offset_right = 155.9974
-offset_bottom = 399.51987
-rotation = 0.22048356
+offset_left = 98.12933
+offset_top = 276.54626
+offset_right = 141.12933
+offset_bottom = 396.54626
+rotation = -9.697676e-05
 text = "Q"
 label_settings = SubResource("LabelSettings_48svx")
 
@@ -1616,8 +1661,9 @@ stream = ExtResource("15_buuuh")
 volume_db = -15.0
 
 [node name="CharacterLight" type="PointLight2D" parent="Player" unique_id=553159512]
-scale = Vector2(32.781254, 32.781254)
-energy = 2.37
+scale = Vector2(42.156246, 42.156246)
+energy = 2.75
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
 [node name="AbilityAoE" type="Area2D" parent="Player" unique_id=1762094847]
@@ -2267,34 +2313,16 @@ z_index = -18
 position = Vector2(2025, 1852)
 texture = ExtResource("31_40ckn")
 
-[node name="AreaLight" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=529271008]
-position = Vector2(2014.5, 1267.5001)
-scale = Vector2(23.609377, 23.609377)
-energy = 1.23
-texture = SubResource("GradientTexture2D_y1plk")
+[node name="AreaLights" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1308492096]
 
-[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLight" unique_id=1374544328]
-amount = 15
-texture = SubResource("GradientTexture2D_1q4m6")
-lifetime = 4.0
-emission_shape = 1
-emission_sphere_radius = 19.08
-direction = Vector2(360, 360)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_max = 2.0
-linear_accel_curve = SubResource("Curve_y268v")
-scale_amount_min = 0.2
-scale_amount_max = 2.0
-color_ramp = SubResource("Gradient_6uhl4")
-
-[node name="AreaLight2" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1127818380]
-position = Vector2(-721, 255)
+[node name="AreaLight4" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1206542930]
+position = Vector2(414.00018, 1133)
 scale = Vector2(30.546873, 30.624998)
-energy = 1.23
-texture = SubResource("GradientTexture2D_y1plk")
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_wkher")
 
-[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLight2" unique_id=785227373]
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight4" unique_id=1666472738]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -2309,13 +2337,59 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight3" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1141918270]
-position = Vector2(-1478, 1220)
+[node name="AreaLight2" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1127818380]
+position = Vector2(-421.9999, 379)
+scale = Vector2(30.546873, 30.624998)
+energy = 4.97
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_b8xms")
+
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight2" unique_id=785227373]
+amount = 15
+texture = SubResource("GradientTexture2D_1q4m6")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_y268v")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_6uhl4")
+
+[node name="AreaLight3" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1141918270]
+position = Vector2(-1253, 1137)
+scale = Vector2(53.71875, -51.691105)
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_o710q")
+
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight3" unique_id=2001628919]
+amount = 15
+texture = SubResource("GradientTexture2D_1q4m6")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_y268v")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_6uhl4")
+
+[node name="AreaLight6" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=998284555]
+position = Vector2(-201.99997, 1738)
 scale = Vector2(30.218752, -29.078125)
-energy = 1.23
+color = Color(0.37342674, 0.6155507, 1, 1)
+energy = 4.0
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLight3" unique_id=2001628919]
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight6" unique_id=1360000092]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -2330,13 +2404,14 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight6" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=998284555]
-position = Vector2(125, 1841)
+[node name="AreaLight5" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1587209368]
+position = Vector2(1587, 2124)
 scale = Vector2(30.218752, -29.078125)
-energy = 1.23
+energy = 2.0
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
-[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLight6" unique_id=1360000092]
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight5" unique_id=1973902487]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -2351,13 +2426,14 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight5" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1587209368]
-position = Vector2(2620.9995, 2044.0001)
-scale = Vector2(30.218752, -29.078125)
-energy = 1.23
-texture = SubResource("GradientTexture2D_y1plk")
+[node name="AreaLight7" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=990883868]
+position = Vector2(1908, 127)
+scale = Vector2(39.406246, -37.918827)
+energy = 1.25
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_rp1p4")
 
-[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLight5" unique_id=1973902487]
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight7" unique_id=1376073301]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -2372,13 +2448,14 @@ scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
-[node name="AreaLight4" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=628114623]
-position = Vector2(2706, 43.99997)
-scale = Vector2(42.81249, -41.196503)
-energy = 1.23
-texture = SubResource("GradientTexture2D_y1plk")
+[node name="AreaLight8" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=299155294]
+position = Vector2(1808.0001, 1466)
+scale = Vector2(39.406246, -37.918827)
+energy = 3.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_hlum5")
 
-[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLight4" unique_id=499920227]
+[node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight8" unique_id=310804090]
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -2392,6 +2469,34 @@ linear_accel_curve = SubResource("Curve_y268v")
 scale_amount_min = 0.2
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
+
+[node name="BlueAreaLight" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=879827992]
+position = Vector2(1813.9999, 671)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4t4xv")
+
+[node name="BlueAreaLight2" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1780547259]
+position = Vector2(1817, 1456)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4t4xv")
+
+[node name="BlueAreaLight3" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1880718453]
+position = Vector2(602, 985.99994)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_e8aea")
+
+[node name="BlueAreaLight4" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1874395742]
+position = Vector2(1117, 1957)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_e8aea")
 
 [node name="GlowingPlatform" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1709142336 instance=ExtResource("33_y268v")]
 position = Vector2(-831, 501.00015)
@@ -2408,9 +2513,6 @@ scale = Vector2(0.46800014, 0.46800014)
 [node name="GlowingPlatform4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1322612330 instance=ExtResource("33_y268v")]
 position = Vector2(1546, 403)
 scale = Vector2(0.4946371, 0.4946371)
-
-[node name="SplashEffect" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=132848767 instance=ExtResource("38_ni7mq")]
-position = Vector2(1226, 283)
 
 [node name="MapEdgeObstacles" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=76741644]
 
@@ -2431,7 +2533,7 @@ scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall14" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1011616912 instance=ExtResource("5_nt06h")]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-position = Vector2(782.0001, -1306)
+position = Vector2(782.0002, -1305)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall15" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1136861045 instance=ExtResource("5_nt06h")]

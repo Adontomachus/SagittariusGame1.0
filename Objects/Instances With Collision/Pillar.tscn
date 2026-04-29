@@ -5,15 +5,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(173.9113, 188.18759)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8ksj6"]
+polygon = PackedVector2Array(120.80305, 135.22736, 12.621216, 113.59097, -93.75758, 137.03036, -95.560616, 178.50008, -100.9697, 320.9395, -99.16668, 353.39404, -100.9697, 470.59103, -109.984856, 476.00012, -109.984856, 510.25772, -104.57577, 515.6668, -66.71213, 526.485, -19.833332, 539.1062, 9.015154, 542.7123, 14.424246, 542.7123, 43.27273, 537.30316, 75.72728, 531.8941, 108.18183, 522.8789, 117.19698, 519.2729, 129.8182, 513.8638, 138.83336, 510.25772, 138.83336, 490.42438, 138.83336, 476.00012, 131.62123, 476.00012, 126.212135, 472.39407, 126.212135, 434.53043, 122.60607, 250.6213, 122.60607, 192.92433)
+
 [node name="Pillar" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+[node name="PillarSprite" type="Sprite2D" parent="." unique_id=381333886]
 position = Vector2(-7.7870755, -299.80234)
 scale = Vector2(0.7198134, 0.71981335)
 texture = ExtResource("1_qm1x1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=476666062]
 position = Vector2(0, -4.5424585)
 shape = SubResource("RectangleShape2D_me4gi")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1520976045]
+position = Vector2(-7.7870755, -299.80234)
+scale = Vector2(0.7198134, 0.71981335)
+occluder = SubResource("OccluderPolygon2D_8ksj6")

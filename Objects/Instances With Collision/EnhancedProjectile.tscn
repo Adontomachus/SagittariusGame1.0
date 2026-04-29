@@ -26,6 +26,15 @@ fill_to = Vector2(0.77777785, 0.34188035)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.95894426, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Gradient" id="Gradient_5ky0l"]
+colors = PackedColorArray(0.916038, 0.93276894, 0.79363513, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dpnqh"]
+gradient = SubResource("Gradient_5ky0l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
 [node name="SplashBullet" type="Area2D" unique_id=132848767]
 modulate = Color(1.4954206, 1.4954206, 0.8693227, 1)
 self_modulate = Color(4.165, 4.165, 4.165, 1)
@@ -61,5 +70,11 @@ gravity = Vector2(0, 0)
 initial_velocity_max = 15.0
 scale_amount_curve = SubResource("Curve_7a4nw")
 color = Color(0.9309246, 1, 0.677051, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2075649940]
+scale = Vector2(12.031249, 12.031249)
+energy = 5.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dpnqh")
 
 [connection signal="set_projectile_modulate" from="." to="BulletSprite" method="set_modulate"]
