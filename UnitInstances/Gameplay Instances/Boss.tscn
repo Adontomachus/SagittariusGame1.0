@@ -18,13 +18,14 @@ radius = 103.84142
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 83.02409
 
-[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType"]]
+[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType"]]
 script = ExtResource("1_t5eiy")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(200, 500)
 maxHealthPoints = 2400
 amountOfPointOrbs = 15
+shoot_point = NodePath("ShootPoint")
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -34,6 +35,9 @@ debug_enabled = true
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1633150966]
+position = Vector2(1, -1)
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 scale = Vector2(0.24122807, 0.24122804)
@@ -96,7 +100,7 @@ offset_bottom = -35.0
 
 [node name="EnemyStateIdle" type="Node" parent="." unique_id=732527017]
 
-[node name="EnemyStateBulletBarrage" type="Node" parent="." unique_id=2060164638]
+[node name="EnemyStateStationaryBarrage" type="Node" parent="." unique_id=2060164638]
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=1146269158 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_b7mrf")
@@ -111,7 +115,7 @@ successful_chance_to_attack = 2.0
 [node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("after_position_state", "attack_state", "recovery_state")]
 script = ExtResource("5_4yo34")
 after_position_state = NodePath("../EnemyStateRecovery")
-attack_state = NodePath("../EnemyStateRecovery")
+attack_state = NodePath("../EnemyStateBarrage")
 successful_chance_to_attack = 4.0
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://bj6o7bxu2nywc"

@@ -7,8 +7,10 @@ extends Node2D
 var spawnTimer = randf_range(2,5)
 @export var player: Node2D # = $"../Player"
 
-## Temporary for main menu animations
-# @export var main_menu_transition: AnimationPlayer
+## For the combo system scoring methods
+@onready var combo_system: ComboSystems = $GameSystems/ComboSystem
+var player_combo_level: int
+
 
 # PAUSE UI
 @onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
@@ -131,7 +133,9 @@ var playerRadius = 300
 var instantiationPositions: Vector2
 
 func _process(delta):
-	# Gets the number of enemies present in the screen
+	## Gets the player's current combo level
+	player_combo_level = combo_system.combo_level
+	## Gets the number of enemies present in the screen
 	enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
 	#region value display for UI
 	wave_counter.text = "Wave: " + str(level_wave)

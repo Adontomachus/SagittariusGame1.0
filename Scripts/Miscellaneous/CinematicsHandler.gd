@@ -4,7 +4,7 @@ class_name LevelSceneHandler
 var game_is_over: bool = false
 var game_is_won: bool = false
 var can_play_animation: bool = true
-@onready var cutscene_background: ColorRect = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/CutsceneBackground"
+#@onready var cutscene_background: ColorRect = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/CutsceneBackground"
 @export var game_over_animations: AnimationPlayer
 @onready var win_screen: Control = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"
 @onready var lose_screen: Control = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/LoseScreen"

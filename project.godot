@@ -71,6 +71,7 @@ GeneralEnemyInstance="The lead group for anything that can be labeled as an enem
 AestheticDecoration=""
 ReactiveObstacle=""
 PlayerSystems="Handles the variables for player during gameplay scene"
+ScoreSystem=""
 
 [input]
 

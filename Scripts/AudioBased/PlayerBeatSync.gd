@@ -37,11 +37,11 @@ var combo_audio_pitch: float = 1
 @onready var p_combo_sound: AudioStreamPlayer2D = $PerfectShotComboSound
 #endregion
 
-#region other UI elements to beat sync for diegetic effects
-@onready var score: Label = $"../PlayerInfo/Score"
-@onready var wave_counter: Label = $"../PlayerInfo/WaveCounter"
+#region other UI elements to beat sync for diegetic effectss
 @onready var p_feedback: AnimationPlayer = $"../../Border Pulse/PerfectPulseFeedback"
-
+#region Region for beat indicator animations for players to follow through
+@onready var beat_indicator_animation: AnimationPlayer = $"../BeatIndicatorAnimation"
+#endregion
 ## This variable is for the combo pulse effect where its speed dynamically
 ## aligns with the tempo
 @export var combo_animation_pulse: AnimationPlayer
@@ -67,10 +67,7 @@ var tween: Tween
 #endregion
 
 
-#region Region for beat indicator animations for players to follow through
-@onready var beat_indicator_animation: AnimationPlayer = $"../BeatIndicatorAnimation"
 
-#endregion
 
 func _ready() -> void:
 	# Connect the shooting response to the player shoot function
@@ -184,6 +181,7 @@ func perfect_pulse_feedback() -> void:
 	return
 	
 func _combo_pulse() -> void:
+	## Sets the animation speed to match with the tempo, then plays it
 	combo_animation_pulse.speed_scale = tempo / 235
 	combo_animation_pulse.play("UIBeatPulse")
 	beat_indicator_animation.speed_scale = tempo / 32

@@ -666,6 +666,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [42]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EnemyCounter:label_settings:font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
 
 [sub_resource type="Animation" id="Animation_vwi3h"]
 resource_name = "UIBeatPulse"
@@ -729,6 +741,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [42, 44, 42]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EnemyCounter:label_settings:font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666666, 0.10231815),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 31, 30]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yb2d"]
@@ -815,6 +839,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(724, 969)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IndicatorSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CompanionProgressBar/Ability1Container:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CompanionProgressBar/Ability1Container/AbililtyKey2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
@@ -867,6 +927,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(724, 969), Vector2(952, 969)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IndicatorSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.042067092, 0.53333336, 1.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833), Vector2(0.19463079, 0.1744454), Vector2(0.14765143, 0.13233833), Vector2(0.14765143, 0.13233833)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CompanionProgressBar/Ability1Container:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.04270354, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CompanionProgressBar/Ability1Container/AbililtyKey2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.04270354, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
 _data = {
@@ -885,7 +981,7 @@ fill_to = Vector2(0.7905983, 0.14957266)
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
-length = 0.2
+length = 1.66
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -894,10 +990,22 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.2),
+"times": PackedFloat32Array(0, 0.13333334, 1.6333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.35, 1.35), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../IndicatorSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833), Vector2(0.18120798, 0.16241468), Vector2(0.14765143, 0.13233833)]
 }
 
 [sub_resource type="Animation" id="Animation_onpmq"]
@@ -913,6 +1021,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../IndicatorSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onpmq"]
@@ -1163,7 +1283,7 @@ script = ExtResource("5_jgp33")
 [node name="ComboSystem" type="Node" parent="GameSystems" unique_id=1947735173 groups=["PlayerSystems"]]
 script = ExtResource("2_vwi3h")
 
-[node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354 groups=["PlayerSystems"]]
+[node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354 groups=["PlayerSystems", "ScoreSystem"]]
 script = ExtResource("2_qvp00")
 
 [node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101 groups=["PlayerSystems"]]
@@ -1399,7 +1519,7 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 z_index = -1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0
+offset_right = 1225.0001
 offset_bottom = 1019.0
 color = Color(0.85559684, 1, 0.64379185, 1)
 
