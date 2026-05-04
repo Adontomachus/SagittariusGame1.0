@@ -30,7 +30,10 @@ const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.t
 var playerSpawnDistance = 250
 var shapeCast: ShapeCast2D
 var enemySpawnWeightCounter: int
+## Weighted enemy rarity values for spawning enemy variety
 var rarityWeight: float
+## This value increments the value per level, which makes it much more adjustable
+var rarityWeightIncrement: float = 0.5
 @export var maxRarityValue: float
 var enemySpawnCounter: int
 var enemyCount: int
@@ -202,8 +205,7 @@ func _process(delta):
 			level_wave += 1
 			waves_remaining -= 1
 			nextDuration = 8
-			_next_wave(1)
-
+			_next_wave(rarityWeightIncrement)
 	# If the current wave is completed
 				
 #endregion

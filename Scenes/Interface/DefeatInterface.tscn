@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://djpbi3ti2qmdk"]
 
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="1_fup76"]
+[ext_resource type="Script" uid="uid://itd88an3mkpp" path="res://Scripts/UI Menu, Settings and Post Game/GameOverStatistics.gd" id="1_g1d2b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
 line_spacing = 25.0
@@ -30,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g1d2b")
 
 [node name="LosePanel" type="PanelContainer" parent="." unique_id=245152519]
 modulate = Color(1, 0.11207495, 0.37804863, 1)

@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://d24063yq0kgko"]
 
-[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_g16c8"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_oc4nc"]
-[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_w0bs6"]
-[ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_w0bs6"]
+[ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy Scripts/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_kdy0d"]
-[ext_resource type="Script" uid="uid://bj6o7bxu2nywc" path="res://Scripts/Enemy/States/Enemy States/Position.gd" id="5_4yo34"]
+[ext_resource type="Script" uid="uid://bj6o7bxu2nywc" path="res://Scripts/Enemy Scripts/States/Enemy States/Position.gd" id="5_4yo34"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_oc4nc"]
-[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Enemy States/Recovery.gd" id="6_kdy0d"]
+[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="6_kdy0d"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_b7mrf"]
-[ext_resource type="Script" uid="uid://bgnnb24rgbqra" path="res://Scripts/Enemy/States/Exclusive Boss States/Barrage.gd" id="8_wouom"]
+[ext_resource type="Script" uid="uid://bgnnb24rgbqra" path="res://Scripts/Enemy Scripts/States/Exclusive Boss States/Barrage.gd" id="8_wouom"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 103.84142

@@ -19,6 +19,9 @@ var pulsePerBeat = 60.0 / tempo
 var halfPulsePerBeat = 60 / (tempo * 2)
 var lastBeat = 0
 
+## Variable for overall timing accuracy. This will show in post-game stats
+var total_accuracy: float
+var accuracy: float
 ## Variables for the full note
 var time: float
 var beat: float
@@ -129,20 +132,31 @@ func damage_modifier(timing: float) -> float:
 		p_combo_sound.play()
 		increase_player_attack_charge.emit()
 		increment_combo_meter.emit(40)
+		# Increments total accuracy
+		total_accuracy += 1
+		accuracy += 1
 		return 1.45
 
 	# Good
 	if timing > good_hit:
 		comboCounter = 0
 		increment_combo_meter.emit(15)
+		# Increments total accuracy
+		total_accuracy += 1
+		accuracy += 0.5
 		return 1.0
 	
 	# OK
 	if timing > ok_hit:
 		comboCounter = 0
+		# Increments total accuracy
+		total_accuracy += 1
+		accuracy += 0.25
 		return 0.8
 	
 	# BAD
+	# Increments total accuracy
+	total_accuracy += 1
 	comboCounter = 0
 	return 0.1
 
