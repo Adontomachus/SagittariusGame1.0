@@ -35,9 +35,9 @@ script = ExtResource("1_ek3bn")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
-attack_power = 15.0
 move_speed = 350.0
 player_radius = 300.0
+companion_damage = 22.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true
@@ -97,7 +97,6 @@ companion_node = NodePath("..")
 
 [node name="SlashHurtbox" type="CollisionShape2D" parent="SlashArea" unique_id=2089765813]
 shape = SubResource("CircleShape2D_xjnx0")
-disabled = true
 debug_color = Color(0.7784596, 0.4561587, 0.6860478, 0.42000002)
 
 [node name="EnemyTargetMarker" type="Sprite2D" parent="." unique_id=1231818989]

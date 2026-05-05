@@ -22,6 +22,7 @@ radius = 83.02409
 script = ExtResource("1_t5eiy")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
+boss_unit = true
 stamina_range = Vector2(200, 500)
 maxHealthPoints = 2400
 amountOfPointOrbs = 15

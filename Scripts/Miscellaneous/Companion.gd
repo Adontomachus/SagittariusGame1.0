@@ -10,7 +10,6 @@ extends CharacterBody2D
 @export var pathfinding: NavigationAgent2D
 
 @export_group("Companion Stats")
-@export var attack_power: float
 @export var move_speed: float
 
 # These are the main destination points for the companion to follow
@@ -33,11 +32,9 @@ var player_target: CharacterBody2D
 ## Variables for companion attack statistics
 @export_group("Attacking Stats")
 @export var dash_speed: float = 750
-@export var companion_damage: int = 30
+@export var companion_damage: float = 30
 @export var dash_duration: float = 0.5
 var is_dashing: bool = false
-# @export var slash_area: Area2D
-# @export var slash_hurtbox: CollisionShape2D
 ## Damage numbers
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 
@@ -58,7 +55,10 @@ func _process(delta: float) -> void:
 	nearest_enemy = _find_closest_enemy()
 	if nearest_enemy:
 		enemy_target_marker.global_position = nearest_enemy.global_position
-	# print("Nearest: ", nearest_enemy)
+		enemy_target_marker.visible = true
+	else:
+		enemy_target_marker.visible = false
+	# print("Nearest: ", nearest_enemy)saawdwdaasaas
 	state_machine.process_frame(delta)
 	pass
 
@@ -109,3 +109,9 @@ func _find_closest_enemy() -> Object:
 			minimum_distance = target_distance
 			nearest_enemy = enemy
 	return nearest_enemy
+
+## Function for upgrading companion damage when the player character levels up
+func _on_player_companion_upgrade() -> void:
+	companion_damage = companion_damage * 1.07
+	pass
+	

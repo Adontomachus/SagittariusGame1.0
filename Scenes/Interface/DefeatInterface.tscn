@@ -15,6 +15,8 @@ shadow_size = 18
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(12, 12)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g1d2b"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_15wqq"]
 line_spacing = 0.0
 font = ExtResource("1_fup76")
@@ -22,6 +24,8 @@ font_size = 52
 font_color = Color(1, 0.8059726, 0, 1)
 outline_size = 18
 outline_color = Color(0.17997457, 0.08508608, 0, 1)
+shadow_size = 25
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="LoseScreen" type="Control" unique_id=1347961824]
 process_mode = 3
@@ -77,6 +81,7 @@ theme_override_fonts/font = ExtResource("1_fup76")
 theme_override_font_sizes/font_size = 38
 text = "Try Again
 "
+icon = SubResource("CompressedTexture2D_g1d2b")
 
 [node name="ScoreStats" type="Label" parent="BigLoseText" unique_id=1698478150]
 layout_mode = 0

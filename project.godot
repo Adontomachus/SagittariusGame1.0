@@ -72,6 +72,8 @@ AestheticDecoration=""
 ReactiveObstacle=""
 PlayerSystems="Handles the variables for player during gameplay scene"
 ScoreSystem=""
+BossUI=""
+ComboManager=""
 
 [input]
 

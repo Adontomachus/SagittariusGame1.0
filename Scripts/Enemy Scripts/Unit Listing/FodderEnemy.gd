@@ -14,7 +14,10 @@ signal update_current_health_value(boss_health: int)
 @export var state_machine: EnemyStateMachine
 @export var navAgent: NavigationAgent2D
 
-
+## This boolean determines if the enemy is categorized as a boss.
+## It controls whether a boss health bar should appear if the unit instantiates.
+@export_category("Boss Unit Classification")
+@export var boss_unit: bool = false
 
 ## The enemy's target. Usually the player, but it could also be an objective.
 var target: CharacterBody2D
@@ -79,11 +82,12 @@ var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 func _ready():
 	state_machine.init(self)#, animations, audio_sfx)
 
-	# Set enemy stat
+	# Set enemy statistics
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
 	maxHealthPoints = maxHealthPoints * ScalingSystemScript.health_scaling
+	attackPower = attackPower * (ScalingSystemScript.health_scaling - 0.004)
 	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar
@@ -101,7 +105,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if target and shoot_point:
 		shoot_point.look_at(target.global_position)
-	# SPRITE FLIPPINGaw
+	# SPRITE FLIPPING
 	if target.get_global_position().x < global_position.x:
 		state_machine.sprite.flip_h = true
 		# shotgun = global_position + weaponOffset
@@ -109,7 +113,6 @@ func _physics_process(delta: float) -> void:
 		pass
 	else:
 		state_machine.sprite.flip_h = false
-
 	state_machine.process_physics(delta)
 	
 func _process(delta: float) -> void:

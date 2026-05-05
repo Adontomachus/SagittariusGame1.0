@@ -35,9 +35,10 @@ script = ExtResource("1_12uow")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
-attack_power = 15.0
-move_speed = 350.0
-player_radius = 300.0
+move_speed = 325.0
+player_radius = 165.0
+dash_speed = 715.0
+companion_damage = 42.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true

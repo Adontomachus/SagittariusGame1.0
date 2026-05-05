@@ -769,6 +769,15 @@ outline_color = Color(0.28680092, 0.16756532, 7.219613e-08, 1)
 shadow_size = 25
 shadow_color = Color(0.15170373, 0.03876, 0, 0.934)
 
+[sub_resource type="LabelSettings" id="LabelSettings_o710q"]
+line_spacing = 25.0
+paragraph_spacing = 5.0
+font = ExtResource("6_y268v")
+font_size = 20
+font_color = Color(0.86663747, 1, 0.1931151, 1)
+outline_size = 5
+outline_color = Color(0.16142681, 0.10905563, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_ve3xx"]
 font = ExtResource("6_y268v")
 font_size = 42
@@ -1270,7 +1279,7 @@ position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
-waves_remaining = 15
+waves_remaining = 10
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
@@ -1280,7 +1289,7 @@ levels = [NodePath("../GameLevelNode/Stage1"), null, null]
 [node name="LevelCutsceneDirector" type="Node" parent="GameSystems" unique_id=1584734885]
 script = ExtResource("5_jgp33")
 
-[node name="ComboSystem" type="Node" parent="GameSystems" unique_id=1947735173 groups=["PlayerSystems"]]
+[node name="ComboSystem" type="Node" parent="GameSystems" unique_id=1947735173 groups=["ComboManager", "PlayerSystems"]]
 script = ExtResource("2_vwi3h")
 
 [node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354 groups=["PlayerSystems", "ScoreSystem"]]
@@ -1405,14 +1414,6 @@ vertical_alignment = 1
 root_node = NodePath("../UpdatedComboCounter")
 libraries/ = SubResource("AnimationLibrary_7yb2d")
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=271453503]
-visible = false
-layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 13.0
-offset_bottom = 33.0
-
 [node name="WaveNotification" type="Label" parent="InterfaceElements/NewHUD/UI" unique_id=120682287]
 self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
@@ -1454,6 +1455,15 @@ offset_right = 477.0
 offset_bottom = 186.0
 theme_override_font_sizes/font_size = 6
 value = 2.1
+
+[node name="PlayerLevel" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=1560947566]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 82.0
+offset_right = 597.0
+offset_bottom = 115.0
+text = "Player Level: 1"
+label_settings = SubResource("LabelSettings_o710q")
 
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
 layout_mode = 0
@@ -1603,7 +1613,7 @@ theme_override_font_sizes/font_size = 40
 text = "Boss Health"
 horizontal_alignment = 1
 
-[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1272322535]
+[node name="BossHealthBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=1272322535 groups=["BossUI"]]
 visible = false
 layout_mode = 0
 offset_left = 155.0
@@ -1908,28 +1918,28 @@ position = Vector2(-69, 1334)
 
 [node name="Floordecoration" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=2103623591]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -2
+z_index = -13
 position = Vector2(67.83904, -13.499973)
 scale = Vector2(0.14391698, 0.14391698)
 texture = ExtResource("17_x4iy2")
 
 [node name="Floordecoration2" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=255453842]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -2
+z_index = -13
 position = Vector2(466, 1181.9999)
 scale = Vector2(0.13056332, 0.1305633)
 texture = ExtResource("17_x4iy2")
 
 [node name="Floordecoration3" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1468736820]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -2
+z_index = -13
 position = Vector2(2077, 1569)
 scale = Vector2(0.11572719, 0.11572718)
 texture = ExtResource("17_x4iy2")
 
 [node name="Floordecoration4" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=2141459531]
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -2
+z_index = -13
 position = Vector2(2476, -228)
 scale = Vector2(0.0979229, 0.09792287)
 texture = ExtResource("17_x4iy2")
@@ -2203,6 +2213,7 @@ texture = ExtResource("28_agm15")
 
 [node name="Floordecoration" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=82272627]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -13
 position = Vector2(1939, 447)
 scale = Vector2(0.21513353, 0.21513353)
 texture = ExtResource("17_x4iy2")
@@ -2794,6 +2805,8 @@ position = Vector2(447, 398)
 [connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_exitGame"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_resumeGame"]
+[connection signal="companion_upgrade" from="Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]
+[connection signal="companion_upgrade" from="Player" to="PlayerCatComp2" method="_on_player_companion_upgrade"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]
 [connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/ExperienceBar" method="set_value"]
 [connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" method="set_value"]

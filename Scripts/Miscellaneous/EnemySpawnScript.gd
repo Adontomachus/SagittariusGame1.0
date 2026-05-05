@@ -26,7 +26,7 @@ const CHANCE_RANGE: Vector2 = Vector2(0, 10)
 
 func _ready() -> void:
 	print("Chance Range: ", CHANCE_RANGE)
-	print("Spawning enemy with a rarity weight of: ", rarityWeight)
+	print("Spawning enemy with a rarity weights of: ", rarityWeight)
 	return
 	
 func _process(delta: float) -> void:

@@ -10,6 +10,10 @@ signal send_current_health(health: float)
 # Experience bar signals
 signal send_maximum_xp(max_xp: float)
 signal send_current_xp(xp: float)
+
+# Companion upgrade signal
+signal companion_upgrade
+
 @export var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
@@ -351,12 +355,13 @@ func modify_current_xp(modification: int) -> void:
 func upgrade_player_stats() -> void:
 	# Increases health and damage by 4% and maximum XP requirement by 6%
 	# Heals player for 20% max HP and resets current experience points by 0
-	maxHealthPoints = maxHealthPoints * 1.04
-	projectile_damage = projectile_damage * 1.04
-	maxExperiencePoints = maxExperiencePoints * 1.06
+	maxHealthPoints = maxHealthPoints * 1.03
+	projectile_damage = projectile_damage * 1.06
+	maxExperiencePoints = maxExperiencePoints * 1.05
 	experiencePoints = 0
 	healthPoints += maxHealthPoints / 5
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
+	
 	# Level up effects
 	var levelUpEffect = upgradeEffect.instantiate()
 	levelUpEffect.position = self.get_global_position()
@@ -365,5 +370,6 @@ func upgrade_player_stats() -> void:
 	send_current_xp.emit(experiencePoints)
 	send_maximum_xp.emit(maxExperiencePoints)
 	send_maximum_health.emit(maxHealthPoints)
+	companion_upgrade.emit()
 	pass
 #endregion
