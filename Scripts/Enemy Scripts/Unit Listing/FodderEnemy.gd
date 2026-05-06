@@ -169,6 +169,11 @@ func _delete_and_emit_effects():
 		rewards.position = self.get_global_position()
 		get_tree().get_root().call_deferred("add_child", rewards)
 	call_deferred("queue_free")
+	
+	## If the unit is considered the "final boss of the level", play a cutscene 
+	## of the boss getting defeated and roll out victorious post game statistics
+	if boss_unit:
+		return
 	return
 	
 func _aoe_damage_feedback(increment: int):

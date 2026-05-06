@@ -1279,7 +1279,7 @@ position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
-waves_remaining = 10
+waves_remaining = 8
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
@@ -1332,8 +1332,10 @@ process_mode = 3
 [node name="GameOverNode" type="Node" parent="InterfaceElements/NewHUD/UI/CutsceneUI" unique_id=923449886]
 process_mode = 3
 
-[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1347961824 instance=ExtResource("10_hlum5")]
+[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "game_manager") instance=ExtResource("10_hlum5")]
 visible = false
+beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
+game_manager = NodePath("../../../../../..")
 
 [node name="CutsceneBackground" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=91659015]
 process_mode = 3
@@ -1343,9 +1345,11 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.07016479, 0.07016479, 0, 1)
 
-[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 node_paths=PackedStringArray("beat_sync_script") instance=ExtResource("11_4t4xv")]
+[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 node_paths=PackedStringArray("beat_sync_script", "game_manager") instance=ExtResource("11_4t4xv")]
+visible = false
 modulate = Color(1, 1, 1, 0)
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
+game_manager = NodePath("../../../../../..")
 
 [node name="GameOverAnimations" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1479518595]
 process_mode = 3
@@ -2820,6 +2824,8 @@ position = Vector2(447, 398)
 [connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/UpdatedBossHealthBar" method="set_max"]
 [connection signal="update_max_health_value" from="Boss" to="InterfaceElements/NewHUD/UI/BossHealthBar" method="set_max"]
 
+[editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"]
+[editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/LoseScreen"]
 [editable path="InterfaceElements/NewHUD/UI/PauseScreen"]
 [editable path="Boss"]
 [editable path="PlayerCatComp"]

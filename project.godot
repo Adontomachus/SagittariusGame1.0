@@ -23,6 +23,7 @@ PointSystemScript="*uid://0djl3e1qunrm"
 ScalingSystemScript="*uid://d1e13o8vj8tni"
 GlobalBeatSync="*uid://dmbjnwoggo55o"
 DynamicLevelScript="*uid://bsk5nfp8klfyc"
+CinematicsHandler="*uid://crr4fdev6qi70"
 
 [display]
 

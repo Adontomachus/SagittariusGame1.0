@@ -58,8 +58,10 @@ shape = SubResource("CircleShape2D_kpdv2")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 
 [node name="UltimateAreaOfEffect" type="Area2D" parent="." unique_id=661872516]
+visible = false
 
 [node name="AreaHurtbox" type="CollisionShape2D" parent="UltimateAreaOfEffect" unique_id=235718903]
+visible = false
 shape = SubResource("CircleShape2D_4k6ra")
 debug_color = Color(0.962128, 0.89471775, 0.32086813, 0.043)
 

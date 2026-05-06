@@ -1,6 +1,7 @@
 class_name BeatSync_Script
 extends Panel
 
+## Signals section
 signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Color)
 signal increase_player_attack_charge
 signal increment_combo_meter(strength_value: float)
@@ -19,9 +20,8 @@ var pulsePerBeat = 60.0 / tempo
 var halfPulsePerBeat = 60 / (tempo * 2)
 var lastBeat = 0
 
-## Variable for overall timing accuracy. This will show in post-game stats
-var total_accuracy: float
-var accuracy: float
+
+
 ## Variables for the full note
 var time: float
 var beat: float
@@ -76,17 +76,14 @@ func _ready() -> void:
 	# Connect the shooting response to the player shoot function
 	var player = get_tree().get_first_node_in_group("PlayerObject")
 	player_shoot_projectile.connect(player._shoot_projectile)
-
 	# Get the latency
 	audio_latency = AudioServer.get_output_latency()
 
 	scale = Vector2(starting_scale, starting_scale)
 	
 func _process(_delta) -> void:
-
 	p_combo_sound.pitch_scale = combo_audio_pitch
 	combo_audio_pitch = 1 + (comboCounter * 0.06)
-	
 	# For combo text
 	if level_song.playing == false:
 		return
@@ -132,38 +129,28 @@ func damage_modifier(timing: float) -> float:
 		p_combo_sound.play()
 		increase_player_attack_charge.emit()
 		increment_combo_meter.emit(40)
-		# Increments total accuracy
-		total_accuracy += 1
-		accuracy += 1
-		return 1.45
+		return 1.45		
+
 
 	# Good
 	if timing > good_hit:
 		comboCounter = 0
 		increment_combo_meter.emit(15)
-		# Increments total accuracy
-		total_accuracy += 1
-		accuracy += 0.5
 		return 1.0
 	
 	# OK
 	if timing > ok_hit:
 		comboCounter = 0
-		# Increments total accuracy
-		total_accuracy += 1
-		accuracy += 0.25
 		return 0.8
 	
 	# BAD
-	# Increments total accuracy
-	total_accuracy += 1
-	comboCounter = 0
 	return 0.1
 
 func projectile_color(timing: float) -> Color:
 	# Perfect
 	if timing > perfect_hit:
 		comboCounter += 1
+		PointSystemScript.playerScore += 1
 		return Color.html("#1ce1ebff")
 
 	# Good
@@ -179,17 +166,23 @@ func projectile_color(timing: float) -> Color:
 	# BAD
 	comboCounter = 0
 	return Color.html("#ff3b2dff")
+	
+
 
 
 
 
 func indicator_pulse() -> void:
+	print("Total Accuracy: ", PointSystemScript.accuracy , "%")
 	if tween:
 		tween.kill()
 	tween = create_tween()
 
 	scale = Vector2(starting_scale, starting_scale)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat / 1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
+	## For debug purposes
+
+
 
 func perfect_pulse_feedback() -> void:
 	return
@@ -200,10 +193,3 @@ func _combo_pulse() -> void:
 	combo_animation_pulse.play("UIBeatPulse")
 	beat_indicator_animation.speed_scale = tempo / 32
 	beat_indicator_animation.play("RhythmIndicator")
-#func ui_pulse() -> void:
-#	if tween:
-#		tween.kill()
-#	tween = create_tween()
-#	scale = Vector2(starting_scale, starting_scale)
-#	
-#	return

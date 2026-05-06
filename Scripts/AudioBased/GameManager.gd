@@ -141,7 +141,7 @@ func _process(delta):
 	## Gets the number of enemies present in the screen
 	enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
 	#region value display for UI
-	wave_counter.text = "Wave: " + str(level_wave)
+	wave_counter.text = "Waves Remaining: " + str(waves_remaining)
 	enemy_counter.text = "Enemies Left: " + str(enemyCount)
 	score.text = "Score: " + str(PointSystemScript.playerScore)
 	#endregion
@@ -199,11 +199,11 @@ func _process(delta):
 		
 	# If the completed notification ends, go to the next wave and increase stat increments
 		if wave_notification.self_modulate.a < 0 && waves_remaining != 0:
+			waves_remaining -= 1
 			_change_spawning_state(spawningBehavior.Preparation)
 			scale_on_next_wave.emit()
 			enemySpawnCounter = 10 + (level_wave * 2)
 			level_wave += 1
-			waves_remaining -= 1
 			nextDuration = 8
 			_next_wave(rarityWeightIncrement)
 	# If the current wave is completed

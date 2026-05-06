@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://baq8lvbpwxgpg"]
 
+[ext_resource type="Script" uid="uid://itd88an3mkpp" path="res://Scripts/UI Menu, Settings and Post Game/GameOverStatistics.gd" id="1_15wqq"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="1_lb4k1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
@@ -22,7 +23,7 @@ font_color = Color(1, 0.8059726, 0, 1)
 outline_size = 18
 outline_color = Color(0.17997457, 0.08508608, 0, 1)
 
-[node name="WinScreen" type="Control" unique_id=1347961824]
+[node name="WinScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("damage_dealt", "score_stats", "exit_button", "resume_button")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +31,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_15wqq")
+damage_dealt = NodePath("GamePausedText/DamageDealt")
+score_stats = NodePath("GamePausedText/ScoreStats")
+exit_button = NodePath("GamePausedText/ExitButton")
+resume_button = NodePath("GamePausedText/ResumeButton")
 
 [node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
 layout_mode = 0
@@ -107,3 +113,5 @@ offset_bottom = 645.0
 text = "Highest Level Reached:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
+
+[connection signal="pressed" from="GamePausedText/ResumeButton" to="." method="on_win_press"]

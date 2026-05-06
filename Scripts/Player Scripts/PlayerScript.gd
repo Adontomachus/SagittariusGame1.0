@@ -23,9 +23,11 @@ signal companion_upgrade
 #region General Player Statistics		
 
 ## This variable determines if the player can provide inputs for the player character
-## This boolean is usually set true when 
+## This boolean is usually set to true as long as the scene isn't paused
 var can_control_unit: bool = true
 
+## Player Level section
+var player_level: int = 1
 var maxHealthPoints: float = 100.0
 var experiencePoints: int = 0
 var maxExperiencePoints: int = 60
@@ -145,7 +147,7 @@ func _process(delta):
 	
 	## Decrement cooldown in delta when the AoE ability is used
 	ability_cooldown -= 1 * delta
-	print ("Cooldown: ", ability_cooldown)
+	#print ("Cooldown: ", ability_cooldown)
 	
 	if ability_cooldown < 0: can_use_ability = true
 	
@@ -300,7 +302,7 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	# Charge up powered shot, up to 8 times
 	## This function is signaled through the beat indicator
 func increment_player_charge_attack() -> void:
-	print("CHARGING SHOT: ", shots_for_charged)
+	# print("CHARGING SHOT: ", shots_for_charged)
 	shots_for_charged += 1
 	
 #endregion
@@ -353,8 +355,9 @@ func modify_current_xp(modification: int) -> void:
 	send_current_xp.emit(experiencePoints)
 # Function for upgrading player stats upon levelling up
 func upgrade_player_stats() -> void:
-	# Increases health and damage by 4% and maximum XP requirement by 6%
+	# Increases health and damage by 4% and maximum XP requirement by 6% and increment player level by 1
 	# Heals player for 20% max HP and resets current experience points by 0
+	player_level += 1
 	maxHealthPoints = maxHealthPoints * 1.03
 	projectile_damage = projectile_damage * 1.06
 	maxExperiencePoints = maxExperiencePoints * 1.05

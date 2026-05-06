@@ -15,6 +15,7 @@ func _ready() -> void:
 	area_indicator.play("PulseEffect")
 	self.area_entered.connect(func(area) -> void:
 		if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
+			PointSystemScript.total_damage_dealt += aoe_damage
 			area.modify_enemy_health(-aoe_damage)
 			area.show_aoe_feedback(aoe_damage)
 	)

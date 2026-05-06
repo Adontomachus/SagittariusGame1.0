@@ -27,7 +27,7 @@ outline_color = Color(0.17997457, 0.08508608, 0, 1)
 shadow_size = 25
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="LoseScreen" type="Control" unique_id=1347961824]
+[node name="LoseScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("damage_dealt", "score_stats", "exit_button", "resume_button")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -36,6 +36,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g1d2b")
+damage_dealt = NodePath("BigLoseText/DamageDealt")
+score_stats = NodePath("BigLoseText/ScoreStats")
+exit_button = NodePath("BigLoseText/ExitButton")
+resume_button = NodePath("BigLoseText/ResumeButton")
 
 [node name="LosePanel" type="PanelContainer" parent="." unique_id=245152519]
 modulate = Color(1, 0.11207495, 0.37804863, 1)
@@ -122,3 +126,5 @@ offset_bottom = 645.0
 text = "Highest Level Reached:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
+
+[connection signal="pressed" from="BigLoseText/ResumeButton" to="." method="on_lose_press"]

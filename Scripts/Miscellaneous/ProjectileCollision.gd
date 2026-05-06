@@ -62,6 +62,7 @@ func _ready():
 					var damageFeedback = damageNumber.instantiate()
 					damageFeedback.position = self.get_global_position() + initPosition
 					damageFeedback.damage_value = projectile_damage
+					PointSystemScript.total_damage_dealt += projectile_damage
 					get_tree().get_root().call_deferred("add_child", damageFeedback)
 					queue_free()
 
@@ -94,6 +95,7 @@ func _ready():
 					var damageFeedback = damageNumber.instantiate()
 					damageFeedback.position = self.get_global_position() + initPosition
 					damageFeedback.damage_value = projectile_damage
+					PointSystemScript.total_damage_dealt += projectile_damage
 					if criticalHit: damageFeedback.is_critical_hit = true
 					get_tree().get_root().call_deferred("add_child", damageFeedback)
 
