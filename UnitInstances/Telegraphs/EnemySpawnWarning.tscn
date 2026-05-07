@@ -3,9 +3,18 @@
 [ext_resource type="Script" uid="uid://c78qsvqbiiip" path="res://Scripts/Miscellaneous/EnemySpawnScript.gd" id="1_m54ri"]
 [ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="2_t83xd"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m54ri"]
+radius = 26.076809
+
 [node name="EnemyWarning" type="Node2D" unique_id=1957876012]
 script = ExtResource("1_m54ri")
 
 [node name="Telegraph" type="Sprite2D" parent="." unique_id=2060875926]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_t83xd")
+
+[node name="ObstacleChecker" type="Area2D" parent="." unique_id=316511261]
+
+[node name="ObstacleCheckerRadius" type="CollisionShape2D" parent="ObstacleChecker" unique_id=1038756553]
+shape = SubResource("CircleShape2D_m54ri")
+disabled = true

@@ -2,9 +2,13 @@ class_name HUDClass
 extends CanvasLayer
 var tween: Tween
 
+## Gets the player node for its statistics to display in the interface.
+@export_category("Player Character")
+@export var player_character: PlayerCharacter
+
 @onready var wave_notification: Label = $UI/WaveNotification
 
-# Color & Glow Effects
+## Color & Glow Effects
 @onready var updated_player_health_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar
 @onready var updated_boss_health_bar: TextureProgressBar = $UI/UpdatedBossHealthBar
 @onready var updated_experience_bar: TextureProgressBar = $UI/UpdatedExperienceBar
@@ -14,8 +18,9 @@ var tween: Tween
 
 
 @onready var score: Label = $UI/PlayerInfo/Score
-# @onready var wave_counter: Label = $UI/PlayerInfo/WaveCounter
+## @onready var wave_counter: Label = $UI/PlayerInfo/WaveCounter
 @onready var combo_counter: Label = $UI/PlayerInfo/ComboCounter
+@onready var player_level: Label = $UI/UpdatedPlayerHealthBar/PlayerLevel
 @export var starting_scale: float =  3
 @export var tempo: float = 120.0
 #@export var animation_pulse: AnimationPlayer
@@ -35,6 +40,7 @@ func _process(delta):
 	#	print("THE INTERFACE HAS BEEN SYNCED TO THE BEAT OF THE MUSIC")
 	timeToChangeColor -= 1 * delta
 	#print (GlobalBeatSync.lastBeat)
+	player_level.text = "Player Level: " + str(player_character.player_level)
 	if current_glow_strength < glow_strength: current_glow_strength = glow_strength
 	else: current_glow_strength -= 1 * delta
 	change_color()

@@ -68,6 +68,7 @@
 
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,10 +100,22 @@ tracks/2/path = NodePath("GameOverNode/LoseScreen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.03292173, 0.5),
+"times": PackedFloat32Array(0, 1.9, 2.7666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverNode/LoseScreen/BigLoseText:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.3666666, 4.52),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hlum5"]
@@ -142,6 +155,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverNode/LoseScreen/BigLoseText:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o710q"]
@@ -678,6 +703,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [30]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vwi3h"]
 resource_name = "UIBeatPulse"
@@ -753,6 +802,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [30, 31, 31, 30]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(4.415934, 4.415934, 4.415934, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.05, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yb2d"]
@@ -1313,8 +1386,9 @@ script = ExtResource("4_b5kf5")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
 
-[node name="NewHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=1380499986]
+[node name="NewHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=1380499986 node_paths=PackedStringArray("player_character")]
 script = ExtResource("3_exhb5")
+player_character = NodePath("../../Player")
 
 [node name="UI" type="Control" parent="InterfaceElements/NewHUD" unique_id=275107756]
 layout_mode = 3
@@ -1346,7 +1420,6 @@ offset_bottom = 1080.0
 color = Color(0.07016479, 0.07016479, 0, 1)
 
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 node_paths=PackedStringArray("beat_sync_script", "game_manager") instance=ExtResource("11_4t4xv")]
-visible = false
 modulate = Color(1, 1, 1, 0)
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 game_manager = NodePath("../../../../../..")
@@ -1441,6 +1514,7 @@ texture_under = ExtResource("4_b4hlm")
 texture_progress = ExtResource("5_fklr0")
 
 [node name="ChargeUpBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=1212998886]
+visible = false
 modulate = Color(2.210482, 2.5032542, 0, 1)
 layout_mode = 0
 offset_left = 96.0
@@ -1451,6 +1525,7 @@ theme_override_font_sizes/font_size = 6
 value = 2.1
 
 [node name="ExperienceBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=787785722]
+visible = false
 modulate = Color(0, 0.60124344, 1, 1)
 layout_mode = 0
 offset_left = 217.0
@@ -1461,11 +1536,12 @@ theme_override_font_sizes/font_size = 6
 value = 2.1
 
 [node name="PlayerLevel" type="Label" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=1560947566]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
-offset_left = 259.0
-offset_top = 82.0
-offset_right = 597.0
-offset_bottom = 115.0
+offset_left = 215.0
+offset_top = 172.0
+offset_right = 553.0
+offset_bottom = 205.0
 text = "Player Level: 1"
 label_settings = SubResource("LabelSettings_o710q")
 
@@ -2620,6 +2696,13 @@ energy = 2.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_4t4xv")
 
+[node name="BlueAreaLight5" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1678965497]
+position = Vector2(2994, 1188.9999)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4t4xv")
+
 [node name="BlueAreaLight3" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1880718453]
 position = Vector2(602, 985.99994)
 scale = Vector2(24.687504, 24.687504)
@@ -2629,6 +2712,13 @@ texture = SubResource("GradientTexture2D_e8aea")
 
 [node name="BlueAreaLight4" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1874395742]
 position = Vector2(1117, 1957)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_e8aea")
+
+[node name="BlueAreaLight6" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1384044228]
+position = Vector2(2867, 427)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0
 shadow_enabled = true
