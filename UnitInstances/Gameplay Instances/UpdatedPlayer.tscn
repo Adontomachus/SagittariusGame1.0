@@ -1,0 +1,225 @@
+[gd_scene format=3 uid="uid://rofdw18x4wjv"]
+
+[ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/Player Scripts/PlayerScript.gd" id="1_br7sm"]
+[ext_resource type="Texture2D" uid="uid://b2nmgvvaxsn4k" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle1.png" id="2_ewfc3"]
+[ext_resource type="Texture2D" uid="uid://cm0bwhlcstfpj" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle3.png" id="3_f8ulq"]
+[ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="4_7y7rr"]
+[ext_resource type="Texture2D" uid="uid://dsrkwoaiqe2t7" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE1.png" id="4_fkjah"]
+[ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="5_clq26"]
+[ext_resource type="Texture2D" uid="uid://djbmwi1cobm76" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE2.png" id="5_hefdh"]
+[ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="6_ncsek"]
+[ext_resource type="Texture2D" uid="uid://l1ta4lap8311" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE3.png" id="6_rekrv"]
+[ext_resource type="Texture2D" uid="uid://dlur8r0o6a22r" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE4.png" id="7_05w5e"]
+[ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="8_5upoe"]
+[ext_resource type="Texture2D" uid="uid://gr14w16h7rfg" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE5.png" id="8_jnuup"]
+[ext_resource type="Texture2D" uid="uid://bkx8e0olqi6lr" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE6.png" id="9_g1pxq"]
+[ext_resource type="Texture2D" uid="uid://d1iell8esy6nw" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE7.png" id="10_drh8d"]
+[ext_resource type="Texture2D" uid="uid://cri0hallrmbk" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle4.png" id="12_ydop2"]
+[ext_resource type="Texture2D" uid="uid://cxj1hws4lau1f" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle5.png" id="13_wtlg5"]
+[ext_resource type="Texture2D" uid="uid://24r8oon6nn5l" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle6.png" id="14_6bukd"]
+[ext_resource type="Texture2D" uid="uid://dh27chreavtjo" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle7.png" id="15_qmu5k"]
+[ext_resource type="Texture2D" uid="uid://dqmjfk5081pn0" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle8.png" id="16_u1a8j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4t4xv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8aea"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("4_fkjah")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_hefdh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_rekrv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_05w5e")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_jnuup")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_g1pxq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_drh8d")
+}],
+"loop": true,
+"name": &"NorthEastWalking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4hlm"]
+radius = 21.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fklr0"]
+radius = 19.104973
+
+[sub_resource type="Gradient" id="Gradient_81epe"]
+colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1plk"]
+gradient = SubResource("Gradient_81epe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75641024, 0.20512821)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0i5v"]
+radius = 300.0
+
+[sub_resource type="Gradient" id="Gradient_p0i5v"]
+colors = PackedColorArray(1, 1, 0.2716998, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ni7mq"]
+gradient = SubResource("Gradient_p0i5v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.517094, 0.46581197)
+
+[sub_resource type="Curve" id="Curve_t1mfx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49853373, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Player" type="CharacterBody2D" unique_id=1361706887 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+unique_name_in_owner = true
+process_mode = 3
+position = Vector2(591, 278)
+script = ExtResource("1_br7sm")
+pulse_sound_effect = NodePath("PulseSoundEffect")
+can_use_ability = true
+max_ability_cooldown = 30.0
+can_use_companion_ability = true
+ability_visual_feedback = NodePath("")
+sprite_up = NodePath("PlayerSpriteUp")
+sprite_up_right = NodePath("PlayerSpriteUpRight")
+sprite_right = NodePath("PlayerSpriteRight")
+sprite_down_right = NodePath("PlayerSpriteDownRight")
+sprite_down = NodePath("PlayerSpriteDown")
+sprite_down_left = NodePath("PlayerSpriteDownLeft")
+sprite_left = NodePath("PlayerSpriteLeft")
+sprite_up_left = NodePath("PlayerSpriteUpLeft")
+cutscene_handler = NodePath("")
+
+[node name="ShotPoint" type="Marker2D" parent="." unique_id=432118517]
+position = Vector2(11, -4)
+
+[node name="PlayerSpriteUp" type="Sprite2D" parent="." unique_id=327068609]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("2_ewfc3")
+
+[node name="PlayerSpriteUpWalking" type="AnimatedSprite2D" parent="PlayerSpriteUp" unique_id=1155254831]
+visible = false
+sprite_frames = SubResource("SpriteFrames_4t4xv")
+
+[node name="PlayerSpriteUpRight" type="Sprite2D" parent="." unique_id=892615700]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("4_7y7rr")
+
+[node name="PlayerSpriteUpRightWalking" type="AnimatedSprite2D" parent="." unique_id=856534775]
+visible = false
+scale = Vector2(0.22399989, 0.2239997)
+sprite_frames = SubResource("SpriteFrames_e8aea")
+animation = &"NorthEastWalking"
+frame_progress = 0.64611644
+
+[node name="PlayerSpriteRight" type="Sprite2D" parent="." unique_id=428970491]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("3_f8ulq")
+
+[node name="PlayerSpriteDownRight" type="Sprite2D" parent="." unique_id=1483812753]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("12_ydop2")
+
+[node name="PlayerSpriteDown" type="Sprite2D" parent="." unique_id=29883742]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("13_wtlg5")
+
+[node name="PlayerSpriteDownLeft" type="Sprite2D" parent="." unique_id=542170193]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("14_6bukd")
+
+[node name="PlayerSpriteLeft" type="Sprite2D" parent="." unique_id=953147019]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("15_qmu5k")
+
+[node name="PlayerSpriteUpLeft" type="Sprite2D" parent="." unique_id=1412238563]
+visible = false
+self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
+scale = Vector2(0.22399989, 0.2239997)
+texture = ExtResource("16_u1a8j")
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="." unique_id=317393773]
+shape = SubResource("CircleShape2D_ydlo6")
+
+[node name="EnemyCollision" type="Area2D" parent="." unique_id=1628712773 groups=["PlayerObject"]]
+
+[node name="MeleeHitbox" type="CollisionShape2D" parent="EnemyCollision" unique_id=1093381921 groups=["PlayerObject"]]
+shape = SubResource("CircleShape2D_b4hlm")
+debug_color = Color(0.941486, 9.337366e-06, 0.6125818, 0.41960785)
+
+[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=295139341]
+script = ExtResource("5_clq26")
+
+[node name="BulletHitbox" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=2095011661]
+shape = SubResource("CircleShape2D_fklr0")
+debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
+
+[node name="PulseSoundEffect" type="AudioStreamPlayer" parent="." unique_id=34773270]
+stream = ExtResource("8_5upoe")
+volume_db = -10.0
+pitch_scale = 4.0
+
+[node name="ShotAudio" type="AudioStreamPlayer" parent="." unique_id=1933138720]
+stream = ExtResource("6_ncsek")
+volume_db = -15.0
+
+[node name="CharacterLight" type="PointLight2D" parent="." unique_id=1589786795]
+scale = Vector2(42.156246, 42.156246)
+energy = 2.75
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_y1plk")
+
+[node name="AbilityAoE" type="Area2D" parent="." unique_id=1737644977]
+
+[node name="AoEHurtbox" type="CollisionShape2D" parent="AbilityAoE" unique_id=1743309487]
+shape = SubResource("CircleShape2D_p0i5v")
+debug_color = Color(0.5036662, 0.42920431, 0.12006802, 0.011764706)
+
+[node name="AbilityParticles" type="CPUParticles2D" parent="AbilityAoE" unique_id=1065528003]
+scale = Vector2(2.4399977, 2.4399977)
+amount = 25
+texture = SubResource("GradientTexture2D_ni7mq")
+lifetime = 0.85
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 10.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_t1mfx")
+
+[connection signal="experience_modify" from="ProjectileHitbox" to="." method="modify_current_xp"]
+[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]

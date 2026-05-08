@@ -87,7 +87,7 @@ func _ready():
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
 	maxHealthPoints = maxHealthPoints * ScalingSystemScript.health_scaling
-	attackPower = attackPower * (ScalingSystemScript.health_scaling - 0.004)
+	attackPower = attackPower * ScalingSystemScript.attack_power_scaling
 	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar

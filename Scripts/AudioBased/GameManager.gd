@@ -232,7 +232,7 @@ func _process(delta):
 	#endregion 
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
-	instantiationPositions = Vector2(player.global_position.x + randf_range(400,900), player.global_position.y + randf_range(155,455))
+	instantiationPositions = Vector2(player.global_position.x + randf_range(-650,650), player.global_position.y + randf_range(-310,310))
 	#endregion
 	
 	

@@ -53,15 +53,17 @@ func _process(delta: float) -> void:
 		# This conditional statement checks if rarity value is lower than the chance range
 		# If it succeeds, the telegraphed location will spawn an alternate enemy
 		# which becomes more commmon on later enemy waves	
-		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight - 3:
-			_spawn_elite_enemy()
-		elif randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight:
-			_spawn_alt_enemy()
-		elif final_wave:
+		if final_wave:
 			_spawn_boss_enemy()
 		else:
-			_spawn_enemy()
-		return
+			if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight - 3:
+				_spawn_elite_enemy()
+			elif randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight:
+				_spawn_alt_enemy()
+
+			else:
+				_spawn_enemy()
+			return
 	return
 
 #region Enemy type spawns

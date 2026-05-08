@@ -26,6 +26,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	score_stats.text = "Total Score: " + str(PointSystemScript.playerScore)
 	damage_dealt.text = "Total Damage Given: " + str(PointSystemScript.total_damage_dealt)
+	highest_level_reached.text = "Highest Level: " + str(PointSystemScript.player_levels)
 	#beat_sync_script.accuracy = total_accuracy
 	#beat_sync_script.total_accuracy = total_maximum_accuracy
 	#accuracy_percentage = (total_accuracy / total_maximum_accuracy) * 100

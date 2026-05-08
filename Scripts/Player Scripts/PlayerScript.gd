@@ -22,10 +22,6 @@ signal companion_upgrade
 
 #region General Player Statistics		
 
-## This variable determines if the player can provide inputs for the player character
-## This boolean is usually set to true as long as the scene isn't paused
-var can_control_unit: bool = true
-
 ## Player Level section
 var player_level: int = 1
 var maxHealthPoints: float = 100.0
@@ -55,12 +51,12 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 @export_category("Number of perfect shots for enhanced attack")
 #endregion
 
-#region This section consists of player abilities
-# Amount for a charged AoE attack
+#region This section consists of player abilities and a sole boolean if controllable
+## Amount for a charged AoE attack
 @export var max_shots_for_charged: int = 8
 var shots_for_charged: int = 8
 
-# Booleans and conditions for using player abilities
+## Booleans and conditions for using player abilities
 @export var can_use_ability: bool
 var ability_active: bool
 var ability_duration: int
@@ -71,6 +67,10 @@ var ability_cooldown: float
 @export var max_companion_ability_charge: float
 var companion_ability_charge: float
 @export var ability_visual_feedback: AnimationPlayer
+ 
+## This variable determines if the player can provide inputs for the player character
+## This boolean is usually set to true as long as the scene isn't paused
+var can_control_unit: bool = true
 #endregion
 
 ## TESTING PURPOSES
@@ -342,6 +342,7 @@ func modify_current_player_health(modification: int) -> void:
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	if (healthPoints <= 0):
 		print("Game Over!")
+		can_control_unit = false
 		cutscene_handler.game_is_over = true
 		get_tree().paused = true
 	send_current_health.emit(healthPoints)
@@ -358,6 +359,7 @@ func upgrade_player_stats() -> void:
 	# Increases health and damage by 4% and maximum XP requirement by 6% and increment player level by 1
 	# Heals player for 20% max HP and resets current experience points by 0
 	player_level += 1
+	PointSystemScript.player_levels = player_level
 	maxHealthPoints = maxHealthPoints * 1.03
 	projectile_damage = projectile_damage * 1.06
 	maxExperiencePoints = maxExperiencePoints * 1.05

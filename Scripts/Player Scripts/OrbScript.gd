@@ -50,7 +50,7 @@ func _physics_process(delta):
 		movespeed -=  300 * delta
 	if (movespeed <= 0):
 		chaseTarget = true
-	if (chaseTarget):
+	if chaseTarget and objectTarget:
 		movespeed += 355 * delta
 		look_at(objectTarget.global_position)
 

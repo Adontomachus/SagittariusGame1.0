@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="8_81epe"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="8_fklr0"]
+[ext_resource type="Script" uid="uid://de550e6jmpmk1" path="res://Scripts/Miscellaneous/UpgradeSystemScript.gd" id="8_hlum5"]
 [ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Enemy Instances/Boss.tscn" id="10_30wor"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="10_32gqm"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
@@ -1379,6 +1380,9 @@ process_mode = 3
 script = ExtResource("6_110ka")
 game_over_animations = NodePath("../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/GameOverAnimations")
 
+[node name="UpgradeSystems" type="Node" parent="GameSystems" unique_id=1823584797 groups=["PlayerSystems"]]
+script = ExtResource("8_hlum5")
+
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
@@ -1406,10 +1410,11 @@ process_mode = 3
 [node name="GameOverNode" type="Node" parent="InterfaceElements/NewHUD/UI/CutsceneUI" unique_id=923449886]
 process_mode = 3
 
-[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "game_manager") instance=ExtResource("10_hlum5")]
+[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "game_manager", "highest_level_reached") instance=ExtResource("10_hlum5")]
 visible = false
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 game_manager = NodePath("../../../../../..")
+highest_level_reached = NodePath("GamePausedText/HighestLevelReached")
 
 [node name="CutsceneBackground" type="ColorRect" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=91659015]
 process_mode = 3
@@ -1419,10 +1424,11 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.07016479, 0.07016479, 0, 1)
 
-[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 node_paths=PackedStringArray("beat_sync_script", "game_manager") instance=ExtResource("11_4t4xv")]
+[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 node_paths=PackedStringArray("beat_sync_script", "game_manager", "highest_level_reached") instance=ExtResource("11_4t4xv")]
 modulate = Color(1, 1, 1, 0)
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 game_manager = NodePath("../../../../../..")
+highest_level_reached = NodePath("BigLoseText/HighestLevelReached")
 
 [node name="GameOverAnimations" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=1479518595]
 process_mode = 3
@@ -1767,6 +1773,7 @@ libraries/ = SubResource("AnimationLibrary_xcrri")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
+process_mode = 3
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
 pulse_sound_effect = NodePath("PulseSoundEffect")
