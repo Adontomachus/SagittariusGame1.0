@@ -78,10 +78,15 @@ var splash_damage_effect := preload("res://Objects/Particle Effects/AoEHitEffect
 ## Damage number that spawns on side of the object's center
 ## when the object takes damage from AoE sources
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
+
 # START
 func _ready():
 	state_machine.init(self)#, animations, audio_sfx)
-
+	
+	# For boss type units, finds the node for the the cinematic handler to play a scene when the boss reaches 0 HP.
+	#var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
+	#print("Current Cinematics Handler: " , cinematics_handler)
+	
 	# Set enemy statistics
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
 	stamina = maxStamina
@@ -173,6 +178,13 @@ func _delete_and_emit_effects():
 	## If the unit is considered the "final boss of the level", play a cutscene 
 	## of the boss getting defeated and roll out victorious post game statistics
 	if boss_unit:
+		## Completely disables the enemy object
+		var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
+		print("Current Cinematics Handler: " , cinematics_handler)
+		cinematics_handler.game_is_won = true
+		self.set_process(false)
+		
+		get_tree().paused = true
 		return
 	return
 	

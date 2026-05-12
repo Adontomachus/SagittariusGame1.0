@@ -18,7 +18,7 @@ var currentNote = 0
 func _ready() -> void:
 	return
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if executeAction == true:
 		_execute_action_on_beat()
 		executeAction = false

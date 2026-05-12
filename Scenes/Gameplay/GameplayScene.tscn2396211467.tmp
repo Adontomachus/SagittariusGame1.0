@@ -54,7 +54,6 @@
 [ext_resource type="Texture2D" uid="uid://dlur8r0o6a22r" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE4.png" id="30_110ka"]
 [ext_resource type="Texture2D" uid="uid://dh27chreavtjo" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle7.png" id="30_mtruf"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
-[ext_resource type="PackedScene" uid="uid://d24063yq0kgko" path="res://UnitInstances/Enemy Instances/Boss.tscn" id="31_hlum5"]
 [ext_resource type="Texture2D" uid="uid://dqmjfk5081pn0" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle8.png" id="31_rr6op"]
 [ext_resource type="Texture2D" uid="uid://gr14w16h7rfg" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE5.png" id="31_vj1fp"]
 [ext_resource type="Texture2D" uid="uid://bkx8e0olqi6lr" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE6.png" id="32_o710q"]
@@ -66,114 +65,6 @@
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
-
-[sub_resource type="Animation" id="Animation_cacow"]
-resource_name = "GlowPulse"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GlowFeedback:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.994), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../BeatIndicatorElements/BeatGlowFeedback:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.39921784),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../BeatIndicatorElements/BeatGlowFeedback:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.015391531),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GlowFeedback:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.015391531),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_o710q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GlowFeedback:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../BeatIndicatorElements/BeatGlowFeedback:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../BeatIndicatorElements/BeatGlowFeedback:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GlowFeedback:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr3qy"]
-_data = {
-&"GlowPulse": SubResource("Animation_cacow"),
-&"RESET": SubResource("Animation_o710q")
-}
 
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
@@ -289,26 +180,26 @@ resource_name = "GameVictory"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneBackground:modulate")
+tracks/0/path = NodePath("CutsceneBackground:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335, 0.94),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.71932274, 1, 0, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.8531885, 0.8544415, 0.4723053, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CutsceneBackground:visible")
+tracks/1/path = NodePath("CutsceneBackground:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.018889345),
+"times": PackedFloat32Array(0, 0.94),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Color(0.71932274, 1, 0, 1), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_b8xms"]
@@ -316,26 +207,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneBackground:modulate")
+tracks/0/path = NodePath("CutsceneBackground:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.71932274, 1, 0, 1)]
+"values": [Color(0.07016479, 0.07016479, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CutsceneBackground:visible")
+tracks/1/path = NodePath("CutsceneBackground:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(0.71932274, 1, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wkher"]
@@ -1029,6 +920,90 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.90000004, 0.1)
 
+[sub_resource type="Animation" id="Animation_cacow"]
+resource_name = "GlowPulse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowFeedback:texture:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_b8xms")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlowFeedback:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.994), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BeatIndicatorElements/BeatGlowFeedback:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.39921784),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o710q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowFeedback:texture:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_b8xms")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlowFeedback:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BeatIndicatorElements/BeatGlowFeedback:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr3qy"]
+_data = {
+&"GlowPulse": SubResource("Animation_cacow"),
+&"RESET": SubResource("Animation_o710q")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_ve3xx"]
 font = ExtResource("6_y268v")
 font_size = 42
@@ -1531,7 +1506,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.83760685, 0.23504274)
 
-[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target") groups=["GameManagerSystems"]]
+[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target")]
 position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
@@ -1551,7 +1526,7 @@ script = ExtResource("2_vwi3h")
 
 [node name="PointSystem" type="Node" parent="GameSystems" unique_id=1418465354 node_paths=PackedStringArray("glow_animations") groups=["PlayerSystems", "ScoreSystem"]]
 script = ExtResource("2_qvp00")
-glow_animations = NodePath("../../InterfaceElements/NewHUD/GlowAnimationPlayer")
+glow_animations = NodePath("../../InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/GlowAnimationPlayer")
 
 [node name="ScalingSystem" type="Node" parent="GameSystems" unique_id=543778101 groups=["PlayerSystems"]]
 script = ExtResource("3_0voen")
@@ -1559,7 +1534,7 @@ script = ExtResource("3_0voen")
 [node name="DynamicTerrainSystem" type="Node" parent="GameSystems" unique_id=1982384762 groups=["PlayerSystems"]]
 script = ExtResource("5_jgp33")
 
-[node name="SceneHandler" type="Node" parent="GameSystems" unique_id=1974294335 node_paths=PackedStringArray("game_over_animations") groups=["PlayerSystems", "SceneGroup"]]
+[node name="SceneHandler" type="Node" parent="GameSystems" unique_id=1974294335 node_paths=PackedStringArray("game_over_animations") groups=["PlayerSystems"]]
 process_mode = 3
 script = ExtResource("6_110ka")
 game_over_animations = NodePath("../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/GameOverAnimations")
@@ -1577,10 +1552,6 @@ script = ExtResource("4_b5kf5")
 [node name="NewHUD" type="CanvasLayer" parent="InterfaceElements" unique_id=1380499986 node_paths=PackedStringArray("player_character")]
 script = ExtResource("3_exhb5")
 player_character = NodePath("../../Player")
-
-[node name="GlowAnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD" unique_id=1438675712]
-root_node = NodePath("../UI/UpdatedPlayerHealthBar")
-libraries/ = SubResource("AnimationLibrary_mr3qy")
 
 [node name="UI" type="Control" parent="InterfaceElements/NewHUD" unique_id=275107756]
 layout_mode = 3
@@ -1610,7 +1581,7 @@ visible = false
 modulate = Color(0.71932274, 1, 0, 1)
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.8531885, 0.8544415, 0.4723053, 1)
+color = Color(0.07016479, 0.07016479, 0, 1)
 
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" unique_id=106162691 node_paths=PackedStringArray("beat_sync_script", "game_manager", "highest_level_reached") instance=ExtResource("11_4t4xv")]
 visible = false
@@ -1744,10 +1715,12 @@ text = "Player Level: 1"
 label_settings = SubResource("LabelSettings_o710q")
 
 [node name="GlowFeedback" type="Sprite2D" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=718872781]
-visible = false
 position = Vector2(132, 128)
 scale = Vector2(1.59375, 1.59375)
 texture = SubResource("GradientTexture2D_meejx")
+
+[node name="GlowAnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" unique_id=1438675712]
+libraries/ = SubResource("AnimationLibrary_mr3qy")
 
 [node name="PlayerInfo" type="VBoxContainer" parent="InterfaceElements/NewHUD/UI" unique_id=952983668]
 layout_mode = 0
@@ -1822,7 +1795,6 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 libraries/ = SubResource("AnimationLibrary_rp1p4")
 
 [node name="BeatGlowFeedback" type="Sprite2D" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" unique_id=772207828]
-visible = false
 position = Vector2(973.00006, 994.00006)
 scale = Vector2(2.062496, 2.062496)
 texture = SubResource("GradientTexture2D_meejx")
@@ -1976,12 +1948,11 @@ texture = ExtResource("22_yt4p3")
 [node name="ActivationAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/AbilityActivationFeedback" unique_id=455023363]
 libraries/ = SubResource("AnimationLibrary_xcrri")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("manager", "pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
-manager = NodePath("..")
 pulse_sound_effect = NodePath("PulseSoundEffect")
 can_use_ability = true
 max_ability_cooldown = 30.0
@@ -3086,9 +3057,6 @@ position = Vector2(753, 383)
 
 [node name="PlayerCatComp2" parent="." unique_id=1653798 instance=ExtResource("51_6uw2w")]
 position = Vector2(447, 398)
-
-[node name="BossUnit" parent="." unique_id=1394345447 instance=ExtResource("31_hlum5")]
-position = Vector2(1323, 1232)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]

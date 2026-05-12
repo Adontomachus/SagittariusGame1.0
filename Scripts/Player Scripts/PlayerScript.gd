@@ -20,6 +20,9 @@ signal companion_upgrade
 	get:
 		return healthPoints
 
+# Exports the main game manager from the current gameplay scene		
+@export var manager: GManager
+
 #region General Player Statistics		
 
 ## Player Level section
@@ -141,20 +144,40 @@ func activate_player_ability() -> void:
 
 #region Main processes
 func _process(delta):
-	# Ability functions
-	get_ability_inputs()
-	# Sprite flipping on turnarounds
+	#region Decides if the character can be controlled by the player
+	## If the game is paused, turn off all attempted inputs for player movement and attacks
+	if manager.gamePaused:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		can_control_unit = false
+
+	else:
+		process_mode = Node.PROCESS_MODE_ALWAYS
+		can_control_unit = true
 	
+	## This changes the player's process to inherit when the game ends
+	if cutscene_handler.game_is_over || cutscene_handler.game_is_won:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		can_control_unit = false
+	#endregion
+		
+	## Sets the charged shot boolean variable to control the glowing feedback
+	if shots_for_charged >= max_shots_for_charged:
+		PointSystemScript.player_charged_shot = true
+	else:
+		PointSystemScript.player_charged_shot = false
+	
+	## Ability functions
+	get_ability_inputs()
 	## Decrement cooldown in delta when the AoE ability is used
 	ability_cooldown -= 1 * delta
 	#print ("Cooldown: ", ability_cooldown)
 	
 	if ability_cooldown < 0: can_use_ability = true
-	
-	## Player ability UI feedback
+
 
 	
 	
+	## This section is for orthographic sprite rotations and animations
 	#region Testing sprite orthographic rotations
 	var mouse_direction = get_global_mouse_position() - global_position
 	var look_angle = rad_to_deg(mouse_direction.angle())
@@ -167,7 +190,7 @@ func _process(delta):
 		sprite_down.visible =  false
 		sprite_down_left.visible = false
 		sprite_left.visible = false
-		sprite_up_left.visible =false
+		sprite_up_left.visible = false
 		#endregion
 	elif look_angle > 22.5 and look_angle <= 67.5: # DOWN RIGHT
 		#region Sprite listing
@@ -245,17 +268,6 @@ func _process(delta):
 		sprite_down_left.visible = false
 		sprite_left.visible = false
 		sprite_up_left.visible = false
-		#endregion
-	#else:
-		#region Sprite listing
-	#	sprite_up.visible = true
-	#	sprite_up_right.visible = false
-	#	sprite_right.visible = false
-	#	sprite_down_right.visible = false
-	#	sprite_down.visible =  false
-	#	sprite_down_left.visible = false
-	#	sprite_left.visible = false
-	#	sprite_up_left.visible = false
 		#endregion
 	#endregion
 	shot_point.look_at(get_global_mouse_position())

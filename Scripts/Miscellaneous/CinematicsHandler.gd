@@ -6,6 +6,7 @@ var game_is_won: bool = false
 var can_play_animation: bool = true
 #@onready var cutscene_background: ColorRect = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/CutsceneBackground"
 @export var game_over_animations: AnimationPlayer
+@export var game_win_animations: AnimationPlayer
 @onready var win_screen: Control = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"
 @onready var lose_screen: Control = $"../../InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/LoseScreen"
 
@@ -22,5 +23,9 @@ func _process(delta: float) -> void:
 			can_play_animation = false
 			game_over_animations.play("GameOver")
 		#cutscene_background.visible = true
-
+	if game_is_won == true:
+		win_screen.visible = true
+		if can_play_animation:
+			can_play_animation = false
+			game_win_animations.play("GameWon")
 	pass
