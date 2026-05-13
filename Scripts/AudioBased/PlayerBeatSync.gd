@@ -44,6 +44,10 @@ var combo_audio_pitch: float = 1
 @onready var p_feedback: AnimationPlayer = $"../../Border Pulse/PerfectPulseFeedback"
 #region Region for beat indicator animations for players to follow through
 @onready var beat_indicator_animation: AnimationPlayer = $"../BeatIndicatorAnimation"
+
+## TEST / TEMPORARY
+@onready var glow_effect: AnimationPlayer = $"../../../GlowAnimationPlayer"
+
 #endregion
 ## This variable is for the combo pulse effect where its speed dynamically
 ## aligns with the tempo
@@ -193,3 +197,4 @@ func _combo_pulse() -> void:
 	combo_animation_pulse.play("UIBeatPulse")
 	beat_indicator_animation.speed_scale = tempo / 32
 	beat_indicator_animation.play("RhythmIndicator")
+	glow_effect.play("GlowPulse")

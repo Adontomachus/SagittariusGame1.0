@@ -27,9 +27,13 @@ func _process(delta):
 	
 
 func _ready():
-	pass
-	var player_target = get_tree().get_first_node_in_group("PlayerObject")
-	camera_focus_target = player_target
+	_change_camera_focus_to_boss()
+	await get_tree().create_timer(2).timeout
+	_change_camera_focus_to_player()
+	
+	#var player_target = get_tree().get_first_node_in_group("PlayerObject")
+	#camera_focus_target = player_target
+
 	
 func _physics_process(delta):
 	mousePosition = get_global_mouse_position()

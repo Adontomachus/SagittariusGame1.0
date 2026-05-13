@@ -70,8 +70,9 @@ starting_state = NodePath("EnemyStateChase")
 sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
-[node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("recovery_state")]
+[node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("after_chase_state", "recovery_state")]
 script = ExtResource("5_15gep")
+after_chase_state = NodePath("../EnemyStateRecovery")
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://bu5go608c7dqq"
 

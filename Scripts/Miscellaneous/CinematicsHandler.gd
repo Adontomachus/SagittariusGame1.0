@@ -27,5 +27,5 @@ func _process(delta: float) -> void:
 		win_screen.visible = true
 		if can_play_animation:
 			can_play_animation = false
-			game_win_animations.play("GameWon")
+			game_win_animations.play("GameVictory")
 	pass

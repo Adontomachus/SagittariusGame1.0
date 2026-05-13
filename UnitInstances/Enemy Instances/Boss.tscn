@@ -15,10 +15,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 103.84142
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_477de"]
+radius = 562.0142
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 83.02409
 
-[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType"]]
+[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["BossType", "EnemyObject", "FodderType"]]
 script = ExtResource("1_t5eiy")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
@@ -68,6 +71,13 @@ visible = false
 position = Vector2(48.551716, -52.082764)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
+
+[node name="SummonArea" type="Area2D" parent="." unique_id=696089106]
+
+[node name="SummonAreaRadius" type="CollisionShape2D" parent="SummonArea" unique_id=2082543170]
+shape = SubResource("CircleShape2D_477de")
+disabled = true
+debug_color = Color(0.7598514, 0.44796598, 0.17923622, 0)
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_w0bs6")

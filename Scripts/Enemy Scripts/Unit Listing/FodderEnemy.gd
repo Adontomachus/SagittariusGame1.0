@@ -178,7 +178,7 @@ func _delete_and_emit_effects():
 	## If the unit is considered the "final boss of the level", play a cutscene 
 	## of the boss getting defeated and roll out victorious post game statistics
 	if boss_unit:
-		## Completely disables the enemy object
+		## Completely disables the enemy object and plays the winning animation
 		var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
 		print("Current Cinematics Handler: " , cinematics_handler)
 		cinematics_handler.game_is_won = true

@@ -66,7 +66,6 @@
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
-[ext_resource type="PackedScene" uid="uid://csoo2afoaf6s6" path="res://UnitInstances/Enemy Instances/EnemyCharger.tscn" id="67_4t4xv"]
 
 [sub_resource type="Animation" id="Animation_cacow"]
 resource_name = "GlowPulse"
@@ -3344,15 +3343,6 @@ position = Vector2(447, 398)
 
 [node name="BossUnit" parent="." unique_id=1394345447 instance=ExtResource("31_hlum5")]
 position = Vector2(1323, 1232)
-
-[node name="Enemy" parent="." unique_id=1214445607 instance=ExtResource("67_4t4xv")]
-position = Vector2(1002, 459)
-
-[node name="Enemy2" parent="." unique_id=1035419942 instance=ExtResource("67_4t4xv")]
-position = Vector2(1090, 211)
-
-[node name="Enemy3" parent="." unique_id=1782128800 instance=ExtResource("67_4t4xv")]
-position = Vector2(920, 53)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]

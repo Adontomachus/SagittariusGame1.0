@@ -25,7 +25,7 @@ signal companion_upgrade
 
 #region General Player Statistics		
 
-## Player Level section
+## Player level section and their statistics
 var player_level: int = 1
 var maxHealthPoints: float = 100.0
 var experiencePoints: int = 0
@@ -51,21 +51,28 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 @export var pulse_sound_effect: AudioStreamPlayer
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
+# Visual feedback for charged shot
+@onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
 @export_category("Number of perfect shots for enhanced attack")
 #endregion
 
 #region This section consists of player abilities and a sole boolean if controllable
-## Amount for a charged AoE attack
+## Amount for a charged AoE attack and a boolean when charged
 @export var max_shots_for_charged: int = 8
 var shots_for_charged: int = 8
+var can_fire_charged_shot: bool = false
 
 ## Booleans and conditions for using player abilities
 @export var can_use_ability: bool
+# Boolean to check if AoE ability is active
 var ability_active: bool
 var ability_duration: int
-var ability_cooldown: float
 @export var max_ability_cooldown: float
+var ability_cooldown: float
+
 @onready var ability_aoe_node: Area2D = $AbilityAoE
+
+## Properties for companion ability, which causes them to charge at enemies
 @export var can_use_companion_ability: bool
 @export var max_companion_ability_charge: float
 var companion_ability_charge: float
@@ -144,6 +151,15 @@ func activate_player_ability() -> void:
 
 #region Main processes
 func _process(delta):
+	#region Section for charged shot feedback
+	## This section sets the "charged_shot" boolean to true if number of perfect shots reach the
+	## max shot threshold. Also sets the boolean to false once the player fires the piercing shot.
+	if shots_for_charged >= 7:
+		charged_shot_particles.show()
+	else:
+		charged_shot_particles.hide()
+	
+	#endregion
 	#region Decides if the character can be controlled by the player
 	## If the game is paused, turn off all attempted inputs for player movement and attacks
 	if manager.gamePaused:
@@ -159,12 +175,6 @@ func _process(delta):
 		process_mode = Node.PROCESS_MODE_INHERIT
 		can_control_unit = false
 	#endregion
-		
-	## Sets the charged shot boolean variable to control the glowing feedback
-	if shots_for_charged >= max_shots_for_charged:
-		PointSystemScript.player_charged_shot = true
-	else:
-		PointSystemScript.player_charged_shot = false
 	
 	## Ability functions
 	get_ability_inputs()

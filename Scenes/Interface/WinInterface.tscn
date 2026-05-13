@@ -32,10 +32,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_15wqq")
-damage_dealt = NodePath("GamePausedText/DamageDealt")
-score_stats = NodePath("GamePausedText/ScoreStats")
-exit_button = NodePath("GamePausedText/ExitButton")
-resume_button = NodePath("GamePausedText/ResumeButton")
+damage_dealt = NodePath("DamageDealt")
+score_stats = NodePath("ScoreStats")
+exit_button = NodePath("ExitButton")
+resume_button = NodePath("ResumeButton")
 
 [node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
 layout_mode = 0
@@ -56,62 +56,62 @@ text = "VICTORY!"
 label_settings = SubResource("LabelSettings_8oq8g")
 horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="GamePausedText" unique_id=1817500599]
+[node name="ExitButton" type="Button" parent="." unique_id=1817500599]
 layout_mode = 0
-offset_left = 385.0
-offset_top = 787.0
-offset_right = 567.9032
-offset_bottom = 868.0
+offset_left = 500.0
+offset_top = 869.0
+offset_right = 682.9032
+offset_bottom = 950.0
 text = "Back to Main Menu
 "
 
-[node name="ResumeButton" type="Button" parent="GamePausedText" unique_id=1378675360]
+[node name="ResumeButton" type="Button" parent="." unique_id=1378675360]
 layout_mode = 0
-offset_left = 1122.0
-offset_top = 793.0
-offset_right = 1295.871
-offset_bottom = 870.0
+offset_left = 1237.0
+offset_top = 875.0
+offset_right = 1410.871
+offset_bottom = 952.0
 text = "Continue
 "
 
-[node name="ScoreStats" type="Label" parent="GamePausedText" unique_id=1698478150]
+[node name="ScoreStats" type="Label" parent="." unique_id=1698478150]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 200.0
-offset_right = 1617.0
-offset_bottom = 296.0
+offset_left = 205.0
+offset_top = 282.0
+offset_right = 1732.0
+offset_bottom = 378.0
 text = "Total Score:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
 
-[node name="RhythmAccuracy" type="Label" parent="GamePausedText" unique_id=1119409431]
+[node name="RhythmAccuracy" type="Label" parent="." unique_id=1119409431]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 316.0
-offset_right = 1617.0
-offset_bottom = 412.0
+offset_left = 205.0
+offset_top = 398.0
+offset_right = 1732.0
+offset_bottom = 494.0
 text = "Timing Accuracy:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
 
-[node name="DamageDealt" type="Label" parent="GamePausedText" unique_id=505090490]
+[node name="DamageDealt" type="Label" parent="." unique_id=505090490]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 430.0
-offset_right = 1617.0
-offset_bottom = 526.0
+offset_left = 205.0
+offset_top = 512.0
+offset_right = 1732.0
+offset_bottom = 608.0
 text = "Damage Dealt:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
 
-[node name="HighestLevelReached" type="Label" parent="GamePausedText" unique_id=1826464257]
+[node name="HighestLevelReached" type="Label" parent="." unique_id=1826464257]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 549.0
-offset_right = 1617.0
-offset_bottom = 645.0
+offset_left = 205.0
+offset_top = 631.0
+offset_right = 1732.0
+offset_bottom = 727.0
 text = "Highest Level Reached:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
 
-[connection signal="pressed" from="GamePausedText/ResumeButton" to="." method="on_win_press"]
+[connection signal="pressed" from="ResumeButton" to="." method="on_win_press"]
