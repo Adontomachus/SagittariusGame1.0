@@ -21,6 +21,7 @@ script/source = "extends CPUParticles2D
 
 var timedShot = lifetime - 0.05
 @onready var explosion_effect: AudioStreamPlayer2D = $ExplosionEffect
+@onready var glow_anim: AnimationPlayer = $GlowAnim
 
 func _process(delta):
 	timedShot -= delta
@@ -28,6 +29,7 @@ func _process(delta):
 		queue_free()
 
 func _ready():
+	glow_anim.play(\"ExplosionFade\")
 	explosion_effect.play()
 	print(\"Particles emitted!\")
 
@@ -36,10 +38,79 @@ func _on_finished() -> void:
 	pass # Replace with function body.
 "
 
+[sub_resource type="Gradient" id="Gradient_iidq2"]
+colors = PackedColorArray(1, 0.76612836, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7tmke"]
+gradient = SubResource("Gradient_iidq2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
 [sub_resource type="Environment" id="Environment_h052y"]
 glow_enabled = true
 glow_intensity = 3.86
 glow_strength = 0.95
+
+[sub_resource type="Animation" id="Animation_iidq2"]
+resource_name = "ExplosionFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionGlow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12.343748, 12.34375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionGlow:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 4.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7tmke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionGlow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12.343748, 12.34375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionGlow:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulib6"]
+_data = {
+&"ExplosionFade": SubResource("Animation_iidq2"),
+&"RESET": SubResource("Animation_7tmke")
+}
 
 [node name="DestroyEffects" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(2.5032542, 2.5032542, 2.5032542, 1)
@@ -64,10 +135,19 @@ color_ramp = SubResource("Gradient_x4tua")
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
 
+[node name="ExplosionGlow" type="PointLight2D" parent="." unique_id=1143427200]
+scale = Vector2(12.343748, 12.34375)
+energy = 5.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_7tmke")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1764725689]
 environment = SubResource("Environment_h052y")
 
 [node name="ExplosionEffect" type="AudioStreamPlayer2D" parent="." unique_id=1700633985]
 stream = ExtResource("1_iidq2")
+
+[node name="GlowAnim" type="AnimationPlayer" parent="." unique_id=144090649]
+libraries/ = SubResource("AnimationLibrary_ulib6")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

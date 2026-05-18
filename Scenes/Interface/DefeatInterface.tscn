@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://djpbi3ti2qmdk"]
 
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="1_fup76"]
+[ext_resource type="Script" uid="uid://itd88an3mkpp" path="res://Scripts/UI Menu, Settings and Post Game/GameOverStatistics.gd" id="1_g1d2b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
 line_spacing = 25.0
@@ -14,6 +15,8 @@ shadow_size = 18
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(12, 12)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g1d2b"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_15wqq"]
 line_spacing = 0.0
 font = ExtResource("1_fup76")
@@ -21,8 +24,10 @@ font_size = 52
 font_color = Color(1, 0.8059726, 0, 1)
 outline_size = 18
 outline_color = Color(0.17997457, 0.08508608, 0, 1)
+shadow_size = 25
+shadow_color = Color(0, 0, 0, 1)
 
-[node name="LoseScreen" type="Control" unique_id=1347961824]
+[node name="LoseScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("damage_dealt", "score_stats", "exit_button", "resume_button")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +35,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g1d2b")
+damage_dealt = NodePath("BigLoseText/DamageDealt")
+score_stats = NodePath("BigLoseText/ScoreStats")
+exit_button = NodePath("BigLoseText/ExitButton")
+resume_button = NodePath("BigLoseText/ResumeButton")
 
 [node name="LosePanel" type="PanelContainer" parent="." unique_id=245152519]
 modulate = Color(1, 0.11207495, 0.37804863, 1)
@@ -75,6 +85,7 @@ theme_override_fonts/font = ExtResource("1_fup76")
 theme_override_font_sizes/font_size = 38
 text = "Try Again
 "
+icon = SubResource("CompressedTexture2D_g1d2b")
 
 [node name="ScoreStats" type="Label" parent="BigLoseText" unique_id=1698478150]
 layout_mode = 0
@@ -115,3 +126,5 @@ offset_bottom = 645.0
 text = "Highest Level Reached:"
 label_settings = SubResource("LabelSettings_15wqq")
 vertical_alignment = 1
+
+[connection signal="pressed" from="BigLoseText/ResumeButton" to="." method="on_lose_press"]

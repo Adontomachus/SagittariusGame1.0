@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://ct8plkb2tiyxh"]
 
-[ext_resource type="Script" uid="uid://bifds3vvuqib" path="res://Scripts/UI Menu and Settings/PauseScript.gd" id="1_gkx8r"]
+[ext_resource type="Script" uid="uid://bifds3vvuqib" path="res://Scripts/UI Menu, Settings and Post Game/PauseScript.gd" id="1_gkx8r"]
+[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="2_efodi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpnlg"]
+font = ExtResource("2_efodi")
+font_size = 75
+font_color = Color(0.91627353, 1, 0, 1)
+shadow_size = 15
+shadow_color = Color(0.12578759, 0.12578762, 6.016344e-08, 1)
+shadow_offset = Vector2(1.27, 1.73)
 
 [node name="PauseScreen" type="Control" unique_id=1347961824]
 process_mode = 3
@@ -22,6 +31,7 @@ offset_bottom = 996.0
 [node name="GamePausedText" type="Label" parent="PanelContainer" unique_id=1560795430]
 layout_mode = 2
 text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_rpnlg")
 horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="PanelContainer/GamePausedText" unique_id=1817500599]
@@ -30,6 +40,9 @@ offset_left = 385.0
 offset_top = 236.0
 offset_right = 567.9032
 offset_bottom = 317.0
+theme_override_colors/font_color = Color(0.92805517, 0.9761153, 0.44020692, 1)
+theme_override_fonts/font = ExtResource("2_efodi")
+theme_override_font_sizes/font_size = 32
 text = "Exit
 "
 
@@ -39,6 +52,9 @@ offset_left = 1122.0
 offset_top = 242.0
 offset_right = 1295.871
 offset_bottom = 319.0
+theme_override_colors/font_color = Color(0.92941177, 0.9764706, 0.4392157, 1)
+theme_override_fonts/font = ExtResource("2_efodi")
+theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [connection signal="pressed" from="PanelContainer/GamePausedText/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -58,8 +58,10 @@ shape = SubResource("CircleShape2D_kpdv2")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 
 [node name="UltimateAreaOfEffect" type="Area2D" parent="." unique_id=661872516]
+visible = false
 
 [node name="AreaHurtbox" type="CollisionShape2D" parent="UltimateAreaOfEffect" unique_id=235718903]
+visible = false
 shape = SubResource("CircleShape2D_4k6ra")
 debug_color = Color(0.962128, 0.89471775, 0.32086813, 0.043)
 
@@ -79,5 +81,5 @@ volume_db = -10.0
 pitch_scale = 4.0
 
 [connection signal="experience_modify" from="ProjectileHitbox" to="." method="modify_current_xp"]
-[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_projectile_health_modify"]
+[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]

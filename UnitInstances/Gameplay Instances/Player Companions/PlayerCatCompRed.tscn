@@ -21,16 +21,24 @@ radius = 24.083189
 [sub_resource type="CircleShape2D" id="CircleShape2D_s2ofs"]
 radius = 34.234486
 
-[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding", "slash_area", "slash_hurtbox")]
+[sub_resource type="Gradient" id="Gradient_2ef6j"]
+colors = PackedColorArray(0.9311302, 0.90304595, 0.58449197, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7gthd"]
+gradient = SubResource("Gradient_2ef6j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8418803, 0.20512821)
+
+[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
 script = ExtResource("1_12uow")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
-attack_power = 15.0
-move_speed = 350.0
-player_radius = 300.0
-slash_area = NodePath("SlashArea")
-slash_hurtbox = NodePath("SlashArea/SlashHurtbox")
+move_speed = 325.0
+player_radius = 165.0
+dash_speed = 715.0
+companion_damage = 42.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true
@@ -101,5 +109,12 @@ debug_color = Color(0.43832985, 0.56671304, 0.046371195, 0.066)
 stream = ExtResource("8_bnakq")
 volume_db = -7.5
 pitch_scale = 0.75
+
+[node name="CompanionLight" type="PointLight2D" parent="." unique_id=1212624361]
+scale = Vector2(12.187499, 12.187499)
+color = Color(0.938151, 0.7522057, 0.2970827, 1)
+energy = 3.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_7gthd")
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

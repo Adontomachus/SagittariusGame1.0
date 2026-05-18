@@ -10,21 +10,27 @@ signal send_current_health(health: float)
 # Experience bar signals
 signal send_maximum_xp(max_xp: float)
 signal send_current_xp(xp: float)
+
+# Companion upgrade signal
+signal companion_upgrade
+
 @export var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
 		return healthPoints
 
+# Exports the main game manager from the current gameplay scene		
+@export var manager: GManager
+
 #region General Player Statistics		
 
-## This variable determines if the player can provide inputs for the player character
-## This boolean is usually set true when 
-var can_control_unit: bool = true
-
+## Player level section and their statistics
+var player_level: int = 1
 var maxHealthPoints: float = 100.0
 var experiencePoints: int = 0
 var maxExperiencePoints: int = 60
+
 
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
@@ -44,27 +50,41 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 
 # Shot properties and point
 @export var pulse_sound_effect: AudioStreamPlayer
+var shot_fire_rate: float
+@export var max_shot_fire_rate: float = 0.3
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
+# Visual feedback for charged shot
+@onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
+
 @export_category("Number of perfect shots for enhanced attack")
 #endregion
 
-#region This section consists of player abilities
-# Amount for a charged AoE attack
+#region This section consists of player abilities and a sole boolean if controllable
+## Amount for a charged AoE attack and a boolean when charged
 @export var max_shots_for_charged: int = 8
 var shots_for_charged: int = 8
+var can_fire_charged_shot: bool = false
 
-# Booleans and conditions for using player abilities
+## Booleans and conditions for using player abilities
 @export var can_use_ability: bool
+# Boolean to check if AoE ability is active
 var ability_active: bool
 var ability_duration: int
-var ability_cooldown: float
 @export var max_ability_cooldown: float
+var ability_cooldown: float
+
 @onready var ability_aoe_node: Area2D = $AbilityAoE
+
+## Properties for companion ability, which causes them to charge at enemies
 @export var can_use_companion_ability: bool
 @export var max_companion_ability_charge: float
 var companion_ability_charge: float
 @export var ability_visual_feedback: AnimationPlayer
+ 
+## This variable determines if the player can provide inputs for the player character
+## This boolean is usually set to true as long as the scene isn't paused
+var can_control_unit: bool = true
 #endregion
 
 ## TESTING PURPOSES
@@ -84,12 +104,17 @@ var companion_ability_charge: float
 @export var sprite_up_left: Sprite2D
 #endregion
 
+#region Companion Progression System
+@export_category("Companion Progression Statistics")
+@export var max_points_to_transform: float = 2000
+@export var points_to_transform: float = 0
+
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 func _ready():
 	
-	## TESTING PURPOSES (TEMPORARY)
-	## player_sprite_up_right_walking.play("NorthEastWalking")
+	# Sets up the fire rate mechanics
+	shot_fire_rate = max_shot_fire_rate
 	
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
@@ -135,20 +160,46 @@ func activate_player_ability() -> void:
 
 #region Main processes
 func _process(delta):
-	# Ability functions
-	get_ability_inputs()
-	# Sprite flipping on turnarounds
+	# This short code increments the fire rate per second (0.3 max fire rate allows players to fire at 0.3 shots)
+	shot_fire_rate += 1 * delta
 	
+	#region Section for charged shot feedback
+	## This section sets the "charged_shot" boolean to true if number of perfect shots reach the
+	## max shot threshold. Also sets the boolean to false once the player fires the piercing shot.
+	if shots_for_charged >= 7:
+		charged_shot_particles.show()
+	else:
+		charged_shot_particles.hide()
+	
+	#endregion
+	#region Decides if the character can be controlled by the player
+	## If the game is paused, turn off all attempted inputs for player movement and attacks
+	if manager.gamePaused:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		can_control_unit = false
+
+	else:
+		process_mode = Node.PROCESS_MODE_ALWAYS
+		can_control_unit = true
+	
+	## This changes the player's process to inherit when the game ends
+	if cutscene_handler.game_is_over || cutscene_handler.game_is_won:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		can_control_unit = false
+	#endregion
+	
+	## Ability functions
+	get_ability_inputs()
 	## Decrement cooldown in delta when the AoE ability is used
 	ability_cooldown -= 1 * delta
-	print ("Cooldown: ", ability_cooldown)
+	#print ("Cooldown: ", ability_cooldown)
 	
 	if ability_cooldown < 0: can_use_ability = true
-	
-	## Player ability UI feedback
+
 
 	
 	
+	## This section is for orthographic sprite rotations and animations
 	#region Testing sprite orthographic rotations
 	var mouse_direction = get_global_mouse_position() - global_position
 	var look_angle = rad_to_deg(mouse_direction.angle())
@@ -161,7 +212,7 @@ func _process(delta):
 		sprite_down.visible =  false
 		sprite_down_left.visible = false
 		sprite_left.visible = false
-		sprite_up_left.visible =false
+		sprite_up_left.visible = false
 		#endregion
 	elif look_angle > 22.5 and look_angle <= 67.5: # DOWN RIGHT
 		#region Sprite listing
@@ -240,17 +291,6 @@ func _process(delta):
 		sprite_left.visible = false
 		sprite_up_left.visible = false
 		#endregion
-	#else:
-		#region Sprite listing
-	#	sprite_up.visible = true
-	#	sprite_up_right.visible = false
-	#	sprite_right.visible = false
-	#	sprite_down_right.visible = false
-	#	sprite_down.visible =  false
-	#	sprite_down_left.visible = false
-	#	sprite_left.visible = false
-	#	sprite_up_left.visible = false
-		#endregion
 	#endregion
 	shot_point.look_at(get_global_mouse_position())
 	
@@ -264,39 +304,43 @@ func _physics_process(delta):
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.3)
-	if shots_for_charged >= max_shots_for_charged:
-		# Shoots the enhanced projectile and sets the beat charge to 0
-		var enhanced_projectile = powered_projectile.instantiate()
-		shot_sound.play()
-		enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
-		enhanced_projectile.position = shot_point.get_global_position()
-		enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
-		get_tree().get_root().call_deferred("add_child", enhanced_projectile)
-		shots_for_charged = 0
-	else:
-		# Shoots the normal projectile
-		var projectile_instance = projectile.instantiate()
-		shot_sound.play()
-		projectile_instance.change_damage(projectile_damage * modifier)
-		projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
-		projectile_instance.change_projectile_modulation(color)
-		projectile_instance.position = shot_point.get_global_position()
-		projectile_instance.rotation_degrees = shot_point.rotation_degrees
-		get_tree().get_root().call_deferred("add_child", projectile_instance)
-	
-	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-	var shotEffect = projectileShotEffect.instantiate()
-	shotEffect.position = self.get_global_position()
-	get_tree().get_root().call_deferred("add_child", shotEffect)
-	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-	
-	# Prints the damage value of instantiated shot for debug
-	print_debug("Damage: %s" % (projectile_damage * modifier))
+	if shot_fire_rate > max_shot_fire_rate:
+		if shots_for_charged >= max_shots_for_charged:
+			# Shoots the enhanced projectile and sets the beat charge to 0
+			var enhanced_projectile = powered_projectile.instantiate()
+			shot_sound.play()
+			enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
+			enhanced_projectile.position = shot_point.get_global_position()
+			enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
+			get_tree().get_root().call_deferred("add_child", enhanced_projectile)
+			shot_fire_rate = 0
+			shots_for_charged = 0
+		else:
+			# Shoots the normal projectile
+			shot_fire_rate = 0
+			var projectile_instance = projectile.instantiate()
+			shot_sound.play()
+			projectile_instance.change_damage(projectile_damage * modifier)
+			projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+			projectile_instance.change_projectile_modulation(color)
+			projectile_instance.position = shot_point.get_global_position()
+			projectile_instance.rotation_degrees = shot_point.rotation_degrees
+			get_tree().get_root().call_deferred("add_child", projectile_instance)
+		
+		# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+		var shotEffect = projectileShotEffect.instantiate()
+		shotEffect.position = self.get_global_position()
+		get_tree().get_root().call_deferred("add_child", shotEffect)
+		# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+		
+		# Prints the damage value of instantiated shot for debug
+		print_debug("Damage: %s" % (projectile_damage * modifier))
+
 
 	# Charge up powered shot, up to 8 times
 	## This function is signaled through the beat indicator
 func increment_player_charge_attack() -> void:
-	print("CHARGING SHOT: ", shots_for_charged)
+	# print("CHARGING SHOT: ", shots_for_charged)
 	shots_for_charged += 1
 	
 #endregion
@@ -336,6 +380,7 @@ func modify_current_player_health(modification: int) -> void:
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	if (healthPoints <= 0):
 		print("Game Over!")
+		can_control_unit = false
 		cutscene_handler.game_is_over = true
 		get_tree().paused = true
 	send_current_health.emit(healthPoints)
@@ -348,15 +393,19 @@ func modify_current_xp(modification: int) -> void:
 		upgrade_player_stats()
 	send_current_xp.emit(experiencePoints)
 # Function for upgrading player stats upon levelling up
+
 func upgrade_player_stats() -> void:
-	# Increases health and damage by 4% and maximum XP requirement by 6%
+	# Increases health and damage by 4% and maximum XP requirement by 6% and increment player level by 1
 	# Heals player for 20% max HP and resets current experience points by 0
-	maxHealthPoints = maxHealthPoints * 1.04
-	projectile_damage = projectile_damage * 1.04
-	maxExperiencePoints = maxExperiencePoints * 1.06
+	player_level += 1
+	PointSystemScript.player_levels = player_level
+	maxHealthPoints = maxHealthPoints * 1.03
+	projectile_damage = projectile_damage * 1.06
+	maxExperiencePoints = maxExperiencePoints * 1.05
 	experiencePoints = 0
 	healthPoints += maxHealthPoints / 5
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
+	
 	# Level up effects
 	var levelUpEffect = upgradeEffect.instantiate()
 	levelUpEffect.position = self.get_global_position()
@@ -365,5 +414,6 @@ func upgrade_player_stats() -> void:
 	send_current_xp.emit(experiencePoints)
 	send_maximum_xp.emit(maxExperiencePoints)
 	send_maximum_health.emit(maxHealthPoints)
+	companion_upgrade.emit()
 	pass
 #endregion

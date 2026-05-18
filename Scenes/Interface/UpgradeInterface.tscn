@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://c80tvtjnru5m3"]
+
+[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="2_oasdf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
+line_spacing = 25.0
+paragraph_spacing = 14.0
+font = ExtResource("2_oasdf")
+font_size = 128
+font_color = Color(0.8602326, 1, 0.2716998, 1)
+outline_size = 25
+outline_color = Color(0.092075795, 0.14644991, 0, 1)
+shadow_size = 18
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_15wqq"]
+line_spacing = 0.0
+font = ExtResource("2_oasdf")
+font_size = 52
+font_color = Color(1, 0.8059726, 0, 1)
+outline_size = 18
+outline_color = Color(0.17997457, 0.08508608, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bl1lb"]
+font = ExtResource("2_oasdf")
+font_size = 30
+font_color = Color(0.8634428, 1, 0, 1)
+
+[node name="UpgradeScreen" type="Control" unique_id=1347961824]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 75.0
+offset_right = 1816.0
+offset_bottom = 996.0
+
+[node name="UpgradeText" type="Label" parent="." unique_id=1560795430]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 82.0
+offset_right = 1816.0
+offset_bottom = 272.0
+text = "Select an upgrade!"
+label_settings = SubResource("LabelSettings_8oq8g")
+horizontal_alignment = 1
+
+[node name="UpgradeText1" type="Label" parent="UpgradeText" unique_id=1698478150]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 200.0
+offset_right = 460.0
+offset_bottom = 296.0
+text = "Item_Upgrade1"
+label_settings = SubResource("LabelSettings_15wqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradePanel1" type="PanelContainer" parent="UpgradeText/UpgradeText1" unique_id=382409080]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 125.0
+offset_right = 403.0
+offset_bottom = 630.0
+
+[node name="UpgradeText1" type="Label" parent="UpgradeText/UpgradeText1" unique_id=1325747494]
+layout_mode = 0
+offset_top = 471.0
+offset_right = 332.0
+offset_bottom = 567.0
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeText2" type="Label" parent="UpgradeText" unique_id=855043586]
+layout_mode = 0
+offset_left = 677.0
+offset_top = 200.0
+offset_right = 1009.0
+offset_bottom = 296.0
+text = "Item_Upgrade2"
+label_settings = SubResource("LabelSettings_15wqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradePanel2" type="PanelContainer" parent="UpgradeText/UpgradeText2" unique_id=1744013892]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 125.0
+offset_right = 401.0
+offset_bottom = 630.0
+
+[node name="UpgradeText2" type="Label" parent="UpgradeText/UpgradeText2" unique_id=1098398012]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 471.0
+offset_right = 338.0
+offset_bottom = 567.0
+text = "Item_UpgradeDescription2"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeText3" type="Label" parent="UpgradeText" unique_id=1996186467]
+layout_mode = 0
+offset_left = 1228.0
+offset_top = 200.0
+offset_right = 1560.0
+offset_bottom = 296.0
+text = "Item_Upgrade3"
+label_settings = SubResource("LabelSettings_15wqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradePanel3" type="PanelContainer" parent="UpgradeText/UpgradeText3" unique_id=1100374730]
+layout_mode = 0
+offset_left = -61.0
+offset_top = 125.0
+offset_right = 397.0
+offset_bottom = 630.0
+
+[node name="UpgradeText3" type="Label" parent="UpgradeText/UpgradeText3" unique_id=2106370620]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 471.0
+offset_right = 339.0
+offset_bottom = 567.0
+text = "Item_UpgradeDescription3"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1

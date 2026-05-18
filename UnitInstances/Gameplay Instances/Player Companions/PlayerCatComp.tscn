@@ -21,16 +21,23 @@ radius = 23.021729
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjnx0"]
 radius = 46.043457
 
-[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding", "slash_area", "slash_hurtbox")]
+[sub_resource type="Gradient" id="Gradient_2ef6j"]
+colors = PackedColorArray(0.9311302, 0.90304595, 0.58449197, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4oow7"]
+gradient = SubResource("Gradient_2ef6j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8418803, 0.20512821)
+
+[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
 script = ExtResource("1_ek3bn")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
 pathfinding = NodePath("Pathfinding")
-attack_power = 15.0
 move_speed = 350.0
 player_radius = 300.0
-slash_area = NodePath("SlashArea")
-slash_hurtbox = NodePath("SlashArea/SlashHurtbox")
+companion_damage = 22.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true
@@ -90,7 +97,6 @@ companion_node = NodePath("..")
 
 [node name="SlashHurtbox" type="CollisionShape2D" parent="SlashArea" unique_id=2089765813]
 shape = SubResource("CircleShape2D_xjnx0")
-disabled = true
 debug_color = Color(0.7784596, 0.4561587, 0.6860478, 0.42000002)
 
 [node name="EnemyTargetMarker" type="Sprite2D" parent="." unique_id=1231818989]
@@ -103,5 +109,12 @@ texture = ExtResource("7_xjnx0")
 stream = ExtResource("9_2ef6j")
 volume_db = -7.5
 pitch_scale = 0.75
+
+[node name="CompanionLight" type="PointLight2D" parent="." unique_id=194855364]
+scale = Vector2(12.187499, 12.187499)
+color = Color(0.938151, 0.7522057, 0.2970827, 1)
+energy = 3.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4oow7")
 
 [connection signal="state_changed" from="CompanionStateMachine" to="Label" method="set_text"]

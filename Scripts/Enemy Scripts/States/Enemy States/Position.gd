@@ -2,6 +2,9 @@ class_name EnemyStatePositioning
 extends EnemyState
 
 @export var after_position_state: EnemyState
+@export var attack_state: EnemyState
+@export var successful_chance_to_attack: float
+const CHANCE_TO_ATTACK: Vector2 = Vector2(0.0, 5.0)
 
 func enter() -> void:
 	super()
@@ -16,7 +19,10 @@ func process_physics(delta: float) -> EnemyState:
 		return recovery_state
 
 	if parent.navAgent.is_navigation_finished() and after_position_state:
-		return after_position_state
+		if randf_range(CHANCE_TO_ATTACK.x, CHANCE_TO_ATTACK.y) >= successful_chance_to_attack:
+			return attack_state
+		else:
+			return after_position_state
 
 	if parent.repositioningTimer < 0:
 		parent.repositioningTimer = parent.maxRepositioningTimer

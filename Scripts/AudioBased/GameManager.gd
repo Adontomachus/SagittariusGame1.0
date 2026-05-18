@@ -7,8 +7,10 @@ extends Node2D
 var spawnTimer = randf_range(2,5)
 @export var player: Node2D # = $"../Player"
 
-## Temporary for main menu animations
-# @export var main_menu_transition: AnimationPlayer
+## For the combo system scoring methods
+@onready var combo_system: ComboSystems = $GameSystems/ComboSystem
+var player_combo_level: int
+
 
 # PAUSE UI
 @onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
@@ -28,7 +30,10 @@ const enemyToSpawn = preload("res://UnitInstances/Telegraphs/EnemySpawnWarning.t
 var playerSpawnDistance = 250
 var shapeCast: ShapeCast2D
 var enemySpawnWeightCounter: int
+## Weighted enemy rarity values for spawning enemy variety
 var rarityWeight: float
+## This value increments the value per level, which makes it much more adjustable
+var rarityWeightIncrement: float = 0.5
 @export var maxRarityValue: float
 var enemySpawnCounter: int
 var enemyCount: int
@@ -131,10 +136,12 @@ var playerRadius = 300
 var instantiationPositions: Vector2
 
 func _process(delta):
-	# Gets the number of enemies present in the screen
+	## Gets the player's current combo level
+	player_combo_level = combo_system.combo_level
+	## Gets the number of enemies present in the screen
 	enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
 	#region value display for UI
-	wave_counter.text = "Wave: " + str(level_wave)
+	wave_counter.text = "Waves Remaining: " + str(waves_remaining)
 	enemy_counter.text = "Enemies Left: " + str(enemyCount)
 	score.text = "Score: " + str(PointSystemScript.playerScore)
 	#endregion
@@ -192,14 +199,13 @@ func _process(delta):
 		
 	# If the completed notification ends, go to the next wave and increase stat increments
 		if wave_notification.self_modulate.a < 0 && waves_remaining != 0:
+			waves_remaining -= 1
 			_change_spawning_state(spawningBehavior.Preparation)
 			scale_on_next_wave.emit()
 			enemySpawnCounter = 10 + (level_wave * 2)
 			level_wave += 1
-			waves_remaining -= 1
 			nextDuration = 8
-			_next_wave(1)
-
+			_next_wave(rarityWeightIncrement)
 	# If the current wave is completed
 				
 #endregion
@@ -226,7 +232,7 @@ func _process(delta):
 	#endregion 
 			
 	#region Randomization of enemy spawning with telegraph, usually in a considerable distance to player
-	instantiationPositions = Vector2(player.global_position.x + randf_range(400,900), player.global_position.y + randf_range(155,455))
+	instantiationPositions = Vector2(player.global_position.x + randf_range(-650,650), player.global_position.y + randf_range(-310,310))
 	#endregion
 	
 	

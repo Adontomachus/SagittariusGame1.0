@@ -14,6 +14,10 @@ var chaseTarget: bool = false
 
 var collEffect := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 func _ready():
+	var combo_system = get_tree().get_first_node_in_group("ComboManager")
+
+	## Checks if the scoring system script is attached
+	
 	objectTarget = get_tree().get_first_node_in_group("PlayerObject")
 	print("Found: ", objectTarget)
 	rotation_degrees = randf_range(0,360)
@@ -26,7 +30,8 @@ func _ready():
 			var hitEffect = collEffect.instantiate()
 			hitEffect.position = self.get_global_position()
 			get_tree().get_root().call_deferred("add_child", hitEffect)
-			PointSystemScript.playerScore += pointsAmount
+			if combo_system:
+				PointSystemScript.playerScore += pointsAmount * combo_system.combo_level
 			emit_effects()
 			area.modify_player_health(healAmount)
 			area.modify_player_experience(experienceAmount)
@@ -45,7 +50,7 @@ func _physics_process(delta):
 		movespeed -=  300 * delta
 	if (movespeed <= 0):
 		chaseTarget = true
-	if (chaseTarget):
+	if chaseTarget and objectTarget:
 		movespeed += 355 * delta
 		look_at(objectTarget.global_position)
 

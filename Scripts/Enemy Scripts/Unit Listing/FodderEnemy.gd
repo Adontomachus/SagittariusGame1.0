@@ -14,7 +14,10 @@ signal update_current_health_value(boss_health: int)
 @export var state_machine: EnemyStateMachine
 @export var navAgent: NavigationAgent2D
 
-
+## This boolean determines if the enemy is categorized as a boss.
+## It controls whether a boss health bar should appear if the unit instantiates.
+@export_category("Boss Unit Classification")
+@export var boss_unit: bool = false
 
 ## The enemy's target. Usually the player, but it could also be an objective.
 var target: CharacterBody2D
@@ -25,6 +28,7 @@ var target: CharacterBody2D
 @export var stamina_range: Vector2 = Vector2(2, 5)
 @export var stamina_regeneration_rate: float = 1.0
 @export var maxMoveSpeed: float = 100.0
+@export var movement_boosted: bool = false
 
 var stamina: float:
 	set(value):
@@ -75,15 +79,21 @@ var splash_damage_effect := preload("res://Objects/Particle Effects/AoEHitEffect
 ## Damage number that spawns on side of the object's center
 ## when the object takes damage from AoE sources
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
+
 # START
 func _ready():
 	state_machine.init(self)#, animations, audio_sfx)
-
-	# Set enemy stat
+	
+	# For boss type units, finds the node for the the cinematic handler to play a scene when the boss reaches 0 HP.
+	#var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
+	#print("Current Cinematics Handler: " , cinematics_handler)
+	
+	# Set enemy statistics
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
 	maxHealthPoints = maxHealthPoints * ScalingSystemScript.health_scaling
+	attackPower = attackPower * ScalingSystemScript.attack_power_scaling
 	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar
@@ -99,9 +109,14 @@ func _ready():
 	target = get_tree().get_first_node_in_group("PlayerObject")
 
 func _physics_process(delta: float) -> void:
+	#region This section is for charging enemy units only
+	if movement_boosted: currentMoveSpeed = 630
+	else: currentMoveSpeed = maxMoveSpeed
+	#endregion
+	
 	if target and shoot_point:
 		shoot_point.look_at(target.global_position)
-	# SPRITE FLIPPINGaw
+	# SPRITE FLIPPING
 	if target.get_global_position().x < global_position.x:
 		state_machine.sprite.flip_h = true
 		# shotgun = global_position + weaponOffset
@@ -109,7 +124,6 @@ func _physics_process(delta: float) -> void:
 		pass
 	else:
 		state_machine.sprite.flip_h = false
-
 	state_machine.process_physics(delta)
 	
 func _process(delta: float) -> void:
@@ -166,6 +180,18 @@ func _delete_and_emit_effects():
 		rewards.position = self.get_global_position()
 		get_tree().get_root().call_deferred("add_child", rewards)
 	call_deferred("queue_free")
+	
+	## If the unit is considered the "final boss of the level", play a cutscene 
+	## of the boss getting defeated and roll out victorious post game statistics
+	if boss_unit:
+		## Completely disables the enemy object and plays the winning animation
+		var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
+		print("Current Cinematics Handler: " , cinematics_handler)
+		cinematics_handler.game_is_won = true
+		self.set_process(false)
+		
+		get_tree().paused = true
+		return
 	return
 	
 func _aoe_damage_feedback(increment: int):

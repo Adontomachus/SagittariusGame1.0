@@ -1,29 +1,73 @@
 [gd_scene format=3 uid="uid://d24063yq0kgko"]
 
-[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
+[ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_g16c8"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_oc4nc"]
-[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy/EnemyProjectileHitbox.gd" id="3_w0bs6"]
-[ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
+[ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_w0bs6"]
+[ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy Scripts/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_kdy0d"]
-[ext_resource type="Script" uid="uid://bj6o7bxu2nywc" path="res://Scripts/Enemy/States/Enemy States/Position.gd" id="5_4yo34"]
+[ext_resource type="Script" uid="uid://bj6o7bxu2nywc" path="res://Scripts/Enemy Scripts/States/Enemy States/Position.gd" id="5_4yo34"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_oc4nc"]
-[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy/States/Enemy States/Recovery.gd" id="6_kdy0d"]
+[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="6_kdy0d"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_b7mrf"]
+[ext_resource type="Script" uid="uid://uhna5uouncxf" path="res://Scripts/Enemy Scripts/Enemy Passives/BossSummon.gd" id="7_iq3q8"]
+[ext_resource type="Script" uid="uid://bgnnb24rgbqra" path="res://Scripts/Enemy Scripts/States/Exclusive Boss States/Barrage.gd" id="8_wouom"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 103.84142
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_477de"]
+radius = 562.0142
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 83.02409
 
-[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType"]]
+[sub_resource type="Animation" id="Animation_iq3q8"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r4dr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ek2o3"]
+_data = {
+&"Flash": SubResource("Animation_iq3q8"),
+&"RESET": SubResource("Animation_r4dr7")
+}
+
+[node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["BossType", "EnemyObject", "FodderType"]]
 script = ExtResource("1_t5eiy")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
+boss_unit = true
 stamina_range = Vector2(200, 500)
 maxHealthPoints = 2400
 amountOfPointOrbs = 15
+shoot_point = NodePath("ShootPoint")
+attackPower = 24.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -33,6 +77,9 @@ debug_enabled = true
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1633150966]
+position = Vector2(1, -1)
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 scale = Vector2(0.24122807, 0.24122804)
@@ -62,8 +109,16 @@ position = Vector2(48.551716, -52.082764)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
 
-[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+[node name="SummonArea" type="Area2D" parent="." unique_id=696089106]
+
+[node name="SummonAreaRadius" type="CollisionShape2D" parent="SummonArea" unique_id=2082543170]
+shape = SubResource("CircleShape2D_477de")
+disabled = true
+debug_color = Color(0.7598514, 0.44796598, 0.17923622, 0)
+
+[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_w0bs6")
+damage_flash_effect = NodePath("../DamageFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 shape = SubResource("CircleShape2D_mepa4")
@@ -79,6 +134,13 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_kdy0d")
 texture_progress = ExtResource("5_oc4nc")
 
+[node name="Label" type="Label" parent="." unique_id=571004718]
+offset_left = -35.0
+offset_top = -169.0
+offset_right = 37.0
+offset_bottom = -146.0
+horizontal_alignment = 1
+
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]
 visible = false
 offset_left = -45.0
@@ -86,14 +148,28 @@ offset_top = -62.0
 offset_right = 46.0
 offset_bottom = -35.0
 
+[node name="BossSummonArea" type="Node" parent="." unique_id=746242289]
+script = ExtResource("7_iq3q8")
+
+[node name="EnemyStateIdle" type="Node" parent="." unique_id=732527017]
+
+[node name="EnemyStateStationaryBarrage" type="Node" parent="." unique_id=2060164638]
+
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=1146269158 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_b7mrf")
 starting_state = NodePath("EnemyStatePositioning")
 sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
-[node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("recovery_state")]
+[node name="EnemyStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1962372584]
+script = ExtResource("8_wouom")
+successful_chance_to_attack = 2.0
+
+[node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("after_position_state", "attack_state", "recovery_state")]
 script = ExtResource("5_4yo34")
+after_position_state = NodePath("../EnemyStateRecovery")
+attack_state = NodePath("../EnemyStateBarrage")
+successful_chance_to_attack = 4.0
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://bj6o7bxu2nywc"
 
@@ -102,16 +178,13 @@ script = ExtResource("6_kdy0d")
 state_to_return = NodePath("../EnemyStatePositioning")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
-[node name="EnemyStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1962372584]
-
-[node name="EnemyStateIdle" type="Node" parent="EnemyStateMachine" unique_id=732527017]
-
-[node name="EnemyStateBulletBarrage" type="Node" parent="EnemyStateMachine" unique_id=2060164638]
-
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=12022442]
 stream = ExtResource("7_b7mrf")
 volume_db = -7.5
 pitch_scale = 0.75
+
+[node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=394973107]
+libraries/ = SubResource("AnimationLibrary_ek2o3")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="." method="_on_send_maximum_health_value"]
@@ -119,3 +192,4 @@ pitch_scale = 0.75
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

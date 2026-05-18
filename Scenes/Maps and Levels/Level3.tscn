@@ -1,0 +1,1054 @@
+[gd_scene format=3 uid="uid://d2325b3f1pykf"]
+
+[ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="1_26ie8"]
+[ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Instances With Collision/Wall.tscn" id="2_bqjht"]
+[ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="3_iv6ve"]
+[ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="4_1ajex"]
+[ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="5_rkq28"]
+[ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="6_d7tpc"]
+[ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="7_ahir7"]
+[ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="8_mhy01"]
+[ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/Game Elements/floordecals.png" id="9_wscqf"]
+[ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/Game Elements/baleterootdecals.png" id="10_5gxo1"]
+[ext_resource type="Texture2D" uid="uid://gg2hyp501kug" path="res://Sprites/Game Elements/floordecal3.png" id="11_k018i"]
+[ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="12_acd03"]
+[ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="13_voop0"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ftyv2"]
+vertices = PackedVector2Array(1899, -137, 1685, -137, -638.5703, -154, -656.3125, -220.21094, 1608.5, 1907, 2087, 1915.5703, 2020.7891, 1933.3125, -466.5703, 1915, 1279.5, 1907, 647.5, 697, 859.5, 692, 924.5, 692, 924.5, 732, 113.42969, 1320, 982.5, 1295, 1159.5, 1295, 95.6875, 1386.2109, -61.5, 601, 71.5, 592, 248.5, 592, 324.5, 613, 397.5, 655, 2585, 597, 3201.289, 909.1094, 3097.289, 909.1094, 2077, 881, 1437.5, 823, 2371, 597, 2250.5, 227, 2932, -4.5703125, 2998.211, -22.3125, 2585, 372, 2371, 372, 2770, 1148.5703, 2703.789, 1166.3125, 2442.5, 1158, 2077, 1106, 3064.4297, -137, 3201.289, -493.10938, 3046.6875, -70.78906, 1684.5, 597, 2442.5, 1474, 2703.789, 1395.6875, 2770, 1413.4297, 2219.4297, 2048, 2201.6875, 1981.7891, 2902.4297, 1281, 3097.289, 2159.1094, 2884.6875, 1347.2109, 2865.789, -22.3125, 3046.6875, -203.21094, 1507.5, 597, 1437.5, 647, 2884.6875, 1214.7891, 2156.789, 2159.1094, 2201.6875, 2114.211, 1972.3125, 2114.211, 2017.2109, 2159.1094, 1646.7109, 2159.1094, 1646.7109, 2152.1094, 1972.3125, 1981.7891, 1875.5, 401, 2073.5, 227, 1875.5, 225, 1899, 88, 2073.5, 51, 2836.211, 1395.6875, 1260.5, 647, 1260.5, 823, 1165.5, 770, 1165.5, 594, -412, 936, -412, 711, -131.5, 780, -131.5, 1096, -133.6875, 1253.7891, -151.42969, 1320, 2655.3125, 1347.2109, 2637.5703, 1281, 2497.5, -61, 2817.3125, -70.78906, 2250.5, 51, 2168.5, -61, 2113.5, 1474, 2153.211, 1933.3125, 1779.5, 1385, 1608.5, 1591, 1602.5, 1385, -626, 711, -626, 936, -877.5703, 797, -895.3125, 730.78906, 2655.3125, 1214.7891, 2998.211, -251.6875, 2424.289, -493.10938, 2932, -269.4297, 2865.789, -251.6875, 2817.3125, -203.21094, 2497.5, -377, 324.5, 437, 248.5, 416, 2113.5, 1158, 1779.5, 1209, 1863, 1106, -895.3125, 863.21094, 1954.5703, 2048, 129.71094, 2093.1094, -484.3125, 1981.2109, 2799.5703, -137, 907.28906, -582.1094, 2168.5, -377, 1279, -484.4297, 1159.5, 1119, 1602.5, 1209, 1279.5, 1591, 2836.211, 1166.3125, 1685, 88, 1698.5, 225, 248.5, 207, 1411.4297, -352, 1393.6875, -418.21094, 1393.6875, -285.78906, 71.5, 416, -61.5, 425, -49.5, 376, 1684.5, 421, 1698.5, 401, 1507.5, 421, 248.5, 383, 71.5, 207, 71.5, 383, -49.5, 200, 1863, 881, 982.5, 1119, 197.5, 1096, 197.5, 780, 2424.289, -582.1094, -157, 200, -157, 14, -371, 239, -226.5, 239, -226.5, 376, -238.5, 425, 1101.5, 594, 1101.5, 556, 1036.5, 556, 1036.5, 516, 966.5, 516, 966.5, 477, 789.5, 653, 859.5, 653, 647.5, 521, 789.5, 477, 574.5, 521, 574.5, 479, 501.5, 479, 501.5, 437, 397.5, 613, 470.5, 655, 470.5, 697, 988.5, 732, 988.5, 770, 129.71094, 2152.1094, -713.6875, 1981.2109, -1372.2891, 2093.1094, -1372.2891, 1062.8906, -1365.2891, 1062.8906, -731.4297, 1915, -558.28906, -456.10938, -558.28906, -619.1094, 907.28906, -619.1094, -484.3125, 1848.7891, -656.3125, -87.78906, 95.6875, 1253.7891, 47.210938, 1434.6875, -532.78906, 1800.3125, -19, 1452.4297, 1345.2109, -237.3125, -943.78906, 911.6875, -599, 1782.5703, -665.21094, 1800.3125, -532.78906, 2029.6875, 47.210938, 1205.3125, -704.78906, -39.3125, -943.78906, 682.3125, -1365.2891, -456.10938, -704.78906, -268.6875, 1279, -219.57031, 1345.2109, -466.6875, -85.21094, 1434.6875, -133.6875, 1386.2109, -19, 1187.5703, -85.21094, 1205.3125, -1010, 929.4297, -713.6875, 1848.7891, -1076.2109, 911.6875, -771, -21.570313, -238.5, 601, -837.21094, -39.3125, -371, 14, -1124.6875, 863.21094, 1212.7891, -237.3125, 1164.3125, -285.78906, 1146.5703, -352, 1164.3125, -418.21094, 1212.7891, -466.6875, -771, -286.4297, -599, 2047.4297, -665.21094, 2029.6875, -1142.4297, 797, -1124.6875, 730.78906, -1076.2109, 682.3125, -1010, 664.5703, -885.6875, -87.78906, -837.21094, -268.6875, -885.6875, -220.21094, -903.4297, -154)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31, 32), PackedInt32Array(33, 34, 35, 36, 25, 24), PackedInt32Array(37, 38, 23, 39), PackedInt32Array(40, 27, 26), PackedInt32Array(41, 42, 43, 44, 45), PackedInt32Array(46, 24, 47, 48), PackedInt32Array(49, 29, 28), PackedInt32Array(38, 37, 50), PackedInt32Array(51, 40, 26, 52), PackedInt32Array(24, 46, 53), PackedInt32Array(47, 54, 55), PackedInt32Array(56, 57, 58, 59), PackedInt32Array(7, 6, 60), PackedInt32Array(30, 39, 23, 22), PackedInt32Array(30, 22, 31), PackedInt32Array(61, 62, 28, 32, 27, 40), PackedInt32Array(62, 61, 63, 64, 65), PackedInt32Array(66, 48, 47, 55, 44), PackedInt32Array(67, 68, 69, 70), PackedInt32Array(71, 72, 73, 74, 75, 76), PackedInt32Array(77, 42, 41, 35), PackedInt32Array(78, 77, 35), PackedInt32Array(79, 80, 49, 28, 81), PackedInt32Array(82, 79, 81, 65), PackedInt32Array(43, 66, 44), PackedInt32Array(83, 41, 45, 84), PackedInt32Array(85, 83, 84, 5, 86, 87), PackedInt32Array(88, 89, 90, 91), PackedInt32Array(92, 78, 35), PackedInt32Array(38, 50, 93), PackedInt32Array(94, 38, 93, 95), PackedInt32Array(94, 95, 96), PackedInt32Array(94, 96, 97, 98), PackedInt32Array(99, 20, 19, 100), PackedInt32Array(36, 101, 83, 85, 102, 103), PackedInt32Array(104, 90, 89), PackedInt32Array(7, 60, 105, 59, 106, 107), PackedInt32Array(108, 80, 79, 98), PackedInt32Array(97, 108, 98), PackedInt32Array(109, 94, 98, 110, 111), PackedInt32Array(82, 65, 64, 0, 110), PackedInt32Array(15, 112, 113, 87, 114), PackedInt32Array(24, 53, 115), PackedInt32Array(116, 64, 63, 117, 118), PackedInt32Array(105, 56, 59), PackedInt32Array(110, 0, 119, 120), PackedInt32Array(121, 119, 0), PackedInt32Array(122, 18, 17, 123, 124), PackedInt32Array(61, 40, 125, 126), PackedInt32Array(117, 126, 125, 127, 128, 118), PackedInt32Array(129, 130, 124, 131), PackedInt32Array(132, 103, 112, 133, 134, 135, 68), PackedInt32Array(109, 136, 94), PackedInt32Array(131, 137, 138), PackedInt32Array(139, 140, 141, 142), PackedInt32Array(70, 143, 144, 127), PackedInt32Array(144, 145, 146, 127), PackedInt32Array(146, 147, 148, 127), PackedInt32Array(149, 150, 10, 9), PackedInt32Array(149, 9, 151, 152), PackedInt32Array(151, 153, 154, 152), PackedInt32Array(154, 155, 156, 152), PackedInt32Array(20, 157, 21), PackedInt32Array(21, 158, 159), PackedInt32Array(12, 160, 161), PackedInt32Array(59, 162, 106), PackedInt32Array(163, 164, 165, 166, 167), PackedInt32Array(168, 169, 170, 109), PackedInt32Array(15, 114, 8, 7, 171), PackedInt32Array(2, 1, 116, 172), PackedInt32Array(5, 4, 86), PackedInt32Array(87, 86, 114), PackedInt32Array(133, 14, 13, 173), PackedInt32Array(174, 15, 171, 175, 176), PackedInt32Array(177, 121, 0), PackedInt32Array(178, 104, 89, 179, 180), PackedInt32Array(34, 92, 35), PackedInt32Array(36, 35, 101), PackedInt32Array(24, 115, 33), PackedInt32Array(26, 25, 132, 68), PackedInt32Array(118, 129, 131, 138, 116), PackedInt32Array(181, 107, 106), PackedInt32Array(127, 51, 52, 67, 70), PackedInt32Array(133, 173, 182, 134), PackedInt32Array(103, 102, 113, 112), PackedInt32Array(183, 172, 116, 138), PackedInt32Array(88, 91, 184, 185), PackedInt32Array(0, 3, 186, 187), PackedInt32Array(110, 120, 188), PackedInt32Array(128, 127, 148, 152, 156), PackedInt32Array(174, 16, 15), PackedInt32Array(189, 176, 175), PackedInt32Array(190, 189, 175, 179), PackedInt32Array(71, 76, 190, 179, 89), PackedInt32Array(74, 134, 182, 191), PackedInt32Array(74, 191, 192), PackedInt32Array(74, 192, 75), PackedInt32Array(193, 178, 180, 194), PackedInt32Array(195, 193, 194, 167), PackedInt32Array(128, 156, 99, 100), PackedInt32Array(130, 128, 100, 122), PackedInt32Array(124, 130, 122), PackedInt32Array(141, 124, 123, 142), PackedInt32Array(196, 139, 142, 197, 198), PackedInt32Array(183, 138, 199), PackedInt32Array(183, 199, 139, 196), PackedInt32Array(161, 69, 68, 135), PackedInt32Array(200, 195, 167, 166), PackedInt32Array(187, 177, 0), PackedInt32Array(201, 187, 186), PackedInt32Array(202, 201, 186), PackedInt32Array(203, 202, 186), PackedInt32Array(204, 203, 186), PackedInt32Array(205, 204, 186, 206), PackedInt32Array(159, 9, 12, 161, 135, 73), PackedInt32Array(207, 181, 106), PackedInt32Array(207, 106, 164), PackedInt32Array(208, 207, 164), PackedInt32Array(163, 208, 164), PackedInt32Array(209, 200, 166), PackedInt32Array(209, 166, 185, 210), PackedInt32Array(211, 210, 185), PackedInt32Array(212, 211, 185), PackedInt32Array(184, 212, 185), PackedInt32Array(72, 88, 185), PackedInt32Array(73, 72, 185, 213, 198, 197), PackedInt32Array(197, 17, 21, 159, 73), PackedInt32Array(109, 111, 205, 206, 168), PackedInt32Array(110, 188, 111), PackedInt32Array(185, 168, 206, 214), PackedInt32Array(185, 214, 215), PackedInt32Array(185, 215, 216), PackedInt32Array(185, 216, 213)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1923, -1106, -2272, 818, -1842, 2261, -51, 2521, 3056, 2494, 3629, 2055, 3866, 525, 3548, -1016, 1525, -1133, -759, -1177)])
+cell_size = 2.0
+agent_radius = 40.0
+
+[sub_resource type="Gradient" id="Gradient_rp1p4"]
+colors = PackedColorArray(0, 0.28493494, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1x5mp"]
+gradient = SubResource("Gradient_rp1p4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_y1plk"]
+colors = PackedColorArray(0.6890013, 0.78235406, 0.19316462, 0.50600004, 0.66288584, 0.66288584, 0.66288584, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_11evb"]
+gradient = SubResource("Gradient_y1plk")
+fill = 1
+fill_from = Vector2(0.517094, 0.4957265)
+fill_to = Vector2(0.64102566, 0.4017094)
+
+[sub_resource type="Curve" id="Curve_f1g14"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(0.5278592, 43.155457), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_w4es4"]
+offsets = PackedFloat32Array(0, 0.52063495, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.66743076, 0.86981654, 0.1428257, 0.521, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_e8aea"]
+colors = PackedColorArray(1.353256, 0.11207495, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ytuod"]
+gradient = SubResource("Gradient_e8aea")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_81epe"]
+colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p0pkr"]
+gradient = SubResource("Gradient_81epe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75641024, 0.20512821)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_npvjx"]
+gradient = SubResource("Gradient_81epe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75641024, 0.20512821)
+
+[sub_resource type="Gradient" id="Gradient_4t4xv"]
+colors = PackedColorArray(0.94337994, 0.54004896, 0.76612836, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_apu16"]
+gradient = SubResource("Gradient_4t4xv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_o710q"]
+colors = PackedColorArray(0.75934714, 0.3913462, 0.5542111, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kqene"]
+gradient = SubResource("Gradient_o710q")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_hlum5"]
+colors = PackedColorArray(0.3108299, 0.46240625, 1.2528917, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fe75p"]
+gradient = SubResource("Gradient_hlum5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7905983, 0.2905983)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_obbva"]
+gradient = SubResource("Gradient_hlum5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.83760685, 0.23504274)
+
+[node name="Level1" type="Node2D" unique_id=899005571]
+
+[node name="Stage1" type="Node" parent="." unique_id=1081743190]
+
+[node name="EnemyNavRegion" type="NavigationRegion2D" parent="Stage1" unique_id=1502933284]
+visible = false
+position = Vector2(-50, 34)
+navigation_polygon = SubResource("NavigationPolygon_ftyv2")
+
+[node name="Map Objects" type="Node" parent="Stage1/EnemyNavRegion" unique_id=457826133]
+
+[node name="Ground" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects" unique_id=59861587]
+modulate = Color(0.50638646, 0.50638646, 0.50638646, 1)
+z_index = -20
+position = Vector2(742.00006, 554)
+scale = Vector2(3.148575, 3.1485739)
+texture = ExtResource("1_26ie8")
+
+[node name="Obstacles" type="Node" parent="Stage1/EnemyNavRegion/Map Objects" unique_id=1196175935]
+
+[node name="Wall" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=430981844 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-200, 547)
+
+[node name="Wall2" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1834938226 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(110, 538)
+
+[node name="Wall3" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=2126113819 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-188, 322)
+
+[node name="Wall4" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1780677989 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(828, 599)
+
+[node name="Wall5" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1736592652 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(898, 638)
+
+[node name="Wall6" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1816334025 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(110, 329)
+
+[node name="Wall7" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1853988522 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(963, 678)
+
+[node name="Wall8" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1976964998 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1027, 716)
+
+[node name="Wall9" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1479940563 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(363, 559)
+
+[node name="Wall10" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1809611173 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(436, 601)
+
+[node name="Wall11" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=450959405 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(509, 643)
+
+[node name="Tree" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=870274264 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1229, -338)
+
+[node name="Tree2" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1299458269 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2720, 1295)
+
+[node name="Tree4" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1133273948 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-649, 1929)
+
+[node name="Tree5" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=329631428 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1060, 811)
+
+[node name="Tree6" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1677679660 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-821, -139.99994)
+
+[node name="Tree7" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=2107650116 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2037, 2062)
+
+[node name="Tree8" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1542196521 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2882, -123)
+
+[node name="Tree3" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=932822198 instance=ExtResource("3_iv6ve")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-69, 1334)
+
+[node name="Floordecoration" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=492188882]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+z_index = -13
+position = Vector2(67.83904, -13.499973)
+scale = Vector2(0.14391698, 0.14391698)
+texture = ExtResource("4_1ajex")
+
+[node name="Floordecoration2" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1244531176]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+z_index = -13
+position = Vector2(466, 1181.9999)
+scale = Vector2(0.13056332, 0.1305633)
+texture = ExtResource("4_1ajex")
+
+[node name="Floordecoration3" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1395981428]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+z_index = -13
+position = Vector2(2077, 1569)
+scale = Vector2(0.11572719, 0.11572718)
+texture = ExtResource("4_1ajex")
+
+[node name="Floordecoration4" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=72015659]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+z_index = -13
+position = Vector2(2476, -228)
+scale = Vector2(0.0979229, 0.09792287)
+texture = ExtResource("4_1ajex")
+
+[node name="Wall12" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=356129522 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1299, 769)
+
+[node name="Wall13" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1415564667 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1546, 543)
+
+[node name="Wall14" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1373509954 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1737, 347)
+
+[node name="Wall15" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1194538979 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2112, 173)
+
+[node name="Wall16" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=430465593 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1641, 1331)
+
+[node name="Wall17" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1667460973 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1021, 1241)
+
+[node name="Pillar" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1193218727 instance=ExtResource("5_rkq28")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-314, 164)
+
+[node name="Pillar2" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1461778926 instance=ExtResource("5_rkq28")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1742, 13)
+
+[node name="Pillar3" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1275546125 instance=ExtResource("5_rkq28")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-569, 861)
+
+[node name="Pillar4" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1879320182 instance=ExtResource("5_rkq28")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1920, 1031)
+
+[node name="Pillar5" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=830369452 instance=ExtResource("5_rkq28")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2428, 522)
+
+[node name="Wall18" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=4562370 instance=ExtResource("6_d7tpc")]
+position = Vector2(-9, 963)
+
+[node name="Wall19" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1507737553 instance=ExtResource("6_d7tpc")]
+position = Vector2(1402, 1774)
+
+[node name="Wall20" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=346348646 instance=ExtResource("6_d7tpc")]
+position = Vector2(2236, 1341)
+
+[node name="Wall21" parent="Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1027119314 instance=ExtResource("6_d7tpc")]
+position = Vector2(2291, -194)
+
+[node name="BGDecals" type="Node" parent="Stage1/EnemyNavRegion/Map Objects" unique_id=2034545079]
+
+[node name="Floorpattern" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=620606613]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(688, 1369)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern13" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=579746270]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(658, 1535)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern14" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=755920898]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(811, 1609)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern2" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=891583445]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(823.0001, 1446)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern3" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1308658369]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(962, 1523)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern4" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1543991260]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(1117.9999, 1609)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern5" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=12918104]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(1948.7137, 855.00006)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern6" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1861245202]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(2083.7139, 932.00006)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern7" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1379518616]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(2222.7139, 1009.00006)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern8" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=422907864]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(2378.7136, 1095)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern9" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1320416960]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(-671.2861, 596)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern10" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1679063827]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(-536.28595, 673)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern11" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=430713921]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(-397.28595, 750)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Floorpattern12" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1538403139]
+modulate = Color(0.735357, 0.735357, 0.735357, 1)
+z_index = -15
+position = Vector2(-241.2862, 835.99994)
+scale = Vector2(0.43544304, 0.43544304)
+texture = ExtResource("7_ahir7")
+
+[node name="Rhythmplant" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1580102396 groups=["AestheticDecoration"] instance=ExtResource("8_mhy01")]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
+position = Vector2(1240, 581)
+
+[node name="Rhythmplant2" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=392068798 groups=["AestheticDecoration"] instance=ExtResource("8_mhy01")]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
+position = Vector2(332, 1378)
+
+[node name="Rhythmplant3" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=607368264 groups=["AestheticDecoration"] instance=ExtResource("8_mhy01")]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
+position = Vector2(595, -126.000015)
+
+[node name="Rhythmplant4" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=995597128 groups=["AestheticDecoration"] instance=ExtResource("8_mhy01")]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -14
+position = Vector2(-591, 74.999985)
+
+[node name="Floordecals" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=2093765906]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(464, 348)
+scale = Vector2(0.59313726, 0.5931372)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals2" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=29799479]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1025, 870.99994)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals3" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=141372337]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-297, 503.99994)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals4" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=110968494]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(248, -178.00006)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals5" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1171727151]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1407, 136)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals6" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=827539420]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-393, 1716)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals9" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=457069832]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-1355, 486.99988)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals10" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=949262220]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-1260, 1849)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals11" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=21551515]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1980, 1187)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals12" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1846249324]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(2677, 2040)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals13" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=365938788]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1358, 2133)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals7" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=970008544]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(2930, 473.99988)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecals8" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=80404150]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1692.0001, -501)
+scale = Vector2(0.6274511, 0.62745106)
+texture = ExtResource("9_wscqf")
+
+[node name="Floordecoration" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=534663843]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -13
+position = Vector2(1939, 447)
+scale = Vector2(0.21513353, 0.21513353)
+texture = ExtResource("4_1ajex")
+
+[node name="Baleterootdecals" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1735597974]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1140.1777, 498)
+scale = Vector2(0.42222223, 0.42222223)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals2" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1383461536]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(131.66296, 870.5)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals14" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=2111346273]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-319, 2078)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals6" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=761221596]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1899, 219)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals8" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1594238581]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(247, 1749)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals9" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1630243752]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(2601, 1601)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals10" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1378162100]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(1800, 1559)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals7" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=2093724789]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(2847, 491)
+scale = Vector2(0.47037038, 0.47037038)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals3" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1687348170]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-832.6037, 1312.5)
+scale = Vector2(0.33703703, 0.33703703)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals4" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1247320719]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-918.363, 126)
+scale = Vector2(0.42962965, 0.42962962)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals5" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=2122844553]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(660.5852, -261)
+scale = Vector2(0.34814814, 0.34814814)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals11" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=30913438]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-1251, 736)
+scale = Vector2(0.34814814, 0.34814814)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals12" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1282078464]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-1343, 1099)
+scale = Vector2(0.34814814, 0.34814814)
+texture = ExtResource("10_5gxo1")
+
+[node name="Baleterootdecals13" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1833417886]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -15
+position = Vector2(-929, -192)
+scale = Vector2(0.34814814, 0.34814814)
+texture = ExtResource("10_5gxo1")
+
+[node name="Floordecal3" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1435896985]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(-788, 1081)
+scale = Vector2(0.7517648, 0.7517647)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal4" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1477296849]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(1356, 1260)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal2" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=299872552]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(-735, 350)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal21" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1252601441]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(-429, -301)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal22" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=70343310]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(-1446, 199)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal12" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1664300010]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(143.99998, 534.00006)
+scale = Vector2(0.60772836, 0.60772836)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal5" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=268272388]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(1285, 293)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal6" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1770449937]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(1754, -156)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal7" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=2104327662]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(610, -506)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal13" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1130151381]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(2574.9998, 175.00005)
+scale = Vector2(0.9064016, 0.68588233)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal8" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1086344432]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -17
+position = Vector2(399, 1073)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal9" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=107648180]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(563, 673)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal20" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=929178818]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(-1406, -293)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal10" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1677369429]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(221, 259)
+texture = ExtResource("11_k018i")
+
+[node name="Floordecal11" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1499013389]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(1678, 691)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal14" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1932099839]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(2789, 795)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal15" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1179500357]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(525, 1994)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal17" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=209845553]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(-1187, 2110)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal18" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1419779503]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(-1383, 1456)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal19" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1190131169]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(2868, -311)
+texture = ExtResource("12_acd03")
+
+[node name="Floordecal16" type="Sprite2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=388408638]
+modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+z_index = -18
+position = Vector2(2025, 1852)
+texture = ExtResource("12_acd03")
+
+[node name="AreaLights" type="Node" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1158962549]
+
+[node name="AreaLight4" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=635450178]
+position = Vector2(414.00018, 1133)
+scale = Vector2(30.546873, 30.624998)
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_1x5mp")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight4" unique_id=1479067995]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="AreaLight2" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=863945436]
+position = Vector2(-421.9999, 379)
+scale = Vector2(30.546873, 30.624998)
+energy = 4.97
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ytuod")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight2" unique_id=1062131902]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="AreaLight3" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=767771283]
+position = Vector2(-1253, 1137)
+scale = Vector2(53.71875, -51.691105)
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p0pkr")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight3" unique_id=1069070159]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="AreaLight6" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=822417154]
+position = Vector2(-201.99997, 1738)
+scale = Vector2(30.218752, -29.078125)
+color = Color(0.37342674, 0.6155507, 1, 1)
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_npvjx")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight6" unique_id=1534910928]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="AreaLight5" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1581158736]
+position = Vector2(1587, 2124)
+scale = Vector2(30.218752, -29.078125)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_npvjx")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight5" unique_id=1278696153]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="AreaLight7" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=415553023]
+position = Vector2(1908, 127)
+scale = Vector2(39.406246, -37.918827)
+energy = 1.25
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_apu16")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight7" unique_id=2085264800]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="AreaLight8" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=354235901]
+position = Vector2(1808.0001, 1466)
+scale = Vector2(39.406246, -37.918827)
+energy = 3.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_kqene")
+
+[node name="LightParticles" type="CPUParticles2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight8" unique_id=1548778038]
+amount = 15
+texture = SubResource("GradientTexture2D_11evb")
+lifetime = 4.0
+emission_shape = 1
+emission_sphere_radius = 19.08
+direction = Vector2(360, 360)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+linear_accel_curve = SubResource("Curve_f1g14")
+scale_amount_min = 0.2
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_w4es4")
+
+[node name="BlueAreaLight" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=503720188]
+position = Vector2(1813.9999, 671)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fe75p")
+
+[node name="BlueAreaLight2" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1130865416]
+position = Vector2(1817, 1456)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fe75p")
+
+[node name="BlueAreaLight3" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=518135557]
+position = Vector2(602, 985.99994)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_obbva")
+
+[node name="BlueAreaLight4" type="PointLight2D" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1586780483]
+position = Vector2(1117, 1957)
+scale = Vector2(24.687504, 24.687504)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_obbva")
+
+[node name="GlowingPlatform" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=646899485 instance=ExtResource("13_voop0")]
+position = Vector2(-831, 501.00015)
+scale = Vector2(0.55727535, 0.55727535)
+
+[node name="GlowingPlatform2" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=2114375112 instance=ExtResource("13_voop0")]
+position = Vector2(2512.3406, 1173.6594)
+scale = Vector2(0.5106378, 0.5106378)
+
+[node name="GlowingPlatform3" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=138654100 instance=ExtResource("13_voop0")]
+position = Vector2(521.00006, 1448.0001)
+scale = Vector2(0.46800014, 0.46800014)
+
+[node name="GlowingPlatform4" parent="Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1230032801 instance=ExtResource("13_voop0")]
+position = Vector2(1546, 403)
+scale = Vector2(0.4946371, 0.4946371)
+
+[node name="MapEdgeObstacles" type="Node" parent="Stage1/EnemyNavRegion/Map Objects" unique_id=98405765]
+
+[node name="Wall" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=155626096 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-2278.9998, 339.00006)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall12" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=677718827 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1970, -451.00012)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall13" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1870715114 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-699.99976, -1257.0001)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall14" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1477571795 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(782.0002, -1305)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall15" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1540664213 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2353, -1264.9999)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall16" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1639184470 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3647, -474.99988)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall17" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=153413320 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3931.9998, 1047.0002)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall18" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=202456104 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3280.9998, 2447)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall19" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=359271560 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1473.9995, 2992)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall20" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1263510785 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2833, 2805)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall21" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1711698952 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-41.000244, 2960)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall22" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=847182723 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1270.0001, 2731.9998)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall23" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1041857997 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1881, 2357.9998)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall24" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=754790468 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-2337, 1079.9999)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall2" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1473081390 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-2286, 1841)
+scale = Vector2(5.5631194, 5.5631194)
+
+[node name="Wall3" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=849647916 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-784.0001, 2951)
+scale = Vector2(5.5632787, 5.5632787)
+
+[node name="Wall4" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=215998183 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(733, 3010.0002)
+scale = Vector2(5.563773, 5.563773)
+
+[node name="Wall5" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1349276331 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(2265.0002, 3017.0002)
+scale = Vector2(5.5629597, 5.5629597)
+
+[node name="Wall6" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=180690239 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3781.0002, 1767)
+scale = Vector2(5.5650973, 5.5650973)
+
+[node name="Wall7" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2047285922 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(4029.0002, 343.00003)
+scale = Vector2(5.564267, 5.564267)
+
+[node name="Wall8" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=576986274 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(3108.0002, -1217)
+scale = Vector2(5.564427, 5.564427)
+
+[node name="Wall9" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1578839419 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(1591.0004, -1306.0001)
+scale = Vector2(5.5639324, 5.5639324)
+
+[node name="Wall10" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1225881185 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(60.00029, -1343)
+scale = Vector2(5.5634384, 5.5634384)
+
+[node name="Wall11" parent="Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2055455478 instance=ExtResource("2_bqjht")]
+modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+position = Vector2(-1471.9999, -1180)
+scale = Vector2(5.5627837, 5.5627837)
