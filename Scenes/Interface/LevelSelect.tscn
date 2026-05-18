@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c2do28e4mvdjg"]
+
+[ext_resource type="PackedScene" uid="uid://b33e62jlm831k" path="res://Scenes/UI/LevelSelectButton.tscn" id="1_bfysj"]
+[ext_resource type="Script" uid="uid://bs16rh17dic52" path="res://Scenes/UI/BackButton.gd" id="2_vther"]
+
+[node name="LevelSelect" type="Node2D" unique_id=1500874518]
+
+[node name="Label" type="Label" parent="." unique_id=963451752]
+offset_right = 1920.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 160
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=392370484]
+offset_top = 220.0
+offset_right = 1920.0
+offset_bottom = 720.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=1167651259]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+columns = 3
+
+[node name="LevelSelectButton" parent="CenterContainer/GridContainer" unique_id=12442240 instance=ExtResource("1_bfysj")]
+layout_mode = 2
+
+[node name="LevelSelectButton2" parent="CenterContainer/GridContainer" unique_id=1412392838 instance=ExtResource("1_bfysj")]
+layout_mode = 2
+
+[node name="LevelSelectButton3" parent="CenterContainer/GridContainer" unique_id=283944151 instance=ExtResource("1_bfysj")]
+layout_mode = 2
+
+[node name="LevelSelectButton4" parent="." unique_id=300734676 instance=ExtResource("1_bfysj")]
+custom_minimum_size = Vector2(150, 150)
+offset_left = 72.0
+offset_top = 745.0
+offset_right = 472.0
+offset_bottom = 945.0
+text = "Back"
+script = ExtResource("2_vther")

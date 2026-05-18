@@ -24,11 +24,16 @@ ScalingSystemScript="*uid://d1e13o8vj8tni"
 GlobalBeatSync="*uid://dmbjnwoggo55o"
 DynamicLevelScript="*uid://bsk5nfp8klfyc"
 CinematicsHandler="*uid://crr4fdev6qi70"
+LevelManager="*uid://w3do4qh4cfcp"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[dotnet]
+
+project/assembly_name="SagittariusGame"
 
 [file_customization]
 
