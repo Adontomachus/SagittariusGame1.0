@@ -15,7 +15,7 @@ var camera_focus_target: CharacterBody2D
 
 var cameraShakeEffect = 0
 var cameraPosition: Vector2
-var camMoveSpeed = 20
+var camMoveSpeed = 22
 
 var cameraShakeTimer = 1
 var cameraShakeStrength = 6
@@ -27,8 +27,8 @@ func _process(delta):
 	
 
 func _ready():
-	_change_camera_focus_to_boss()
-	await get_tree().create_timer(2).timeout
+	#_change_camera_focus_to_boss()
+	#await get_tree().create_timer(2).timeout
 	_change_camera_focus_to_player()
 	
 	#var player_target = get_tree().get_first_node_in_group("PlayerObject")

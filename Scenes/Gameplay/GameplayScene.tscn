@@ -70,6 +70,7 @@
 
 [sub_resource type="Animation" id="Animation_cacow"]
 resource_name = "GlowPulse"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -117,6 +118,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UpdatedExperienceBar/ExperienceBarGlow:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.01512283),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../UpdatedExperienceBar/ExperienceBarGlow:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.019962136, 0.39803287),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_o710q"]
@@ -168,6 +193,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UpdatedExperienceBar/ExperienceBarGlow:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../UpdatedExperienceBar/ExperienceBarGlow:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mr3qy"]
@@ -2160,6 +2209,13 @@ scale = Vector2(0.8333334, 0.8333334)
 nine_patch_stretch = true
 texture_under = ExtResource("17_6uhl4")
 texture_progress = ExtResource("18_48svx")
+
+[node name="ExperienceBarGlow" type="Sprite2D" parent="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" unique_id=742659545]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(101.99999, 37.200027)
+scale = Vector2(2.474995, 2.474995)
+texture = SubResource("GradientTexture2D_meejx")
 
 [node name="CompanionProgressBar" type="TextureProgressBar" parent="InterfaceElements/NewHUD/UI" unique_id=46603010]
 layout_mode = 0

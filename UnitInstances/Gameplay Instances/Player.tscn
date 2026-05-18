@@ -81,5 +81,5 @@ volume_db = -10.0
 pitch_scale = 4.0
 
 [connection signal="experience_modify" from="ProjectileHitbox" to="." method="modify_current_xp"]
-[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="_on_projectile_hitbox_projectile_health_modify"]
+[connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]

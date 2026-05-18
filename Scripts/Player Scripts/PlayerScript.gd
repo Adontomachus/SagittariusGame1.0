@@ -31,6 +31,7 @@ var maxHealthPoints: float = 100.0
 var experiencePoints: int = 0
 var maxExperiencePoints: int = 60
 
+
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float = 300.0
 var playerDirection: Vector2
@@ -49,10 +50,13 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 
 # Shot properties and point
 @export var pulse_sound_effect: AudioStreamPlayer
+var shot_fire_rate: float
+@export var max_shot_fire_rate: float = 0.3
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 # Visual feedback for charged shot
 @onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
+
 @export_category("Number of perfect shots for enhanced attack")
 #endregion
 
@@ -100,12 +104,17 @@ var can_control_unit: bool = true
 @export var sprite_up_left: Sprite2D
 #endregion
 
+#region Companion Progression System
+@export_category("Companion Progression Statistics")
+@export var max_points_to_transform: float = 2000
+@export var points_to_transform: float = 0
+
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 func _ready():
 	
-	## TESTING PURPOSES (TEMPORARY)
-	## player_sprite_up_right_walking.play("NorthEastWalking")
+	# Sets up the fire rate mechanics
+	shot_fire_rate = max_shot_fire_rate
 	
 	# Connecting the camera shake signal
 	var camera = get_tree().get_first_node_in_group("CameraControl")
@@ -151,6 +160,9 @@ func activate_player_ability() -> void:
 
 #region Main processes
 func _process(delta):
+	# This short code increments the fire rate per second (0.3 max fire rate allows players to fire at 0.3 shots)
+	shot_fire_rate += 1 * delta
+	
 	#region Section for charged shot feedback
 	## This section sets the "charged_shot" boolean to true if number of perfect shots reach the
 	## max shot threshold. Also sets the boolean to false once the player fires the piercing shot.
@@ -292,34 +304,38 @@ func _physics_process(delta):
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.3)
-	if shots_for_charged >= max_shots_for_charged:
-		# Shoots the enhanced projectile and sets the beat charge to 0
-		var enhanced_projectile = powered_projectile.instantiate()
-		shot_sound.play()
-		enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
-		enhanced_projectile.position = shot_point.get_global_position()
-		enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
-		get_tree().get_root().call_deferred("add_child", enhanced_projectile)
-		shots_for_charged = 0
-	else:
-		# Shoots the normal projectile
-		var projectile_instance = projectile.instantiate()
-		shot_sound.play()
-		projectile_instance.change_damage(projectile_damage * modifier)
-		projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
-		projectile_instance.change_projectile_modulation(color)
-		projectile_instance.position = shot_point.get_global_position()
-		projectile_instance.rotation_degrees = shot_point.rotation_degrees
-		get_tree().get_root().call_deferred("add_child", projectile_instance)
-	
-	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-	var shotEffect = projectileShotEffect.instantiate()
-	shotEffect.position = self.get_global_position()
-	get_tree().get_root().call_deferred("add_child", shotEffect)
-	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-	
-	# Prints the damage value of instantiated shot for debug
-	print_debug("Damage: %s" % (projectile_damage * modifier))
+	if shot_fire_rate > max_shot_fire_rate:
+		if shots_for_charged >= max_shots_for_charged:
+			# Shoots the enhanced projectile and sets the beat charge to 0
+			var enhanced_projectile = powered_projectile.instantiate()
+			shot_sound.play()
+			enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
+			enhanced_projectile.position = shot_point.get_global_position()
+			enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
+			get_tree().get_root().call_deferred("add_child", enhanced_projectile)
+			shot_fire_rate = 0
+			shots_for_charged = 0
+		else:
+			# Shoots the normal projectile
+			shot_fire_rate = 0
+			var projectile_instance = projectile.instantiate()
+			shot_sound.play()
+			projectile_instance.change_damage(projectile_damage * modifier)
+			projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+			projectile_instance.change_projectile_modulation(color)
+			projectile_instance.position = shot_point.get_global_position()
+			projectile_instance.rotation_degrees = shot_point.rotation_degrees
+			get_tree().get_root().call_deferred("add_child", projectile_instance)
+		
+		# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+		var shotEffect = projectileShotEffect.instantiate()
+		shotEffect.position = self.get_global_position()
+		get_tree().get_root().call_deferred("add_child", shotEffect)
+		# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+		
+		# Prints the damage value of instantiated shot for debug
+		print_debug("Damage: %s" % (projectile_damage * modifier))
+
 
 	# Charge up powered shot, up to 8 times
 	## This function is signaled through the beat indicator
@@ -377,6 +393,7 @@ func modify_current_xp(modification: int) -> void:
 		upgrade_player_stats()
 	send_current_xp.emit(experiencePoints)
 # Function for upgrading player stats upon levelling up
+
 func upgrade_player_stats() -> void:
 	# Increases health and damage by 4% and maximum XP requirement by 6% and increment player level by 1
 	# Heals player for 20% max HP and resets current experience points by 0

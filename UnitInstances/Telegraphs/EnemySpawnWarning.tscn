@@ -6,10 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_m54ri"]
 radius = 26.076809
 
+[sub_resource type="Environment" id="Environment_m54ri"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+
 [node name="EnemyWarning" type="Node2D" unique_id=1957876012]
 script = ExtResource("1_m54ri")
 
 [node name="Telegraph" type="Sprite2D" parent="." unique_id=2060875926]
+self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_t83xd")
 
@@ -18,3 +24,6 @@ texture = ExtResource("2_t83xd")
 [node name="ObstacleCheckerRadius" type="CollisionShape2D" parent="ObstacleChecker" unique_id=1038756553]
 shape = SubResource("CircleShape2D_m54ri")
 disabled = true
+
+[node name="GlowEffect" type="WorldEnvironment" parent="." unique_id=2138856322]
+environment = SubResource("Environment_m54ri")

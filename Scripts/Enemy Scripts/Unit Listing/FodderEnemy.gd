@@ -28,6 +28,7 @@ var target: CharacterBody2D
 @export var stamina_range: Vector2 = Vector2(2, 5)
 @export var stamina_regeneration_rate: float = 1.0
 @export var maxMoveSpeed: float = 100.0
+@export var movement_boosted: bool = false
 
 var stamina: float:
 	set(value):
@@ -108,6 +109,11 @@ func _ready():
 	target = get_tree().get_first_node_in_group("PlayerObject")
 
 func _physics_process(delta: float) -> void:
+	#region This section is for charging enemy units only
+	if movement_boosted: currentMoveSpeed = 630
+	else: currentMoveSpeed = maxMoveSpeed
+	#endregion
+	
 	if target and shoot_point:
 		shoot_point.look_at(target.global_position)
 	# SPRITE FLIPPING

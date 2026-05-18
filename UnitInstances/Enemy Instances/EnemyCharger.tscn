@@ -71,7 +71,7 @@ tracks/0/path = NodePath("ChargingTelegraph:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 1, 1.5),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(2.454227, 2.454227, 2.454227, 0), Color(2.454227, 2.454227, 2.454227, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(2.454227, 2.454227, 2.454227, 0)]
@@ -83,7 +83,7 @@ tracks/1/path = NodePath("ChargingTelegraph:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.1666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-19.64287, -91.07149), Vector2(-19.64287, -100.00006)]
@@ -106,7 +106,7 @@ maxMoveSpeed = 75.0
 maxHealthPoints = 525
 meleeTickRate = 20
 amountOfPointOrbs = 6
-attackPower = 28.0
+attackPower = 34.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -160,12 +160,9 @@ script = ExtResource("8_u8650")
 state_to_return = NodePath("../EnemyStateChargerClosing")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
-[node name="EnemyStateCharging" type="Node" parent="EnemyStateMachine" unique_id=860352299]
+[node name="EnemyStateCharging" type="Node" parent="EnemyStateMachine" unique_id=860352299 node_paths=PackedStringArray("after_chase_state")]
 script = ExtResource("8_8jh7o")
-
-[node name="EnemyStateWindup" type="Node" parent="EnemyStateMachine" unique_id=1254267346 node_paths=PackedStringArray("telegraph_animation")]
-script = ExtResource("10_axsu2")
-telegraph_animation = NodePath("../../TelegraphAnimation")
+after_chase_state = NodePath("../EnemyStateRecovery")
 
 [node name="EnemyStateChargerClosing" type="Node" parent="EnemyStateMachine" unique_id=298735533 node_paths=PackedStringArray("after_closing_state", "windup_state", "recovery_state")]
 script = ExtResource("10_8jh7o")
@@ -174,13 +171,19 @@ windup_state = NodePath("../EnemyStateWindup")
 successful_chance_range = 3.0
 recovery_state = NodePath("../EnemyStateRecovery")
 
+[node name="EnemyStateWindup" type="Node" parent="EnemyStateMachine" unique_id=1166473287 node_paths=PackedStringArray("charging_state", "telegraph_animation")]
+script = ExtResource("10_axsu2")
+charging_state = NodePath("../EnemyStateCharging")
+telegraph_animation = NodePath("../../TelegraphAnimation")
+
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=257206988]
 stream = ExtResource("9_dj6py")
 volume_db = -7.5
 pitch_scale = 0.75
 
-[node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("enemy_node")]
+[node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("hit_sound", "enemy_node")]
 script = ExtResource("10_68cbe")
+hit_sound = NodePath("../HitSound")
 enemy_node = NodePath("..")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="MeleeRange" unique_id=595028766]
@@ -203,6 +206,15 @@ environment = SubResource("Environment_ht5vj")
 [node name="TelegraphAnimation" type="AnimationPlayer" parent="." unique_id=1695383656]
 libraries/ = SubResource("AnimationLibrary_axsu2")
 
+[node name="Label" type="Label" parent="." unique_id=1482108619]
+offset_left = -43.750027
+offset_top = 50.00003
+offset_right = 49.249973
+offset_bottom = 73.00003
+text = "EnemyState"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
@@ -210,3 +222,4 @@ libraries/ = SubResource("AnimationLibrary_axsu2")
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

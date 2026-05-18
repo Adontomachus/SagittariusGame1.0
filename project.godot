@@ -41,6 +41,7 @@ folder_colors={
 "res://Scripts/AudioBased/": "purple",
 "res://Scripts/Companion/": "purple",
 "res://Scripts/Enemy Scripts/": "purple",
+"res://Scripts/Enemy Scripts/Enemy Passives/": "blue",
 "res://Scripts/Enemy Scripts/Legacy/": "gray",
 "res://Scripts/Feedback/": "purple",
 "res://Scripts/Player Scripts/": "purple",

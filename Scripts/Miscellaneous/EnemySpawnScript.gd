@@ -45,8 +45,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	beatLifetime -= 2 * delta
 	redness += 0.4 * delta
-	telegraph.modulate = Color(redness,0,0)
-	
+	telegraph.modulate = Color(redness * 1.25, 0, 0)
+	telegraph.self_modulate = Color(1, 1, 1, 1 + redness * 2)
 	#TEMPORARY
 	eliteRarityWeight = rarityWeight - 3
 	if beatLifetime < 0:
