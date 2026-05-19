@@ -10,6 +10,7 @@ extends Node2D
 @export var main_menu_transition: AnimationPlayer
 
 func _ready() -> void:
+	get_tree().paused = false
 	main_menu_transition.play("MainMenuTransitions")
 
 func _on_start_button_pressed() -> void:
@@ -38,3 +39,6 @@ func _on_exit_button_pressed() -> void:
 	
 func _on_settings_back_button_pressed() -> void:
 	pass
+
+func _on_select_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Interface/LevelSelect.tscn")

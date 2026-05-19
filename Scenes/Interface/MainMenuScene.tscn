@@ -281,13 +281,13 @@ offset_right = 1743.0
 offset_bottom = 794.0
 text = "Calibration"
 
-[node name="ExitButton" type="Button" parent="." unique_id=2085939534]
-visible = false
-offset_left = 1539.0
-offset_top = 811.0
-offset_right = 1743.0
-offset_bottom = 853.0
-text = "Exit
+[node name="LevelSelectButton" type="Button" parent="." unique_id=2085939534]
+offset_left = 1237.0
+offset_top = 691.0
+offset_right = 1604.0
+offset_bottom = 792.0
+text = "Level Select Test
+
 "
 
 [node name="Label" type="Label" parent="." unique_id=1559997822]
@@ -376,7 +376,7 @@ libraries/ = SubResource("AnimationLibrary_1dxah")
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CalibrationButton" to="." method="_on_calibration_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="LevelSelectButton" to="." method="_on_select_button_pressed"]
 [connection signal="pressed" from="MainMenuContainer/VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenuContainer/VBoxContainer/StoryButton" to="." method="_on_story_mode_pressed"]
 [connection signal="pressed" from="MainMenuContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

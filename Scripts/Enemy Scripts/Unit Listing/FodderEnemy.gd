@@ -191,6 +191,11 @@ func _delete_and_emit_effects():
 		self.set_process(false)
 		
 		get_tree().paused = true
+		
+		# Updates current level and unlocks next levels
+		LevelManager.currentLevel += 1 
+		LevelManager._unlock_level(LevelManager.currentLevel)
+		
 		return
 	return
 	
