@@ -3,10 +3,15 @@ extends Control
 @export_category("Main Menu node to set visible")
 @export var main_menu_node: MarginContainer
 
+@export var easy: CheckBox
+@export var medium: CheckBox
+@export var hard: CheckBox
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var difficultySettings = SaveSettings._load_difficulty_settings()
-	var videoSettings = SaveSettings._load_video_settings()
+	var difficulty = SaveSettings._load_difficulty()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,4 +27,16 @@ func _on_confirmation_button_pressed() -> void:
 		slider.audio_bus_name, 
 		slider._get_volume()
 		) 
+		
+	var difficulty
+	
+	if medium.button_pressed:
+		difficulty = 1
+	elif hard.button_pressed:
+		difficulty = 2
+	else:
+		difficulty = 0  # default easy
+	
+	SaveSettings._save_difficulty_settings("difficulty", difficulty)
+	
 	print("Saved Succesfully")

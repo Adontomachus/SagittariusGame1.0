@@ -40,7 +40,7 @@ func _load_volume_settings():
 	return volumeSettings
 
 func _save_difficulty_settings(key: String, value):
-	config.set_value("difficulty", key, value)
+	config.set_value("gameplay", key, value)
 	config.save(SETTINGS_FILE_PATH)
 
 func _load_difficulty_settings():
@@ -48,3 +48,6 @@ func _load_difficulty_settings():
 	for key in config.get_section_keys("difficulty"):
 		difficultySettings[key] = config.get_value("difficulty", key)
 	return difficultySettings
+
+func _load_difficulty():
+	return config.get_value("gameplay", "difficulty", 0)
