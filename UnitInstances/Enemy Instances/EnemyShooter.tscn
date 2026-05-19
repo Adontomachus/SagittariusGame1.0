@@ -142,6 +142,7 @@ metadata/_custom_type_script = "uid://bw5wcv4mmnc6m"
 stream = ExtResource("10_pvjpk")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1086358248]
 libraries/ = SubResource("AnimationLibrary_7j376")

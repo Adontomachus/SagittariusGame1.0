@@ -109,6 +109,7 @@ texture = ExtResource("7_xjnx0")
 stream = ExtResource("9_2ef6j")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="CompanionLight" type="PointLight2D" parent="." unique_id=194855364]
 scale = Vector2(12.187499, 12.187499)

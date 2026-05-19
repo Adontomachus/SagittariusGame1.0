@@ -7,3 +7,4 @@ position = Vector2(-2014, 149)
 stream = ExtResource("1_kpsnq")
 pitch_scale = 2.0
 autoplay = true
+bus = &"SFX"

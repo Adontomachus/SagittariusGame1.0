@@ -85,7 +85,7 @@ fill_to = Vector2(0.517094, 0.46581197)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49853373, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D" unique_id=1361706887 node_paths=PackedStringArray("pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" unique_id=1361706887 node_paths=PackedStringArray("pulse_sound_effect", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
@@ -94,7 +94,6 @@ pulse_sound_effect = NodePath("PulseSoundEffect")
 can_use_ability = true
 max_ability_cooldown = 30.0
 can_use_companion_ability = true
-ability_visual_feedback = NodePath("")
 sprite_up = NodePath("PlayerSpriteUp")
 sprite_up_right = NodePath("PlayerSpriteUpRight")
 sprite_right = NodePath("PlayerSpriteRight")
@@ -103,7 +102,6 @@ sprite_down = NodePath("PlayerSpriteDown")
 sprite_down_left = NodePath("PlayerSpriteDownLeft")
 sprite_left = NodePath("PlayerSpriteLeft")
 sprite_up_left = NodePath("PlayerSpriteUpLeft")
-cutscene_handler = NodePath("")
 
 [node name="ShotPoint" type="Marker2D" parent="." unique_id=432118517]
 position = Vector2(11, -4)
@@ -187,10 +185,12 @@ debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 stream = ExtResource("8_5upoe")
 volume_db = -10.0
 pitch_scale = 4.0
+bus = &"SFX"
 
 [node name="ShotAudio" type="AudioStreamPlayer" parent="." unique_id=1933138720]
 stream = ExtResource("6_ncsek")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="." unique_id=1589786795]
 scale = Vector2(42.156246, 42.156246)

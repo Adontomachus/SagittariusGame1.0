@@ -88,5 +88,6 @@ vertical_alignment = 1
 [node name="LevelUpSoundEffect" type="AudioStreamPlayer2D" parent="." unique_id=1483775225]
 stream = ExtResource("1_1trqd")
 volume_db = 2.0
+bus = &"SFX"
 
 [connection signal="finished" from="." to="." method="_on_finished"]

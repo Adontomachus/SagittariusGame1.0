@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0.14117648, 0.13725491, 0.2, 1)
 boot_splash/image="uid://bo3fr61fwrhr"
 config/icon="uid://c8pm272nyxk24"
 
+[audio]
+
+buses/default_bus_layout="uid://v16030acs26d"
+
 [autoload]
 
 PointSystemScript="*uid://0djl3e1qunrm"
@@ -25,11 +29,15 @@ GlobalBeatSync="*uid://dmbjnwoggo55o"
 DynamicLevelScript="*uid://bsk5nfp8klfyc"
 CinematicsHandler="*uid://crr4fdev6qi70"
 LevelManager="*uid://w3do4qh4cfcp"
+SaveSettings="*uid://033x5qjlrkt6"
+VolumeSlider="*uid://b861flkhe05im"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

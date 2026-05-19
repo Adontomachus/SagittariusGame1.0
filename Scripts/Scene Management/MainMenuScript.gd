@@ -10,7 +10,9 @@ extends Node2D
 @export var main_menu_transition: AnimationPlayer
 
 func _ready() -> void:
+	# Stops the time pause which plays the animation again
 	get_tree().paused = false
+	
 	main_menu_transition.play("MainMenuTransitions")
 
 func _on_start_button_pressed() -> void:
@@ -22,8 +24,7 @@ func _on_story_mode_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_settings_button_pressed() -> void:
-	settings.visible = true
-	main_menu.visible = false
+	get_tree().change_scene_to_file("res://Scenes/Interface/SettingInterface.tscn")
 	pass # Replace with function body.
 
 

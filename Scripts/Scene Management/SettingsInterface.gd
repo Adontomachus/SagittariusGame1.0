@@ -5,22 +5,21 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	var difficultySettings = SaveSettings._load_difficulty_settings()
+	var videoSettings = SaveSettings._load_video_settings()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_back_button_pressed() -> void:
-	main_menu_node.visible = true
-	self.visible = false
+	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")
 
-#region Seek values
-func _on_volume_progress_value_changed(value: float) -> void:
-	pass # Replace with function body.
-func _on_sfx_slider_value_changed(value: float) -> void:
-	pass # Replace with function body.
-func _on_music_slider_value_changed(value: float) -> void:
-	pass # Replace with function body.
-#endregion
+
+func _on_confirmation_button_pressed() -> void:
+	for slider in get_tree().get_nodes_in_group("VolumeSlider"):
+		SaveSettings._save_volume_settings(
+		slider.audio_bus_name, 
+		slider._get_volume()
+		) 
+	print("Saved Succesfully")
