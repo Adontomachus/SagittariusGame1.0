@@ -36,6 +36,16 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.2)
 
+[sub_resource type="Gradient" id="Gradient_v7bmb"]
+offsets = PackedFloat32Array(0.86520374, 1)
+colors = PackedColorArray(0.7845677, 0.8164007, 0, 0.120000005, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r1ar2"]
+gradient = SubResource("Gradient_v7bmb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8333333, 0.12820514)
+
 [sub_resource type="Animation" id="Animation_e2ygo"]
 resource_name = "PulseEffect"
 length = 0.5
@@ -51,6 +61,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [SubResource("Gradient_ncenu"), SubResource("Gradient_ncenu"), SubResource("Gradient_ncenu")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PulseVisual:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ncenu"]
 length = 0.001
@@ -65,6 +87,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [SubResource("Gradient_ncenu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PulseVisual:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7bmb"]
@@ -99,6 +133,10 @@ texture = SubResource("GradientTexture2D_ncenu")
 [node name="PulseEffect" type="Sprite2D" parent="." unique_id=752873976]
 scale = Vector2(9.90625, 9.906251)
 texture = SubResource("GradientTexture2D_v7bmb")
+
+[node name="PulseVisual" type="Sprite2D" parent="." unique_id=83720571]
+scale = Vector2(9.437501, 9.437502)
+texture = SubResource("GradientTexture2D_r1ar2")
 
 [node name="AreaIndicator" type="AnimationPlayer" parent="." unique_id=1466085024]
 libraries/ = SubResource("AnimationLibrary_v7bmb")

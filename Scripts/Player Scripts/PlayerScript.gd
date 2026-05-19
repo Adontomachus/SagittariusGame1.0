@@ -26,10 +26,14 @@ signal companion_upgrade
 #region General Player Statistics		
 
 ## Player level section and their statistics
+# Main Statistics
 var player_level: int = 1
 var maxHealthPoints: float = 100.0
 var experiencePoints: int = 0
 var maxExperiencePoints: int = 60
+# Levels required for an item upgrade
+@export var max_levels_left_for_item_upgrade: int = 8
+var levels_left_for_item_upgrade: int = 8
 
 
 # PLAYER MOVEMENT VARIABLES

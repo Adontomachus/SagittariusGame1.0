@@ -16,14 +16,17 @@ func enter() -> void:
 	reposition()
 
 func process_physics(delta: float) -> EnemyState:
+	charge_cooldown += 1 * delta
 	parent.move_enemy(delta)
 	#if parent.stamina <= 0:
 	#	return recovery_state
 	if parent.navAgent.is_navigation_finished() or parent.stamina <= 0: # and after_closing_state:
-		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) >= successful_chance_range:
-			return windup_state
-		else:
-			return recovery_state
+		if charge_cooldown > max_charge_cooldown:
+			if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) >= successful_chance_range:
+				charge_cooldown = 0
+				return windup_state
+			else:
+				return recovery_state
 	return null
 
 func reposition() -> void:
