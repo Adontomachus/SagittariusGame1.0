@@ -77,6 +77,7 @@ scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
+self_modulate = Color(1, 0.53344977, 0.4699505, 1)
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.083333336, 0.083333366)
 texture = ExtResource("2_7a1ga")

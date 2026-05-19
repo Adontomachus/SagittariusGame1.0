@@ -1567,8 +1567,16 @@ font_size = 80
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
+font = ExtResource("6_y268v")
+font_size = 35
+font_color = Color(0.9999998, 0.89324766, 0.71681786, 1)
+outline_size = 15
+outline_color = Color(0.3829549, 0.07823188, 7.219613e-08, 1)
+
 [sub_resource type="Animation" id="Animation_6uw2w"]
 resource_name = "AbilityActivationVisual"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1576,10 +1584,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1.2651697, 1.8558923),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-200, 635), Vector2(161.73, 635)]
+"values": [Vector2(-444.00003, 641.00006), Vector2(161.73, 635), Vector2(242.00002, 635), Vector2(1555, 635)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1588,10 +1596,34 @@ tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(1.3666667, 1.8666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AbilityAnimatedText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5023468, 1.3651739, 1.6326271),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AbilityAnimatedText:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4907184, 1.2651697, 1.858218),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1941, 792), Vector2(514, 792), Vector2(193, 792), Vector2(-40, 792)]
 }
 
 [sub_resource type="Animation" id="Animation_figfh"]
@@ -1619,6 +1651,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AbilityAnimatedText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AbilityAnimatedText:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1941, 816)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xcrri"]
@@ -2258,9 +2314,19 @@ layout_mode = 2
 text = "E"
 label_settings = SubResource("LabelSettings_48svx")
 
+[node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1941.0
+offset_top = 816.0
+offset_right = 2318.0
+offset_bottom = 869.0
+text = "PULSE OF TAURUS ACTIVATED"
+label_settings = SubResource("LabelSettings_4t4xv")
+horizontal_alignment = 1
+
 [node name="AbilityActivationFeedback" type="Sprite2D" parent="InterfaceElements/NewHUD" unique_id=443124248]
 position = Vector2(-200, 635)
-scale = Vector2(0.11847557, 0.11847555)
+scale = Vector2(0.16404311, 0.16404308)
 texture = ExtResource("22_yt4p3")
 
 [node name="ActivationAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/AbilityActivationFeedback" unique_id=455023363]
