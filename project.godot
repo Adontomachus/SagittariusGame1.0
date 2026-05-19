@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0.14117648, 0.13725491, 0.2, 1)
 boot_splash/image="uid://bo3fr61fwrhr"
 config/icon="uid://c8pm272nyxk24"
 
+[audio]
+
+buses/default_bus_layout="uid://v16030acs26d"
+
 [autoload]
 
 PointSystemScript="*uid://0djl3e1qunrm"

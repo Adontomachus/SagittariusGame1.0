@@ -2145,10 +2145,12 @@ speed_scale = 0.6
 stream = ExtResource("13_7yb2d")
 volume_db = -13.69
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="PerfectShotComboSound" type="AudioStreamPlayer2D" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" unique_id=460988706]
 stream = ExtResource("14_u1twm")
+bus = &"SFX"
 
 [node name="GlowEffect" type="PointLight2D" parent="InterfaceElements/NewHUD/UI" unique_id=1863279212]
 z_index = 25
@@ -2369,10 +2371,12 @@ debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 stream = ExtResource("34_xcrri")
 volume_db = -10.0
 pitch_scale = 4.0
+bus = &"SFX"
 
 [node name="ShotAudio" type="AudioStreamPlayer" parent="Player" unique_id=166549679]
 stream = ExtResource("15_buuuh")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="Player" unique_id=553159512]
 scale = Vector2(42.156246, 42.156246)
@@ -3395,8 +3399,14 @@ position = Vector2(1391, 309)
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("47_vwi3h")]
 position = Vector2(753, 383)
 
+[node name="HitSound" parent="PlayerCatComp" index="9" unique_id=1921605043]
+bus = &"SFX"
+
 [node name="PlayerCatComp2" parent="." unique_id=1653798 instance=ExtResource("51_6uw2w")]
 position = Vector2(447, 398)
+
+[node name="HitSound" parent="PlayerCatComp2" index="9" unique_id=625434190]
+bus = &"SFX"
 
 [node name="BossUnit" parent="." unique_id=1394345447 instance=ExtResource("31_hlum5")]
 position = Vector2(1323, 1232)

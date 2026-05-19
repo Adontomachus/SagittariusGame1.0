@@ -105,6 +105,7 @@ script = ExtResource("7_k64of")
 stream = ExtResource("7_vqhua")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1564636868]
 environment = SubResource("Environment_k64of")

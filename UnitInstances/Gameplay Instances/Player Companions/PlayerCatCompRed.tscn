@@ -109,6 +109,7 @@ debug_color = Color(0.43832985, 0.56671304, 0.046371195, 0.066)
 stream = ExtResource("8_bnakq")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="CompanionLight" type="PointLight2D" parent="." unique_id=1212624361]
 scale = Vector2(12.187499, 12.187499)

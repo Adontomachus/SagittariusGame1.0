@@ -180,6 +180,7 @@ telegraph_animation = NodePath("../../TelegraphAnimation")
 stream = ExtResource("9_dj6py")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("hit_sound", "enemy_node")]
 script = ExtResource("10_68cbe")

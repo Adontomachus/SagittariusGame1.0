@@ -108,6 +108,7 @@ text = "Positioning"
 stream = ExtResource("8_gngj8")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

@@ -13,14 +13,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_back_button_pressed() -> void:
-	main_menu_node.visible = true
-	self.visible = false
+	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")
 
-#region Seek values
-func _on_volume_progress_value_changed(value: float) -> void:
+
+
+
+func _on_volume_slider_value_changed(value: float) -> void:
 	pass # Replace with function body.
-func _on_sfx_slider_value_changed(value: float) -> void:
-	pass # Replace with function body.
-func _on_music_slider_value_changed(value: float) -> void:
-	pass # Replace with function body.
-#endregion

@@ -85,6 +85,7 @@ metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 stream = ExtResource("7_15gep")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="MeleeRange" type="Area2D" parent="." unique_id=1723247923 node_paths=PackedStringArray("hit_sound", "enemy_node")]
 script = ExtResource("10_jj52o")

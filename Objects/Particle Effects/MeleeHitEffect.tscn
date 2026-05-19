@@ -40,5 +40,6 @@ color_ramp = SubResource("Gradient_jdhn1")
 anim_speed_curve = SubResource("Curve_jhxfm")
 
 [node name="SlashEffect" type="AudioStreamPlayer2D" parent="." unique_id=858028297]
+bus = &"SFX"
 
 [connection signal="finished" from="MeleeHit" to="." method="_on_shot_effect_finished"]

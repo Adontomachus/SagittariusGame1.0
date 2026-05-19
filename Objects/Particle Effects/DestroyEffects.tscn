@@ -146,6 +146,7 @@ environment = SubResource("Environment_h052y")
 
 [node name="ExplosionEffect" type="AudioStreamPlayer2D" parent="." unique_id=1700633985]
 stream = ExtResource("1_iidq2")
+bus = &"SFX"
 
 [node name="GlowAnim" type="AnimationPlayer" parent="." unique_id=144090649]
 libraries/ = SubResource("AnimationLibrary_ulib6")

@@ -78,5 +78,6 @@ environment = SubResource("Environment_5nsfc")
 stream = ExtResource("1_eu4u2")
 volume_db = 5.0
 pitch_scale = 4.0
+bus = &"SFX"
 
 [connection signal="finished" from="." to="." method="_on_finished"]

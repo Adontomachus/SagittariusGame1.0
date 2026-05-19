@@ -105,6 +105,7 @@ metadata/_custom_type_script = "uid://bw5wcv4mmnc6m"
 stream = ExtResource("10_pvjpk")
 volume_db = -7.5
 pitch_scale = 0.75
+bus = &"SFX"
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
