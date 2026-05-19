@@ -29,6 +29,8 @@ GlobalBeatSync="*uid://dmbjnwoggo55o"
 DynamicLevelScript="*uid://bsk5nfp8klfyc"
 CinematicsHandler="*uid://crr4fdev6qi70"
 LevelManager="*uid://w3do4qh4cfcp"
+SaveSettings="*uid://033x5qjlrkt6"
+VolumeSlider="*uid://b861flkhe05im"
 
 [display]
 
