@@ -17,6 +17,42 @@ radius = 46.702705
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 32.0
 
+[sub_resource type="Animation" id="Animation_iq3q8"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r4dr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7j376"]
+_data = {
+&"Flash": SubResource("Animation_iq3q8"),
+&"RESET": SubResource("Animation_r4dr7")
+}
+
 [node name="ShooterEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 position = Vector2(-1, 0)
 script = ExtResource("1_8hj4s")
@@ -41,13 +77,13 @@ scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
-modulate = Color(1, 0.41687015, 0, 1)
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.083333336, 0.083333366)
 texture = ExtResource("2_7a1ga")
 
-[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
+[node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_yjjxy")
+damage_flash_effect = NodePath("../DamageFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 shape = SubResource("CircleShape2D_mepa4")
@@ -105,6 +141,9 @@ metadata/_custom_type_script = "uid://bw5wcv4mmnc6m"
 stream = ExtResource("10_pvjpk")
 volume_db = -7.5
 pitch_scale = 0.75
+
+[node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1086358248]
+libraries/ = SubResource("AnimationLibrary_7j376")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
