@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cr4cdt8k115vb"]
 
 [ext_resource type="Texture2D" uid="uid://dqy04sl0pioas" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8613.PNG" id="1_p054l"]
-[ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/AudioBased/BeatGlowEffect.gd" id="2_knn8v"]
+[ext_resource type="Script" uid="uid://dujy7x5imh2k0" path="res://Scripts/Audio/BeatGlowEffect.gd" id="2_knn8v"]
 
 [sub_resource type="Environment" id="Environment_knn8v"]
 background_mode = 3

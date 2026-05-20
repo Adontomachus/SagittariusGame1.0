@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0ad3cbk073wt"]
 
 [ext_resource type="Script" uid="uid://dgnpxwho28imx" path="res://Scripts/Scene Management/SettingsInterface.gd" id="1_xicv1"]
-[ext_resource type="Script" uid="uid://b861flkhe05im" path="res://Scripts/AudioBased/VolumeSlider.gd" id="2_kup61"]
+[ext_resource type="Script" uid="uid://b861flkhe05im" path="res://Scripts/Audio/VolumeSlider.gd" id="2_kup61"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ualiu"]
 

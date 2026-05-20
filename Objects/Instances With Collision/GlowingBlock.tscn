@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjc8btakp3jbf"]
 
-[ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/AudioBased/StationaryBeatGlowEffect.gd" id="1_c7hfc"]
+[ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/Audio/StationaryBeatGlowEffect.gd" id="1_c7hfc"]
 [ext_resource type="Texture2D" uid="uid://ljxuuo125qi0" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8611.PNG" id="2_c7hfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]

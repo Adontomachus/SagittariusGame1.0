@@ -17,7 +17,8 @@ var can_play: bool = true
 #region Beat Variables
 @export var tempo: float = 107
 var pulsePerBeat = 60.0 / tempo
-var halfPulsePerBeat = 60 / (tempo * 2)
+var halfPulsePerBeat = 60.0 / (tempo * 2)
+var halfLastBeat = 0
 var lastBeat = 0
 
 

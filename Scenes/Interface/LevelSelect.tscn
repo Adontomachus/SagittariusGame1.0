@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2do28e4mvdjg"]
 
 [ext_resource type="PackedScene" uid="uid://b33e62jlm831k" path="res://Scenes/UI/LevelSelectButton.tscn" id="1_bfysj"]
-[ext_resource type="Script" uid="uid://bs16rh17dic52" path="res://Scenes/UI/BackButton.gd" id="2_vther"]
+[ext_resource type="Script" uid="uid://bs16rh17dic52" path="res://Scripts/BackButton.gd" id="2_vther"]
 
 [node name="LevelSelect" type="Node2D" unique_id=1500874518]
 
