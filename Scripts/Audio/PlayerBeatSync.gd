@@ -110,7 +110,8 @@ func _process(_delta) -> void:
 	half_beat = floorf(half_beat_precise)
 	
 	GlobalBeatSync.beat = beat
-	# Take actions when a note has passed
+	# GlobalBeatSync.half_beat = beat
+	## Take actions when a note has passed
 	if lastBeat < beat:
 		print("Note passed!")
 		GlobalBeatSync.notesPassed += 1

@@ -13,10 +13,16 @@ enum DamageType {
 	AreaOfEffect
 }
 
-#
-@export_category("")
+enum ProjectileVelocityType {
+	Constant,
+	Slowing
+}
+
+# Projectile properties containing projectile side and velocity types
+@export_category("Projectile Properties")
 @export var projectileSide = ProjectileSide.Player
 @export var damage_type = DamageType.SingleTarget
+@export var velocity_type = ProjectileVelocityType.Constant
 
 # Projectile Statistics containing velocity, lifetime and damage with critical hit boolean
 @export_category("Projectile Statistics")
@@ -37,8 +43,8 @@ var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 
 
 func _ready():
-	# projectileVelocity = 762
-	# projectileLifetime = 50
+	## Check if the projectile velocity type is constant or changing.
+	
 	
 	if damage_type == DamageType.SingleTarget:
 		# Lambda functions used for world collision for single target enumerator
@@ -116,6 +122,11 @@ func _process(delta):
 
 func _physics_process(delta):
 	position += transform.x * projectileVelocity * delta
+
+func _fade_projectile_velocity(delta) -> void:
+	var speed_tween = create_tween()
+	speed_tween.tween_property(self, "projectileVelocity", 0, 2)
+	pass
 
 # Function for changing damage value outside of exported value
 func change_damage(damage: int) -> void:

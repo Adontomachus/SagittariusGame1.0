@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://gexuhd752wwt"]
+
+[ext_resource type="Script" uid="uid://dq1ac3k2s8p6w" path="res://Scripts/Miscellaneous/ProjectileCollision.gd" id="1_teh0n"]
+[ext_resource type="Texture2D" uid="uid://lusulpgvi3ek" path="res://Sprites/Game Elements/projectilesprite.png" id="2_vshp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
+size = Vector2(22, 10)
+
+[sub_resource type="Environment" id="Environment_hex5x"]
+background_mode = 3
+glow_enabled = true
+
+[node name="PlayerBullet" type="Area2D" unique_id=132848767]
+script = ExtResource("1_teh0n")
+projectileVelocity = 762.0
+projectileLifetime = 60.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
+self_modulate = Color(5.912981, 5.912981, 5.912981, 1)
+position = Vector2(-2.499999, 0)
+scale = Vector2(0.28278688, 0.07142857)
+texture = ExtResource("2_vshp8")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1654839371]
+shape = SubResource("RectangleShape2D_wix7r")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1978019399]
+environment = SubResource("Environment_hex5x")
+
+[connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

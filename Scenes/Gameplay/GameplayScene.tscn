@@ -31,7 +31,6 @@
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
 [ext_resource type="AudioStream" uid="uid://gel8f0x45m7d" path="res://Audio/Music/Bebot.mp3" id="13_7yb2d"]
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="14_u1twm"]
-[ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="17_6uhl4"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
@@ -64,6 +63,7 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
+[ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
 
@@ -1906,56 +1906,56 @@ offset_top = 104.0
 offset_right = 498.0
 offset_bottom = 144.0
 
-[node name="TextureRect" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=575820286]
+[node name="Square1" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=575820286]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/TextureRect" unique_id=1529509515]
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square1" unique_id=1529509515]
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
-[node name="TextureRect2" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1520050990]
+[node name="Square2" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1520050990]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/TextureRect2" unique_id=783986859]
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square2" unique_id=783986859]
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
-[node name="TextureRect3" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1771105379]
+[node name="Square3" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1771105379]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/TextureRect3" unique_id=530181505]
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square3" unique_id=530181505]
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
-[node name="TextureRect4" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1624727162]
+[node name="Square4" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1624727162]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/TextureRect4" unique_id=874684264]
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square4" unique_id=874684264]
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
-[node name="TextureRect5" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1005640923]
+[node name="Square5" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1005640923]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/TextureRect5" unique_id=1875351941]
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square5" unique_id=1875351941]
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
-[node name="TextureRect6" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=790701329]
+[node name="Square6" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=790701329]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/TextureRect6" unique_id=944897774]
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square6" unique_id=944897774]
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
@@ -2089,12 +2089,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ComboCounterProgressBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/UpdatedComboCounter" unique_id=715081123]
+modulate = Color(0.8823364, 0.87131125, 0.4739384, 1)
+self_modulate = Color(2.40685, 2.40685, 2.2780478, 1)
 layout_mode = 0
-offset_left = 10.153812
-offset_top = 185.16454
-offset_right = 148.80898
-offset_bottom = 212.16454
+offset_left = 14.345633
+offset_top = 183.60611
+offset_right = 154.22728
+offset_bottom = 202.72511
 rotation = -1.5803438
+value = 55.0
+show_percentage = false
 
 [node name="ComboNumberPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI" unique_id=149812275]
 root_node = NodePath("../UpdatedComboCounter")
@@ -2512,8 +2516,9 @@ pitch_scale = 4.0
 bus = &"SFX"
 
 [node name="ShotAudio" type="AudioStreamPlayer" parent="Player" unique_id=166549679]
-stream = ExtResource("15_buuuh")
-volume_db = -15.0
+stream = ExtResource("50_hlum5")
+volume_db = -5.0
+pitch_scale = 1.4
 bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="Player" unique_id=553159512]
@@ -3557,6 +3562,7 @@ position = Vector2(447, 398)
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
+[connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="increment_player_charge_attack"]
 [connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_exitGame"]
