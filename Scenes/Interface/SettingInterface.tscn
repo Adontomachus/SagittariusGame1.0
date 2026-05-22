@@ -5,7 +5,7 @@
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ualiu"]
 
-[node name="Settings" type="Control" unique_id=90296623 node_paths=PackedStringArray("easy", "medium", "hard")]
+[node name="Settings" type="Control" unique_id=90296623]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,9 +17,6 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xicv1")
-easy = NodePath("VBoxContainer/DifficultyContainer/HBoxContainer/Easy")
-medium = NodePath("VBoxContainer/DifficultyContainer/HBoxContainer/Medium")
-hard = NodePath("VBoxContainer/DifficultyContainer/HBoxContainer/Hard")
 
 [node name="SettingsPanel" type="PanelContainer" parent="." unique_id=1576924487]
 layout_mode = 0
@@ -104,12 +101,14 @@ theme_override_constants/separation = 100
 alignment = 1
 
 [node name="Easy" type="CheckBox" parent="VBoxContainer/DifficultyContainer/HBoxContainer" unique_id=1831211852]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_group = SubResource("ButtonGroup_ualiu")
 text = "Easy"
 
 [node name="Medium" type="CheckBox" parent="VBoxContainer/DifficultyContainer/HBoxContainer" unique_id=524195901]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_pressed = true
@@ -117,6 +116,7 @@ button_group = SubResource("ButtonGroup_ualiu")
 text = "Medium"
 
 [node name="Hard" type="CheckBox" parent="VBoxContainer/DifficultyContainer/HBoxContainer" unique_id=683023725]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_group = SubResource("ButtonGroup_ualiu")

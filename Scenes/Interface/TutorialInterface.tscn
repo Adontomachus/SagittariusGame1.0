@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctnoi5oldo47k"]
 
-[ext_resource type="Script" uid="uid://dgnpxwho28imx" path="res://Scripts/Scene Management/SettingsInterface.gd" id="1_7kvrf"]
+[ext_resource type="Script" uid="uid://drq3pwdl7eqop" path="res://Scripts/Scene Management/Tutorial.gd" id="1_xicv1"]
 
 [node name="Tutorial" type="Control" unique_id=90296623]
 layout_mode = 3
@@ -13,7 +13,7 @@ offset_right = 1.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7kvrf")
+script = ExtResource("1_xicv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=382433727]
 layout_mode = 1
@@ -53,4 +53,4 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "BACK"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

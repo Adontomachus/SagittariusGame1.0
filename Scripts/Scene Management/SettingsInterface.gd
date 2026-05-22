@@ -3,14 +3,24 @@ extends Control
 @export_category("Main Menu node to set visible")
 @export var main_menu_node: MarginContainer
 
-@export var easy: CheckBox
-@export var medium: CheckBox
-@export var hard: CheckBox
+@onready var easy: CheckBox = $%Easy
+@onready var medium: CheckBox = $%Medium
+@onready var hard: CheckBox = $%Hard
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var difficulty = SaveSettings._load_difficulty()
+	print("Difficulty: ", difficulty)
+	print(easy)
+	print(medium)
+	print(hard)
+	if(difficulty == 0):
+		easy.button_pressed = true
+	elif(difficulty == 1):
+		medium.button_pressed = true
+	else:
+		hard.button_pressed = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
