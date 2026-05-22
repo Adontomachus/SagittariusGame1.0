@@ -19,7 +19,7 @@ var tween: Tween
 
 @onready var score: Label = $UI/PlayerInfo/Score
 ## @onready var wave_counter: Label = $UI/PlayerInfo/WaveCounter
-@onready var combo_counter: Label = $UI/PlayerInfo/ComboCounter
+@onready var combo_counter: Label = $InterfaceElements/NewHUD/UI/UpdatedComboCounter
 @onready var player_level: Label = $UI/UpdatedPlayerHealthBar/PlayerLevel
 @export var starting_scale: float =  3
 @export var tempo: float = 120.0
