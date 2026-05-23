@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="17_dw111"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
+[ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="21_3825n"]
 
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
@@ -1363,7 +1364,9 @@ font_size = 80
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[node name="UI" type="Control" unique_id=188922193 node_paths=PackedStringArray("pause_screen")]
+[sub_resource type="ButtonGroup" id="ButtonGroup_3825n"]
+
+[node name="UI" type="Control" unique_id=188922193 node_paths=PackedStringArray("pause_screen", "settings_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1374,6 +1377,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ge5ss")
 pause_screen = NodePath("PauseScreen")
+settings_screen = NodePath("Settings")
 
 [node name="CutsceneUI" type="Node" parent="." unique_id=467674401]
 process_mode = 3
@@ -1723,9 +1727,10 @@ offset_top = 83.0
 offset_right = 1816.0
 offset_bottom = 244.0
 
-[node name="PauseScreen" parent="." unique_id=2028143087 instance=ExtResource("15_5m4nd")]
+[node name="PauseScreen" parent="." unique_id=2028143087 node_paths=PackedStringArray("settingsMenu") instance=ExtResource("15_5m4nd")]
 visible = false
 layout_mode = 1
+settingsMenu = NodePath("../Settings")
 
 [node name="UpdatedExperienceBar" type="TextureProgressBar" parent="." unique_id=74064347]
 layout_mode = 0
@@ -1786,8 +1791,22 @@ layout_mode = 2
 text = "E"
 label_settings = SubResource("LabelSettings_48svx")
 
+[node name="Settings" parent="." unique_id=90296623 instance=ExtResource("21_3825n")]
+visible = false
+layout_mode = 1
+
+[node name="Easy" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
+button_group = SubResource("ButtonGroup_3825n")
+
+[node name="Medium" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
+button_group = SubResource("ButtonGroup_3825n")
+
+[node name="Hard" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
+button_group = SubResource("ButtonGroup_3825n")
+
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 
 [editable path="CutsceneUI/GameOverNode/WinScreen"]
 [editable path="CutsceneUI/GameOverNode/LoseScreen"]
 [editable path="PauseScreen"]
+[editable path="Settings"]

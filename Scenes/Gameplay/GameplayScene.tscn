@@ -207,6 +207,8 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_41o6w"]
+
 [sub_resource type="Animation" id="Animation_6uw2w"]
 resource_name = "AbilityActivationVisual"
 tracks/0/type = "value"
@@ -491,6 +493,15 @@ game_manager = NodePath("../../../../../..")
 
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(188922193, 1679777524) index="2" unique_id=134540412 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
+
+[node name="Easy" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(188922193, 90296623, 1201141894) index="0" unique_id=1831211852]
+button_group = SubResource("ButtonGroup_41o6w")
+
+[node name="Medium" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(188922193, 90296623, 1201141894) index="1" unique_id=524195901]
+button_group = SubResource("ButtonGroup_41o6w")
+
+[node name="Hard" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(188922193, 90296623, 1201141894) index="2" unique_id=683023725]
+button_group = SubResource("ButtonGroup_41o6w")
 
 [node name="AbilityActivationFeedback" type="Sprite2D" parent="InterfaceElements/NewHUD" unique_id=443124248]
 position = Vector2(-200, 635)
@@ -1676,5 +1687,6 @@ position = Vector2(920, 53)
 [editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"]
 [editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/LoseScreen"]
 [editable path="InterfaceElements/NewHUD/UI/PauseScreen"]
+[editable path="InterfaceElements/NewHUD/UI/Settings"]
 [editable path="PlayerCatComp"]
 [editable path="PlayerCatComp2"]

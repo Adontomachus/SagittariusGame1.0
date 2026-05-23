@@ -4,7 +4,7 @@ extends Control
 signal resume_game
 signal exit_game
 
-##@export var settingsMenu : Control
+@export var settingsMenu : Control
 
 
 #region Button functions
@@ -23,5 +23,5 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	##settingsMenu.visible = true
+	settingsMenu.visible = true
 	pass # Replace with function body.
