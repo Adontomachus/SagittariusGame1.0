@@ -5,7 +5,7 @@
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ualiu"]
 
-[node name="Settings" type="Control" unique_id=90296623]
+[node name="Settings" type="Control" unique_id=90296623 node_paths=PackedStringArray("easy", "medium", "hard")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,9 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xicv1")
+easy = NodePath("VBoxContainer/DifficultyContainer/HBoxContainer/Easy")
+medium = NodePath("VBoxContainer/DifficultyContainer/HBoxContainer/Medium")
+hard = NodePath("VBoxContainer/DifficultyContainer/HBoxContainer/Hard")
 
 [node name="SettingsPanel" type="PanelContainer" parent="." unique_id=1576924487]
 layout_mode = 0

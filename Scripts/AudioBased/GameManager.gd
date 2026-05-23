@@ -85,6 +85,7 @@ func _ready():
 	wave_notification.self_modulate.a = 0
 	pause_screen.visible = false
 	gamePaused = 0
+	Global.can_control_unit = true
 	pass
 
 #region TEMPORARY FUNCTIONS, SUBJECT TO CHANGE	

@@ -3,9 +3,9 @@ extends Control
 @export_category("Main Menu node to set visible")
 @export var main_menu_node: MarginContainer
 
-@onready var easy: CheckBox = $%Easy
-@onready var medium: CheckBox = $%Medium
-@onready var hard: CheckBox = $%Hard
+@export var easy: CheckBox
+@export var medium: CheckBox
+@export var hard: CheckBox 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")
+	self.visible = false
 
 
 func _on_confirmation_button_pressed() -> void:

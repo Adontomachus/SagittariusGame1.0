@@ -84,7 +84,7 @@ var companion_ability_charge: float
  
 ## This variable determines if the player can provide inputs for the player character
 ## This boolean is usually set to true as long as the scene isn't paused
-var can_control_unit: bool = true
+## var Global.can_control_unit: bool = true
 #endregion
 
 ## TESTING PURPOSES
@@ -138,11 +138,11 @@ func _ready():
 	
 #region Movement and ability inputs
 func get_input() -> void:
-	if can_control_unit:
+	if Global.can_control_unit:
 		playerDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		velocity = velocity.lerp(playerDirection * moveSpeed, 0.15)
 func get_ability_inputs() -> void:
-	if can_control_unit:
+	if Global.can_control_unit:
 		if Input.is_action_pressed("use_ability"):
 			if can_use_ability:
 				ability_cooldown = max_ability_cooldown
@@ -173,19 +173,20 @@ func _process(delta):
 	
 	#endregion
 	#region Decides if the character can be controlled by the player
+	## Game Pausing moved to the GameUI script
 	## If the game is paused, turn off all attempted inputs for player movement and attacks
-	if manager.gamePaused:
-		process_mode = Node.PROCESS_MODE_INHERIT
-		can_control_unit = false
-
-	else:
-		process_mode = Node.PROCESS_MODE_ALWAYS
-		can_control_unit = true
+	#if manager.gamePaused:
+		#process_mode = Node.PROCESS_MODE_INHERIT
+		#Global.can_control_unit = false
+#
+	#else:
+		#process_mode = Node.PROCESS_MODE_ALWAYS
+		#Global.can_control_unit = true
 	
 	## This changes the player's process to inherit when the game ends
 	if cutscene_handler.game_is_over || cutscene_handler.game_is_won:
 		process_mode = Node.PROCESS_MODE_INHERIT
-		can_control_unit = false
+		Global.can_control_unit = false
 	#endregion
 	
 	## Ability functions
@@ -296,9 +297,9 @@ func _process(delta):
 	
 	
 func _physics_process(delta):
-
-	get_input()
-	move_and_slide()
+	if(Global.can_control_unit):
+		get_input()
+		move_and_slide()
 	
 #endregion
 #region SHOOTING PROJECTILE
@@ -380,7 +381,7 @@ func modify_current_player_health(modification: int) -> void:
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	if (healthPoints <= 0):
 		print("Game Over!")
-		can_control_unit = false
+		Global.can_control_unit = false
 		cutscene_handler.game_is_over = true
 		get_tree().paused = true
 	send_current_health.emit(healthPoints)

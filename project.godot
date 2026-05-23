@@ -31,6 +31,7 @@ CinematicsHandler="*uid://crr4fdev6qi70"
 LevelManager="*uid://w3do4qh4cfcp"
 SaveSettings="*uid://033x5qjlrkt6"
 VolumeSlider="*uid://b861flkhe05im"
+Global="*uid://4n3k7kyi7ke2"
 
 [display]
 

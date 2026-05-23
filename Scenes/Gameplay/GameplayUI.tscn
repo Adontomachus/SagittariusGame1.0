@@ -1,0 +1,1793 @@
+[gd_scene format=3 uid="uid://c1gl5u01r0ioh"]
+
+[ext_resource type="Script" uid="uid://cnymrsh7y7wvi" path="res://Scripts/UI Menu, Settings and Post Game/GameplayUI.gd" id="1_ge5ss"]
+[ext_resource type="PackedScene" uid="uid://baq8lvbpwxgpg" path="res://Scenes/Interface/WinInterface.tscn" id="1_r2md4"]
+[ext_resource type="PackedScene" uid="uid://djpbi3ti2qmdk" path="res://Scenes/Interface/DefeatInterface.tscn" id="2_ge5ss"]
+[ext_resource type="Script" uid="uid://bsi28hfemc0xs" path="res://Scripts/AudioBased/BorderBeatIndicator.gd" id="3_3825n"]
+[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_0if8i"]
+[ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="5_pdrc1"]
+[ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="6_gwjna"]
+[ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="7_ev13k"]
+[ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="8_5f62o"]
+[ext_resource type="AudioStream" uid="uid://gel8f0x45m7d" path="res://Audio/Music/Bebot.mp3" id="9_0gr54"]
+[ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="10_ntvnh"]
+[ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="11_7i2y7"]
+[ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="12_l6g6h"]
+[ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="13_vdje8"]
+[ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="14_qj281"]
+[ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
+[ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="16_n87py"]
+[ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="17_dw111"]
+[ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
+[ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
+
+[sub_resource type="Animation" id="Animation_vj1fp"]
+resource_name = "GameOver"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025962181, 0.033333335, 0.7500671),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0035705566, 0.012617111, 0, 0), Color(8.674749, 14.716483, 0, 0), Color(11.142518, 18.892157, 0, 1), Color(0.003570664, 0.012617188, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverNode/CutsceneBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.020553393),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverNode/LoseScreen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.7666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverNode/LoseScreen/BigLoseText:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.3666666, 4.52),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hlum5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(11.142518, 18.892157, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverNode/CutsceneBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverNode/LoseScreen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverNode/LoseScreen/BigLoseText:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o710q"]
+_data = {
+&"GameOver": SubResource("Animation_vj1fp"),
+&"RESET": SubResource("Animation_hlum5")
+}
+
+[sub_resource type="Animation" id="Animation_rp1p4"]
+resource_name = "GameVictory"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.94),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.71932274, 1, 0, 0), Color(0.71932274, 1, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.018889345),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinScreen/GamePausedText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinScreen/GamePausedText:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinScreen/ScoreStats:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WinScreen/RhythmAccuracy:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WinScreen/DamageDealt:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WinScreen/HighestLevelReached:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6.5, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WinScreen/ExitButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(7, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WinScreen/ResumeButton:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(7, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b8xms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.71932274, 1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinScreen/GamePausedText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinScreen/GamePausedText:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WinScreen/ScoreStats:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WinScreen/RhythmAccuracy:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WinScreen/DamageDealt:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WinScreen/HighestLevelReached:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WinScreen/ExitButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WinScreen/ResumeButton:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wkher"]
+_data = {
+&"GameVictory": SubResource("Animation_rp1p4"),
+&"RESET": SubResource("Animation_b8xms")
+}
+
+[sub_resource type="Animation" id="Animation_xcrri"]
+resource_name = "BeatIndicatorEffect"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatPulseIndicatorLeft:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatPulseIndicatorLeft3:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatPulseIndicatorLeft2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeatPulseIndicatorLeft4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1), Color(0, 1, 0.85050595, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1vk04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatPulseIndicatorLeft:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatPulseIndicatorLeft3:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatPulseIndicatorLeft2:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeatPulseIndicatorLeft4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7509483, 1, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu6i5"]
+_data = {
+&"BeatIndicatorEffect": SubResource("Animation_xcrri"),
+&"RESET": SubResource("Animation_1vk04")
+}
+
+[sub_resource type="Animation" id="Animation_u1twm"]
+resource_name = "PerfectPulse"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatPulseIndicatorLeft:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93929464, 0.9131191, 0.63476855, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeatPulseIndicatorLeft3:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft2:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft4:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1), Color(1.0629398, 1.0339698, 0.7207478, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_jgp33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatPulseIndicatorLeft:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatPulseIndicatorLeft:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.93929464, 0.9131191, 0.63476855, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatPulseIndicatorLeft3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BeatPulseIndicatorLeft3:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeatPulseIndicatorLeft2:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BeatPulseIndicatorLeft2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeatPulseIndicatorLeft4:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9411765, 0.9137255, 0.63529414, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BeatPulseIndicatorLeft4:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_110ka"]
+_data = {
+&"PerfectPulse": SubResource("Animation_u1twm"),
+&"RESET": SubResource("Animation_jgp33")
+}
+
+[sub_resource type="Animation" id="Animation_41o6w"]
+resource_name = "LightPulse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0054087876, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.7953644, 1, 0, 0), Color(0.79595864, 1, 0, 0.1), Color(0.79595864, 1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yt4p3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7953644, 1, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uw2w"]
+_data = {
+&"LightPulse": SubResource("Animation_41o6w"),
+&"RESET": SubResource("Animation_yt4p3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyhx3"]
+font = ExtResource("4_0if8i")
+font_size = 100
+font_color = Color(1.0730962, 1.0629185, 0.5682854, 1)
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.89800006)
+shadow_offset = Vector2(2.26, 2.105)
+
+[sub_resource type="Animation" id="Animation_uyhx3"]
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_0if8i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:label_settings:font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [100]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PlayerInfo/Score:label_settings:font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PlayerInfo/ComboCounter:label_settings:font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PlayerInfo/WaveCounter:label_settings:font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EnemyCounter:label_settings:font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vwi3h"]
+resource_name = "UIBeatPulse"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_0if8i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:label_settings:font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-3.7252903e-09, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [125, 100, 125]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PlayerInfo/Score:label_settings:font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [44, 42, 44]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PlayerInfo/ComboCounter:label_settings:font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PlayerInfo/WaveCounter:label_settings:font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.19528005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [42, 44, 42]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../EnemyCounter:label_settings:font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666666, 0.10231815),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 31, 30]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(4.415934, 4.415934, 4.415934, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yb2d"]
+_data = {
+&"RESET": SubResource("Animation_uyhx3"),
+&"UIBeatPulse": SubResource("Animation_vwi3h")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_6uhl4"]
+font = ExtResource("4_0if8i")
+font_size = 60
+outline_size = 20
+outline_color = Color(0.28680092, 0.16756532, 7.219613e-08, 1)
+shadow_size = 25
+shadow_color = Color(0.15170373, 0.03876, 0, 0.934)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o710q"]
+line_spacing = 25.0
+paragraph_spacing = 5.0
+font = ExtResource("4_0if8i")
+font_size = 20
+font_color = Color(0.86663747, 1, 0.1931151, 1)
+outline_size = 5
+outline_color = Color(0.16142681, 0.10905563, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_b8xms"]
+colors = PackedColorArray(0.971323, 1, 0.4649247, 1, 0.012617188, 0.012617188, 0.012617188, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_meejx"]
+gradient = SubResource("Gradient_b8xms")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ve3xx"]
+font = ExtResource("4_0if8i")
+font_size = 42
+font_color = Color(0.89471775, 1, 0.6636825, 1)
+outline_size = 12
+outline_color = Color(0.58796096, 0.38924387, 6.738305e-07, 1)
+shadow_size = 13
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2.91, 3.42)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0cpi2"]
+font = ExtResource("4_0if8i")
+font_size = 30
+font_color = Color(1, 0.7509483, 0.1680183, 1)
+outline_size = 12
+outline_color = Color(0.49973267, 0, 0.033690564, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5.12, 2.305)
+
+[sub_resource type="Animation" id="Animation_4t4xv"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RhythmLines:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.85559684, 1, 0.64379185, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RhythmLines2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.85559684, 1, 0.64379185, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RhythmLines2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1216, 969)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RhythmLines:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(724, 969)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IndicatorSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CompanionProgressBar/Ability1Container:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CompanionProgressBar/Ability1Container/AbililtyKey2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e8aea"]
+resource_name = "RhythmIndicator"
+length = 1.66
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RhythmLines:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85559684, 1, 0.64379185, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RhythmLines2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85538745, 1, 0.6437342, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RhythmLines2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1216, 969), Vector2(988, 969)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RhythmLines:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(724, 969), Vector2(952, 969)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IndicatorSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.042067092, 0.53333336, 1.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833), Vector2(0.19463079, 0.1744454), Vector2(0.14765143, 0.13233833), Vector2(0.14765143, 0.13233833)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CompanionProgressBar/Ability1Container:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.04270354, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CompanionProgressBar/Ability1Container/AbililtyKey2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.04270354, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
+_data = {
+&"RESET": SubResource("Animation_4t4xv"),
+&"RhythmIndicator": SubResource("Animation_e8aea")
+}
+
+[sub_resource type="Gradient" id="Gradient_u1twm"]
+colors = PackedColorArray(0.97969264, 0.97969264, 6.160736e-06, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jgp33"]
+gradient = SubResource("Gradient_u1twm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7905983, 0.14957266)
+
+[sub_resource type="Animation" id="Animation_wckvk"]
+resource_name = "Pulse"
+length = 1.66
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 1.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.35, 1.35), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../IndicatorSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833), Vector2(0.18120798, 0.16241468), Vector2(0.14765143, 0.13233833)]
+}
+
+[sub_resource type="Animation" id="Animation_onpmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../IndicatorSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.14765143, 0.13233833)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onpmq"]
+_data = {
+&"Pulse": SubResource("Animation_wckvk"),
+&"RESET": SubResource("Animation_onpmq")
+}
+
+[sub_resource type="Gradient" id="Gradient_knn8v"]
+colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
+gradient = SubResource("Gradient_knn8v")
+width = 70
+height = 70
+fill = 1
+fill_from = Vector2(0.50220263, 0.4889868)
+fill_to = Vector2(0.7008547, 0.32478634)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hlum5"]
+font = ExtResource("4_0if8i")
+font_size = 48
+font_color = Color(1, 0.86981654, 0, 1)
+outline_size = 25
+outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_48svx"]
+font = ExtResource("4_0if8i")
+font_size = 80
+outline_size = 30
+outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
+
+[node name="UI" type="Control" unique_id=188922193 node_paths=PackedStringArray("pause_screen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 13.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ge5ss")
+pause_screen = NodePath("PauseScreen")
+
+[node name="CutsceneUI" type="Node" parent="." unique_id=467674401]
+process_mode = 3
+
+[node name="GameOverNode" type="Node" parent="CutsceneUI" unique_id=1679777524]
+process_mode = 3
+
+[node name="CutsceneBackground" type="ColorRect" parent="CutsceneUI/GameOverNode" unique_id=964567303]
+process_mode = 3
+visible = false
+modulate = Color(0.71932274, 1, 0, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.8531885, 0.8544415, 0.4723053, 1)
+
+[node name="WinScreen" parent="CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("1_r2md4")]
+visible = false
+beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
+highest_level_reached = NodePath("HighestLevelReached")
+
+[node name="GamePausedText" parent="CutsceneUI/GameOverNode/WinScreen" index="1" unique_id=1560795430]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ExitButton" parent="CutsceneUI/GameOverNode/WinScreen" index="2" unique_id=1817500599]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ResumeButton" parent="CutsceneUI/GameOverNode/WinScreen" index="3" unique_id=1378675360]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ScoreStats" parent="CutsceneUI/GameOverNode/WinScreen" index="4" unique_id=1698478150]
+modulate = Color(1, 1, 1, 0)
+
+[node name="RhythmAccuracy" parent="CutsceneUI/GameOverNode/WinScreen" index="5" unique_id=1119409431]
+modulate = Color(1, 1, 1, 0)
+
+[node name="DamageDealt" parent="CutsceneUI/GameOverNode/WinScreen" index="6" unique_id=505090490]
+modulate = Color(1, 1, 1, 0)
+
+[node name="HighestLevelReached" parent="CutsceneUI/GameOverNode/WinScreen" index="7" unique_id=1826464257]
+modulate = Color(1, 1, 1, 0)
+
+[node name="LoseScreen" parent="CutsceneUI/GameOverNode" unique_id=134540412 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("2_ge5ss")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
+highest_level_reached = NodePath("BigLoseText/HighestLevelReached")
+
+[node name="GameOverAnimations" type="AnimationPlayer" parent="CutsceneUI/GameOverNode" unique_id=258254917]
+process_mode = 3
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_o710q")
+
+[node name="GameWinAnimations" type="AnimationPlayer" parent="CutsceneUI/GameOverNode" unique_id=176940371]
+libraries/ = SubResource("AnimationLibrary_wkher")
+
+[node name="Border Pulse" type="Node" parent="." unique_id=192633810]
+script = ExtResource("3_3825n")
+
+[node name="PulseFeedbackEffect" type="AnimationPlayer" parent="Border Pulse" unique_id=1884659847]
+libraries/ = SubResource("AnimationLibrary_fu6i5")
+
+[node name="PerfectPulseFeedback" type="AnimationPlayer" parent="Border Pulse" unique_id=503882645]
+libraries/ = SubResource("AnimationLibrary_110ka")
+
+[node name="BeatPulseIndicatorLeft" type="ColorRect" parent="Border Pulse" unique_id=1418566795]
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 1068.0
+scale = Vector2(2, 1)
+color = Color(0.93929464, 0.9131191, 0.63476855, 1)
+
+[node name="BeatPulseIndicatorLeft3" type="ColorRect" parent="Border Pulse" unique_id=1649046996]
+offset_left = 1908.0
+offset_top = 12.0
+offset_right = 1920.0
+offset_bottom = 1068.0
+scale = Vector2(2, 1)
+color = Color(0.9411765, 0.9137255, 0.63529414, 1)
+
+[node name="BeatPulseIndicatorLeft2" type="ColorRect" parent="Border Pulse" unique_id=746860098]
+offset_top = 1068.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(1, 2)
+color = Color(0.9411765, 0.9137255, 0.63529414, 1)
+
+[node name="BeatPulseIndicatorLeft4" type="ColorRect" parent="Border Pulse" unique_id=446475310]
+offset_right = 1920.0
+offset_bottom = 12.0
+scale = Vector2(1, 2)
+color = Color(0.9411765, 0.9137255, 0.63529414, 1)
+
+[node name="ComboReachFeedback" type="ColorRect" parent="." unique_id=933597292]
+layout_mode = 0
+offset_right = 1923.0
+offset_bottom = 1078.0
+color = Color(0.7953644, 1, 0, 0)
+
+[node name="GlowEffect" type="AnimationPlayer" parent="ComboReachFeedback" unique_id=989754613]
+libraries/ = SubResource("AnimationLibrary_6uw2w")
+
+[node name="UpdatedComboCounter" type="Label" parent="." unique_id=1218510464]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 210.0
+offset_right = 197.5256
+offset_bottom = 428.3805
+rotation = -0.10770728
+text = "1x"
+label_settings = SubResource("LabelSettings_uyhx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboNumberPulse" type="AnimationPlayer" parent="." unique_id=1727721644]
+root_node = NodePath("../UpdatedComboCounter")
+libraries/ = SubResource("AnimationLibrary_7yb2d")
+
+[node name="WaveNotification" type="Label" parent="." unique_id=275714069]
+self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
+layout_mode = 0
+offset_left = 698.0
+offset_top = 105.0
+offset_right = 1227.5652
+offset_bottom = 134.0
+text = "WAVE INCOMING!"
+label_settings = SubResource("LabelSettings_6uhl4")
+horizontal_alignment = 1
+
+[node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="." unique_id=1302726683]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 3.0
+offset_right = 648.7236
+offset_bottom = 252.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_pdrc1")
+texture_progress = ExtResource("6_gwjna")
+
+[node name="ChargeUpBar" type="ProgressBar" parent="UpdatedPlayerHealthBar" unique_id=1153145701]
+visible = false
+modulate = Color(2.210482, 2.5032542, 0, 1)
+layout_mode = 0
+offset_left = 96.0
+offset_top = 236.0
+offset_right = 165.0
+offset_bottom = 249.0
+theme_override_font_sizes/font_size = 6
+value = 2.1
+
+[node name="ExperienceBar" type="ProgressBar" parent="UpdatedPlayerHealthBar" unique_id=484651802]
+visible = false
+modulate = Color(0, 0.60124344, 1, 1)
+layout_mode = 0
+offset_left = 217.0
+offset_top = 173.0
+offset_right = 477.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 6
+value = 2.1
+
+[node name="PlayerLevel" type="Label" parent="UpdatedPlayerHealthBar" unique_id=1694747490]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+layout_mode = 0
+offset_left = 215.0
+offset_top = 172.0
+offset_right = 553.0
+offset_bottom = 205.0
+text = "Player Level: 1"
+label_settings = SubResource("LabelSettings_o710q")
+
+[node name="GlowFeedback" type="Sprite2D" parent="UpdatedPlayerHealthBar" unique_id=1470132133]
+visible = false
+position = Vector2(132, 128)
+scale = Vector2(1.59375, 1.59375)
+texture = SubResource("GradientTexture2D_meejx")
+
+[node name="PlayerInfo" type="VBoxContainer" parent="." unique_id=213596468]
+layout_mode = 0
+offset_left = 28.999998
+offset_top = 767.0
+offset_right = 475.0
+offset_bottom = 935.0
+rotation = -0.08058332
+
+[node name="Score" type="Label" parent="PlayerInfo" unique_id=1952238926]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Points: "
+label_settings = SubResource("LabelSettings_ve3xx")
+vertical_alignment = 1
+
+[node name="ComboCounter" type="Label" parent="PlayerInfo" unique_id=545530164]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Combo:"
+label_settings = SubResource("LabelSettings_ve3xx")
+
+[node name="WaveCounter" type="Label" parent="PlayerInfo" unique_id=1020491099]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Wave:"
+label_settings = SubResource("LabelSettings_ve3xx")
+
+[node name="EnemyCounter" type="Label" parent="." unique_id=463281815]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 920.0
+offset_right = 483.0
+offset_bottom = 958.0
+theme_override_font_sizes/font_size = 15
+text = "Enemies Left:"
+label_settings = SubResource("LabelSettings_0cpi2")
+
+[node name="BeatIndicatorElements" type="Node" parent="." unique_id=2084924856]
+
+[node name="IndicatorSprite" type="Sprite2D" parent="BeatIndicatorElements" unique_id=1675212581]
+position = Vector2(974, 976)
+scale = Vector2(0.14765143, 0.13233833)
+texture = ExtResource("7_ev13k")
+
+[node name="BeatIndicatorLine" type="ColorRect" parent="BeatIndicatorElements" unique_id=194120405]
+z_index = -1
+offset_left = 724.0
+offset_top = 990.0
+offset_right = 1225.0
+offset_bottom = 998.0
+color = Color(0.12968418, 0.04763417, 0.005845576, 1)
+
+[node name="RhythmLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=2134843771]
+z_index = -1
+offset_left = 724.0
+offset_top = 969.0
+offset_right = 733.0
+offset_bottom = 1019.0
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="RhythmLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=598314558]
+z_index = -1
+offset_left = 1216.0
+offset_top = 969.0
+offset_right = 1225.0001
+offset_bottom = 1019.0
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="BeatIndicatorAnimation" type="AnimationPlayer" parent="BeatIndicatorElements" unique_id=420549635]
+libraries/ = SubResource("AnimationLibrary_rp1p4")
+
+[node name="BeatGlowFeedback" type="Sprite2D" parent="BeatIndicatorElements" unique_id=820478615]
+visible = false
+position = Vector2(973.00006, 994.00006)
+scale = Vector2(2.062496, 2.062496)
+texture = SubResource("GradientTexture2D_meejx")
+
+[node name="BeatIndicator" type="Panel" parent="BeatIndicatorElements" unique_id=1884222940 node_paths=PackedStringArray("level_song", "combo_animation_pulse")]
+self_modulate = Color(0.5137611, 0.5137611, 0.5137611, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -104.0
+offset_right = 31.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(25, 25)
+script = ExtResource("8_5f62o")
+level_song = NodePath("GameMusic")
+combo_animation_pulse = NodePath("../../ComboNumberPulse")
+perfect_hit = 0.4
+good_hit = 0.32
+ok_hit = 0.2
+
+[node name="BeatIndicatorLight" type="PointLight2D" parent="BeatIndicatorElements/BeatIndicator" unique_id=1779871651]
+z_index = 176
+position = Vector2(33, 17.281677)
+scale = Vector2(1.7500001, 2.0329173)
+texture = SubResource("GradientTexture2D_jgp33")
+
+[node name="BeatPulse" type="AnimationPlayer" parent="BeatIndicatorElements/BeatIndicator" unique_id=1756481702]
+libraries/ = SubResource("AnimationLibrary_onpmq")
+speed_scale = 0.6
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="BeatIndicatorElements/BeatIndicator" unique_id=1382385151]
+stream = ExtResource("9_0gr54")
+volume_db = -13.69
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="PerfectShotComboSound" type="AudioStreamPlayer2D" parent="BeatIndicatorElements/BeatIndicator" unique_id=1594238787]
+stream = ExtResource("10_ntvnh")
+bus = &"SFX"
+
+[node name="GlowEffect" type="PointLight2D" parent="." unique_id=109663588]
+z_index = 25
+position = Vector2(126, 131)
+scale = Vector2(2.2149193, 2.272444)
+color = Color(3.294, 3.294, 3.294, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_8hfiw")
+
+[node name="GlowingGem2" parent="." unique_id=2110462969 instance=ExtResource("11_7i2y7")]
+self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
+position = Vector2(126, 131)
+scale = Vector2(0.3125001, 0.43749982)
+
+[node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="." unique_id=1145489312 groups=["BossUI"]]
+layout_mode = 0
+offset_left = 502.99997
+offset_top = 814.0
+offset_right = 2815.4998
+offset_bottom = 1169.0
+scale = Vector2(0.4, 0.4)
+value = 55.0
+nine_patch_stretch = true
+texture_under = ExtResource("12_l6g6h")
+texture_progress = ExtResource("13_vdje8")
+script = ExtResource("14_qj281")
+
+[node name="BossLabel" type="Label" parent="UpdatedBossHealthBar" unique_id=435076799]
+layout_mode = 0
+offset_left = 837.5
+offset_top = -9.999985
+offset_right = 1512.5
+offset_bottom = 70.000015
+theme_override_font_sizes/font_size = 40
+text = "Boss Health"
+label_settings = SubResource("LabelSettings_hlum5")
+horizontal_alignment = 1
+
+[node name="BossHealthBar" type="ProgressBar" parent="." unique_id=1377933645 groups=["BossUI"]]
+visible = false
+layout_mode = 0
+offset_left = 155.0
+offset_top = 497.0
+offset_right = 995.0
+offset_bottom = 524.0
+
+[node name="PauseButton" type="Button" parent="." unique_id=351614587]
+layout_mode = 0
+offset_left = 1662.0
+offset_top = 83.0
+offset_right = 1816.0
+offset_bottom = 244.0
+
+[node name="PauseScreen" parent="." unique_id=2028143087 instance=ExtResource("15_5m4nd")]
+visible = false
+layout_mode = 1
+
+[node name="UpdatedExperienceBar" type="TextureProgressBar" parent="." unique_id=74064347]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 956.0
+offset_right = 906.6024
+offset_bottom = 1114.0
+scale = Vector2(0.8333334, 0.8333334)
+nine_patch_stretch = true
+texture_under = ExtResource("16_n87py")
+texture_progress = ExtResource("17_dw111")
+
+[node name="ExperienceBarGlow" type="Sprite2D" parent="UpdatedExperienceBar" unique_id=306478806]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(101.99999, 37.200027)
+scale = Vector2(2.474995, 2.474995)
+texture = SubResource("GradientTexture2D_meejx")
+
+[node name="CompanionProgressBar" type="TextureProgressBar" parent="." unique_id=1159015922]
+layout_mode = 0
+offset_left = 1640.0
+offset_top = 769.0
+offset_right = 2463.0
+offset_bottom = 1625.0
+scale = Vector2(0.33629102, 0.33629102)
+value = 5.0
+texture_under = ExtResource("18_3tu8g")
+texture_progress = ExtResource("19_7363f")
+
+[node name="Ability1Container" type="ColorRect" parent="CompanionProgressBar" unique_id=1975257592]
+layout_mode = 0
+offset_left = 446.04205
+offset_top = -523.35614
+offset_right = 680.9571
+offset_bottom = -260.62442
+rotation = 0.113265686
+
+[node name="AbililtyKey2" type="Label" parent="CompanionProgressBar/Ability1Container" unique_id=929046428]
+layout_mode = 0
+offset_left = 98.12933
+offset_top = 276.54626
+offset_right = 141.12933
+offset_bottom = 396.54626
+rotation = -9.697676e-05
+text = "Q"
+label_settings = SubResource("LabelSettings_48svx")
+
+[node name="Ability2Container" type="BoxContainer" parent="CompanionProgressBar" unique_id=1268977839]
+layout_mode = 0
+offset_left = 460.91034
+offset_top = 758.2718
+offset_right = 576.9103
+offset_bottom = 878.2718
+
+[node name="AbililtyKey" type="Label" parent="CompanionProgressBar/Ability2Container" unique_id=1297203862]
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_48svx")
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+
+[editable path="CutsceneUI/GameOverNode/WinScreen"]
+[editable path="CutsceneUI/GameOverNode/LoseScreen"]
+[editable path="PauseScreen"]

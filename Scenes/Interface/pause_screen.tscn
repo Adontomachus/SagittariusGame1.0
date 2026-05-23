@@ -36,14 +36,27 @@ horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="PanelContainer/GamePausedText" unique_id=1817500599]
 layout_mode = 0
-offset_left = 385.0
-offset_top = 236.0
-offset_right = 567.9032
-offset_bottom = 317.0
+offset_left = 1387.0
+offset_top = -324.0
+offset_right = 1569.9032
+offset_bottom = -216.0
 theme_override_colors/font_color = Color(0.92805517, 0.9761153, 0.44020692, 1)
 theme_override_fonts/font = ExtResource("2_efodi")
 theme_override_font_sizes/font_size = 32
 text = "Exit
+"
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/GamePausedText" unique_id=1829244932]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 236.0
+offset_right = 580.9032
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(0.92805517, 0.9761153, 0.44020692, 1)
+theme_override_fonts/font = ExtResource("2_efodi")
+theme_override_font_sizes/font_size = 32
+text = "Settings
+
 "
 
 [node name="ResumeButton" type="Button" parent="PanelContainer/GamePausedText" unique_id=1378675360]
@@ -58,4 +71,5 @@ theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [connection signal="pressed" from="PanelContainer/GamePausedText/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PanelContainer/GamePausedText/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PanelContainer/GamePausedText/ResumeButton" to="." method="_on_resume_button_pressed"]
