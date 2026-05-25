@@ -122,7 +122,7 @@ func _process(_delta) -> void:
 		lastBeat = beat
 
 func _input(event: InputEvent) -> void:
-	var timing: float = abs((beat_precise - beat) - fire_window)
+	var timing: float = abs((half_beat_precise - half_beat) - fire_window)
 
 	if event.is_action_pressed("fire_weapon"):
 		player_shoot_projectile.emit(damage_modifier(timing), projectile_color(timing))

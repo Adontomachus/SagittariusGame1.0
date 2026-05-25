@@ -15,6 +15,8 @@ var health_scaling: float = 1
 var attack_power_scaling: float = 1
 
 func _ready() -> void:
+	health_scaling = 1
+	attack_power_scaling = 1
 	health_scaling += difficulty_scale
 func _process(delta) -> void:
 	# if get_tree().current_ssssdwwasdawddwsdcene.name == "GameplayScene":

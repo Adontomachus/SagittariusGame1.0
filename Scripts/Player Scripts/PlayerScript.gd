@@ -62,7 +62,7 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 # Primary fire and its fire rate
 @export_category("Player Fire Rate")
 var shot_fire_rate: float
-@export var max_shot_fire_rate: float = 0.3
+@export var max_shot_fire_rate: float = 0.01
 # Secondary fire and its fire rate
 var secondary_fire_rate: float
 @export var max_secondary_fire_rate: float = 0.12

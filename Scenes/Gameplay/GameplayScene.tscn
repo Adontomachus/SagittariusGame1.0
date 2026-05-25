@@ -1855,7 +1855,7 @@ position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
-waves_remaining = 8
+waves_remaining = 3
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
