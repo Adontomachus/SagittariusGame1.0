@@ -62,7 +62,7 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 # Primary fire and its fire rate
 @export_category("Player Fire Rate")
 var shot_fire_rate: float
-@export var max_shot_fire_rate: float = 0.3
+@export var max_shot_fire_rate: float = 0.1
 # Secondary fire and its fire rate
 var secondary_fire_rate: float
 @export var max_secondary_fire_rate: float = 0.12
@@ -458,3 +458,8 @@ func upgrade_player_stats() -> void:
 	companion_upgrade.emit()
 	pass
 #endregion
+
+
+func _on_beat_indicator_increase_player_attack_charge() -> void:
+	shots_for_charged += 1
+	pass # Replace with function body.

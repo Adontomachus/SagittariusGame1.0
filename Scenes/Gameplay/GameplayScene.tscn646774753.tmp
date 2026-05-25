@@ -618,9 +618,10 @@ game_manager = NodePath("../../../../../..")
 game_manager = NodePath("../../../../../..")
 
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060]
-perfect_hit = 0.05
-good_hit = 0.1
-ok_hit = 0.15
+tempo = null
+comboCounter = null
+starting_scale = null
+fire_window = null
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="14" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
@@ -666,7 +667,6 @@ position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
 manager = NodePath("..")
 pulse_sound_effect = NodePath("PulseSoundEffect")
-max_shot_fire_rate = 0.2
 can_use_ability = true
 max_ability_cooldown = 30.0
 can_use_companion_ability = true
@@ -1819,7 +1819,6 @@ position = Vector2(447, 398)
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
-[connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="_on_beat_indicator_increase_player_attack_charge"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_exit_game"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_resume_game"]
 [connection signal="companion_upgrade" from="Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]

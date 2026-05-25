@@ -21,7 +21,7 @@ func process_physics(delta: float) -> CompanionState:
 	parent.move_companion(delta)
 
 	#if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
-	print("Notes before resting: ", time_before_expiration)
+	#print("Notes before resting: ", time_before_expiration)
 	time_before_expiration -= 1 * delta
 	if time_before_expiration < 0 or parent.pathfinding.is_navigation_finished():
 		if randf_range(CHANCE_TO_ATTACK.x, CHANCE_TO_ATTACK.y) >= successful_chance_to_attack:

@@ -69,9 +69,9 @@ var tween: Tween
 
 
 @export_category("Fire Timings")
-@export var perfect_hit: float = 0.42
-@export var good_hit: float = 0.34
-@export var ok_hit: float = 0.28
+@export var perfect_hit: float = 0.03
+@export var good_hit: float = 0.07
+@export var ok_hit: float = 0.14
 #endregion
 
 
@@ -113,66 +113,47 @@ func _process(_delta) -> void:
 	# GlobalBeatSync.half_beat = beat
 	## Take actions when a note has passed
 	if lastBeat < beat:
-		print("Note passed!")
 		GlobalBeatSync.notesPassed += 1
 		GlobalBeatSync.executeAction = true
-		print("Added Note!")
 		indicator_pulse()
-		#ui_pulse()
 		lastBeat = beat
+		halfLastBeat = half_beat  # keep them in sync on full beats
 
 func _input(event: InputEvent) -> void:
-	var timing: float = abs((beat_precise - beat) - fire_window)
-
+	var beat_fraction := fmod(beat_precise, 1.0)
+	
+	# Distance to full beat (0.0 or 1.0)
+	var full_beat_timing: float = min(abs(beat_fraction),abs(1.0 - beat_fraction))
+	
+	# Distance to half beat (0.5)
+	var half_beat_timing :float = abs(0.5 - beat_fraction)
+	
+	# Use whichever is closer
+	var timing :float = min(full_beat_timing, half_beat_timing)
 	if event.is_action_pressed("fire_weapon"):
-		player_shoot_projectile.emit(damage_modifier(timing), projectile_color(timing))
+		var result = evaluate_shot(timing)
+		player_shoot_projectile.emit(result.damage, result.color)
 
-func damage_modifier(timing: float) -> float:
-	# Perfect
-	if timing > perfect_hit:
+func evaluate_shot(timing: float) -> Dictionary:
+	if timing < perfect_hit:
+		comboCounter += 1
+		combo_audio_pitch = 1 + (comboCounter * 0.06)
+		PointSystemScript.playerScore += 1
 		p_feedback.play("PerfectPulse")
 		border_pulse.emit()
 		p_combo_sound.play()
 		increase_player_attack_charge.emit()
 		increment_combo_meter.emit(40)
-		return 1.45		
-
-
-	# Good
-	if timing > good_hit:
-		comboCounter = 0
+		return { "damage": 1.45, "color": Color.html("#1ce1ebff") }
+	if timing < good_hit:
+		comboCounter += 1
 		increment_combo_meter.emit(15)
-		return 1.0
-	
-	# OK
-	if timing > ok_hit:
-		comboCounter = 0
-		return 0.8
-	
-	# BAD
-	return 0.1
-
-func projectile_color(timing: float) -> Color:
-	# Perfect
-	if timing > perfect_hit:
+		return { "damage": 1.0, "color": Color.html("#53bc07ff") }
+	if timing < ok_hit:
 		comboCounter += 1
-		PointSystemScript.playerScore += 1
-		return Color.html("#1ce1ebff")
-
-	# Good
-	if timing > good_hit:
-		comboCounter += 1	
-		return Color.html("#53bc07ff")
-
-	# OK
-	if timing > ok_hit:
-		comboCounter += 1
-		return Color.html("#f0f816ff")
-		
-	# BAD
+		return { "damage": 0.8, "color": Color.html("#f0f816ff") }
 	comboCounter = 0
-	return Color.html("#ff3b2dff")
-	
+	return { "damage": 0.1, "color": Color.html("#ff3b2dff") }
 
 
 
