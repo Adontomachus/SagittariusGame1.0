@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="12_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
+[ext_resource type="Script" uid="uid://cipc737xcdjss" path="res://Scripts/Player Scripts/SecondaryFire.gd" id="13_6uw2w"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
@@ -210,7 +211,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_yt4p3"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6uw2w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -618,10 +619,14 @@ game_manager = NodePath("../../../../../..")
 game_manager = NodePath("../../../../../..")
 
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060]
-perfect_hit = 0.05
+perfect_hit = 0.06
 good_hit = 0.1
 ok_hit = 0.15
 metadata/_edit_use_anchors_ = true
+
+[node name="SecondaryFire" type="Node" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" index="4" unique_id=1266380933 node_paths=PackedStringArray("beat_sync")]
+script = ExtResource("13_6uw2w")
+beat_sync = NodePath("..")
 
 [node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="14" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
@@ -633,13 +638,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="CheckBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_yt4p3")
+button_group = SubResource("ButtonGroup_6uw2w")
 
 [node name="CheckBox2" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_yt4p3")
+button_group = SubResource("ButtonGroup_6uw2w")
 
 [node name="CheckBox3" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_yt4p3")
+button_group = SubResource("ButtonGroup_6uw2w")
 
 [node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
 modulate = Color(1, 1, 1, 0)
@@ -1820,6 +1825,7 @@ position = Vector2(447, 398)
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="_on_beat_indicator_increase_player_attack_charge"]
+[connection signal="player_dash" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator/SecondaryFire" to="Player" method="_on_secondary_fire_player_dash"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_exit_game"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_resume_game"]
 [connection signal="companion_upgrade" from="Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]

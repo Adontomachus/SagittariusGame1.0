@@ -14,6 +14,8 @@ signal send_current_xp(xp: float)
 # Companion upgrade signal
 signal companion_upgrade
 
+
+
 @export var healthPoints: float:
 	set(value):
 		healthPoints = clampi(value, 0, maxHealthPoints)
@@ -42,6 +44,12 @@ var moveSpeed: float
 var playerDirection: Vector2
 @export var projectile_damage: float = 30
 #endregion
+
+@export_category("Dash Values")
+@export var dash_force: float = 1600.0
+@export var dash_duration: float = 0.15
+var is_dashing: bool = false
+var dash_velocity: Vector2 = Vector2.ZERO
 
 #region Reference object 
 # Projectile types
@@ -315,7 +323,10 @@ func _process(delta):
 	
 	
 func _physics_process(delta):
-
+	if is_dashing:
+		velocity = dash_velocity      
+		move_and_slide()
+		return       
 	get_input()
 	move_and_slide()
 	
@@ -458,8 +469,25 @@ func upgrade_player_stats() -> void:
 	companion_upgrade.emit()
 	pass
 #endregion
-
-
 func _on_beat_indicator_increase_player_attack_charge() -> void:
 	shots_for_charged += 1
 	pass # Replace with function body.
+	
+	
+#region Secondary Fire
+func _dash() -> void:
+	## Your dash logic here — example:
+	var dash_direction := Vector2(
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_up", "move_down")
+	).normalized()
+	## If no input, dash in the direction of the mouse
+	if dash_direction == Vector2.ZERO:
+		dash_direction = (get_global_mouse_position() - global_position).normalized()
+		
+	velocity += dash_direction * dash_force   
+	## Timer releases the dash after dash_duration seconds
+	await get_tree().create_timer(dash_duration).timeout
+	is_dashing = false
+	dash_velocity = Vector2.ZERO
+#endregion
