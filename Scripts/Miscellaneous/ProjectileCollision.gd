@@ -119,6 +119,8 @@ func _process(delta):
 	projectileLifetime -= 60 * delta
 	if (projectileLifetime < 0):
 		queue_free()
+	if velocity_type == ProjectileVelocityType.Slowing:
+		_fade_projectile_velocity(delta)
 
 func _physics_process(delta):
 	position += transform.x * projectileVelocity * delta

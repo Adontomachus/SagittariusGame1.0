@@ -1961,12 +1961,6 @@ position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
-[node name="PlayerBullet" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=132848767 instance=ExtResource("12_4t4xv")]
-position = Vector2(534, 383)
-
-[node name="PlayerBullet2" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=1215238588 instance=ExtResource("12_4t4xv")]
-position = Vector2(531, 345)
-
 [node name="GlowAnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD" unique_id=1438675712]
 root_node = NodePath("../UI/UpdatedPlayerHealthBar")
 libraries/ = SubResource("AnimationLibrary_mr3qy")
@@ -3545,6 +3539,12 @@ position = Vector2(1180, 47)
 
 [node name="StationaryTurretEnemy2" parent="." unique_id=834809500 instance=ExtResource("33_r8kr6")]
 position = Vector2(1391, 309)
+
+[node name="PlayerBullet" parent="." unique_id=132848767 instance=ExtResource("12_4t4xv")]
+position = Vector2(539, 381)
+
+[node name="PlayerBullet2" parent="." unique_id=1215238588 instance=ExtResource("12_4t4xv")]
+position = Vector2(536, 343)
 
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("47_vwi3h")]
 position = Vector2(753, 383)
