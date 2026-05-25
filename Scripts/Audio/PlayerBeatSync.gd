@@ -17,7 +17,8 @@ var can_play: bool = true
 #region Beat Variables
 @export var tempo: float = 107
 var pulsePerBeat = 60.0 / tempo
-var halfPulsePerBeat = 60 / (tempo * 2)
+var halfPulsePerBeat = 60.0 / (tempo * 2)
+var halfLastBeat = 0
 var lastBeat = 0
 
 
@@ -109,7 +110,8 @@ func _process(_delta) -> void:
 	half_beat = floorf(half_beat_precise)
 	
 	GlobalBeatSync.beat = beat
-	# Take actions when a note has passed
+	# GlobalBeatSync.half_beat = beat
+	## Take actions when a note has passed
 	if lastBeat < beat:
 		print("Note passed!")
 		GlobalBeatSync.notesPassed += 1

@@ -6,18 +6,17 @@
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_w0bs6"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy Scripts/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_kdy0d"]
+[ext_resource type="Script" uid="uid://x56h4ylv088k" path="res://Scripts/Enemy Scripts/Boss Abilities/SummonAbility.gd" id="4_r4dr7"]
 [ext_resource type="Script" uid="uid://bj6o7bxu2nywc" path="res://Scripts/Enemy Scripts/States/Enemy States/Position.gd" id="5_4yo34"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_oc4nc"]
-[ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="6_kdy0d"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_b7mrf"]
 [ext_resource type="Script" uid="uid://uhna5uouncxf" path="res://Scripts/Enemy Scripts/Enemy Passives/BossSummon.gd" id="7_iq3q8"]
 [ext_resource type="Script" uid="uid://bgnnb24rgbqra" path="res://Scripts/Enemy Scripts/States/Exclusive Boss States/Barrage.gd" id="8_wouom"]
+[ext_resource type="Script" uid="uid://dqds3tst3eyy3" path="res://Scripts/Enemy Scripts/States/Exclusive Boss States/BossRecovery.gd" id="12_ek2o3"]
+[ext_resource type="Script" uid="uid://mh2b27ky1t1s" path="res://Scripts/Enemy Scripts/States/Exclusive Boss States/Summoning.gd" id="13_ek2o3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 103.84142
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_477de"]
-radius = 562.0142
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 83.02409
@@ -109,12 +108,8 @@ position = Vector2(48.551716, -52.082764)
 scale = Vector2(0.2974407, 0.2974407)
 texture = ExtResource("2_g16c8")
 
-[node name="SummonArea" type="Area2D" parent="." unique_id=696089106]
-
-[node name="SummonAreaRadius" type="CollisionShape2D" parent="SummonArea" unique_id=2082543170]
-shape = SubResource("CircleShape2D_477de")
-disabled = true
-debug_color = Color(0.7598514, 0.44796598, 0.17923622, 0)
+[node name="SummonArea" type="Node" parent="." unique_id=961650154]
+script = ExtResource("4_r4dr7")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_w0bs6")
@@ -153,6 +148,8 @@ script = ExtResource("7_iq3q8")
 
 [node name="EnemyStateIdle" type="Node" parent="." unique_id=732527017]
 
+[node name="EnemyStateSummoning" type="Node" parent="." unique_id=1223922426]
+
 [node name="EnemyStateStationaryBarrage" type="Node" parent="." unique_id=2060164638]
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=1146269158 node_paths=PackedStringArray("starting_state", "sprite")]
@@ -167,16 +164,19 @@ successful_chance_to_attack = 2.0
 
 [node name="EnemyStatePositioning" type="Node" parent="EnemyStateMachine" unique_id=784434399 node_paths=PackedStringArray("after_position_state", "attack_state", "recovery_state")]
 script = ExtResource("5_4yo34")
-after_position_state = NodePath("../EnemyStateRecovery")
+after_position_state = NodePath("")
 attack_state = NodePath("../EnemyStateBarrage")
 successful_chance_to_attack = 4.0
-recovery_state = NodePath("../EnemyStateRecovery")
+recovery_state = NodePath("")
 metadata/_custom_type_script = "uid://bj6o7bxu2nywc"
 
-[node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1869708369 node_paths=PackedStringArray("state_to_return")]
-script = ExtResource("6_kdy0d")
-state_to_return = NodePath("../EnemyStatePositioning")
-metadata/_custom_type_script = "uid://djhvfb78j0d1i"
+[node name="EnemyStateBossRecovery" type="Node" parent="EnemyStateMachine" unique_id=1387306800 node_paths=PackedStringArray("summoning_state")]
+script = ExtResource("12_ek2o3")
+summoning_state = NodePath("../EnemyStateSummoning")
+metadata/_custom_type_script = "uid://dqds3tst3eyy3"
+
+[node name="EnemyStateSummoning" type="Node" parent="EnemyStateMachine" unique_id=1195638468]
+script = ExtResource("13_ek2o3")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=12022442]
 stream = ExtResource("7_b7mrf")

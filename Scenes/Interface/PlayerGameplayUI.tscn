@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ce1ubajf25ccj"]
 
-[ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/AudioBased/UIFeedback.gd" id="1_21in3"]
+[ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/Audio/UIFeedback.gd" id="1_21in3"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="2_54ovd"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="3_n3v0n"]
-[ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/AudioBased/PlayerBeatSync.gd" id="4_220i8"]
+[ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/Audio/PlayerBeatSync.gd" id="4_220i8"]
 [ext_resource type="AudioStream" uid="uid://crickx6jhqxrr" path="res://Audio/Music/MetronomeTest.wav" id="5_ft08h"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="6_o8lrg"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="7_lhccn"]

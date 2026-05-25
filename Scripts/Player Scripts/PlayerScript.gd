@@ -37,7 +37,8 @@ var levels_left_for_item_upgrade: int = 8
 
 
 # PLAYER MOVEMENT VARIABLES
-var moveSpeed: float = 300.0
+var moveSpeed: float
+@export var maxMoveSpeed: float = 300.0
 var playerDirection: Vector2
 @export var projectile_damage: float = 30
 #endregion
@@ -54,14 +55,18 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 
 # Shot properties and point
 @export var pulse_sound_effect: AudioStreamPlayer
-var shot_fire_rate: float
-@export var max_shot_fire_rate: float = 0.3
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 # Visual feedback for charged shot
 @onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
+# Primary fire and its fire rate
+@export_category("Player Fire Rate")
+var shot_fire_rate: float
+@export var max_shot_fire_rate: float = 0.3
+# Secondary fire and its fire rate
+var secondary_fire_rate: float
+@export var max_secondary_fire_rate: float = 0.12
 
-@export_category("Number of perfect shots for enhanced attack")
 #endregion
 
 #region This section consists of player abilities and a sole boolean if controllable
@@ -75,10 +80,14 @@ var can_fire_charged_shot: bool = false
 # Boolean to check if AoE ability is active
 var ability_active: bool
 var ability_duration: int
+# Ability cooldown
 @export var max_ability_cooldown: float
 var ability_cooldown: float
 
 @onready var ability_aoe_node: Area2D = $AbilityAoE
+
+## Boolean if secondary fire is active or not (Holding right click activates while releasing deactivates it)
+var secondary_fire_active: bool = false
 
 ## Properties for companion ability, which causes them to charge at enemies
 @export var can_use_companion_ability: bool
@@ -116,6 +125,7 @@ var can_control_unit: bool = true
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 func _ready():
+	# Sets up move speed
 	
 	# Sets up the fire rate mechanics
 	shot_fire_rate = max_shot_fire_rate
@@ -153,7 +163,12 @@ func get_ability_inputs() -> void:
 				activate_player_ability()
 				can_use_ability = false
 				ability_visual_feedback.play("AbilityActivationVisual")
-		
+		if Input.is_action_pressed("fire_secondary"):
+			secondary_fire_active = true
+			moveSpeed = maxMoveSpeed * 1.6
+		else:
+			moveSpeed = maxMoveSpeed
+			secondary_fire_active = false
 
 func activate_player_ability() -> void:
 	ability_duration = 20
@@ -305,6 +320,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 #endregion
+
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.3)
@@ -348,6 +364,27 @@ func increment_player_charge_attack() -> void:
 	shots_for_charged += 1
 	
 #endregion
+
+## SECONDARY FIRE RATE FUNCTION
+func _shoot_secondary() -> void:
+	camera_shake.emit(0.15)
+	var projectile_instance = projectile.instantiate()
+	shot_sound.play()
+	projectile_instance.change_damage(projectile_damage / 1.75)
+	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+	projectile_instance.position = shot_point.get_global_position()
+	projectile_instance.rotation_degrees = shot_point.rotation_degrees
+	get_tree().get_root().call_deferred("add_child", projectile_instance)
+		
+	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+	var shotEffect = projectileShotEffect.instantiate()
+	shotEffect.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", shotEffect)
+	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+		
+	# Prints the damage value of instantiated shot for debug
+	print_debug("Damage: %s" % (projectile_damage / 1.75))
+	pass
 
 #region Sprite rotation functions
 func update_sprite_rotations(cursor_direction):

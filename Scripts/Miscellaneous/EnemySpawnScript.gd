@@ -18,7 +18,7 @@ var final_wave: bool = false
 var redness = 0
 
 # Const values
-const SCALING = preload("res://Scripts/AudioBased/GameManager.gd")
+const SCALING = preload("res://Scripts/Audio/GameManager.gd")
 
 # Const value for enemy spawn rarities
 const CHANCE_RANGE: Vector2 = Vector2(0, 10)
@@ -27,6 +27,7 @@ const CHANCE_RANGE: Vector2 = Vector2(0, 10)
 @export var enemyToSpawn = preload("res://UnitInstances/Enemy Instances/Enemy.tscn")
 @export var altEnemy = preload("res://UnitInstances/Enemy Instances/EnemyShooter.tscn")
 @export var eliteEnemy = preload("res://UnitInstances/Enemy Instances/EliteEnemy.tscn")
+@export var chargerEnemy = preload("res://UnitInstances/Enemy Instances/EnemyCharger.tscn")
 @export var bossSpawn = preload("res://UnitInstances/Enemy Instances/Boss.tscn")
 
 func _ready() -> void:
@@ -56,7 +57,9 @@ func _process(delta: float) -> void:
 		if final_wave:
 			_spawn_boss_enemy()
 		else:
-			if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight - 3:
+			if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight - 4:
+				_spawn_charger_enemy()
+			elif randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight - 3:
 				_spawn_elite_enemy()
 			elif randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight:
 				_spawn_alt_enemy()
@@ -81,6 +84,12 @@ func _spawn_alt_enemy():
 	return
 func _spawn_elite_enemy():
 	var enemy = eliteEnemy.instantiate()
+	enemy.global_position = self.global_position
+	get_tree().current_scene.add_child(enemy)
+	queue_free()
+	return
+func _spawn_charger_enemy():
+	var enemy = chargerEnemy.instantiate()
 	enemy.global_position = self.global_position
 	get_tree().current_scene.add_child(enemy)
 	queue_free()

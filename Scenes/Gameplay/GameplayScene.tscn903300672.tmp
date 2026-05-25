@@ -25,12 +25,12 @@
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="PackedScene" uid="uid://baq8lvbpwxgpg" path="res://Scenes/Interface/WinInterface.tscn" id="10_hlum5"]
 [ext_resource type="PackedScene" uid="uid://djpbi3ti2qmdk" path="res://Scenes/Interface/DefeatInterface.tscn" id="11_4t4xv"]
-[ext_resource type="Script" uid="uid://mrnktwdcd6k4" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
-[ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="12_4t4xv"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
+[ext_resource type="AudioStream" uid="uid://gel8f0x45m7d" path="res://Audio/Music/Bebot.mp3" id="13_7yb2d"]
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="14_u1twm"]
+[ext_resource type="AudioStream" uid="uid://cbypk7fqoegmb" path="res://Audio/Sounds/EnhancerSound.wav" id="15_buuuh"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="17_6uhl4"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
@@ -38,7 +38,6 @@
 [ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="18_48svx"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="19_0cpi2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
-[ext_resource type="AudioStream" uid="uid://c6m7eu5rshvxj" path="res://Audio/Music/Bebot_Updated.mp3" id="20_hlum5"]
 [ext_resource type="Texture2D" uid="uid://oo48xtre3sec" path="res://Sprites/Game Elements/abilityfeedback.png" id="22_yt4p3"]
 [ext_resource type="Texture2D" uid="uid://b2nmgvvaxsn4k" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle1.png" id="24_vwi3h"]
 [ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="25_41o6w"]
@@ -64,11 +63,10 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
-[ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_o710q"]
 
 [sub_resource type="Animation" id="Animation_cacow"]
 resource_name = "GlowPulse"
@@ -1899,73 +1897,36 @@ script = ExtResource("3_exhb5")
 player_character = NodePath("../../Player")
 
 [node name="SecondaryShotBars" type="Node" parent="InterfaceElements/NewHUD" unique_id=1364099950]
-script = ExtResource("11_hlum5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=2013817160]
-offset_left = 268.0
-offset_top = 104.0
-offset_right = 498.0
-offset_bottom = 144.0
+[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=731233303]
+position = Vector2(270, 114.00001)
+scale = Vector2(37.750008, 7.023255)
+texture = SubResource("CanvasTexture_o710q")
 
-[node name="Square1" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=575820286]
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
+[node name="Bar2" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=1454979065]
+position = Vector2(317, 114.00001)
+scale = Vector2(37.750008, 7.023255)
+texture = SubResource("CanvasTexture_o710q")
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square1" unique_id=1529509515]
-position = Vector2(13.75, 4.75)
-scale = Vector2(28.5, 10.5)
-texture = SubResource("CanvasTexture_hlum5")
+[node name="Bar3" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=2035049946]
+position = Vector2(364, 114.00001)
+scale = Vector2(37.750008, 7.023255)
+texture = SubResource("CanvasTexture_o710q")
 
-[node name="Square2" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1520050990]
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
+[node name="Bar4" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=1422979204]
+position = Vector2(410.99997, 114.00001)
+scale = Vector2(37.750008, 7.023255)
+texture = SubResource("CanvasTexture_o710q")
 
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square2" unique_id=783986859]
-position = Vector2(13.75, 4.75)
-scale = Vector2(28.5, 10.5)
-texture = SubResource("CanvasTexture_hlum5")
+[node name="Bar5" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=1510350929]
+position = Vector2(458, 114.00001)
+scale = Vector2(37.750008, 7.023255)
+texture = SubResource("CanvasTexture_o710q")
 
-[node name="Square3" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1771105379]
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
-
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square3" unique_id=530181505]
-position = Vector2(13.75, 4.75)
-scale = Vector2(28.5, 10.5)
-texture = SubResource("CanvasTexture_hlum5")
-
-[node name="Square4" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1624727162]
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
-
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square4" unique_id=874684264]
-position = Vector2(13.75, 4.75)
-scale = Vector2(28.5, 10.5)
-texture = SubResource("CanvasTexture_hlum5")
-
-[node name="Square5" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=1005640923]
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
-
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square5" unique_id=1875351941]
-position = Vector2(13.75, 4.75)
-scale = Vector2(28.5, 10.5)
-texture = SubResource("CanvasTexture_hlum5")
-
-[node name="Square6" type="TextureRect" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer" unique_id=790701329]
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
-
-[node name="Bar1" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars/HBoxContainer/Square6" unique_id=944897774]
-position = Vector2(13.75, 4.75)
-scale = Vector2(28.5, 10.5)
-texture = SubResource("CanvasTexture_hlum5")
-
-[node name="PlayerBullet" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=132848767 instance=ExtResource("12_4t4xv")]
-position = Vector2(534, 383)
-
-[node name="PlayerBullet2" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=1215238588 instance=ExtResource("12_4t4xv")]
-position = Vector2(531, 345)
+[node name="Bar6" type="Sprite2D" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=804647742]
+position = Vector2(505, 114.00001)
+scale = Vector2(37.750008, 7.023255)
+texture = SubResource("CanvasTexture_o710q")
 
 [node name="GlowAnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD" unique_id=1438675712]
 root_node = NodePath("../UI/UpdatedPlayerHealthBar")
@@ -2096,16 +2057,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ComboCounterProgressBar" type="ProgressBar" parent="InterfaceElements/NewHUD/UI/UpdatedComboCounter" unique_id=715081123]
-modulate = Color(0.8823364, 0.87131125, 0.4739384, 1)
-self_modulate = Color(2.40685, 2.40685, 2.2780478, 1)
 layout_mode = 0
-offset_left = 14.345633
-offset_top = 183.60611
-offset_right = 154.22728
-offset_bottom = 202.72511
+offset_left = 10.153812
+offset_top = 185.16454
+offset_right = 148.80898
+offset_bottom = 212.16454
 rotation = -1.5803438
-value = 55.0
-show_percentage = false
 
 [node name="ComboNumberPulse" type="AnimationPlayer" parent="InterfaceElements/NewHUD/UI" unique_id=149812275]
 root_node = NodePath("../UpdatedComboCounter")
@@ -2281,7 +2238,7 @@ libraries/ = SubResource("AnimationLibrary_onpmq")
 speed_scale = 0.6
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" unique_id=812856403]
-stream = ExtResource("20_hlum5")
+stream = ExtResource("13_7yb2d")
 volume_db = -13.69
 autoplay = true
 bus = &"Music"
@@ -2523,9 +2480,8 @@ pitch_scale = 4.0
 bus = &"SFX"
 
 [node name="ShotAudio" type="AudioStreamPlayer" parent="Player" unique_id=166549679]
-stream = ExtResource("50_hlum5")
-volume_db = -5.0
-pitch_scale = 1.4
+stream = ExtResource("15_buuuh")
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="Player" unique_id=553159512]
@@ -3569,7 +3525,6 @@ position = Vector2(447, 398)
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/GlowingPlatform4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
-[connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="increment_player_charge_attack"]
 [connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_exitGame"]

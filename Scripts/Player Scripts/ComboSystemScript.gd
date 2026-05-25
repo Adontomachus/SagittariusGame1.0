@@ -12,9 +12,13 @@ var combo_upgrade_feedback: bool = true
 var combo_upgrade_feedback_two: bool = true
 var combo_upgrade_feedback_three: bool = true
 var combo_upgrade_feedback_four: bool = true
-## Green Pulse animation feedback for when the player's combo gets upgraded
-# @onready var cssombo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachPulse"
 
+## Sets the bar's value for the combo meter
+@export var combo_meter: ProgressBar
+
+## This signal section sets the value of progress bars, usually
+signal set_max_progress(max_prog: float)
+signal set_current_progress(prog: float)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,6 +46,12 @@ func _add_combo_level(level_value) -> void:
 func _update_combo() -> void:
 	# Statements for combo levels
 	if combo_strength < 100: 
+		## This section emits the signals needed for the combo progress bar to function
+		## This is also applicable for other elif statements
+		#region Signal region
+		set_current_progress.emit(combo_strength)
+		set_max_progress.emit(100)
+		#endregion
 		combo_level = 1
 		combo_upgrade_feedback = true
 		
@@ -49,6 +59,10 @@ func _update_combo() -> void:
 		if combo_upgrade_feedback:
 			combo_reach_pulse.play("LightPulse")
 			combo_upgrade_feedback = false
+		#region Signal region
+		set_current_progress.emit(combo_strength - 100)
+		set_max_progress.emit(150)
+		#endregion		
 		combo_level = 2
 		combo_upgrade_feedback_two = true
 		
@@ -56,6 +70,10 @@ func _update_combo() -> void:
 		if combo_upgrade_feedback_two:
 			combo_reach_pulse.play("LightPulse")
 			combo_upgrade_feedback_two = false
+		#region Signal region
+		set_current_progress.emit(combo_strength - 250)
+		set_max_progress.emit(200)
+		#endregion		
 		combo_level = 3
 		combo_upgrade_feedback_three = true
 		
@@ -63,12 +81,21 @@ func _update_combo() -> void:
 		if combo_upgrade_feedback_three:
 			combo_reach_pulse.play("LightPulse")
 			combo_upgrade_feedback_three = false
+		#region Signal region
+		set_current_progress.emit(combo_strength - 450)
+		set_max_progress.emit(300)
+		#endregion		
 		combo_upgrade_feedback_four = true		
 		combo_level = 4
+
 	elif combo_strength >= 750 and combo_strength:
 		if combo_upgrade_feedback_four:
 			combo_reach_pulse.play("LightPulse")
 			combo_upgrade_feedback_four = false
+		#region Signal region
+		set_current_progress.emit(combo_strength - 750)
+		set_max_progress.emit(500)
+		#endregion				
 		combo_level = 5
 	match combo_level:
 		1:
@@ -81,4 +108,5 @@ func _update_combo() -> void:
 			combo_count_ui.text = "8x"
 		5:
 			combo_count_ui.text = "16x"
+
 #endregion
