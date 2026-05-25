@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://mrnktwdcd6k4" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="11_wjss6"]
+[ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="12_4t4xv"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="12_xxi0v"]
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="14_u1twm"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
@@ -1959,6 +1960,12 @@ layout_mode = 2
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
+
+[node name="PlayerBullet" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=132848767 instance=ExtResource("12_4t4xv")]
+position = Vector2(534, 383)
+
+[node name="PlayerBullet2" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=1215238588 instance=ExtResource("12_4t4xv")]
+position = Vector2(531, 345)
 
 [node name="GlowAnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD" unique_id=1438675712]
 root_node = NodePath("../UI/UpdatedPlayerHealthBar")

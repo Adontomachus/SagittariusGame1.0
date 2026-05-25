@@ -55,14 +55,18 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 
 # Shot properties and point
 @export var pulse_sound_effect: AudioStreamPlayer
-var shot_fire_rate: float
-@export var max_shot_fire_rate: float = 0.3
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
 # Visual feedback for charged shot
 @onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
+# Primary fire and its fire rate
+@export_category("Player Fire Rate")
+var shot_fire_rate: float
+@export var max_shot_fire_rate: float = 0.3
+# Secondary fire and its fire rate
+var secondary_fire_rate: float
+@export var max_secondary_fire_rate: float = 0.12
 
-@export_category("Number of perfect shots for enhanced attack")
 #endregion
 
 #region This section consists of player abilities and a sole boolean if controllable
@@ -316,6 +320,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 #endregion
+
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.3)
@@ -359,6 +364,27 @@ func increment_player_charge_attack() -> void:
 	shots_for_charged += 1
 	
 #endregion
+
+## SECONDARY FIRE RATE FUNCTION
+func _shoot_secondary() -> void:
+	camera_shake.emit(0.15)
+	var projectile_instance = projectile.instantiate()
+	shot_sound.play()
+	projectile_instance.change_damage(projectile_damage / 1.75)
+	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+	projectile_instance.position = shot_point.get_global_position()
+	projectile_instance.rotation_degrees = shot_point.rotation_degrees
+	get_tree().get_root().call_deferred("add_child", projectile_instance)
+		
+	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+	var shotEffect = projectileShotEffect.instantiate()
+	shotEffect.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", shotEffect)
+	# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+		
+	# Prints the damage value of instantiated shot for debug
+	print_debug("Damage: %s" % (projectile_damage / 1.75))
+	pass
 
 #region Sprite rotation functions
 func update_sprite_rotations(cursor_direction):
