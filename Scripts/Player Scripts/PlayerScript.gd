@@ -37,7 +37,8 @@ var levels_left_for_item_upgrade: int = 8
 
 
 # PLAYER MOVEMENT VARIABLES
-var moveSpeed: float = 300.0
+var moveSpeed: float
+@export var maxMoveSpeed: float = 300.0
 var playerDirection: Vector2
 @export var projectile_damage: float = 30
 #endregion
@@ -75,10 +76,14 @@ var can_fire_charged_shot: bool = false
 # Boolean to check if AoE ability is active
 var ability_active: bool
 var ability_duration: int
+# Ability cooldown
 @export var max_ability_cooldown: float
 var ability_cooldown: float
 
 @onready var ability_aoe_node: Area2D = $AbilityAoE
+
+## Boolean if secondary fire is active or not (Holding right click activates while releasing deactivates it)
+var secondary_fire_active: bool = false
 
 ## Properties for companion ability, which causes them to charge at enemies
 @export var can_use_companion_ability: bool
@@ -116,6 +121,7 @@ var can_control_unit: bool = true
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 func _ready():
+	# Sets up move speed
 	
 	# Sets up the fire rate mechanics
 	shot_fire_rate = max_shot_fire_rate
@@ -153,7 +159,12 @@ func get_ability_inputs() -> void:
 				activate_player_ability()
 				can_use_ability = false
 				ability_visual_feedback.play("AbilityActivationVisual")
-		
+		if Input.is_action_pressed("fire_secondary"):
+			secondary_fire_active = true
+			moveSpeed = maxMoveSpeed * 1.6
+		else:
+			moveSpeed = maxMoveSpeed
+			secondary_fire_active = false
 
 func activate_player_ability() -> void:
 	ability_duration = 20
