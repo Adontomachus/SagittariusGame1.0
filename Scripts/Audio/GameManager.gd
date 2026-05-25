@@ -259,3 +259,13 @@ func _change_spawning_state(changeBehavior: spawningBehavior):
 	
 func set_value(boss_health: int) -> void:
 	pass # Replace with function body.
+
+
+func _on_pause_screen_exit_game() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")
+	pass # Replace with function body.
+
+
+func _on_pause_screen_resume_game() -> void:
+	_resumeGame()
+	pass # Replace with function body.
