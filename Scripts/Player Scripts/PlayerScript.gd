@@ -177,9 +177,6 @@ func get_ability_inputs() -> void:
 				activate_player_ability()
 				can_use_ability = false
 				ability_visual_feedback.play("AbilityActivationVisual")
-		if Input.is_action_pressed("fire_secondary"):
-			secondary_fire_active = true
-			moveSpeed = maxMoveSpeed * 1.6
 		else:
 			moveSpeed = maxMoveSpeed
 			secondary_fire_active = false

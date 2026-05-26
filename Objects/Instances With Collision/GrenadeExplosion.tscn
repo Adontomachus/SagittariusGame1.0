@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bui486asfc0c0" path="res://Scripts/Player Scripts/GrenadeExplosionArea.gd" id="1_ekmk2"]
 [ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_qit6l"]
+[ext_resource type="AudioStream" uid="uid://ddc7uigehky5a" path="res://Audio/Sounds/GiantExplosion.wav" id="3_k5xfb"]
 
 [sub_resource type="Animation" id="Animation_bcdgm"]
 resource_name = "GrenadeExplode"
@@ -78,3 +79,7 @@ shape = SubResource("CircleShape2D_oyc81")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=463235247]
 texture = ExtResource("2_qit6l")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=517210629]
+stream = ExtResource("3_k5xfb")
+bus = &"SFX"

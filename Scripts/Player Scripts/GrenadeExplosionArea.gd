@@ -12,6 +12,7 @@ enum ProjectileSide {
 @export var lifetime: float = 0.3
 
 @onready var area_indicator: AnimationPlayer = $AnimationPlayer
+@onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
 
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _ready() -> void:
 	$CollisionShape2D.shape = shape
 
 	area_indicator.play("GrenadeExplode")
+	explosion_sound.play()
 
 	self.area_entered.connect(func(area) -> void:
 		if area is EnemyProjectileHitbox:
