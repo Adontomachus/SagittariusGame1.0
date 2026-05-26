@@ -53,7 +53,7 @@ var dash_velocity: Vector2 = Vector2.ZERO
 
 @export_category("Grenade Values")
 @export var grenade_scene: PackedScene
-@export var grenade_damage: float = 80.0
+@export var grenade_damage: float = 62.0
 @export var grenade_cooldown: float = 0.0
 var grenade_ready: bool = true
 
@@ -456,6 +456,7 @@ func upgrade_player_stats() -> void:
 	PointSystemScript.player_levels = player_level
 	maxHealthPoints = maxHealthPoints * 1.03
 	projectile_damage = projectile_damage * 1.06
+	grenade_damage = grenade_damage * 1.045
 	maxExperiencePoints = maxExperiencePoints * 1.05
 	experiencePoints = 0
 	healthPoints += maxHealthPoints / 5
@@ -500,6 +501,8 @@ func _grenade() -> void:
 		return
 
 	var grenade = grenade_scene.instantiate()
+	# Randomizes grenade damage from 95% to 105%
+	grenade.explosion_damage = grenade_damage * randf_range(0.95, 1.05)
 	get_tree().get_root().call_deferred("add_child", grenade)
 
 	## Wait one frame so the node is in the tree before calling launch()
