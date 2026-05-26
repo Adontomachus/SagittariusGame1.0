@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="Script" uid="uid://de550e6jmpmk1" path="res://Scripts/Miscellaneous/UpgradeSystemScript.gd" id="8_hlum5"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
-[ext_resource type="Script" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
+[ext_resource type="Script" uid="uid://mrnktwdcd6k4" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
 [ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="12_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
@@ -212,7 +212,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6uw2w"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_figfh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -639,13 +639,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="CheckBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_6uw2w")
+button_group = SubResource("ButtonGroup_figfh")
 
 [node name="CheckBox2" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_6uw2w")
+button_group = SubResource("ButtonGroup_figfh")
 
 [node name="CheckBox3" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_6uw2w")
+button_group = SubResource("ButtonGroup_figfh")
 
 [node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
 modulate = Color(1, 1, 1, 0)

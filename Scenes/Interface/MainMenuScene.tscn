@@ -236,7 +236,6 @@ main_menu_node = NodePath("../MainMenuContainer")
 [node name="Settings" parent="." unique_id=750193702 instance=ExtResource("3_o310p")]
 unique_name_in_owner = true
 visible = false
-anchors_preset = 15
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
