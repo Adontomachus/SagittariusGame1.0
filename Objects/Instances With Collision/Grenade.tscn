@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://croljcfbh70xd"]
+
+[ext_resource type="Script" uid="uid://cqo08dglm7bhd" path="res://Scripts/Player Scripts/Grenade.gd" id="1_w0w30"]
+[ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="2_u5cfu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6fko"]
+
+[node name="Grenade" type="RigidBody2D" unique_id=971221955]
+script = ExtResource("1_w0w30")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=676292315]
+shape = SubResource("CircleShape2D_v6fko")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=177779765]
+texture = ExtResource("2_u5cfu")
+
+[node name="FuseTimer" type="Timer" parent="." unique_id=1531729314]

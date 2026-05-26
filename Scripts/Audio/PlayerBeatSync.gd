@@ -14,6 +14,8 @@ var can_play: bool = true
 ##TEMPORARY
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
 
+
+
 #region Beat Variables
 @export var tempo: float = 107
 var pulsePerBeat = 60.0 / tempo
@@ -21,7 +23,9 @@ var halfPulsePerBeat = 60.0 / (tempo * 2)
 var halfLastBeat = 0
 var lastBeat = 0
 
-
+## Flag that forces only one type of fire to be used per beat
+var beat_consumed: bool = false
+var secondary_ammo: int = 0
 
 ## Variables for the full note
 var time: float
@@ -118,8 +122,15 @@ func _process(_delta) -> void:
 		indicator_pulse()
 		lastBeat = beat
 		halfLastBeat = half_beat  # keep them in sync on full beats
+		beat_consumed = false
+	if halfLastBeat < half_beat:
+		indicator_pulse()
+		halfLastBeat = half_beat
+		beat_consumed = false  
 
 func _input(event: InputEvent) -> void:
+	if beat_consumed:            # block if already fired this beat
+		return
 	var beat_fraction := fmod(beat_precise, 1.0)
 	
 	# Distance to full beat (0.0 or 1.0)
@@ -143,6 +154,8 @@ func evaluate_shot(timing: float) -> Dictionary:
 		border_pulse.emit()
 		p_combo_sound.play()
 		increase_player_attack_charge.emit()
+		if secondary_ammo < 6:
+			secondary_ammo += 1
 		increment_combo_meter.emit(40)
 		return { "damage": 1.45, "color": Color.html("#1ce1ebff") }
 	if timing < good_hit:

@@ -51,6 +51,12 @@ var playerDirection: Vector2
 var is_dashing: bool = false
 var dash_velocity: Vector2 = Vector2.ZERO
 
+@export_category("Grenade Values")
+@export var grenade_scene: PackedScene
+@export var grenade_damage: float = 80.0
+@export var grenade_cooldown: float = 0.0
+var grenade_ready: bool = true
+
 #region Reference object 
 # Projectile types
 var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
@@ -490,4 +496,21 @@ func _dash() -> void:
 	await get_tree().create_timer(dash_duration).timeout
 	is_dashing = false
 	dash_velocity = Vector2.ZERO
+
+func _grenade() -> void:
+	if not grenade_ready:
+		print("Grenade on cooldown")
+		return
+
+	var grenade = grenade_scene.instantiate()
+	get_tree().get_root().call_deferred("add_child", grenade)
+
+	## Wait one frame so the node is in the tree before calling launch()
+	await get_tree().process_frame
+	grenade.launch(global_position, get_global_mouse_position())
+
+	## Cooldown
+	grenade_ready = false
+	await get_tree().create_timer(grenade_cooldown).timeout
+	grenade_ready = true
 #endregion
