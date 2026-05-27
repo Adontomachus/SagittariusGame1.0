@@ -8,14 +8,14 @@ var can_charge: bool
 
 func enter() -> void:
 	can_charge = false
-	time_before_charging = 2
+	time_before_charging = 4
 	telegraph_animation.play("Warning")
 	await get_tree().create_timer(2).timeout
 	can_charge = true
 	print("Charging")
 	
 func process_physics(delta: float) -> EnemyState:
-	time_before_charging -= 1 * delta
+	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat: time_before_charging -= 1
 	if 	can_charge:
 		return charging_state
 	return null
