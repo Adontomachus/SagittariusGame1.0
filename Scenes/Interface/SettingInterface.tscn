@@ -84,37 +84,37 @@ value = 1.0
 script = ExtResource("2_kup61")
 audio_bus_name = "Music"
 
-[node name="Difficulty Container" type="HBoxContainer" parent="VBoxContainer" unique_id=286209466]
+[node name="DifficultyContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=286209466]
 custom_minimum_size = Vector2(150, 80)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="VBoxContainer/Difficulty Container" unique_id=370968295]
+[node name="Label" type="Label" parent="VBoxContainer/DifficultyContainer" unique_id=370968295]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Difficulty        "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Difficulty Container" unique_id=1201141894]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DifficultyContainer" unique_id=1201141894]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.92
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/Difficulty Container/HBoxContainer" unique_id=1831211852]
+[node name="EasyBox" type="CheckBox" parent="VBoxContainer/DifficultyContainer/HBoxContainer" unique_id=1831211852]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_group = SubResource("ButtonGroup_ualiu")
 text = "Easy"
 
-[node name="CheckBox2" type="CheckBox" parent="VBoxContainer/Difficulty Container/HBoxContainer" unique_id=524195901]
+[node name="MediumBox" type="CheckBox" parent="VBoxContainer/DifficultyContainer/HBoxContainer" unique_id=524195901]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_pressed = true
 button_group = SubResource("ButtonGroup_ualiu")
 text = "Medium"
 
-[node name="CheckBox3" type="CheckBox" parent="VBoxContainer/Difficulty Container/HBoxContainer" unique_id=683023725]
+[node name="HardBox" type="CheckBox" parent="VBoxContainer/DifficultyContainer/HBoxContainer" unique_id=683023725]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_group = SubResource("ButtonGroup_ualiu")

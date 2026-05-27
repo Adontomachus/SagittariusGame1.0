@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="12_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
 [ext_resource type="Script" uid="uid://cipc737xcdjss" path="res://Scripts/Player Scripts/SecondaryFire.gd" id="13_6uw2w"]
+[ext_resource type="Script" uid="uid://ccacm8ui57prf" path="res://Scripts/Player Scripts/QMoves.gd" id="14_1vk04"]
+[ext_resource type="Script" uid="uid://cov3onfacl4cf" path="res://Scripts/Player Scripts/ChargeShot.gd" id="15_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
 [ext_resource type="PackedScene" uid="uid://croljcfbh70xd" path="res://Objects/Instances With Collision/Grenade.tscn" id="17_figfh"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
@@ -212,7 +214,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_figfh"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mtruf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -621,11 +623,10 @@ game_manager = NodePath("../../../../../..")
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="2" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
-[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060 node_paths=PackedStringArray("secondary_ammo_container")]
-secondary_ammo_container = NodePath("../../../SecondaryShotBars")
-perfect_hit = 0.06
-good_hit = 0.1
-ok_hit = 0.15
+[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060]
+perfect_hit = 0.03
+good_hit = 0.07
+ok_hit = 0.14
 metadata/_edit_use_anchors_ = true
 
 [node name="SecondaryFire" type="Node" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" index="4" unique_id=1266380933 node_paths=PackedStringArray("beat_sync")]
@@ -641,14 +642,14 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="CheckBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_figfh")
+[node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
+button_group = SubResource("ButtonGroup_mtruf")
 
-[node name="CheckBox2" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_figfh")
+[node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
+button_group = SubResource("ButtonGroup_mtruf")
 
-[node name="CheckBox3" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_figfh")
+[node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
+button_group = SubResource("ButtonGroup_mtruf")
 
 [node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
 modulate = Color(1, 1, 1, 0)
@@ -668,12 +669,14 @@ texture = ExtResource("22_yt4p3")
 [node name="ActivationAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/AbilityActivationFeedback" unique_id=455023363]
 libraries/ = SubResource("AnimationLibrary_xcrri")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("manager", "pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("manager", "charge_shot", "q_moves", "pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
 manager = NodePath("..")
+charge_shot = NodePath("ChargeShot")
+q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("17_figfh")
 pulse_sound_effect = NodePath("PulseSoundEffect")
 max_shot_fire_rate = 0.2
@@ -830,6 +833,15 @@ color_ramp = SubResource("Gradient_mr3qy")
 
 [node name="GlowEffect" type="WorldEnvironment" parent="Player/ChargedShotParticles" unique_id=605545931]
 environment = SubResource("Environment_hkmhq")
+
+[node name="QMoves" type="Node" parent="Player" unique_id=1399160530 node_paths=PackedStringArray("player", "beat_sync")]
+script = ExtResource("14_1vk04")
+player = NodePath("..")
+beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
+
+[node name="ChargeShot" type="Node" parent="Player" unique_id=918063712 node_paths=PackedStringArray("player")]
+script = ExtResource("15_fu6i5")
+player = NodePath("..")
 
 [node name="GameLevelNode" type="Node" parent="." unique_id=232750320]
 

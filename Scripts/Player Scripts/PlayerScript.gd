@@ -45,6 +45,10 @@ var playerDirection: Vector2
 @export var projectile_damage: float = 30
 #endregion
 
+@export_category("Alternate Attacks")
+@export var charge_shot: ChargeShot
+@export var q_moves: QMoves
+
 @export_category("Dash Values")
 @export var dash_force: float = 1600.0
 @export var dash_duration: float = 0.15
@@ -85,8 +89,8 @@ var secondary_fire_rate: float
 
 #region This section consists of player abilities and a sole boolean if controllable
 ## Amount for a charged AoE attack and a boolean when charged
-@export var max_shots_for_charged: int = 8
-var shots_for_charged: int = 8
+## @export var max_shots_for_charged: int = 8
+## var shots_for_charged: int = 8
 var can_fire_charged_shot: bool = false
 
 ## Booleans and conditions for using player abilities
@@ -182,10 +186,8 @@ func get_ability_inputs() -> void:
 			secondary_fire_active = false
 
 func activate_player_ability() -> void:
-	ability_duration = 20
-	ability_active = true
+	q_moves.activate()
 	ability_aoe_node.show()
-	pass
 #endregion
 
 #region Main processes
@@ -193,15 +195,17 @@ func _process(delta):
 	# This short code increments the fire rate per second (0.3 max fire rate allows players to fire at 0.3 shots)
 	shot_fire_rate += 1 * delta
 	
-	#region Section for charged shot feedback
-	## This section sets the "charged_shot" boolean to true if number of perfect shots reach the
-	## max shot threshold. Also sets the boolean to false once the player fires the piercing shot.
-	if shots_for_charged >= 7:
-		charged_shot_particles.show()
-	else:
-		charged_shot_particles.hide()
+	## Handled by new script
+	##region Section for charged shot feedback
+	### This section sets the "charged_shot" boolean to true if number of perfect shots reach the
+	### max shot threshold. Also sets the boolean to false once the player fires the piercing shot.
+	#if shots_for_charged >= 7:
+		#charged_shot_particles.show()
+	#else:
+		#charged_shot_particles.hide()
+
+	##endregion
 	
-	#endregion
 	#region Decides if the character can be controlled by the player
 	## If the game is paused, turn off all attempted inputs for player movement and attacks
 	if manager.gamePaused:
@@ -339,19 +343,11 @@ func _physics_process(delta):
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera_shake.emit(0.3)
 	if shot_fire_rate > max_shot_fire_rate:
-		if shots_for_charged >= max_shots_for_charged:
-			# Shoots the enhanced projectile and sets the beat charge to 0
-			var enhanced_projectile = powered_projectile.instantiate()
+		if charge_shot.consume(modifier):
+			# Charged shot fired — still need sound and effect
 			shot_sound.play()
-			enhanced_projectile.change_damage((projectile_damage * modifier) * 3.2)
-			enhanced_projectile.position = shot_point.get_global_position()
-			enhanced_projectile.rotation_degrees = shot_point.rotation_degrees
-			get_tree().get_root().call_deferred("add_child", enhanced_projectile)
-			shot_fire_rate = 0
-			shots_for_charged = 0
 		else:
-			# Shoots the normal projectile
-			shot_fire_rate = 0
+			# Normal shot
 			var projectile_instance = projectile.instantiate()
 			shot_sound.play()
 			projectile_instance.change_damage(projectile_damage * modifier)
@@ -360,14 +356,12 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 			projectile_instance.position = shot_point.get_global_position()
 			projectile_instance.rotation_degrees = shot_point.rotation_degrees
 			get_tree().get_root().call_deferred("add_child", projectile_instance)
-		
-		# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
+
+		# Shared between both paths
 		var shotEffect = projectileShotEffect.instantiate()
 		shotEffect.position = self.get_global_position()
 		get_tree().get_root().call_deferred("add_child", shotEffect)
-		# PROJECTILE EFFECT, LIKE A MUZZLE FLASH OR MAGIC PARTICLES
-		
-		# Prints the damage value of instantiated shot for debug
+		shot_fire_rate = 0    # was missing on the charged path
 		print_debug("Damage: %s" % (projectile_damage * modifier))
 
 
@@ -375,9 +369,23 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	## This function is signaled through the beat indicator
 func increment_player_charge_attack() -> void:
 	# print("CHARGING SHOT: ", shots_for_charged)
-	shots_for_charged += 1
+	charge_shot.increment()
 	
 #endregion
+
+###Q Move 
+#func _ability_pulse() -> void:
+	#if not q_moves.ability_active:    
+		#return
+	#q_moves.ability_duration -= 1
+	#var aoe_damage = pulse_aoe.instantiate()
+	#pulse_sound_effect.play()
+	#aoe_damage.change_damage(projectile_damage / randf_range(q_moves.damage_divisor_min, q_moves.damage_divisor_max))
+	#aoe_damage.position = shot_point.get_global_position()
+	#get_tree().get_root().call_deferred("add_child", aoe_damage)
+	#if q_moves.ability_duration <= 0:
+		#ability_aoe_node.hide()
+		#q_moves.ability_active = false
 
 ## SECONDARY FIRE RATE FUNCTION
 func _shoot_secondary() -> void:
@@ -408,24 +416,24 @@ func update_sprite_rotations(cursor_direction):
 	pass
 #endregion
 
-#region Checking if Sagittarrius's AoE is active or not
-# This function is also connected to the global beat synchronization script
-func _ability_pulse_checker() -> void:
-	## AoE effect instantiates for every note. Faster tempos mean faster damage instances
-	## The 'if statement' checks if the ability is active or not.
-	if ability_active:
-		ability_duration -= 1
-		var aoe_damage = pulse_aoe.instantiate()
-		pulse_sound_effect.play()
-		#shot_sound.play()
-		aoe_damage.change_damage(projectile_damage / randf_range(1.4, 1.6))
-		aoe_damage.position = shot_point.get_global_position()
-		get_tree().get_root().call_deferred("add_child", aoe_damage)
-		if ability_duration <= 0:
-			ability_aoe_node.hide()
-			ability_active = false
-		return 
-#endregion
+##region Checking if Sagittarrius's AoE is active or not
+### This function is also connected to the global beat synchronization script
+#func _ability_pulse_checker() -> void:
+	#### AoE effect instantiates for every note. Faster tempos mean faster damage instances
+	#### The 'if statement' checks if the ability is active or not.
+	#if ability_active:
+		#ability_duration -= 1
+		#var aoe_damage = pulse_aoe.instantiate()
+		#pulse_sound_effect.play()
+		###shot_sound.play()
+		#aoe_damage.change_damage(projectile_damage / randf_range(1.4, 1.6))
+		#aoe_damage.position = shot_point.get_global_position()
+		#get_tree().get_root().call_deferred("add_child", aoe_damage)
+		#if ability_duration <= 0:
+			#ability_aoe_node.hide()
+			#ability_active = false
+		##eturn 
+##endregion
 
 #region Player stat modifications
 # Modifies current player health
@@ -473,9 +481,6 @@ func upgrade_player_stats() -> void:
 	companion_upgrade.emit()
 	pass
 #endregion
-func _on_beat_indicator_increase_player_attack_charge() -> void:
-	shots_for_charged += 1
-	pass # Replace with function body.
 	
 	
 #region Secondary Fire
