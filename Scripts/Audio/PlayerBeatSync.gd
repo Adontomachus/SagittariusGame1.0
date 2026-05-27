@@ -6,6 +6,7 @@ signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Co
 signal increase_player_attack_charge
 signal increment_combo_meter(strength_value: float)
 signal border_pulse
+signal beat_happened
 
 @export_category("Beat Settings")
 @export var level_song: AudioStreamPlayer # = $"../MetronomeTest"
@@ -85,8 +86,11 @@ func _ready() -> void:
 	# Connect the shooting response to the player shoot function
 	var player = get_tree().get_first_node_in_group("PlayerObject")
 	player_shoot_projectile.connect(player._shoot_projectile)
+	increase_player_attack_charge.connect(player.increment_player_charge_attack)
 	# Get the latency
 	audio_latency = AudioServer.get_output_latency()
+	
+	beat_happened.connect(player.q_moves.on_beat)
 
 	scale = Vector2(starting_scale, starting_scale)
 	
@@ -123,10 +127,12 @@ func _process(_delta) -> void:
 		lastBeat = beat
 		halfLastBeat = half_beat  # keep them in sync on full beats
 		beat_consumed = false
+		beat_happened.emit()
 	if halfLastBeat < half_beat:
 		indicator_pulse()
 		halfLastBeat = half_beat
 		beat_consumed = false  
+		beat_happened.emit()
 
 func _input(event: InputEvent) -> void:
 	if beat_consumed:            # block if already fired this beat

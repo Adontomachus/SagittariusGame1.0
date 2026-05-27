@@ -1,6 +1,9 @@
 class_name Enemy
 extends CharacterBody2D
 
+## For difficulty
+var difficulty_settings = SaveSettings._load_difficulty_settings()
+
 # HP Bar Stuff #
 signal toggle_healthbar_visibility(visible: bool)
 signal send_maximum_health_value(max_health: int)
@@ -87,13 +90,21 @@ func _ready():
 	# For boss type units, finds the node for the the cinematic handler to play a scene when the boss reaches 0 HP.
 	#var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
 	#print("Current Cinematics Handler: " , cinematics_handler)
+	var difficultyScaler 
+	
+	if(difficulty_settings == 0):
+		difficultyScaler = 0.75
+	elif (difficulty_settings == 1):
+		difficultyScaler = 1
+	else:
+		difficultyScaler = 1.25
 	
 	# Set enemy statistics
 	maxStamina = randf_range(stamina_range.x, stamina_range.y)
 	stamina = maxStamina
 	currentMoveSpeed = maxMoveSpeed
-	maxHealthPoints = maxHealthPoints * ScalingSystemScript.health_scaling
-	attackPower = attackPower * ScalingSystemScript.attack_power_scaling
+	maxHealthPoints = (maxHealthPoints * difficultyScaler) * ScalingSystemScript.health_scaling
+	attackPower = (attackPower * difficultyScaler) * ScalingSystemScript.attack_power_scaling
 	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar

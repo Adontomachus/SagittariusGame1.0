@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="3_o310p"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_1dxah"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_1dxah"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_wikew"]
 line_spacing = 4.0
 font = ExtResource("4_1dxah")
@@ -224,23 +226,31 @@ offset_right = 1920.0
 offset_bottom = 1088.0
 color = Color(0.05193362, 0.0035419262, 0.17472742, 1)
 
-[node name="Tutorial" parent="." unique_id=90296623 node_paths=PackedStringArray("main_menu_node") instance=ExtResource("2_o310p")]
+[node name="Tutorial" parent="." unique_id=90296623 instance=ExtResource("2_o310p")]
 unique_name_in_owner = true
 visible = false
 offset_left = 968.0
 offset_top = 543.0
 offset_right = 968.0
 offset_bottom = 543.0
-main_menu_node = NodePath("../MainMenuContainer")
+script = null
 
 [node name="Settings" parent="." unique_id=750193702 instance=ExtResource("3_o310p")]
 unique_name_in_owner = true
 visible = false
-anchors_preset = 15
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="0" unique_id=1831211852]
+button_group = SubResource("ButtonGroup_1dxah")
+
+[node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="1" unique_id=524195901]
+button_group = SubResource("ButtonGroup_1dxah")
+
+[node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="2" unique_id=683023725]
+button_group = SubResource("ButtonGroup_1dxah")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
 visible = false
@@ -383,3 +393,5 @@ libraries/ = SubResource("AnimationLibrary_1dxah")
 [connection signal="pressed" from="MainMenuContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MainMenuContainer/VBoxContainer/HowToPlayButton" to="." method="_on_calibration_button_pressed"]
 [connection signal="pressed" from="MainMenuContainer/VBoxContainer/Exit" to="." method="_on_exit_button_pressed"]
+
+[editable path="Settings"]
