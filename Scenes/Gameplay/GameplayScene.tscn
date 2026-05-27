@@ -509,6 +509,8 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 script = ExtResource("2_vj1fp")
 levels = [NodePath("../GameLevelNode/Stage1"), null, null]
 
+[node name="EnemySpawnDirector" type="Node" parent="GameSystems" unique_id=576077595]
+
 [node name="LevelCutsceneDirector" type="Node" parent="GameSystems" unique_id=1584734885]
 script = ExtResource("5_jgp33")
 
@@ -1840,6 +1842,7 @@ position = Vector2(447, 398)
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="_on_beat_indicator_increase_player_attack_charge"]
+[connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
 [connection signal="player_dash" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator/SecondaryFire" to="Player" method="_on_secondary_fire_player_dash"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_exit_game"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_resume_game"]
