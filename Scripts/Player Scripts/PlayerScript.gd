@@ -14,7 +14,7 @@ signal send_current_xp(xp: float)
 # Companion upgrade signal
 signal companion_upgrade
 
-
+@export var UpgradeScreen : Control
 
 @export var healthPoints: float:
 	set(value):
@@ -58,6 +58,7 @@ var dash_velocity: Vector2 = Vector2.ZERO
 @export_category("Grenade Values")
 @export var grenade_scene: PackedScene
 @export var grenade_damage: float = 80.0
+@export var grenade_radius: float = 120.0
 @export var grenade_cooldown: float = 0.0
 var grenade_ready: bool = true
 
@@ -143,6 +144,8 @@ var can_control_unit: bool = true
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 func _ready():
+	# Resets upgrades
+	UpgradeSystemScript.reset()
 	# Sets up move speed
 	
 	# Sets up the fire rate mechanics
@@ -478,6 +481,10 @@ func upgrade_player_stats() -> void:
 	send_maximum_xp.emit(maxExperiencePoints)
 	send_maximum_health.emit(maxHealthPoints)
 	companion_upgrade.emit()
+	
+	if UpgradeSystemScript.should_show_upgrades(player_level):
+		UpgradeScreen.visible = true
+		UpgradeScreen.show_upgrades()
 	pass
 #endregion
 	
@@ -506,7 +513,9 @@ func _grenade() -> void:
 
 	var grenade = grenade_scene.instantiate()
 	get_tree().get_root().call_deferred("add_child", grenade)
-
+	
+	grenade.explosion_damage = grenade_damage
+	grenade.explosion_radius = grenade_radius
 	## Wait one frame so the node is in the tree before calling launch()
 	await get_tree().process_frame
 	grenade.launch(global_position, get_global_mouse_position())

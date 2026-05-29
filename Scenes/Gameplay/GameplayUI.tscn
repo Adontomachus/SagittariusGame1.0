@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="20_ge5ss"]
+[ext_resource type="PackedScene" uid="uid://c80tvtjnru5m3" path="res://Scenes/Interface/UpgradeInterface.tscn" id="21_3825n"]
 
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
@@ -1363,7 +1364,7 @@ font_size = 80
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3825n"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_0if8i"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1794,18 +1795,26 @@ label_settings = SubResource("LabelSettings_48svx")
 [node name="Settings" parent="." unique_id=90296623 instance=ExtResource("20_ge5ss")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="CheckBox" parent="Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_3825n")
+[node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
+button_group = SubResource("ButtonGroup_0if8i")
 
-[node name="CheckBox2" parent="Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_3825n")
+[node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
+button_group = SubResource("ButtonGroup_0if8i")
 
-[node name="CheckBox3" parent="Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_3825n")
+[node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
+button_group = SubResource("ButtonGroup_0if8i")
+
+[node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
+visible = false
+layout_mode = 1
 
 [editable path="CutsceneUI/GameOverNode/WinScreen"]
 [editable path="CutsceneUI/GameOverNode/LoseScreen"]
 [editable path="PauseScreen"]
 [editable path="Settings"]
+[editable path="UpgradeUI"]
