@@ -127,7 +127,7 @@ func _process(_delta) -> void:
 		lastBeat = beat
 		halfLastBeat = half_beat  # keep them in sync on full beats
 		beat_consumed = false
-		beat_happened.emit()
+		beat_happened.emit() # caller for q moves 
 	if halfLastBeat < half_beat:
 		indicator_pulse()
 		halfLastBeat = half_beat

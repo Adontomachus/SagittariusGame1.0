@@ -179,6 +179,8 @@ func get_input() -> void:
 func get_ability_inputs() -> void:
 	if can_control_unit:
 		if Input.is_action_pressed("use_ability"):
+			if q_moves.ability_type == QMoves.AbilityType.Q_NONE:
+				return
 			if can_use_ability:
 				ability_cooldown = max_ability_cooldown
 				activate_player_ability()

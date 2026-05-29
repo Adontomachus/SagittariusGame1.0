@@ -13,6 +13,7 @@ enum AbilityType {Q_NONE ,AOE_PULSE, DIRECTIONAL_CONE }
 @export_category("Ability Stats")
 @export var damage_divisor_min: float = 1.4
 @export var damage_divisor_max: float = 1.6
+# How many (half)beats the ability activates
 @export var ability_duration_beats: int = 20
 
 @export_category("Directional Cone Settings")
@@ -29,7 +30,6 @@ var projectile := preload("res://Objects/Instances With Collision/PrototypeProje
 
 func _ready() -> void:
 	pass
-
 
 func activate() -> void:
 	if ability_active:

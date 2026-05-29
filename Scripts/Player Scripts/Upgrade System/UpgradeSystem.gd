@@ -79,6 +79,12 @@ func _register_upgrades() -> void:
 		[1.0]
 	))
 	all_upgrades.append(_make_upgrade(
+		"qmove_swap_aoe_pulse", "AoE Pulse",
+		"Unlock AoE pulse as Q move",
+		UpgradeData.UpgradeCategory.Q_MOVE, 1,
+		[1.0]
+	))
+	all_upgrades.append(_make_upgrade(
 		"qmove_aoe_damage", "Shockwave",
 		"AoE pulse damage +{value}%",
 		UpgradeData.UpgradeCategory.Q_MOVE, 5,
@@ -189,6 +195,8 @@ func apply_upgrade(upgrade: UpgradeData, player: PlayerCharacter) -> void:
 			secondary.secondary_actions["secondary_fire"] = secondary._secondary_dash
 
 		## Q MOVE
+		"qmove_swap_aoe_pulse":
+			player.q_moves.ability_type = QMoves.AbilityType.AOE_PULSE
 		"qmove_swap_cone":
 			player.q_moves.ability_type = QMoves.AbilityType.DIRECTIONAL_CONE
 		"qmove_aoe_damage":
@@ -229,6 +237,17 @@ func is_upgrade_available(upgrade: UpgradeData, player: PlayerCharacter) -> bool
 		## Swap upgrades only show if not already on that secondary
 		"secondary_swap_grenade":
 			return not _has_upgrade("secondary_swap_grenade")
+		"qmove_aoe_damage", "qmove_aoe_duration":
+			return player.q_moves.ability_type == QMoves.AbilityType.AOE_PULSE
+		"qmove_cone_count", "qmove_cone_damage":
+			return player.q_moves.ability_type == QMoves.AbilityType.DIRECTIONAL_CONE
+		## Only show AOE unlock if not already on any Q move
+		"qmove_swap_aoe_pulse":
+			return player.q_moves.ability_type == QMoves.AbilityType.Q_NONE
+		## Only show cone unlock if not already on cone (can swap from AOE to cone)
+		"qmove_swap_cone":
+			return player.q_moves.ability_type != QMoves.AbilityType.DIRECTIONAL_CONE \
+				and player.q_moves.ability_type != QMoves.AbilityType.Q_NONE
 
 	## All other upgrades (stats, charge shot) are always available
 	return true
