@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dso7bf0d6wiff"]
+
+[ext_resource type="Script" uid="uid://bgs3iuairlnm2" path="res://Scripts/UI Menu, Settings and Post Game/Minimap.gd" id="1_dd82y"]
+[ext_resource type="Script" uid="uid://dgaa3bpnha6po" path="res://Scripts/UI Menu, Settings and Post Game/MinimapCamera.gd" id="2_rx6ll"]
+[ext_resource type="Script" uid="uid://rncke80dt82o" path="res://Scripts/UI Menu, Settings and Post Game/MinimapDotLayer.gd" id="3_rx6ll"]
+
+[node name="MinimapHUD" type="CanvasLayer" unique_id=1010004399]
+script = ExtResource("1_dd82y")
+
+[node name="MinimapContainer" type="NinePatchRect" parent="." unique_id=1762052833]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MinimapContainer" unique_id=2095466810]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="MinimapContainer/SubViewportContainer" unique_id=2109862884]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="MinimapCamera" type="Camera2D" parent="MinimapContainer/SubViewportContainer/SubViewport" unique_id=1648225918]
+script = ExtResource("2_rx6ll")
+
+[node name="MinimapDotLayer" type="Control" parent="MinimapContainer" unique_id=117072874 node_paths=PackedStringArray("minimap")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_rx6ll")
+minimap = NodePath("../..")

@@ -643,6 +643,14 @@ button_group = SubResource("ButtonGroup_1vk04")
 player = NodePath("../../../../Player")
 manager = NodePath("../../../..")
 
+[node name="MinimapContainer" parent="InterfaceElements/NewHUD/UI/MinimapHUD" parent_id_path=PackedInt32Array(2071023402, 1010004399) index="0" unique_id=1762052833]
+metadata/_edit_use_anchors_ = true
+
+[node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
+
+[node name="MinimapDotLayer" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer" index="1" unique_id=117072874]
+metadata/_edit_use_anchors_ = true
+
 [node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
 modulate = Color(1, 1, 1, 0)
 offset_left = 1941.0
@@ -1857,5 +1865,6 @@ position = Vector2(447, 398)
 [editable path="InterfaceElements/NewHUD/UI/PauseScreen"]
 [editable path="InterfaceElements/NewHUD/UI/Settings"]
 [editable path="InterfaceElements/NewHUD/UI/UpgradeUI"]
+[editable path="InterfaceElements/NewHUD/UI/MinimapHUD"]
 [editable path="PlayerCatComp"]
 [editable path="PlayerCatComp2"]
