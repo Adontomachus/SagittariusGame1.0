@@ -8,8 +8,8 @@ signal player_ability_pulse
 
 ## Ability stats — editable per upgrade
 @export_category("Ability Stats")
-@export var damage_divisor_min: float = 1.4
-@export var damage_divisor_max: float = 1.6
+@export var damage_divisor_min: float = 2.0
+@export var damage_divisor_max: float = 2.25
 @export var ability_duration_beats: int = 20
 
 var ability_active: bool = false

@@ -17,11 +17,14 @@ func process_physics(delta: float) -> EnemyState:
 	if (GlobalBeatSync.executeAction):
 		shot_times += 1
 		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) >= parent.successfulChanceToAttack:
-			parent.shoot_volley_projectile(-11)
+			parent.shoot_volley_projectile(-14)
 			parent.shoot_volley_projectile(0)
-			parent.shoot_volley_projectile(11)
+			parent.shoot_volley_projectile(14)
 	
 	if shot_times >= parent.fire_rate and after_shoot_state:
 		return after_shoot_state
 
 	return null
+func _difficulty_checker():
+	var difficulty_settings = SaveSettings._load_difficulty_settings()
+	pass
