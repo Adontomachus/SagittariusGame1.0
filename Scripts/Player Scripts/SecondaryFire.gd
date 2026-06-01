@@ -22,7 +22,7 @@ func _ready() -> void:
 	# Register secondary actions here
 	#secondary_actions["secondary_fire"] = _secondary_dash
 	# Add new Secondary fires below
-	secondary_actions["secondary_fire"] = _secondary_grenade
+	#secondary_actions["secondary_fire"] = _secondary_grenade
 	
 func _input(event: InputEvent) -> void:
 	if not beat_sync.level_song.playing:
@@ -55,6 +55,5 @@ func _secondary_dash(_timing: float) -> void:
 	player_dash.emit()
 
 func _secondary_grenade(_timing: float) -> void:
-	print("Trying to throw grenade")
 	player_grenade.emit()
 # Add future dexondary skills below

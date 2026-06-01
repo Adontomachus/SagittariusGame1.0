@@ -7,11 +7,9 @@ var player_target: CharacterBody2D
 var p_distance: float = 250
 @onready var obstacle_checker: Area2D = $ObstacleChecker
 
-## Exports the animation player for the beat synchronization visuals
-@export var pulse_animation: AnimationPlayer
 
 var measuresBeforeSpawning = 4
-# var beatLifetime = 4
+var beatLifetime = 4
 var rarityWeight: float
 var eliteRarityWeight: float
 var final_wave: bool = false
@@ -46,18 +44,13 @@ func _ready() -> void:
 	return
 	
 func _process(delta: float) -> void:
-	# beatLifetime -= 2 * delta
+	beatLifetime -= 2 * delta
 	redness += 0.4 * delta
 	telegraph.modulate = Color(redness * 1.25, 0, 0)
 	telegraph.self_modulate = Color(1, 1, 1, 1 + redness * 2)
-	
-	# Beat pulse part for the animation player
-	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
-		_pulse_on_beat() 
-		measuresBeforeSpawning -= 1
 	#TEMPORARY
 	eliteRarityWeight = rarityWeight - 3
-	if measuresBeforeSpawning < 0:
+	if beatLifetime < 0:
 		# This conditional statement checks if rarity value is lower than the chance range
 		# If it succeeds, the telegraphed location will spawn an alternate enemy
 		# which becomes more commmon on later enemy waves	
@@ -70,14 +63,11 @@ func _process(delta: float) -> void:
 				_spawn_elite_enemy()
 			elif randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) <= rarityWeight:
 				_spawn_alt_enemy()
+
 			else:
 				_spawn_enemy()
 			return
 	return
-
-func _pulse_on_beat():
-	pulse_animation.play("Pulse")
-	pass
 
 #region Enemy type spawns
 func _spawn_enemy():

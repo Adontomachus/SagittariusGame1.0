@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c80tvtjnru5m3"]
 
+[ext_resource type="Script" uid="uid://im1hv4l17np8" path="res://Scripts/Player Scripts/Upgrade System/UpgradeUI.gd" id="1_xfjfj"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="2_oasdf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
@@ -14,14 +15,6 @@ shadow_size = 18
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(12, 12)
 
-[sub_resource type="LabelSettings" id="LabelSettings_15wqq"]
-line_spacing = 0.0
-font = ExtResource("2_oasdf")
-font_size = 52
-font_color = Color(1, 0.8059726, 0, 1)
-outline_size = 18
-outline_color = Color(0.17997457, 0.08508608, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_bl1lb"]
 font = ExtResource("2_oasdf")
 font_size = 30
@@ -35,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xfjfj")
 
 [node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
 layout_mode = 0
@@ -53,88 +47,159 @@ text = "Select an upgrade!"
 label_settings = SubResource("LabelSettings_8oq8g")
 horizontal_alignment = 1
 
-[node name="UpgradeText1" type="Label" parent="UpgradeText" unique_id=1698478150]
+[node name="Card1" type="Button" parent="UpgradeText" unique_id=462002193]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 200.0
-offset_right = 460.0
-offset_bottom = 296.0
-text = "Item_Upgrade1"
-label_settings = SubResource("LabelSettings_15wqq")
-horizontal_alignment = 1
+offset_left = 77.0
+offset_top = 330.0
+offset_right = 527.0
+offset_bottom = 828.0
+
+[node name="Level" type="Label" parent="UpgradeText/Card1" unique_id=1983420145]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 380.0
+offset_bottom = 115.0
+text = "1"
+label_settings = SubResource("LabelSettings_bl1lb")
 vertical_alignment = 1
 
-[node name="UpgradePanel1" type="PanelContainer" parent="UpgradeText/UpgradeText1" unique_id=382409080]
+[node name="Category" type="Label" parent="UpgradeText/Card1" unique_id=1325747494]
 layout_mode = 0
-offset_left = -55.0
-offset_top = 125.0
-offset_right = 403.0
-offset_bottom = 630.0
-
-[node name="UpgradeText1" type="Label" parent="UpgradeText/UpgradeText1" unique_id=1325747494]
-layout_mode = 0
-offset_top = 471.0
-offset_right = 332.0
-offset_bottom = 567.0
+offset_left = 51.0
+offset_top = 498.0
+offset_right = 383.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 10
 text = "Item_UpgradeDescription1"
 label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeText2" type="Label" parent="UpgradeText" unique_id=855043586]
+[node name="Description" type="Label" parent="UpgradeText/Card1" unique_id=257572424]
 layout_mode = 0
-offset_left = 677.0
-offset_top = 200.0
-offset_right = 1009.0
-offset_bottom = 296.0
-text = "Item_Upgrade2"
-label_settings = SubResource("LabelSettings_15wqq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="UpgradePanel2" type="PanelContainer" parent="UpgradeText/UpgradeText2" unique_id=1744013892]
-layout_mode = 0
-offset_left = -57.0
-offset_top = 125.0
-offset_right = 401.0
-offset_bottom = 630.0
-
-[node name="UpgradeText2" type="Label" parent="UpgradeText/UpgradeText2" unique_id=1098398012]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 471.0
-offset_right = 338.0
-offset_bottom = 567.0
-text = "Item_UpgradeDescription2"
+offset_left = 51.0
+offset_top = 297.0
+offset_right = 383.0
+offset_bottom = 393.0
+text = "Item_UpgradeDescription1"
 label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeText3" type="Label" parent="UpgradeText" unique_id=1996186467]
+[node name="Name" type="Label" parent="UpgradeText/Card1" unique_id=1513711762]
 layout_mode = 0
-offset_left = 1228.0
-offset_top = 200.0
-offset_right = 1560.0
-offset_bottom = 296.0
-text = "Item_Upgrade3"
-label_settings = SubResource("LabelSettings_15wqq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="UpgradePanel3" type="PanelContainer" parent="UpgradeText/UpgradeText3" unique_id=1100374730]
-layout_mode = 0
-offset_left = -61.0
-offset_top = 125.0
-offset_right = 397.0
-offset_bottom = 630.0
-
-[node name="UpgradeText3" type="Label" parent="UpgradeText/UpgradeText3" unique_id=2106370620]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 471.0
-offset_right = 339.0
-offset_bottom = 567.0
-text = "Item_UpgradeDescription3"
+offset_left = 51.0
+offset_top = -127.0
+offset_right = 383.0
+offset_bottom = -31.0
+text = "Item_UpgradeDescription1"
 label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Card2" type="Button" parent="UpgradeText" unique_id=765980183]
+layout_mode = 0
+offset_left = 621.0
+offset_top = 330.0
+offset_right = 1071.0
+offset_bottom = 828.0
+
+[node name="Level" type="Label" parent="UpgradeText/Card2" unique_id=978098320]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 380.0
+offset_bottom = 115.0
+text = "1"
+label_settings = SubResource("LabelSettings_bl1lb")
+vertical_alignment = 1
+
+[node name="Category" type="Label" parent="UpgradeText/Card2" unique_id=550530408]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 498.0
+offset_right = 383.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 10
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UpgradeText/Card2" unique_id=1725829500]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 297.0
+offset_right = 383.0
+offset_bottom = 393.0
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="UpgradeText/Card2" unique_id=1430892237]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -127.0
+offset_right = 383.0
+offset_bottom = -31.0
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card3" type="Button" parent="UpgradeText" unique_id=641972485]
+layout_mode = 0
+offset_left = 1148.0
+offset_top = 330.0
+offset_right = 1598.0
+offset_bottom = 828.0
+
+[node name="Level" type="Label" parent="UpgradeText/Card3" unique_id=867185409]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 380.0
+offset_bottom = 115.0
+text = "1"
+label_settings = SubResource("LabelSettings_bl1lb")
+vertical_alignment = 1
+
+[node name="Category" type="Label" parent="UpgradeText/Card3" unique_id=711979889]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 498.0
+offset_right = 383.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 10
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UpgradeText/Card3" unique_id=704710783]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 297.0
+offset_right = 383.0
+offset_bottom = 393.0
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="UpgradeText/Card3" unique_id=691982646]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -127.0
+offset_right = 383.0
+offset_bottom = -31.0
+text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_bl1lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UpgradeText/Card1" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="UpgradeText/Card2" to="." method="_on_card_2_pressed"]
+[connection signal="pressed" from="UpgradeText/Card3" to="." method="_on_card_3_pressed"]

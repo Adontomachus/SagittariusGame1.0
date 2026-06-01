@@ -155,11 +155,8 @@ func move_enemy(delta: float) -> void:
 
 # RECOVERY MODE
 func recovery_mode(delta: float) -> bool:
-	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat: 	stamina += stamina_regeneration_rate
-
+	stamina += stamina_regeneration_rate * delta
 	return stamina >= maxStamina
-
-#region Functions for shooting projectiles
 
 func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
 	var projectile_instance = projectile.instantiate()
@@ -171,16 +168,6 @@ func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
 	print_debug("Damage: %s" % (attackPower * modifier))
 
-func shoot_volley_projectile(spread: float, modifier: float = 1.0, color: Color = Color.RED) -> void:
-	var projectile_instance = projectile.instantiate()
-	projectile_instance.change_damage(attackPower * modifier)
-	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
-	projectile_instance.change_projectile_modulation(color)
-	projectile_instance.position = shoot_point.get_global_position()
-	projectile_instance.rotation_degrees = shoot_point.rotation_degrees + spread
-	get_tree().get_root().call_deferred("add_child", projectile_instance)
-	print_debug("Damage: %s" % (attackPower * modifier))
-#endregion
 func modify_health(increment: int) -> void:
 	hit_sound.play()
 	baseHealthPoints += increment

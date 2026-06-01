@@ -26,9 +26,6 @@ var lastBeat = 0
 
 ## Flag that forces only one type of fire to be used per beat
 var beat_consumed: bool = false
-
-## Secondary ammo counter, along with the player interface from it
-@export var secondary_ammo_container: Node
 var secondary_ammo: int = 0
 
 ## Variables for the full note
@@ -98,7 +95,6 @@ func _ready() -> void:
 	scale = Vector2(starting_scale, starting_scale)
 	
 func _process(_delta) -> void:
-	secondary_ammo_container.shots_available = secondary_ammo
 	p_combo_sound.pitch_scale = combo_audio_pitch
 	combo_audio_pitch = 1 + (comboCounter * 0.06)
 	# For combo text
@@ -131,7 +127,7 @@ func _process(_delta) -> void:
 		lastBeat = beat
 		halfLastBeat = half_beat  # keep them in sync on full beats
 		beat_consumed = false
-		beat_happened.emit()
+		beat_happened.emit() # caller for q moves 
 	if halfLastBeat < half_beat:
 		indicator_pulse()
 		halfLastBeat = half_beat

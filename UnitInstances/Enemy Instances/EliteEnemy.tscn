@@ -64,8 +64,7 @@ maxHealthPoints = 200
 amountOfPointOrbs = 6
 aroundPlayerRadius = 200.0
 shoot_point = NodePath("ShootPoint")
-inaccuracy = 0.0
-attackPower = 13.0
+attackPower = 16.0
 fire_rate = 6
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]

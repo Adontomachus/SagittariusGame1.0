@@ -14,7 +14,7 @@ signal send_current_xp(xp: float)
 # Companion upgrade signal
 signal companion_upgrade
 
-
+@export var UpgradeScreen : Control
 
 @export var healthPoints: float:
 	set(value):
@@ -57,7 +57,8 @@ var dash_velocity: Vector2 = Vector2.ZERO
 
 @export_category("Grenade Values")
 @export var grenade_scene: PackedScene
-@export var grenade_damage: float = 62.0
+@export var grenade_damage: float = 80.0
+@export var grenade_radius: float = 120.0
 @export var grenade_cooldown: float = 0.0
 var grenade_ready: bool = true
 
@@ -143,6 +144,8 @@ var can_control_unit: bool = true
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 func _ready():
+	# Resets upgrades
+	UpgradeSystemScript.reset()
 	# Sets up move speed
 	
 	# Sets up the fire rate mechanics
@@ -176,6 +179,8 @@ func get_input() -> void:
 func get_ability_inputs() -> void:
 	if can_control_unit:
 		if Input.is_action_pressed("use_ability"):
+			if q_moves.ability_type == QMoves.AbilityType.Q_NONE:
+				return
 			if can_use_ability:
 				ability_cooldown = max_ability_cooldown
 				activate_player_ability()
@@ -464,7 +469,6 @@ func upgrade_player_stats() -> void:
 	PointSystemScript.player_levels = player_level
 	maxHealthPoints = maxHealthPoints * 1.03
 	projectile_damage = projectile_damage * 1.06
-	grenade_damage = grenade_damage * 1.045
 	maxExperiencePoints = maxExperiencePoints * 1.05
 	experiencePoints = 0
 	healthPoints += maxHealthPoints / 5
@@ -479,6 +483,10 @@ func upgrade_player_stats() -> void:
 	send_maximum_xp.emit(maxExperiencePoints)
 	send_maximum_health.emit(maxHealthPoints)
 	companion_upgrade.emit()
+	
+	if UpgradeSystemScript.should_show_upgrades(player_level):
+		UpgradeScreen.visible = true
+		UpgradeScreen.show_upgrades()
 	pass
 #endregion
 	
@@ -506,10 +514,10 @@ func _grenade() -> void:
 		return
 
 	var grenade = grenade_scene.instantiate()
-	# Randomizes grenade damage from 95% to 105%
-	grenade.explosion_damage = grenade_damage * randf_range(0.95, 1.05)
 	get_tree().get_root().call_deferred("add_child", grenade)
-
+	
+	grenade.explosion_damage = grenade_damage
+	grenade.explosion_radius = grenade_radius
 	## Wait one frame so the node is in the tree before calling launch()
 	await get_tree().process_frame
 	grenade.launch(global_position, get_global_mouse_position())

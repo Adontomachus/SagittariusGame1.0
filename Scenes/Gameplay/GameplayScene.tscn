@@ -509,8 +509,6 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 script = ExtResource("2_vj1fp")
 levels = [NodePath("../GameLevelNode/Stage1"), null, null]
 
-[node name="EnemySpawnDirector" type="Node" parent="GameSystems" unique_id=576077595]
-
 [node name="LevelCutsceneDirector" type="Node" parent="GameSystems" unique_id=1584734885]
 script = ExtResource("5_jgp33")
 
@@ -627,21 +625,14 @@ game_manager = NodePath("../../../../../..")
 secondary_ammo_container = NodePath("../../../SecondaryShotBars")
 perfect_hit = 0.03
 good_hit = 0.07
+[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060]
+perfect_hit = 0.07
+good_hit = 0.15
 ok_hit = 0.14
 metadata/_edit_use_anchors_ = true
 
-[node name="SecondaryFire" type="Node" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" index="4" unique_id=1266380933 node_paths=PackedStringArray("beat_sync")]
-script = ExtResource("13_6uw2w")
-beat_sync = NodePath("..")
-
 [node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="14" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
-
-[node name="Settings" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=90296623]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
 button_group = SubResource("ButtonGroup_1vk04")
@@ -651,6 +642,10 @@ button_group = SubResource("ButtonGroup_1vk04")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
 button_group = SubResource("ButtonGroup_1vk04")
+
+[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="18" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
+player = NodePath("../../../../Player")
+manager = NodePath("../../../..")
 
 [node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
 modulate = Color(1, 1, 1, 0)
@@ -670,11 +665,12 @@ texture = ExtResource("22_yt4p3")
 [node name="ActivationAnimation" type="AnimationPlayer" parent="InterfaceElements/NewHUD/AbilityActivationFeedback" unique_id=455023363]
 libraries/ = SubResource("AnimationLibrary_xcrri")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("manager", "charge_shot", "q_moves", "pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("UpgradeScreen", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
 script = ExtResource("1_haeiw")
+UpgradeScreen = NodePath("../InterfaceElements/NewHUD/UI/UpgradeUI")
 manager = NodePath("..")
 charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
@@ -843,6 +839,10 @@ beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/Be
 [node name="ChargeShot" type="Node" parent="Player" unique_id=918063712 node_paths=PackedStringArray("player")]
 script = ExtResource("15_fu6i5")
 player = NodePath("..")
+
+[node name="SecondaryFire" type="Node" parent="Player" unique_id=1266380933 node_paths=PackedStringArray("beat_sync")]
+script = ExtResource("13_6uw2w")
+beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 
 [node name="GameLevelNode" type="Node" parent="." unique_id=232750320]
 
@@ -1843,8 +1843,6 @@ position = Vector2(447, 398)
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
 [connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="Player" method="_on_beat_indicator_increase_player_attack_charge"]
-[connection signal="increment_combo_meter" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameSystems/ComboSystem" method="_add_combo_level"]
-[connection signal="player_dash" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator/SecondaryFire" to="Player" method="_on_secondary_fire_player_dash"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_exit_game"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_resume_game"]
 [connection signal="companion_upgrade" from="Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]
@@ -1855,11 +1853,13 @@ position = Vector2(447, 398)
 [connection signal="send_maximum_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" method="set_max"]
 [connection signal="experience_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_xp"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
+[connection signal="player_dash" from="Player/SecondaryFire" to="Player" method="_on_secondary_fire_player_dash"]
 
 [editable path="InterfaceElements/NewHUD/UI"]
 [editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"]
 [editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/LoseScreen"]
 [editable path="InterfaceElements/NewHUD/UI/PauseScreen"]
 [editable path="InterfaceElements/NewHUD/UI/Settings"]
+[editable path="InterfaceElements/NewHUD/UI/UpgradeUI"]
 [editable path="PlayerCatComp"]
 [editable path="PlayerCatComp2"]
