@@ -1173,6 +1173,54 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HalfBeatLines:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(838, 980)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HalfBeatLines:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HalfBeatLines2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1100, 980)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HalfBeatLines2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
@@ -1260,6 +1308,54 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HalfBeatLines:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.82, 0.831, 1.66),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(838, 980), Vector2(972, 980), Vector2(722, 982), Vector2(838, 980)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HalfBeatLines:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.704426, 0.71, 0.831, 0.832, 0.838),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HalfBeatLines2:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.82, 0.831, 1.66),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1100, 980), Vector2(972, 980), Vector2(1223, 980), Vector2(1100, 980)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HalfBeatLines2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.81573075, 0.82030284, 0.83, 0.831, 0.832, 0.838),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
@@ -1363,7 +1459,7 @@ font_size = 80
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3825n"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ge5ss"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1628,8 +1724,24 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 z_index = -1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0001
+offset_right = 1225.0002
 offset_bottom = 1019.0
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="HalfBeatLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=471270586]
+z_index = -1
+offset_left = 838.0
+offset_top = 980.0
+offset_right = 843.0
+offset_bottom = 1007.7778
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="HalfBeatLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=277503931]
+z_index = -1
+offset_left = 1100.0
+offset_top = 980.0
+offset_right = 1105.0001
+offset_bottom = 1007.7778
 color = Color(0.85559684, 1, 0.64379185, 1)
 
 [node name="BeatIndicatorAnimation" type="AnimationPlayer" parent="BeatIndicatorElements" unique_id=1848896088]
@@ -1794,16 +1906,19 @@ label_settings = SubResource("LabelSettings_48svx")
 [node name="Settings" parent="." unique_id=90296623 instance=ExtResource("20_ge5ss")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="CheckBox" parent="Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_3825n")
+[node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
+button_group = SubResource("ButtonGroup_ge5ss")
 
-[node name="CheckBox2" parent="Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_3825n")
+[node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
+button_group = SubResource("ButtonGroup_ge5ss")
 
-[node name="CheckBox3" parent="Settings/VBoxContainer/Difficulty Container/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_3825n")
+[node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
+button_group = SubResource("ButtonGroup_ge5ss")
 
 [editable path="CutsceneUI/GameOverNode/WinScreen"]
 [editable path="CutsceneUI/GameOverNode/LoseScreen"]
