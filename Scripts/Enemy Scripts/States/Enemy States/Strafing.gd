@@ -42,7 +42,3 @@ func reposition(playerRadius) -> void:
 	if parent.target:
 		var randomPosition = Vector2(randf_range(-playerRadius,playerRadius), randf_range(-playerRadius,playerRadius))
 		parent.navAgent.target_position = parent.target.global_position + randomPosition
-
-func _difficulty_checker():
-	var difficulty_settings = SaveSettings._load_difficulty_settings()
-	pass
