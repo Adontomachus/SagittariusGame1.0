@@ -4,32 +4,51 @@
 [ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_qit6l"]
 [ext_resource type="AudioStream" uid="uid://ddc7uigehky5a" path="res://Audio/Sounds/GiantExplosion.wav" id="3_k5xfb"]
 
+[sub_resource type="Environment" id="Environment_h052y"]
+glow_enabled = true
+glow_intensity = 3.86
+glow_strength = 0.95
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_x4tua"]
+colors = PackedColorArray(0.9478561, 0.7860174, 0.11595742, 1, 0.9720072, 0.30714417, 0.22674257, 1)
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="Animation" id="Animation_bcdgm"]
 resource_name = "GrenadeExplode"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Shockwave:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.03333334),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(-0.033333335, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.181, 0.181), Vector2(3.686, 3.686)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("Shockwave:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.033333335, 0.23333333),
+"times": PackedFloat32Array(-0.033333335, 0.26666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(12.59375, 12.59375)]
+"values": [Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_exi7a"]
@@ -37,26 +56,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Shockwave:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.53125, 0.53125)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("Shockwave:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_31stm"]
@@ -68,8 +87,44 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_oyc81"]
 radius = 115.35164
 
+[sub_resource type="Gradient" id="Gradient_k5xfb"]
+offsets = PackedFloat32Array(0.8369906, 0.9122257, 1)
+colors = PackedColorArray(0.90382373, 1, 0.37342674, 0.619, 0.940525, 1, 0, 0.62100005, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xq13j"]
+gradient = SubResource("Gradient_k5xfb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.1)
+
 [node name="GrenadeExplosion" type="Area2D" unique_id=1979704144]
 script = ExtResource("1_ekmk2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1764725689]
+environment = SubResource("Environment_h052y")
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="." unique_id=1427452623]
+modulate = Color(0.92027086, 0.9672492, 0.79828715, 1)
+self_modulate = Color(5.6880865, 5.6880865, 5.6880865, 1)
+amount = 65
+texture = SubResource("CanvasTexture_jhxfm")
+lifetime = 0.35000000000000003
+preprocess = 0.76
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 13.0
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_max = 672.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_t5oqc")
+color = Color(0.82040936, 0.90683234, 0, 1)
+color_ramp = SubResource("Gradient_x4tua")
+anim_speed_curve = SubResource("Curve_jhxfm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1860337004]
 libraries/ = SubResource("AnimationLibrary_31stm")
@@ -78,8 +133,16 @@ libraries/ = SubResource("AnimationLibrary_31stm")
 shape = SubResource("CircleShape2D_oyc81")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=463235247]
+visible = false
+scale = Vector2(12.59375, 12.59375)
 texture = ExtResource("2_qit6l")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=517210629]
 stream = ExtResource("3_k5xfb")
 bus = &"SFX"
+
+[node name="Shockwave" type="Sprite2D" parent="." unique_id=1576252131]
+scale = Vector2(0.53125, 0.53125)
+texture = SubResource("GradientTexture2D_xq13j")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="queue_free"]

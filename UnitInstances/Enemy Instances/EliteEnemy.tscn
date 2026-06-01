@@ -64,7 +64,8 @@ maxHealthPoints = 200
 amountOfPointOrbs = 6
 aroundPlayerRadius = 200.0
 shoot_point = NodePath("ShootPoint")
-attackPower = 16.0
+inaccuracy = 0.0
+attackPower = 13.0
 fire_rate = 6
 successfulChanceToAttack = 5.0
 

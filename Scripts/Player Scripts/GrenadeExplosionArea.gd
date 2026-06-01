@@ -9,7 +9,7 @@ enum ProjectileSide {
 @export_category("Grenade Explosion Statistics")
 @export var aoe_damage: float = 60.0
 @export var explosion_radius: float = 120.0
-@export var lifetime: float = 0.3
+@export var lifetime: float = 0.6
 
 @onready var area_indicator: AnimationPlayer = $AnimationPlayer
 @onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 	area_indicator.play("GrenadeExplode")
 	explosion_sound.play()
-
+	
 	self.area_entered.connect(func(area) -> void:
 		if area is EnemyProjectileHitbox:
 			PointSystemScript.total_damage_dealt += aoe_damage
@@ -33,6 +33,7 @@ func _ready() -> void:
 
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
+
 
 func change_damage(damage: float) -> void:
 	aoe_damage = damage
