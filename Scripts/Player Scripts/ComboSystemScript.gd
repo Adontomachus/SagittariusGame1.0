@@ -20,6 +20,8 @@ var combo_upgrade_feedback_four: bool = true
 signal set_max_progress(max_prog: float)
 signal set_current_progress(prog: float)
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	combo_reach_pulse.play("LightPulse")
@@ -29,6 +31,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	SaveSettings._load_difficulty_settings()
 	## This combo decrement scales the higher the combo values are
 	## which results in faster combo value dropping
 	combo_strength -= (25) * delta

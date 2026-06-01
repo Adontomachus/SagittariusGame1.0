@@ -621,6 +621,10 @@ game_manager = NodePath("../../../../../..")
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="2" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
+[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060 node_paths=PackedStringArray("secondary_ammo_container")]
+secondary_ammo_container = NodePath("../../../SecondaryShotBars")
+perfect_hit = 0.03
+good_hit = 0.07
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="6" unique_id=267262060]
 perfect_hit = 0.07
 good_hit = 0.15

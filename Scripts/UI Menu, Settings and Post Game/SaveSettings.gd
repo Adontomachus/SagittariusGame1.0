@@ -45,4 +45,5 @@ func _save_difficulty_settings(key: String, value):
 
 func _load_difficulty_settings():
 	var difficultySettings = config.get_value("gameplay", "difficulty")
+	print(difficultySettings)
 	return difficultySettings

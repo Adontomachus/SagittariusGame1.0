@@ -11,6 +11,8 @@ enum AbilityType {Q_NONE ,AOE_PULSE, DIRECTIONAL_CONE }
 @export var beat_sync: BeatSync_Script
 
 @export_category("Ability Stats")
+@export var damage_divisor_min: float = 2.0
+@export var damage_divisor_max: float = 2.25
 @export var damage_divisor_min: float = 1.4
 @export var damage_divisor_max: float = 1.6
 # How many (half)beats the ability activates
