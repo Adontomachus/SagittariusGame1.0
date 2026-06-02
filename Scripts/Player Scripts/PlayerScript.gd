@@ -57,9 +57,11 @@ var dash_velocity: Vector2 = Vector2.ZERO
 
 @export_category("Grenade Values")
 @export var grenade_scene: PackedScene
-@export var grenade_damage: float = 80.0
+@export var grenade_damage: float = 70.0
 @export var grenade_radius: float = 120.0
 @export var grenade_cooldown: float = 0.0
+@export var grenade_damage_divisor_min: float = 1.15
+@export var grenade_divisor_max: float = 0.9
 var grenade_ready: bool = true
 
 #region Reference object 
@@ -143,6 +145,7 @@ var can_control_unit: bool = true
 
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
+
 func _ready():
 	# Resets upgrades
 	UpgradeSystemScript.reset()
@@ -516,7 +519,7 @@ func _grenade() -> void:
 	var grenade = grenade_scene.instantiate()
 	get_tree().get_root().call_deferred("add_child", grenade)
 	
-	grenade.explosion_damage = grenade_damage
+	grenade.explosion_damage = grenade_damage / (randf_range(grenade_damage_divisor_min, grenade_divisor_max))
 	grenade.explosion_radius = grenade_radius
 	## Wait one frame so the node is in the tree before calling launch()
 	await get_tree().process_frame

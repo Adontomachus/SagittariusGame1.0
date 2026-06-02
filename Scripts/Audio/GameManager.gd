@@ -269,3 +269,7 @@ func _on_pause_screen_exit_game() -> void:
 func _on_pause_screen_resume_game() -> void:
 	_resumeGame()
 	pass # Replace with function body.
+
+
+func _add_combo_level(strength_value: float) -> void:
+	pass # Replace with function body.
