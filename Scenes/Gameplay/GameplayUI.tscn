@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
 [ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="16_n87py"]
 [ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="17_dw111"]
+[ext_resource type="Script" uid="uid://c6ui2chq7s5vo" path="res://Scripts/UI Menu, Settings and Post Game/ExperienceDisplayScript.gd" id="18_0if8i"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="20_ge5ss"]
@@ -880,43 +881,43 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PlayerInfo/ComboCounter:label_settings:font_size")
+tracks/3/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [42]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PlayerInfo/WaveCounter:label_settings:font_size")
+tracks/4/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [42]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../EnemyCounter:label_settings:font_size")
+tracks/5/path = NodePath("../PlayerInfo/Score:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [30]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
+tracks/6/path = NodePath("../PlayerInfo/WaveCounter:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -928,14 +929,26 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/7/path = NodePath("../EnemyCounter:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../UpdatedExperienceBar/ExperienceText:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vwi3h"]
@@ -972,70 +985,82 @@ tracks/2/path = NodePath("../PlayerInfo/Score:label_settings:font_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.23333333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [44, 42, 44]
+"values": []
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PlayerInfo/ComboCounter:label_settings:font_size")
+tracks/3/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [42]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PlayerInfo/WaveCounter:label_settings:font_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.19528005),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [42, 44, 42]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../EnemyCounter:label_settings:font_size")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666666, 0.10231815),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [30, 31, 31, 30]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(4.415934, 4.415934, 4.415934, 1), Color(1, 1, 1, 1)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.05, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../PlayerInfo/Score:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1.353256, 1.353256, 1.353256, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../PlayerInfo/WaveCounter:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1.353256, 1.353256, 1.353256, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../EnemyCounter:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../UpdatedExperienceBar/ExperienceText:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yb2d"]
@@ -1175,6 +1200,54 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HalfBeatLines:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(843, 975)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HalfBeatLines2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1104, 975)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HalfBeatLines:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HalfBeatLines2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
@@ -1262,6 +1335,54 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HalfBeatLines:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.85, 0.86, 1.66),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(843, 975), Vector2(969, 975), Vector2(722, 975), Vector2(843, 975)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HalfBeatLines2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.85, 0.86, 1.66),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1104, 975), Vector2(976, 975), Vector2(1223, 975), Vector2(1104, 975)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HalfBeatLines:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HalfBeatLines2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.83998686, 0.85, 0.86, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
@@ -1359,13 +1480,23 @@ font_color = Color(1, 0.86981654, 0, 1)
 outline_size = 25
 outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3825n"]
+font = ExtResource("4_0if8i")
+font_size = 25
+font_color = Color(0.59608823, 0.9008019, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0.25822645, 0.67127424, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0.34237343, 0.81900007)
+shadow_offset = Vector2(1.87, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_48svx"]
 font = ExtResource("4_0if8i")
 font_size = 64
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_0if8i"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_3825n"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1630,8 +1761,26 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 z_index = -1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0001
+offset_right = 1225.0006
 offset_bottom = 1019.0
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="HalfBeatLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=1627583558]
+z_index = -1
+offset_left = 843.0
+offset_top = 975.0
+offset_right = 849.9999
+offset_bottom = 1013.8877
+scale = Vector2(0.64, 1)
+color = Color(0.85559684, 1, 0.64379185, 1)
+
+[node name="HalfBeatLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=1028365080]
+z_index = -1
+offset_left = 1104.0
+offset_top = 975.0
+offset_right = 1111.0005
+offset_bottom = 1013.8877
+scale = Vector2(0.64, 1)
 color = Color(0.85559684, 1, 0.64379185, 1)
 
 [node name="BeatIndicatorAnimation" type="AnimationPlayer" parent="BeatIndicatorElements" unique_id=1848896088]
@@ -1745,6 +1894,20 @@ nine_patch_stretch = true
 texture_under = ExtResource("16_n87py")
 texture_progress = ExtResource("17_dw111")
 
+[node name="ExperienceText" type="Label" parent="UpdatedExperienceBar" unique_id=402200278]
+z_index = 4
+layout_mode = 0
+offset_left = 45.6
+offset_top = 63.599976
+offset_right = 754.7999
+offset_bottom = 121.19995
+theme_override_font_sizes/font_size = 15
+text = "0 | 100 Player Experience"
+label_settings = SubResource("LabelSettings_3825n")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("18_0if8i")
+
 [node name="ExperienceBarGlow" type="Sprite2D" parent="UpdatedExperienceBar" unique_id=150698581]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -1804,13 +1967,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_0if8i")
+button_group = SubResource("ButtonGroup_3825n")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_0if8i")
+button_group = SubResource("ButtonGroup_3825n")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_0if8i")
+button_group = SubResource("ButtonGroup_3825n")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false

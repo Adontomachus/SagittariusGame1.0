@@ -6,6 +6,7 @@ extends TextureProgressBar
 signal update_max_value(max_health: int)
 signal update_current_value(health: int)
 
+
 func _ready():
 	return
 

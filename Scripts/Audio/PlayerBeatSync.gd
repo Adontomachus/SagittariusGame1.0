@@ -4,7 +4,7 @@ extends Panel
 ## Signals section
 signal player_shoot_projectile(damage_modifier: float, projectile_modulation: Color)
 signal increase_player_attack_charge
-signal increment_combo_meter(strength_value: float)
+# signal increment_combo_meter(strength_value: float)
 signal border_pulse
 signal beat_happened
 signal full_beat_happened  
@@ -16,7 +16,8 @@ var can_play: bool = true
 ##TEMPORARY
 @onready var indicator_sprite: Sprite2D = $"../IndicatorSprite"
 
-
+# Combo Systems
+@export var combo_systems: ComboSystems
 
 #region Beat Variables
 @export var tempo: float = 107
@@ -24,6 +25,10 @@ var pulsePerBeat = 60.0 / tempo
 var halfPulsePerBeat = 60.0 / (tempo * 2)
 var halfLastBeat = 0
 var lastBeat = 0
+
+## Node export for a working secondary ammo counter
+@export var secondary_ammo_counter: Node
+
 
 ## Flag that forces only one type of fire to be used per beat
 var beat_consumed: bool = false
@@ -103,6 +108,7 @@ func _ready() -> void:
 		print("Connected: ", node.name)
 	
 func _process(_delta) -> void:
+	secondary_ammo_counter.shots_available = secondary_ammo
 	p_combo_sound.pitch_scale = combo_audio_pitch
 	combo_audio_pitch = 1 + (comboCounter * 0.06)
 	# For combo text
@@ -172,11 +178,11 @@ func evaluate_shot(timing: float) -> Dictionary:
 		increase_player_attack_charge.emit()
 		if secondary_ammo < 6:
 			secondary_ammo += 1
-		increment_combo_meter.emit(40)
+		combo_systems.combo_strength += 40
 		return { "damage": 1.45, "color": Color.html("#1ce1ebff") }
 	if timing < good_hit:
 		comboCounter += 1
-		increment_combo_meter.emit(15)
+		combo_systems.combo_strength += 15
 		return { "damage": 1.0, "color": Color.html("#53bc07ff") }
 	if timing < ok_hit:
 		comboCounter += 1

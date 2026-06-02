@@ -1,7 +1,7 @@
 extends Node
 
 var shot_bars: Array[TextureRect]
-@export var shots_available: = 4
+@export var shots_available: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,3 +14,6 @@ func _ready() -> void:
 func _update_shot_counter() -> void:
 	for i in range(shot_bars.size()):
 		shot_bars[i].visible = i < shots_available
+
+func _process(delta):
+	_update_shot_counter()

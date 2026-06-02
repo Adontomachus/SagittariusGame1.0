@@ -14,7 +14,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.03333334),
+"times": PackedFloat32Array(-3.7252903e-09),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
@@ -26,10 +26,82 @@ tracks/1/path = NodePath("Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.033333335, 0.23333333),
+"times": PackedFloat32Array(0, 0.26666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(12.59375, 12.59375)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.827222, 1, 0.26006752, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(4.415934, 4.415934, 4.415934, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.0625, 0.0625), Vector2(3.375, 3.375)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ExplosionShockwave:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 1), Color(0.54685426, 0.54685426, 0.54685426, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ExplosionShockwave:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.0625, 0.0625), Vector2(8.53125, 8.53125)]
 }
 
 [sub_resource type="Animation" id="Animation_exi7a"]
@@ -58,6 +130,78 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.827222, 1, 0.26006752, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0625, 0.0625)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ExplosionShockwave:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ExplosionShockwave:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0625, 0.0625)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_31stm"]
 _data = {
@@ -68,8 +212,35 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_oyc81"]
 radius = 115.35164
 
+[sub_resource type="Gradient" id="Gradient_xq13j"]
+offsets = PackedFloat32Array(0.5880503, 0.7232704, 0.8867925, 1)
+colors = PackedColorArray(0.91824496, 0.85646725, 0.7778729, 0, 0.9180646, 0.8567197, 0.7778528, 0.39963317, 0.803355, 0.6561273, 0.4668467, 0.9591195, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gxkpb"]
+gradient = SubResource("Gradient_xq13j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85470086, 0.15384616)
+
+[sub_resource type="Gradient" id="Gradient_k5xfb"]
+offsets = PackedFloat32Array(0, 0.7106918, 1)
+colors = PackedColorArray(0.8439394, 1, 0, 1, 0.86307895, 1, 0.12264151, 0.8773585, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xq13j"]
+gradient = SubResource("Gradient_k5xfb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.2)
+
+[sub_resource type="Environment" id="Environment_gxkpb"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+
 [node name="GrenadeExplosion" type="Area2D" unique_id=1979704144]
+modulate = Color(0.82040936, 1, 0.432765, 1)
 script = ExtResource("1_ekmk2")
+lifetime = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1860337004]
 libraries/ = SubResource("AnimationLibrary_31stm")
@@ -77,9 +248,23 @@ libraries/ = SubResource("AnimationLibrary_31stm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=393288034]
 shape = SubResource("CircleShape2D_oyc81")
 
+[node name="ExplosionShockwave" type="Sprite2D" parent="." unique_id=509764432]
+self_modulate = Color(2.454227, 2.454227, 2.454227, 1)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("GradientTexture2D_gxkpb")
+
+[node name="Explosion" type="Sprite2D" parent="." unique_id=49426863]
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("GradientTexture2D_xq13j")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=463235247]
+visible = false
+modulate = Color(0.827222, 1, 0.26006752, 1)
 texture = ExtResource("2_qit6l")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=517210629]
 stream = ExtResource("3_k5xfb")
 bus = &"SFX"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=667827721]
+environment = SubResource("Environment_gxkpb")
