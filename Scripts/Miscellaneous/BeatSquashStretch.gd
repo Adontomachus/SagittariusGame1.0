@@ -1,7 +1,7 @@
 class_name BeatSquashStretch
 extends Node
 
-## The node whose scale will be animated — usually the Sprite2D
+## The node whose scale will be animated
 @export var target: Node2D
 
 @export_category("Squash and Stretch Settings")
@@ -63,12 +63,12 @@ func _apply_squash(intensity: float) -> void:
 		.set_ease(Tween.EASE_OUT)
 
 
-## Call this externally for custom intensity e.g. on hit or death
+## Call this externally for own pulse
 func pop(intensity: float = 0.3) -> void:
 	_apply_squash(intensity)
 
 
-## Call to temporarily disable squash e.g. during cutscenes
+## Call to temporarily disable squash 
 func set_enabled(enabled: bool) -> void:
 	if enabled:
 		if not beat_sync.beat_happened.is_connected(_on_beat):
