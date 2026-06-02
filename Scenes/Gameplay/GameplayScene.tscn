@@ -552,6 +552,7 @@ player_character = NodePath("../../Player")
 script = ExtResource("11_hlum5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=2013817160]
+visible = false
 offset_left = 268.0
 offset_top = 104.0
 offset_right = 498.0

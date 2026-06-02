@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
 [ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="16_n87py"]
 [ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="17_dw111"]
-[ext_resource type="Script" uid="uid://c6ui2chq7s5vo" path="res://Scripts/UI Menu, Settings and Post Game/ExperienceDisplayScript.gd" id="18_0if8i"]
+[ext_resource type="Script" path="res://Scripts/UI Menu, Settings and Post Game/ExperienceDisplayScript.gd" id="18_0if8i"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="20_ge5ss"]
@@ -1107,7 +1107,7 @@ shadow_offset = Vector2(2.91, 3.42)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0cpi2"]
 font = ExtResource("4_0if8i")
-font_size = 30
+font_size = 22
 font_color = Color(1, 0.7509483, 0.1680183, 1)
 outline_size = 12
 outline_color = Color(0.49973267, 0, 0.033690564, 1)
@@ -1492,11 +1492,11 @@ shadow_offset = Vector2(1.87, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_48svx"]
 font = ExtResource("4_0if8i")
-font_size = 64
+font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3825n"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_pdrc1"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1610,10 +1610,10 @@ libraries/ = SubResource("AnimationLibrary_6uw2w")
 
 [node name="UpdatedComboCounter" type="Label" parent="." unique_id=654270409]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 210.0
-offset_right = 197.5256
-offset_bottom = 428.3805
+offset_left = 77.0
+offset_top = 254.0
+offset_right = 232.53452
+offset_bottom = 456.7552
 rotation = -0.10770728
 text = "1x"
 label_settings = SubResource("LabelSettings_uyhx3")
@@ -1624,10 +1624,10 @@ vertical_alignment = 1
 modulate = Color(0.8823364, 0.87131125, 0.4739384, 1)
 self_modulate = Color(2.40685, 2.40685, 2.2780478, 1)
 layout_mode = 0
-offset_left = 14.345633
-offset_top = 183.60611
-offset_right = 154.22728
-offset_bottom = 202.72511
+offset_left = -8.736082
+offset_top = 183.12204
+offset_right = 131.14557
+offset_bottom = 202.24104
 rotation = -1.5803438
 value = 55.0
 show_percentage = false
@@ -1705,6 +1705,7 @@ offset_bottom = 910.2056
 rotation = -0.08058332
 
 [node name="Score" type="Label" parent="PlayerInfo" unique_id=768470750]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Points: "
@@ -1719,6 +1720,7 @@ text = "Combo:"
 label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="WaveCounter" type="Label" parent="PlayerInfo" unique_id=1845511107]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Wave:"
@@ -1726,10 +1728,10 @@ label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="EnemyCounter" type="Label" parent="." unique_id=172310879]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 920.0
-offset_right = 483.0
-offset_bottom = 958.0
+offset_left = 1588.0
+offset_top = 346.0
+offset_right = 2034.0
+offset_bottom = 391.0
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
@@ -1917,18 +1919,18 @@ texture = SubResource("GradientTexture2D_meejx")
 
 [node name="Ability1Container" type="ColorRect" parent="." unique_id=1865306640]
 layout_mode = 0
-offset_left = 1773.1769
-offset_top = 565.8646
-offset_right = 1883.1963
-offset_bottom = 687.1021
+offset_left = 1736.0001
+offset_top = 547.0
+offset_right = 1850.3774
+offset_bottom = 666.64484
 rotation = 0.113265686
 
 [node name="AbililtyKey2" type="Label" parent="Ability1Container" unique_id=1285908341]
 layout_mode = 0
-offset_left = 31.513117
-offset_top = 119.33833
-offset_right = 74.513115
-offset_bottom = 239.33833
+offset_left = 30.614069
+offset_top = 136.41399
+offset_right = 62.594902
+offset_bottom = 218.18169
 rotation = -9.697676e-05
 theme_override_font_sizes/font_size = 16
 text = "Q"
@@ -1967,13 +1969,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_3825n")
+button_group = SubResource("ButtonGroup_pdrc1")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_3825n")
+button_group = SubResource("ButtonGroup_pdrc1")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_3825n")
+button_group = SubResource("ButtonGroup_pdrc1")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
