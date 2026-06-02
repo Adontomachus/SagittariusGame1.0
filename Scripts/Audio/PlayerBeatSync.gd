@@ -7,6 +7,7 @@ signal increase_player_attack_charge
 signal increment_combo_meter(strength_value: float)
 signal border_pulse
 signal beat_happened
+signal full_beat_happened  
 
 @export_category("Beat Settings")
 @export var level_song: AudioStreamPlayer # = $"../MetronomeTest"
@@ -91,8 +92,15 @@ func _ready() -> void:
 	audio_latency = AudioServer.get_output_latency()
 	
 	beat_happened.connect(player.q_moves.on_beat)
-
 	scale = Vector2(starting_scale, starting_scale)
+	
+	await get_tree().process_frame  # wait for all nodes to be ready
+	var squash_nodes := get_tree().get_nodes_in_group("BeatSquashStretch")
+	print("Found squash nodes: ", squash_nodes.size())
+	for node in squash_nodes:
+		beat_happened.connect(node._on_beat)
+		full_beat_happened.connect(node._on_full_beat)
+		print("Connected: ", node.name)
 	
 func _process(_delta) -> void:
 	p_combo_sound.pitch_scale = combo_audio_pitch
@@ -128,11 +136,13 @@ func _process(_delta) -> void:
 		halfLastBeat = half_beat  # keep them in sync on full beats
 		beat_consumed = false
 		beat_happened.emit() # caller for q moves 
+		full_beat_happened.emit() # Full Squash
 	if halfLastBeat < half_beat:
 		indicator_pulse()
 		halfLastBeat = half_beat
 		beat_consumed = false  
 		beat_happened.emit()
+		
 
 func _input(event: InputEvent) -> void:
 	if beat_consumed:            # block if already fired this beat

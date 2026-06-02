@@ -11,6 +11,11 @@ script = ExtResource("1_dd82y")
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Panel" type="Panel" parent="MinimapContainer" unique_id=1472134649]
+layout_mode = 0
+offset_right = 306.0
+offset_bottom = 306.0
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MinimapContainer" unique_id=2095466810]
 layout_mode = 0
 offset_right = 40.0

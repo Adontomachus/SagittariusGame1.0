@@ -1,6 +1,8 @@
 class_name PlayerCharacter
 extends CharacterBody2D
 
+@export var camera : CameraControl
+
 signal camera_shake(shakeDuration, shakeStrength)
 
 # Health bar signals
@@ -14,6 +16,7 @@ signal send_current_xp(xp: float)
 # Companion upgrade signal
 signal companion_upgrade
 
+@export var hit_flash: HitFlash
 @export var UpgradeScreen : Control
 
 @export var healthPoints: float:
@@ -346,7 +349,7 @@ func _physics_process(delta):
 
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
-	camera_shake.emit(0.3)
+	camera.add_trauma(0.5)   
 	if shot_fire_rate > max_shot_fire_rate:
 		if charge_shot.consume(modifier):
 			# Charged shot fired — still need sound and effect
@@ -394,7 +397,7 @@ func increment_player_charge_attack() -> void:
 
 ## SECONDARY FIRE RATE FUNCTION
 func _shoot_secondary() -> void:
-	camera_shake.emit(0.15)
+	camera.add_trauma(0.5)   
 	var projectile_instance = projectile.instantiate()
 	shot_sound.play()
 	projectile_instance.change_damage(projectile_damage / 1.75)
@@ -446,7 +449,18 @@ func modify_current_player_health(modification: int) -> void:
 	print("Player HP is now: ", healthPoints)
 	healthPoints += modification
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
+	
+	# Camera shake when hit
+	# When damaged
+	if modification < 0:
+		camera.add_trauma(0.8)   
+		if hit_flash:
+			hit_flash.flash()
+			print("Should flash")
+		print("Got hit!")
+	
 	if (healthPoints <= 0):
+		camera.add_trauma(1)
 		print("Game Over!")
 		can_control_unit = false
 		cutscene_handler.game_is_over = true

@@ -1,9 +1,8 @@
 class_name MinimapCamera
 extends Camera2D
 
-## This implementation follows the player, the minimap shows 2.5 times larger space than
-## what can be seen
-@export var zoom_multiplier: float = 5
+## This implementation follows the player, 
+@export var zoom_multiplier: float = 10
 @export var minimap_display_size: Vector2 = Vector2(200, 200)
 @export var level_origin: Vector2 = Vector2(0, 0)
 @export var level_size: Vector2 = Vector2(3000, 3000)

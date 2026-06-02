@@ -1154,7 +1154,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../CompanionProgressBar/Ability1Container:scale")
+tracks/5/path = NodePath("../Ability1Container:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1166,7 +1166,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../CompanionProgressBar/Ability1Container/AbililtyKey2:scale")
+tracks/6/path = NodePath("../Ability1Container/AbililtyKey2:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1242,7 +1242,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../CompanionProgressBar/Ability1Container:scale")
+tracks/5/path = NodePath("../Ability1Container:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1254,7 +1254,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../CompanionProgressBar/Ability1Container/AbililtyKey2:scale")
+tracks/6/path = NodePath("../Ability1Container/AbililtyKey2:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1361,7 +1361,7 @@ outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_48svx"]
 font = ExtResource("4_0if8i")
-font_size = 80
+font_size = 64
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
@@ -1567,10 +1567,10 @@ texture = SubResource("GradientTexture2D_meejx")
 
 [node name="PlayerInfo" type="VBoxContainer" parent="." unique_id=1205866027]
 layout_mode = 0
-offset_left = 28.999998
-offset_top = 767.0
-offset_right = 475.0
-offset_bottom = 935.0
+offset_left = 30.076061
+offset_top = 798.2056
+offset_right = 362.1052
+offset_bottom = 910.2056
 rotation = -0.08058332
 
 [node name="Score" type="Label" parent="PlayerInfo" unique_id=768470750]
@@ -1752,34 +1752,36 @@ position = Vector2(101.99999, 37.200027)
 scale = Vector2(2.474995, 2.474995)
 texture = SubResource("GradientTexture2D_meejx")
 
-[node name="CompanionProgressBar" type="TextureProgressBar" parent="." unique_id=60829247]
+[node name="Ability1Container" type="ColorRect" parent="." unique_id=1865306640]
 layout_mode = 0
-offset_left = 1640.0
-offset_top = 769.0
-offset_right = 2463.0
-offset_bottom = 1625.0
+offset_left = 1773.1769
+offset_top = 565.8646
+offset_right = 1883.1963
+offset_bottom = 687.1021
+rotation = 0.113265686
+
+[node name="AbililtyKey2" type="Label" parent="Ability1Container" unique_id=1285908341]
+layout_mode = 0
+offset_left = 31.513117
+offset_top = 119.33833
+offset_right = 74.513115
+offset_bottom = 239.33833
+rotation = -9.697676e-05
+theme_override_font_sizes/font_size = 16
+text = "Q"
+label_settings = SubResource("LabelSettings_48svx")
+
+[node name="CompanionProgressBar" type="TextureProgressBar" parent="." unique_id=60829247]
+visible = false
+layout_mode = 0
+offset_left = 1470.0
+offset_top = 746.0
+offset_right = 2293.0
+offset_bottom = 1602.0
 scale = Vector2(0.33629102, 0.33629102)
 value = 5.0
 texture_under = ExtResource("18_3tu8g")
 texture_progress = ExtResource("19_7363f")
-
-[node name="Ability1Container" type="ColorRect" parent="CompanionProgressBar" unique_id=1865306640]
-layout_mode = 0
-offset_left = 446.04205
-offset_top = -523.35614
-offset_right = 680.9571
-offset_bottom = -260.62442
-rotation = 0.113265686
-
-[node name="AbililtyKey2" type="Label" parent="CompanionProgressBar/Ability1Container" unique_id=1285908341]
-layout_mode = 0
-offset_left = 98.12933
-offset_top = 276.54626
-offset_right = 141.12933
-offset_bottom = 396.54626
-rotation = -9.697676e-05
-text = "Q"
-label_settings = SubResource("LabelSettings_48svx")
 
 [node name="Ability2Container" type="BoxContainer" parent="CompanionProgressBar" unique_id=1920883057]
 layout_mode = 0
@@ -1823,21 +1825,37 @@ anchor_left = 0.831
 anchor_top = 0.015
 anchor_right = 0.897
 anchor_bottom = 0.125
+offset_top = 21.999998
+offset_right = 173.2799
+offset_bottom = 203.20001
 
-[node name="SubViewport" parent="MinimapHUD/MinimapContainer/SubViewportContainer" parent_id_path=PackedInt32Array(1010004399, 2095466810) index="0" unique_id=2109862884]
+[node name="Panel" parent="MinimapHUD/MinimapContainer" index="0" unique_id=1472134649]
+offset_left = -8.519897
+offset_top = -7.199997
+
+[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=2095466810]
+offset_left = -1.5198975
+offset_top = -0.19999695
+offset_right = 298.4801
+offset_bottom = 299.8
+
+[node name="SubViewport" parent="MinimapHUD/MinimapContainer/SubViewportContainer" index="0" unique_id=2109862884]
 size = Vector2i(300, 300)
 
 [node name="MinimapCamera" parent="MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" index="0" unique_id=1648225918 groups=["MinimapCamera"]]
+position = Vector2(0, 22)
 minimap_display_size = Vector2(300, 300)
 
-[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=117072874]
+[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -1.5198975
+offset_top = -0.19999695
+offset_right = -1.5198975
+offset_bottom = -0.2000122
 grow_horizontal = 2
 grow_vertical = 2
 

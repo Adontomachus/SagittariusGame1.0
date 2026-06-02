@@ -867,6 +867,11 @@ beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/Be
 [node name="BeatSquashStretch" type="Node" parent="Player" unique_id=1709212106 node_paths=PackedStringArray("target", "beat_sync") groups=["BeatSquashStretch"]]
 script = ExtResource("39_mtruf")
 target = NodePath("../VisualRoot")
+full_beat_intensity = null
+half_beat_intensity = null
+recovery_speed = null
+base_scale = null
+squash_on_beat = null
 beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 
 [node name="GameLevelNode" type="Node" parent="." unique_id=232750320]
