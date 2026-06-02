@@ -9,7 +9,7 @@ enum ProjectileSide {
 @export_category("Grenade Explosion Statistics")
 @export var aoe_damage: float = 60.0
 @export var explosion_radius: float = 120.0
-@export var lifetime: float = 0.3
+@export var lifetime: float = 0.8
 
 @onready var area_indicator: AnimationPlayer = $AnimationPlayer
 @onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
@@ -22,6 +22,7 @@ func _ready() -> void:
 	$CollisionShape2D.shape = shape
 
 	area_indicator.play("GrenadeExplode")
+	
 	explosion_sound.play()
 
 	self.area_entered.connect(func(area) -> void:
