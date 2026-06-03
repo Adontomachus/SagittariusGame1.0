@@ -867,9 +867,10 @@ beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/Be
 script = ExtResource("15_fu6i5")
 player = NodePath("..")
 
-[node name="SecondaryFire" type="Node" parent="Player" unique_id=1266380933 node_paths=PackedStringArray("beat_sync")]
+[node name="SecondaryFire" type="Node" parent="Player" unique_id=1266380933 node_paths=PackedStringArray("beat_sync", "combo_system")]
 script = ExtResource("13_6uw2w")
 beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
+combo_system = NodePath("../../GameSystems/ComboSystem")
 
 [node name="BeatSquashStretch" type="Node" parent="Player" unique_id=1709212106 node_paths=PackedStringArray("target", "beat_sync") groups=["BeatSquashStretch"]]
 script = ExtResource("39_mtruf")

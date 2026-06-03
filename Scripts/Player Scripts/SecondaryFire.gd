@@ -6,6 +6,7 @@ signal player_dash
 signal player_grenade
 
 @export var beat_sync: BeatSync_Script
+@export var combo_system: ComboSystems
 
 @export var good_hit_window: float = 0.15
 
@@ -46,7 +47,9 @@ func _try_secondary(action: String, timing: float) -> void:
 	if timing > good_hit_window:
 		print("Secondary miss — timing: ", timing)
 		return
-	beat_sync.secondary_ammo -= 1
+	if not combo_system.try_spend_for_secondary():
+		print("Not enough combo to use secondary — need: ", combo_system.secondary_fire_cost)
+		return
 	print("Secondary hit — action: ", action, " | timing: ", timing)
 	secondary_actions[action].call(timing)
 	

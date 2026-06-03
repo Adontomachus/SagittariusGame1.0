@@ -1,11 +1,22 @@
 class_name ComboSystems
 extends Node
 
+## Adjust on how strong each usage is
+@export var secondary_fire_cost: float = 80.0 # adjust to taste
+
+## Returns true if the player can afford the secondary and deducts the cost
+func try_spend_for_secondary() -> bool:
+	if combo_strength < secondary_fire_cost:
+		return false
+	combo_strength -= secondary_fire_cost
+	return true
+
 @export_category("Combo Statistics")
 @export var combo_level: int = 1
 @export var combo_strength: float = 0
 @onready var combo_count_ui: Label = $"../../InterfaceElements/NewHUD/UI/UpdatedComboCounter"
 @onready var combo_reach_pulse: AnimationPlayer = $"../../InterfaceElements/NewHUD/UI/ComboReachFeedback/GlowEffect"
+@export var max_combo : int = 1000
 
 ## Glow pulse
 var combo_upgrade_feedback: bool = true
@@ -37,14 +48,17 @@ func _process(delta: float) -> void:
 	pass
 
 #region Custom functions for combo systems
-# Function for incrementing combo meter. Higher combos 
+# Function for incrementing combo meter, caps out to a certain point
 func _add_combo_level(level_value) -> void:
+	if combo_strength >= max_combo : 
+		return
 	combo_strength += level_value
 	return
 	
 # Function for updating the combo levels
 func _update_combo() -> void:
 	# Statements for combo levels
+	
 	if combo_strength < 100: 
 		## This section emits the signals needed for the combo progress bar to function
 		## This is also applicable for other elif statements
