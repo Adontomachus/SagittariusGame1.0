@@ -158,13 +158,13 @@ func recovery_mode(delta: float) -> bool:
 	stamina += stamina_regeneration_rate * delta
 	return stamina >= maxStamina
 
-func shoot_projectile(modifier: float = 1.0, color: Color = Color.RED) -> void:
+func shoot_projectile(angle: float = 0, modifier: float = 1.0, color: Color = Color.RED) -> void:
 	var projectile_instance = projectile.instantiate()
 	projectile_instance.change_damage(attackPower * modifier)
 	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
 	projectile_instance.change_projectile_modulation(color)
 	projectile_instance.position = shoot_point.get_global_position()
-	projectile_instance.rotation_degrees = shoot_point.rotation_degrees + randf_range(-inaccuracy,inaccuracy)
+	projectile_instance.rotation_degrees = shoot_point.rotation_degrees + angle + randf_range(-inaccuracy,inaccuracy)
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
 	print_debug("Damage: %s" % (attackPower * modifier))
 

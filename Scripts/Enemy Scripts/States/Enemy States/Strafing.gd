@@ -10,6 +10,7 @@ var shot_times: int = 0
 
 func enter() -> void:
 	super()
+	_check_difficulty()
 	reposition(parent.aroundPlayerRadius)
 	
 func process_physics(delta: float) -> EnemyState:
@@ -42,3 +43,15 @@ func reposition(playerRadius) -> void:
 	if parent.target:
 		var randomPosition = Vector2(randf_range(-playerRadius,playerRadius), randf_range(-playerRadius,playerRadius))
 		parent.navAgent.target_position = parent.target.global_position + randomPosition
+
+
+func _check_difficulty() -> void:
+	var difficulty_settings = SaveSettings._load_difficulty_settings()
+	match difficulty_settings:
+		0:
+			parent.successfulChanceToAttack = 7.5
+		1:
+			parent.successfulChanceToAttack = 5
+		2:
+			parent.successfulChanceToAttack = 0.5
+	return

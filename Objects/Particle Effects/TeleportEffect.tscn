@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://by2fr3fqjopya"]
+
+[ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/Visuals/ParticleEffectScript.gd" id="1_cfnhl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="TeleportEffect" type="Node2D" unique_id=1692245273 node_paths=PackedStringArray("shot_effect")]
+script = ExtResource("1_cfnhl")
+shot_effect = NodePath("ShotEffect")
+
+[node name="ShotEffect" type="CPUParticles2D" parent="." unique_id=538343073]
+amount = 50
+texture = SubResource("CanvasTexture_jhxfm")
+lifetime = 0.4
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.29
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 675.23
+scale_amount_min = 0.0
+scale_amount_max = 15.65
+scale_amount_curve = SubResource("Curve_t5oqc")
+color = Color(0.32248613, 0.9520031, 1.2479677, 1)
+anim_speed_curve = SubResource("Curve_jhxfm")
+
+[connection signal="finished" from="ShotEffect" to="." method="_on_shot_effect_finished"]

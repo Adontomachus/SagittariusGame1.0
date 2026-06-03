@@ -6,6 +6,9 @@ signal player_dash
 signal player_grenade
 
 @export var beat_sync: BeatSync_Script
+@export var dash_particles: PackedScene
+
+var player: CharacterBody2D
 
 @export var good_hit_window: float = 0.15
 
@@ -15,7 +18,7 @@ var secondary_actions: Dictionary = {}
 #endregion
 
 func _ready() -> void:
-	var player = get_tree().get_first_node_in_group("PlayerObject")
+	player = get_tree().get_first_node_in_group("PlayerObject")
 	player_dash.connect(player._dash)
 	player_grenade.connect(player._grenade)
 	
@@ -52,6 +55,9 @@ func _try_secondary(action: String, timing: float) -> void:
 	
 # Secondary skills
 func _secondary_dash(_timing: float) -> void:
+	var teleportEffect = dash_particles.instantiate()
+	teleportEffect.position = player.get_global_position()
+	get_tree().get_root().call_deferred("add_child", teleportEffect)
 	player_dash.emit()
 
 func _secondary_grenade(_timing: float) -> void:
