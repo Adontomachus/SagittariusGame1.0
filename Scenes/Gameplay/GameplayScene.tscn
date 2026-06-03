@@ -52,7 +52,6 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
-[ext_resource type="PackedScene" uid="uid://by2fr3fqjopya" path="res://Objects/Particle Effects/TeleportEffect.tscn" id="39_rr6op"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
@@ -217,7 +216,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_rr6op"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mtruf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -553,6 +552,7 @@ player_character = NodePath("../../Player")
 script = ExtResource("11_hlum5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InterfaceElements/NewHUD/SecondaryShotBars" unique_id=2013817160]
+visible = false
 offset_left = 268.0
 offset_top = 104.0
 offset_right = 498.0
@@ -640,13 +640,13 @@ experience_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_rr6op")
+button_group = SubResource("ButtonGroup_mtruf")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_rr6op")
+button_group = SubResource("ButtonGroup_mtruf")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_rr6op")
+button_group = SubResource("ButtonGroup_mtruf")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -867,10 +867,10 @@ beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/Be
 script = ExtResource("15_fu6i5")
 player = NodePath("..")
 
-[node name="SecondaryFire" type="Node" parent="Player" unique_id=1266380933 node_paths=PackedStringArray("beat_sync")]
+[node name="SecondaryFire" type="Node" parent="Player" unique_id=1266380933 node_paths=PackedStringArray("beat_sync", "combo_system")]
 script = ExtResource("13_6uw2w")
 beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
-dash_particles = ExtResource("39_rr6op")
+combo_system = NodePath("../../GameSystems/ComboSystem")
 
 [node name="BeatSquashStretch" type="Node" parent="Player" unique_id=1709212106 node_paths=PackedStringArray("target", "beat_sync") groups=["BeatSquashStretch"]]
 script = ExtResource("39_mtruf")
