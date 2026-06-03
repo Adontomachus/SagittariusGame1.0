@@ -23,6 +23,8 @@ const SCALING = preload("res://Scripts/Audio/GameManager.gd")
 # Const value for enemy spawn rarities
 const CHANCE_RANGE: Vector2 = Vector2(0, 10)
 
+@export var indicator_pulse: AnimationPlayer
+
 @export_category("Enemy Instance to Spawn")
 @export var enemyToSpawn = preload("res://UnitInstances/Enemy Instances/Enemy.tscn")
 @export var altEnemy = preload("res://UnitInstances/Enemy Instances/EnemyShooter.tscn")
@@ -44,11 +46,16 @@ func _ready() -> void:
 	return
 	
 func _process(delta: float) -> void:
-	beatLifetime -= 2 * delta
 	redness += 0.4 * delta
 	telegraph.modulate = Color(redness * 1.25, 0, 0)
 	telegraph.self_modulate = Color(1, 1, 1, 1 + redness * 2)
-	#TEMPORARY
+	
+	## Pulse to the beat
+	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
+		beatLifetime -= 1
+		indicator_pulse.play("Pulse")
+		
+	## TEMPORARY
 	eliteRarityWeight = rarityWeight - 3
 	if beatLifetime < 0:
 		# This conditional statement checks if rarity value is lower than the chance range
@@ -67,6 +74,8 @@ func _process(delta: float) -> void:
 			else:
 				_spawn_enemy()
 			return
+			
+
 	return
 
 #region Enemy type spawns

@@ -34,8 +34,22 @@ func _process(delta) -> void:
 	if time_accumulator >= 1.0:
 		print("Testing health scaling mechanic: ", health_scaling)
 		time_accumulator = 0.0 
-	health_scaling += 0.008 * delta
-	attack_power_scaling += 0.002 * delta
+		
+	## Difficulty health and damage scaling for enemies 
+	var difficulty_settings = SaveSettings._load_difficulty_settings()
+	match difficulty_settings:
+		0:
+			health_scaling += 0.004 * delta
+			attack_power_scaling += 0.001 * delta
+		1:
+			health_scaling += 0.008 * delta
+			attack_power_scaling += 0.002 * delta
+		2:
+			health_scaling += 0.014 * delta
+			attack_power_scaling += 0.007 * delta
+
+	# Debug Purposes
+	print(health_scaling)
 	return
 
 func reset_scaling() -> void:

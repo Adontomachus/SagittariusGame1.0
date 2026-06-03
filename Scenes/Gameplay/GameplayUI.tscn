@@ -1496,7 +1496,7 @@ font_size = 64
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3825n"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_pdrc1"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1769,19 +1769,19 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 z_index = -1
 offset_left = 843.0
 offset_top = 975.0
-offset_right = 849.9999
-offset_bottom = 1013.8877
+offset_right = 848.5001
+offset_bottom = 1014.0
 scale = Vector2(0.64, 1)
-color = Color(0.85559684, 1, 0.64379185, 1)
+color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 
 [node name="HalfBeatLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=1028365080]
 z_index = -1
 offset_left = 1104.0
 offset_top = 975.0
-offset_right = 1111.0005
-offset_bottom = 1013.8877
+offset_right = 1109.4994
+offset_bottom = 1014.0
 scale = Vector2(0.64, 1)
-color = Color(0.85559684, 1, 0.64379185, 1)
+color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 
 [node name="BeatIndicatorAnimation" type="AnimationPlayer" parent="BeatIndicatorElements" unique_id=1848896088]
 libraries/ = SubResource("AnimationLibrary_rp1p4")
@@ -1967,13 +1967,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_3825n")
+button_group = SubResource("ButtonGroup_pdrc1")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_3825n")
+button_group = SubResource("ButtonGroup_pdrc1")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_3825n")
+button_group = SubResource("ButtonGroup_pdrc1")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false

@@ -10,6 +10,8 @@ extends Node
 @export var damage_multiplier: float = 3.2
 ## Particle feedback threshold — shows particles when this many charges are built
 @export var particle_threshold: int = 7
+## A boolean for visual feedback for player UI, which would glow if charged shot is active
+@export var can_fire_charged_shot: bool = false 
 
 var shots_for_charged: int = 0
 var powered_projectile := preload("res://Objects/Instances With Collision/EnhancedProjectile.tscn")
@@ -42,6 +44,8 @@ func consume(modifier: float) -> bool:
 
 func _update_feedback() -> void:
 	if shots_for_charged >= particle_threshold:
+		can_fire_charged_shot = true
 		player.charged_shot_particles.show()
 	else:
+		can_fire_charged_shot = false
 		player.charged_shot_particles.hide()

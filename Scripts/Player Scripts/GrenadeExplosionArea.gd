@@ -6,6 +6,10 @@ enum ProjectileSide {
 	Enemy
 }
 
+# Camera variable for camera shake
+@export var camera : CameraControl
+
+
 @export_category("Grenade Explosion Statistics")
 @export var aoe_damage: float = 60.0
 @export var explosion_radius: float = 120.0
@@ -31,7 +35,11 @@ func _ready() -> void:
 			area.modify_enemy_health(-aoe_damage)
 			area.show_aoe_feedback(aoe_damage)
 	)
-
+	
+	## Shakes the camera
+	var camera = get_tree().get_first_node_in_group("CameraControl")
+	if camera: camera.add_trauma(0.5) 
+	
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
