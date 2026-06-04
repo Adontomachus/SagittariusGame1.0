@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6sxrosbunp1q"]
+
+[ext_resource type="Script" uid="uid://bt4o1sc26ro2g" path="res://Scripts/Visuals/ComboPartcile.gd" id="1_g00df"]
+[ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="2_44eec"]
+
+[node name="ComboParticle" type="Area2D" unique_id=282054592]
+script = ExtResource("1_g00df")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482045255]
+texture = ExtResource("2_44eec")

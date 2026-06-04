@@ -472,6 +472,10 @@ func modify_current_player_health(modification: int) -> void:
 		if hit_flash:
 			hit_flash.flash()
 		hit_sound.play()
+	#subtracts combo when damaged
+		var combo := get_tree().get_first_node_in_group("ComboManager")
+		if combo:
+			combo._subtract_combo_level()
 	
 	if (healthPoints <= 0):
 		camera.add_trauma(1)

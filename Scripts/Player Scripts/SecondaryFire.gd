@@ -30,8 +30,6 @@ func _input(event: InputEvent) -> void:
 		return
 	if beat_sync.beat_consumed:      # block if primary already fired
 		return
-	if beat_sync.secondary_ammo < 1:
-		return
 	for action in secondary_actions:
 		if event.is_action_pressed(action):
 			_try_secondary(action, _get_timing())

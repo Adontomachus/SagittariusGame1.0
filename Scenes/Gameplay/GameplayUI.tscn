@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://djpbi3ti2qmdk" path="res://Scenes/Interface/DefeatInterface.tscn" id="2_ge5ss"]
 [ext_resource type="Script" uid="uid://bsi28hfemc0xs" path="res://Scripts/Audio/BorderBeatIndicator.gd" id="3_3825n"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_0if8i"]
+[ext_resource type="Script" uid="uid://bot8d5sh57oe7" path="res://Scripts/UI Menu, Settings and Post Game/ComboCounterFeedback.gd" id="5_gwjna"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="5_pdrc1"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="6_gwjna"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="7_ev13k"]
@@ -17,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
 [ext_resource type="Texture2D" uid="uid://dragh8vokp5xo" path="res://Sprites/UI/experiencebar.png" id="16_n87py"]
 [ext_resource type="Texture2D" uid="uid://d0jefn57ud38b" path="res://Sprites/UI/experiencebarprogress.png" id="17_dw111"]
-[ext_resource type="Script" path="res://Scripts/UI Menu, Settings and Post Game/ExperienceDisplayScript.gd" id="18_0if8i"]
+[ext_resource type="Script" uid="uid://c6ui2chq7s5vo" path="res://Scripts/UI Menu, Settings and Post Game/ExperienceDisplayScript.gd" id="18_0if8i"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="20_ge5ss"]
@@ -1496,7 +1497,7 @@ font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_pdrc1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ev13k"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1608,7 +1609,7 @@ color = Color(0.7953644, 1, 0, 0)
 [node name="GlowEffect" type="AnimationPlayer" parent="ComboReachFeedback" unique_id=367885733]
 libraries/ = SubResource("AnimationLibrary_6uw2w")
 
-[node name="UpdatedComboCounter" type="Label" parent="." unique_id=654270409]
+[node name="UpdatedComboCounter" type="Label" parent="." unique_id=654270409 groups=["ComboUIFeedback"]]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 254.0
@@ -1619,6 +1620,7 @@ text = "1x"
 label_settings = SubResource("LabelSettings_uyhx3")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_gwjna")
 
 [node name="ComboCounterProgressBar" type="ProgressBar" parent="UpdatedComboCounter" unique_id=1324010544]
 modulate = Color(0.8823364, 0.87131125, 0.4739384, 1)
@@ -1969,13 +1971,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_pdrc1")
+button_group = SubResource("ButtonGroup_ev13k")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_pdrc1")
+button_group = SubResource("ButtonGroup_ev13k")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_pdrc1")
+button_group = SubResource("ButtonGroup_ev13k")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
