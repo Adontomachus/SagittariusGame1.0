@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://83peaf7641jx"]
+
+[ext_resource type="Script" uid="uid://cocoxcxqbc0af" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutLob.gd" id="1_504u2"]
+[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_4phct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rouxa"]
+
+[node name="ShoutLob" type="Area2D" unique_id=1451977203]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_504u2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=249911864]
+texture = ExtResource("2_4phct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1879553491]
+shape = SubResource("CircleShape2D_rouxa")

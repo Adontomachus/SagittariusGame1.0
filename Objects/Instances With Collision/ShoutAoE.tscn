@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c5kjluhgmh4lk"]
+
+[ext_resource type="Script" uid="uid://c6ub208aajgya" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutAoE.gd" id="1_dir02"]
+[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_5mt54"]
+[ext_resource type="AudioStream" uid="uid://bopgycv2avkqc" path="res://Audio/Sounds/Calanget_AOE.wav" id="3_t8j5a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5nd8"]
+radius = 7.0
+
+[node name="ShoutAoe" type="Area2D" unique_id=1692523282]
+script = ExtResource("1_dir02")
+damage = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=615370513]
+texture = ExtResource("2_5mt54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990032299]
+shape = SubResource("CircleShape2D_c5nd8")
+debug_color = Color(0.9558745, 0.21285096, 0, 0.41960785)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1595645819]
+stream = ExtResource("3_t8j5a")
+volume_db = -20.318
+bus = &"SFX"

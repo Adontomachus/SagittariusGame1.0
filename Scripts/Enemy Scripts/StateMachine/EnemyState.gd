@@ -12,8 +12,10 @@ class_name EnemyState
 var parent: Enemy
 var animations: AnimationPlayer
 var audio: AudioStreamPlayer2D
+var beat_sync: BeatSync_Script
 
 func enter() -> void:
+	beat_sync = get_tree().get_first_node_in_group("BeatSync")
 	if audio != null and audio_to_play != null:
 		audio.stream = audio_to_play
 		audio.play()

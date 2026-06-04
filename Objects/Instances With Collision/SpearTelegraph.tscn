@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cal48vi61pbk6"]
+
+[ext_resource type="Script" uid="uid://bgwkr2oc6lhp3" path="res://Scripts/Enemy Scripts/EliteEnemyStates/SpearTelegraph.gd" id="1_hm76p"]
+
+[node name="SpearTelegraph" type="Node2D" unique_id=904275285]
+script = ExtResource("1_hm76p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1542896258]
+offset_right = 40.0
+offset_bottom = 40.0

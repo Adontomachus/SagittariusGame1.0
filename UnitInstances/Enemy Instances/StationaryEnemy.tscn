@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="6_3aqhm"]
 [ext_resource type="Script" uid="uid://bjwm83qjth4q1" path="res://Scripts/Enemy Scripts/States/Enemy States/TurretFire.gd" id="7_k64of"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_vqhua"]
+[ext_resource type="Script" uid="uid://ddgde4sc35bqi" path="res://Scripts/Enemy Scripts/States/Enemy States/ShoutLobState.gd" id="10_nqpvr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
@@ -120,7 +121,7 @@ horizontal_alignment = 1
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_dacm3")
-starting_state = NodePath("EnemyStateSightFire")
+starting_state = NodePath("ShoutLobState")
 sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
@@ -136,6 +137,12 @@ metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
 [node name="EnemyStateSightFire" type="Node" parent="EnemyStateMachine" unique_id=1098083961]
 script = ExtResource("7_k64of")
+
+[node name="ShoutLobState" type="Node" parent="EnemyStateMachine" unique_id=276313907 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("10_nqpvr")
+idle_state = NodePath("../EnemyStateRecovery")
+beats_between_shots = 4
+metadata/_custom_type_script = "uid://ddgde4sc35bqi"
 
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=257206988]
 stream = ExtResource("7_vqhua")

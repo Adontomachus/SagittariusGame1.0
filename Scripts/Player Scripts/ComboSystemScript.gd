@@ -50,9 +50,15 @@ func _process(delta: float) -> void:
 #region Custom functions for combo systems
 # Function for incrementing combo meter, caps out to a certain point
 func _add_combo_level(level_value) -> void:
-	if combo_strength >= max_combo : 
-		return
 	combo_strength += level_value
+	if combo_strength >= max_combo : 
+		combo_strength = max_combo
+	return
+
+func _subtract_combo_level() -> void:
+	combo_strength -= 40
+	if combo_strength >= max_combo : 
+		combo_strength = max_combo
 	return
 	
 # Function for updating the combo levels

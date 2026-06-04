@@ -10,6 +10,11 @@
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="6_22t2l"]
 [ext_resource type="Script" uid="uid://di0vbq11imssp" path="res://Scripts/Enemy Scripts/States/Enemy States/Shooting.gd" id="7_ilcit"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="8_gngj8"]
+[ext_resource type="Script" uid="uid://dubojravie7dn" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteSpearChargeState.gd" id="10_023ja"]
+[ext_resource type="Script" uid="uid://bnhyh37v71r55" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteSpearFireState.gd" id="11_m3nru"]
+[ext_resource type="Script" uid="uid://2vauga4pjmr3" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteSpearRestState.gd" id="12_1uvtk"]
+[ext_resource type="Script" uid="uid://dykdysmx667ac" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteDecideState.gd" id="13_m3nru"]
+[ext_resource type="AudioStream" uid="uid://bgy3n7f3chysj" path="res://Audio/Sounds/EliteSpearThrow.wav" id="15_1uvtk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.734726
@@ -120,7 +125,7 @@ metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateClosing" type="Node" parent="EnemyStateMachine" unique_id=121788740 node_paths=PackedStringArray("after_closing_state", "recovery_state")]
 script = ExtResource("5_cyyc4")
-after_closing_state = NodePath("../EnemyStateShoot")
+after_closing_state = NodePath("../EliteDecideState")
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://dnh5knxqvb7bk"
 
@@ -134,6 +139,36 @@ script = ExtResource("7_ilcit")
 after_shoot_state = NodePath("../EnemyStateClosing")
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://di0vbq11imssp"
+
+[node name="EliteSpearChargeState" type="Node" parent="EnemyStateMachine" unique_id=769958751 node_paths=PackedStringArray("rest_state", "recovery_state")]
+script = ExtResource("10_023ja")
+rest_state = NodePath("../EliteSpearRestState")
+charge_beats = 4
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://dubojravie7dn"
+
+[node name="EliteSpearFireState" type="Node" parent="EnemyStateMachine" unique_id=1670669213 node_paths=PackedStringArray("return_state", "recovery_state")]
+script = ExtResource("11_m3nru")
+return_state = NodePath("../EnemyStateClosing")
+knockback_force = 1600.0
+telegraph_length = 100000.0
+telegraph_width = 90.0
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://bnhyh37v71r55"
+
+[node name="EliteSpearRestState" type="Node" parent="EnemyStateMachine" unique_id=377101970 node_paths=PackedStringArray("fire_state", "return_state", "recovery_state")]
+script = ExtResource("12_1uvtk")
+fire_state = NodePath("../EliteSpearFireState")
+return_state = NodePath("../EnemyStateClosing")
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://2vauga4pjmr3"
+
+[node name="EliteDecideState" type="Node" parent="EnemyStateMachine" unique_id=1911340754 node_paths=PackedStringArray("shoot_state", "spear_state", "recovery_state")]
+script = ExtResource("13_m3nru")
+shoot_state = NodePath("../EnemyStateShoot")
+spear_state = NodePath("../EliteSpearChargeState")
+recovery_state = NodePath("../EnemyStateRecovery")
+metadata/_custom_type_script = "uid://dykdysmx667ac"
 
 [node name="Label" type="Label" parent="." unique_id=1557014478]
 offset_left = -55.0
@@ -150,6 +185,12 @@ bus = &"SFX"
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=44848928]
 libraries/ = SubResource("AnimationLibrary_itwys")
+
+[node name="SpearFireSound" type="AudioStreamPlayer2D" parent="." unique_id=1743686223]
+stream = ExtResource("15_1uvtk")
+volume_db = -7.232
+pitch_scale = 1.2
+bus = &"SFX"
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

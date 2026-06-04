@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bh8115h4g0ahk"]
+
+[ext_resource type="Script" uid="uid://b1nvqyelvx8j8" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutTelegraph.gd" id="1_g67dv"]
+[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_4q8rf"]
+
+[node name="ShoutTelegraph" type="Node2D" unique_id=2009070930]
+script = ExtResource("1_g67dv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=953736790]
+texture = ExtResource("2_4q8rf")

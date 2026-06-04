@@ -2,6 +2,7 @@ class_name ProjectileCommon
 extends Area2D
 
 signal set_projectile_modulate(color: Color)
+var hit_combo_value: float = 0.0
 
 enum ProjectileSide {
 	Player,
@@ -50,6 +51,10 @@ func _ready():
 		# Lambda functions used for world collision for single target enumerator
 		self.body_entered.connect(func(body: Node2D) -> void:
 			if (body.is_in_group("MapObstacle")):
+				if (projectileSide == ProjectileSide.Player) : 
+					var combo := get_tree().get_first_node_in_group("ComboManager")
+					if combo:
+						combo._subtract_combo_level
 				var hitEffect = wallHitEffects.instantiate()
 				hitEffect.position = self.get_global_position()
 				get_tree().get_root().call_deferred("add_child", hitEffect)
@@ -60,6 +65,9 @@ func _ready():
 			if (projectileSide == ProjectileSide.Player):
 				if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
 					area.modify_enemy_health(-projectile_damage)
+					var combo := get_tree().get_first_node_in_group("ComboManager")
+					if combo:
+						combo._add_combo_level(hit_combo_value)
 					#Hit feedback
 					var hitEffect = unitHitEffects.instantiate()
 					hitEffect.position = self.get_global_position()
@@ -118,6 +126,10 @@ func _ready():
 func _process(delta):
 	projectileLifetime -= 60 * delta
 	if (projectileLifetime < 0):
+		if (projectileSide == ProjectileSide.Player):
+			var combo := get_tree().get_first_node_in_group("ComboManager")
+			if combo:
+				combo._subtract_combo_level()
 		queue_free()
 	if velocity_type == ProjectileVelocityType.Slowing:
 		_fade_projectile_velocity(delta)

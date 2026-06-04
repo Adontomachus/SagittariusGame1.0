@@ -48,11 +48,11 @@ func _apply_squash(intensity: float) -> void:
 	if squash_on_beat:
 		## Squash — wide and short
 		squash_scale = Vector2(base_scale.x + intensity, base_scale.y - intensity)
-		print("Trying to stretch")
+		
 	else:
 		## Stretch — tall and narrow
 		squash_scale = Vector2(base_scale.x - intensity, base_scale.y + intensity)
-		print("Trying to stretch")
+		
 
 	tween = create_tween()
 	## Snap to squash instantly

@@ -176,13 +176,11 @@ func evaluate_shot(timing: float) -> Dictionary:
 		border_pulse.emit()
 		p_combo_sound.play()
 		increase_player_attack_charge.emit()
-		if secondary_ammo < 6:
-			secondary_ammo += 1
-		combo_systems.combo_strength += 40
+		#combo_systems.combo_strength += 40
 		return { "damage": 1.45, "color": Color.html("#1ce1ebff") }
 	if timing < good_hit:
 		comboCounter += 1
-		combo_systems.combo_strength += 15
+		#combo_systems.combo_strength += 15
 		return { "damage": 1.0, "color": Color.html("#53bc07ff") }
 	if timing < ok_hit:
 		comboCounter += 1

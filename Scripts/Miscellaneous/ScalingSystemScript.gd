@@ -49,7 +49,7 @@ func _process(delta) -> void:
 			attack_power_scaling += 0.007 * delta
 
 	# Debug Purposes
-	print(health_scaling)
+	## print(health_scaling)
 	return
 
 func reset_scaling() -> void:

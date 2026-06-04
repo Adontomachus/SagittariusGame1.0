@@ -2,6 +2,7 @@ class_name PlayerCharacter
 extends CharacterBody2D
 
 @export var camera : CameraControl
+@onready var hit_sound: AudioStreamPlayer2D = $PlayerHitSound
 
 signal camera_shake(shakeDuration, shakeStrength)
 
@@ -153,7 +154,7 @@ func _ready():
 	# Resets upgrades
 	UpgradeSystemScript.reset()
 	# Sets up move speed
-	
+	moveSpeed = maxMoveSpeed
 	# Sets up the fire rate mechanics
 	shot_fire_rate = max_shot_fire_rate
 	
@@ -193,7 +194,7 @@ func get_ability_inputs() -> void:
 				can_use_ability = false
 				ability_visual_feedback.play("AbilityActivationVisual")
 		else:
-			moveSpeed = maxMoveSpeed
+			#moveSpeed = maxMoveSpeed
 			secondary_fire_active = false
 
 func activate_player_ability() -> void:
@@ -366,6 +367,7 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 			projectile_instance.change_projectile_modulation(color)
 			projectile_instance.position = shot_point.get_global_position()
 			projectile_instance.rotation_degrees = shot_point.rotation_degrees
+			projectile_instance.hit_combo_value = _get_combo_value_for_shot(modifier)
 			get_tree().get_root().call_deferred("add_child", projectile_instance)
 
 		# Shared between both paths
@@ -383,6 +385,16 @@ func increment_player_charge_attack() -> void:
 	charge_shot.increment()
 	
 #endregion
+
+## For combo to only applying onhit
+func _get_combo_value_for_shot(modifier: float) -> float:
+	if modifier >= 1.45:
+		return 40.0    
+	elif modifier >= 1.0:
+		return 15.0    
+	elif modifier >= 0.8:
+		return 5.0     
+	return 0.0         
 
 ###Q Move 
 #func _ability_pulse() -> void:
@@ -459,8 +471,7 @@ func modify_current_player_health(modification: int) -> void:
 		camera.add_trauma(0.8)   
 		if hit_flash:
 			hit_flash.flash()
-			print("Should flash")
-		print("Got hit!")
+		hit_sound.play()
 	
 	if (healthPoints <= 0):
 		camera.add_trauma(1)

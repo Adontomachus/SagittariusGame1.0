@@ -52,10 +52,12 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
+[ext_resource type="AudioStream" uid="uid://dlaodw72r37my" path="res://Audio/Sounds/PlayerHitSound.wav" id="40_wipa6"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
+[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Enemy Instances/EliteEnemy.tscn" id="54_rr6op"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
 
@@ -216,7 +218,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_mtruf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_nxx5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -624,7 +626,7 @@ game_manager = NodePath("../../../../../..")
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="2" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
-[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter")]
+[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
 secondary_ammo_counter = NodePath("../../../SecondaryShotBars")
 perfect_hit = 0.07
@@ -640,13 +642,13 @@ experience_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_mtruf")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_mtruf")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_mtruf")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -815,6 +817,8 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
 [node name="AbilityAoE" type="Area2D" parent="Player" unique_id=1762094847]
+collision_layer = 2
+collision_mask = 2
 
 [node name="AoEHurtbox" type="CollisionShape2D" parent="Player/AbilityAoE" unique_id=367302589]
 shape = SubResource("CircleShape2D_p0i5v")
@@ -876,6 +880,11 @@ combo_system = NodePath("../../GameSystems/ComboSystem")
 script = ExtResource("39_mtruf")
 target = NodePath("../VisualRoot")
 beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
+
+[node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="Player" unique_id=1192582183]
+stream = ExtResource("40_wipa6")
+volume_db = -7.576
+bus = &"SFX"
 
 [node name="GameLevelNode" type="Node" parent="." unique_id=232750320]
 
@@ -1844,6 +1853,9 @@ position = Vector2(1180, 47)
 
 [node name="StationaryTurretEnemy2" parent="." unique_id=834809500 instance=ExtResource("33_r8kr6")]
 position = Vector2(1391, 309)
+
+[node name="Elite" parent="." unique_id=1394345447 instance=ExtResource("54_rr6op")]
+position = Vector2(-102, -72)
 
 [node name="PlayerBullet" parent="." unique_id=132848767 instance=ExtResource("12_4t4xv")]
 position = Vector2(539, 381)
