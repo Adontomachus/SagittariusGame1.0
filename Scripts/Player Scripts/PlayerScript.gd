@@ -518,7 +518,7 @@ func upgrade_player_stats() -> void:
 	
 	if UpgradeSystemScript.should_show_upgrades(player_level):
 		UpgradeScreen.visible = true
-		UpgradeScreen.show_upgrades()
+		UpgradeScreen.show_upgrades(self)
 	pass
 #endregion
 	

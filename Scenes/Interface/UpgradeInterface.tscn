@@ -57,7 +57,7 @@ func play_popup() -> void:
 
 	## Background fades in
 	if background_panel:
-		tween.tween_property(background_panel, \"modulate:a\", 0.7, 0.35)\\
+		tween.tween_property(background_panel, \"modulate:a\", 1, 0.35)\\
 			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 	## Card 1
@@ -158,7 +158,7 @@ font = ExtResource("2_oasdf")
 font_size = 30
 font_color = Color(0.8634428, 1, 0, 1)
 
-[node name="UpgradeScreen" type="Control" unique_id=1347961824]
+[node name="UpgradeScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("animator")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -167,6 +167,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xfjfj")
+animator = NodePath("CanvasLayer")
 
 [node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
 visible = false
@@ -177,6 +178,7 @@ offset_right = 1816.0
 offset_bottom = 996.0
 
 [node name="Panel" type="Panel" parent="." unique_id=993651868]
+visible = false
 layout_mode = 0
 offset_left = 116.0
 offset_top = 76.0
@@ -185,6 +187,7 @@ offset_bottom = 1003.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfjfj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1111881720 node_paths=PackedStringArray("upgrade_ui", "card_1", "card_2", "card_3", "background_panel")]
+visible = false
 script = SubResource("GDScript_xfjfj")
 upgrade_ui = NodePath("..")
 card_1 = NodePath("UpgradeText/Card1")

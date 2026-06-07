@@ -1497,7 +1497,7 @@ font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ev13k"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_gwjna"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1971,19 +1971,20 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_ev13k")
+button_group = SubResource("ButtonGroup_gwjna")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_ev13k")
+button_group = SubResource("ButtonGroup_gwjna")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_ev13k")
+button_group = SubResource("ButtonGroup_gwjna")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
 layout_mode = 1
 
 [node name="MinimapHUD" parent="." unique_id=1010004399 instance=ExtResource("22_0if8i")]
+layer = 0
 
 [node name="MinimapContainer" parent="MinimapHUD" index="0" unique_id=1762052833]
 custom_minimum_size = Vector2(300, 300)

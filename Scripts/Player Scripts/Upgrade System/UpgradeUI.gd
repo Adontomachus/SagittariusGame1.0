@@ -2,6 +2,7 @@ class_name UpgradeUI
 extends Control
 
 @export var player: PlayerCharacter
+@export var animator: CanvasLayer
 
 @onready var card_1: Button = $CanvasLayer/UpgradeText/Card1
 @onready var card_2: Button = $CanvasLayer/UpgradeText/Card2
@@ -12,8 +13,10 @@ extends Control
 var current_cards: Array[UpgradeData] = []
 
 
-func show_upgrades() -> void:
-	current_cards = UpgradeSystemScript.get_random_cards(player) 
+func show_upgrades(p: PlayerCharacter) -> void:
+	player = p
+	manager = p.manager
+	current_cards = UpgradeSystemScript.get_random_cards(player)
 
 	if current_cards.is_empty():
 		_close()
@@ -25,6 +28,12 @@ func show_upgrades() -> void:
 
 	visible = true
 	manager._pauseGame()
+
+	## Play popup animation
+	if animator:
+		print("Trying to play animation")
+		animator.play_popup()
+		animator.visible = true
 
 
 func _populate_card(card: Button, upgrade: UpgradeData) -> void:
@@ -49,8 +58,15 @@ func _on_card_3_pressed() -> void:
 
 
 func _pick(index: int) -> void:
+	if player == null:
+		push_error("UpgradeUI: player is null in _pick")
+		return
 	if index >= current_cards.size():
 		return
+
+	if animator:
+		await animator.play_dismiss(index)
+
 	UpgradeSystemScript.apply_upgrade(current_cards[index], player)
 	_close()
 
