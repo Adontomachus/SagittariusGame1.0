@@ -3,6 +3,144 @@
 [ext_resource type="Script" uid="uid://im1hv4l17np8" path="res://Scripts/Player Scripts/Upgrade System/UpgradeUI.gd" id="1_xfjfj"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="2_oasdf"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfjfj"]
+bg_color = Color(0.35222265, 0.31260636, 0.13873474, 1)
+
+[sub_resource type="GDScript" id="GDScript_xfjfj"]
+script/source = "class_name UpgradeUIAnimation
+extends Node
+
+@export var upgrade_ui: Control         
+@export var card_1: Button
+@export var card_2: Button
+@export var card_3: Button
+
+@export_category(\"Animation Settings\")
+@export var popup_duration: float = 0.5
+@export var card_stagger: float = 0.08   ## delay between each card appearing
+@export var overshoot_scale: Vector2 = Vector2(1.08, 1.08)
+@export var background_fade_duration: float = 0.3
+
+@export var background_panel: Panel      
+
+var tween: Tween
+
+
+func play_popup() -> void:
+	self.visible = true
+	background_panel.visible = true
+	_disable_cards(true)
+
+	## Start everything invisible
+	if background_panel:
+		background_panel.modulate.a = 0.0
+
+	var card_offset := Vector2(0, 40)
+	card_1.scale = Vector2.ZERO
+	card_2.scale = Vector2.ZERO
+	card_3.scale = Vector2.ZERO
+	card_1.modulate.a = 0.0
+	card_2.modulate.a = 0.0
+	card_3.modulate.a = 0.0
+	card_1.position += card_offset
+	card_2.position += card_offset
+	card_3.position += card_offset
+
+	var card_1_origin := card_1.position - card_offset
+	var card_2_origin := card_2.position - card_offset
+	var card_3_origin := card_3.position - card_offset
+
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.set_parallel(true)
+
+	## Background fades in
+	if background_panel:
+		tween.tween_property(background_panel, \"modulate:a\", 0.7, 0.35)\\
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	## Card 1
+	tween.tween_property(card_1, \"scale\", Vector2.ONE, 0.45)\\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(card_1, \"modulate:a\", 1.0, 0.3)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(card_1, \"position\", card_1_origin, 0.45)\\
+		.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+
+	## Card 2 — staggered
+	tween.tween_property(card_2, \"scale\", Vector2.ONE, 0.45)\\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)\\
+		.set_delay(card_stagger)
+	tween.tween_property(card_2, \"modulate:a\", 1.0, 0.3)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)\\
+		.set_delay(card_stagger)
+	tween.tween_property(card_2, \"position\", card_2_origin, 0.45)\\
+		.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)\\
+		.set_delay(card_stagger)
+
+	## Card 3 — more staggered
+	tween.tween_property(card_3, \"scale\", Vector2.ONE, 0.45)\\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)\\
+		.set_delay(card_stagger * 2)
+	tween.tween_property(card_3, \"modulate:a\", 1.0, 0.3)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)\\
+		.set_delay(card_stagger * 2)
+	tween.tween_property(card_3, \"position\", card_3_origin, 0.45)\\
+		.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)\\
+		.set_delay(card_stagger * 2)
+
+	await tween.finished
+	_disable_cards(false)
+
+
+func play_dismiss(picked_index: int) -> void:
+	_disable_cards(true)
+
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.set_parallel(true)
+
+	var cards := [card_1, card_2, card_3]
+	for i in range(cards.size()):
+		if i == picked_index:
+			## Picked card scales up briefly then fades out smoothly
+			tween.tween_property(cards[i], \"scale\", Vector2(1.15, 1.15), 0.1)\\
+				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tween.tween_property(cards[i], \"scale\", Vector2.ZERO, 0.25)\\
+				.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)\\
+				.set_delay(0.1)
+			tween.tween_property(cards[i], \"modulate:a\", 0.0, 0.3)\\
+				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)\\
+				.set_delay(0.05)
+		else:
+			## Unchosen cards slide down and fade smoothly
+			tween.tween_property(cards[i], \"scale\", Vector2(0.85, 0.85), 0.15)\\
+				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)\\
+				.set_delay(randf_range(0.0, 0.04))
+			tween.tween_property(cards[i], \"scale\", Vector2.ZERO, 0.2)\\
+				.set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)\\
+				.set_delay(0.15)
+			tween.tween_property(cards[i], \"modulate:a\", 0.0, 0.25)\\
+				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)\\
+				.set_delay(randf_range(0.0, 0.04))
+
+	if background_panel:
+		tween.tween_property(background_panel, \"modulate:a\", 0.0, 0.3)\\
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)\\
+			.set_delay(0.1)
+	self.visible = false
+	background_panel.visible = false
+	await tween.finished
+
+
+func _disable_cards(disabled: bool) -> void:
+	card_1.disabled = disabled
+	card_2.disabled = disabled
+	card_3.disabled = disabled
+"
+
 [sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
 line_spacing = 25.0
 paragraph_spacing = 14.0
@@ -31,14 +169,30 @@ grow_vertical = 2
 script = ExtResource("1_xfjfj")
 
 [node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
+visible = false
 layout_mode = 0
 offset_left = 115.0
 offset_top = 75.0
 offset_right = 1816.0
 offset_bottom = 996.0
 
-[node name="UpgradeText" type="Label" parent="." unique_id=1560795430]
+[node name="Panel" type="Panel" parent="." unique_id=993651868]
 layout_mode = 0
+offset_left = 116.0
+offset_top = 76.0
+offset_right = 1814.0
+offset_bottom = 1003.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfjfj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1111881720 node_paths=PackedStringArray("upgrade_ui", "card_1", "card_2", "card_3", "background_panel")]
+script = SubResource("GDScript_xfjfj")
+upgrade_ui = NodePath("..")
+card_1 = NodePath("UpgradeText/Card1")
+card_2 = NodePath("UpgradeText/Card2")
+card_3 = NodePath("UpgradeText/Card3")
+background_panel = NodePath("../Panel")
+
+[node name="UpgradeText" type="Label" parent="CanvasLayer" unique_id=1560795430]
 offset_left = 115.0
 offset_top = 82.0
 offset_right = 1816.0
@@ -47,14 +201,14 @@ text = "Select an upgrade!"
 label_settings = SubResource("LabelSettings_8oq8g")
 horizontal_alignment = 1
 
-[node name="Card1" type="Button" parent="UpgradeText" unique_id=462002193]
+[node name="Card1" type="Button" parent="CanvasLayer/UpgradeText" unique_id=462002193]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 330.0
 offset_right = 527.0
 offset_bottom = 828.0
 
-[node name="Level" type="Label" parent="UpgradeText/Card1" unique_id=1983420145]
+[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card1" unique_id=1983420145]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 19.0
@@ -64,7 +218,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_bl1lb")
 vertical_alignment = 1
 
-[node name="Category" type="Label" parent="UpgradeText/Card1" unique_id=1325747494]
+[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card1" unique_id=1325747494]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 498.0
@@ -76,7 +230,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="UpgradeText/Card1" unique_id=257572424]
+[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card1" unique_id=257572424]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 297.0
@@ -87,7 +241,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="UpgradeText/Card1" unique_id=1513711762]
+[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card1" unique_id=1513711762]
 layout_mode = 0
 offset_left = 51.0
 offset_top = -127.0
@@ -98,14 +252,14 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Card2" type="Button" parent="UpgradeText" unique_id=765980183]
+[node name="Card2" type="Button" parent="CanvasLayer/UpgradeText" unique_id=765980183]
 layout_mode = 0
 offset_left = 621.0
 offset_top = 330.0
 offset_right = 1071.0
 offset_bottom = 828.0
 
-[node name="Level" type="Label" parent="UpgradeText/Card2" unique_id=978098320]
+[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=978098320]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 19.0
@@ -115,7 +269,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_bl1lb")
 vertical_alignment = 1
 
-[node name="Category" type="Label" parent="UpgradeText/Card2" unique_id=550530408]
+[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=550530408]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 498.0
@@ -127,7 +281,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="UpgradeText/Card2" unique_id=1725829500]
+[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=1725829500]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 297.0
@@ -138,7 +292,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="UpgradeText/Card2" unique_id=1430892237]
+[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=1430892237]
 layout_mode = 0
 offset_left = 51.0
 offset_top = -127.0
@@ -149,14 +303,14 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Card3" type="Button" parent="UpgradeText" unique_id=641972485]
+[node name="Card3" type="Button" parent="CanvasLayer/UpgradeText" unique_id=641972485]
 layout_mode = 0
 offset_left = 1148.0
 offset_top = 330.0
 offset_right = 1598.0
 offset_bottom = 828.0
 
-[node name="Level" type="Label" parent="UpgradeText/Card3" unique_id=867185409]
+[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=867185409]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 19.0
@@ -166,7 +320,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_bl1lb")
 vertical_alignment = 1
 
-[node name="Category" type="Label" parent="UpgradeText/Card3" unique_id=711979889]
+[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=711979889]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 498.0
@@ -178,7 +332,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="UpgradeText/Card3" unique_id=704710783]
+[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=704710783]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 297.0
@@ -189,7 +343,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="UpgradeText/Card3" unique_id=691982646]
+[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=691982646]
 layout_mode = 0
 offset_left = 51.0
 offset_top = -127.0
@@ -200,6 +354,6 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="UpgradeText/Card1" to="." method="_on_card_1_pressed"]
-[connection signal="pressed" from="UpgradeText/Card2" to="." method="_on_card_2_pressed"]
-[connection signal="pressed" from="UpgradeText/Card3" to="." method="_on_card_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card1" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card2" to="." method="_on_card_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card3" to="." method="_on_card_3_pressed"]

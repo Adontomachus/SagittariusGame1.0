@@ -3,9 +3,9 @@ extends Control
 
 @export var player: PlayerCharacter
 
-@onready var card_1: Button = $UpgradeText/Card1
-@onready var card_2: Button = $UpgradeText/Card2
-@onready var card_3: Button = $UpgradeText/Card3
+@onready var card_1: Button = $CanvasLayer/UpgradeText/Card1
+@onready var card_2: Button = $CanvasLayer/UpgradeText/Card2
+@onready var card_3: Button = $CanvasLayer/UpgradeText/Card3
 
 @export var manager: GManager
 
