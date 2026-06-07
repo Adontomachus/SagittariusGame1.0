@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="6_iah0i"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_15gep"]
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_jj52o"]
+[ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="11_0n2qw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -135,6 +136,11 @@ debug_color = Color(1, 0.47785366, 0.41005647, 0.042000003)
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1468428355]
 libraries/ = SubResource("AnimationLibrary_wwa7f")
+
+[node name="BeatSquashStretch" type="Node" parent="." unique_id=611249203 node_paths=PackedStringArray("target") groups=["BeatSquashStretch"]]
+script = ExtResource("11_0n2qw")
+target = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://b8i8fepdrf741"
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]

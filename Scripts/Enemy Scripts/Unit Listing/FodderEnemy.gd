@@ -90,6 +90,15 @@ func _ready():
 	# For boss type units, finds the node for the the cinematic handler to play a scene when the boss reaches 0 HP.
 	#var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
 	#print("Current Cinematics Handler: " , cinematics_handler)
+	# Enemy squashing and stretching
+	var squash := get_node_or_null("BeatSquashStretch")
+	if squash:
+		squash.target = state_machine.sprite
+		squash.full_beat_intensity = 0.025
+		squash.half_beat_intensity = 0.01
+		squash.recovery_speed = 0.9
+		squash.base_scale = state_machine.sprite.scale
+		print("Squash found in enemy")
 	var difficultyScaler 
 	
 	if(difficulty_settings == 0):

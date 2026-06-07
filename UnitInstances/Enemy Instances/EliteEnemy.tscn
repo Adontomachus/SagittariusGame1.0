@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://2vauga4pjmr3" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteSpearRestState.gd" id="12_1uvtk"]
 [ext_resource type="Script" uid="uid://dykdysmx667ac" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteDecideState.gd" id="13_m3nru"]
 [ext_resource type="AudioStream" uid="uid://bgy3n7f3chysj" path="res://Audio/Sounds/EliteSpearThrow.wav" id="15_1uvtk"]
+[ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="16_g3esp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.734726
@@ -191,6 +192,11 @@ stream = ExtResource("15_1uvtk")
 volume_db = -7.232
 pitch_scale = 1.2
 bus = &"SFX"
+
+[node name="BeatSquashStretch" type="Node" parent="." unique_id=935928876 node_paths=PackedStringArray("target") groups=["BeatSquashStretch"]]
+script = ExtResource("16_g3esp")
+target = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://b8i8fepdrf741"
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
