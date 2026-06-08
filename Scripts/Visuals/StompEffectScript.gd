@@ -2,7 +2,6 @@ extends Node2D
 @export var shot_effect: CPUParticles2D
 
 @export var shakes_camera: bool = false
-@export var is_shockwave_effect: bool = false
 @export var stomp_animation: AnimationPlayer
 
 @export var camera: CameraControl
@@ -15,10 +14,11 @@ func _process(delta):
 
 func _ready():
 	
-	if is_shockwave_effect:
-		stomp_animation.play("Shockwave")
-		var camera = get_tree().get_first_node_in_group("CameraControl")
-		if camera: camera.add_trauma(0.6) 
+	stomp_animation.play("Shockwave")
+	
+	var camera = get_tree().get_first_node_in_group("CameraControl")
+	if camera: 
+		camera.add_trauma(0.6) 
 	
 	print("Particles emitted!")
 

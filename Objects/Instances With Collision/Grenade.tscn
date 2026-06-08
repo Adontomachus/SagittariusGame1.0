@@ -5,6 +5,25 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6fko"]
 
+[sub_resource type="Environment" id="Environment_w0w30"]
+background_mode = 3
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_7a4nw"]
+colors = PackedColorArray(0.7177011, 0.88313174, 0.16656345, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u5cfu"]
+gradient = SubResource("Gradient_7a4nw")
+width = 25
+height = 25
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.77777785, 0.34188035)
+
+[sub_resource type="Curve" id="Curve_v6fko"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.95894426, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Grenade" type="RigidBody2D" unique_id=971221955]
 script = ExtResource("1_w0w30")
 
@@ -15,3 +34,19 @@ shape = SubResource("CircleShape2D_v6fko")
 texture = ExtResource("2_u5cfu")
 
 [node name="FuseTimer" type="Timer" parent="." unique_id=1531729314]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1840511705]
+environment = SubResource("Environment_w0w30")
+
+[node name="TrailEffect" type="CPUParticles2D" parent="." unique_id=76260228]
+modulate = Color(1, 1, 1, 0.5)
+self_modulate = Color(3.2944162, 3.2944162, 3.2944162, 0.25)
+amount = 100
+texture = SubResource("GradientTexture2D_u5cfu")
+lifetime = 0.8
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 15.0
+scale_amount_curve = SubResource("Curve_v6fko")
+color = Color(0.9309246, 1, 0.677051, 1)

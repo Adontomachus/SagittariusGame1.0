@@ -82,8 +82,9 @@ var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.ts
 @export var pulse_sound_effect: AudioStreamPlayer
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
-# Visual feedback for charged shot
+# Visual feedback and UI feedback for charged shot
 @onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
+@export var charged_shot_ready_interface: Sprite2D
 # Primary fire and its fire rate
 @export_category("Player Fire Rate")
 var shot_fire_rate: float

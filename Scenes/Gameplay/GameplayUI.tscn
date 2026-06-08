@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="5_pdrc1"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="6_gwjna"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="7_ev13k"]
+[ext_resource type="Script" uid="uid://dpkv5vduqrw7c" path="res://Scripts/UI Menu, Settings and Post Game/HealthDisplayScript.gd" id="7_gwjna"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/Audio/PlayerBeatSync.gd" id="8_5f62o"]
 [ext_resource type="AudioStream" uid="uid://c6m7eu5rshvxj" path="res://Audio/Music/Bebot_Updated.mp3" id="9_0gr54"]
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="10_ntvnh"]
@@ -951,6 +952,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../UpdatedPlayerHealthBar/PlayerHealthText:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vwi3h"]
 resource_name = "UIBeatPulse"
@@ -1063,6 +1076,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../UpdatedPlayerHealthBar/PlayerHealthText:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(4.415934, 4.415934, 4.415934, 1), Color(1.353256, 1.353256, 1.353256, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yb2d"]
 _data = {
@@ -1077,6 +1102,15 @@ outline_size = 20
 outline_color = Color(0.28680092, 0.16756532, 7.219613e-08, 1)
 shadow_size = 25
 shadow_color = Color(0.15170373, 0.03876, 0, 0.934)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pdrc1"]
+font = ExtResource("4_0if8i")
+font_size = 20
+font_color = Color(0.68577677, 1, 0.6253981, 1)
+outline_size = 5
+outline_color = Color(0.43842888, 0, 0.087813236, 1)
+shadow_size = 8
+shadow_color = Color(0.29748532, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o710q"]
 line_spacing = 25.0
@@ -1249,6 +1283,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../RMBContainer:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1776.0001, 411)]
+}
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
@@ -1385,6 +1431,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../RMBContainer:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1776.0001, 411), Vector2(1778.0002, 396.00003), Vector2(1776.0001, 411)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
 _data = {
@@ -1474,6 +1532,16 @@ fill = 1
 fill_from = Vector2(0.50220263, 0.4889868)
 fill_to = Vector2(0.7008547, 0.32478634)
 
+[sub_resource type="Gradient" id="Gradient_gwjna"]
+offsets = PackedFloat32Array(0.5157233, 1)
+colors = PackedColorArray(0.9187369, 0.97723854, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev13k"]
+gradient = SubResource("Gradient_gwjna")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
 [sub_resource type="LabelSettings" id="LabelSettings_hlum5"]
 font = ExtResource("4_0if8i")
 font_size = 48
@@ -1483,7 +1551,7 @@ outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3825n"]
 font = ExtResource("4_0if8i")
-font_size = 25
+font_size = 12
 font_color = Color(0.59608823, 0.9008019, 1, 1)
 outline_size = 5
 outline_color = Color(0, 0.25822645, 0.67127424, 1)
@@ -1496,6 +1564,12 @@ font = ExtResource("4_0if8i")
 font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gwjna"]
+font = ExtResource("4_0if8i")
+font_size = 24
+outline_size = 12
+outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_gwjna"]
 
@@ -1660,6 +1734,20 @@ nine_patch_stretch = true
 texture_under = ExtResource("5_pdrc1")
 texture_progress = ExtResource("6_gwjna")
 
+[node name="PlayerHealthText" type="Label" parent="UpdatedPlayerHealthBar" unique_id=591465270]
+z_index = 4
+layout_mode = 0
+offset_left = 189.0
+offset_top = 127.0
+offset_right = 591.8752
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 15
+text = "0 | 100 Health"
+label_settings = SubResource("LabelSettings_pdrc1")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_gwjna")
+
 [node name="ChargeUpBar" type="ProgressBar" parent="UpdatedPlayerHealthBar" unique_id=97961055]
 visible = false
 modulate = Color(2.210482, 2.5032542, 0, 1)
@@ -1782,7 +1870,7 @@ color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 z_index = -1
 offset_left = 1104.0
 offset_top = 975.0
-offset_right = 1109.4994
+offset_right = 1109.4991
 offset_bottom = 1014.0
 scale = Vector2(0.64, 1)
 color = Color(0.51124996, 0.4563635, 0.27770182, 1)
@@ -1846,6 +1934,12 @@ color = Color(3.294, 3.294, 3.294, 1)
 energy = 4.0
 texture = SubResource("GradientTexture2D_8hfiw")
 
+[node name="ChargedShotReadyGlow" type="Sprite2D" parent="." unique_id=1344796115]
+modulate = Color(1, 1, 1, 0.193)
+position = Vector2(126, 131)
+scale = Vector2(2.7499995, 2.8214211)
+texture = SubResource("GradientTexture2D_ev13k")
+
 [node name="GlowingGem2" parent="." unique_id=2110462969 instance=ExtResource("11_7i2y7")]
 self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
 position = Vector2(126, 131)
@@ -1888,11 +1982,12 @@ visible = false
 layout_mode = 1
 
 [node name="UpdatedExperienceBar" type="TextureProgressBar" parent="." unique_id=1561454494]
+modulate = Color(1.085866, 1.2334695, 1.2742168, 1)
 layout_mode = 0
-offset_left = 10.0
-offset_top = 956.0
-offset_right = 906.6024
-offset_bottom = 1114.0
+offset_left = 244.0
+offset_top = 75.0
+offset_right = 567.91455
+offset_bottom = 149.0
 scale = Vector2(0.8333334, 0.8333334)
 nine_patch_stretch = true
 texture_under = ExtResource("16_n87py")
@@ -1901,10 +1996,10 @@ texture_progress = ExtResource("17_dw111")
 [node name="ExperienceText" type="Label" parent="UpdatedExperienceBar" unique_id=402200278]
 z_index = 4
 layout_mode = 0
-offset_left = 45.6
-offset_top = 63.599976
-offset_right = 754.7999
-offset_bottom = 121.19995
+offset_left = -40.800003
+offset_top = -3.6000018
+offset_right = 427.0752
+offset_bottom = 34.399998
 theme_override_font_sizes/font_size = 15
 text = "0 | 100 Player Experience"
 label_settings = SubResource("LabelSettings_3825n")
@@ -1921,22 +2016,41 @@ texture = SubResource("GradientTexture2D_meejx")
 
 [node name="Ability1Container" type="ColorRect" parent="." unique_id=1865306640]
 layout_mode = 0
-offset_left = 1736.0001
-offset_top = 547.0
-offset_right = 1850.3774
-offset_bottom = 666.64484
+offset_left = 1735.0001
+offset_top = 575.0
+offset_right = 1849.3774
+offset_bottom = 694.64484
 rotation = 0.113265686
 
 [node name="AbililtyKey2" type="Label" parent="Ability1Container" unique_id=1285908341]
 layout_mode = 0
-offset_left = 30.614069
-offset_top = 136.41399
-offset_right = 62.594902
-offset_bottom = 218.18169
+offset_left = 45.744003
+offset_top = 136.70581
+offset_right = 77.72484
+offset_bottom = 218.47351
 rotation = -9.697676e-05
 theme_override_font_sizes/font_size = 16
 text = "Q"
 label_settings = SubResource("LabelSettings_48svx")
+
+[node name="RMBContainer" type="ColorRect" parent="." unique_id=1169418434]
+layout_mode = 0
+offset_left = 1776.0001
+offset_top = 411.0
+offset_right = 1844.1843
+offset_bottom = 482.32434
+rotation = 0.113265686
+
+[node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
+layout_mode = 0
+offset_left = 11.933164
+offset_top = 87.210075
+offset_right = 52.933163
+offset_bottom = 168.97778
+rotation = -9.697676e-05
+theme_override_font_sizes/font_size = 16
+text = "RMB"
+label_settings = SubResource("LabelSettings_gwjna")
 
 [node name="CompanionProgressBar" type="TextureProgressBar" parent="." unique_id=60829247]
 visible = false

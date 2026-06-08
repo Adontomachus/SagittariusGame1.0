@@ -92,6 +92,7 @@ BossUI=""
 ComboManager=""
 SceneGroup=""
 GameManagerSystems=""
+ChargedShotIcon=""
 
 [input]
 

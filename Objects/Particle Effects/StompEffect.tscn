@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c0ih0gueuced4"]
+
+[ext_resource type="Script" uid="uid://e4c10571xp5" path="res://Scripts/Visuals/StompEffectScript.gd" id="1_npxjs"]
+
+[sub_resource type="Gradient" id="Gradient_npxjs"]
+offsets = PackedFloat32Array(0.2735849, 0.4308176, 0.5283019, 0.6477987, 1)
+colors = PackedColorArray(0.9920456, 0.50318396, 0, 0, 0.9920456, 0.50318396, 0, 1, 0.99426365, 0.63743347, 0.2694199, 1, 0.9977989, 0.8472311, 0.69151497, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ok70e"]
+gradient = SubResource("Gradient_npxjs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Animation" id="Animation_v2ooh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0625, 0.0625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r0qdy"]
+resource_name = "Shockwave"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.0625, 0.0625), Vector2(1.03125, 1.03125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tcys"]
+_data = {
+&"RESET": SubResource("Animation_v2ooh"),
+&"Shockwave": SubResource("Animation_r0qdy")
+}
+
+[node name="StompEffect" type="Node2D" unique_id=1692245273 node_paths=PackedStringArray("stomp_animation")]
+script = ExtResource("1_npxjs")
+stomp_animation = NodePath("AnimationPlayer")
+
+[node name="StompSprite" type="Sprite2D" parent="." unique_id=555927191]
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("GradientTexture2D_ok70e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=865425864]
+root_node = NodePath("../StompSprite")
+libraries/ = SubResource("AnimationLibrary_0tcys")
