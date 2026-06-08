@@ -505,14 +505,13 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.83760685, 0.23504274)
 
-[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target", "moving_fog") groups=["GameManagerSystems"]]
+[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target") groups=["GameManagerSystems"]]
 position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
 waves_remaining = 8
 player_target = NodePath("InterfaceElements/PlayerTarget")
-moving_fog = NodePath("MovingFog")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
 color = Color(0.32168844, 0.51189935, 0.57157606, 1)
@@ -1908,6 +1907,7 @@ position = Vector2(447, 398)
 light_mask = 31
 visibility_layer = 31
 script = ExtResource("62_110ka")
+fog_layer_count = 6
 fog_texture = ExtResource("42_jgp33")
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
