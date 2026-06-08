@@ -14,7 +14,7 @@
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="6_y268v"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="Script" uid="uid://de550e6jmpmk1" path="res://Scripts/Miscellaneous/UpgradeSystemScript.gd" id="8_hlum5"]
-[ext_resource type="Script" path="res://Scripts/Visuals/ComboParticleSpawner.gd" id="9_nxx5y"]
+[ext_resource type="Script" uid="uid://bi5bdlm8b513o" path="res://Scripts/Visuals/ComboParticleSpawner.gd" id="9_nxx5y"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="Script" uid="uid://mrnktwdcd6k4" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
@@ -55,11 +55,13 @@
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
 [ext_resource type="PackedScene" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
+[ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="42_jgp33"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
 [ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Enemy Instances/EliteEnemy.tscn" id="54_rr6op"]
+[ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="62_110ka"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
 
@@ -220,7 +222,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_vj1fp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -503,13 +505,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.83760685, 0.23504274)
 
-[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target") groups=["GameManagerSystems"]]
+[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "player_target", "moving_fog") groups=["GameManagerSystems"]]
 position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
 waves_remaining = 8
 player_target = NodePath("InterfaceElements/PlayerTarget")
+moving_fog = NodePath("MovingFog")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
+color = Color(0.32168844, 0.51189935, 0.57157606, 1)
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
 script = ExtResource("2_vj1fp")
@@ -660,13 +666,13 @@ position = Vector2(37.2, 16.800001)
 scale = Vector2(1.0125002, 1.0125002)
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_vj1fp")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_vj1fp")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_vj1fp")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -905,6 +911,11 @@ bus = &"SFX"
 
 [node name="HitEffect" parent="Player" unique_id=1692245273 instance=ExtResource("40_wipa6")]
 position = Vector2(-81, -41)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=1524399052]
+energy = 1.5
+shadow_enabled = true
+texture = ExtResource("42_jgp33")
 
 [node name="GameLevelNode" type="Node" parent="." unique_id=232750320]
 
@@ -1892,6 +1903,12 @@ position = Vector2(753, 383)
 
 [node name="PlayerCatComp2" parent="." unique_id=1653798 instance=ExtResource("51_6uw2w")]
 position = Vector2(447, 398)
+
+[node name="MovingFog" type="Node2D" parent="." unique_id=1222811387]
+light_mask = 31
+visibility_layer = 31
+script = ExtResource("62_110ka")
+fog_texture = ExtResource("42_jgp33")
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
