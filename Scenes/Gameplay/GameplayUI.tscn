@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://djpbi3ti2qmdk" path="res://Scenes/Interface/DefeatInterface.tscn" id="2_ge5ss"]
 [ext_resource type="Script" uid="uid://bsi28hfemc0xs" path="res://Scripts/Audio/BorderBeatIndicator.gd" id="3_3825n"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_0if8i"]
-[ext_resource type="Script" uid="uid://bot8d5sh57oe7" path="res://Scripts/UI Menu, Settings and Post Game/ComboCounterFeedback.gd" id="5_gwjna"]
+[ext_resource type="Script" path="res://Scripts/UI Menu, Settings and Post Game/ComboCounterFeedback.gd" id="5_gwjna"]
 [ext_resource type="Texture2D" uid="uid://cvqjcaau7j6k3" path="res://Sprites/UI/healthbar.png" id="5_pdrc1"]
 [ext_resource type="Texture2D" uid="uid://b4dig5eeg31h6" path="res://Sprites/UI/healthbarfill.png" id="6_gwjna"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="7_ev13k"]
