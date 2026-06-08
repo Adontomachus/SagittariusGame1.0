@@ -15,6 +15,7 @@ point_count = 4
 
 [node name="HitEffect" type="Node2D" unique_id=1692245273]
 script = ExtResource("1_jhxfm")
+timedShot = 0.4
 
 [node name="ShotEffect" type="CPUParticles2D" parent="." unique_id=538343073]
 amount = 50

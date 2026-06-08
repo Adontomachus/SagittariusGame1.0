@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bui486asfc0c0" path="res://Scripts/Player Scripts/GrenadeExplosionArea.gd" id="1_ekmk2"]
 [ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_qit6l"]
+[ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="2_xq13j"]
 [ext_resource type="AudioStream" uid="uid://ddc7uigehky5a" path="res://Audio/Sounds/GiantExplosion.wav" id="3_k5xfb"]
 
 [sub_resource type="Animation" id="Animation_bcdgm"]
@@ -10,7 +11,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("ExplosionSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("ExplosionSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/path = NodePath("ExplosionSprite:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -109,7 +110,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("ExplosionSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -121,7 +122,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("ExplosionSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -133,7 +134,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/path = NodePath("ExplosionSprite:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -232,6 +233,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.90000004, 0.2)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+
+[sub_resource type="Curve" id="Curve_t5oqc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jhxfm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 200), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="Environment" id="Environment_gxkpb"]
 background_mode = 3
 glow_enabled = true
@@ -240,7 +252,7 @@ glow_intensity = 0.5
 [node name="GrenadeExplosion" type="Area2D" unique_id=1979704144]
 modulate = Color(0.82040936, 1, 0.432765, 1)
 script = ExtResource("1_ekmk2")
-lifetime = 1.0
+explosion_particles = ExtResource("2_xq13j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1860337004]
 libraries/ = SubResource("AnimationLibrary_31stm")
@@ -257,7 +269,7 @@ texture = SubResource("GradientTexture2D_gxkpb")
 scale = Vector2(0.0625, 0.0625)
 texture = SubResource("GradientTexture2D_xq13j")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=463235247]
+[node name="ExplosionSprite" type="Sprite2D" parent="." unique_id=463235247]
 visible = false
 modulate = Color(0.827222, 1, 0.26006752, 1)
 texture = ExtResource("2_qit6l")
@@ -265,6 +277,32 @@ texture = ExtResource("2_qit6l")
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=517210629]
 stream = ExtResource("3_k5xfb")
 bus = &"SFX"
+
+[node name="AoEEffect" type="CPUParticles2D" parent="." unique_id=1427452623]
+self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)
+emitting = false
+amount = 25
+texture = SubResource("CanvasTexture_jhxfm")
+one_shot = true
+preprocess = 0.13
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.29
+direction = Vector2(6, 6)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 527.59
+angular_velocity_min = -240.0
+angular_velocity_max = 138.85
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.5
+scale_amount_min = 5.0
+scale_amount_max = 15.65
+scale_amount_curve = SubResource("Curve_t5oqc")
+color = Color(0.78431374, 0.89411765, 0.18039216, 1)
+anim_speed_curve = SubResource("Curve_jhxfm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=667827721]
 environment = SubResource("Environment_gxkpb")

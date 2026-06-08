@@ -13,13 +13,22 @@ enum ProjectileSide {
 @export_category("Grenade Explosion Statistics")
 @export var aoe_damage: float = 60.0
 @export var explosion_radius: float = 120.0
-@export var lifetime: float = 0.8
+@export var lifetime: float = 1
 
 @onready var area_indicator: AnimationPlayer = $AnimationPlayer
 @onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
+@onready var explosion_sprite: Sprite2D = $ExplosionSprite
 
+# Visuals
+@export var explosion_particles: PackedScene
 
 func _ready() -> void:
+	
+	## Emit Particles
+	var blast = explosion_particles.instantiate()
+	blast.position = explosion_sprite.get_global_position()
+	get_tree().get_root().call_deferred("add_child", blast)
+	
 	## Resize collision circle to match explosion radius
 	var shape := CircleShape2D.new()
 	shape.radius = explosion_radius

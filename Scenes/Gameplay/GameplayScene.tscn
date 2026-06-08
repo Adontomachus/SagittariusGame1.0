@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://gea14qkih1ne" path="res://Scripts/UI Menu, Settings and Post Game/Hitflash.gd" id="12_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
 [ext_resource type="Script" uid="uid://cipc737xcdjss" path="res://Scripts/Player Scripts/SecondaryFire.gd" id="13_6uw2w"]
+[ext_resource type="PackedScene" uid="uid://csoo2afoaf6s6" path="res://UnitInstances/Enemy Instances/EnemyCharger.tscn" id="13_rr6op"]
 [ext_resource type="Script" uid="uid://ccacm8ui57prf" path="res://Scripts/Player Scripts/QMoves.gd" id="14_1vk04"]
 [ext_resource type="Script" uid="uid://cov3onfacl4cf" path="res://Scripts/Player Scripts/ChargeShot.gd" id="15_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
@@ -52,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
+[ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
@@ -216,7 +218,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_mtruf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_nxx5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -624,6 +626,11 @@ game_manager = NodePath("../../../../../..")
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="2" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
+[node name="PlayerHealthText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" parent_id_path=PackedInt32Array(2071023402, 784477876) index="0" unique_id=591465270 node_paths=PackedStringArray("health_text", "player_object")]
+health_text = NodePath(".")
+player_object = NodePath("../../../../../Player")
+metadata/_edit_use_anchors_ = true
+
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter")]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
 secondary_ammo_counter = NodePath("../../../SecondaryShotBars")
@@ -632,23 +639,27 @@ good_hit = 0.15
 ok_hit = 0.14
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="14" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
+[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="15" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
 
 [node name="ExperienceText" parent="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" parent_id_path=PackedInt32Array(2071023402, 1561454494) index="0" unique_id=402200278 node_paths=PackedStringArray("experience_text", "player_object")]
 experience_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 
+[node name="ExperienceBarGlow" parent="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" parent_id_path=PackedInt32Array(2071023402, 1561454494) index="1" unique_id=150698581]
+position = Vector2(37.2, 16.800001)
+scale = Vector2(1.0125002, 1.0125002)
+
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_mtruf")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_mtruf")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_mtruf")
+button_group = SubResource("ButtonGroup_nxx5y")
 
-[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
+[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
 manager = NodePath("../../../..")
 
@@ -688,7 +699,7 @@ mouse_filter = 2
 color = Color(1, 0, 0, 0)
 script = ExtResource("12_fu6i5")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
@@ -701,6 +712,7 @@ charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("17_figfh")
 pulse_sound_effect = NodePath("PulseSoundEffect")
+charged_shot_ready_interface = NodePath("../InterfaceElements/NewHUD/UI/ChargedShotReadyGlow")
 max_shot_fire_rate = 0.2
 can_use_ability = true
 max_ability_cooldown = 30.0
@@ -876,6 +888,9 @@ combo_system = NodePath("../../GameSystems/ComboSystem")
 script = ExtResource("39_mtruf")
 target = NodePath("../VisualRoot")
 beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
+
+[node name="HitEffect" parent="Player" unique_id=1692245273 instance=ExtResource("40_wipa6")]
+position = Vector2(-81, -41)
 
 [node name="GameLevelNode" type="Node" parent="." unique_id=232750320]
 
@@ -1838,6 +1853,10 @@ scale = Vector2(5.5634384, 5.5634384)
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-1471.9999, -1180)
 scale = Vector2(5.5627837, 5.5627837)
+
+[node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("13_rr6op")]
+position = Vector2(1286.9999, 413)
+scale = Vector2(0.9333328, 0.9333328)
 
 [node name="StationaryTurretEnemy" parent="." unique_id=141205280 instance=ExtResource("33_r8kr6")]
 position = Vector2(1180, 47)

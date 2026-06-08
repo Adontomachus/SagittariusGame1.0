@@ -9,19 +9,22 @@
 [ext_resource type="Script" uid="uid://dqgfutotgw458" path="res://Scripts/Enemy Scripts/States/Enemy States/Charge.gd" id="8_8jh7o"]
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="8_u8650"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="9_dj6py"]
+[ext_resource type="PackedScene" uid="uid://c0ih0gueuced4" path="res://Objects/Particle Effects/StompEffect.tscn" id="9_vhv6j"]
 [ext_resource type="Script" uid="uid://dbt63ev6u040x" path="res://Scripts/Enemy Scripts/States/Enemy States/ChargerClosing.gd" id="10_8jh7o"]
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_68cbe"]
 [ext_resource type="Script" uid="uid://n0n5jlpb2uo6" path="res://Scripts/Enemy Scripts/States/Enemy States/Windup.gd" id="10_axsu2"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="13_6onfs"]
+[ext_resource type="AudioStream" uid="uid://w50g3rkxy4cc" path="res://Audio/Sounds/ChargerStomp.wav" id="13_cjrua"]
+[ext_resource type="AudioStream" uid="uid://dkubcxuval72a" path="res://Audio/Sounds/ChargerRoar.mp3" id="14_ht5vj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
-radius = 46.702705
+radius = 54.142277
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
-radius = 32.142876
+radius = 38.486206
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oa7e"]
-radius = 47.0
+radius = 47.32988
 
 [sub_resource type="LabelSettings" id="LabelSettings_cjrua"]
 font = ExtResource("13_6onfs")
@@ -156,7 +159,7 @@ shape = SubResource("CircleShape2D_s7bn3")
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 self_modulate = Color(0.67263305, 0.35419908, 1, 1)
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.08811096, 0.088111006)
+scale = Vector2(0.11160722, 0.11160726)
 texture = ExtResource("2_t52mc")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
@@ -175,16 +178,20 @@ offset_right = 46.0
 offset_bottom = -35.0
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=86192602]
-offset_left = -76.785774
-offset_top = 15.178581
-offset_right = -20.846268
-offset_bottom = 44.53743
+offset_left = -90.17863
+offset_top = 17.857155
+offset_right = -34.23912
+offset_bottom = 47.216003
 rotation = -0.99837506
-scale = Vector2(1.1287538, 1.1287538)
+scale = Vector2(1.3755856, 1.3755856)
 nine_patch_stretch = true
 texture_under = ExtResource("4_tgimn")
 texture_progress = ExtResource("5_flwud")
 metadata/_edit_use_anchors_ = true
+
+[node name="StompMarker" type="Marker2D" parent="." unique_id=2082687082]
+position = Vector2(0, 37.500027)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("6_qd2d0")
@@ -197,9 +204,10 @@ script = ExtResource("8_u8650")
 state_to_return = NodePath("../EnemyStateChargerClosing")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
-[node name="EnemyStateCharging" type="Node" parent="EnemyStateMachine" unique_id=860352299 node_paths=PackedStringArray("after_chase_state")]
+[node name="EnemyStateCharging" type="Node" parent="EnemyStateMachine" unique_id=860352299 node_paths=PackedStringArray("after_chase_state", "charge_sound")]
 script = ExtResource("8_8jh7o")
 after_chase_state = NodePath("../EnemyStateRecovery")
+charge_sound = NodePath("../../RoarSound")
 
 [node name="EnemyStateChargerClosing" type="Node" parent="EnemyStateMachine" unique_id=298735533 node_paths=PackedStringArray("after_closing_state", "windup_state", "recovery_state")]
 script = ExtResource("10_8jh7o")
@@ -208,13 +216,27 @@ windup_state = NodePath("../EnemyStateWindup")
 successful_chance_range = 3.0
 recovery_state = NodePath("../EnemyStateRecovery")
 
-[node name="EnemyStateWindup" type="Node" parent="EnemyStateMachine" unique_id=1166473287 node_paths=PackedStringArray("charging_state", "telegraph_animation")]
+[node name="EnemyStateWindup" type="Node" parent="EnemyStateMachine" unique_id=1166473287 node_paths=PackedStringArray("charging_state", "telegraph_animation", "stomp_marker", "stomp_sound")]
 script = ExtResource("10_axsu2")
 charging_state = NodePath("../EnemyStateCharging")
 telegraph_animation = NodePath("../../TelegraphAnimation")
+stomp_effect = ExtResource("9_vhv6j")
+stomp_marker = NodePath("../../StompMarker")
+stomp_sound = NodePath("../../StompSound")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=257206988]
 stream = ExtResource("9_dj6py")
+volume_db = -7.5
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=97034992]
+stream = ExtResource("13_cjrua")
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="RoarSound" type="AudioStreamPlayer" parent="." unique_id=104651915]
+stream = ExtResource("14_ht5vj")
 volume_db = -7.5
 pitch_scale = 0.75
 bus = &"SFX"
@@ -237,6 +259,7 @@ offset_bottom = -31.071487
 text = "!"
 label_settings = SubResource("LabelSettings_cjrua")
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="GlowEffect" type="WorldEnvironment" parent="ChargingTelegraph" unique_id=1907758960]
 environment = SubResource("Environment_ht5vj")
@@ -252,6 +275,7 @@ offset_bottom = 73.00003
 text = "EnemyState"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1527912599]
 libraries/ = SubResource("AnimationLibrary_8jh7o")
