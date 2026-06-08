@@ -14,9 +14,9 @@
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_68cbe"]
 [ext_resource type="Script" uid="uid://n0n5jlpb2uo6" path="res://Scripts/Enemy Scripts/States/Enemy States/Windup.gd" id="10_axsu2"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="13_6onfs"]
-[ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="14_vhv6j"]
 [ext_resource type="AudioStream" uid="uid://w50g3rkxy4cc" path="res://Audio/Sounds/ChargerStomp.wav" id="13_cjrua"]
 [ext_resource type="AudioStream" uid="uid://dkubcxuval72a" path="res://Audio/Sounds/ChargerRoar.mp3" id="14_ht5vj"]
+[ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="14_vhv6j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 54.142277

@@ -14,7 +14,7 @@
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="6_y268v"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="Script" uid="uid://de550e6jmpmk1" path="res://Scripts/Miscellaneous/UpgradeSystemScript.gd" id="8_hlum5"]
-[ext_resource type="Script" uid="uid://bi5bdlm8b513o" path="res://Scripts/Visuals/ComboParticleSpawner.gd" id="9_nxx5y"]
+[ext_resource type="Script" path="res://Scripts/Visuals/ComboParticleSpawner.gd" id="9_nxx5y"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="Script" uid="uid://mrnktwdcd6k4" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
 [ext_resource type="PackedScene" uid="uid://dlxsple886mcf" path="res://Objects/Instances With Collision/Pillar.tscn" id="11_t0ujt"]
@@ -54,8 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
-[ext_resource type="AudioStream" uid="uid://dlaodw72r37my" path="res://Audio/Sounds/PlayerHitSound.wav" id="40_wipa6"]
-[ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
+[ext_resource type="PackedScene" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
@@ -221,7 +220,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_nxx5y"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -632,12 +631,16 @@ game_manager = NodePath("../../../../../..")
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="2" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
+[node name="UpdatedComboCounter" parent="InterfaceElements/NewHUD/UI" index="3" unique_id=654270409 node_paths=PackedStringArray("combo_label", "combo_system")]
+combo_label = NodePath(".")
+combo_system = NodePath("../../../../GameSystems/ComboSystem")
+
 [node name="PlayerHealthText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" parent_id_path=PackedInt32Array(2071023402, 784477876) index="0" unique_id=591465270 node_paths=PackedStringArray("health_text", "player_object")]
 health_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 metadata/_edit_use_anchors_ = true
 
-[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter")]
+[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
 secondary_ammo_counter = NodePath("../../../SecondaryShotBars")
 perfect_hit = 0.07
@@ -657,13 +660,13 @@ position = Vector2(37.2, 16.800001)
 scale = Vector2(1.0125002, 1.0125002)
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_nxx5y")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_nxx5y")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_nxx5y")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -892,15 +895,14 @@ script = ExtResource("13_6uw2w")
 beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 combo_system = NodePath("../../GameSystems/ComboSystem")
 
-[node name="BeatSquashStretch" type="Node" parent="Player" unique_id=1709212106 node_paths=PackedStringArray("target", "beat_sync") groups=["BeatSquashStretch"]]
+[node name="BeatSquashStretch" type="Node" parent="Player" unique_id=1709212106 node_paths=PackedStringArray("target") groups=["BeatSquashStretch"]]
 script = ExtResource("39_mtruf")
 target = NodePath("../VisualRoot")
-beat_sync = NodePath("../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 
 [node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="Player" unique_id=1192582183]
-stream = ExtResource("40_wipa6")
 volume_db = -7.576
 bus = &"SFX"
+
 [node name="HitEffect" parent="Player" unique_id=1692245273 instance=ExtResource("40_wipa6")]
 position = Vector2(-81, -41)
 
@@ -1876,7 +1878,7 @@ position = Vector2(1180, 47)
 [node name="StationaryTurretEnemy2" parent="." unique_id=834809500 instance=ExtResource("33_r8kr6")]
 position = Vector2(1391, 309)
 
-[node name="Elite" parent="." unique_id=1394345447 instance=ExtResource("54_rr6op")]
+[node name="Elite" parent="." unique_id=190766905 instance=ExtResource("54_rr6op")]
 position = Vector2(-102, -72)
 
 [node name="PlayerBullet" parent="." unique_id=132848767 instance=ExtResource("12_4t4xv")]

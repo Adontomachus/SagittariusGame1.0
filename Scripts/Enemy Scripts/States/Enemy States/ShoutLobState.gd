@@ -40,6 +40,7 @@ func process_frame(_delta: float) -> EnemyState:
 
 func _fire_shout() -> void:
 	if parent.target == null:
+		print("Can't find suitable target")
 		return
 
 	## Get a random point near the player circularly
