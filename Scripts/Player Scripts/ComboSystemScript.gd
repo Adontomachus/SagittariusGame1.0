@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 	if combo_strength < 0: combo_strength = 0
 	_update_combo()
 	pass
+	#test
 
 #region Custom functions for combo systems
 # Function for incrementing combo meter, caps out to a certain point
