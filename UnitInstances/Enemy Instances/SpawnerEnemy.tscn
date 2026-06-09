@@ -11,8 +11,6 @@
 [ext_resource type="Script" uid="uid://bjwm83qjth4q1" path="res://Scripts/Enemy Scripts/States/Enemy States/TurretFire.gd" id="9_hh78n"]
 [ext_resource type="Script" uid="uid://ddgde4sc35bqi" path="res://Scripts/Enemy Scripts/States/Enemy States/ShoutLobState.gd" id="10_t38i7"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="11_5glux"]
-[ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="12_ymh6y"]
-[ext_resource type="Texture2D" uid="uid://bpydlq50ud6dt" path="res://Sprites/Game Elements/SpawnIcon.png" id="13_r10nr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
@@ -62,11 +60,12 @@ _data = {
 }
 
 [node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "spawn_indicator", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_ewdkc")
 beats_between_spawns = 8
 spawn_radius = 500.0
 spawner_sprite = NodePath("Sprite")
-spawn_indicator = NodePath("Telegraph")
+spawn_indicator = NodePath("")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 
@@ -111,6 +110,7 @@ rotation = -0.99837506
 nine_patch_stretch = true
 texture_under = ExtResource("4_keiqf")
 texture_progress = ExtResource("5_eht03")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=1865937429]
 offset_left = -40.0
@@ -118,6 +118,7 @@ offset_top = 35.0
 offset_right = 40.0
 offset_bottom = 58.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("6_04xau")
@@ -156,16 +157,6 @@ environment = SubResource("Environment_k64of")
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1937620842]
 libraries/ = SubResource("AnimationLibrary_bvebc")
-
-[node name="BeatSquashStretch" type="Node" parent="." unique_id=1870855607 node_paths=PackedStringArray("target") groups=["BeatSquashStretch"]]
-script = ExtResource("12_ymh6y")
-target = NodePath("../Sprite")
-metadata/_custom_type_script = "uid://b8i8fepdrf741"
-
-[node name="Telegraph" type="Sprite2D" parent="." unique_id=1890732269]
-self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("13_r10nr")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

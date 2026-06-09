@@ -22,7 +22,6 @@
 [ext_resource type="Script" uid="uid://gea14qkih1ne" path="res://Scripts/UI Menu, Settings and Post Game/Hitflash.gd" id="12_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
 [ext_resource type="Script" uid="uid://cipc737xcdjss" path="res://Scripts/Player Scripts/SecondaryFire.gd" id="13_6uw2w"]
-[ext_resource type="PackedScene" uid="uid://csoo2afoaf6s6" path="res://UnitInstances/Enemy Instances/EnemyCharger.tscn" id="13_rr6op"]
 [ext_resource type="Script" uid="uid://ccacm8ui57prf" path="res://Scripts/Player Scripts/QMoves.gd" id="14_1vk04"]
 [ext_resource type="Script" uid="uid://cov3onfacl4cf" path="res://Scripts/Player Scripts/ChargeShot.gd" id="15_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
@@ -49,7 +48,6 @@
 [ext_resource type="Texture2D" uid="uid://gr14w16h7rfg" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE5.png" id="31_vj1fp"]
 [ext_resource type="Texture2D" uid="uid://bkx8e0olqi6lr" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE6.png" id="32_o710q"]
 [ext_resource type="Texture2D" uid="uid://d1iell8esy6nw" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE7.png" id="33_hlum5"]
-[ext_resource type="PackedScene" uid="uid://ceyhnxihxyim4" path="res://UnitInstances/Enemy Instances/StationaryEnemy.tscn" id="33_r8kr6"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
@@ -222,7 +220,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_jgp33"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -662,13 +660,13 @@ experience_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -1880,16 +1878,6 @@ scale = Vector2(5.5634384, 5.5634384)
 modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-1471.9999, -1180)
 scale = Vector2(5.5627837, 5.5627837)
-
-[node name="Enemy" parent="." unique_id=1394345447 instance=ExtResource("13_rr6op")]
-position = Vector2(1286.9999, 413)
-scale = Vector2(0.9333328, 0.9333328)
-
-[node name="StationaryTurretEnemy" parent="." unique_id=141205280 instance=ExtResource("33_r8kr6")]
-position = Vector2(1180, 47)
-
-[node name="StationaryTurretEnemy2" parent="." unique_id=834809500 instance=ExtResource("33_r8kr6")]
-position = Vector2(1391, 309)
 
 [node name="Elite" parent="." unique_id=190766905 instance=ExtResource("54_rr6op")]
 position = Vector2(-102, -72)

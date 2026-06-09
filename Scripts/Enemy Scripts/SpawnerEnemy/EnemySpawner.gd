@@ -15,6 +15,7 @@ extends Enemy
 @export var chargerEnemy: PackedScene = preload("res://UnitInstances/Enemy Instances/EnemyCharger.tscn")
 @export var bossSpawn: PackedScene = preload("res://UnitInstances/Enemy Instances/Boss.tscn")
 @export var stationaryEnemy: PackedScene = preload("res://UnitInstances/Enemy Instances/StationaryEnemy.tscn")
+@export var spawn_indicator_scene: PackedScene = preload("res://UnitInstances/Enemy Instances/SpawnIndicator.tscn")
 
 @export_category("Spawner Visuals")
 @export var spawner_sprite: Sprite2D
@@ -36,6 +37,10 @@ func _ready() -> void:
 	beat_sync = get_tree().get_first_node_in_group("BeatSync")
 	if beat_sync == null:
 		push_error("EnemySpawner: BeatSync not found")
+	if spawner_sprite:
+		spawner_sprite.material = null
+	if state_machine and state_machine.sprite:
+		state_machine.sprite.material = null
 
 
 func _process(_delta: float) -> void:
@@ -53,19 +58,23 @@ func _process(_delta: float) -> void:
 func _try_spawn() -> void:
 	if spawned_count >= max_spawn_count:
 		return
-
 	var spawn_pos := _get_spawn_position()
 	var enemy_scene := _pick_enemy_type()
-
 	if enemy_scene == null:
 		push_error("EnemySpawner: no valid enemy scene to spawn")
 		return
-
-	var enemy = enemy_scene.instantiate()
-	get_tree().current_scene.add_child(enemy)
-	enemy.global_position = spawn_pos
 	spawned_count += 1
-	print("EnemySpawner spawned: ", enemy.name, " (", spawned_count, "/", max_spawn_count, ")")
+	if spawn_indicator_scene:
+		var indicator = spawn_indicator_scene.instantiate()
+		get_tree().current_scene.add_child(indicator)
+		indicator.global_position = spawn_pos
+		await get_tree().process_frame
+		await indicator.play_and_spawn(enemy_scene, spawn_pos)
+	else:
+		var enemy = enemy_scene.instantiate()
+		get_tree().current_scene.add_child(enemy)
+		enemy.global_position = spawn_pos
+	print("EnemySpawner queued spawn ", spawned_count, "/", max_spawn_count)
 
 
 func _pick_enemy_type() -> PackedScene:
