@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://ccacm8ui57prf" path="res://Scripts/Player Scripts/QMoves.gd" id="14_1vk04"]
 [ext_resource type="Script" uid="uid://cov3onfacl4cf" path="res://Scripts/Player Scripts/ChargeShot.gd" id="15_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://cnger75m0yom3" path="res://Objects/Instances With Collision/BaleteTree.tscn" id="16_tedqt"]
+[ext_resource type="Shader" uid="uid://d021bpqlt3hl" path="res://Scenes/Gameplay/vignette_shader.gdshader" id="17_110ka"]
 [ext_resource type="PackedScene" uid="uid://croljcfbh70xd" path="res://Objects/Instances With Collision/Grenade.tscn" id="17_figfh"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
@@ -54,7 +55,7 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
-[ext_resource type="PackedScene" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
+[ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
 [ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="42_jgp33"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
@@ -62,6 +63,16 @@
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
 [ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Enemy Instances/EliteEnemy.tscn" id="54_rr6op"]
 [ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="62_110ka"]
+
+[sub_resource type="Environment" id="Environment_jgp33"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 1.1
+glow_bloom = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.125
+adjustment_saturation = 1.13
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
 
@@ -222,7 +233,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_jgp33"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_110ka"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -339,6 +350,9 @@ _data = {
 &"AbilityActivationVisual": SubResource("Animation_6uw2w"),
 &"RESET": SubResource("Animation_figfh")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vj1fp"]
+shader = ExtResource("17_110ka")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4t4xv"]
 
@@ -513,8 +527,11 @@ player = NodePath("Player")
 waves_remaining = 8
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
+[node name="GameplayWorldEnvironment" type="WorldEnvironment" parent="." unique_id=256515015]
+environment = SubResource("Environment_jgp33")
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
-color = Color(0.32168844, 0.51189935, 0.57157606, 1)
+color = Color(0.35988212, 0.49953008, 0.60075355, 1)
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
 script = ExtResource("2_vj1fp")
@@ -646,6 +663,9 @@ health_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 metadata/_edit_use_anchors_ = true
 
+[node name="BeatGlowFeedback" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="7" unique_id=719690560]
+visible = false
+
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
 secondary_ammo_counter = NodePath("../../../SecondaryShotBars")
@@ -662,13 +682,13 @@ experience_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_110ka")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_110ka")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_110ka")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -715,6 +735,13 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 0)
 script = ExtResource("12_fu6i5")
+
+[node name="Vignette" type="ColorRect" parent="InterfaceElements/NewHUD" unique_id=1803915477]
+visible = false
+material = SubResource("ShaderMaterial_vj1fp")
+offset_right = 1918.0
+offset_bottom = 1077.0
+color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true

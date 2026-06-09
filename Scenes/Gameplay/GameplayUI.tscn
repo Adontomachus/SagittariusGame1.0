@@ -1337,7 +1337,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.66),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1216, 969), Vector2(988, 969)]
+"values": [Vector2(1216, 822), Vector2(988, 822)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1349,7 +1349,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1.66),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(724, 969), Vector2(952, 969)]
+"values": [Vector2(724, 822), Vector2(952, 822)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1397,7 +1397,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.85, 0.86, 1.66),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(843, 975), Vector2(969, 975), Vector2(722, 975), Vector2(843, 975)]
+"values": [Vector2(843, 826), Vector2(969, 826), Vector2(722, 826), Vector2(843, 826)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1409,7 +1409,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.85, 0.86, 1.66),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1104, 975), Vector2(976, 975), Vector2(1223, 975), Vector2(1104, 975)]
+"values": [Vector2(1104, 826), Vector2(976, 826), Vector2(1223, 826), Vector2(1104, 826)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1575,7 +1575,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_5m4nd"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_7i2y7"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1834,17 +1834,18 @@ label_settings = SubResource("LabelSettings_0cpi2")
 [node name="BeatIndicatorElements" type="Node" parent="." unique_id=972979635]
 
 [node name="IndicatorSprite" type="Sprite2D" parent="BeatIndicatorElements" unique_id=1953548214]
-position = Vector2(957, 805.5)
+position = Vector2(974, 827.5)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("7_ev13k")
 
 [node name="BeatIndicatorLine" type="ColorRect" parent="BeatIndicatorElements" unique_id=1426185933]
 z_index = -1
-offset_left = 707.0
-offset_top = 819.5
-offset_right = 1208.0
-offset_bottom = 827.5
+offset_left = 724.0
+offset_top = 841.5
+offset_right = 1225.0
+offset_bottom = 849.5
 color = Color(0.12968418, 0.04763417, 0.005845576, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="RhythmLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=882339640]
 z_index = -1
@@ -1858,7 +1859,7 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 z_index = -1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0006
+offset_right = 1225.0002
 offset_bottom = 1019.0
 color = Color(0.85559684, 1, 0.64379185, 1)
 
@@ -1875,7 +1876,7 @@ color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 z_index = -1
 offset_left = 1104.0
 offset_top = 975.0
-offset_right = 1109.4991
+offset_right = 1109.4985
 offset_bottom = 1014.0
 scale = Vector2(0.64, 1)
 color = Color(0.51124996, 0.4563635, 0.27770182, 1)
@@ -1884,8 +1885,7 @@ color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 libraries/ = SubResource("AnimationLibrary_rp1p4")
 
 [node name="BeatGlowFeedback" type="Sprite2D" parent="BeatIndicatorElements" unique_id=719690560]
-visible = false
-position = Vector2(973.00006, 994.00006)
+position = Vector2(977, 975)
 scale = Vector2(2.062496, 2.062496)
 texture = SubResource("GradientTexture2D_meejx")
 
@@ -1896,10 +1896,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -274.5
-offset_right = 14.0
-offset_bottom = -224.5
+offset_left = -21.0
+offset_top = -260.0
+offset_right = 29.0
+offset_bottom = -210.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(25, 25)
@@ -2082,13 +2082,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_5m4nd")
+button_group = SubResource("ButtonGroup_7i2y7")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_5m4nd")
+button_group = SubResource("ButtonGroup_7i2y7")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_5m4nd")
+button_group = SubResource("ButtonGroup_7i2y7")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
@@ -2139,7 +2139,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full", "light")]
-position = Vector2(0, 829)
+position = Vector2(14, 831)
 script = ExtResource("26_7i2y7")
 sprite_empty = NodePath("EyeClose")
 sprite_half = NodePath("EyeHalf")
@@ -2167,7 +2167,7 @@ texture = ExtResource("29_qj281")
 
 [node name="GlowEffect" type="PointLight2D" parent="EyeControl" unique_id=432501023]
 z_index = 25
-position = Vector2(960, 143.53555)
+position = Vector2(961, 16.00003)
 scale = Vector2(2.2149193, 2.272444)
 color = Color(3.294, 3.294, 3.294, 1)
 energy = 4.0

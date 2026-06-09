@@ -1,10 +1,75 @@
 [gd_scene format=3 uid="uid://bh8115h4g0ahk"]
 
 [ext_resource type="Script" uid="uid://b1nvqyelvx8j8" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutTelegraph.gd" id="1_g67dv"]
-[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_4q8rf"]
+[ext_resource type="Texture2D" uid="uid://chdq4u843n1eq" path="res://Sprites/Game Elements/enemyaoetelegraph.png" id="2_4q8rf"]
+
+[sub_resource type="Animation" id="Animation_4q8rf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Telegraph:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Telegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r1kxu"]
+resource_name = "Spinning"
+length = 2.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Telegraph:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.27739263, 0.32987708),
+"update": 0,
+"values": [0.0, -12.566371]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Telegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.844042, 2.844042, 2.844042, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0kjv"]
+_data = {
+&"RESET": SubResource("Animation_4q8rf"),
+&"Spinning": SubResource("Animation_r1kxu")
+}
 
 [node name="ShoutTelegraph" type="Node2D" unique_id=2009070930]
 script = ExtResource("1_g67dv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=953736790]
+[node name="Telegraph" type="Sprite2D" parent="." unique_id=953736790]
+scale = Vector2(0.58884555, 0.5888457)
 texture = ExtResource("2_4q8rf")
+
+[node name="SpinAnimation" type="AnimationPlayer" parent="." unique_id=1285261064]
+libraries/ = SubResource("AnimationLibrary_q0kjv")
