@@ -30,7 +30,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8418803, 0.20512821)
 
-[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding")]
+[node name="PlayerCatComp" type="CharacterBody2D" unique_id=1754029293 node_paths=PackedStringArray("state_machine", "companion_sprite", "pathfinding", "companion_hitbox") groups=["Companion 2"]]
 script = ExtResource("1_12uow")
 state_machine = NodePath("CompanionStateMachine")
 companion_sprite = NodePath("CatSprite")
@@ -39,6 +39,7 @@ move_speed = 325.0
 player_radius = 165.0
 dash_speed = 715.0
 companion_damage = 42.0
+companion_hitbox = NodePath("SlashArea/SlashHurtbox")
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true

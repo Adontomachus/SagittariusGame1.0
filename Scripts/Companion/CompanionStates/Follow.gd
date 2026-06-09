@@ -11,7 +11,7 @@ const CHANCE_TO_ATTACK: Vector2 = Vector2(0.0, 5.0)
 var time_before_expiration: float
 
 func enter() -> void:
-	time_before_expiration = start_time_before_expiration
+	time_before_expiration = start_time_before_expiration / parent.aggressiveness
 	print("Companion Started!")
 	reposition(parent.player_radius)	
 	super()
@@ -19,20 +19,29 @@ func enter() -> void:
 	
 func process_physics(delta: float) -> CompanionState:
 	parent.move_companion(delta)
-
-	#if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
-	#print("Notes before resting: ", time_before_expiration)
 	time_before_expiration -= 1 * delta
+
 	if time_before_expiration < 0 or parent.pathfinding.is_navigation_finished():
-		if randf_range(CHANCE_TO_ATTACK.x, CHANCE_TO_ATTACK.y) >= successful_chance_to_attack:
+		## Scale attack chance by aggressiveness
+		## aggressiveness 1.0 = uses successful_chance_to_attack as-is
+		## aggressiveness 2.5 = threshold much lower = attacks far more often
+		var roll := randf_range(CHANCE_TO_ATTACK.x, CHANCE_TO_ATTACK.y)
+		var effective_threshold := successful_chance_to_attack / parent.aggressiveness
+		print("Roll: ", roll, " | Threshold: ", effective_threshold, 
+			  " | Aggressiveness: ", parent.aggressiveness,
+			  " | nearest_enemy: ", parent.nearest_enemy)
+
+		if roll >= effective_threshold:
+			if attacking_state == null:
+				push_error("CompanionStateFollowing: attacking_state is not assigned in inspector")
+				return after_following_state
+			print("Going to attack state")
 			return attacking_state
 		else:
+			print("Going to after_following_state")
 			return after_following_state
-	
-	#if parent.pathfinding.is_navigation_finished() and after_following_state:
-	#	return after_following_state
-	#await get_tree().create_timer(time_before_expiration).timeout
-	return
+
+	return null
 
 func reposition(playerRadius) -> void:
 	if parent.player_target:

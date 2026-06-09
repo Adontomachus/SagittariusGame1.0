@@ -124,6 +124,33 @@ func _register_upgrades() -> void:
 		UpgradeData.UpgradeCategory.CHARGE_SHOT, 3,
 		[1.0, 1.0, 2.0]
 	))
+	## -------------------------
+	## COMPANION UPGRADES
+	## -------------------------
+	all_upgrades.append(_make_upgrade(
+		"companion_1_unlock", "Unlock Companion 1",
+		"Unlock your first companion",
+		UpgradeData.UpgradeCategory.STAT, 1,
+		[1.0]
+	))
+	all_upgrades.append(_make_upgrade(
+		"companion_1_level", "Empower Companion 1",
+		"Increase companion 1 power — speed +{value}%, damage +{value}%, bigger hitbox",
+		UpgradeData.UpgradeCategory.STAT, 3,
+		[15.0, 15.0, 20.0]
+	))
+	all_upgrades.append(_make_upgrade(
+		"companion_2_unlock", "Unlock Companion 2",
+		"Unlock your second companion",
+		UpgradeData.UpgradeCategory.STAT, 1,
+		[1.0]
+	))
+	all_upgrades.append(_make_upgrade(
+		"companion_2_level", "Empower Companion 2",
+		"Increase companion 2 power — speed +{value}%, damage +{value}%, bigger hitbox",
+		UpgradeData.UpgradeCategory.STAT, 3,
+		[15.0, 15.0, 20.0]
+	))
 
 
 func _make_upgrade(
@@ -215,8 +242,35 @@ func apply_upgrade(upgrade: UpgradeData, player: PlayerCharacter) -> void:
 			player.charge_shot.damage_multiplier += value
 		"charge_buildup":
 			player.charge_shot.max_shots_for_charged = max(2, player.charge_shot.max_shots_for_charged - int(value))
-
+		
+		## Upgrades
+		"companion_1_unlock":
+			_unlock_companion("Companion1", player)
+		"companion_1_level":
+			_level_up_companion("Companion1", value, player)
+		"companion_2_unlock":
+			_unlock_companion("Companion2", player)
+		"companion_2_level":
+			_level_up_companion("Companion2", value, player)
 	upgrade_selected.emit(upgrade)
+
+## Helper function for companions
+func _unlock_companion(group_name: String, player: PlayerCharacter) -> void:
+	var companion := get_tree().get_first_node_in_group(group_name)
+	if companion == null:
+		push_error("UpgradeSystem: companion not found in group: ", group_name)
+		return
+	companion.visible = true
+	companion.process_mode = Node.PROCESS_MODE_INHERIT
+	print("Unlocked: ", group_name)
+
+
+func _level_up_companion(group_name: String, value: float, player: PlayerCharacter) -> void:
+	var companion := get_tree().get_first_node_in_group(group_name)
+	if companion == null:
+		push_error("UpgradeSystem: companion not found in group: ", group_name)
+		return
+	companion.level_up(value)
 
 # Function to check if the upgrades can show
 func is_upgrade_available(upgrade: UpgradeData, player: PlayerCharacter) -> bool:
@@ -248,6 +302,15 @@ func is_upgrade_available(upgrade: UpgradeData, player: PlayerCharacter) -> bool
 		"qmove_swap_cone":
 			return player.q_moves.ability_type != QMoves.AbilityType.DIRECTIONAL_CONE \
 				and player.q_moves.ability_type != QMoves.AbilityType.Q_NONE
+		# Companions
+		"companion_1_level":
+			return _has_upgrade("companion_1_unlock")
+		"companion_2_level":
+			return _has_upgrade("companion_2_unlock")
+		"companion_1_unlock":
+			return not _has_upgrade("companion_1_unlock")
+		"companion_2_unlock":
+			return not _has_upgrade("companion_2_unlock")
 
 	## All other upgrades (stats, charge shot) are always available
 	return true

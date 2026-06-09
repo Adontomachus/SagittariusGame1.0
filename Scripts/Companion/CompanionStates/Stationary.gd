@@ -8,7 +8,7 @@ var rest_duration: float
 
 
 func enter() -> void:
-	rest_duration = starting_rest_duration 
+	rest_duration = starting_rest_duration / parent.aggressiveness
 
 func process_physics(delta: float) -> CompanionState:
 	rest_duration -= 1 * delta

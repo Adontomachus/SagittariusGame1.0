@@ -93,6 +93,8 @@ ComboManager=""
 SceneGroup=""
 GameManagerSystems=""
 ChargedShotIcon=""
+Companion1=""
+Companion2=""
 
 [input]
 

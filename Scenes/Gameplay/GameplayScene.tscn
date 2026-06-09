@@ -222,7 +222,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_vj1fp"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_jgp33"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -552,6 +552,7 @@ script = ExtResource("9_nxx5y")
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
+zoom = Vector2(1.3, 1.3)
 script = ExtResource("4_b5kf5")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
@@ -660,18 +661,14 @@ SettingsScreen = NodePath("../Settings")
 experience_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 
-[node name="ExperienceBarGlow" parent="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" parent_id_path=PackedInt32Array(2071023402, 1561454494) index="1" unique_id=150698581]
-position = Vector2(37.2, 16.800001)
-scale = Vector2(1.0125002, 1.0125002)
-
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_vj1fp")
+button_group = SubResource("ButtonGroup_jgp33")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_vj1fp")
+button_group = SubResource("ButtonGroup_jgp33")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_vj1fp")
+button_group = SubResource("ButtonGroup_jgp33")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -684,6 +681,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MinimapDotLayer" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
 metadata/_edit_use_anchors_ = true
+
+[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="23" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
+charge_shot = NodePath("../../../../Player/ChargeShot")
+beat_sync = NodePath("../BeatIndicatorElements/BeatIndicator")
+pulse_scale = Vector2(0.8, 0.8)
+base_scale = Vector2(0.2, 0.2)
 
 [node name="AbilityAnimatedText" type="Label" parent="InterfaceElements/NewHUD" unique_id=624369797]
 modulate = Color(1, 1, 1, 0)
@@ -1900,7 +1903,7 @@ position = Vector2(536, 343)
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("47_vwi3h")]
 position = Vector2(753, 383)
 
-[node name="PlayerCatComp2" parent="." unique_id=1653798 instance=ExtResource("51_6uw2w")]
+[node name="PlayerCatComp2" parent="." unique_id=1653798 groups=["Companion2"] instance=ExtResource("51_6uw2w")]
 position = Vector2(447, 398)
 
 [node name="MovingFog" type="Node2D" parent="." unique_id=1222811387]

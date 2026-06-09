@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="20_ge5ss"]
 [ext_resource type="PackedScene" uid="uid://c80tvtjnru5m3" path="res://Scenes/Interface/UpgradeInterface.tscn" id="21_3825n"]
 [ext_resource type="PackedScene" uid="uid://dso7bf0d6wiff" path="res://Scenes/Interface/Minimap.tscn" id="22_0if8i"]
+[ext_resource type="Script" uid="uid://d3iaealb3gp1c" path="res://Scripts/UI Menu, Settings and Post Game/ChargeShotUI.gd" id="26_7i2y7"]
+[ext_resource type="Texture2D" uid="uid://dt7sgxyxn8e3" path="res://Sprites/Game Elements/EyeClose.png" id="27_l6g6h"]
+[ext_resource type="Texture2D" uid="uid://dsrldstpph3qh" path="res://Sprites/Game Elements/EyeHalf.png" id="28_vdje8"]
+[ext_resource type="Texture2D" uid="uid://2lxhtsyypdef" path="res://Sprites/Game Elements/EyeFull.png" id="29_qj281"]
 
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
@@ -1571,7 +1575,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ev13k"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_5m4nd"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1717,9 +1721,9 @@ libraries/ = SubResource("AnimationLibrary_7yb2d")
 self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
 offset_left = 698.0
-offset_top = 105.0
+offset_top = 167.0
 offset_right = 1227.5652
-offset_bottom = 134.0
+offset_bottom = 257.0
 text = "WAVE INCOMING!"
 label_settings = SubResource("LabelSettings_6uhl4")
 horizontal_alignment = 1
@@ -1830,16 +1834,16 @@ label_settings = SubResource("LabelSettings_0cpi2")
 [node name="BeatIndicatorElements" type="Node" parent="." unique_id=972979635]
 
 [node name="IndicatorSprite" type="Sprite2D" parent="BeatIndicatorElements" unique_id=1953548214]
-position = Vector2(974, 976)
+position = Vector2(957, 805.5)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("7_ev13k")
 
 [node name="BeatIndicatorLine" type="ColorRect" parent="BeatIndicatorElements" unique_id=1426185933]
 z_index = -1
-offset_left = 724.0
-offset_top = 990.0
-offset_right = 1225.0
-offset_bottom = 998.0
+offset_left = 707.0
+offset_top = 819.5
+offset_right = 1208.0
+offset_bottom = 827.5
 color = Color(0.12968418, 0.04763417, 0.005845576, 1)
 
 [node name="RhythmLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=882339640]
@@ -1892,10 +1896,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -19.0
-offset_top = -104.0
-offset_right = 31.0
-offset_bottom = -54.0
+offset_left = -36.0
+offset_top = -274.5
+offset_right = 14.0
+offset_bottom = -224.5
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(25, 25)
@@ -1948,10 +1952,10 @@ scale = Vector2(0.3125001, 0.43749982)
 
 [node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="." unique_id=13669307 groups=["BossUI"]]
 layout_mode = 0
-offset_left = 502.99997
-offset_top = 814.0
-offset_right = 2815.4998
-offset_bottom = 1169.0
+offset_left = 492.99997
+offset_top = 630.0
+offset_right = 2805.4998
+offset_bottom = 985.0
 scale = Vector2(0.4, 0.4)
 value = 55.0
 nine_patch_stretch = true
@@ -2078,13 +2082,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_ev13k")
+button_group = SubResource("ButtonGroup_5m4nd")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_ev13k")
+button_group = SubResource("ButtonGroup_5m4nd")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_ev13k")
+button_group = SubResource("ButtonGroup_5m4nd")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
@@ -2133,6 +2137,41 @@ offset_right = -1.5198975
 offset_bottom = -0.2000122
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full", "light")]
+position = Vector2(0, 829)
+script = ExtResource("26_7i2y7")
+sprite_empty = NodePath("EyeClose")
+sprite_half = NodePath("EyeHalf")
+sprite_full = NodePath("EyeOpen")
+pulse_scale = Vector2(0.4, 0.4)
+pulse_duration = 0.5
+base_scale = Vector2(0.1, 0.1)
+light = NodePath("GlowEffect")
+light_pulse_speed = 1.0
+
+[node name="EyeClose" type="Sprite2D" parent="EyeControl" unique_id=1160683826]
+position = Vector2(960, 143.53555)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("27_l6g6h")
+
+[node name="EyeHalf" type="Sprite2D" parent="EyeControl" unique_id=998397801]
+position = Vector2(960, 143.53555)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("28_vdje8")
+
+[node name="EyeOpen" type="Sprite2D" parent="EyeControl" unique_id=1169481389]
+position = Vector2(960, 143.53555)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("29_qj281")
+
+[node name="GlowEffect" type="PointLight2D" parent="EyeControl" unique_id=432501023]
+z_index = 25
+position = Vector2(960, 143.53555)
+scale = Vector2(2.2149193, 2.272444)
+color = Color(3.294, 3.294, 3.294, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_8hfiw")
 
 [editable path="CutsceneUI/GameOverNode/WinScreen"]
 [editable path="CutsceneUI/GameOverNode/LoseScreen"]
