@@ -1,7 +1,9 @@
 class_name GManager
 extends Node2D
 
-
+@export_category("Enemy Spawner")
+@export var spawner_scene: PackedScene = preload("res://UnitInstances/Enemy Instances/SpawnerEnemy.tscn")
+@export var spawner_count_per_wave: int = 3
 
 @export var beatIndicator: Panel # = $InterfaceElements/HUD/BeatIndicator
 var spawnTimer = randf_range(2,5)
@@ -155,7 +157,8 @@ func _process(delta):
 		wave_notification.self_modulate.a += 1 * delta
 		if wave_notification.self_modulate.a >= 1: wave_notification.self_modulate.a = 1
 	if notifDuration < 1:
-		_change_spawning_state(spawningBehavior.Spawning)
+		if _spawningBehavior != spawningBehavior.Spawning:  
+			_change_spawning_state(spawningBehavior.Spawning)
 		wave_notification.self_modulate.a -= 1 * delta
 		if wave_notification.self_modulate.a < 0: 
 			#wave_notification.visible = false
@@ -199,13 +202,15 @@ func _process(delta):
 		
 	# If the completed notification ends, go to the next wave and increase stat increments
 		if wave_notification.self_modulate.a < 0 && waves_remaining != 0:
-			waves_remaining -= 1
-			_change_spawning_state(spawningBehavior.Preparation)
-			scale_on_next_wave.emit()
-			enemySpawnCounter = 10 + (level_wave * 2)
-			level_wave += 1
-			nextDuration = 8
-			_next_wave(rarityWeightIncrement)
+			if _spawningBehavior != spawningBehavior.Preparation:
+				waves_remaining -= 1
+				_change_spawning_state(spawningBehavior.Preparation)
+				scale_on_next_wave.emit()
+				enemySpawnCounter = 10 + (level_wave * 2)
+				level_wave += 1
+				spawner_count_per_wave+=1
+				nextDuration = 8
+				_next_wave(rarityWeightIncrement)
 	# If the current wave is completed
 				
 #endregion
@@ -241,20 +246,86 @@ func _check_if_area_free(area_position):
 	
 	return
 func _spawn_enemy():
-	if enemySpawnCounter >= 0:
-		var enemy = enemyToSpawn.instantiate()
-		enemy.rarityWeight = rarityWeight
-		#if (enemyoverlaps_area())
-		if waves_remaining == 0:
-			enemy.final_wave = true
-		enemy.position = instantiationPositions
-		add_child(enemy)
+	#if enemySpawnCounter >= 0:
+		#var enemy = enemyToSpawn.instantiate()
+		#enemy.rarityWeight = rarityWeight
+		##if (enemyoverlaps_area())
+		#if waves_remaining == 0:
+			#enemy.final_wave = true
+		#enemy.position = instantiationPositions
+		#add_child(enemy)
+	pass
 
+# spawns spawners
+func _spawn_wave_spawners() -> void:
+	for i in range(spawner_count_per_wave):
+		if spawner_scene == null:
+			push_error("GManager: spawner_scene not assigned")
+			return
+		var spawner = spawner_scene.instantiate()
+		spawner.position = _get_random_spawn_position()
+		spawner.rarityWeight = rarityWeight          
+		spawner.final_wave = waves_remaining == 0   
+		add_child(spawner)
+		print("Spawned EnemySpawner ", i + 1, "/", spawner_count_per_wave)
+
+func _get_random_spawn_position() -> Vector2:
+	## Spawn away from player
+	var player_pos := player.global_position
+	var pos: Vector2
+	var attempts := 0
+	var max_attempts := 20
+	## Keep trying until we find a spot far enough from the player
+	while attempts < 10:
+		pos = Vector2(
+			randf_range(200, 2800),
+			randf_range(200, 2800)
+		)
+		if pos.distance_to(player_pos) < 400.0:
+			attempts += 1
+			continue
+			
+		if _is_position_clear(pos):
+			return pos
+		attempts += 1
+	push_warning("GManager: could not find clear spawn position after ", max_attempts, " attempts")
+	return Vector2(
+			player_pos.x + randf_range(-800, 800),
+			player_pos.y + randf_range(-800, 800)
+		)
+
+func _is_position_clear(pos: Vector2) -> bool:
+	var space := get_world_2d().direct_space_state
+
+	## Circle to match spawner size
+	var shape := CircleShape2D.new()
+	shape.radius = 60.0  
+
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.transform = Transform2D(0, pos)
+	query.collision_mask = 0xFFFFFFFF
+	query.collide_with_bodies = true
+	query.collide_with_areas = false  ## ignore areas, only solid bodies
+
+	var results := space.intersect_shape(query)
+
+	for result in results:
+		var collider = result.collider
+		## Block if overlapping obstacles or other spawners
+		if collider.is_in_group("MapObstacle"):
+			return false
+		if collider is EnemySpawner:
+			return false
+
+	return true
 #endregion		
 
 
-func _change_spawning_state(changeBehavior: spawningBehavior):
+func _change_spawning_state(changeBehavior: spawningBehavior) -> void:
 	_spawningBehavior = changeBehavior
+	if changeBehavior == spawningBehavior.Spawning:
+		_spawn_wave_spawners()
 	return
 	
 func set_value(boss_health: int) -> void:
