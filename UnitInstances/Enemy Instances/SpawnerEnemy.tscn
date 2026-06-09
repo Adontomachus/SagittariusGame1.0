@@ -59,13 +59,12 @@ _data = {
 &"RESET": SubResource("Animation_r4dr7")
 }
 
-[node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "spawn_indicator", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_ewdkc")
 beats_between_spawns = 8
 spawn_radius = 500.0
 spawner_sprite = NodePath("Sprite")
-spawn_indicator = NodePath("")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 
