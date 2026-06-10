@@ -53,13 +53,12 @@
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
-[ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
+[ext_resource type="PackedScene" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
 [ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="42_jgp33"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
-[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Enemy Instances/EliteEnemy.tscn" id="54_rr6op"]
 [ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="62_110ka"]
 
 [sub_resource type="Environment" id="Environment_jgp33"]
@@ -1906,9 +1905,6 @@ modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(-1471.9999, -1180)
 scale = Vector2(5.5627837, 5.5627837)
 
-[node name="Elite" parent="." unique_id=190766905 instance=ExtResource("54_rr6op")]
-position = Vector2(-102, -72)
-
 [node name="PlayerBullet" parent="." unique_id=132848767 instance=ExtResource("12_4t4xv")]
 position = Vector2(539, 381)
 
@@ -1925,7 +1921,7 @@ position = Vector2(447, 398)
 light_mask = 31
 visibility_layer = 31
 script = ExtResource("62_110ka")
-fog_layer_count = 6
+fog_layer_count = 2
 fog_texture = ExtResource("42_jgp33")
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
