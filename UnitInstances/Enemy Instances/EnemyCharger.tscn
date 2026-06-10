@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csoo2afoaf6s6"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_f54ak"]
-[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_t52mc"]
+[ext_resource type="Texture2D" uid="uid://2j6wto04wx5t" path="res://Sprites/Game Elements/Charger.png" id="2_6onfs"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_4dvsj"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_tgimn"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_flwud"]
@@ -135,7 +135,7 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
-scale = Vector2(1.1199993, 1.1199993)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_f54ak")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
@@ -160,7 +160,7 @@ shape = SubResource("CircleShape2D_s7bn3")
 self_modulate = Color(0.67263305, 0.35419908, 1, 1)
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.11160722, 0.11160726)
-texture = ExtResource("2_t52mc")
+texture = ExtResource("2_6onfs")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_4dvsj")

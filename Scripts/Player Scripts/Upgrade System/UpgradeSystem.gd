@@ -239,7 +239,7 @@ func apply_upgrade(upgrade: UpgradeData, player: PlayerCharacter) -> void:
 
 		## CHARGE SHOT
 		"charge_damage":
-			player.charge_shot.damage_multiplier += value
+						player.charge_shot.damage_multiplier += value
 		"charge_buildup":
 			player.charge_shot.max_shots_for_charged = max(2, player.charge_shot.max_shots_for_charged - int(value))
 		

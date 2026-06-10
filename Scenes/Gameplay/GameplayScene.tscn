@@ -528,7 +528,7 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 environment = SubResource("Environment_jgp33")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
-color = Color(0.35988212, 0.49953008, 0.60075355, 1)
+color = Color(0.642681, 0.7029118, 0.90837634, 1)
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
 script = ExtResource("2_vj1fp")
@@ -566,7 +566,7 @@ script = ExtResource("9_nxx5y")
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
-zoom = Vector2(1.3, 1.3)
+zoom = Vector2(1.25, 1.25)
 script = ExtResource("4_b5kf5")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
@@ -660,8 +660,11 @@ health_text = NodePath(".")
 player_object = NodePath("../../../../../Player")
 metadata/_edit_use_anchors_ = true
 
-[node name="BeatGlowFeedback" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="7" unique_id=719690560]
+[node name="GlowFeedback" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" parent_id_path=PackedInt32Array(2071023402, 784477876) index="7" unique_id=1353301075]
 visible = false
+
+[node name="ExperienceText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" parent_id_path=PackedInt32Array(2071023402, 1561454494) index="0" unique_id=402200278 node_paths=PackedStringArray("experience_text")]
+experience_text = NodePath(".")
 
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
@@ -671,12 +674,8 @@ good_hit = 0.15
 ok_hit = 0.14
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="15" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
+[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="12" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
-
-[node name="ExperienceText" parent="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" parent_id_path=PackedInt32Array(2071023402, 1561454494) index="0" unique_id=402200278 node_paths=PackedStringArray("experience_text", "player_object")]
-experience_text = NodePath(".")
-player_object = NodePath("../../../../../Player")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
 button_group = SubResource("ButtonGroup_exwru")
@@ -687,19 +686,13 @@ button_group = SubResource("ButtonGroup_exwru")
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
 button_group = SubResource("ButtonGroup_exwru")
 
-[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
+[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
 manager = NodePath("../../../..")
 
-[node name="MinimapContainer" parent="InterfaceElements/NewHUD/UI/MinimapHUD" parent_id_path=PackedInt32Array(2071023402, 1010004399) index="0" unique_id=1762052833]
-metadata/_edit_use_anchors_ = true
-
 [node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
 
-[node name="MinimapDotLayer" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
-metadata/_edit_use_anchors_ = true
-
-[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="23" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
+[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
 charge_shot = NodePath("../../../../Player/ChargeShot")
 beat_sync = NodePath("../BeatIndicatorElements/BeatIndicator")
 pulse_scale = Vector2(0.8, 0.8)
@@ -753,7 +746,7 @@ charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("17_figfh")
 pulse_sound_effect = NodePath("PulseSoundEffect")
-charged_shot_ready_interface = NodePath("../InterfaceElements/NewHUD/UI/ChargedShotReadyGlow")
+charged_shot_ready_interface = NodePath("../InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/ChargedShotReadyGlow")
 max_shot_fire_rate = 0.2
 can_use_ability = true
 max_ability_cooldown = 30.0
@@ -1921,8 +1914,11 @@ position = Vector2(447, 398)
 light_mask = 31
 visibility_layer = 31
 script = ExtResource("62_110ka")
-fog_layer_count = 2
+fog_color = Color(0.093595006, 0.09340929, 0.1653311, 0.34901962)
+fog_layer_count = 1
 fog_texture = ExtResource("42_jgp33")
+speed_min = 22.0
+speed_max = 40.0
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
@@ -1948,9 +1944,9 @@ fog_texture = ExtResource("42_jgp33")
 [connection signal="companion_upgrade" from="Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]
 [connection signal="companion_upgrade" from="Player" to="PlayerCatComp2" method="_on_player_companion_upgrade"]
 [connection signal="send_current_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]
-[connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" method="set_value"]
+[connection signal="send_current_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" method="set_value"]
 [connection signal="send_maximum_health" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_max"]
-[connection signal="send_maximum_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedExperienceBar" method="set_max"]
+[connection signal="send_maximum_xp" from="Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" method="set_max"]
 [connection signal="experience_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_xp"]
 [connection signal="projectile_health_modify" from="Player/ProjectileHitbox" to="Player" method="modify_current_player_health"]
 [connection signal="player_dash" from="Player/SecondaryFire" to="Player" method="_on_secondary_fire_player_dash"]

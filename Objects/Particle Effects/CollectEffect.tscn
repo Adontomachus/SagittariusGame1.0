@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://biq7xii20vqo1"]
 
-[ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="1_eu4u2"]
+[ext_resource type="AudioStream" uid="uid://dd33b7u3rxf33" path="res://Audio/Sounds/OrbPickup.wav" id="1_eu4u2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
 
@@ -76,8 +76,6 @@ environment = SubResource("Environment_5nsfc")
 
 [node name="CollectSound" type="AudioStreamPlayer2D" parent="." unique_id=867014591]
 stream = ExtResource("1_eu4u2")
-volume_db = 5.0
-pitch_scale = 4.0
 bus = &"SFX"
 
 [connection signal="finished" from="." to="." method="_on_finished"]

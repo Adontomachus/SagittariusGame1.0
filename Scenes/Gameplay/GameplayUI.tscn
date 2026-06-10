@@ -947,7 +947,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../UpdatedExperienceBar/ExperienceText:modulate")
+tracks/8/path = NodePath("../UpdatedPlayerHealthBar/UpdatedExperienceBar/ExperienceText:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1071,7 +1071,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../UpdatedExperienceBar/ExperienceText:modulate")
+tracks/8/path = NodePath("../UpdatedPlayerHealthBar/UpdatedExperienceBar/ExperienceText:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1109,7 +1109,6 @@ shadow_color = Color(0.15170373, 0.03876, 0, 0.934)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pdrc1"]
 font = ExtResource("4_0if8i")
-font_size = 20
 font_color = Color(0.68577677, 1, 0.6253981, 1)
 outline_size = 5
 outline_color = Color(0.43842888, 0, 0.087813236, 1)
@@ -1125,6 +1124,27 @@ font_color = Color(0.86663747, 1, 0.1931151, 1)
 outline_size = 5
 outline_color = Color(0.16142681, 0.10905563, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_gwjna"]
+offsets = PackedFloat32Array(0.5157233, 1)
+colors = PackedColorArray(0.9187369, 0.97723854, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev13k"]
+gradient = SubResource("Gradient_gwjna")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_knn8v"]
+colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
+gradient = SubResource("Gradient_knn8v")
+width = 70
+height = 70
+fill = 1
+fill_from = Vector2(0.50220263, 0.4889868)
+fill_to = Vector2(0.7008547, 0.32478634)
+
 [sub_resource type="Gradient" id="Gradient_b8xms"]
 colors = PackedColorArray(0.971323, 1, 0.4649247, 1, 0.012617188, 0.012617188, 0.012617188, 0)
 
@@ -1133,6 +1153,15 @@ gradient = SubResource("Gradient_b8xms")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.90000004, 0.1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3825n"]
+font = ExtResource("4_0if8i")
+font_color = Color(0.59608823, 0.9008019, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0.25822645, 0.67127424, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0.34237343, 0.81900007)
+shadow_offset = Vector2(1.87, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve3xx"]
 font = ExtResource("4_0if8i")
@@ -1146,7 +1175,7 @@ shadow_offset = Vector2(2.91, 3.42)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0cpi2"]
 font = ExtResource("4_0if8i")
-font_size = 22
+font_size = 20
 font_color = Color(1, 0.7509483, 0.1680183, 1)
 outline_size = 12
 outline_color = Color(0.49973267, 0, 0.033690564, 1)
@@ -1337,7 +1366,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.66),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1216, 822), Vector2(988, 822)]
+"values": [Vector2(1210.5, 960), Vector2(970, 960)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1349,7 +1378,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1.66),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(724, 822), Vector2(952, 822)]
+"values": [Vector2(709.5, 960), Vector2(970, 960)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1394,10 +1423,10 @@ tracks/7/path = NodePath("HalfBeatLines:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.85, 0.86, 1.66),
+"times": PackedFloat32Array(0, 0.85, 0.8666667, 1.66),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(843, 826), Vector2(969, 826), Vector2(722, 826), Vector2(843, 826)]
+"values": [Vector2(834.75, 960), Vector2(970, 960), Vector2(709.5, 960), Vector2(834.75, 960)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1406,10 +1435,10 @@ tracks/8/path = NodePath("HalfBeatLines2:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.85, 0.86, 1.66),
+"times": PackedFloat32Array(0, 0.85, 0.8666667, 1.66),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1104, 826), Vector2(976, 826), Vector2(1223, 826), Vector2(1104, 826)]
+"values": [Vector2(1085.25, 960), Vector2(970, 960), Vector2(1210.5, 960), Vector2(1085.25, 960)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1525,43 +1554,12 @@ _data = {
 &"RESET": SubResource("Animation_onpmq")
 }
 
-[sub_resource type="Gradient" id="Gradient_knn8v"]
-colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
-gradient = SubResource("Gradient_knn8v")
-width = 70
-height = 70
-fill = 1
-fill_from = Vector2(0.50220263, 0.4889868)
-fill_to = Vector2(0.7008547, 0.32478634)
-
-[sub_resource type="Gradient" id="Gradient_gwjna"]
-offsets = PackedFloat32Array(0.5157233, 1)
-colors = PackedColorArray(0.9187369, 0.97723854, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev13k"]
-gradient = SubResource("Gradient_gwjna")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.2)
-
 [sub_resource type="LabelSettings" id="LabelSettings_hlum5"]
 font = ExtResource("4_0if8i")
 font_size = 48
 font_color = Color(1, 0.86981654, 0, 1)
 outline_size = 25
 outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_3825n"]
-font = ExtResource("4_0if8i")
-font_size = 18
-font_color = Color(0.59608823, 0.9008019, 1, 1)
-outline_size = 5
-outline_color = Color(0, 0.25822645, 0.67127424, 1)
-shadow_size = 5
-shadow_color = Color(0, 0, 0.34237343, 0.81900007)
-shadow_offset = Vector2(1.87, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_48svx"]
 font = ExtResource("4_0if8i")
@@ -1690,10 +1688,10 @@ libraries/ = SubResource("AnimationLibrary_6uw2w")
 
 [node name="UpdatedComboCounter" type="Label" parent="." unique_id=654270409 groups=["ComboUIFeedback"]]
 layout_mode = 0
-offset_left = 77.0
-offset_top = 254.0
-offset_right = 232.53452
-offset_bottom = 456.7552
+offset_left = 87.0
+offset_top = 275.0
+offset_right = 223.4289
+offset_bottom = 457.98676
 rotation = -0.10770728
 text = "1x"
 label_settings = SubResource("LabelSettings_uyhx3")
@@ -1705,10 +1703,10 @@ script = ExtResource("5_gwjna")
 modulate = Color(0.8823364, 0.87131125, 0.4739384, 1)
 self_modulate = Color(2.40685, 2.40685, 2.2780478, 1)
 layout_mode = 0
-offset_left = -8.736082
-offset_top = 183.12204
-offset_right = 131.14557
-offset_bottom = 202.24104
+offset_left = -34.286137
+offset_top = 168.39362
+offset_right = 113.074005
+offset_bottom = 187.51262
 rotation = -1.5803438
 value = 55.0
 show_percentage = false
@@ -1731,10 +1729,10 @@ horizontal_alignment = 1
 [node name="UpdatedPlayerHealthBar" type="TextureProgressBar" parent="." unique_id=784477876]
 custom_minimum_size = Vector2(0, 170)
 layout_mode = 0
-offset_left = -6.0
-offset_top = 3.0
-offset_right = 648.7236
-offset_bottom = 252.0
+offset_left = 14.0
+offset_top = 21.0
+offset_right = 566.0
+offset_bottom = 233.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_pdrc1")
 texture_progress = ExtResource("6_gwjna")
@@ -1742,10 +1740,10 @@ texture_progress = ExtResource("6_gwjna")
 [node name="PlayerHealthText" type="Label" parent="UpdatedPlayerHealthBar" unique_id=591465270]
 z_index = 4
 layout_mode = 0
-offset_left = 189.0
-offset_top = 127.0
-offset_right = 591.8752
-offset_bottom = 165.0
+offset_left = 109.0
+offset_top = 105.0
+offset_right = 511.87518
+offset_bottom = 143.0
 theme_override_font_sizes/font_size = 15
 text = "0 | 100 Health"
 label_settings = SubResource("LabelSettings_pdrc1")
@@ -1778,18 +1776,61 @@ value = 2.1
 [node name="PlayerLevel" type="Label" parent="UpdatedPlayerHealthBar" unique_id=743208092]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
-offset_left = 259.0
-offset_top = 90.0
-offset_right = 597.0
-offset_bottom = 123.0
+offset_left = 209.0
+offset_top = 72.0
+offset_right = 547.0
+offset_bottom = 105.0
 text = "Player Level: 1"
 label_settings = SubResource("LabelSettings_o710q")
 
+[node name="ChargedShotReadyGlow" type="Sprite2D" parent="UpdatedPlayerHealthBar" unique_id=1344796115]
+modulate = Color(1, 1, 1, 0.193)
+position = Vector2(110.5, 110.14274)
+scale = Vector2(2.7031248, 2.7232106)
+texture = SubResource("GradientTexture2D_ev13k")
+
+[node name="GlowingGem2" parent="UpdatedPlayerHealthBar" unique_id=2110462969 instance=ExtResource("11_7i2y7")]
+self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
+position = Vector2(111.99996, 113.28547)
+scale = Vector2(0.3125001, 0.43749982)
+
+[node name="GlowEffect" type="PointLight2D" parent="UpdatedPlayerHealthBar" unique_id=270638802]
+z_index = 25
+position = Vector2(111.00001, 114)
+scale = Vector2(2.2149193, 2.272444)
+color = Color(3.294, 3.294, 3.294, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_8hfiw")
+
 [node name="GlowFeedback" type="Sprite2D" parent="UpdatedPlayerHealthBar" unique_id=1353301075]
-visible = false
-position = Vector2(132, 128)
+position = Vector2(112, 107)
 scale = Vector2(1.59375, 1.59375)
 texture = SubResource("GradientTexture2D_meejx")
+
+[node name="UpdatedExperienceBar" type="TextureProgressBar" parent="UpdatedPlayerHealthBar" unique_id=1561454494]
+modulate = Color(1.085866, 1.2334695, 1.2742168, 1)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 123.0
+offset_right = 603.19995
+offset_bottom = 197.0
+scale = Vector2(0.8333334, 0.8333334)
+nine_patch_stretch = true
+texture_under = ExtResource("18_ev13k")
+texture_progress = ExtResource("17_dw111")
+
+[node name="ExperienceText" type="Label" parent="UpdatedPlayerHealthBar/UpdatedExperienceBar" unique_id=402200278]
+z_index = 4
+layout_mode = 0
+offset_left = 15.599991
+offset_top = 59.999992
+offset_right = 483.47516
+offset_bottom = 97.99999
+theme_override_font_sizes/font_size = 28
+text = "0 | 100 Player Experience"
+label_settings = SubResource("LabelSettings_3825n")
+vertical_alignment = 1
+script = ExtResource("18_0if8i")
 
 [node name="PlayerInfo" type="VBoxContainer" parent="." unique_id=1205866027]
 layout_mode = 0
@@ -1823,10 +1864,10 @@ label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="EnemyCounter" type="Label" parent="." unique_id=172310879]
 layout_mode = 0
-offset_left = 1588.0
-offset_top = 346.0
-offset_right = 2034.0
-offset_bottom = 391.0
+offset_left = 1591.0
+offset_top = 319.0
+offset_right = 2037.0
+offset_bottom = 364.0
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
@@ -1834,16 +1875,24 @@ label_settings = SubResource("LabelSettings_0cpi2")
 [node name="BeatIndicatorElements" type="Node" parent="." unique_id=972979635]
 
 [node name="IndicatorSprite" type="Sprite2D" parent="BeatIndicatorElements" unique_id=1953548214]
-position = Vector2(974, 827.5)
+visible = false
+position = Vector2(974, 965.5)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("7_ev13k")
 
 [node name="BeatIndicatorLine" type="ColorRect" parent="BeatIndicatorElements" unique_id=1426185933]
 z_index = -1
-offset_left = 724.0
-offset_top = 841.5
-offset_right = 1225.0
-offset_bottom = 849.5
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.5
+offset_top = -100.0
+offset_right = 250.5
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
 color = Color(0.12968418, 0.04763417, 0.005845576, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -1852,14 +1901,14 @@ z_index = -1
 offset_left = 724.0
 offset_top = 969.0
 offset_right = 733.0
-offset_bottom = 1019.0
+offset_bottom = 1018.9981
 color = Color(0.85559684, 1, 0.64379185, 1)
 
 [node name="RhythmLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=1196783716]
 z_index = -1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0002
+offset_right = 1225.0007
 offset_bottom = 1019.0
 color = Color(0.85559684, 1, 0.64379185, 1)
 
@@ -1876,8 +1925,8 @@ color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 z_index = -1
 offset_left = 1104.0
 offset_top = 975.0
-offset_right = 1109.4985
-offset_bottom = 1014.0
+offset_right = 1109.4984
+offset_bottom = 1014.0003
 scale = Vector2(0.64, 1)
 color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 
@@ -1885,6 +1934,7 @@ color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 libraries/ = SubResource("AnimationLibrary_rp1p4")
 
 [node name="BeatGlowFeedback" type="Sprite2D" parent="BeatIndicatorElements" unique_id=719690560]
+visible = false
 position = Vector2(977, 975)
 scale = Vector2(2.062496, 2.062496)
 texture = SubResource("GradientTexture2D_meejx")
@@ -1912,7 +1962,7 @@ ok_hit = 0.2
 
 [node name="BeatIndicatorLight" type="PointLight2D" parent="BeatIndicatorElements/BeatIndicator" unique_id=1398920605]
 z_index = 176
-position = Vector2(33, 17.281677)
+position = Vector2(38, 166)
 scale = Vector2(1.7500001, 2.0329173)
 texture = SubResource("GradientTexture2D_jgp33")
 
@@ -1931,31 +1981,12 @@ parameters/looping = true
 stream = ExtResource("10_ntvnh")
 bus = &"SFX"
 
-[node name="GlowEffect" type="PointLight2D" parent="." unique_id=270638802]
-z_index = 25
-position = Vector2(126, 131)
-scale = Vector2(2.2149193, 2.272444)
-color = Color(3.294, 3.294, 3.294, 1)
-energy = 4.0
-texture = SubResource("GradientTexture2D_8hfiw")
-
-[node name="ChargedShotReadyGlow" type="Sprite2D" parent="." unique_id=1344796115]
-modulate = Color(1, 1, 1, 0.193)
-position = Vector2(126, 131)
-scale = Vector2(2.7499995, 2.8214211)
-texture = SubResource("GradientTexture2D_ev13k")
-
-[node name="GlowingGem2" parent="." unique_id=2110462969 instance=ExtResource("11_7i2y7")]
-self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
-position = Vector2(126, 131)
-scale = Vector2(0.3125001, 0.43749982)
-
 [node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="." unique_id=13669307 groups=["BossUI"]]
 layout_mode = 0
 offset_left = 492.99997
-offset_top = 630.0
+offset_top = 806.0
 offset_right = 2805.4998
-offset_bottom = 985.0
+offset_bottom = 1161.0
 scale = Vector2(0.4, 0.4)
 value = 55.0
 nine_patch_stretch = true
@@ -1985,31 +2016,6 @@ offset_bottom = 524.0
 [node name="PauseScreen" parent="." unique_id=1037397089 instance=ExtResource("15_5m4nd")]
 visible = false
 layout_mode = 1
-
-[node name="UpdatedExperienceBar" type="TextureProgressBar" parent="." unique_id=1561454494]
-modulate = Color(1.085866, 1.2334695, 1.2742168, 1)
-layout_mode = 0
-offset_left = 163.0
-offset_top = 153.0
-offset_right = 679.0
-offset_bottom = 227.0
-scale = Vector2(0.8333334, 0.8333334)
-nine_patch_stretch = true
-texture_under = ExtResource("18_ev13k")
-texture_progress = ExtResource("17_dw111")
-
-[node name="ExperienceText" type="Label" parent="UpdatedExperienceBar" unique_id=402200278]
-z_index = 4
-layout_mode = 0
-offset_left = 15.599991
-offset_top = 59.999992
-offset_right = 483.47516
-offset_bottom = 97.99999
-theme_override_font_sizes/font_size = 28
-text = "0 | 100 Player Experience"
-label_settings = SubResource("LabelSettings_3825n")
-vertical_alignment = 1
-script = ExtResource("18_0if8i")
 
 [node name="Ability1Container" type="ColorRect" parent="." unique_id=1865306640]
 layout_mode = 0
@@ -2098,28 +2104,34 @@ layout_mode = 1
 layer = 0
 
 [node name="MinimapContainer" parent="MinimapHUD" index="0" unique_id=1762052833]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(250, 250)
 anchors_preset = -1
 anchor_left = 0.831
 anchor_top = 0.015
 anchor_right = 0.897
 anchor_bottom = 0.125
-offset_top = 21.999998
-offset_right = 173.2799
-offset_bottom = 203.20001
+offset_left = 2.4801025
+offset_top = 40.800003
+offset_right = 125.76001
+offset_bottom = 172.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" parent="MinimapHUD/MinimapContainer" index="0" unique_id=1472134649]
 offset_left = -8.519897
 offset_top = -7.199997
+offset_right = 256.0
+offset_bottom = 256.8
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=2095466810]
 offset_left = -1.5198975
 offset_top = -0.19999695
-offset_right = 298.4801
-offset_bottom = 299.8
+offset_right = 248.4801
+offset_bottom = 249.8
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" parent="MinimapHUD/MinimapContainer/SubViewportContainer" index="0" unique_id=2109862884]
-size = Vector2i(300, 300)
+size = Vector2i(250, 250)
 
 [node name="MinimapCamera" parent="MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" index="0" unique_id=1648225918 groups=["MinimapCamera"]]
 position = Vector2(0, 22)
@@ -2137,6 +2149,7 @@ offset_right = -1.5198975
 offset_bottom = -0.2000122
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full", "light")]
 position = Vector2(14, 831)
@@ -2144,30 +2157,30 @@ script = ExtResource("26_7i2y7")
 sprite_empty = NodePath("EyeClose")
 sprite_half = NodePath("EyeHalf")
 sprite_full = NodePath("EyeOpen")
-pulse_scale = Vector2(0.4, 0.4)
-pulse_duration = 0.5
+pulse_scale = Vector2(0.1, 0.1)
+pulse_duration = 0.2
 base_scale = Vector2(0.1, 0.1)
 light = NodePath("GlowEffect")
 light_pulse_speed = 1.0
 
 [node name="EyeClose" type="Sprite2D" parent="EyeControl" unique_id=1160683826]
-position = Vector2(960, 143.53555)
+position = Vector2(960, 156.51053)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("27_l6g6h")
 
 [node name="EyeHalf" type="Sprite2D" parent="EyeControl" unique_id=998397801]
-position = Vector2(960, 143.53555)
+position = Vector2(960, 156.51053)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("28_vdje8")
 
 [node name="EyeOpen" type="Sprite2D" parent="EyeControl" unique_id=1169481389]
-position = Vector2(960, 143.53555)
-scale = Vector2(0.15, 0.15)
+position = Vector2(960, 156.51053)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("29_qj281")
 
 [node name="GlowEffect" type="PointLight2D" parent="EyeControl" unique_id=432501023]
 z_index = 25
-position = Vector2(961, 16.00003)
+position = Vector2(960, 157.536)
 scale = Vector2(2.2149193, 2.272444)
 color = Color(3.294, 3.294, 3.294, 1)
 energy = 4.0
