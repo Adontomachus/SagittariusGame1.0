@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chdq4u843n1eq" path="res://Sprites/Game Elements/enemyaoetelegraph.png" id="2_4q8rf"]
 
 [sub_resource type="Animation" id="Animation_4q8rf"]
-length = 0.001
+length = 0.13333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

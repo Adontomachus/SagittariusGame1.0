@@ -18,12 +18,13 @@ enum ProjectileSide {
 @onready var area_indicator: AnimationPlayer = $AnimationPlayer
 @onready var explosion_sound: AudioStreamPlayer2D = $ExplosionSound
 @onready var explosion_sprite: Sprite2D = $ExplosionSprite
+@onready var ripple_fade: AnimationPlayer = $RippleFade
 
 # Visuals
 @export var explosion_particles: PackedScene
 
 func _ready() -> void:
-	
+	ripple_face.play("Fade")
 	## Emit Particles
 	var blast = explosion_particles.instantiate()
 	blast.position = explosion_sprite.get_global_position()

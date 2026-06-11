@@ -1,9 +1,24 @@
 [gd_scene format=3 uid="uid://83peaf7641jx"]
 
 [ext_resource type="Script" uid="uid://cocoxcxqbc0af" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutLob.gd" id="1_504u2"]
-[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_4phct"]
+[ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="2_4phct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rouxa"]
+
+[sub_resource type="Gradient" id="Gradient_7a4nw"]
+colors = PackedColorArray(0.54014415, 0.2825201, 0.7509248, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4phct"]
+gradient = SubResource("Gradient_7a4nw")
+width = 25
+height = 25
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.77777785, 0.34188035)
+
+[sub_resource type="Curve" id="Curve_5dkc4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.95894426, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="ShoutLob" type="Area2D" unique_id=1451977203]
 collision_layer = 0
@@ -11,7 +26,24 @@ collision_mask = 0
 script = ExtResource("1_504u2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=249911864]
+modulate = Color(1, 0.37342674, 1, 1)
+scale = Vector2(1.3125, 1.3125)
 texture = ExtResource("2_4phct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1879553491]
 shape = SubResource("CircleShape2D_rouxa")
+
+[node name="TrailEffect" type="CPUParticles2D" parent="." unique_id=1852870353]
+modulate = Color(1, 1, 1, 0.5)
+self_modulate = Color(1.2742168, 1.2742168, 1.2742168, 0.25)
+amount = 75
+texture = SubResource("GradientTexture2D_4phct")
+lifetime = 0.8
+randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 15.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_5dkc4")
+color = Color(0.9309246, 1, 0.677051, 1)
