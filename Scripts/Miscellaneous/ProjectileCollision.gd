@@ -42,7 +42,9 @@ var initPosition: Vector2 = Vector2(-125, -105)
 #TESTING PURPOSES
 var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 
-
+func set_projectile_size(size_multiplier: float) -> void:
+	scale = Vector2.ONE * size_multiplier
+	
 func _ready():
 	## Check if the projectile velocity type is constant or changing.
 	
@@ -125,6 +127,12 @@ func _process(delta):
 		queue_free()
 	if velocity_type == ProjectileVelocityType.Slowing:
 		_fade_projectile_velocity(delta)
+
+func change_velocity(new_velocity: float) -> void:
+	projectileVelocity = new_velocity
+
+func change_lifetime(new_lifetime: float) -> void:
+	projectileLifetime = new_lifetime
 
 func _physics_process(delta):
 	position += transform.x * projectileVelocity * delta

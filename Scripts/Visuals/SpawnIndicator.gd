@@ -50,7 +50,6 @@ func _reveal() -> void:
 		var t := clampf(elapsed / reveal_duration, 0.0, 1.0)
 		var progress := ease(t, -2.0)
 		mat.set_shader_parameter("reveal_progress", progress)
-		print("reveal_progress: ", progress)  ## confirm value is changing
 		await get_tree().process_frame
 	## Force fully revealed at end
 	mat.set_shader_parameter("reveal_progress", 1.0)

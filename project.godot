@@ -88,13 +88,14 @@ AestheticDecoration=""
 ReactiveObstacle=""
 PlayerSystems="Handles the variables for player during gameplay scene"
 ScoreSystem=""
-BossUI=""
 ComboManager=""
 SceneGroup=""
 GameManagerSystems=""
 ChargedShotIcon=""
 Companion1=""
 Companion2=""
+BossHealthUI=""
+BossUI=""
 
 [input]
 

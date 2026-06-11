@@ -122,8 +122,15 @@ func _ready():
 	send_current_health_value.emit(baseHealthPoints)
 	
 	# For the boss healthbar
-	update_max_health_value.emit(maxHealthPoints)
-	update_current_health_value.emit(baseHealthPoints)
+	if boss_unit:
+		add_to_group("BossType")
+		var boss_bar = get_tree().get_first_node_in_group("BossHealthUI")
+		if boss_bar:
+			boss_bar.visible = true
+			update_max_health_value.connect(boss_bar._on_boss_update_max_health_value)
+			update_current_health_value.connect(boss_bar._on_boss_update_current_health_value)
+			update_max_health_value.emit(maxHealthPoints)
+			update_current_health_value.emit(baseHealthPoints)
 	
 	# Get player for navigation and targeting
 	target = get_tree().get_first_node_in_group("PlayerObject")
@@ -176,6 +183,23 @@ func shoot_projectile(angle: float = 0, modifier: float = 1.0, color: Color = Co
 	projectile_instance.rotation_degrees = shoot_point.rotation_degrees + angle + randf_range(-inaccuracy,inaccuracy)
 	get_tree().get_root().call_deferred("add_child", projectile_instance)
 	print_debug("Damage: %s" % (attackPower * modifier))
+	
+func shoot_slow_projectile(angle: float = 0, modifier: float = 1.0,
+		color: Color = Color.RED, speed: float = 150.0, lifetime: float = 400) -> void:
+
+	var projectile_instance = projectile.instantiate()
+	projectile_instance.change_lifetime(lifetime)
+	projectile_instance.change_velocity(speed)
+	projectile_instance.change_damage(attackPower * modifier)
+	projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Enemy)
+	projectile_instance.change_projectile_modulation(color)
+	projectile_instance.set_projectile_size(2)
+
+	projectile_instance.position = shoot_point.global_position
+	projectile_instance.rotation_degrees = shoot_point.rotation_degrees + angle + randf_range(-inaccuracy, inaccuracy)
+
+	get_tree().root.call_deferred("add_child", projectile_instance)
+
 
 func modify_health(increment: int) -> void:
 	hit_sound.play()

@@ -18,19 +18,19 @@ func _register_upgrades() -> void:
 	## STAT UPGRADES
 	## -------------------------
 	all_upgrades.append(_make_upgrade(
-		"stat_damage", "Sharper Edge",
+		"stat_damage", "Strength",
 		"Projectile damage +{value}%",
 		UpgradeData.UpgradeCategory.STAT, 5,
 		[10.0, 10.0, 12.0, 12.0, 15.0]
 	))
 	all_upgrades.append(_make_upgrade(
-		"stat_move_speed", "Swift Feet",
+		"stat_move_speed", "Speed",
 		"Move speed +{value}%",
 		UpgradeData.UpgradeCategory.STAT, 5,
 		[10.0, 10.0, 12.0, 12.0, 15.0]
 	))
 	all_upgrades.append(_make_upgrade(
-		"stat_max_health", "Iron Body",
+		"stat_max_health", "Vitality",
 		"Max health +{value}%",
 		UpgradeData.UpgradeCategory.STAT, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0]
@@ -40,19 +40,19 @@ func _register_upgrades() -> void:
 	## SECONDARY FIRE UPGRADES
 	## -------------------------
 	all_upgrades.append(_make_upgrade(
-		"secondary_grenade_damage", "Hot Metal",
+		"secondary_grenade_damage", "Hotter Flames",
 		"Grenade damage +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0]
 	))
 	all_upgrades.append(_make_upgrade(
-		"secondary_grenade_radius", "Bigger Boom",
+		"secondary_grenade_radius", "Bigger Flames",
 		"Grenade radius +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0]
 	))
 	all_upgrades.append(_make_upgrade(
-		"secondary_dash_force", "Afterburner",
+		"secondary_dash_force", "Swift Feet",
 		"Dash force +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0]
@@ -79,8 +79,8 @@ func _register_upgrades() -> void:
 		[1.0]
 	))
 	all_upgrades.append(_make_upgrade(
-		"qmove_swap_aoe_pulse", "AoE Pulse",
-		"Unlock AoE pulse as Q move",
+		"qmove_swap_aoe_pulse", "Rhythm Pulse",
+		"Unlock Rhythm pulse as Q move",
 		UpgradeData.UpgradeCategory.Q_MOVE, 1,
 		[1.0]
 	))
@@ -117,12 +117,6 @@ func _register_upgrades() -> void:
 		"Charged shot damage multiplier +{value}",
 		UpgradeData.UpgradeCategory.CHARGE_SHOT, 5,
 		[0.5, 0.5, 0.8, 0.8, 1.0]
-	))
-	all_upgrades.append(_make_upgrade(
-		"charge_buildup", "Quick Charge",
-		"Charged shot requires {value} fewer perfect hits",
-		UpgradeData.UpgradeCategory.CHARGE_SHOT, 3,
-		[1.0, 1.0, 2.0]
 	))
 	## -------------------------
 	## COMPANION UPGRADES

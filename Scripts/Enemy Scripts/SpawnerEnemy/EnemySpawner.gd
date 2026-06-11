@@ -78,8 +78,6 @@ func _try_spawn() -> void:
 
 
 func _pick_enemy_type() -> PackedScene:
-	if final_wave:
-		return bossSpawn
 
 	var eliteRarityWeight := rarityWeight - 3.0
 
@@ -96,9 +94,49 @@ func _pick_enemy_type() -> PackedScene:
 
 
 func _get_spawn_position() -> Vector2:
+	var space := get_world_2d().direct_space_state
+	var attempts := 0
+
+	while attempts < 15:
+		var angle := randf() * TAU
+		var distance := randf_range(spawn_radius * 0.3, spawn_radius)
+		var pos := global_position + Vector2(cos(angle), sin(angle)) * distance
+
+		## Shape query to check for obstacles
+		var shape := CircleShape2D.new()
+		shape.radius = 40.0
+
+		var query := PhysicsShapeQueryParameters2D.new()
+		query.shape = shape
+		query.transform = Transform2D(0, pos)
+		query.collision_mask = 0xFFFFFFFF
+		query.collide_with_bodies = true
+		query.collide_with_areas = false
+		## Exclude self so the spawner doesn't block its own spawn positions
+		query.exclude = [get_rid()]
+
+		var results := space.intersect_shape(query)
+
+		var blocked := false
+		for result in results:
+			var collider = result.collider
+			if collider.is_in_group("MapObstacle"):
+				blocked = true
+				break
+			## Don't spawn inside other enemies
+			if collider.is_in_group("GeneralEnemyInstance"):
+				blocked = true
+				break
+
+		if not blocked:
+			return pos
+
+		attempts += 1
+
+	## Fallback — expand radius and try once more ignoring enemy overlap
+	push_warning("EnemySpawner: could not find clear spot, using fallback position")
 	var angle := randf() * TAU
-	var distance := randf_range(spawn_radius * 0.3, spawn_radius)
-	return global_position + Vector2(cos(angle), sin(angle)) * distance
+	return global_position + Vector2(cos(angle), sin(angle)) * spawn_radius
 
 
 func modify_health(increment: int) -> void:
