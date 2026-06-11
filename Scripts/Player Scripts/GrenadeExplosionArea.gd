@@ -24,7 +24,7 @@ enum ProjectileSide {
 @export var explosion_particles: PackedScene
 
 func _ready() -> void:
-	ripple_face.play("Fade")
+	ripple_fade.play("Fade")
 	## Emit Particles
 	var blast = explosion_particles.instantiate()
 	blast.position = explosion_sprite.get_global_position()
