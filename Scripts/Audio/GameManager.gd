@@ -233,7 +233,7 @@ func _process(delta: float) -> void:
 			if waves_remaining > 0 and _spawningBehavior == spawningBehavior.NextWave:
 				waves_remaining -= 1
 				level_wave += 1
-				spawner_count_per_wave += level_wave/2
+				spawner_count_per_wave = 3 +  level_wave/2
 				notifDuration = 6
 				nextDuration = 8
 				time_since_spawning_started = 0.0
