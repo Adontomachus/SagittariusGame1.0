@@ -9,11 +9,14 @@ extends Node2D
 
 ## Color of the indicator
 @export var indicator_color: Color = Color(0.8, 0.2, 0.2, 0.8)
+@export var spawn_effect: PackedScene
+@onready var animated_emitter: AnimationPlayer = $ParticleEmitters
 
 var tween: Tween
 
 
 func _ready() -> void:
+	animated_emitter.play("SlidingEmitter")
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
 	var mat := sprite.material as ShaderMaterial
@@ -75,3 +78,7 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> void:
 	var enemy = enemy_scene.instantiate()
 	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = spawn_pos
+	# Spawning visuals
+	var spawn_visual = spawn_effect.instantiate()
+	get_tree().current_scene.add_child(spawn_visual)
+	spawn_visual.global_position = spawn_pos

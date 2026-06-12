@@ -9,11 +9,11 @@
 background_mode = 3
 glow_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_7a4nw"]
+[sub_resource type="Gradient" id="Gradient_w0w30"]
 colors = PackedColorArray(0.7177011, 0.88313174, 0.16656345, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_u5cfu"]
-gradient = SubResource("Gradient_7a4nw")
+gradient = SubResource("Gradient_w0w30")
 width = 25
 height = 25
 fill = 1

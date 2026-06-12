@@ -21,7 +21,7 @@ glow_intensity = 0.5
 [node name="HitEffect" type="Node2D" unique_id=1692245273]
 script = ExtResource("1_yn02m")
 
-[node name="AoEEffect" type="CPUParticles2D" parent="." unique_id=379270967]
+[node name="AoEEffect2" type="CPUParticles2D" parent="." unique_id=2141170044]
 self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)
 amount = 45
 texture = SubResource("CanvasTexture_yn02m")

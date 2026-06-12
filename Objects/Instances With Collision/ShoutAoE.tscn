@@ -3,15 +3,253 @@
 [ext_resource type="Script" uid="uid://c6ub208aajgya" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutAoE.gd" id="1_dir02"]
 [ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_5mt54"]
 [ext_resource type="AudioStream" uid="uid://bopgycv2avkqc" path="res://Audio/Sounds/Calanget_AOE.wav" id="3_t8j5a"]
+[ext_resource type="Shader" uid="uid://n55fw5b5pt02" path="res://Scenes/Gameplay/Ripple.gdshader" id="4_ivtc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5nd8"]
 radius = 7.0
+
+[sub_resource type="Gradient" id="Gradient_t8j5a"]
+offsets = PackedFloat32Array(0.06918239, 0.418239, 1)
+colors = PackedColorArray(0.57752305, 0.6167709, 1.2003384, 0, 1.0989578, 0.6527242, 1.1816263, 0.25, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ivtc6"]
+gradient = SubResource("Gradient_t8j5a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_mam3b"]
+offsets = PackedFloat32Array(0, 0.6949686, 0.9874214)
+colors = PackedColorArray(0, 0.56294864, 1, 0.5, 1.1616627, 0.6046489, 1.353256, 0.48800004, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6a1uq"]
+gradient = SubResource("Gradient_mam3b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Animation" id="Animation_t8j5a"]
+resource_name = "Pulse"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PulseEffect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.59375006, 0.59375006), Vector2(6, 6), Vector2(9, 9.002)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PulseEffect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AoEEffect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(9, 9), Vector2(8, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AoEEffect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5019608)]
+}
+
+[sub_resource type="Animation" id="Animation_ivtc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PulseEffect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.59375006, 0.59375006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PulseEffect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AoEEffect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AoEEffect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mam3b"]
+_data = {
+&"Pulse": SubResource("Animation_t8j5a"),
+&"RESET": SubResource("Animation_ivtc6")
+}
+
+[sub_resource type="Gradient" id="Gradient_ivtc6"]
+offsets = PackedFloat32Array(0, 0.418239, 0.5345912)
+colors = PackedColorArray(0.5601512, 0.49560964, 0.9681179, 0.24100001, 0.5421515, 0.107930064, 0.7735023, 0.21764708, 0.41114584, 0.0008323732, 0.5545213, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mam3b"]
+gradient = SubResource("Gradient_ivtc6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.1)
+
+[sub_resource type="Curve" id="Curve_t8j5a"]
+_data = [Vector2(0.117647074, 0.031431913), 0.0, 0.0, 0, 0, Vector2(0.39705884, 1), 0.0, 0.0, 0, 0, Vector2(0.90882367, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mam3b"]
+shader = ExtResource("4_ivtc6")
+shader_parameter/frequency = 2.999999932944
+shader_parameter/amplitude = 2.0000000298024
+shader_parameter/ripple_rate = 5.0
+shader_parameter/wave_amplitude = 0.10000000149012
+shader_parameter/wave_frequency = 0.0
+
+[sub_resource type="Animation" id="Animation_k423w"]
+resource_name = "Fade"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("RippleEffect:material:shader_parameter/ripple_rate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RippleEffect:material:shader_parameter/amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.0000000298024, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RippleEffect:material:shader_parameter/frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.999999932944, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_24v3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RippleEffect:material:shader_parameter/ripple_rate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RippleEffect:material:shader_parameter/amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0000000298024]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RippleEffect:material:shader_parameter/frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.999999932944]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a1uq"]
+_data = {
+&"Fade": SubResource("Animation_k423w"),
+&"RESET": SubResource("Animation_24v3k")
+}
 
 [node name="ShoutAoe" type="Area2D" unique_id=1692523282]
 script = ExtResource("1_dir02")
 damage = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=615370513]
+visible = false
 texture = ExtResource("2_5mt54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990032299]
@@ -22,3 +260,44 @@ debug_color = Color(0.9558745, 0.21285096, 0, 0.41960785)
 stream = ExtResource("3_t8j5a")
 volume_db = -20.318
 bus = &"SFX"
+
+[node name="AoEEffect" type="Sprite2D" parent="." unique_id=1366263449]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_ivtc6")
+
+[node name="PulseEffect" type="Sprite2D" parent="." unique_id=1345006184]
+position = Vector2(7.6293945e-06, 9.536743e-07)
+scale = Vector2(0.59375006, 0.59375006)
+texture = SubResource("GradientTexture2D_6a1uq")
+
+[node name="AoEAnimations" type="AnimationPlayer" parent="." unique_id=113319218]
+libraries/ = SubResource("AnimationLibrary_mam3b")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=2138192201]
+scale = Vector2(6.5114517, 6.5114517)
+amount = 25
+texture = SubResource("GradientTexture2D_mam3b")
+lifetime = 1.2
+emission_shape = 1
+emission_sphere_radius = 36.31
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 10.0
+angular_velocity_max = 360.0
+linear_accel_max = 24.28
+scale_amount_min = 0.2
+scale_amount_curve = SubResource("Curve_t8j5a")
+
+[node name="RippleEffect" type="ColorRect" parent="." unique_id=341488421]
+material = SubResource("ShaderMaterial_mam3b")
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="RippleFade" type="AnimationPlayer" parent="." unique_id=306932127]
+libraries/ = SubResource("AnimationLibrary_6a1uq")
+speed_scale = 0.5

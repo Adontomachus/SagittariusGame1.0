@@ -17,6 +17,8 @@ var linger_tween: Tween
 @export var dot_duration_beats: int = 13
 @export var slow_multiplier: float = 0.8
 @export var slow_duration_beats: int = 13
+@onready var aoe_animations: AnimationPlayer = $AoEAnimations
+@onready var ripple_fade: AnimationPlayer = $RippleFade
 
 var beat_sync: BeatSync_Script
 var beats_elapsed: int = 0
@@ -25,6 +27,8 @@ var affected_players: Array = []  ## track who is already slowed/dotted
 
 
 func _ready() -> void:
+	ripple_fade.play("Fade")
+	aoe_animations.play("Pulse")
 	beat_sync = get_tree().get_first_node_in_group("BeatSync")
 	print("Sprite texture size: ", sprite.texture.get_size())
 	land_sound.play()
