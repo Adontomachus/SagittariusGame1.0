@@ -204,10 +204,6 @@ func apply_upgrade(upgrade: UpgradeData, player: PlayerCharacter) -> void:
 			player.grenade_radius *= 1.0 + (value / 100.0)
 		"secondary_dash_force":
 			player.dash_force *= 1.0 + (value / 100.0)
-		"qmove_swap_cone":
-			player.q_moves.ability_type = QMoves.AbilityType.DIRECTIONAL_CONE
-			## Also give one free level of cone damage on unlock
-			player.q_moves.cone_damage_modifier = 0.6
 		"secondary_swap_grenade":
 			var secondary = player.get_node("SecondaryFire")
 			secondary.secondary_actions["secondary_fire"] = secondary._secondary_grenade
@@ -269,46 +265,50 @@ func _level_up_companion(group_name: String, value: float, player: PlayerCharact
 # Function to check if the upgrades can show
 func is_upgrade_available(upgrade: UpgradeData, player: PlayerCharacter) -> bool:
 	match upgrade.id:
-		## Q Move upgrades only show if that move is active
-		"qmove_aoe_damage", "qmove_aoe_duration":
-			return player.q_moves.ability_type == QMoves.AbilityType.AOE_PULSE
-		"qmove_cone_count", "qmove_cone_damage":
-			return player.q_moves.ability_type == QMoves.AbilityType.DIRECTIONAL_CONE
-		## Swap upgrades only show if not already on that move
-		"qmove_swap_cone":
-			return player.q_moves.ability_type != QMoves.AbilityType.DIRECTIONAL_CONE
-		"secondary_dash_force":
-			return _has_upgrade("secondary_swap_dash") 
-		## Secondary upgrades only show if that secondary is equipped
-		"secondary_grenade_damage", "secondary_grenade_radius":
-			return _has_upgrade("secondary_swap_grenade")
-		## Swap upgrades only show if not already on that secondary
-		"secondary_swap_grenade":
-			return not _has_upgrade("secondary_swap_grenade")
-		"qmove_aoe_damage", "qmove_aoe_duration":
-			return player.q_moves.ability_type == QMoves.AbilityType.AOE_PULSE
-		"qmove_cone_count", "qmove_cone_damage":
-			return player.q_moves.ability_type == QMoves.AbilityType.DIRECTIONAL_CONE
-		## Only show AOE unlock if not already on any Q move
+		## Q Move unlocks
 		"qmove_swap_aoe_pulse":
 			return player.q_moves.ability_type == QMoves.AbilityType.Q_NONE
-		## Only show cone unlock if not already on cone (can swap from AOE to cone)
 		"qmove_swap_cone":
-			return player.q_moves.ability_type != QMoves.AbilityType.DIRECTIONAL_CONE \
-				and player.q_moves.ability_type != QMoves.AbilityType.Q_NONE
-		# Companions
-		"companion_1_level":
-			return _has_upgrade("companion_1_unlock")
-		"companion_2_level":
-			return _has_upgrade("companion_2_unlock")
+			return player.q_moves.ability_type == QMoves.AbilityType.AOE_PULSE
+		"qmove_aoe_damage", "qmove_aoe_duration":
+			return player.q_moves.ability_type == QMoves.AbilityType.AOE_PULSE
+		"qmove_cone_count", "qmove_cone_damage":
+			return player.q_moves.ability_type == QMoves.AbilityType.DIRECTIONAL_CONE
+
+		## Secondary unlocks
+		"secondary_swap_dash":
+			return not _has_upgrade("secondary_swap_dash")
+		"secondary_swap_grenade":
+			return not _has_upgrade("secondary_swap_grenade")
+
+		## Secondaries
+		"secondary_dash_force":
+			return _is_secondary_equipped("secondary_swap_dash", player)
+		"secondary_grenade_damage", "secondary_grenade_radius":
+			return _is_secondary_equipped("secondary_swap_grenade", player)
+
+		## Companions
 		"companion_1_unlock":
 			return not _has_upgrade("companion_1_unlock")
 		"companion_2_unlock":
 			return not _has_upgrade("companion_2_unlock")
+		"companion_1_level":
+			return _has_upgrade("companion_1_unlock")
+		"companion_2_level":
+			return _has_upgrade("companion_2_unlock")
 
-	## All other upgrades (stats, charge shot) are always available
 	return true
 
+func _is_secondary_equipped(upgrade_id: String, player: PlayerCharacter) -> bool:
+	var secondary = player.get_node_or_null("SecondaryFire")
+	if secondary == null:
+		return false
+	match upgrade_id:
+		"secondary_swap_grenade":
+			return secondary.secondary_actions.get("secondary_fire") == secondary._secondary_grenade
+		"secondary_swap_dash":
+			return secondary.secondary_actions.get("secondary_fire") == secondary._secondary_dash
+	return false
 
 func _has_upgrade(id: String) -> bool:
 	## Returns true if the player has picked this upgrade at least once

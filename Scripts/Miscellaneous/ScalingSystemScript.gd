@@ -14,6 +14,10 @@ const DROP_WEIGHT_SCALE: float = 0.05
 # This variable scales on how long the gameplay is, which rewards players with more points
 @export var point_drop_weight = 0.25
 
+var _cached_difficulty: int = 1
+var _health_rate: float = 0.008
+var _attack_rate: float = 0.002
+
 var health_scaling: float = 1
 var attack_power_scaling: float = 1
 var time_accumulator: float = 0.0
@@ -24,39 +28,42 @@ func _ready() -> void:
 		attack_power_scaling = 1
 		health_scaling += difficulty_scale
 		_initialized = true
-func _process(delta) -> void:
-	##Testing purposes
-	time_accumulator += delta
-	# if get_tree().current_ssssdwwasdawddwsdcene.name == "GameplayScene":
+
+	## Load difficulty once and cache it
+	call_deferred("_load_difficulty")
+	_update_scaling_rates()
+	
+func _load_difficulty() -> void:
+	var loaded = SaveSettings._load_difficulty_settings()
+	_cached_difficulty = loaded if loaded != null else 1
+	_update_scaling_rates()
+
+func _update_scaling_rates() -> void:
+	match _cached_difficulty:
+		0:
+			_health_rate = 0.004
+			_attack_rate = 0.001
+		1:
+			_health_rate = 0.008
+			_attack_rate = 0.002
+		2:
+			_health_rate = 0.014
+			_attack_rate = 0.007
+
+func _process(delta: float) -> void:
 	var current_scene = get_tree().current_scene
 	if current_scene == null or current_scene.name != "Manager":
 		return
-	if time_accumulator >= 1.0:
-		print("Testing health scaling mechanic: ", health_scaling)
-		time_accumulator = 0.0 
-		
-	## Difficulty health and damage scaling for enemies 
-	var difficulty_settings = SaveSettings._load_difficulty_settings()
-	match difficulty_settings:
-		0:
-			health_scaling += 0.004 * delta
-			attack_power_scaling += 0.001 * delta
-		1:
-			health_scaling += 0.008 * delta
-			attack_power_scaling += 0.002 * delta
-		2:
-			health_scaling += 0.014 * delta
-			attack_power_scaling += 0.007 * delta
-
-	# Debug Purposes
-	## print(health_scaling)
-	return
+	health_scaling += _health_rate * delta
+	attack_power_scaling += _attack_rate * delta
 
 func reset_scaling() -> void:
 	_initialized = false
-	health_scaling = 1
+	health_scaling = 1 + difficulty_scale
 	attack_power_scaling = 1
-	health_scaling += difficulty_scale
+	_cached_difficulty = SaveSettings._load_difficulty_settings()
+	_update_scaling_rates()
+	_initialized = true
 	
 #For scaling purposes
 func increment_scaling() -> void:

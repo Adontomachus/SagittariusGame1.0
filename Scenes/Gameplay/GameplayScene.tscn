@@ -229,7 +229,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_u1twm"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_nxx5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -517,7 +517,7 @@ position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("Player")
-waves_remaining = 5
+waves_remaining = 3
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="GameplayWorldEnvironment" type="WorldEnvironment" parent="." unique_id=256515015]
@@ -675,13 +675,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_u1twm")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_u1twm")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_u1twm")
+button_group = SubResource("ButtonGroup_nxx5y")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")

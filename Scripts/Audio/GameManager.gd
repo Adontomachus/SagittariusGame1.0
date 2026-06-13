@@ -63,6 +63,8 @@ var notifDuration: float
 var nextDuration: float
 #endregion
 
+
+
 #region Enumerators for enemy spawning behaviors
 enum spawningBehavior {
 	Preparation,
@@ -173,80 +175,59 @@ var time_since_spawning_started: float = 0.0
 var is_transitioning: bool = false
 
 func _process(delta: float) -> void:
-	player_combo_level = combo_system.combo_level
-	_update_ability_ui()
-	enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
-
-	wave_counter.text = "Waves Remaining: " + str(waves_remaining)
-	enemy_counter.text = "Enemies Left: " + str(enemyCount)
-	score.text = "Score: " + str(PointSystemScript.playerScore)
-
-	## Track time spent in spawning state
 	if _spawningBehavior == spawningBehavior.Spawning:
+		enemyCount = get_tree().get_nodes_in_group("GeneralEnemyInstance").size()
+		enemy_counter.text = "Enemies Left: " + str(enemyCount)
 		time_since_spawning_started += delta
-
-	if _spawningBehavior == spawningBehavior.Preparation:
-		if waves_remaining == 0:
-			wave_notification.text = "FINAL WAVE INCOMING!"
-		else:
-			wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
-	#region Wave notification fade in
+		## Fade out notification
+		wave_notification.self_modulate.a = maxf(
+			wave_notification.self_modulate.a - delta * 2.0, 0.0
+		)
+		## Wave completion check
+		if time_since_spawning_started >= spawning_grace_period and enemyCount == 0:
+			_change_spawning_state(spawningBehavior.NextWave)
 	if _spawningBehavior == spawningBehavior.Preparation and not is_transitioning:
 		wave_notification.self_modulate.a = minf(
 			wave_notification.self_modulate.a + delta, 1.0
 		)
-	#endregion
-	
-	if _spawningBehavior == spawningBehavior.Spawning:
-		wave_notification.self_modulate.a -= delta * 2.0
-		if wave_notification.self_modulate.a <= 0:
-			wave_notification.self_modulate.a = 0
-
-	#region Beat sync
+	if _spawningBehavior == spawningBehavior.NextWave:
+		if nextDuration >= 1:
+			wave_notification.self_modulate.a = minf(
+				wave_notification.self_modulate.a + delta, 1.0
+			)
+		else:
+			is_transitioning = true
+			wave_notification.self_modulate.a -= delta
+			if wave_notification.self_modulate.a <= 0:
+				wave_notification.self_modulate.a = 0
+				is_transitioning = false
+				if waves_remaining > 0:
+					waves_remaining -= 1
+					level_wave += 1
+					spawner_count_per_wave = 3 + level_wave / 2
+					notifDuration = 6
+					nextDuration = 8
+					time_since_spawning_started = 0.0
+					_next_wave(rarityWeightIncrement)
+					scale_on_next_wave.emit()
+					_change_spawning_state(spawningBehavior.Preparation)
 	if GlobalBeatSync.lastBeat < GlobalBeatSync.beat:
 		pulse_on_beat.emit()
 		GlobalBeatSync.lastBeat = GlobalBeatSync.beat
-
-		if _spawningBehavior == spawningBehavior.NextWave:
-			if nextDuration > 0:
-				nextDuration -= 1
-
+		player_combo_level = combo_system.combo_level
 		notifDuration -= 1
-
+		if _spawningBehavior == spawningBehavior.NextWave and nextDuration > 0:
+			nextDuration -= 1
 		if notifDuration < 1 and _spawningBehavior == spawningBehavior.Preparation:
 			_change_spawning_state(spawningBehavior.Spawning)
-	#endregion
+	_update_ability_ui()
+	wave_counter.text = "Waves Remaining: " + str(waves_remaining)
+	score.text = "Score: " + str(PointSystemScript.playerScore)
 
-	#region Wave completion — wait for grace period before checking
-	if _spawningBehavior == spawningBehavior.Spawning:
-		if time_since_spawning_started >= spawning_grace_period and enemyCount == 0:
-			_change_spawning_state(spawningBehavior.NextWave)
-	#endregion
-
-	#region Next wave notification and transition
-	if _spawningBehavior == spawningBehavior.NextWave and nextDuration < 1:
-		is_transitioning = true
-		wave_notification.self_modulate.a -= delta
-		if wave_notification.self_modulate.a <= 0:
-			wave_notification.self_modulate.a = 0
-			is_transitioning = false  ## allow fade-in again
-			if waves_remaining > 0 and _spawningBehavior == spawningBehavior.NextWave:
-				waves_remaining -= 1
-				level_wave += 1
-				spawner_count_per_wave = 3 +  level_wave/2
-				notifDuration = 6
-				nextDuration = 8
-				time_since_spawning_started = 0.0
-				_next_wave(rarityWeightIncrement)
-				scale_on_next_wave.emit()
-				_change_spawning_state(spawningBehavior.Preparation)
-	#endregion
-
-	#region Pause
+	## Pause
 	if Input.is_action_just_pressed("pause_action"):
 		_pause_and_unpause_input()
 	get_tree().paused = gamePaused == 1
-	#endregion
 #region ENEMY SPAWNING FUNCTION	
 
 # spawns spawners
@@ -317,35 +298,55 @@ func _is_position_clear(pos: Vector2) -> bool:
 
 func _change_spawning_state(changeBehavior: spawningBehavior) -> void:
 	_spawningBehavior = changeBehavior
+	match changeBehavior:
+		spawningBehavior.Preparation:
+			if waves_remaining == 0:
+				wave_notification.text = "FINAL WAVE INCOMING!"
+			else:
+				wave_notification.text = "WAVE " + str(level_wave) + " INCOMING!"
+		spawningBehavior.NextWave:
+			if waves_remaining == 0:
+				wave_notification.text = "BOSS DEFEATED!"
+			else:
+				wave_notification.text = "WAVE " + str(level_wave) + " COMPLETED!"
+		spawningBehavior.Spawning:
+			wave_notification.text = ""
+
 	if changeBehavior == spawningBehavior.Spawning:
+		time_since_spawning_started = 0.0
 		if waves_remaining == 0:
 			_spawn_boss()
 		else:
 			_spawn_wave_spawners(spawner_count_per_wave)
-	return
 
 @onready var ability1_container: ColorRect = $InterfaceElements/NewHUD/UI/Ability1Container
 @onready var rmb_container: ColorRect = $InterfaceElements/NewHUD/UI/RMBContainer
+
+var _last_qmove_type: int = -1
+var _last_secondary_size: int = -1
 
 func _update_ability_ui() -> void:
 	var player_node := player as PlayerCharacter
 	if player_node == null:
 		return
 
-	## Show Ability1Container only if a Q move is equipped
-	if ability1_container:
-		ability1_container.visible = (
-			player_node.q_moves != null and
-			player_node.q_moves.ability_type != QMoves.AbilityType.Q_NONE
-		)
+	## Only update if Q move type changed
+	var current_qmove := int(player_node.q_moves.ability_type) if player_node.q_moves else -1
+	if current_qmove != _last_qmove_type:
+		_last_qmove_type = current_qmove
+		if ability1_container:
+			ability1_container.visible = (
+				player_node.q_moves != null and
+				player_node.q_moves.ability_type != QMoves.AbilityType.Q_NONE
+			)
 
-	## Show RMBContainer only if a secondary fire is equipped
-	if rmb_container:
-		var secondary := player_node.get_node_or_null("SecondaryFire")
-		if secondary:
-			rmb_container.visible = secondary.secondary_actions.size() > 0
-		else:
-			rmb_container.visible = false
+	## Only update if secondary actions changed
+	var secondary := player_node.get_node_or_null("SecondaryFire")
+	var current_secondary_size :int = secondary.secondary_actions.size() if secondary else 0
+	if current_secondary_size != _last_secondary_size:
+		_last_secondary_size = current_secondary_size
+		if rmb_container:
+			rmb_container.visible = current_secondary_size > 0
 
 func _on_pause_screen_exit_game() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")
