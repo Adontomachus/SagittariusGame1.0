@@ -4,7 +4,7 @@ extends Enemy
 @export_category("Spawner Settings")
 @export var max_spawn_count: int = 40
 @export var beats_between_spawns: int = 2
-@export var spawn_radius: float = 150.0
+@export var spawn_radius: float = 10
 @export var rarityWeight: float = 3.0
 @export var final_wave: bool = false
 
