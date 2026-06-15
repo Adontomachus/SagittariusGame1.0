@@ -2190,6 +2190,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("29_qj281")
 
 [node name="GlowEffect" type="PointLight2D" parent="EyeControl" unique_id=432501023]
+visible = false
 z_index = 25
 position = Vector2(960, 157.536)
 scale = Vector2(2.2149193, 2.272444)

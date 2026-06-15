@@ -19,6 +19,7 @@ signal companion_upgrade
 
 @export var hit_flash: HitFlash
 @export var UpgradeScreen : Control
+@export var beatSquash : BeatSquashStretch
 
 @export var healthPoints: float:
 	set(value):
@@ -28,6 +29,21 @@ signal companion_upgrade
 
 # Exports the main game manager from the current gameplay scene		
 @export var manager: GManager
+
+# Refactored the sprite facing sprite
+@onready var player_sprite: AnimatedSprite2D = $VisualRoot/PlayerSprite
+enum FacingDirection {
+	UP,
+	UP_RIGHT,
+	RIGHT,
+	DOWN_RIGHT,
+	DOWN,
+	DOWN_LEFT,
+	LEFT,
+	UP_LEFT
+}
+
+var current_facing: FacingDirection = FacingDirection.DOWN
 
 #region General Player Statistics		
 
@@ -133,14 +149,14 @@ var can_control_unit: bool = true
 ## Sprites for the orthographic direction to face where the player's cursor is
 ## There are 8 directions mimicking the compass directions
 @export_category("Orthographic Sprite Rotations")
-@export var sprite_up: Sprite2D
-@export var sprite_up_right: Sprite2D
-@export var sprite_right: Sprite2D
-@export var sprite_down_right: Sprite2D
-@export var sprite_down: Sprite2D
-@export var sprite_down_left: Sprite2D
-@export var sprite_left: Sprite2D
-@export var sprite_up_left: Sprite2D
+@export var sprite_up: AnimatedSprite2D
+@export var sprite_up_right: AnimatedSprite2D
+@export var sprite_right: AnimatedSprite2D
+@export var sprite_down_right: AnimatedSprite2D
+@export var sprite_down: AnimatedSprite2D
+@export var sprite_down_left: AnimatedSprite2D
+@export var sprite_left: AnimatedSprite2D
+@export var sprite_up_left: AnimatedSprite2D
 #endregion
 
 #region Companion Progression System
@@ -150,6 +166,18 @@ var can_control_unit: bool = true
 
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
+
+# Helper function to get which sprite is active
+func _get_active_sprite() -> AnimatedSprite2D:
+	if sprite_up.visible: return sprite_up
+	if sprite_up_right.visible: return sprite_up_right
+	if sprite_right.visible: return sprite_right
+	if sprite_down_right.visible: return sprite_down_right
+	if sprite_down.visible: return sprite_down
+	if sprite_down_left.visible: return sprite_down_left
+	if sprite_left.visible: return sprite_left
+	if sprite_up_left.visible: return sprite_up_left
+	return null
 
 func _ready():
 	# Resets upgrades
@@ -242,105 +270,70 @@ func _process(delta):
 	#print ("Cooldown: ", ability_cooldown)
 	
 	if ability_cooldown < 0: can_use_ability = true
+		## This section is for orthographic sprite rotations and animations
+	_update_facing_direction()
+	_update_walk_animation()
+	shot_point.look_at(get_global_mouse_position())
 
-
-	
-	
-	## This section is for orthographic sprite rotations and animations
-	#region Testing sprite orthographic rotations
+func _update_facing_direction():
 	var mouse_direction = get_global_mouse_position() - global_position
 	var look_angle = rad_to_deg(mouse_direction.angle())
-	if look_angle > -22.5 and look_angle <= 22.5: # RIGHT
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = false
-		sprite_right.visible = true
-		sprite_down_right.visible = false
-		sprite_down.visible =  false
-		sprite_down_left.visible = false
-		sprite_left.visible = false
-		sprite_up_left.visible = false
-		#endregion
-	elif look_angle > 22.5 and look_angle <= 67.5: # DOWN RIGHT
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = false
-		sprite_right.visible = false
-		sprite_down_right.visible = true
-		sprite_down.visible =  false
-		sprite_down_left.visible = false
-		sprite_left.visible = false
-		sprite_up_left.visible = false
-		#endregion
-	elif look_angle > 67.5 and look_angle <= 112.5: # DOWN
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = false
-		sprite_right.visible = false
-		sprite_down_right.visible = false
-		sprite_down.visible =  true
-		sprite_down_left.visible = false
-		sprite_left.visible = false
-		sprite_up_left.visible = false
-		#endregion
-	elif look_angle > 112.5 and look_angle <= 157.5: # DOWN LEFT
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = false
-		sprite_right.visible = false
-		sprite_down_right.visible = false
-		sprite_down.visible =  false
-		sprite_down_left.visible = true
-		sprite_left.visible = false
-		sprite_up_left.visible = false
-		#endregion
-	elif look_angle > 157.5 or look_angle <= -157.5: # LEFT
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = false
-		sprite_right.visible = false
-		sprite_down_right.visible = false
-		sprite_down.visible =  false
-		sprite_down_left.visible = false
-		sprite_left.visible = true
-		sprite_up_left.visible = false
-		#endregion
-	elif look_angle > -157.5 and look_angle <= -112.5: # UP LEFT
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = false
-		sprite_right.visible = false
-		sprite_down_right.visible = false
-		sprite_down.visible =  false
-		sprite_down_left.visible = false
-		sprite_left.visible = false
-		sprite_up_left.visible = true
-		#endregion
-	elif look_angle > -112.5 and look_angle <= -67.5: # UP
-		#region Sprite listing
-		sprite_up.visible = true
-		sprite_up_right.visible = false
-		sprite_right.visible = false
-		sprite_down_right.visible = false
-		sprite_down.visible =  false
-		sprite_down_left.visible = false
-		sprite_left.visible = false
-		sprite_up_left.visible = false
-		#endregion
-	elif look_angle > -67.5 and look_angle <= -22.5: # UP RIGHT
-		#region Sprite listing
-		sprite_up.visible = false
-		sprite_up_right.visible = true
-		sprite_right.visible = false
-		sprite_down_right.visible = false
-		sprite_down.visible =  false
-		sprite_down_left.visible = false
-		sprite_left.visible = false
-		sprite_up_left.visible = false
-		#endregion
-	#endregion
-	shot_point.look_at(get_global_mouse_position())
-	
+
+	if look_angle > -22.5 and look_angle <= 22.5:
+		current_facing = FacingDirection.RIGHT
+	elif look_angle > 22.5 and look_angle <= 67.5:
+		current_facing = FacingDirection.DOWN_RIGHT
+	elif look_angle > 67.5 and look_angle <= 112.5:
+		current_facing = FacingDirection.DOWN
+	elif look_angle > 112.5 and look_angle <= 157.5:
+		current_facing = FacingDirection.DOWN_LEFT
+	elif look_angle > 157.5 or look_angle <= -157.5:
+		current_facing = FacingDirection.LEFT
+	elif look_angle > -157.5 and look_angle <= -112.5:
+		current_facing = FacingDirection.UP_LEFT
+	elif look_angle > -112.5 and look_angle <= -67.5:
+		current_facing = FacingDirection.UP
+	elif look_angle > -67.5 and look_angle <= -22.5:
+		current_facing = FacingDirection.UP_RIGHT
+
+func _get_direction_name() -> String:
+	match current_facing:
+		FacingDirection.UP: return "up"
+		FacingDirection.UP_RIGHT: return "up_right"
+		FacingDirection.RIGHT: return "right"
+		FacingDirection.DOWN_RIGHT: return "down_right"
+		FacingDirection.DOWN: return "down"
+		FacingDirection.DOWN_LEFT: return "down_left"
+		FacingDirection.LEFT: return "left"
+		FacingDirection.UP_LEFT: return "up_left"
+
+	return "down"
+
+var is_locked_in_action := false
+
+var _previous_active_sprite: AnimatedSprite2D = null
+# Updates walk animation
+func _update_walk_animation():
+	if is_locked_in_action:
+		return
+
+	var is_moving := velocity.length() > 10.0
+	var action := "walk" if is_moving else "idle"
+	var animation_name := "%s_%s" % [action, _get_direction_name()]
+
+	if player_sprite.animation != animation_name:
+		player_sprite.play(animation_name)
+
+func play_action(action: String):
+	if is_locked_in_action:
+		return
+
+	is_locked_in_action = true
+	var animation_name := "%s_%s" % [action, _get_direction_name()]
+	player_sprite.play(animation_name)
+
+	await player_sprite.animation_finished
+	is_locked_in_action = false
 	
 func _physics_process(delta):
 	if is_dashing:
@@ -355,6 +348,8 @@ func _physics_process(delta):
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera.add_trauma(0.5)   
+	play_action("shoot")
+	beatSquash.pop(.2)
 	if shot_fire_rate > max_shot_fire_rate:
 		if charge_shot.consume(modifier):
 			# Charged shot fired — still need sound and effect

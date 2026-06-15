@@ -28,32 +28,38 @@
 [ext_resource type="PackedScene" uid="uid://croljcfbh70xd" path="res://Objects/Instances With Collision/Grenade.tscn" id="17_figfh"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
+[ext_resource type="Texture2D" uid="uid://cl2hrpswvmw52" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/04_TurnAround_Idle.png" id="19_nxx5y"]
+[ext_resource type="Texture2D" uid="uid://bov32xwnq5lma" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/03_TurnAround_Idle.png" id="20_exwru"]
 [ext_resource type="Texture2D" uid="uid://oo48xtre3sec" path="res://Sprites/Game Elements/abilityfeedback.png" id="22_yt4p3"]
-[ext_resource type="Texture2D" uid="uid://b2nmgvvaxsn4k" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle1.png" id="24_vwi3h"]
-[ext_resource type="Texture2D" uid="uid://bfngc48f0ivyw" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle2.png" id="25_41o6w"]
-[ext_resource type="Texture2D" uid="uid://cm0bwhlcstfpj" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle3.png" id="26_yt4p3"]
-[ext_resource type="Texture2D" uid="uid://dsrkwoaiqe2t7" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE1.png" id="27_exwru"]
-[ext_resource type="Texture2D" uid="uid://cri0hallrmbk" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle4.png" id="27_xcrri"]
-[ext_resource type="Texture2D" uid="uid://cxj1hws4lau1f" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle5.png" id="28_1vk04"]
+[ext_resource type="Texture2D" uid="uid://dg2rfxsiiyxfr" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/07_TurnAround_HighRes_shoot.png" id="27_o710q"]
 [ext_resource type="Texture2D" uid="uid://dgix53toijmne" path="res://Sprites/Game Elements/floordecals.png" id="28_agm15"]
-[ext_resource type="Texture2D" uid="uid://djbmwi1cobm76" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE2.png" id="28_u1twm"]
-[ext_resource type="Texture2D" uid="uid://24r8oon6nn5l" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle6.png" id="29_fu6i5"]
-[ext_resource type="Texture2D" uid="uid://l1ta4lap8311" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE3.png" id="29_jgp33"]
+[ext_resource type="Texture2D" uid="uid://4mscwnpuov3p" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/07_TurnAround_HighRes_shoot - Copy.png" id="28_hlum5"]
+[ext_resource type="Texture2D" uid="uid://b28c6egnigktl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/02_TurnAround_Idle.png" id="28_jgp33"]
+[ext_resource type="Texture2D" uid="uid://biyaqueoebni4" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/02_TurnAround_HighRes_shoot.png" id="29_4t4xv"]
+[ext_resource type="Texture2D" uid="uid://ccwtuwpbvswre" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/01_TurnAround_Idle.png" id="29_110ka"]
 [ext_resource type="Texture2D" uid="uid://cq7ait0ynoass" path="res://Sprites/Game Elements/baleterootdecals.png" id="29_xxi0v"]
 [ext_resource type="Texture2D" uid="uid://gg2hyp501kug" path="res://Sprites/Game Elements/floordecal3.png" id="30_81sgd"]
-[ext_resource type="Texture2D" uid="uid://dlur8r0o6a22r" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE4.png" id="30_110ka"]
-[ext_resource type="Texture2D" uid="uid://dh27chreavtjo" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle7.png" id="30_mtruf"]
+[ext_resource type="Texture2D" uid="uid://bitnw4i8bxxh1" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/04_TurnAround_HighRes_shoot.png" id="30_e8aea"]
+[ext_resource type="Texture2D" uid="uid://cnew75vddkewy" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/00_TurnAround_Idle.png" id="30_vj1fp"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
-[ext_resource type="Texture2D" uid="uid://dqmjfk5081pn0" path="res://Sprites/Player Sprites/Orthographic/Stationary/TestAngle8.png" id="31_rr6op"]
-[ext_resource type="Texture2D" uid="uid://gr14w16h7rfg" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE5.png" id="31_vj1fp"]
-[ext_resource type="Texture2D" uid="uid://bkx8e0olqi6lr" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE6.png" id="32_o710q"]
-[ext_resource type="Texture2D" uid="uid://d1iell8esy6nw" path="res://Sprites/Player Sprites/Orthographic/Moving/NorthEast/NE7.png" id="33_hlum5"]
+[ext_resource type="Texture2D" uid="uid://bgdhi6mfhofgb" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/07_TurnAround_Idle.png" id="31_o710q"]
+[ext_resource type="Texture2D" uid="uid://cf5urgtoyvu07" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/04_TurnAround_HighRes_shoot - Copy.png" id="31_rp1p4"]
+[ext_resource type="Texture2D" uid="uid://d3veyktjqeeog" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/06_TurnAround_Idle.png" id="32_hlum5"]
+[ext_resource type="Texture2D" uid="uid://bq7vv3px0d3dj" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/05_TurnAround_Idle.png" id="33_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
+[ext_resource type="Texture2D" uid="uid://cjvuq0j8108x8" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/00_TurnAround_HighRes_Walk.png" id="36_exwru"]
 [ext_resource type="PackedScene" uid="uid://bjc8btakp3jbf" path="res://Objects/Instances With Collision/GlowingBlock.tscn" id="37_1q4m6"]
+[ext_resource type="Texture2D" uid="uid://cknb3kcdifjob" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/01_TurnAround_HighRes_Walk.png" id="37_u1twm"]
+[ext_resource type="Texture2D" uid="uid://cp8ae8x0tyl50" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/02_TurnAround_HighRes_Walk.png" id="38_jgp33"]
+[ext_resource type="Texture2D" uid="uid://nhk7u3mlpejv" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/06_TurnAround_HighRes_Walk - Copy.png" id="39_110ka"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
+[ext_resource type="Texture2D" uid="uid://bawq01o7u2ggp" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/06_TurnAround_HighRes_Walk.png" id="40_vj1fp"]
 [ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
+[ext_resource type="Texture2D" uid="uid://bsbr5egwkgnl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/04_TurnAround_HighRes_Walk.png" id="41_o710q"]
+[ext_resource type="Texture2D" uid="uid://cltoyfcxdyhe5" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/05_TurnAround_HighRes_Walk.png" id="42_hlum5"]
 [ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="42_jgp33"]
+[ext_resource type="Texture2D" uid="uid://b0e0c7jtgvlb8" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/03_TurnAround_HighRes_Walk.png" id="43_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="AudioStream" uid="uid://1c6m625ug17m" path="res://Audio/Sounds/UpdatedShotSound.wav" id="50_hlum5"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
@@ -229,7 +235,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_nxx5y"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_e8aea"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -347,34 +353,198 @@ _data = {
 &"RESET": SubResource("Animation_figfh")
 }
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4t4xv"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8aea"]
 animations = [{
 "frames": [{
-"duration": 0.5,
-"texture": ExtResource("27_exwru")
-}, {
-"duration": 0.5,
-"texture": ExtResource("28_u1twm")
-}, {
-"duration": 0.5,
-"texture": ExtResource("29_jgp33")
-}, {
-"duration": 0.5,
-"texture": ExtResource("30_110ka")
-}, {
-"duration": 0.5,
-"texture": ExtResource("31_vj1fp")
-}, {
-"duration": 0.5,
-"texture": ExtResource("32_o710q")
-}, {
-"duration": 0.5,
-"texture": ExtResource("33_hlum5")
+"duration": 1.0,
+"texture": ExtResource("30_vj1fp")
 }],
 "loop": true,
-"name": &"NorthEastWalking",
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_o710q")
+}],
+"loop": true,
+"name": &"idle_down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_110ka")
+}],
+"loop": true,
+"name": &"idle_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_hlum5")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_jgp33")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_nxx5y")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_4t4xv")
+}],
+"loop": true,
+"name": &"idle_up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_exwru")
+}],
+"loop": true,
+"name": &"idle_up_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_o710q")
+}],
+"loop": false,
+"name": &"shoot_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_o710q")
+}],
+"loop": false,
+"name": &"shoot_down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_hlum5")
+}],
+"loop": false,
+"name": &"shoot_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_o710q")
+}],
+"loop": false,
+"name": &"shoot_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_4t4xv")
+}],
+"loop": false,
+"name": &"shoot_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_e8aea")
+}],
+"loop": false,
+"name": &"shoot_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_rp1p4")
+}],
+"loop": false,
+"name": &"shoot_up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_e8aea")
+}],
+"loop": false,
+"name": &"shoot_up_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_exwru")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_u1twm")
+}],
+"loop": true,
+"name": &"walk_down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_jgp33")
+}],
+"loop": true,
+"name": &"walk_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_110ka")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_vj1fp")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_o710q")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_hlum5")
+}],
+"loop": true,
+"name": &"walk_up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_4t4xv")
+}],
+"loop": true,
+"name": &"walk_up_right",
 "speed": 5.0
 }]
 
@@ -675,13 +845,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_nxx5y")
+button_group = SubResource("ButtonGroup_e8aea")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_nxx5y")
+button_group = SubResource("ButtonGroup_e8aea")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_nxx5y")
+button_group = SubResource("ButtonGroup_e8aea")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -723,7 +893,7 @@ mouse_filter = 2
 color = Color(1, 0, 0, 0)
 script = ExtResource("12_fu6i5")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "beatSquash", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
@@ -731,6 +901,7 @@ script = ExtResource("1_haeiw")
 camera = NodePath("../InterfaceElements/PlayerCamera")
 hit_flash = NodePath("../InterfaceElements/NewHUD/Hitflash")
 UpgradeScreen = NodePath("../InterfaceElements/NewHUD/UI/UpgradeUI")
+beatSquash = NodePath("BeatSquashStretch")
 manager = NodePath("..")
 charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
@@ -742,14 +913,14 @@ can_use_ability = true
 max_ability_cooldown = 30.0
 can_use_companion_ability = true
 ability_visual_feedback = NodePath("../InterfaceElements/NewHUD/AbilityActivationFeedback/ActivationAnimation")
-sprite_up = NodePath("VisualRoot/PlayerSpriteUp")
-sprite_up_right = NodePath("VisualRoot/PlayerSpriteUpRight")
-sprite_right = NodePath("VisualRoot/PlayerSpriteRight")
-sprite_down_right = NodePath("VisualRoot/PlayerSpriteDownRight")
-sprite_down = NodePath("VisualRoot/PlayerSpriteDown")
-sprite_down_left = NodePath("VisualRoot/PlayerSpriteDownLeft")
-sprite_left = NodePath("VisualRoot/PlayerSpriteLeft")
-sprite_up_left = NodePath("VisualRoot/PlayerSpriteUpLeft")
+sprite_up = NodePath("")
+sprite_up_right = NodePath("")
+sprite_right = NodePath("")
+sprite_down_right = NodePath("")
+sprite_down = NodePath("")
+sprite_down_left = NodePath("")
+sprite_left = NodePath("")
+sprite_up_left = NodePath("")
 cutscene_handler = NodePath("../GameSystems/SceneHandler")
 
 [node name="ShotPoint" type="Marker2D" parent="Player" unique_id=1755826713]
@@ -757,64 +928,10 @@ position = Vector2(11, -4)
 
 [node name="VisualRoot" type="Node2D" parent="Player" unique_id=93750855]
 
-[node name="PlayerSpriteUp" type="Sprite2D" parent="Player/VisualRoot" unique_id=608356456]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("24_vwi3h")
-
-[node name="PlayerSpriteUpWalking" type="AnimatedSprite2D" parent="Player/VisualRoot/PlayerSpriteUp" unique_id=875403186]
-visible = false
-sprite_frames = SubResource("SpriteFrames_4t4xv")
-
-[node name="PlayerSpriteUpRight" type="Sprite2D" parent="Player/VisualRoot" unique_id=1759715147]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("25_41o6w")
-
-[node name="PlayerSpriteUpRightWalking" type="AnimatedSprite2D" parent="Player/VisualRoot" unique_id=1668159534]
-visible = false
-scale = Vector2(0.22399989, 0.2239997)
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player/VisualRoot" unique_id=1239785686]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_e8aea")
-animation = &"NorthEastWalking"
-frame_progress = 0.64611644
-
-[node name="PlayerSpriteRight" type="Sprite2D" parent="Player/VisualRoot" unique_id=1544387780]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("26_yt4p3")
-
-[node name="PlayerSpriteDownRight" type="Sprite2D" parent="Player/VisualRoot" unique_id=1887426017]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("27_xcrri")
-
-[node name="PlayerSpriteDown" type="Sprite2D" parent="Player/VisualRoot" unique_id=176670224]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("28_1vk04")
-
-[node name="PlayerSpriteDownLeft" type="Sprite2D" parent="Player/VisualRoot" unique_id=1843687729]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("29_fu6i5")
-
-[node name="PlayerSpriteLeft" type="Sprite2D" parent="Player/VisualRoot" unique_id=1110267015]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("30_mtruf")
-
-[node name="PlayerSpriteUpLeft" type="Sprite2D" parent="Player/VisualRoot" unique_id=1228432555]
-visible = false
-self_modulate = Color(0.9629278, 0.9629278, 0.9629278, 1)
-scale = Vector2(0.22399989, 0.2239997)
-texture = ExtResource("31_rr6op")
+animation = &"shoot_up_right"
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="Player" unique_id=1154990945]
 shape = SubResource("CircleShape2D_ydlo6")
@@ -845,6 +962,7 @@ pitch_scale = 1.4
 bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="Player" unique_id=553159512]
+visible = false
 scale = Vector2(42.156246, 42.156246)
 energy = 2.75
 shadow_enabled = true
@@ -922,6 +1040,7 @@ bus = &"SFX"
 position = Vector2(-81, -41)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=1524399052]
+visible = false
 energy = 1.5
 shadow_enabled = true
 texture = ExtResource("42_jgp33")
@@ -1554,6 +1673,7 @@ texture = ExtResource("31_40ckn")
 [node name="AreaLights" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1308492096]
 
 [node name="AreaLight4" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1206542930]
+visible = false
 position = Vector2(414.00018, 1133)
 scale = Vector2(30.546873, 30.624998)
 energy = 4.0
@@ -1561,6 +1681,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_wkher")
 
 [node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight4" unique_id=1666472738]
+visible = false
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1576,6 +1697,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight2" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1127818380]
+visible = false
 position = Vector2(-421.9999, 379)
 scale = Vector2(30.546873, 30.624998)
 energy = 4.97
@@ -1598,6 +1720,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight3" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1141918270]
+visible = false
 position = Vector2(-1253, 1137)
 scale = Vector2(53.71875, -51.691105)
 energy = 4.0
@@ -1605,6 +1728,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_o710q")
 
 [node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight3" unique_id=2001628919]
+visible = false
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1620,6 +1744,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight6" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=998284555]
+visible = false
 position = Vector2(-201.99997, 1738)
 scale = Vector2(30.218752, -29.078125)
 color = Color(0.37342674, 0.6155507, 1, 1)
@@ -1628,6 +1753,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
 [node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight6" unique_id=1360000092]
+visible = false
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1643,6 +1769,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight5" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=1587209368]
+visible = false
 position = Vector2(1587, 2124)
 scale = Vector2(30.218752, -29.078125)
 energy = 2.0
@@ -1650,6 +1777,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
 [node name="LightParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights/AreaLight5" unique_id=1973902487]
+visible = false
 amount = 15
 texture = SubResource("GradientTexture2D_1q4m6")
 lifetime = 4.0
@@ -1665,6 +1793,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight7" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=990883868]
+visible = false
 position = Vector2(1908, 127)
 scale = Vector2(39.406246, -37.918827)
 energy = 1.25
@@ -1687,6 +1816,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="AreaLight8" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/AreaLights" unique_id=299155294]
+visible = false
 position = Vector2(1808.0001, 1466)
 scale = Vector2(39.406246, -37.918827)
 energy = 3.0
@@ -1709,6 +1839,7 @@ scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6uhl4")
 
 [node name="BlueAreaLight" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=879827992]
+visible = false
 position = Vector2(1813.9999, 671)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0
@@ -1716,6 +1847,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_4t4xv")
 
 [node name="BlueAreaLight2" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1780547259]
+visible = false
 position = Vector2(1817, 1456)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0
@@ -1723,6 +1855,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_4t4xv")
 
 [node name="BlueAreaLight5" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1678965497]
+visible = false
 position = Vector2(2994, 1188.9999)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0
@@ -1730,6 +1863,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_4t4xv")
 
 [node name="BlueAreaLight3" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1880718453]
+visible = false
 position = Vector2(602, 985.99994)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0
@@ -1737,6 +1871,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_e8aea")
 
 [node name="BlueAreaLight4" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1874395742]
+visible = false
 position = Vector2(1117, 1957)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0
@@ -1744,6 +1879,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_e8aea")
 
 [node name="BlueAreaLight6" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1384044228]
+visible = false
 position = Vector2(2867, 427)
 scale = Vector2(24.687504, 24.687504)
 energy = 2.0

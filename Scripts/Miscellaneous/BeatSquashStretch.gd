@@ -6,9 +6,9 @@ extends Node
 
 @export_category("Squash and Stretch Settings")
 ## How much to squash/stretch on a full beat
-@export var full_beat_intensity: float = .5
+@export var full_beat_intensity: float = .1
 ## How much to squash/stretch on a half beat
-@export var half_beat_intensity: float = .25
+@export var half_beat_intensity: float = .05
 ## How quickly it returns to normal scale
 @export var recovery_speed: float = 0.6
 ## The base scale to return to
@@ -60,14 +60,14 @@ func _exit_tree() -> void:
 
 
 func _on_full_beat() -> void:
-	print("_on_full_beat received")
-	_apply_squash(full_beat_intensity)
-
+	#print("_on_full_beat received")
+	#_apply_squash(full_beat_intensity)
+	pass
 
 func _on_beat() -> void:
-	print("_on_beat received")
-	_apply_squash(half_beat_intensity)
-
+	#print("_on_beat received")
+	#_apply_squash(half_beat_intensity)
+	pass
 
 func _apply_squash(intensity: float) -> void:
 	if target == null:
