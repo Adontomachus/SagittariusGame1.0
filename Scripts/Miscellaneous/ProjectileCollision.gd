@@ -36,6 +36,8 @@ enum ProjectileVelocityType {
 @export var faint_glow: PointLight2D
 @export var enemy_glow: PointLight2D
 
+@export var emitter: CPUParticles2D 
+
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
 
@@ -55,6 +57,7 @@ func _ready():
 	if (projectileSide == ProjectileSide.Player):
 		faint_glow.visible = true
 		enemy_glow.visible = false
+		
 	elif (projectileSide == ProjectileSide.Enemy):
 		faint_glow.visible = false
 		enemy_glow.visible = true
@@ -163,4 +166,13 @@ func change_projectile_side(new_side: ProjectileSide) -> void:
 
 # Changes the projectile's color for identification
 func change_projectile_modulation(color: Color) -> void:
-	set_projectile_modulate.emit(color)
+	modulate = color
+
+	if emitter.color_ramp:
+		## Duplicate so this projectile has its own ramp
+		emitter.color_ramp = emitter.color_ramp.duplicate()
+
+		emitter.color_ramp.set_color(0, color)
+		emitter.color_ramp.set_color(1, color.darkened(0.4))
+	else:
+		emitter.color = color

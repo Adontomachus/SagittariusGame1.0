@@ -38,12 +38,13 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.2)
 
-[node name="PlayerBullet" type="Area2D" unique_id=132848767 node_paths=PackedStringArray("faint_glow", "enemy_glow")]
+[node name="PlayerBullet" type="Area2D" unique_id=132848767 node_paths=PackedStringArray("faint_glow", "enemy_glow", "emitter")]
 script = ExtResource("1_5eb27")
 projectileVelocity = 762.0
 projectileLifetime = 60.0
 faint_glow = NodePath("FaintGlow")
 enemy_glow = NodePath("EnemyGlow")
+emitter = NodePath("Emitter")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(5.912981, 5.912981, 5.912981, 1)
@@ -61,12 +62,11 @@ environment = SubResource("Environment_hex5x")
 position = Vector2(2, 0)
 amount = 20
 texture = SubResource("GradientTexture2D_5i23p")
-lifetime = 0.4
+lifetime = 0.31
 emission_shape = 1
 emission_sphere_radius = 2.75
 gravity = Vector2(0, 0)
-scale_amount_min = 0.1
-scale_amount_max = 0.6
+scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_5eb27")
 color = Color(1.6197081, 1.6106021, 1.0340387, 1)
 color_ramp = SubResource("Gradient_mwxp5")

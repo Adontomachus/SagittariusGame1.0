@@ -387,7 +387,7 @@ func _physics_process(delta):
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera.add_trauma(0.5)
 	play_action("shoot")
-	beatSquash.pop(.2)
+	beatSquash.pop(.1)
 	if shot_fire_rate > max_shot_fire_rate:
 		## Spawn position is the hand offset in world space
 		var spawn_pos := global_position + _get_facing_offset()
