@@ -7,7 +7,7 @@ extends Area2D
 var linger_tween: Tween
 
 @export var damage: float = 10.0
-@export var radius: float = 200
+@export var radius: float = 100
 
 ## How many beats the AoE zone lingers on the ground
 @export var linger_beats: int = 7

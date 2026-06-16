@@ -10,11 +10,49 @@ size = Vector2(22, 10)
 background_mode = 3
 glow_enabled = true
 
-[node name="PlayerBullet" type="Area2D" unique_id=132848767]
+[sub_resource type="Gradient" id="Gradient_5eb27"]
+offsets = PackedFloat32Array(0, 0.3427673, 0.9874214, 1)
+colors = PackedColorArray(7.180835, 7.156659, 4.380794, 1, 0.71573097, 0.49212676, 0.22959647, 0, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_teh0n"]
+gradient = SubResource("Gradient_5eb27")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.1)
+
+[sub_resource type="Curve" id="Curve_vshp8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5308499), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dd3fx"]
+offsets = PackedFloat32Array(0, 0.566879, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.34409294, 0.2716998, 1, 1, 0.54588866, 0.2716998, 0)
+
+[sub_resource type="Gradient" id="Gradient_ej3rb"]
+colors = PackedColorArray(1, 0.9246135, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lg121"]
+gradient = SubResource("Gradient_ej3rb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_5i23p"]
+colors = PackedColorArray(1, 0.9246135, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vshp8"]
+gradient = SubResource("Gradient_5i23p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[node name="PlayerBullet" type="Area2D" unique_id=132848767 node_paths=PackedStringArray("faint_glow", "enemy_glow")]
 script = ExtResource("1_teh0n")
 velocity_type = 1
 projectileVelocity = 1158.0
 projectileLifetime = 75.0
+faint_glow = NodePath("FaintGlow")
+enemy_glow = NodePath("EnemyGlow")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(5.912981, 5.912981, 5.912981, 1)
@@ -27,5 +65,30 @@ shape = SubResource("RectangleShape2D_wix7r")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1978019399]
 environment = SubResource("Environment_hex5x")
+
+[node name="Emitter" type="CPUParticles2D" parent="." unique_id=190352062]
+position = Vector2(2, 0)
+amount = 20
+texture = SubResource("GradientTexture2D_teh0n")
+lifetime = 0.7
+emission_shape = 1
+emission_sphere_radius = 2.75
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_vshp8")
+color = Color(1.6197081, 1.6106021, 1.0340387, 1)
+color_ramp = SubResource("Gradient_dd3fx")
+
+[node name="FaintGlow" type="PointLight2D" parent="." unique_id=1062911304]
+scale = Vector2(0.90625, 0.90624994)
+energy = 6.07
+texture = SubResource("GradientTexture2D_lg121")
+
+[node name="EnemyGlow" type="PointLight2D" parent="." unique_id=1943013954]
+visible = false
+scale = Vector2(4.09375, 4.09375)
+energy = 5.0
+texture = SubResource("GradientTexture2D_vshp8")
 
 [connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

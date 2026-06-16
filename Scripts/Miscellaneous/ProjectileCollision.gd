@@ -31,6 +31,11 @@ enum ProjectileVelocityType {
 @export var projectileLifetime: float
 @export var criticalHit: bool
 @export var projectile_damage: float = 5
+
+@export_category("Glow Effects")
+@export var faint_glow: PointLight2D
+@export var enemy_glow: PointLight2D
+
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
 
@@ -46,9 +51,15 @@ func set_projectile_size(size_multiplier: float) -> void:
 	scale = Vector2.ONE * size_multiplier
 	
 func _ready():
+	## Determines what glow effect is visible
+	if (projectileSide == ProjectileSide.Player):
+		faint_glow.visible = true
+		enemy_glow.visible = false
+	elif (projectileSide == ProjectileSide.Enemy):
+		faint_glow.visible = false
+		enemy_glow.visible = true
+		
 	## Check if the projectile velocity type is constant or changing.
-	
-	
 	if damage_type == DamageType.SingleTarget:
 		# Lambda functions used for world collision for single target enumerator
 		self.body_entered.connect(func(body: Node2D) -> void:

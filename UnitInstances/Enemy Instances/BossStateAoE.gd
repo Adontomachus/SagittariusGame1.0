@@ -95,7 +95,7 @@ func _telegraph_and_hit(target_pos: Vector2) -> void:
 
 func _spawn_explosion(pos: Vector2) -> void:
 	## Reuse your existing AoE hit effect
-	var effect := preload("res://Objects/Instances With Collision/GrenadeExplosion.tscn").instantiate()
+	var effect := preload("res://Objects/Instances With Collision/EnemyGrenadeExplosion.tscn").instantiate()
 	effect.global_position = pos
 	get_tree().current_scene.add_child(effect)
 

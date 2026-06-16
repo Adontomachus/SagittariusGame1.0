@@ -64,7 +64,7 @@ _data = {
 &"Spinning": SubResource("Animation_r1kxu")
 }
 
-[node name="ShoutTelegraph" type="Node2D" unique_id=2009070930]
+[node name="BossAoETelegraph" type="Node2D" unique_id=2009070930]
 script = ExtResource("1_i12re")
 radius = 100.0
 

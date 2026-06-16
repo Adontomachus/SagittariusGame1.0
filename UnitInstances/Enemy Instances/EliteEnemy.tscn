@@ -99,11 +99,11 @@ shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=852058756]
-offset_left = -85.0
-offset_top = 18.999998
-offset_right = -21.017517
-offset_bottom = 52.40497
-rotation = -0.99837506
+offset_left = -41.0
+offset_top = -87.99999
+offset_right = 56.808426
+offset_bottom = -36.934654
+rotation = 0.2654569
 nine_patch_stretch = true
 texture_under = ExtResource("4_22t2l")
 texture_progress = ExtResource("5_ilcit")
