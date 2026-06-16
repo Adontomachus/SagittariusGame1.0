@@ -72,17 +72,17 @@ ambient_light_energy = 1.18
 tonemap_mode = 1
 ssao_intensity = 3.39
 glow_enabled = true
-glow_intensity = 0.15
+glow_intensity = 0.1
 glow_strength = 1.1
-glow_bloom = 0.44
 glow_hdr_scale = 1.31
 fog_light_color = Color(0.49220896, 0.5927723, 0.32520464, 1)
 fog_light_energy = 3.5
 fog_sun_scatter = 0.1
 fog_height = -213.09
 adjustment_enabled = true
-adjustment_brightness = 0.5
-adjustment_contrast = 1.25
+adjustment_brightness = 1.45
+adjustment_contrast = 1.085
+adjustment_saturation = 1.26
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
 
