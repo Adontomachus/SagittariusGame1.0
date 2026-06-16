@@ -68,7 +68,7 @@ _data = {
 script = ExtResource("1_g67dv")
 
 [node name="Telegraph" type="Sprite2D" parent="." unique_id=953736790]
-scale = Vector2(0.58884555, 0.5888457)
+scale = Vector2(0.3060959, 0.306096)
 texture = ExtResource("2_4q8rf")
 
 [node name="SpinAnimation" type="AnimationPlayer" parent="." unique_id=1285261064]

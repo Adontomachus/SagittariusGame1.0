@@ -95,11 +95,11 @@ debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 position = Vector2(1, -1)
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=1971254556]
-offset_left = -72.0
-offset_top = 14.999998
-offset_right = -13.699577
-offset_bottom = 45.597946
-rotation = -0.99837506
+offset_left = -24.66666
+offset_top = -65.33333
+offset_right = 33.633762
+offset_bottom = -34.735382
+rotation = 0.27375698
 nine_patch_stretch = true
 texture_under = ExtResource("4_ciy0g")
 texture_progress = ExtResource("5_rakrl")

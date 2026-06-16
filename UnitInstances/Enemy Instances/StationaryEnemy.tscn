@@ -104,11 +104,11 @@ offset_right = 46.0
 offset_bottom = -35.0
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=2135190990]
-offset_left = -96.82109
-offset_top = 20.200672
-offset_right = -16.750511
-offset_bottom = 62.224308
-rotation = -0.99837506
+offset_left = -35.7143
+offset_top = -72.85715
+offset_right = 44.35628
+offset_bottom = -30.833511
+rotation = 0.2667204
 nine_patch_stretch = true
 texture_under = ExtResource("4_ukt1m")
 texture_progress = ExtResource("5_3aqhm")

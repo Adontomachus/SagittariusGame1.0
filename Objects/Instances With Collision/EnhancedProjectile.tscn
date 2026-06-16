@@ -35,7 +35,25 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.2)
 
-[node name="SplashBullet" type="Area2D" unique_id=132848767]
+[sub_resource type="Gradient" id="Gradient_ej3rb"]
+colors = PackedColorArray(1, 0.9246135, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7a4nw"]
+gradient = SubResource("Gradient_ej3rb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_5i23p"]
+colors = PackedColorArray(1, 0.9246135, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e6vf3"]
+gradient = SubResource("Gradient_5i23p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[node name="SplashBullet" type="Area2D" unique_id=132848767 node_paths=PackedStringArray("faint_glow", "enemy_glow")]
 modulate = Color(1.4954206, 1.4954206, 0.8693227, 1)
 self_modulate = Color(4.165, 4.165, 4.165, 1)
 script = ExtResource("1_bc5k8")
@@ -43,6 +61,8 @@ damage_type = 1
 projectileVelocity = 851.0
 projectileLifetime = 90.0
 criticalHit = true
+faint_glow = NodePath("FaintGlow")
+enemy_glow = NodePath("EnemyGlow")
 
 [node name="BulletSprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
@@ -76,5 +96,16 @@ scale = Vector2(12.031249, 12.031249)
 energy = 5.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_dpnqh")
+
+[node name="FaintGlow" type="PointLight2D" parent="." unique_id=141557434]
+scale = Vector2(0.90625, 0.90624994)
+energy = 6.07
+texture = SubResource("GradientTexture2D_7a4nw")
+
+[node name="EnemyGlow" type="PointLight2D" parent="." unique_id=1671845759]
+visible = false
+scale = Vector2(4.09375, 4.09375)
+energy = 5.0
+texture = SubResource("GradientTexture2D_e6vf3")
 
 [connection signal="set_projectile_modulate" from="." to="BulletSprite" method="set_modulate"]

@@ -68,15 +68,33 @@
 
 [sub_resource type="Environment" id="Environment_jgp33"]
 background_mode = 3
+ambient_light_energy = 1.18
+tonemap_mode = 1
+ssao_intensity = 3.39
 glow_enabled = true
-glow_intensity = 0.2
+glow_intensity = 0.15
 glow_strength = 1.1
-glow_bloom = 1.0
+glow_bloom = 0.44
+glow_hdr_scale = 1.31
+fog_light_color = Color(0.49220896, 0.5927723, 0.32520464, 1)
+fog_light_energy = 3.5
+fog_sun_scatter = 0.1
+fog_height = -213.09
 adjustment_enabled = true
-adjustment_contrast = 1.125
-adjustment_saturation = 1.13
+adjustment_brightness = 0.5
+adjustment_contrast = 1.25
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
+
+[sub_resource type="Gradient" id="Gradient_nxx5y"]
+offsets = PackedFloat32Array(0, 0.8018868, 1)
+colors = PackedColorArray(0.7887894, 0.82665706, 0.54004896, 0.018000001, 0.19236705, 0.20398456, 0.112554274, 0.33298114, 0, 0, 0, 0.63900006)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_exwru"]
+gradient = SubResource("Gradient_nxx5y")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9273504, 0.07692308)
 
 [sub_resource type="Animation" id="Animation_cacow"]
 resource_name = "GlowPulse"
@@ -694,7 +712,7 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 environment = SubResource("Environment_jgp33")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
-color = Color(0.642681, 0.7029118, 0.90837634, 1)
+color = Color(0.3239454, 0.27801323, 0.69181025, 1)
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
 script = ExtResource("2_vj1fp")
@@ -804,6 +822,11 @@ layout_mode = 2
 position = Vector2(13.75, 4.75)
 scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
+
+[node name="Vignette" type="TextureRect" parent="InterfaceElements/NewHUD" unique_id=310783616]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_exwru")
 
 [node name="GlowAnimationPlayer" type="AnimationPlayer" parent="InterfaceElements/NewHUD" unique_id=1438675712]
 root_node = NodePath("../UI/UpdatedPlayerHealthBar")
@@ -1066,47 +1089,47 @@ texture = ExtResource("8_f1byq")
 [node name="Obstacles" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=2099223545]
 
 [node name="Wall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=430981844 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-200, 547)
 
 [node name="Wall2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1369542608 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(110, 538)
 
 [node name="Wall3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=221904683 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-188, 322)
 
 [node name="Wall4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1661139557 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(828, 599)
 
 [node name="Wall5" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=470109116 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(898, 638)
 
 [node name="Wall6" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=737682561 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(110, 329)
 
 [node name="Wall7" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1495814750 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(963, 678)
 
 [node name="Wall8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=971025487 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1027, 716)
 
 [node name="Wall9" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1882345351 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(363, 559)
 
 [node name="Wall10" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=316081175 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(436, 601)
 
 [node name="Wall11" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=22576572 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(509, 643)
 
 [node name="Tree" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1319257251 instance=ExtResource("16_tedqt")]
@@ -1170,27 +1193,27 @@ scale = Vector2(0.0979229, 0.09792287)
 texture = ExtResource("17_x4iy2")
 
 [node name="Wall12" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1501938174 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1299, 769)
 
 [node name="Wall13" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1286809218 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1546, 543)
 
 [node name="Wall14" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1580122650 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1737, 347)
 
 [node name="Wall15" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1832107586 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(2112, 173)
 
 [node name="Wall16" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=533129430 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1641, 1331)
 
 [node name="Wall17" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1837305217 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1021, 1241)
 
 [node name="Pillar" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=2023383986 instance=ExtResource("11_t0ujt")]
@@ -1214,15 +1237,19 @@ modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
 position = Vector2(2428, 522)
 
 [node name="Wall18" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1061853617 instance=ExtResource("37_1q4m6")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-9, 963)
 
 [node name="Wall19" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=266387192 instance=ExtResource("37_1q4m6")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1402, 1774)
 
 [node name="Wall20" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=22221003 instance=ExtResource("37_1q4m6")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(2236, 1341)
 
 [node name="Wall21" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/Obstacles" unique_id=1217167005 instance=ExtResource("37_1q4m6")]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(2291, -194)
 
 [node name="BGDecals" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=1231745277]
@@ -1326,22 +1353,22 @@ scale = Vector2(0.43544304, 0.43544304)
 texture = ExtResource("52_vj1fp")
 
 [node name="Rhythmplant" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1580102396 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
-modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+modulate = Color(0.91627353, 0.91627353, 0.91627353, 1)
 z_index = -14
 position = Vector2(1240, 581)
 
 [node name="Rhythmplant2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=286901970 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
-modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+modulate = Color(0.91627353, 0.91627353, 0.91627353, 1)
 z_index = -14
 position = Vector2(332, 1378)
 
 [node name="Rhythmplant3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=197684335 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
-modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+modulate = Color(0.91627353, 0.91627353, 0.91627353, 1)
 z_index = -14
 position = Vector2(595, -126.000015)
 
 [node name="Rhythmplant4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=1224466097 groups=["AestheticDecoration"] instance=ExtResource("19_exhb5")]
-modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
+modulate = Color(0.91627353, 0.91627353, 0.91627353, 1)
 z_index = -14
 position = Vector2(-591, 74.999985)
 
@@ -1905,122 +1932,122 @@ scale = Vector2(0.4946371, 0.4946371)
 [node name="MapEdgeObstacles" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=76741644]
 
 [node name="Wall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1640904457 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-2278.9998, 339.00006)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall12" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=154640181 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-1970, -451.00012)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall13" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1043574198 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-699.99976, -1257.0001)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall14" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1011616912 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(782.0002, -1305)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall15" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1136861045 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(2353, -1264.9999)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall16" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=585270852 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(3647, -474.99988)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall17" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1370809625 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(3931.9998, 1047.0002)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall18" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=454677730 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(3280.9998, 2447)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall19" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2025744781 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1473.9995, 2992)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall20" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1129463978 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(2833, 2805)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall21" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=429107870 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-41.000244, 2960)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall22" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1335058214 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-1270.0001, 2731.9998)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall23" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=494319243 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-1881, 2357.9998)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall24" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=591910852 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-2337, 1079.9999)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1826536178 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-2286, 1841)
 scale = Vector2(5.5631194, 5.5631194)
 
 [node name="Wall3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=677092983 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-784.0001, 2951)
 scale = Vector2(5.5632787, 5.5632787)
 
 [node name="Wall4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=363350674 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(733, 3010.0002)
 scale = Vector2(5.563773, 5.563773)
 
 [node name="Wall5" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=708792417 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(2265.0002, 3017.0002)
 scale = Vector2(5.5629597, 5.5629597)
 
 [node name="Wall6" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=2067173200 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(3781.0002, 1767)
 scale = Vector2(5.5650973, 5.5650973)
 
 [node name="Wall7" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=816452865 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(4029.0002, 343.00003)
 scale = Vector2(5.564267, 5.564267)
 
 [node name="Wall8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1803098296 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(3108.0002, -1217)
 scale = Vector2(5.564427, 5.564427)
 
 [node name="Wall9" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=706709999 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(1591.0004, -1306.0001)
 scale = Vector2(5.5639324, 5.5639324)
 
 [node name="Wall10" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1838353034 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(60.00029, -1343)
 scale = Vector2(5.5634384, 5.5634384)
 
 [node name="Wall11" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles" unique_id=1754002218 instance=ExtResource("5_nt06h")]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(-1471.9999, -1180)
 scale = Vector2(5.5627837, 5.5627837)
 
