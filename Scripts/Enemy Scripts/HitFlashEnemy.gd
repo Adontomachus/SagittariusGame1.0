@@ -2,9 +2,9 @@ class_name HitFlashEnemy
 extends Node
 
 @export var target: CanvasItem  ## accepts Sprite2D, AnimatedSprite2D, or any drawable node
-@export var flash_duration: float = 0.4
-@export var shake_strength: float = 4.0
-@export var shake_duration: float = 0.12
+@export var flash_duration: float = 1
+@export var shake_strength: float = 6.0
+@export var shake_duration: float = 0.2
 
 var flash_tween: Tween
 var shake_tween: Tween

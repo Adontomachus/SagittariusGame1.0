@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dqds3tst3eyy3" path="res://Scripts/Enemy Scripts/States/Exclusive Boss States/BossRecovery.gd" id="12_ek2o3"]
 [ext_resource type="Script" uid="uid://dkj38cryqv4t8" path="res://Scripts/Enemy Scripts/Boss Abilities/BossStateDecide.gd" id="14_vktps"]
 [ext_resource type="Script" uid="uid://bk6uwwh5wax7" path="res://Scripts/Enemy Scripts/Boss Abilities/BossStateBarrage.gd" id="15_krrga"]
+[ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="15_vktps"]
 [ext_resource type="Script" uid="uid://dcme6au84xsyj" path="res://Scripts/Enemy Scripts/Boss Abilities/BossStateSummon.gd" id="16_kxqtw"]
 [ext_resource type="Script" uid="uid://d4dq7t3qxa1fi" path="res://UnitInstances/Enemy Instances/BossStateAoE.gd" id="17_2ynkc"]
 
@@ -183,6 +184,10 @@ bus = &"SFX"
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=394973107]
 libraries/ = SubResource("AnimationLibrary_ek2o3")
+
+[node name="HitFlashEnemy" type="Node" parent="." unique_id=153903890 node_paths=PackedStringArray("target")]
+script = ExtResource("15_vktps")
+target = NodePath("../Sprite")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="." method="_on_send_maximum_health_value"]

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://djhvfb78j0d1i" path="res://Scripts/Enemy Scripts/States/Enemy States/Recovery.gd" id="8_by624"]
 [ext_resource type="Script" uid="uid://bw5wcv4mmnc6m" path="res://Scripts/Enemy Scripts/States/Enemy States/Strafing.gd" id="9_phvwr"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="10_pvjpk"]
+[ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="11_udgpc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -147,6 +148,10 @@ bus = &"SFX"
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1086358248]
 libraries/ = SubResource("AnimationLibrary_7j376")
+
+[node name="HitFlashEnemy" type="Node" parent="." unique_id=979008605 node_paths=PackedStringArray("target")]
+script = ExtResource("11_udgpc")
+target = NodePath("../Sprite")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

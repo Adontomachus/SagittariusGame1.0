@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="13_6onfs"]
 [ext_resource type="AudioStream" uid="uid://w50g3rkxy4cc" path="res://Audio/Sounds/ChargerStomp.wav" id="13_cjrua"]
 [ext_resource type="AudioStream" uid="uid://dkubcxuval72a" path="res://Audio/Sounds/ChargerRoar.mp3" id="14_ht5vj"]
+[ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="17_cjrua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 54.142277
@@ -279,6 +280,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1527912599]
 libraries/ = SubResource("AnimationLibrary_8jh7o")
+
+[node name="HitFlashEnemy" type="Node" parent="." unique_id=32138251 node_paths=PackedStringArray("target")]
+script = ExtResource("17_cjrua")
+target = NodePath("../Sprite")
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]

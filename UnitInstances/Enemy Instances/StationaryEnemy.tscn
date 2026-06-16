@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bjwm83qjth4q1" path="res://Scripts/Enemy Scripts/States/Enemy States/TurretFire.gd" id="7_k64of"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_vqhua"]
 [ext_resource type="Script" uid="uid://ddgde4sc35bqi" path="res://Scripts/Enemy Scripts/States/Enemy States/ShoutLobState.gd" id="10_nqpvr"]
+[ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="12_ad3to"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
@@ -157,6 +158,10 @@ environment = SubResource("Environment_k64of")
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1937620842]
 libraries/ = SubResource("AnimationLibrary_bvebc")
+
+[node name="HitFlashEnemy" type="Node" parent="." unique_id=685809461 node_paths=PackedStringArray("target")]
+script = ExtResource("12_ad3to")
+target = NodePath("../Sprite")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
