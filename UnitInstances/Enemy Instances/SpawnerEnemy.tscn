@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bjwm83qjth4q1" path="res://Scripts/Enemy Scripts/States/Enemy States/TurretFire.gd" id="9_hh78n"]
 [ext_resource type="Script" uid="uid://ddgde4sc35bqi" path="res://Scripts/Enemy Scripts/States/Enemy States/ShoutLobState.gd" id="10_t38i7"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="11_5glux"]
+[ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="12_ewdkc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
@@ -62,8 +63,14 @@ _data = {
 [node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_ewdkc")
+<<<<<<< Updated upstream
 beats_between_spawns = 8
 spawn_radius = 500.0
+=======
+max_spawn_count = 1
+beats_between_spawns = 100000
+spawn_radius = 20.0
+>>>>>>> Stashed changes
 spawner_sprite = NodePath("Sprite")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
@@ -156,6 +163,10 @@ environment = SubResource("Environment_k64of")
 
 [node name="DamageFlash" type="AnimationPlayer" parent="." unique_id=1937620842]
 libraries/ = SubResource("AnimationLibrary_bvebc")
+
+[node name="HitFlashEnemy" type="Node" parent="." unique_id=1817412578 node_paths=PackedStringArray("target")]
+script = ExtResource("12_ewdkc")
+target = NodePath("../Sprite")
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

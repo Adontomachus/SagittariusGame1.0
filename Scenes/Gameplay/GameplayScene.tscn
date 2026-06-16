@@ -235,7 +235,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_e8aea"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_o710q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -845,13 +845,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_e8aea")
+button_group = SubResource("ButtonGroup_o710q")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_e8aea")
+button_group = SubResource("ButtonGroup_o710q")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_e8aea")
+button_group = SubResource("ButtonGroup_o710q")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../Player")
@@ -893,7 +893,7 @@ mouse_filter = 2
 color = Color(1, 0, 0, 0)
 script = ExtResource("12_fu6i5")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "beatSquash", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "sprite_up", "sprite_up_right", "sprite_right", "sprite_down_right", "sprite_down", "sprite_down_left", "sprite_left", "sprite_up_left", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "beatSquash", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") groups=["PlayerObject"]]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(591, 278)
@@ -903,6 +903,14 @@ hit_flash = NodePath("../InterfaceElements/NewHUD/Hitflash")
 UpgradeScreen = NodePath("../InterfaceElements/NewHUD/UI/UpgradeUI")
 beatSquash = NodePath("BeatSquashStretch")
 manager = NodePath("..")
+offset_right = Vector2(35, -15)
+offset_down_right = Vector2(40, -30)
+offset_down = Vector2(-50, -10)
+offset_down_left = Vector2(-30, -30)
+offset_left = Vector2(-45, -25)
+offset_up_left = Vector2(-50, -50)
+offset_up = Vector2(45, -35)
+offset_up_right = Vector2(45, -50)
 charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("17_figfh")
@@ -913,15 +921,8 @@ can_use_ability = true
 max_ability_cooldown = 30.0
 can_use_companion_ability = true
 ability_visual_feedback = NodePath("../InterfaceElements/NewHUD/AbilityActivationFeedback/ActivationAnimation")
-sprite_up = NodePath("")
-sprite_up_right = NodePath("")
-sprite_right = NodePath("")
-sprite_down_right = NodePath("")
-sprite_down = NodePath("")
-sprite_down_left = NodePath("")
-sprite_left = NodePath("")
-sprite_up_left = NodePath("")
 cutscene_handler = NodePath("../GameSystems/SceneHandler")
+projectile_spawn_offset = 40.0
 
 [node name="ShotPoint" type="Marker2D" parent="Player" unique_id=1755826713]
 position = Vector2(11, -4)
@@ -962,9 +963,8 @@ pitch_scale = 1.4
 bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="Player" unique_id=553159512]
-visible = false
 scale = Vector2(42.156246, 42.156246)
-energy = 2.75
+energy = 1.16
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_y1plk")
 
