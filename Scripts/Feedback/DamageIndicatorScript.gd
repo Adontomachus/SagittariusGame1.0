@@ -12,11 +12,9 @@ var starting_font_size = 1
 @export_category("Damage Number Properties")
 @export var damage_value: int = 46
 @export var is_critical_hit: bool
-@export var fade_duration: float = .8
-@export var damage_num_size: float = 28
-
-## controls how long we hold the number
-@export var hold_duration: float = 0.2
+@export var fade_duration: float = 0.8
+@export var damage_num_size: float = 80
+@export var maximum_velocity: float = 100
 
 var move_direction: Vector2
 var move_speed: float

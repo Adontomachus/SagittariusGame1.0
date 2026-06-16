@@ -9,7 +9,7 @@ glow_intensity = 1.0
 glow_strength = 2.0
 
 [node name="EnemyDamageNumber" type="Label" unique_id=1560617677]
-self_modulate = Color(1.9901952, 1.0511132, 1.10903, 1)
+self_modulate = Color(3.545198, 1.89301, 1.9955386, 1)
 offset_left = -4.0
 offset_top = -8.0
 offset_right = 375.0

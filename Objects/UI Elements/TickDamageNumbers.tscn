@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://darl8yp86wpbm"]
+[gd_scene format=3 uid="uid://c4pxueipa4t0d"]
 
-[ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_jnfq4"]
+[ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_a5mfb"]
 
 [sub_resource type="Environment" id="Environment_y60un"]
 background_mode = 3
@@ -8,8 +8,8 @@ glow_enabled = true
 glow_intensity = 1.0
 glow_strength = 2.0
 
-[node name="DamageNumberUpdated" type="Label" unique_id=1560617677]
-self_modulate = Color(12.337875, 14.139331, 6.8437505, 1)
+[node name="TickDamageNumbers" type="Label" unique_id=1560617677]
+self_modulate = Color(2.1357718, 2.454227, 1.1645384, 1)
 offset_left = -4.0
 offset_top = -8.0
 offset_right = 375.0
@@ -18,7 +18,7 @@ theme_override_font_sizes/font_size = 80
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_jnfq4")
+script = ExtResource("1_a5mfb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526374861]
 environment = SubResource("Environment_y60un")
