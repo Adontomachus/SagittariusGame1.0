@@ -75,6 +75,7 @@ var pointObject := preload("res://UnitInstances/Miscellaneous/ScoreOrb.tscn")
 ## give the unit more chance to shoot the player for each beat.
 var chanceToAttack: float
 @onready var hit_sound: AudioStreamPlayer = $HitSound
+@onready var hit_flash_enemy: HitFlashEnemy = $HitFlashEnemy
 
 # Damage number positioning and feedback visuals
 var initPosition: Vector2 = Vector2(-133 ,-133)
@@ -99,6 +100,10 @@ func _ready():
 		squash.recovery_speed = 0.9
 		squash.base_scale = state_machine.sprite.scale
 		print("Squash found in enemy")
+	var hit_flash := get_node_or_null("HitFlashEnemy")
+	if hit_flash:
+		hit_flash.target = state_machine.sprite
+		
 	var difficultyScaler 
 	
 	if(difficulty_settings == 0):
@@ -209,6 +214,8 @@ func modify_health(increment: int) -> void:
 	# Boss
 	update_current_health_value.emit(baseHealthPoints)
 	toggle_healthbar_visibility.emit(baseHealthPoints < maxHealthPoints)
+	if increment < 0 and hit_flash_enemy:
+		hit_flash_enemy.flash()
 	
 	if (baseHealthPoints < 0):
 		_delete_and_emit_effects()

@@ -43,6 +43,16 @@ enum FacingDirection {
 	UP_LEFT
 }
 
+@export_category("Projectile Spawn Offsets")
+@export var offset_right: Vector2 = Vector2(20, 0)
+@export var offset_down_right: Vector2 = Vector2(14, 14)
+@export var offset_down: Vector2 = Vector2(0, 20)
+@export var offset_down_left: Vector2 = Vector2(-14, 14)
+@export var offset_left: Vector2 = Vector2(-20, 0)
+@export var offset_up_left: Vector2 = Vector2(-14, -14)
+@export var offset_up: Vector2 = Vector2(0, -20)
+@export var offset_up_right: Vector2 = Vector2(14, -14)
+
 var current_facing: FacingDirection = FacingDirection.DOWN
 
 #region General Player Statistics		
@@ -273,7 +283,7 @@ func _process(delta):
 		## This section is for orthographic sprite rotations and animations
 	_update_facing_direction()
 	_update_walk_animation()
-	shot_point.look_at(get_global_mouse_position())
+	shot_point.rotation_degrees = _get_facing_rotation()
 
 func _update_facing_direction():
 	var mouse_direction = get_global_mouse_position() - global_position
@@ -313,21 +323,49 @@ var is_locked_in_action := false
 
 var _previous_active_sprite: AnimatedSprite2D = null
 # Updates walk animation
-func _update_walk_animation():
+func _get_movement_direction_name() -> String:
+	## Use velocity to determine walk direction
+	var vel := velocity.normalized()
+	## Only calculate if actually moving
+	if vel.length() < 0.1:
+		return _get_direction_name()  ## fall back to facing direction when idle
+	var move_angle := rad_to_deg(vel.angle())
+	if move_angle > -22.5 and move_angle <= 22.5:
+		return "right"
+	elif move_angle > 22.5 and move_angle <= 67.5:
+		return "down_right"
+	elif move_angle > 67.5 and move_angle <= 112.5:
+		return "down"
+	elif move_angle > 112.5 and move_angle <= 157.5:
+		return "down_left"
+	elif move_angle > 157.5 or move_angle <= -157.5:
+		return "left"
+	elif move_angle > -157.5 and move_angle <= -112.5:
+		return "up_left"
+	elif move_angle > -112.5 and move_angle <= -67.5:
+		return "up"
+	elif move_angle > -67.5 and move_angle <= -22.5:
+		return "up_right"
+	return "down"
+
+
+func _update_walk_animation() -> void:
 	if is_locked_in_action:
 		return
-
 	var is_moving := velocity.length() > 10.0
 	var action := "walk" if is_moving else "idle"
-	var animation_name := "%s_%s" % [action, _get_direction_name()]
-
+	
+	## Walk uses movement direction, idle uses facing direction
+	var dir_name := _get_movement_direction_name() if is_moving else _get_direction_name()
+	var animation_name := "%s_%s" % [action, dir_name]
+	
 	if player_sprite.animation != animation_name:
 		player_sprite.play(animation_name)
-
+	
 func play_action(action: String):
 	if is_locked_in_action:
 		return
-
+	
 	is_locked_in_action = true
 	var animation_name := "%s_%s" % [action, _get_direction_name()]
 	player_sprite.play(animation_name)
@@ -347,31 +385,72 @@ func _physics_process(delta):
 
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
-	camera.add_trauma(0.5)   
+	camera.add_trauma(0.5)
 	play_action("shoot")
 	beatSquash.pop(.2)
 	if shot_fire_rate > max_shot_fire_rate:
+		## Spawn position is the hand offset in world space
+		var spawn_pos := global_position + _get_facing_offset()
+		## Rotation calculated from spawn pos to mouse — not player center to mouse
+		var spawn_rotation := _get_projectile_rotation_from_spawn(spawn_pos)
+
 		if charge_shot.consume(modifier):
-			# Charged shot fired — still need sound and effect
 			shot_sound.play()
 		else:
-			# Normal shot
 			var projectile_instance = projectile.instantiate()
 			shot_sound.play()
 			projectile_instance.change_damage(projectile_damage * modifier)
 			projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
 			projectile_instance.change_projectile_modulation(color)
-			projectile_instance.position = shot_point.get_global_position()
-			projectile_instance.rotation_degrees = shot_point.rotation_degrees
+			projectile_instance.position = spawn_pos
+			projectile_instance.rotation_degrees = spawn_rotation
 			projectile_instance.hit_combo_value = _get_combo_value_for_shot(modifier)
 			get_tree().get_root().call_deferred("add_child", projectile_instance)
 
-		# Shared between both paths
 		var shotEffect = projectileShotEffect.instantiate()
-		shotEffect.position = self.get_global_position()
+		shotEffect.position = spawn_pos
 		get_tree().get_root().call_deferred("add_child", shotEffect)
-		shot_fire_rate = 0    # was missing on the charged path
+		shot_fire_rate = 0
 		print_debug("Damage: %s" % (projectile_damage * modifier))
+
+## Offset distance from player center — adjust to match your sprite size
+@export var projectile_spawn_offset: float = 20.0
+
+
+func _get_facing_offset() -> Vector2:
+	match current_facing:
+		FacingDirection.RIGHT:      return offset_right
+		FacingDirection.DOWN_RIGHT: return offset_down_right
+		FacingDirection.DOWN:       return offset_down
+		FacingDirection.DOWN_LEFT:  return offset_down_left
+		FacingDirection.LEFT:       return offset_left
+		FacingDirection.UP_LEFT:    return offset_up_left
+		FacingDirection.UP:         return offset_up
+		FacingDirection.UP_RIGHT:   return offset_up_right
+	return Vector2.ZERO
+
+func _get_projectile_rotation_from_spawn(spawn_pos: Vector2) -> float:
+	var mouse_pos := get_global_mouse_position()
+	var direction := mouse_pos - spawn_pos
+	return rad_to_deg(direction.angle())
+
+func _get_facing_rotation() -> float:
+	match current_facing:
+		FacingDirection.RIGHT:      return 0.0
+		FacingDirection.DOWN_RIGHT: return 45.0
+		FacingDirection.DOWN:       return 90.0
+		FacingDirection.DOWN_LEFT:  return 135.0
+		FacingDirection.LEFT:       return 180.0
+		FacingDirection.UP_LEFT:    return 225.0
+		FacingDirection.UP:         return 270.0
+		FacingDirection.UP_RIGHT:   return 315.0
+	return 0.0
+	
+func _get_projectile_rotation() -> float:
+	## Rotate projectile toward mouse regardless of spawn offset
+	var mouse_dir := get_global_mouse_position() - global_position
+	return rad_to_deg(mouse_dir.angle())
+
 
 
 	# Charge up powered shot, up to 8 times
