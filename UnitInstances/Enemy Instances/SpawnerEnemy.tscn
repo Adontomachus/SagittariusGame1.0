@@ -80,8 +80,7 @@ shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 self_modulate = Color(1.0687634, 1.2726948, 1.753959, 1)
-position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.09868421, 0.09868422)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_8af6i")
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1064146345]
