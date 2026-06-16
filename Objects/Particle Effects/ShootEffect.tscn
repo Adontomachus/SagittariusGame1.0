@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dpg7cdittev4"]
 
+[ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="1_7qp03"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+diffuse_texture = ExtResource("1_7qp03")
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -20,59 +23,133 @@ curve = SubResource("Curve_t5oqc")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ghqw"]
 lifetime_randomness = 1.0
 particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
 emission_shape = 1
-emission_sphere_radius = 2.29
+emission_sphere_radius = 93.78
 angle_min = 1.0
 angle_max = 1.0
-direction = Vector3(6, 6, 0)
+direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_max = 158.76
-orbit_velocity_min = 1.0
-orbit_velocity_max = 1.0
-gravity = Vector3(0, 0, 0)
-scale_min = 10.0
-scale_max = 10.0
+initial_velocity_min = 40.0
+initial_velocity_max = 200.0
+angular_velocity_min = 199.99998
+angular_velocity_max = 399.99997
+orbit_velocity_min = 1.5000001
+orbit_velocity_max = 3.0000002
+gravity = Vector3(0, -1, 0)
+scale_min = 0.29999998
 scale_curve = SubResource("CurveTexture_7qp03")
-color = Color(0.7294118, 0.85882354, 0.13725491, 1)
 anim_speed_curve = SubResource("CurveTexture_oxw88")
 
 [sub_resource type="GDScript" id="GDScript_h052y"]
 script/source = "extends GPUParticles2D
 
 var timedShot = lifetime - 0.05
+@export var glow_boost_color_multiplier: float = 2.5
+@export var point_light : PointLight2D
+
+@export_category(\"Light Pulse Settings\")
+@export var light_grow_duration: float = 0.3
+@export var light_shrink_duration: float = 0.05
+@export var light_max_scale: float = 5
+@export var light_max_energy: float = 2
+
+func _ready():
+	if process_material:
+		process_material = process_material.duplicate()
+
+
+func set_effect_color(color: Color, is_perfect: bool = false) -> void:
+	if process_material is ParticleProcessMaterial:
+		var mat := process_material as ParticleProcessMaterial
+		var gradient := Gradient.new()
+		gradient.add_point(0.0, Color(
+			min(color.r * 1.6, 1.0),
+			min(color.g * 1.6, 1.0),
+			min(color.b * 1.6, 1.0),
+			1.0
+		))  
+		
+		if is_perfect:
+			point_light.visible = true
+			_pulse_light(color)
+
+		
+		gradient.add_point(0.3, Color(color.r, color.g, color.b, 1.0))  ## full timing color
+		gradient.add_point(0.65, Color(color.r * 0.6, color.g * 0.6, color.b * 0.6, 0.6))  ## darkening
+		gradient.add_point(1.0, Color(color.r * 0.2, color.g * 0.2, color.b * 0.2, 0.0))  ## fade out
+
+		var gradient_texture := GradientTexture1D.new()
+		gradient_texture.gradient = gradient
+		mat.color_ramp = gradient_texture
+	
+func _pulse_light(color: Color) -> void:
+	if point_light == null:
+		return
+
+	point_light.visible = true
+	point_light.color = color
+	point_light.texture_scale = 0.0
+	point_light.energy = 0.0
+
+	var tween := create_tween()
+	tween.tween_property(point_light, \"texture_scale\", light_max_scale, light_grow_duration)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(point_light, \"energy\", light_max_energy, light_grow_duration)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(point_light, \"texture_scale\", 0.0, light_shrink_duration)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(point_light, \"energy\", 0.0, light_shrink_duration)\\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
 
 func _process(delta):
 	timedShot -= delta
-	if (timedShot < 0):
+	if timedShot < 0:
 		queue_free()
 
-func _ready():
-	print(\"Particles emitted!\")
 
 func _on_finished() -> void:
 	queue_free()
-	pass # Replace with function body.
 "
 
 [sub_resource type="Environment" id="Environment_oxw88"]
 glow_enabled = true
-glow_intensity = 3.86
+glow_intensity = 3.34
 glow_strength = 0.95
 
-[node name="ShootEffect" type="GPUParticles2D" unique_id=952870438]
+[sub_resource type="Gradient" id="Gradient_7qp03"]
+offsets = PackedFloat32Array(0, 0.97325104)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ghqw"]
+gradient = SubResource("Gradient_7qp03")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8803419, 0.12136752)
+
+[node name="ShootEffect" type="GPUParticles2D" unique_id=952870438 node_paths=PackedStringArray("point_light")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 self_modulate = Color(1.685791, 1.685791, 1.685791, 1)
-amount = 25
+amount = 12
 texture = SubResource("CanvasTexture_jhxfm")
 lifetime = 0.5
 explosiveness = 1.0
-randomness = 1.0
+randomness = 0.3
 fixed_fps = 0
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_1ghqw")
 script = SubResource("GDScript_h052y")
+point_light = NodePath("PointLight2D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1499304876]
 environment = SubResource("Environment_oxw88")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=782292451]
+visible = false
+color = Color(1.92523e-07, 0.8542782, 0.85465676, 1)
+energy = 3.45
+texture = SubResource("GradientTexture2D_1ghqw")
+texture_scale = 7.0
 
 [connection signal="finished" from="." to="." method="_on_finished"]

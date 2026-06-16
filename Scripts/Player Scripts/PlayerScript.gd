@@ -408,7 +408,10 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 			get_tree().get_root().call_deferred("add_child", projectile_instance)
 
 		var shotEffect = projectileShotEffect.instantiate()
+		var was_perfect := modifier >= 1.45
+		shotEffect.set_effect_color(color, was_perfect)
 		shotEffect.position = spawn_pos
+		shotEffect.set_effect_color(color)
 		get_tree().get_root().call_deferred("add_child", shotEffect)
 		shot_fire_rate = 0
 		print_debug("Damage: %s" % (projectile_damage * modifier))
