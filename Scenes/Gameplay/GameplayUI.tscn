@@ -2047,7 +2047,7 @@ layout_mode = 0
 offset_left = 1776.0001
 offset_top = 411.0
 offset_right = 1844.1843
-offset_bottom = 482.32434
+offset_bottom = 482.3243
 rotation = 0.113265686
 
 [node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]

@@ -63,7 +63,8 @@ _data = {
 [node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_ewdkc")
-beats_between_spawns = 8
+max_spawn_count = 5
+beats_between_spawns = 12
 spawn_radius = 20.0
 spawner_sprite = NodePath("Sprite")
 state_machine = NodePath("EnemyStateMachine")

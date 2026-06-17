@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_15gep"]
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_jj52o"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="11_0n2qw"]
+[ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="12_uvcph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -26,7 +27,7 @@ resource_name = "Flash"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +42,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +74,12 @@ debug_enabled = true
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
+[node name="MovementStretch" type="Node2D" parent="." unique_id=1241447017 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+script = ExtResource("12_uvcph")
+sprite_to_wrap = NodePath(".")
+velocity_source = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="MovementStretch" unique_id=678723821]
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.0745614, 0.07456144)
 texture = ExtResource("2_wwa7f")
@@ -106,7 +112,7 @@ texture_progress = ExtResource("5_jj52o")
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_pnojx")
 starting_state = NodePath("EnemyStateChase")
-sprite = NodePath("../Sprite")
+sprite = NodePath("../MovementStretch/Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("after_chase_state", "recovery_state")]
@@ -140,7 +146,7 @@ libraries/ = SubResource("AnimationLibrary_wwa7f")
 
 [node name="HitFlashEnemy" type="Node" parent="." unique_id=237716344 node_paths=PackedStringArray("target")]
 script = ExtResource("11_0n2qw")
-target = NodePath("../Sprite")
+target = NodePath("../MovementStretch/Sprite")
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]

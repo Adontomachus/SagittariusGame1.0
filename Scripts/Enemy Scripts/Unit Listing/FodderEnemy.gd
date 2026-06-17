@@ -92,6 +92,11 @@ func _ready():
 	#var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
 	#print("Current Cinematics Handler: " , cinematics_handler)
 	# Enemy squashing and stretching
+	var movement_stretch := get_node_or_null("MovementStretch")
+	if movement_stretch:
+		movement_stretch.sprite_to_wrap = state_machine.sprite
+		movement_stretch.velocity_source = self
+	
 	var squash := get_node_or_null("BeatSquashStretch")
 	if squash:
 		squash.target = state_machine.sprite
