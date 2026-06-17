@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://dpg7cdittev4"]
 
-[ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="1_7qp03"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
-diffuse_texture = ExtResource("1_7qp03")
+[ext_resource type="Texture2D" uid="uid://dp8upqlpfad14" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_Beam Note 16th.png" id="1_7qp03"]
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -21,23 +18,21 @@ point_count = 2
 curve = SubResource("Curve_t5oqc")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ghqw"]
-lifetime_randomness = 1.0
 particle_flag_disable_z = true
 particle_flag_damping_as_friction = true
-emission_shape = 1
-emission_sphere_radius = 93.78
 angle_min = 1.0
 angle_max = 1.0
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 40.0
-initial_velocity_max = 200.0
+initial_velocity_min = 200.0
+initial_velocity_max = 1000.0
 angular_velocity_min = 199.99998
 angular_velocity_max = 399.99997
-orbit_velocity_min = 1.5000001
-orbit_velocity_max = 3.0000002
-gravity = Vector3(0, -1, 0)
-scale_min = 0.29999998
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
 scale_curve = SubResource("CurveTexture_7qp03")
 anim_speed_curve = SubResource("CurveTexture_oxw88")
 
@@ -131,9 +126,9 @@ fill_to = Vector2(0.8803419, 0.12136752)
 [node name="ShootEffect" type="GPUParticles2D" unique_id=952870438 node_paths=PackedStringArray("point_light")]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 self_modulate = Color(1.685791, 1.685791, 1.685791, 1)
-amount = 12
-texture = SubResource("CanvasTexture_jhxfm")
-lifetime = 0.5
+amount = 7
+texture = ExtResource("1_7qp03")
+lifetime = 0.2
 explosiveness = 1.0
 randomness = 0.3
 fixed_fps = 0

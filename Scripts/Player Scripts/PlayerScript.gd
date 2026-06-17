@@ -405,6 +405,7 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 			projectile_instance.position = spawn_pos
 			projectile_instance.rotation_degrees = spawn_rotation
 			projectile_instance.hit_combo_value = _get_combo_value_for_shot(modifier)
+			projectile_instance.get_node("OrbitingParticles").set_effect_color(color)
 			get_tree().get_root().call_deferred("add_child", projectile_instance)
 
 		var shotEffect = projectileShotEffect.instantiate()
