@@ -30,6 +30,7 @@ var beat_sync: BeatSync_Script
 var is_active: bool = true
 var tween: Tween
 
+var world_parent: Node2D
 
 func _ready() -> void:
 	super()
@@ -41,6 +42,15 @@ func _ready() -> void:
 		spawner_sprite.material = null
 	if state_machine and state_machine.sprite:
 		state_machine.sprite.material = null
+		
+	world_parent = get_tree().current_scene.get_node_or_null(
+		"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
+	if world_parent == null:
+		push_error("EnemySpawner: could not find World node at expected path")
+	else:
+		print("EnemySpawner found World parent: ", world_parent.name, " | Y Sort Enabled: ", world_parent.y_sort_enabled)
+
 
 
 func _process(_delta: float) -> void:
@@ -58,6 +68,9 @@ func _process(_delta: float) -> void:
 func _try_spawn() -> void:
 	if spawned_count >= max_spawn_count:
 		return
+	if world_parent == null:
+		push_error("EnemySpawner: world_parent is null, cannot spawn")
+		return
 	var spawn_pos := _get_spawn_position()
 	var enemy_scene := _pick_enemy_type()
 	if enemy_scene == null:
@@ -66,13 +79,13 @@ func _try_spawn() -> void:
 	spawned_count += 1
 	if spawn_indicator_scene:
 		var indicator = spawn_indicator_scene.instantiate()
-		get_tree().current_scene.add_child(indicator)
+		world_parent.add_child(indicator)
 		indicator.global_position = spawn_pos
 		await get_tree().process_frame
 		await indicator.play_and_spawn(enemy_scene, spawn_pos)
 	else:
 		var enemy = enemy_scene.instantiate()
-		get_tree().current_scene.add_child(enemy)
+		world_parent.add_child(enemy)
 		enemy.global_position = spawn_pos
 	print("EnemySpawner queued spawn ", spawned_count, "/", max_spawn_count)
 

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ciy2kew35lxgo"]
+
+[ext_resource type="Texture2D" uid="uid://cfqg1e6npcb83" path="res://Sprites/Game Elements/Placeholders/Objects/rocks.png" id="1_v518t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5u2p"]
+atlas = ExtResource("1_v518t")
+region = Rect2(357.64493, 336.6361, 224.67288, 223.6081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
+size = Vector2(193.37897, 206.35742)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2hwyy"]
+polygon = PackedVector2Array(-96.040565, -50.615974, -92.147026, 75.27504, -44.126747, 97.33841, -48.020283, -28.552603)
+
+[node name="Wall2" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.77050775, 0.77050775)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+texture = SubResource("AtlasTexture_c5u2p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
+position = Vector2(-1.9467705, -7.1381497)
+shape = SubResource("RectangleShape2D_me4gi")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1771531574]
+position = Vector2(-2.5956922, -1.2978467)
+occluder = SubResource("OccluderPolygon2D_2hwyy")

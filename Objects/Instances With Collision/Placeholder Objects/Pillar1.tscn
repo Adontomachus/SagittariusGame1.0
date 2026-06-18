@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dcx5cnan17uax"]
+
+[ext_resource type="Texture2D" uid="uid://b7o8gqhjpe7sa" path="res://Sprites/Game Elements/Placeholders/Objects/columns.png" id="1_5fqr7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfqff"]
+atlas = ExtResource("1_5fqr7")
+region = Rect2(727.3606, 15.963538, 151.64569, 291.9535)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
+size = Vector2(155.74146, 188.18759)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sxnj5"]
+polygon = PackedVector2Array(-80.46642, -482.79852, -84.359955, -436.07608, -62.296585, -394.545, -70.08366, 1.2978443, -2.5956922, 28.552599, 6.489226, -378.9709, -1.2377219e-06, -403.62994, 1.2978443, -442.5653)
+
+[node name="Pillar" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.77050775, 0.77050775)
+
+[node name="PillarSprite" type="Sprite2D" parent="." unique_id=381333886]
+position = Vector2(3.6985855, -281.36856)
+scale = Vector2(2.6458564, 2.6458561)
+texture = SubResource("AtlasTexture_dfqff")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=476666062]
+position = Vector2(2.5956898, -63.594425)
+shape = SubResource("RectangleShape2D_me4gi")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1058833666]
+occluder = SubResource("OccluderPolygon2D_sxnj5")

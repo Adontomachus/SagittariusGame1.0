@@ -14,7 +14,7 @@ var boss_spawned: bool = false
 ## For the combo system scoring methods
 @onready var combo_system: ComboSystems = $GameSystems/ComboSystem
 var player_combo_level: int
-
+@export var enemy_spawn_parent: Node2D
 
 # PAUSE UI
 @onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
@@ -240,7 +240,8 @@ func _spawn_wave_spawners(spawnerCount: int) -> void:
 		spawner.position = _get_random_spawn_position()
 		spawner.rarityWeight = rarityWeight          
 		spawner.final_wave = waves_remaining == 0   
-		add_child(spawner)
+		if enemy_spawn_parent != null:
+			enemy_spawn_parent.add_child(spawner)
 		print("Spawned EnemySpawner ", i + 1, "/", spawner_count_per_wave)
 
 func _get_random_spawn_position() -> Vector2:

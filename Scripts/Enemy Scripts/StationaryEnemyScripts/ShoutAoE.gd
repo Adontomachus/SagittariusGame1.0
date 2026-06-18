@@ -25,6 +25,8 @@ var beats_elapsed: int = 0
 var last_beat: float = 0.0
 var affected_players: Array = []  ## track who is already slowed/dotted
 
+@export var isometric_y_scale: float = 0.5
+
 
 func _ready() -> void:
 	ripple_fade.play("Fade")
@@ -32,7 +34,7 @@ func _ready() -> void:
 	beat_sync = get_tree().get_first_node_in_group("BeatSync")
 	print("Sprite texture size: ", sprite.texture.get_size())
 	land_sound.play()
-	
+	scale.y = isometric_y_scale
 	var shape := CircleShape2D.new()
 	shape.radius = radius
 	collision.shape = shape

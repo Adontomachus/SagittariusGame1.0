@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
+var world_parent: Node2D
+
 @export var reveal_duration: float = 1   ## time to grow from top to bottom
 @export var linger_duration: float = 0.2   ## brief pause at full reveal
 @export var hide_duration: float = 0.5   ## time to disappear top to bottom
@@ -16,6 +18,13 @@ var tween: Tween
 
 
 func _ready() -> void:
+	world_parent = get_tree().current_scene.get_node_or_null(
+		"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
+	if world_parent == null:
+		push_error("EnemySpawner: could not find World node at expected path")
+	else:
+		print("EnemySpawner found World parent: ", world_parent.name, " | Y Sort Enabled: ", world_parent.y_sort_enabled)
 	animated_emitter.play("SlidingEmitter")
 	if sprite.material:
 		sprite.material = sprite.material.duplicate()
@@ -76,7 +85,7 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> void:
 	if enemy_scene == null:
 		return
 	var enemy = enemy_scene.instantiate()
-	get_tree().current_scene.add_child(enemy)
+	world_parent.add_child(enemy)
 	enemy.global_position = spawn_pos
 	# Spawning visuals
 	var spawn_visual = spawn_effect.instantiate()

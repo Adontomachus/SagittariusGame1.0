@@ -9,7 +9,11 @@ extends Node2D
 
 var tween: Tween
 
+@export var isometric_y_scale: float = 0.5
 
+
+func _ready() -> void:
+	scale.y = isometric_y_scale
 
 func show_warning(duration: float) -> void:
 	spin_animation.play("Spinning")
