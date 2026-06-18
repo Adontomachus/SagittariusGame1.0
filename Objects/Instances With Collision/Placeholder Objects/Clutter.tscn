@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://kyeps04jlmd2"]
+
+[ext_resource type="Texture2D" uid="uid://b6e5shpvt207o" path="res://Sprites/Game Elements/Placeholders/Ground/clutter.png" id="1_dpjvr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im2v5"]
+atlas = ExtResource("1_dpjvr")
+region = Rect2(10.905457, 293.33032, 138.90466, 169.7724)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cuvdb"]
+a = Vector2(163.52853, -306.29153)
+b = Vector2(-119.40178, -158.33716)
+
+[node name="Clutter" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.77050775, 0.77050775)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_im2v5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
+position = Vector2(2.5956898, 341.33337)
+shape = SubResource("SegmentShape2D_cuvdb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=195072503]
+position = Vector2(-33.743984, 260.86694)
+shape = SubResource("SegmentShape2D_cuvdb")

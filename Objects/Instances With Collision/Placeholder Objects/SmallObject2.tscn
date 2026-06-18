@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c5oe16n656qhy"]
+
+[ext_resource type="Texture2D" uid="uid://b6e5shpvt207o" path="res://Sprites/Game Elements/Placeholders/Ground/clutter.png" id="1_calng"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im2v5"]
+atlas = ExtResource("1_calng")
+region = Rect2(883.7755, 548.8464, 89.17346, 168.0575)
+
+[node name="Clutter" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.77050775, 0.77050775)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_im2v5")
