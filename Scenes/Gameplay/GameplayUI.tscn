@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="10_ntvnh"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="11_7i2y7"]
 [ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="12_l6g6h"]
+[ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="13_qj281"]
 [ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="13_vdje8"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="14_qj281"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
@@ -1102,7 +1103,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_6uhl4"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_size = 60
 outline_size = 20
 outline_color = Color(0.28680092, 0.16756532, 7.219613e-08, 1)
@@ -1110,7 +1111,8 @@ shadow_size = 25
 shadow_color = Color(0.15170373, 0.03876, 0, 0.934)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pdrc1"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
+font_size = 26
 font_color = Color(0.68577677, 1, 0.6253981, 1)
 outline_size = 5
 outline_color = Color(0.43842888, 0, 0.087813236, 1)
@@ -1120,7 +1122,7 @@ shadow_color = Color(0.29748532, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_o710q"]
 line_spacing = 25.0
 paragraph_spacing = 5.0
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_size = 20
 font_color = Color(0.86663747, 1, 0.1931151, 1)
 outline_size = 5
@@ -1157,7 +1159,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.90000004, 0.1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3825n"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_color = Color(0.59608823, 0.9008019, 1, 1)
 outline_size = 5
 outline_color = Color(0, 0.25822645, 0.67127424, 1)
@@ -1176,7 +1178,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2.91, 3.42)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0cpi2"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_size = 20
 font_color = Color(1, 0.7509483, 0.1680183, 1)
 outline_size = 12
@@ -1557,25 +1559,25 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlum5"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_size = 48
 font_color = Color(1, 0.86981654, 0, 1)
 outline_size = 25
 outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_48svx"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gwjna"]
-font = ExtResource("4_0if8i")
+font = ExtResource("13_qj281")
 font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_vdje8"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_5m4nd"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1721,9 +1723,9 @@ libraries/ = SubResource("AnimationLibrary_7yb2d")
 self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
 offset_left = 698.0
-offset_top = 167.0
+offset_top = 159.0
 offset_right = 1227.5652
-offset_bottom = 257.0
+offset_bottom = 249.0
 text = "WAVE INCOMING!"
 label_settings = SubResource("LabelSettings_6uhl4")
 horizontal_alignment = 1
@@ -1742,10 +1744,10 @@ texture_progress = ExtResource("6_gwjna")
 [node name="PlayerHealthText" type="Label" parent="UpdatedPlayerHealthBar" unique_id=591465270]
 z_index = 4
 layout_mode = 0
-offset_left = 109.0
-offset_top = 105.0
-offset_right = 511.87518
-offset_bottom = 143.0
+offset_left = 129.0
+offset_top = 108.0
+offset_right = 531.8752
+offset_bottom = 146.0
 theme_override_font_sizes/font_size = 15
 text = "0 | 100 Health"
 label_settings = SubResource("LabelSettings_pdrc1")
@@ -1778,10 +1780,10 @@ value = 2.1
 [node name="PlayerLevel" type="Label" parent="UpdatedPlayerHealthBar" unique_id=743208092]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
-offset_left = 209.0
-offset_top = 72.0
-offset_right = 547.0
-offset_bottom = 105.0
+offset_left = 210.0
+offset_top = 79.0
+offset_right = 548.0
+offset_bottom = 112.0
 text = "Player Level: 1"
 label_settings = SubResource("LabelSettings_o710q")
 
@@ -1824,10 +1826,10 @@ texture_progress = ExtResource("17_dw111")
 [node name="ExperienceText" type="Label" parent="UpdatedPlayerHealthBar/UpdatedExperienceBar" unique_id=402200278]
 z_index = 4
 layout_mode = 0
-offset_left = 15.599991
-offset_top = 59.999992
-offset_right = 483.47516
-offset_bottom = 97.99999
+offset_left = 22.799992
+offset_top = 52.79999
+offset_right = 490.67517
+offset_bottom = 90.79999
 theme_override_font_sizes/font_size = 28
 text = "0 | 100 Player Experience"
 label_settings = SubResource("LabelSettings_3825n")
@@ -1867,9 +1869,9 @@ label_settings = SubResource("LabelSettings_ve3xx")
 [node name="EnemyCounter" type="Label" parent="." unique_id=172310879]
 layout_mode = 0
 offset_left = 1591.0
-offset_top = 319.0
+offset_top = 323.0
 offset_right = 2037.0
-offset_bottom = 364.0
+offset_bottom = 351.0
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
@@ -1998,10 +2000,10 @@ script = ExtResource("14_qj281")
 
 [node name="BossLabel" type="Label" parent="UpdatedBossHealthBar" unique_id=1628928624]
 layout_mode = 0
-offset_left = 837.5
-offset_top = -9.999985
-offset_right = 1512.5
-offset_bottom = 70.000015
+offset_left = 862.5
+offset_top = 7.5000134
+offset_right = 1537.5
+offset_bottom = 87.500015
 theme_override_font_sizes/font_size = 40
 text = "Boss Health"
 label_settings = SubResource("LabelSettings_hlum5")
@@ -2029,10 +2031,10 @@ rotation = 0.113265686
 
 [node name="AbililtyKey2" type="Label" parent="Ability1Container" unique_id=1285908341]
 layout_mode = 0
-offset_left = 45.744003
-offset_top = 136.70581
-offset_right = 77.72484
-offset_bottom = 218.47351
+offset_left = 42.178204
+offset_top = 154.22101
+offset_right = 74.15904
+offset_bottom = 235.98871
 rotation = -9.697676e-05
 theme_override_font_sizes/font_size = 16
 text = "Q"
@@ -2052,10 +2054,10 @@ rotation = 0.113265686
 
 [node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
 layout_mode = 0
-offset_left = 11.933164
-offset_top = 87.210075
-offset_right = 52.933163
-offset_bottom = 168.97778
+offset_left = 9.856576
+offset_top = 95.49789
+offset_right = 55.856575
+offset_bottom = 177.2656
 rotation = -9.697676e-05
 theme_override_font_sizes/font_size = 16
 text = "RMB"
@@ -2099,13 +2101,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_vdje8")
+button_group = SubResource("ButtonGroup_5m4nd")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_vdje8")
+button_group = SubResource("ButtonGroup_5m4nd")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_vdje8")
+button_group = SubResource("ButtonGroup_5m4nd")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false

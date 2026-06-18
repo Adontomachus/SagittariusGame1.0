@@ -80,9 +80,9 @@ fog_light_energy = 3.5
 fog_sun_scatter = 0.1
 fog_height = -213.09
 adjustment_enabled = true
-adjustment_brightness = 1.45
-adjustment_contrast = 1.085
-adjustment_saturation = 1.26
+adjustment_brightness = 1.58
+adjustment_contrast = 1.125
+adjustment_saturation = 1.05
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hlum5"]
 
@@ -712,7 +712,7 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 environment = SubResource("Environment_jgp33")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
-color = Color(0.3239454, 0.27801323, 0.69181025, 1)
+color = Color(0.3176795, 0.25711048, 0.88283247, 1)
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
 script = ExtResource("2_vj1fp")

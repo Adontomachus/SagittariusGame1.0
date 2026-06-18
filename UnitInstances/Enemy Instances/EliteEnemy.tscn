@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bb1t1b7swbbyx"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_cyyc4"]
+[ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="2_3mgii"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_22t2l"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_tx5hf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_22t2l"]
@@ -72,6 +73,7 @@ aroundPlayerRadius = 200.0
 shoot_point = NodePath("ShootPoint")
 inaccuracy = 6.0
 attackPower = 13.0
+projectile = ExtResource("2_3mgii")
 fire_rate = 6
 successfulChanceToAttack = 5.0
 

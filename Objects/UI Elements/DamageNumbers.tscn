@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://darl8yp86wpbm"]
 
 [ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_jnfq4"]
+[ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="1_s3bdx"]
 
 [sub_resource type="Environment" id="Environment_y60un"]
 background_mode = 3
@@ -14,11 +15,13 @@ offset_left = -4.0
 offset_top = -8.0
 offset_right = 375.0
 offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("1_s3bdx")
 theme_override_font_sizes/font_size = 80
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_jnfq4")
+damage_num_size = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526374861]
 environment = SubResource("Environment_y60un")

@@ -13,7 +13,7 @@ var starting_font_size = 1
 @export var damage_value: int = 46
 @export var is_critical_hit: bool
 @export var fade_duration: float = 0.8
-@export var damage_num_size: float = 16
+@export var damage_num_size: float = 25
 @export var maximum_velocity: float = 100
 
 @export var hold_duration: float = 0.2

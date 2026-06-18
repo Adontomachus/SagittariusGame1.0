@@ -93,7 +93,7 @@ color = Color(0.9309246, 1, 0.677051, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2075649940]
 scale = Vector2(12.031249, 12.031249)
-energy = 3.0
+energy = 1.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_dpnqh")
 

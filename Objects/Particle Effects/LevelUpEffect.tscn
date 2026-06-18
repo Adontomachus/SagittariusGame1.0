@@ -2,7 +2,15 @@
 
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="1_1trqd"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+[sub_resource type="Gradient" id="Gradient_1trqd"]
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_klw2m"]
+gradient = SubResource("Gradient_1trqd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
 
 [sub_resource type="Curve" id="Curve_5nsfc"]
 _limits = [-500.0, 500.0, 0.0, 1.0]
@@ -14,8 +22,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_cd7wm"]
-offsets = PackedFloat32Array(0, 0.8679245)
-colors = PackedColorArray(0.89325845, 0.9218727, 0.35692585, 1, 0.58648556, 0.46254948, 0.1428257, 1)
+offsets = PackedFloat32Array(0, 0.7929936)
+colors = PackedColorArray(0.89325845, 0.9218727, 0.35692585, 1, 0.58648556, 0.46254948, 0.1428257, 0)
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -50,7 +58,7 @@ glow_strength = 0.95
 [node name="LevelUpEffect" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(1.9418397, 3.2944162, 1.4935573, 1)
 amount = 75
-texture = SubResource("CanvasTexture_jhxfm")
+texture = SubResource("GradientTexture2D_klw2m")
 lifetime = 0.75
 explosiveness = 1.0
 randomness = 1.0
@@ -60,13 +68,11 @@ emission_sphere_radius = 4.28
 direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_max = 131.31
-angular_velocity_min = 176.6
-angular_velocity_max = 285.29
+initial_velocity_max = 300.8
 orbit_velocity_curve = SubResource("Curve_5nsfc")
 linear_accel_max = 22.6
-scale_amount_min = 10.0
-scale_amount_max = 10.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_t5oqc")
 color_ramp = SubResource("Gradient_cd7wm")
 anim_speed_curve = SubResource("Curve_jhxfm")

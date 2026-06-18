@@ -5,9 +5,13 @@ extends Node
 
 signal projectile_health_modify(modification: int)
 
-## CONNECT the display damage signal to AoE feedback function from the enemy s
+## CONNECT the display damage signal to AoE feedback function from the enemy
 ## for AoE damage feedback to instantiate properly
 signal display_damage_feedback(damage_value: int)
+
+## CONNECT the stacking damage signal to AoE feedback function from the enemy
+## for the stacking damage visuals to show up properly
+signal stacking_damage_feedback(damage_value: int)
 
 func modify_enemy_health(modification: int) -> void:
 	projectile_health_modify.emit(modification)
@@ -21,6 +25,7 @@ func modify_enemy_health(modification: int) -> void:
 
 func show_aoe_feedback(damage_value: int) -> void:
 	display_damage_feedback.emit(damage_value)
+	stacking_damage_feedback.emit(damage_value)
 	if damage_flash_effect:
 		if damage_flash_effect.is_playing():
 			damage_flash_effect.stop(true)

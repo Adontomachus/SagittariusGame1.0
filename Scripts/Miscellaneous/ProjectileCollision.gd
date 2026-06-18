@@ -168,11 +168,11 @@ func change_projectile_side(new_side: ProjectileSide) -> void:
 func change_projectile_modulation(color: Color) -> void:
 	modulate = color
 
-	if emitter.color_ramp:
+	# if emitter.color_ramp:
 		## Duplicate so this projectile has its own ramp
-		emitter.color_ramp = emitter.color_ramp.duplicate()
+	#	emitter.color_ramp = emitter.color_ramp.duplicate()
 
-		emitter.color_ramp.set_color(0, color)
-		emitter.color_ramp.set_color(1, color.darkened(0.4))
-	else:
-		emitter.color = color
+	#	emitter.color_ramp.set_color(0, color)
+	#	emitter.color_ramp.set_color(1, color.darkened(0.4))
+	#else:
+	#	emitter.color = color

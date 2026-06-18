@@ -2,11 +2,23 @@
 
 [ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/Visuals/ParticleEffectScript.gd" id="1_y45t0"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_yn02m"]
+[sub_resource type="Gradient" id="Gradient_y45t0"]
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ohguk"]
+gradient = SubResource("Gradient_y45t0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
 
 [sub_resource type="Curve" id="Curve_e72no"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ohguk"]
+offsets = PackedFloat32Array(0, 0.7547771, 0.9936306)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.032051265, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_a1vpy"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -23,8 +35,8 @@ script = ExtResource("1_y45t0")
 
 [node name="AoEEffect" type="CPUParticles2D" parent="." unique_id=379270967]
 self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)
-amount = 45
-texture = SubResource("CanvasTexture_yn02m")
+amount = 75
+texture = SubResource("GradientTexture2D_ohguk")
 lifetime = 1.25
 explosiveness = 1.0
 randomness = 1.0
@@ -39,10 +51,13 @@ angular_velocity_min = -240.0
 angular_velocity_max = 138.85
 orbit_velocity_min = 0.1
 orbit_velocity_max = 0.5
-scale_amount_min = 5.0
-scale_amount_max = 15.65
+scale_amount_min = 0.25
+scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_e72no")
 color = Color(1.0614538, 0.25215238, 0.346943, 1)
+color_ramp = SubResource("Gradient_ohguk")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 anim_speed_curve = SubResource("Curve_a1vpy")
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=296923072]

@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://dt66dqt10l7px"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+[sub_resource type="Gradient" id="Gradient_h052y"]
+offsets = PackedFloat32Array(0, 0.4)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dd261"]
+gradient = SubResource("Gradient_h052y")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.3)
 
 [sub_resource type="Curve" id="Curve_t5oqc"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8kji0"]
+offsets = PackedFloat32Array(0, 0.80254775, 1)
+colors = PackedColorArray(1, 0.80655646, 0, 1, 1, 0.9956876, 0.977707, 0.022292972, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -30,14 +42,15 @@ func _on_finished() -> void:
 "
 
 [sub_resource type="Environment" id="Environment_h052y"]
+background_mode = 3
 glow_enabled = true
-glow_intensity = 3.86
+glow_intensity = 5.0
 glow_strength = 0.95
 
 [node name="WallHitEffect" type="CPUParticles2D" unique_id=1427452623]
-self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
-amount = 50
-texture = SubResource("CanvasTexture_jhxfm")
+self_modulate = Color(4.50329, 4.50329, 4.50329, 1)
+amount = 75
+texture = SubResource("GradientTexture2D_dd261")
 lifetime = 0.5
 explosiveness = 1.0
 randomness = 1.0
@@ -47,11 +60,13 @@ emission_sphere_radius = 2.29
 direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_max = 404.04
-scale_amount_min = 10.0
-scale_amount_max = 10.0
+initial_velocity_max = 285.4
+scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_t5oqc")
-color = Color(0.9110635, 0.6722518, 0.2685797, 1)
+color = Color(0.9108233, 0.78092533, 0.2694199, 1)
+color_ramp = SubResource("Gradient_8kji0")
+hue_variation_min = -0.26
+hue_variation_max = 0.56
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
 

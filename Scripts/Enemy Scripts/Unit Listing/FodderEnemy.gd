@@ -63,6 +63,10 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 @export var attackPower: float
 @export var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 
+# STACKING DAMAGE NUMBERS
+@export_group("Stacking Damage Value")
+@export var damageTaken: float = 0
+
 # OBJECTS SPAWNS ON DELETION
 var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn")
 var pointObject := preload("res://UnitInstances/Miscellaneous/ScoreOrb.tscn")
@@ -260,7 +264,10 @@ func _aoe_damage_feedback(increment: int):
 	var hitEffect = splash_damage_effect.instantiate()
 	hitEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", hitEffect)
+	pass
 
+func _stacking_damage_feedback(increment: int):
+	damageTaken += increment
 	pass
 # CHANGE STATS ON SPAWN (TENTATIVE)
 #func change_unit_stats(health: int, new_damage: int) -> void:

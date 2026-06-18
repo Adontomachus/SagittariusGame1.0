@@ -2,14 +2,23 @@
 
 [ext_resource type="AudioStream" uid="uid://dse548yh0l2yx" path="res://Audio/Sounds/Destroyed1.wav" id="1_iidq2"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+[sub_resource type="Gradient" id="Gradient_7tmke"]
+offsets = PackedFloat32Array(0, 0.7924528)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ulib6"]
+gradient = SubResource("Gradient_7tmke")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.3)
 
 [sub_resource type="Curve" id="Curve_t5oqc"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_x4tua"]
-colors = PackedColorArray(0.9478561, 0.7860174, 0.11595742, 1, 0.9720072, 0.30714417, 0.22674257, 1)
+offsets = PackedFloat32Array(0, 0.5700637, 0.933121)
+colors = PackedColorArray(0.9478561, 0.7860174, 0.11595742, 1, 0.9720072, 0.30714417, 0.22674257, 1, 0.9717797, 0.30748522, 0.22658296, 0)
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -73,10 +82,10 @@ tracks/1/path = NodePath("ExplosionGlow:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.11, 0.6333333),
+"times": PackedFloat32Array(0, 0.13333334, 0.6333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 4.5, 0.0]
+"values": [0.0, 2.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_7tmke"]
@@ -114,8 +123,8 @@ _data = {
 
 [node name="DestroyEffects" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(2.5032542, 2.5032542, 2.5032542, 1)
-amount = 100
-texture = SubResource("CanvasTexture_jhxfm")
+amount = 125
+texture = SubResource("GradientTexture2D_ulib6")
 lifetime = 0.8
 preprocess = 0.76
 explosiveness = 1.0
@@ -126,9 +135,8 @@ emission_sphere_radius = 16.51
 direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 500)
-initial_velocity_max = 404.04
-scale_amount_min = 10.0
-scale_amount_max = 10.0
+initial_velocity_max = 675.23
+scale_amount_min = 0.2
 scale_amount_curve = SubResource("Curve_t5oqc")
 color = Color(0.82040936, 0.5281222, 0, 1)
 color_ramp = SubResource("Gradient_x4tua")
