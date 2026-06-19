@@ -254,8 +254,8 @@ func _get_random_spawn_position() -> Vector2:
 	## Keep trying until we find a spot far enough from the player
 	while attempts < 10:
 		pos = Vector2(
-			randf_range(200, 2800),
-			randf_range(200, 2800)
+			randf_range(200, 1500),
+			randf_range(200, 1500)
 		)
 		if pos.distance_to(player_pos) < 400.0:
 			attempts += 1
