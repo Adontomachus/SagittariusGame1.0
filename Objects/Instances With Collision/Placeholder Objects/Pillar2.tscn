@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkeyqg14iogmb"]
 
 [ext_resource type="Texture2D" uid="uid://b7o8gqhjpe7sa" path="res://Sprites/Game Elements/Placeholders/Objects/columns.png" id="1_fcky0"]
+[ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/Audio/StationaryBeatGlowEffect.gd" id="1_ka3lc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfqff"]
 atlas = ExtResource("1_fcky0")
@@ -9,12 +10,19 @@ region = Rect2(30.577148, 303.89874, 163.19849, 276.36102)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(155.74146, 188.18759)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sxnj5"]
-polygon = PackedVector2Array(-92.147026, -542.4994, -89.55134, -452.94806, -59.700893, -424.39548, -70.08366, 1.2978443, -2.5956922, 28.552599, 14.276299, -412.71487, 14.276299, -452.94806, 7.7870717, -502.2662)
+[sub_resource type="Environment" id="Environment_ka3lc"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.21
+glow_hdr_threshold = 1.08
+glow_hdr_luminance_cap = 72.08
+glow_map_strength = 1.0
 
-[node name="Pillar" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+[node name="Pillar" type="StaticBody2D" unique_id=430981844 groups=["AestheticDecoration", "MapObstacle", "ReactiveObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
+script = ExtResource("1_ka3lc")
 
 [node name="PillarSprite" type="Sprite2D" parent="." unique_id=381333886]
 position = Vector2(3.6985855, -281.36856)
@@ -25,5 +33,5 @@ texture = SubResource("AtlasTexture_dfqff")
 position = Vector2(2.5956898, -63.594425)
 shape = SubResource("RectangleShape2D_me4gi")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1058833666]
-occluder = SubResource("OccluderPolygon2D_sxnj5")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1365136276]
+environment = SubResource("Environment_ka3lc")

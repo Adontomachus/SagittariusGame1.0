@@ -6,10 +6,6 @@
 atlas = ExtResource("1_rp26q")
 region = Rect2(560.0107, 20.193909, 243.5119, 258.94577)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_rp26q"]
-a = Vector2(151.199, 299.8023)
-b = Vector2(-210.89989, 168.71992)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2hwyy"]
 polygon = PackedVector2Array(-96.040565, -50.615974, -89.551315, 250.48419, -58.40303, 238.80357, -59.700867, -72.679344)
 
@@ -21,14 +17,9 @@ scale = Vector2(0.77050775, 0.77050775)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_0r7bx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
-position = Vector2(12.329529, -31.148298)
-shape = SubResource("SegmentShape2D_rp26q")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1217666873]
-position = Vector2(57.105198, -73.977196)
-shape = SubResource("SegmentShape2D_rp26q")
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1771531574]
 position = Vector2(275.14322, 11.680608)
 occluder = SubResource("OccluderPolygon2D_2hwyy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1245240295]
+polygon = PackedVector2Array(-186.88976, 62.296585, -194.67682, 138.86946, 173.9113, 271.2497, 186.88976, 189.48544)

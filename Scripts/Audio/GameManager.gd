@@ -111,6 +111,7 @@ func _spawn_boss() -> void:
 
 ## Sets up the spawning mechanics and pause
 func _ready() -> void:
+	add_to_group("GManager")
 	is_transitioning = false
 	boss_spawned = false
 	level_wave = 1

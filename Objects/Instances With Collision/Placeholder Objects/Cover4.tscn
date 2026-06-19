@@ -24,4 +24,5 @@ position = Vector2(-3.8935382, 1.297848)
 shape = SubResource("RectangleShape2D_me4gi")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1771531574]
+visible = false
 occluder = SubResource("OccluderPolygon2D_2hwyy")

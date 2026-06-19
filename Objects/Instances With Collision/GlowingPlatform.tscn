@@ -12,24 +12,23 @@ glow_hdr_threshold = 1.08
 glow_hdr_luminance_cap = 72.08
 glow_map_strength = 1.0
 
-[sub_resource type="Gradient" id="Gradient_knn8v"]
+[sub_resource type="Gradient" id="Gradient_xb6j2"]
 colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
-gradient = SubResource("Gradient_knn8v")
+gradient = SubResource("Gradient_xb6j2")
 width = 70
 height = 70
 fill = 1
 fill_from = Vector2(0.50220263, 0.4889868)
 fill_to = Vector2(0.7008547, 0.32478634)
 
-[node name="GlowingPlatform" type="Sprite2D" unique_id=1580102396 node_paths=PackedStringArray("glow_effect")]
+[node name="GlowingPlatform" type="Sprite2D" unique_id=1580102396]
 z_index = -10
 position = Vector2(1.1920929e-07, 0)
 scale = Vector2(0.4185185, 0.4185185)
 texture = ExtResource("1_xb6j2")
 script = ExtResource("2_6ww5o")
-glow_effect = NodePath("GlowEffect")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1897050038]
 environment = SubResource("Environment_knn8v")

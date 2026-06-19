@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dcx5cnan17uax"]
 
 [ext_resource type="Texture2D" uid="uid://b7o8gqhjpe7sa" path="res://Sprites/Game Elements/Placeholders/Objects/columns.png" id="1_5fqr7"]
+[ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/Audio/StationaryBeatGlowEffect.gd" id="1_u2iup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfqff"]
 atlas = ExtResource("1_5fqr7")
@@ -9,12 +10,30 @@ region = Rect2(727.3606, 15.963538, 151.64569, 291.9535)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(155.74146, 188.18759)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sxnj5"]
-polygon = PackedVector2Array(-80.46642, -482.79852, -84.359955, -436.07608, -62.296585, -394.545, -70.08366, 1.2978443, -2.5956922, 28.552599, 6.489226, -378.9709, -1.2377219e-06, -403.62994, 1.2978443, -442.5653)
+[sub_resource type="Gradient" id="Gradient_u2iup"]
+colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rbark"]
+gradient = SubResource("Gradient_u2iup")
+width = 70
+height = 70
+fill = 1
+fill_from = Vector2(0.50220263, 0.4889868)
+fill_to = Vector2(0.7008547, 0.32478634)
+
+[sub_resource type="Environment" id="Environment_rbark"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.21
+glow_hdr_threshold = 1.08
+glow_hdr_luminance_cap = 72.08
+glow_map_strength = 1.0
 
 [node name="Pillar" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
+script = ExtResource("1_u2iup")
 
 [node name="PillarSprite" type="Sprite2D" parent="." unique_id=381333886]
 position = Vector2(3.6985855, -281.36856)
@@ -25,5 +44,12 @@ texture = SubResource("AtlasTexture_dfqff")
 position = Vector2(2.5956898, -63.594425)
 shape = SubResource("RectangleShape2D_me4gi")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1058833666]
-occluder = SubResource("OccluderPolygon2D_sxnj5")
+[node name="GlowEffect" type="PointLight2D" parent="." unique_id=1572252047]
+position = Vector2(10.382761, -499.67047)
+scale = Vector2(17.340075, 8.260429)
+color = Color(2.702384, 3.2944162, 1.6543248, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_rbark")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1358865530]
+environment = SubResource("Environment_rbark")

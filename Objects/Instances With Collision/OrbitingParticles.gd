@@ -1,12 +1,14 @@
 extends GPUParticles2D
 
 @export var orbit_color: Color = Color.WHITE
+@export var orbit_glow : PointLight2D
 
 
 func _ready() -> void:
 	if process_material:
 		process_material = process_material.duplicate()
 	set_effect_color(orbit_color)
+	orbit_glow.color = orbit_color
 
 
 func set_effect_color(color: Color) -> void:

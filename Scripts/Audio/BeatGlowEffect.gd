@@ -1,9 +1,9 @@
 class_name SpriteBeatGlow
-extends Sprite2D
+extends Node2D
 
 
 
-@export var glow_effect: PointLight2D
+@onready var glow_effect: PointLight2D = $GlowEffect
 
 var energyIntensity: float
 

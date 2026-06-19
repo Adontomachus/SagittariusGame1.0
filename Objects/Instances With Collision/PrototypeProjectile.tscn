@@ -107,7 +107,7 @@ scale = Vector2(4.09375, 4.09375)
 energy = 5.0
 texture = SubResource("GradientTexture2D_cq3s7")
 
-[node name="OrbitingParticles" type="GPUParticles2D" parent="." unique_id=128923122]
+[node name="OrbitingParticles" type="GPUParticles2D" parent="." unique_id=128923122 node_paths=PackedStringArray("orbit_glow")]
 amount = 2
 texture = ExtResource("3_mwxp5")
 lifetime = 2.0
@@ -117,5 +117,13 @@ explosiveness = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_mwxp5")
 script = ExtResource("3_5i23p")
+orbit_glow = NodePath("OrbitGlow")
+
+[node name="OrbitGlow" type="PointLight2D" parent="OrbitingParticles" unique_id=1555907490]
+scale = Vector2(0.82128906, 0.82128894)
+color = Color(0, 1, 1, 1)
+energy = 4.65
+texture = SubResource("GradientTexture2D_cq3s7")
+texture_scale = 1.19
 
 [connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

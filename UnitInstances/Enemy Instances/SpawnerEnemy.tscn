@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://krp0oqtapmio"]
 
 [ext_resource type="Script" uid="uid://dar0vcolfqaqg" path="res://Scripts/Enemy Scripts/SpawnerEnemy/EnemySpawner.gd" id="1_ewdkc"]
-[ext_resource type="Texture2D" uid="uid://bkfvna52fbeyp" path="res://Sprites/Game Elements/balete.png" id="2_8af6i"]
+[ext_resource type="Texture2D" uid="uid://dkg64qrg2d783" path="res://Sprites/Game Elements/Placeholders/Enemy/SpawnerPlaceholder.png" id="2_ewdkc"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_r10nr"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_keiqf"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_eht03"]
@@ -15,6 +15,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8af6i"]
+atlas = ExtResource("2_ewdkc")
+region = Rect2(246.55338, 0, 207.75583, 289.8393)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 32.0
@@ -81,8 +85,8 @@ shape = SubResource("CircleShape2D_s7bn3")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 self_modulate = Color(1.0687634, 1.2726948, 1.753959, 1)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_8af6i")
+position = Vector2(0, -92)
+texture = SubResource("AtlasTexture_8af6i")
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1064146345]
 

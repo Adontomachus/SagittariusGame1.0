@@ -34,6 +34,7 @@ var world_parent: Node2D
 
 func _ready() -> void:
 	super()
+	allow_sprite_flip = false
 	add_to_group("GeneralEnemyInstance")
 	beat_sync = get_tree().get_first_node_in_group("BeatSync")
 	if beat_sync == null:
@@ -79,6 +80,8 @@ func _try_spawn() -> void:
 	spawned_count += 1
 	if spawn_indicator_scene:
 		var indicator = spawn_indicator_scene.instantiate()
+		indicator.z_index = 999
+		indicator.z_as_relative = false
 		world_parent.add_child(indicator)
 		indicator.global_position = spawn_pos
 		await get_tree().process_frame

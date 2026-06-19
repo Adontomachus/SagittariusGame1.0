@@ -6,10 +6,6 @@
 atlas = ExtResource("1_2gpqd")
 region = Rect2(149.81012, 293.33032, 193.78061, 181.77649)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_cuvdb"]
-a = Vector2(137.57162, -109.01903)
-b = Vector2(-212.84665, -269.95187)
-
 [node name="Clutter" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
@@ -18,10 +14,5 @@ scale = Vector2(0.77050775, 0.77050775)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_im2v5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
-position = Vector2(15.574144, 307.5894)
-shape = SubResource("SegmentShape2D_cuvdb")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=195072503]
-position = Vector2(29.850445, 151.84793)
-shape = SubResource("SegmentShape2D_cuvdb")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1044191329]
+polygon = PackedVector2Array(-202.4639, -105.12548, -206.35744, 46.72244, 157.0393, 199.86821, 157.0393, 45.42459, -176.50699, -123.29532)
