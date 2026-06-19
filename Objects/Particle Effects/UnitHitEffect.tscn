@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://b8vf75a3gvdxo"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+[sub_resource type="Gradient" id="Gradient_5nsfc"]
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oxggy"]
+gradient = SubResource("Gradient_5nsfc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.87606835, 0.11965812)
 
 [sub_resource type="Curve" id="Curve_5nsfc"]
 _limits = [-500.0, 500.0, 0.0, 1.0]
@@ -8,8 +16,12 @@ _data = [Vector2(0, 500), 0.0, 0.0, 0, 0, Vector2(0.42702705, -500), 0.0, 0.0, 0
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_t5oqc"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.25087315), -1.3857687, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_m3y5v"]
+offsets = PackedFloat32Array(0.00955414, 0.5254777, 0.82802546)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.35253903, 0, 0.56, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -41,10 +53,10 @@ glow_strength = 0.95
 
 [node name="UnitHitEffect" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(3.2944162, 3.2944162, 3.2944162, 1)
-amount = 50
-texture = SubResource("CanvasTexture_jhxfm")
+amount = 60
+texture = SubResource("GradientTexture2D_oxggy")
 lifetime = 0.5
-explosiveness = 1.0
+explosiveness = 0.9
 randomness = 1.0
 lifetime_randomness = 1.0
 emission_shape = 1
@@ -52,14 +64,17 @@ emission_sphere_radius = 2.29
 direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_max = 444.44
+initial_velocity_max = 303.2
 angular_velocity_min = 176.6
 angular_velocity_max = 285.29
 orbit_velocity_curve = SubResource("Curve_5nsfc")
-scale_amount_min = 10.0
-scale_amount_max = 10.0
+damping_max = 71.752
+scale_amount_min = 0.1
 scale_amount_curve = SubResource("Curve_t5oqc")
-color = Color(0.78431374, 0.89411765, 0.18039216, 1)
+color = Color(0.99470645, 0.8439394, 0.17923622, 1)
+color_ramp = SubResource("Gradient_m3y5v")
+hue_variation_min = -0.22
+hue_variation_max = -0.14
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
 

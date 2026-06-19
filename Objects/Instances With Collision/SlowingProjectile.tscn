@@ -68,9 +68,9 @@ environment = SubResource("Environment_hex5x")
 
 [node name="Emitter" type="CPUParticles2D" parent="." unique_id=190352062]
 position = Vector2(2, 0)
-amount = 20
+amount = 55
 texture = SubResource("GradientTexture2D_teh0n")
-lifetime = 0.7
+lifetime = 0.8
 emission_shape = 1
 emission_sphere_radius = 2.75
 gravity = Vector2(0, 0)
@@ -88,7 +88,7 @@ texture = SubResource("GradientTexture2D_lg121")
 [node name="EnemyGlow" type="PointLight2D" parent="." unique_id=1943013954]
 visible = false
 scale = Vector2(4.09375, 4.09375)
-energy = 5.0
+energy = 1.5
 texture = SubResource("GradientTexture2D_vshp8")
 
 [connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

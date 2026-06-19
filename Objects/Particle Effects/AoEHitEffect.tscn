@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://dq342v2lkbm8s"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+[sub_resource type="Gradient" id="Gradient_xk50s"]
+offsets = PackedFloat32Array(0, 0.5220126)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_va8et"]
+gradient = SubResource("Gradient_xk50s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.3)
 
 [sub_resource type="Curve" id="Curve_t5oqc"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_jrjmj"]
+offsets = PackedFloat32Array(0, 0.8630573)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -37,7 +49,7 @@ glow_strength = 0.95
 [node name="AoEEffect" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)
 amount = 25
-texture = SubResource("CanvasTexture_jhxfm")
+texture = SubResource("GradientTexture2D_va8et")
 lifetime = 0.65
 preprocess = 0.13
 explosiveness = 1.0
@@ -48,15 +60,14 @@ emission_sphere_radius = 2.29
 direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_max = 100.0
+initial_velocity_max = 184.75
 angular_velocity_min = -240.0
 angular_velocity_max = 138.85
 orbit_velocity_min = 0.1
 orbit_velocity_max = 0.5
-scale_amount_min = 5.0
-scale_amount_max = 15.65
 scale_amount_curve = SubResource("Curve_t5oqc")
 color = Color(0.78431374, 0.89411765, 0.18039216, 1)
+color_ramp = SubResource("Gradient_jrjmj")
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
 

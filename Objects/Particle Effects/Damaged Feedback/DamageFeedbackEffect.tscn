@@ -2,11 +2,23 @@
 
 [ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/Visuals/ParticleEffectScript.gd" id="1_gvt02"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_jhxfm"]
+[sub_resource type="Gradient" id="Gradient_fdoxv"]
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_th1w5"]
+gradient = SubResource("Gradient_fdoxv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.3)
 
 [sub_resource type="Curve" id="Curve_t5oqc"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kkf5i"]
+offsets = PackedFloat32Array(0, 0.6751592)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_jhxfm"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -24,7 +36,7 @@ shot_effect = NodePath("ShotEffect")
 
 [node name="ShotEffect" type="CPUParticles2D" parent="." unique_id=538343073]
 amount = 50
-texture = SubResource("CanvasTexture_jhxfm")
+texture = SubResource("GradientTexture2D_th1w5")
 lifetime = 0.3
 explosiveness = 1.0
 randomness = 1.0
@@ -35,10 +47,9 @@ direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_max = 404.04
-scale_amount_min = 10.0
-scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_t5oqc")
 color = Color(0.99426365, 0.390048, 0.2694199, 1)
+color_ramp = SubResource("Gradient_kkf5i")
 anim_speed_curve = SubResource("Curve_jhxfm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ShotEffect" unique_id=1630641913]

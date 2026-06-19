@@ -115,7 +115,6 @@ bus = &"SFX"
 [node name="CompanionLight" type="PointLight2D" parent="." unique_id=194855364]
 scale = Vector2(12.187499, 12.187499)
 color = Color(0.938151, 0.7522057, 0.2970827, 1)
-energy = 3.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_4oow7")
 
