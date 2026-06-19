@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5kjluhgmh4lk"]
 
 [ext_resource type="Script" uid="uid://c6ub208aajgya" path="res://Scripts/Enemy Scripts/StationaryEnemyScripts/ShoutAoE.gd" id="1_dir02"]
-[ext_resource type="Texture2D" uid="uid://y0lc5umawlqs" path="res://Sprites/Game Elements/placeholder_bullet.png" id="2_5mt54"]
+[ext_resource type="Texture2D" uid="uid://mnottbo4as71" path="res://Sprites/Game Elements/Placeholders/Enemy/AOE.png" id="2_ivtc6"]
 [ext_resource type="AudioStream" uid="uid://bopgycv2avkqc" path="res://Audio/Sounds/Calanget_AOE.wav" id="3_t8j5a"]
 [ext_resource type="Shader" uid="uid://n55fw5b5pt02" path="res://Scenes/Gameplay/Ripple.gdshader" id="4_ivtc6"]
 
@@ -250,8 +250,8 @@ script = ExtResource("1_dir02")
 damage = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=615370513]
-visible = false
-texture = ExtResource("2_5mt54")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ivtc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990032299]
 shape = SubResource("CircleShape2D_c5nd8")

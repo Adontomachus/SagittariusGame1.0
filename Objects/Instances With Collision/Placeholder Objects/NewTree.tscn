@@ -11,7 +11,6 @@ size = Vector2(52.8289, 47.637516)
 
 [node name="Wall2" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
-scale = Vector2(0.77050775, 0.77050775)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
 texture = SubResource("AtlasTexture_c5u2p")
