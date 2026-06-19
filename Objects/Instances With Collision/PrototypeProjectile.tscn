@@ -80,7 +80,7 @@ texture = SubResource("GradientTexture2D_cq3s7")
 visible = false
 scale = Vector2(4.09375, 4.09375)
 color = Color(0.9999985, 0.5473009, 0.49684662, 1)
-energy = 3.5
+energy = 1.5
 texture = SubResource("GradientTexture2D_cq3s7")
 
 [connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

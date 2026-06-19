@@ -87,7 +87,7 @@ var dash_velocity: Vector2 = Vector2.ZERO
 
 @export_category("Grenade Values")
 @export var grenade_scene: PackedScene
-@export var grenade_damage: float = 70.0
+@export var grenade_damage: float = 135.0
 @export var grenade_radius: float = 120.0
 @export var grenade_cooldown: float = 0.0
 @export var grenade_damage_divisor_min: float = 1.15
@@ -577,9 +577,9 @@ func upgrade_player_stats() -> void:
 	# Heals player for 20% max HP and resets current experience points by 0
 	player_level += 1
 	PointSystemScript.player_levels = player_level
-	maxHealthPoints = maxHealthPoints * 1.03
+	maxHealthPoints = maxHealthPoints * 1.04
 	projectile_damage = projectile_damage * 1.06
-	maxExperiencePoints = maxExperiencePoints * 1.05
+	maxExperiencePoints = maxExperiencePoints * 1.04
 	experiencePoints = 0
 	healthPoints += maxHealthPoints / 5
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints

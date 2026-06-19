@@ -143,10 +143,10 @@ navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(8, 10)
 stamina_regeneration_rate = 2.0
 maxMoveSpeed = 75.0
-maxHealthPoints = 1150
+maxHealthPoints = 825
 meleeTickRate = 20
 amountOfPointOrbs = 6
-attackPower = 34.0
+attackPower = 22.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
