@@ -9,9 +9,42 @@ extends Node2D
 @export_range(0.0, 1.0) var shadow_opacity: float = 0.6
 var shadow_sprite: Sprite2D
 
+@export var player_ref: PlayerCharacter
+@export var neutral_offset: Vector2 = Vector2(0, 30)
+@export var facing_offset_strength: float = 10.0  
+@export var min_speed_for_movement_priority: float = 10.0
+
+
+func _process(_delta: float) -> void:
+	if player_ref == null:
+		return
+	_update_facing_offset()
 
 func _ready() -> void:
+	z_index = -1
 	_create_shadow_texture()
+	
+func _update_facing_offset() -> void:
+	var behind_dir := -_get_priority_direction()
+	position = neutral_offset + behind_dir * facing_offset_strength
+
+func _get_priority_direction() -> Vector2:
+	var velocity := player_ref.velocity
+	if velocity.length() > min_speed_for_movement_priority:
+		return velocity.normalized()
+	return _get_facing_vector(player_ref.current_facing)
+
+func _get_facing_vector(facing: PlayerCharacter.FacingDirection) -> Vector2:
+	match facing:
+		PlayerCharacter.FacingDirection.RIGHT:      return Vector2(2, 0)
+		PlayerCharacter.FacingDirection.DOWN_RIGHT:  return Vector2(0.7, 0.7)
+		PlayerCharacter.FacingDirection.DOWN:        return Vector2(0, 1)
+		PlayerCharacter.FacingDirection.DOWN_LEFT:   return Vector2(-0.7, 0.7)
+		PlayerCharacter.FacingDirection.LEFT:        return Vector2(-2, 0)
+		PlayerCharacter.FacingDirection.UP_LEFT:     return Vector2(-0.7, -0.7)
+		PlayerCharacter.FacingDirection.UP:          return Vector2(0, -1)
+		PlayerCharacter.FacingDirection.UP_RIGHT:    return Vector2(0.7, -0.7)
+	return Vector2.ZERO
 
 ## Cache so it's only built once
 static var cached_shadow_texture: ImageTexture = null

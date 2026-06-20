@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_8hj4s"]
 [ext_resource type="Texture2D" uid="uid://v5aoflof23rs" path="res://Sprites/Game Elements/Shooter.png" id="2_7j376"]
+[ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="2_keqdq"]
+[ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="3_aykja"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_yjjxy"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_ciy0g"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_rakrl"]
@@ -23,7 +25,7 @@ resource_name = "Flash"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +40,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +80,12 @@ debug_enabled = true
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
+[node name="MovementStretch" type="Node2D" parent="." unique_id=424023668 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+script = ExtResource("2_keqdq")
+sprite_to_wrap = NodePath(".")
+velocity_source = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="MovementStretch" unique_id=678723821]
 self_modulate = Color(1, 0.53344977, 0.4699505, 1)
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.083333336, 0.083333366)
@@ -122,7 +129,7 @@ horizontal_alignment = 1
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("6_utpns")
 starting_state = NodePath("EnemyStateStrafing")
-sprite = NodePath("../Sprite")
+sprite = NodePath("../MovementStretch/Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("recovery_state")]
@@ -151,7 +158,14 @@ libraries/ = SubResource("AnimationLibrary_7j376")
 
 [node name="HitFlashEnemy" type="Node" parent="." unique_id=979008605 node_paths=PackedStringArray("target")]
 script = ExtResource("11_udgpc")
-target = NodePath("../Sprite")
+target = NodePath("../MovementStretch/Sprite")
+
+[node name="FakeShadow" type="Sprite2D" parent="." unique_id=796757030]
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.083333336, 0.083333366)
+script = ExtResource("3_aykja")
+shadow_offset = Vector2(0, 60)
+shadow_opacity = 1.0
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

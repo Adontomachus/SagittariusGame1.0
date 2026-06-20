@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_cyyc4"]
 [ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="2_3mgii"]
 [ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_22t2l"]
+[ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="3_r46i8"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_tx5hf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_22t2l"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy Scripts/StateMachine/EnemyStateMachine.gd" id="4_gngj8"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dykdysmx667ac" path="res://Scripts/Enemy Scripts/EliteEnemyStates/EliteDecideState.gd" id="13_m3nru"]
 [ext_resource type="AudioStream" uid="uid://bgy3n7f3chysj" path="res://Audio/Sounds/EliteSpearThrow.wav" id="15_1uvtk"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="16_g3esp"]
+[ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="18_huso0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.734726
@@ -29,7 +31,7 @@ resource_name = "Flash"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +46,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +90,12 @@ debug_path_custom_color = Color(0, 0, 1, 1)
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
+[node name="MovementStretch" type="Node2D" parent="." unique_id=864407659 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+script = ExtResource("3_r46i8")
+sprite_to_wrap = NodePath(".")
+velocity_source = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="MovementStretch" unique_id=678723821]
 position = Vector2(-7.1525574e-07, 1.0000005)
 scale = Vector2(0.08114035, 0.08114033)
 texture = ExtResource("2_22t2l")
@@ -123,7 +130,7 @@ offset_bottom = -35.0
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=937708422 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("4_gngj8")
 starting_state = NodePath("EnemyStateClosing")
-sprite = NodePath("../Sprite")
+sprite = NodePath("../MovementStretch/Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateClosing" type="Node" parent="EnemyStateMachine" unique_id=121788740 node_paths=PackedStringArray("after_closing_state", "recovery_state")]
@@ -197,7 +204,12 @@ bus = &"SFX"
 
 [node name="HitFlashEnemy" type="Node" parent="." unique_id=2086250205 node_paths=PackedStringArray("target")]
 script = ExtResource("16_g3esp")
-target = NodePath("../Sprite")
+target = NodePath("../MovementStretch/Sprite")
+
+[node name="FakeShadow" type="Sprite2D" parent="." unique_id=2044562529]
+script = ExtResource("18_huso0")
+shadow_offset = Vector2(0, 80)
+shadow_opacity = 1.0
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

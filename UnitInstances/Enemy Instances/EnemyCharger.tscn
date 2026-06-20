@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_f54ak"]
 [ext_resource type="Texture2D" uid="uid://2j6wto04wx5t" path="res://Sprites/Game Elements/Charger.png" id="2_6onfs"]
+[ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="2_ychlf"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_4dvsj"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_tgimn"]
 [ext_resource type="Texture2D" uid="uid://d2omvbimwq6vb" path="res://Sprites/UI/enemyhpbarfill.png" id="5_flwud"]
@@ -17,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://w50g3rkxy4cc" path="res://Audio/Sounds/ChargerStomp.wav" id="13_cjrua"]
 [ext_resource type="AudioStream" uid="uid://dkubcxuval72a" path="res://Audio/Sounds/ChargerRoar.mp3" id="14_ht5vj"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="17_cjrua"]
+[ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="18_ht5vj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 54.142277
@@ -104,7 +106,7 @@ resource_name = "Flash"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -119,7 +121,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/path = NodePath("MovementStretch/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -153,15 +155,21 @@ avoidance_enabled = true
 radius = 120.0
 debug_enabled = true
 
+[node name="MovementStretch" type="Node2D" parent="." unique_id=1251352991 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+scale = Vector2(0.578125, 0.578125)
+script = ExtResource("2_ychlf")
+sprite_to_wrap = NodePath(".")
+velocity_source = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="MovementStretch" unique_id=678723821]
+self_modulate = Color(0.67263305, 0.35419908, 1, 1)
+position = Vector2(-4.1239971e-07, -4.1239971e-07)
+scale = Vector2(0.19305032, 0.1930504)
+texture = ExtResource("2_6onfs")
+
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
-
-[node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
-self_modulate = Color(0.67263305, 0.35419908, 1, 1)
-position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(0.11160722, 0.11160726)
-texture = ExtResource("2_6onfs")
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_4dvsj")
@@ -197,7 +205,7 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=327636544 node_paths=PackedStringArray("starting_state", "sprite")]
 script = ExtResource("6_qd2d0")
 starting_state = NodePath("EnemyStateChargerClosing")
-sprite = NodePath("../Sprite")
+sprite = NodePath("../MovementStretch/Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
 [node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1587728838 node_paths=PackedStringArray("state_to_return")]
@@ -283,7 +291,12 @@ libraries/ = SubResource("AnimationLibrary_8jh7o")
 
 [node name="HitFlashEnemy" type="Node" parent="." unique_id=32138251 node_paths=PackedStringArray("target")]
 script = ExtResource("17_cjrua")
-target = NodePath("../Sprite")
+target = NodePath("../MovementStretch/Sprite")
+
+[node name="FakeShadow" type="Sprite2D" parent="." unique_id=1661984007]
+script = ExtResource("18_ht5vj")
+shadow_offset = Vector2(0, 80)
+shadow_opacity = 1.0
 
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]

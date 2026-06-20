@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://krp0oqtapmio"]
 
 [ext_resource type="Script" uid="uid://dar0vcolfqaqg" path="res://Scripts/Enemy Scripts/SpawnerEnemy/EnemySpawner.gd" id="1_ewdkc"]
+[ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="2_8af6i"]
 [ext_resource type="Texture2D" uid="uid://dkg64qrg2d783" path="res://Sprites/Game Elements/Placeholders/Enemy/SpawnerPlaceholder.png" id="2_ewdkc"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_r10nr"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_keiqf"]
@@ -82,6 +83,11 @@ debug_enabled = true
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
+
+[node name="MovementStretch" type="Node2D" parent="." unique_id=1059348597 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+script = ExtResource("2_8af6i")
+sprite_to_wrap = NodePath(".")
+velocity_source = NodePath("")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 self_modulate = Color(1.0687634, 1.2726948, 1.753959, 1)
