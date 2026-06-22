@@ -88,7 +88,10 @@
 [ext_resource type="PackedScene" uid="uid://c6a8p2jw6t2ag" path="res://Objects/Instances With Collision/Placeholder Objects/Lamp.tscn" id="83_evfvu"]
 
 [sub_resource type="Environment" id="Environment_jgp33"]
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.86
 tonemap_mode = 1
+tonemap_exposure = 1.01
 ssao_intensity = 3.39
 glow_intensity = 0.0
 glow_strength = 1.1
@@ -809,7 +812,7 @@ glow_intensity = 4.0
 glow_strength = 1.5
 
 [sub_resource type="Gradient" id="Gradient_b8xms"]
-offsets = PackedFloat32Array(0.22427984, 0.33950618)
+offsets = PackedFloat32Array(0.2489712, 0.6893004)
 colors = PackedColorArray(1, 0.93231314, 0.92903274, 1, 0.02311023, 0.012126904, 0.005422621, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_meejx"]
@@ -916,7 +919,7 @@ player_target = NodePath("InterfaceElements/PlayerTarget")
 environment = SubResource("Environment_jgp33")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
-color = Color(0.12983653, 0.008679129, 0.41933182, 1)
+color = Color(0.08975463, 0.0841855, 0.2325297, 1)
 
 [node name="GameSystems" type="Node" parent="." unique_id=1583226278 node_paths=PackedStringArray("levels")]
 script = ExtResource("2_vj1fp")
@@ -954,6 +957,7 @@ script = ExtResource("9_nxx5y")
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
+zoom = Vector2(1.2, 1.2)
 script = ExtResource("4_b5kf5")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
@@ -1027,6 +1031,7 @@ scale = Vector2(28.5, 10.5)
 texture = SubResource("CanvasTexture_hlum5")
 
 [node name="Vignette" type="TextureRect" parent="InterfaceElements/NewHUD" unique_id=310783616]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_exwru")
@@ -1534,14 +1539,18 @@ position = Vector2(-81, -41)
 
 [node name="PointLight2D" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1524399052]
 position = Vector2(-2, 1)
-color = Color(7.3286095, 7.3286095, 7.3286095, 1)
+color = Color(4.466578, 4.466578, 4.466578, 1)
+energy = 0.13
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_meejx")
+texture_scale = 13.81
+
+[node name="PointLight2D1" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/PointLight2D" unique_id=1603308176]
+color = Color(5.342, 5.231, 0, 1)
 energy = 0.1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_meejx")
-texture_scale = 30.37
-
-[node name="PointLight2D2" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/PointLight2D" unique_id=316858460]
-visible = false
+texture_scale = 5.4
 
 [node name="FakeShadow" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=296752886 node_paths=PackedStringArray("player_ref")]
 script = ExtResource("75_kxwa7")
