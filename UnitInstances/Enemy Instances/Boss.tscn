@@ -167,6 +167,7 @@ positioning_state = NodePath("../EnemyStatePositioning")
 [node name="BossStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1669283952 node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_krrga")
 next_state = NodePath("../EnemyStatePositioning")
+projectiles_per_ring = 40
 
 [node name="BossStateSummon" type="Node" parent="EnemyStateMachine" unique_id=714371637 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_kxqtw")

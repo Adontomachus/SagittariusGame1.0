@@ -580,6 +580,7 @@ func upgrade_player_stats() -> void:
 	PointSystemScript.player_levels = player_level
 	maxHealthPoints = maxHealthPoints * 1.04
 	projectile_damage = projectile_damage * 1.06
+	grenade_damage = grenade_damage * 1.05
 	maxExperiencePoints = maxExperiencePoints * 1.04
 	experiencePoints = 0
 	healthPoints += maxHealthPoints / 5

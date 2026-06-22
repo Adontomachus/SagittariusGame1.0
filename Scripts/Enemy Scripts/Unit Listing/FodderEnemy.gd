@@ -90,7 +90,7 @@ var splash_damage_effect := preload("res://Objects/Particle Effects/AoEHitEffect
 ## Damage number that spawns on side of the object's center
 ## when the object takes damage from AoE sources
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
-
+var tickDamageNumber := preload("res://Objects/UI Elements/TickDamageNumbers.tscn")
 # START
 func _ready():
 	state_machine.init(self)#, animations, audio_sfx)
@@ -202,7 +202,7 @@ func shoot_projectile(angle: float = 0, modifier: float = 1.0, color: Color = Co
 	print_debug("Damage: %s" % (attackPower * modifier))
 	
 func shoot_slow_projectile(angle: float = 0, modifier: float = 1.0,
-		color: Color = Color.RED, speed: float = 150.0, lifetime: float = 400) -> void:
+		color: Color = Color.RED, speed: float = 275.0, lifetime: float = 400) -> void:
 
 	var projectile_instance = projectile.instantiate()
 	projectile_instance.change_lifetime(lifetime)
@@ -264,7 +264,7 @@ func _delete_and_emit_effects():
 	
 func _aoe_damage_feedback(increment: int):
 	## Damage Number
-	var damageFeedback = damageNumber.instantiate()
+	var damageFeedback = tickDamageNumber.instantiate()
 	damageFeedback.position = self.get_global_position() + initPosition
 	damageFeedback.damage_value = increment
 	get_tree().get_root().call_deferred("add_child", damageFeedback)
@@ -274,8 +274,10 @@ func _aoe_damage_feedback(increment: int):
 	get_tree().get_root().call_deferred("add_child", hitEffect)
 	pass
 
-func _stacking_damage_feedback(increment: int):
-	damageTaken += increment
-	pass
-# CHANGE STATS ON SPAWN (TENTATIVE)
+
 #func change_unit_stats(health: int, new_damage: int) -> void:
+
+
+func _stack_damage(damage_value: int) -> void:
+	damageTaken += damage_value
+	pass # Replace with function body.

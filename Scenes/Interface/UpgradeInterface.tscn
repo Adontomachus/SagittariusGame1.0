@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://im1hv4l17np8" path="res://Scripts/Player Scripts/Upgrade System/UpgradeUI.gd" id="1_xfjfj"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="2_oasdf"]
+[ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="2_wfrvm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfjfj"]
 bg_color = Color(0.35222265, 0.31260636, 0.13873474, 1)
 
 [sub_resource type="GDScript" id="GDScript_xfjfj"]
-script/source = "class_name UpgradeUIAnimation
+script/source = "# class_name UpgradeUIAnimation
 extends Node
 
 @export var upgrade_ui: Control         
@@ -144,7 +145,7 @@ func _disable_cards(disabled: bool) -> void:
 [sub_resource type="LabelSettings" id="LabelSettings_8oq8g"]
 line_spacing = 25.0
 paragraph_spacing = 14.0
-font = ExtResource("2_oasdf")
+font = ExtResource("2_wfrvm")
 font_size = 128
 font_color = Color(0.8602326, 1, 0.2716998, 1)
 outline_size = 25
@@ -154,9 +155,15 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(12, 12)
 
 [sub_resource type="LabelSettings" id="LabelSettings_bl1lb"]
-font = ExtResource("2_oasdf")
+font = ExtResource("2_wfrvm")
 font_size = 30
 font_color = Color(0.8634428, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oasdf"]
+font = ExtResource("2_wfrvm")
+font_color = Color(0.8823829, 0.96166515, 0, 1)
+outline_size = 5
+outline_color = Color(0.20470095, 0.204701, 2.4065375e-08, 1)
 
 [node name="UpgradeScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("animator")]
 process_mode = 3
@@ -245,6 +252,7 @@ theme_override_colors/font_outline_color = Color(0.9855661, 0.98472077, 0.978036
 theme_override_fonts/font = ExtResource("2_oasdf")
 theme_override_font_sizes/font_size = 25
 text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_oasdf")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -301,6 +309,7 @@ theme_override_colors/font_outline_color = Color(0.9855661, 0.98472077, 0.978036
 theme_override_fonts/font = ExtResource("2_oasdf")
 theme_override_font_sizes/font_size = 25
 text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_oasdf")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -357,6 +366,7 @@ theme_override_colors/font_outline_color = Color(0.9855661, 0.98472077, 0.978036
 theme_override_fonts/font = ExtResource("2_oasdf")
 theme_override_font_sizes/font_size = 25
 text = "Item_UpgradeDescription1"
+label_settings = SubResource("LabelSettings_oasdf")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

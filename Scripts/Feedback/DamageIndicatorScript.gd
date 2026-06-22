@@ -26,7 +26,7 @@ func _ready() -> void:
 	starting_font_size += damage_value / 2
 	fade_duration += damage_value / 1000
 	if is_critical_hit:
-		damage_num_size = 16
+		damage_num_size = 75
 		damage_text.text = str(round(damage_value)) + "!"
 	else:
 		damage_text.text = str(round(damage_value))
@@ -52,14 +52,14 @@ func _fade_out(fadeDuration) -> void:
 	tween.tween_property(
 		damage_text,
 		"theme_override_font_sizes/font_size",
-		damage_num_size + (damage_value * 1),
-		0.14
+		damage_num_size + (damage_value * 0.25),
+		0.05
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 	tween.tween_property(
 		damage_text,
 		"theme_override_font_sizes/font_size",
-		damage_num_size + (damage_value * .4),
+		damage_num_size + (damage_value * .1),
 		0.10
 	).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 

@@ -16,6 +16,8 @@ var starting_font_size = 80
 @export var fade_duration: float = 0.8
 @export var damage_num_size: float = 80
 @export var maximum_velocity: float = 100
+@export var is_fading: bool = false
+var can_fade: bool = true
 
 var move_direction: Vector2
 var move_speed: float
@@ -28,7 +30,6 @@ func _ready() -> void:
 		damage_text.text = str(round(damage_value)) + "!"
 	else:
 		damage_text.text = str(round(damage_value))
-	_fade_out(fade_duration)
 	var random_angle = randf_range(0, TAU)
 	move_speed = randf_range(0,100)
 	move_direction = Vector2.from_angle(random_angle)
@@ -37,15 +38,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if can_fade and is_fading:
+		can_fade = false
+		_fade_out(fade_duration)
 	self.position += move_direction * move_speed * _delta
 	#await get_tree().create_timer(1).timeout # wait 1 second
 	#queue_free()
 	pass
 
-func _fade_out(fadeDuration):
+func _flash_number():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "theme_override_font_sizes/font_size", damage_num_size + damage_value / 15, 0.001)
 	tween.tween_property(self, "theme_override_font_sizes/font_size", (damage_num_size - 55) + damage_value / 15, 0.11)
+
+
+func _fade_out(fadeDuration):
+	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 0, fadeDuration)
 	tween.tween_property(self, "self_modulate:a", 0, fadeDuration)
 	tween.play()

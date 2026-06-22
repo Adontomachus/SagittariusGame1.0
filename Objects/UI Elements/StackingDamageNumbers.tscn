@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfgui25y1y3xj"]
 
 [ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="1_ia5ed"]
-[ext_resource type="Script" uid="uid://bkx2ukjt036up" path="res://Scripts/Feedback/DamageIndicatorScript.gd" id="1_oqbvt"]
+[ext_resource type="Script" uid="uid://b73i7q6sv7w0k" path="res://Scripts/Feedback/StackingDamageIndicator.gd" id="2_ia5ed"]
 
 [sub_resource type="Environment" id="Environment_y60un"]
 background_mode = 3
@@ -9,7 +9,7 @@ glow_enabled = true
 glow_intensity = 1.0
 glow_strength = 2.0
 
-[node name="TickDamageNumbers" type="Label" unique_id=1560617677]
+[node name="StackingDamageNumbers" type="Label" unique_id=1560617677]
 self_modulate = Color(2.1357718, 2.454227, 1.1645384, 1)
 offset_left = -4.0
 offset_top = -8.0
@@ -20,7 +20,7 @@ theme_override_font_sizes/font_size = 80
 text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_oqbvt")
+script = ExtResource("2_ia5ed")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526374861]
 environment = SubResource("Environment_y60un")

@@ -74,6 +74,8 @@ spawn_radius = 20.0
 spawner_sprite = NodePath("Sprite")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
+maxHealthPoints = 150
+amountOfPointOrbs = 10
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
