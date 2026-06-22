@@ -38,6 +38,8 @@ enum ProjectileVelocityType {
 
 @export var emitter: CPUParticles2D 
 
+@onready var hit_noise : AudioStreamPlayer = $EnemyHitSound
+
 var wallHitEffects := preload("res://Objects/Particle Effects/WallHitEffect.tscn")
 var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn")
 
@@ -70,6 +72,9 @@ func _ready():
 				var hitEffect = wallHitEffects.instantiate()
 				hitEffect.position = self.get_global_position()
 				get_tree().get_root().call_deferred("add_child", hitEffect)
+				#hit_noise.play()
+				#hide()
+				#await hit_noise.finished
 				queue_free()
 		)
 
@@ -77,6 +82,7 @@ func _ready():
 			if (projectileSide == ProjectileSide.Player):
 				if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
 					area.modify_enemy_health(-projectile_damage)
+					
 					var combo_ui := get_tree().get_first_node_in_group("ComboUIFeedback")
 					if combo_ui:
 						combo_ui.on_particle_arrived(hit_combo_value)
@@ -90,6 +96,9 @@ func _ready():
 					damageFeedback.damage_value = projectile_damage
 					PointSystemScript.total_damage_dealt += projectile_damage
 					get_tree().get_root().call_deferred("add_child", damageFeedback)
+					hit_noise.play()
+					hide()
+					await hit_noise.finished
 					queue_free()
 
 			if (projectileSide == ProjectileSide.Enemy):

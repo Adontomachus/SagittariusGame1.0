@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_jj52o"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="11_0n2qw"]
 [ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="12_uvcph"]
-[ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="13_trf43"]
 [ext_resource type="PackedScene" uid="uid://bfgui25y1y3xj" path="res://Objects/UI Elements/StackingDamageNumbers.tscn" id="13_trf43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
@@ -150,9 +149,7 @@ script = ExtResource("11_0n2qw")
 target = NodePath("../MovementStretch/Sprite")
 
 [node name="FakeShadow" type="Sprite2D" parent="." unique_id=851053513]
-script = ExtResource("13_trf43")
-shadow_offset = Vector2(0, 30)
-shadow_opacity = 1.0
+
 [node name="StackingDamageNumbers" parent="." unique_id=1560617677 instance=ExtResource("13_trf43")]
 visible = false
 offset_left = -160.83333

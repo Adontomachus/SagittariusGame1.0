@@ -81,7 +81,7 @@ var pointObject := preload("res://UnitInstances/Miscellaneous/ScoreOrb.tscn")
 ## This variable is rolled randomly from 0, 10. Higher values 
 ## give the unit more chance to shoot the player for each beat.
 var chanceToAttack: float
-@onready var hit_sound: AudioStreamPlayer = $HitSound
+#@onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var hit_flash_enemy: HitFlashEnemy = $HitFlashEnemy
 
 # Damage number positioning and feedback visuals
@@ -219,7 +219,7 @@ func shoot_slow_projectile(angle: float = 0, modifier: float = 1.0,
 
 
 func modify_health(increment: int) -> void:
-	hit_sound.play()
+	#hit_sound.play()
 	baseHealthPoints += increment
 	send_current_health_value.emit(baseHealthPoints)
 

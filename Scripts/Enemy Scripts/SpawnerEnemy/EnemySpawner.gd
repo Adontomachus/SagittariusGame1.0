@@ -21,6 +21,8 @@ extends Enemy
 @export var spawner_sprite: Sprite2D
 @export var spawn_indicator: Sprite2D
 
+@onready var spawn_noise : AudioStreamPlayer = $SpawnSound
+
 const CHANCE_RANGE: Vector2 = Vector2(0, 10)
 
 var spawned_count: int = 0
@@ -78,6 +80,7 @@ func _try_spawn() -> void:
 		push_error("EnemySpawner: no valid enemy scene to spawn")
 		return
 	spawned_count += 1
+	spawn_noise.play()
 	if spawn_indicator_scene:
 		var indicator = spawn_indicator_scene.instantiate()
 		indicator.z_index = 999

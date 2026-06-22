@@ -25,4 +25,3 @@ func _glow_on_beat() -> void:
 	tween.play()
 	await tween.finished
 	tween.kill()
-	print("this shit was called")

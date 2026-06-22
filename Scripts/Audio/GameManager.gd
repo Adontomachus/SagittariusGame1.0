@@ -20,7 +20,7 @@ var player_combo_level: int
 @onready var pause_screen: Control = $InterfaceElements/NewHUD/UI/PauseScreen
 var gamePaused: int
 
-
+@onready var spawn_bounds: CollisionPolygon2D = $"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles/StaticBody2D/SpawnArea"
 
 #LEVEL VARIABLES
 var level_wave: int
@@ -245,30 +245,40 @@ func _spawn_wave_spawners(spawnerCount: int) -> void:
 			enemy_spawn_parent.add_child(spawner)
 		print("Spawned EnemySpawner ", i + 1, "/", spawner_count_per_wave)
 
+func _is_inside_spawn_bounds(pos: Vector2) -> bool:
+	if spawn_bounds == null:
+		print("spawn bounds is missing")
+		return true
+
+	var local_pos := spawn_bounds.to_local(pos)
+
+	return Geometry2D.is_point_in_polygon(
+		local_pos,
+		spawn_bounds.polygon
+	)
+
 func _get_random_spawn_position() -> Vector2:
-	## Spawn away from player
-	var player_pos := player.global_position
-	var pos: Vector2
 	var attempts := 0
-	var max_attempts := 20
-	## Keep trying until we find a spot far enough from the player
-	while attempts < 10:
-		pos = Vector2(
-			randf_range(200, 1500),
-			randf_range(200, 1500)
+
+	while attempts < 30:
+		var pos = Vector2(
+			randf_range(-5074, 3241.0),
+			randf_range(-1774.0, 5359.0)
 		)
-		if pos.distance_to(player_pos) < 400.0:
+
+		## Must be inside polygon boundary
+		if not _is_inside_spawn_bounds(pos):
 			attempts += 1
 			continue
-			
+
+		## Must not overlap obstacles/spawners
 		if _is_position_clear(pos):
 			return pos
+
 		attempts += 1
-	push_warning("GManager: could not find clear spawn position after ", max_attempts, " attempts")
-	return Vector2(
-			player_pos.x + randf_range(-800, 800),
-			player_pos.y + randf_range(-800, 800)
-		)
+
+	push_warning("GManager: fallback spawn used")
+	return spawn_bounds.global_position
 
 func _is_position_clear(pos: Vector2) -> bool:
 	var space := get_world_2d().direct_space_state

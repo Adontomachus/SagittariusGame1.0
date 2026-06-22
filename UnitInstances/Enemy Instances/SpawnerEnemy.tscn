@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ddgde4sc35bqi" path="res://Scripts/Enemy Scripts/States/Enemy States/ShoutLobState.gd" id="10_t38i7"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="11_5glux"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="12_ewdkc"]
+[ext_resource type="AudioStream" uid="uid://cfdyski74aw5y" path="res://Audio/Sounds/NewSounds/EnemySounds/spawnersound.mp3" id="13_r10nr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
@@ -86,10 +87,9 @@ debug_enabled = true
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
-[node name="MovementStretch" type="Node2D" parent="." unique_id=1059348597 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+[node name="MovementStretch" type="Node2D" parent="." unique_id=1059348597 node_paths=PackedStringArray("sprite_to_wrap")]
 script = ExtResource("2_8af6i")
 sprite_to_wrap = NodePath(".")
-velocity_source = NodePath("")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 self_modulate = Color(1.0687634, 1.2726948, 1.753959, 1)
@@ -160,6 +160,12 @@ metadata/_custom_type_script = "uid://ddgde4sc35bqi"
 
 [node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=257206988]
 stream = ExtResource("11_5glux")
+volume_db = -7.5
+pitch_scale = 0.75
+bus = &"SFX"
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="." unique_id=2141652212]
+stream = ExtResource("13_r10nr")
 volume_db = -7.5
 pitch_scale = 0.75
 bus = &"SFX"
