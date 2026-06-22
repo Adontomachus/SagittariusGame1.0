@@ -41,14 +41,14 @@ func _load_difficulty() -> void:
 func _update_scaling_rates() -> void:
 	match _cached_difficulty:
 		0:
-			_health_rate = 0.004
+			_health_rate = 0.003
 			_attack_rate = 0.001
 		1:
 			_health_rate = 0.008
 			_attack_rate = 0.002
 		2:
-			_health_rate = 0.014
-			_attack_rate = 0.007
+			_health_rate = 0.02
+			_attack_rate = 0.01
 
 func _process(delta: float) -> void:
 	var current_scene = get_tree().current_scene

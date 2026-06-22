@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_jj52o"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="11_0n2qw"]
 [ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="12_uvcph"]
+[ext_resource type="PackedScene" uid="uid://bfgui25y1y3xj" path="res://Objects/UI Elements/StackingDamageNumbers.tscn" id="13_trf43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -115,10 +116,9 @@ starting_state = NodePath("EnemyStateChase")
 sprite = NodePath("../MovementStretch/Sprite")
 metadata/_custom_type_script = "uid://4nb635ctjjm"
 
-[node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("after_chase_state", "recovery_state")]
+[node name="EnemyStateChase" type="Node" parent="EnemyStateMachine" unique_id=1940470024 node_paths=PackedStringArray("after_chase_state")]
 script = ExtResource("5_15gep")
 after_chase_state = NodePath("../EnemyStateRecovery")
-recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://bu5go608c7dqq"
 
 [node name="EnemyStateRecovery" type="Node" parent="EnemyStateMachine" unique_id=1587728838 node_paths=PackedStringArray("state_to_return")]
@@ -148,6 +148,13 @@ libraries/ = SubResource("AnimationLibrary_wwa7f")
 script = ExtResource("11_0n2qw")
 target = NodePath("../MovementStretch/Sprite")
 
+[node name="StackingDamageNumbers" parent="." unique_id=1560617677 instance=ExtResource("13_trf43")]
+visible = false
+offset_left = -160.83333
+offset_top = -95.83333
+offset_right = 218.16667
+offset_bottom = 219.16667
+
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
@@ -155,3 +162,4 @@ target = NodePath("../MovementStretch/Sprite")
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="stacking_feedback" from="ProjectileHitbox" to="." method="_stack_damage"]
