@@ -40,7 +40,6 @@ func modify_enemy_health_tick(modification: int) -> void:
 
 func show_aoe_feedback(damage_value: int) -> void:
 	display_damage_feedback.emit(damage_value)
-	tick_damage_feedback.emit(damage_value)
 	stacking_feedback.emit(damage_value)
 	if damage_flash_effect:
 		if damage_flash_effect.is_playing():

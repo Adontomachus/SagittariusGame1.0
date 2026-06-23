@@ -91,6 +91,10 @@ position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.083333336, 0.083333366)
 texture = ExtResource("2_7j376")
 
+[node name="AttackPoint" type="Marker2D" parent="MovementStretch/Sprite" unique_id=2134001865]
+position = Vector2(104, -335.99988)
+scale = Vector2(12, 11.999996)
+
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 script = ExtResource("3_yjjxy")
 damage_flash_effect = NodePath("../DamageFlash")
@@ -166,6 +170,14 @@ scale = Vector2(0.083333336, 0.083333366)
 script = ExtResource("3_aykja")
 shadow_offset = Vector2(0, 60)
 shadow_opacity = 1.0
+
+[node name="AttackTelegraphs" type="Node" parent="." unique_id=266892835]
+
+[node name="InnerShockwave" type="Sprite2D" parent="AttackTelegraphs" unique_id=957796978]
+position = Vector2(-1, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="GlowEffect" type="Sprite2D" parent="AttackTelegraphs" unique_id=1774197202]
 
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]

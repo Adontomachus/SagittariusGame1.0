@@ -59,9 +59,10 @@ _data = {
 &"RESET": SubResource("Animation_r4dr7")
 }
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_s7bn3")
+stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 attackPower = 9.0
@@ -151,12 +152,14 @@ target = NodePath("../MovementStretch/Sprite")
 [node name="FakeShadow" type="Sprite2D" parent="." unique_id=851053513]
 
 [node name="StackingDamageNumbers" parent="." unique_id=1560617677 instance=ExtResource("13_trf43")]
-visible = false
 offset_left = -160.83333
 offset_top = -95.83333
 offset_right = 218.16667
 offset_bottom = 219.16667
+text = "0"
+damage_value = 0
 
+[connection signal="pulse_damage_number" from="." to="StackingDamageNumbers" method="_flash_number"]
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]

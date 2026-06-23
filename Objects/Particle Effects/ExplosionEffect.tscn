@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/Visuals/ParticleEffectScript.gd" id="1_yn02m"]
 
 [sub_resource type="Gradient" id="Gradient_yn02m"]
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.27044025, 0.32389936)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.390048, 0, 0.165, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_e72no"]
 gradient = SubResource("Gradient_yn02m")
@@ -17,8 +17,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3857687, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_a1vpy"]
-offsets = PackedFloat32Array(0, 0.92038214)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.2388535, 0.4044586)
+colors = PackedColorArray(1, 1, 1, 1, 0.46963003, 1, 0, 0.291, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_a1vpy"]
 _limits = [0.0, 200.0, 0.0, 1.0]
@@ -32,6 +32,7 @@ glow_intensity = 0.5
 
 [node name="HitEffect" type="Node2D" unique_id=1692245273]
 script = ExtResource("1_yn02m")
+timedShot = 0.85
 
 [node name="AoEEffect2" type="CPUParticles2D" parent="." unique_id=2141170044]
 self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)
@@ -46,12 +47,13 @@ emission_sphere_radius = 2.29
 direction = Vector2(6, 6)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_max = 350.0
+initial_velocity_max = 796.33
 angular_velocity_min = -240.0
 angular_velocity_max = 138.85
 orbit_velocity_min = 0.1
 orbit_velocity_max = 0.5
-scale_amount_max = 2.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_e72no")
 color = Color(0.78431374, 0.89411765, 0.18039216, 1)
 color_ramp = SubResource("Gradient_a1vpy")

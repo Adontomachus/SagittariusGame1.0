@@ -20,14 +20,15 @@ enum ProjectileSide {
 @onready var explosion_sprite: Sprite2D = $ExplosionSprite
 @onready var ripple_fade: AnimationPlayer = $RippleFade
 
-# Visuals
-@export var explosion_particles: PackedScene
+## Visuals
+#@export var explosion_particles: PackedScene
+const EXPLOSION_EFFECT = preload("uid://b0c3leeahxy3x")
 
 func _ready() -> void:
 	ripple_fade.play("Fade")
 	## Emit Particles
-	var blast = explosion_particles.instantiate()
-	blast.position = explosion_sprite.get_global_position()
+	var blast = EXPLOSION_EFFECT.instantiate()
+	blast.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", blast)
 	
 	## Resize collision circle to match explosion radius
