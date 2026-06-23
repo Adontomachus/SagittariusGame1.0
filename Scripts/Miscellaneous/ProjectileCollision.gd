@@ -37,6 +37,7 @@ enum ProjectileVelocityType {
 @export var enemy_glow: PointLight2D
 
 @export var emitter: CPUParticles2D 
+@onready var particles: GPUParticles2D = $OrbitingParticles
 
 @onready var hit_noise : AudioStreamPlayer = $EnemyHitSound
 
@@ -53,16 +54,21 @@ var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 
 func set_projectile_size(size_multiplier: float) -> void:
 	scale = Vector2.ONE * size_multiplier
-	
-func _ready():
-	## Determines what glow effect is visible
-	if (projectileSide == ProjectileSide.Player):
+
+func _setup_visuals() -> void:
+	if projectileSide == ProjectileSide.Player:
 		faint_glow.visible = true
 		enemy_glow.visible = false
-		
-	elif (projectileSide == ProjectileSide.Enemy):
+		if particles:
+			particles.visible = true
+	elif projectileSide == ProjectileSide.Enemy:
 		faint_glow.visible = false
 		enemy_glow.visible = true
+		if particles:
+			particles.visible = false
+
+func _ready():
+	call_deferred("_setup_visuals")
 		
 	## Check if the projectile velocity type is constant or changing.
 	if damage_type == DamageType.SingleTarget:
