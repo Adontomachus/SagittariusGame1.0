@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://buqbi72ym2vuq" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyMelee.gd" id="10_jj52o"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="11_0n2qw"]
 [ext_resource type="Script" uid="uid://b7qvmvkljp5ww" path="res://UnitInstances/Enemy Instances/MovementStretch.gd" id="12_uvcph"]
-[ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="13_trf43"]
 [ext_resource type="PackedScene" uid="uid://bfgui25y1y3xj" path="res://Objects/UI Elements/StackingDamageNumbers.tscn" id="13_trf43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
@@ -60,9 +59,10 @@ _data = {
 &"RESET": SubResource("Animation_r4dr7")
 }
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_s7bn3")
+stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 attackPower = 9.0
@@ -150,16 +150,16 @@ script = ExtResource("11_0n2qw")
 target = NodePath("../MovementStretch/Sprite")
 
 [node name="FakeShadow" type="Sprite2D" parent="." unique_id=851053513]
-script = ExtResource("13_trf43")
-shadow_offset = Vector2(0, 30)
-shadow_opacity = 1.0
+
 [node name="StackingDamageNumbers" parent="." unique_id=1560617677 instance=ExtResource("13_trf43")]
-visible = false
 offset_left = -160.83333
 offset_top = -95.83333
 offset_right = 218.16667
 offset_bottom = 219.16667
+text = "0"
+damage_value = 0
 
+[connection signal="pulse_damage_number" from="." to="StackingDamageNumbers" method="_flash_number"]
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]

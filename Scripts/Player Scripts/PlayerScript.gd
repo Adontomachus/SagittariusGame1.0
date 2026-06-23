@@ -87,11 +87,11 @@ var dash_velocity: Vector2 = Vector2.ZERO
 
 @export_category("Grenade Values")
 @export var grenade_scene: PackedScene
-@export var grenade_damage: float = 135.0
+@export var grenade_damage: float = 105.0
 @export var grenade_radius: float = 120.0
 @export var grenade_cooldown: float = 0.0
-@export var grenade_damage_divisor_min: float = 1.15
-@export var grenade_divisor_max: float = 0.9
+@export var grenade_damage_divisor_min: float = 1.08
+@export var grenade_divisor_max: float = 0.92
 var grenade_ready: bool = true
 
 #region Reference object 

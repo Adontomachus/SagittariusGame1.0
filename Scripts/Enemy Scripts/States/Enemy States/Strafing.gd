@@ -8,6 +8,9 @@ const CHANCE_RANGE: Vector2 = Vector2(0.0, 10.0)
 var can_move = 1
 var shot_times: int = 0
 
+# Attack Point
+@onready var attack_point: Marker2D = $"../../MovementStretch/Sprite/AttackPoint"
+
 func enter() -> void:
 	super()
 	_check_difficulty()
@@ -26,8 +29,11 @@ func process_physics(delta: float) -> EnemyState:
 	
 	# Shoot on beat
 	if (GlobalBeatSync.executeAction):
-		shot_times += 1
 		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) >= parent.successfulChanceToAttack:
+			shot_times += 1
+			
+		if shot_times >= 2:
+			shot_times = 0
 			parent.shoot_projectile()
 			
 	if parent.navAgent.is_navigation_finished() and after_strafing_state:

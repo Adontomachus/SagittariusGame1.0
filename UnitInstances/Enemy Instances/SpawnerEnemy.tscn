@@ -74,8 +74,8 @@ spawn_radius = 20.0
 spawner_sprite = NodePath("Sprite")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
-maxHealthPoints = 150
-amountOfPointOrbs = 10
+maxHealthPoints = 200
+amountOfPointOrbs = 12
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
@@ -86,10 +86,9 @@ debug_enabled = true
 scale = Vector2(0.578125, 0.578125)
 shape = SubResource("CircleShape2D_s7bn3")
 
-[node name="MovementStretch" type="Node2D" parent="." unique_id=1059348597 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
+[node name="MovementStretch" type="Node2D" parent="." unique_id=1059348597 node_paths=PackedStringArray("sprite_to_wrap")]
 script = ExtResource("2_8af6i")
 sprite_to_wrap = NodePath(".")
-velocity_source = NodePath("")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
 self_modulate = Color(1.0687634, 1.2726948, 1.753959, 1)

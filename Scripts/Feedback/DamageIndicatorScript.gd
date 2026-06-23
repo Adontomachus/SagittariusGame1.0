@@ -13,9 +13,10 @@ var starting_font_size = 1
 @export var damage_value: int = 46
 @export var is_critical_hit: bool
 @export var fade_duration: float = 0.8
-@export var damage_num_size: float = 25
+@export var damage_num_size: float = 25:
+	set(value):
+		damage_num_size = clampf(value, 0, 100)
 @export var maximum_velocity: float = 100
-
 @export var hold_duration: float = 0.2
 
 var move_direction: Vector2
@@ -49,11 +50,7 @@ func _fade_out(fadeDuration) -> void:
 		1,
 		0.1
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tween.tween_property(
-		damage_text,
-		"theme_override_font_sizes/font_size",
-		damage_num_size + (damage_value * 0.25),
-		0.05
+	tween.tween_property(damage_text,	"theme_override_font_sizes/font_size", damage_num_size + (damage_value * 0.25),0.05
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 	tween.tween_property(

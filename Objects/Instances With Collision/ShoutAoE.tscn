@@ -245,6 +245,15 @@ _data = {
 &"RESET": SubResource("Animation_24v3k")
 }
 
+[sub_resource type="Gradient" id="Gradient_5ky0l"]
+colors = PackedColorArray(0.731297, 0.46804762, 0.87172306, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k8wjv"]
+gradient = SubResource("Gradient_5ky0l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8034188, 0.17948718)
+
 [node name="ShoutAoe" type="Area2D" unique_id=1692523282]
 script = ExtResource("1_dir02")
 damage = 5.0
@@ -304,3 +313,8 @@ metadata/_edit_use_anchors_ = true
 [node name="RippleFade" type="AnimationPlayer" parent="." unique_id=306932127]
 libraries/ = SubResource("AnimationLibrary_6a1uq")
 speed_scale = 0.5
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1821318525]
+scale = Vector2(5.6250005, 5.625)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_k8wjv")

@@ -12,6 +12,12 @@ signal toggle_healthbar_visibility(visible: bool)
 signal send_maximum_health_value(max_health: int)
 signal send_current_health_value(health: int)
 
+# Damage Flash Stuff #
+signal pulse_damage_number
+
+# Stacking Damage Number #
+@export var stacking_damage_numbers: Label
+
 #region
 # TESTING: HP Bar for enemy boss units #
 signal update_max_health_value(max_boss_health: int)
@@ -68,7 +74,8 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 # STACKING DAMAGE NUMBERS
 @export_group("Stacking Damage Value")
-@export var damageTaken: float = 0
+@export var damageTaken: int = 0
+var damageTakenDuration: float = 0
 
 # OBJECTS SPAWNS ON DELETION
 var destroyEffect := preload("res://Objects/Particle Effects/DestroyEffects.tscn")
@@ -172,6 +179,13 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	
+	## Decrements the damage taken duration for stacking damage numbers
+	damageTakenDuration -= 1 * delta
+	if damageTakenDuration <= 0:
+		damageTaken = 0
+
+	
 
 func move_enemy(delta: float) -> void:
 	stamina -= delta
@@ -279,5 +293,10 @@ func _aoe_damage_feedback(increment: int):
 
 
 func _stack_damage(damage_value: int) -> void:
+	damageTakenDuration = 1
+	if stacking_damage_numbers:
+		stacking_damage_numbers.before_fade_duration = 1
+		stacking_damage_numbers.text = str(round(damageTaken))
+		pulse_damage_number.emit()
 	damageTaken += damage_value
 	pass # Replace with function body.
