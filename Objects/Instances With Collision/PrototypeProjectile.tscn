@@ -85,8 +85,7 @@ emitter = NodePath("Emitter")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1334375202]
 self_modulate = Color(5.912981, 5.912981, 5.912981, 1)
-position = Vector2(0, 5.9604645e-08)
-scale = Vector2(0.125, 0.125)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_5i23p")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1654839371]
@@ -144,5 +143,10 @@ environment = SubResource("Environment_vv23o")
 stream = ExtResource("5_ej3rb")
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1040854122]
+remote_path = NodePath("../OrbitingParticles")
+use_global_coordinates = false
+update_rotation = false
 
 [connection signal="set_projectile_modulate" from="." to="Sprite" method="set_modulate"]

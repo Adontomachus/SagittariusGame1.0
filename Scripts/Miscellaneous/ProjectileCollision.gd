@@ -69,7 +69,6 @@ func _setup_visuals() -> void:
 
 func _ready():
 	call_deferred("_setup_visuals")
-		
 	## Check if the projectile velocity type is constant or changing.
 	if damage_type == DamageType.SingleTarget:
 		# Lambda functions used for world collision for single target enumerator
