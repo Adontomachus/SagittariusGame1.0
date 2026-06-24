@@ -6,7 +6,7 @@ extends Node2D
 
 var telegraph_scene := preload("res://Objects/Instances With Collision/ShoutTelegraph.tscn")
 var aoe_scene := preload("res://Objects/Instances With Collision/ShoutAoE.tscn")
-
+var world_parent: Node2D
 var start_position: Vector2
 var target_position: Vector2
 var travel_time: float = 0.0
@@ -19,6 +19,10 @@ var is_travelling: bool = false
 
 var telegraph: Node2D
 
+func _ready() -> void:
+	world_parent = get_tree().current_scene.get_node_or_null(
+		"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
 
 func launch(from: Vector2, to: Vector2, beat_sync: BeatSync_Script) -> void:
 	start_position = from
@@ -31,7 +35,7 @@ func launch(from: Vector2, to: Vector2, beat_sync: BeatSync_Script) -> void:
 
 	## Spawn telegraph at target immediately
 	telegraph = telegraph_scene.instantiate()
-	get_tree().get_root().call_deferred("add_child", telegraph)
+	world_parent.call_deferred("add_child", telegraph)
 	await get_tree().process_frame
 	telegraph.global_position = target_position
 	telegraph.show_warning(travel_time)
@@ -67,7 +71,7 @@ func _land() -> void:
 
 	## Spawn AoE
 	var aoe = aoe_scene.instantiate()
-	get_tree().get_root().call_deferred("add_child", aoe)
+	world_parent.call_deferred("add_child", aoe)
 	await get_tree().process_frame
 	aoe.global_position = land_pos
 	aoe.damage = damage

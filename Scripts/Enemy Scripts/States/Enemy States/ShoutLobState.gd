@@ -11,6 +11,7 @@ extends EnemyState
 
 var beats_waited: int = 0
 var last_beat: float = 0
+var world_parent: Node2D
 
 
 func enter() -> void:
@@ -18,6 +19,9 @@ func enter() -> void:
 	beats_waited = 0
 	if beat_sync:
 		last_beat = beat_sync.beat
+	world_parent = get_tree().current_scene.get_node_or_null(
+		"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
 
 # Wait for beats_between_shots before shoot
 func process_frame(_delta: float) -> EnemyState:
@@ -53,7 +57,7 @@ func _fire_shout() -> void:
 	print("stationary trying to shout")
 	var lob_scene := preload("res://Objects/Instances With Collision/ShoutLob.tscn")
 	var lob = lob_scene.instantiate()
-	parent.get_tree().get_root().call_deferred("add_child", lob)
+	world_parent.call_deferred("add_child", lob)
 	await parent.get_tree().process_frame
 	lob.launch(parent.global_position, target_pos, beat_sync)
 	lob.damage = parent.attackPower
