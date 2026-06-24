@@ -81,6 +81,7 @@ func _shake_camera_on_shoot(duration) -> void:
 func add_trauma(amount: float) -> void:
 	trauma = minf(trauma + amount, 1.0)
 	
+	#test
 func _change_camera_focus_to_boss():
 	var boss_target = get_tree().get_first_node_in_group("BossType")
 	camera_focus_target = boss_target
