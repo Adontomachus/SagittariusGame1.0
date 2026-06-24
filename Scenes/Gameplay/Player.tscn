@@ -229,14 +229,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
-radius = 18.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8espc"]
+radius = 9.999999
+height = 84.999985
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b4hlm"]
-radius = 21.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muue2"]
+height = 124.499794
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fklr0"]
-radius = 19.104973
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aekym"]
+height = 126.999794
 
 [sub_resource type="Gradient" id="Gradient_81epe"]
 colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
@@ -290,15 +291,11 @@ gradient = SubResource("Gradient_b8xms")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Player" type="CharacterBody2D" unique_id=910402363 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "beatSquash", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" type="CharacterBody2D" unique_id=910402363 node_paths=PackedStringArray("beatSquash", "charge_shot", "q_moves", "pulse_sound_effect") groups=["PlayerObject"]]
 process_mode = 3
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_8espc")
-camera = NodePath("")
-hit_flash = NodePath("")
-UpgradeScreen = NodePath("")
 beatSquash = NodePath("BeatSquashStretch")
-manager = NodePath("")
 offset_right = Vector2(35, -15)
 offset_down_right = Vector2(40, -30)
 offset_down = Vector2(-50, -10)
@@ -311,19 +308,17 @@ charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("2_aekym")
 pulse_sound_effect = NodePath("PulseSoundEffect")
-charged_shot_ready_interface = NodePath("")
 max_shot_fire_rate = 0.2
 can_use_ability = true
 max_ability_cooldown = 30.0
 can_use_companion_ability = true
-ability_visual_feedback = NodePath("")
-cutscene_handler = NodePath("")
 projectile_spawn_offset = 40.0
 
 [node name="ShotPoint" type="Marker2D" parent="." unique_id=1200784448]
-position = Vector2(11, -4)
+position = Vector2(11, -67.4999)
 
 [node name="VisualRoot" type="Node2D" parent="." unique_id=2072254445]
+position = Vector2(0, -63.4999)
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="VisualRoot" unique_id=1219775596]
 scale = Vector2(0.7, 0.7)
@@ -331,19 +326,22 @@ sprite_frames = SubResource("SpriteFrames_e8aea")
 animation = &"shoot_up_right"
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="." unique_id=608752885]
-shape = SubResource("CircleShape2D_ydlo6")
+position = Vector2(0, -43.75)
+shape = SubResource("CapsuleShape2D_8espc")
 
 [node name="EnemyCollision" type="Area2D" parent="." unique_id=118625795 groups=["PlayerObject"]]
+position = Vector2(0, -63.4999)
 
 [node name="MeleeHitbox" type="CollisionShape2D" parent="EnemyCollision" unique_id=2029406837 groups=["PlayerObject"]]
-shape = SubResource("CircleShape2D_b4hlm")
+shape = SubResource("CapsuleShape2D_muue2")
 debug_color = Color(0.941486, 9.337366e-06, 0.6125818, 0.41960785)
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=668157982]
+position = Vector2(0, -63.4999)
 script = ExtResource("24_cc6k5")
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=2033357806]
-shape = SubResource("CircleShape2D_fklr0")
+shape = SubResource("CapsuleShape2D_aekym")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 
 [node name="PulseSoundEffect" type="AudioStreamPlayer" parent="." unique_id=1828210837]
@@ -365,6 +363,7 @@ energy = 1.16
 texture = SubResource("GradientTexture2D_y1plk")
 
 [node name="AbilityAoE" type="Area2D" parent="." unique_id=943404443]
+position = Vector2(0, -63.4999)
 collision_layer = 2
 collision_mask = 2
 
@@ -391,7 +390,7 @@ scale_amount_curve = SubResource("Curve_t1mfx")
 
 [node name="ChargedShotParticles" type="CPUParticles2D" parent="." unique_id=846189967]
 z_index = 29
-position = Vector2(13, 2)
+position = Vector2(13, -61.4999)
 amount = 15
 texture = SubResource("GradientTexture2D_cacow")
 lifetime = 0.4
@@ -410,34 +409,32 @@ color_ramp = SubResource("Gradient_mr3qy")
 [node name="GlowEffect" type="WorldEnvironment" parent="ChargedShotParticles" unique_id=1634448400]
 environment = SubResource("Environment_hkmhq")
 
-[node name="QMoves" type="Node" parent="." unique_id=101531864 node_paths=PackedStringArray("player", "beat_sync")]
+[node name="QMoves" type="Node" parent="." unique_id=101531864 node_paths=PackedStringArray("player")]
 script = ExtResource("27_heqkm")
 player = NodePath("..")
-beat_sync = NodePath("")
 
 [node name="ChargeShot" type="Node" parent="." unique_id=1980865164 node_paths=PackedStringArray("player")]
 script = ExtResource("28_pjvpr")
 player = NodePath("..")
 
-[node name="SecondaryFire" type="Node" parent="." unique_id=679342409 node_paths=PackedStringArray("beat_sync", "combo_system")]
+[node name="SecondaryFire" type="Node" parent="." unique_id=679342409]
 script = ExtResource("29_rnqx7")
-beat_sync = NodePath("")
-combo_system = NodePath("")
 
 [node name="BeatSquashStretch" type="Node" parent="." unique_id=1046414434 node_paths=PackedStringArray("target") groups=["BeatSquashStretch"]]
 script = ExtResource("30_1w4kd")
 target = NodePath("../VisualRoot")
 
 [node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1791744691]
+position = Vector2(0, -63.4999)
 stream = ExtResource("31_ss6nw")
 volume_db = -7.576
 bus = &"SFX"
 
 [node name="HitEffect" parent="." unique_id=1692245273 instance=ExtResource("32_1a1k3")]
-position = Vector2(-81, -41)
+position = Vector2(-81, -104.4999)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1032933443]
-position = Vector2(-2, 1)
+position = Vector2(-2, -62.4999)
 scale = Vector2(1.1314265, 1.1314266)
 color = Color(4.466578, 4.466578, 4.466578, 1)
 energy = 0.05
@@ -453,10 +450,12 @@ texture = SubResource("GradientTexture2D_meejx")
 texture_scale = 5.4
 
 [node name="FakeShadow" type="Sprite2D" parent="." unique_id=1292151436 node_paths=PackedStringArray("player_ref")]
+position = Vector2(0, -63.4999)
 script = ExtResource("33_1fgkr")
-shadow_offset = Vector2(0, 30)
+shadow_offset = Vector2(0, 0)
 shadow_opacity = 1.0
 player_ref = NodePath("..")
+neutral_offset = Vector2(0, 0)
 
 [connection signal="experience_modify" from="ProjectileHitbox" to="." method="modify_current_xp"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]

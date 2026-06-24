@@ -7,14 +7,14 @@ atlas = ExtResource("1_rc4qu")
 region = Rect2(679.4118, 50.55909, 106.93793, 170.06989)
 
 [node name="HoriWall" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
-position = Vector2(9.536743e-07, 42)
+position = Vector2(66, -20)
 scale = Vector2(0.77050775, 0.77050775)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
-position = Vector2(0, -176.85367)
+position = Vector2(-134.84615, -65.238945)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_im2v5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2113146905]
-position = Vector2(-1.2377219e-06, -176.85365)
-polygon = PackedVector2Array(-107.721176, 128.48671, -107.721176, 157.0393, -72.679344, 173.9113, 105.12548, 76.57288, 109.01902, 55.807354, 96.040565, 33.743984)
+position = Vector2(-134.84613, -65.238945)
+polygon = PackedVector2Array(-89.68114, 96.38724, -94.87253, 126.237686, -111.74452, 147.0032, -65.02208, 174.25797, 110.187065, 80.81309, 104.99568, 60.04756, 96.040565, 33.743984, -65.02208, 98.982925)
