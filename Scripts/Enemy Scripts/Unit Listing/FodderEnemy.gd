@@ -291,12 +291,10 @@ func _aoe_damage_feedback(increment: int):
 
 #func change_unit_stats(health: int, new_damage: int) -> void:
 
-
 func _stack_damage(damage_value: int) -> void:
 	damageTakenDuration = 1
-	if stacking_damage_numbers:
-		stacking_damage_numbers.before_fade_duration = 1
-		stacking_damage_numbers.text = str(round(damageTaken))
-		pulse_damage_number.emit()
 	damageTaken += damage_value
+	if stacking_damage_numbers:
+		pulse_damage_number.emit()
+		stacking_damage_numbers.text = str(round(damageTaken))
 	pass # Replace with function body.

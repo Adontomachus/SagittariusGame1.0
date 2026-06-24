@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bw5wcv4mmnc6m" path="res://Scripts/Enemy Scripts/States/Enemy States/Strafing.gd" id="9_phvwr"]
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="10_pvjpk"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="11_udgpc"]
+[ext_resource type="PackedScene" uid="uid://bfgui25y1y3xj" path="res://Objects/UI Elements/StackingDamageNumbers.tscn" id="14_yik66"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 46.702705
@@ -56,10 +57,163 @@ _data = {
 &"RESET": SubResource("Animation_r4dr7")
 }
 
-[node name="ShooterEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[sub_resource type="Gradient" id="Gradient_yik66"]
+offsets = PackedFloat32Array(0.8081761, 0.8553459, 0.8930818, 0.9622642)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.33361515, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_16esq"]
+gradient = SubResource("Gradient_yik66")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.87606835, 0.17948718)
+
+[sub_resource type="Gradient" id="Gradient_16esq"]
+offsets = PackedFloat32Array(0, 0.33962265, 0.5691824, 0.7610063)
+colors = PackedColorArray(1, 0.5516501, 0.29951698, 1, 1, 0.11774104, 0.11774104, 0.88000005, 0.9999891, 0.37317127, 0.42491072, 0.27582097, 0.3553136, 0.35531354, 0.35531357, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
+gradient = SubResource("Gradient_16esq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.3)
+
+[sub_resource type="Animation" id="Animation_7o7g8"]
+length = 0.46666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InnerShockwave:texture:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_yik66")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InnerShockwave:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InnerShockwave:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.8125002, 2.8125)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GlowEffect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GlowEffect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_orpeu"]
+resource_name = "Telegraph"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InnerShockwave:texture:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("Gradient_yik66"), SubResource("Gradient_yik66")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InnerShockwave:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1), Color(1.353256, 1.353256, 1.353256, 1), Color(1.353256, 1.353256, 1.353256, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InnerShockwave:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.8125002, 2.8125), Vector2(0.3125, 0.31250015)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GlowEffect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GlowEffect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8125, 0.8125), Vector2(0.96875, 0.96875), Vector2(2.1562502, 2.1562502)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mes1l"]
+_data = {
+&"RESET": SubResource("Animation_7o7g8"),
+&"Telegraph": SubResource("Animation_orpeu")
+}
+
+[node name="ShooterEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 position = Vector2(-1, 0)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_8hj4s")
+stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(3, 5)
@@ -67,7 +221,7 @@ maxMoveSpeed = 140.0
 maxHealthPoints = 135
 amountOfPointOrbs = 4
 aroundPlayerRadius = 180.0
-shoot_point = NodePath("ShootPoint")
+shoot_point = NodePath("MovementStretch/Sprite/ShootPoint")
 attackPower = 7.5
 successfulChanceToAttack = 5.0
 
@@ -91,8 +245,8 @@ position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.083333336, 0.083333366)
 texture = ExtResource("2_7j376")
 
-[node name="AttackPoint" type="Marker2D" parent="MovementStretch/Sprite" unique_id=2134001865]
-position = Vector2(104, -335.99988)
+[node name="ShootPoint" type="Marker2D" parent="MovementStretch/Sprite" unique_id=495462547]
+position = Vector2(112, -335.99988)
 scale = Vector2(12, 11.999996)
 
 [node name="ProjectileHitbox" type="Area2D" parent="." unique_id=1269989994 node_paths=PackedStringArray("damage_flash_effect") groups=["EnemyMelee", "EnemyObject", "FodderType"]]
@@ -102,9 +256,6 @@ damage_flash_effect = NodePath("../DamageFlash")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=152671550 groups=["EnemyMelee", "EnemyObject", "FodderType"]]
 shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
-
-[node name="ShootPoint" type="Marker2D" parent="." unique_id=495462547]
-position = Vector2(1, -1)
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=1971254556]
 offset_left = -24.66666
@@ -174,14 +325,32 @@ shadow_opacity = 1.0
 [node name="AttackTelegraphs" type="Node" parent="." unique_id=266892835]
 
 [node name="InnerShockwave" type="Sprite2D" parent="AttackTelegraphs" unique_id=957796978]
-position = Vector2(-1, 0)
-scale = Vector2(1.5, 1.5)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(12, -42)
+scale = Vector2(2.8125002, 2.8125)
+texture = SubResource("GradientTexture2D_16esq")
 
 [node name="GlowEffect" type="Sprite2D" parent="AttackTelegraphs" unique_id=1774197202]
+position = Vector2(12.000001, -42.000004)
+texture = SubResource("GradientTexture2D_bhunq")
 
+[node name="AttackWarning" type="AnimationPlayer" parent="AttackTelegraphs" unique_id=895564818]
+libraries/ = SubResource("AnimationLibrary_mes1l")
+
+[node name="StackingDamageNumbers" parent="." unique_id=1560617677 node_paths=PackedStringArray("enemy_object") instance=ExtResource("14_yik66")]
+offset_left = -162.0
+offset_top = -96.0
+offset_right = 217.0
+offset_bottom = 219.0
+text = "0"
+damage_value = 0
+enemy_object = NodePath("..")
+
+[connection signal="pulse_damage_number" from="." to="StackingDamageNumbers" method="_flash_number"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="stacking_feedback" from="ProjectileHitbox" to="." method="_stack_damage"]
 [connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

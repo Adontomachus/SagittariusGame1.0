@@ -7,17 +7,21 @@ enum DamageSide {
 
 @export var indicator_side = DamageSide.Player
 @onready var damage_text: Label = $"."
-var starting_font_size = 1
+var starting_font_size = 5
 
 @export_category("Damage Number Properties")
 @export var damage_value: int = 46
 @export var is_critical_hit: bool
-@export var fade_duration: float = 0.8
+@export var fade_duration: float = 0.8:
+	set(value):
+		fade_duration = clampf(value, 0, 1.5)
 @export var damage_num_size: float = 25:
 	set(value):
-		damage_num_size = clampf(value, 0, 100)
+		damage_num_size = clampf(value, 0, 110)
 @export var maximum_velocity: float = 100
 @export var hold_duration: float = 0.2
+
+
 
 var move_direction: Vector2
 var move_speed: float

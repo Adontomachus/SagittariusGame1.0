@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://b8vf75a3gvdxo"]
 
+[ext_resource type="Texture2D" uid="uid://bfly161xlnqht" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_Quarter Note.png" id="1_m3y5v"]
+[ext_resource type="Texture2D" uid="uid://dk30u7vtiinfa" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_8th Note.png" id="2_ru2kl"]
+[ext_resource type="Texture2D" uid="uid://gb11ffyjjpws" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_Beam Note 8th.png" id="3_ru2kl"]
+
 [sub_resource type="Gradient" id="Gradient_5nsfc"]
 offsets = PackedFloat32Array(0, 0.8)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -46,6 +50,14 @@ func _on_finished() -> void:
 	pass # Replace with function body.
 "
 
+[sub_resource type="Curve" id="Curve_b20qq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.46176472, 0.9248121), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ppdx2"]
+offsets = PackedFloat32Array(0, 0.79617834)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="Environment" id="Environment_5nsfc"]
 glow_enabled = true
 glow_intensity = 3.86
@@ -53,6 +65,7 @@ glow_strength = 0.95
 
 [node name="UnitHitEffect" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(3.2944162, 3.2944162, 3.2944162, 1)
+z_index = 1
 amount = 60
 texture = SubResource("GradientTexture2D_oxggy")
 lifetime = 0.5
@@ -77,6 +90,72 @@ hue_variation_min = -0.22
 hue_variation_max = -0.14
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
+
+[node name="NotesHitEffect" type="CPUParticles2D" parent="." unique_id=710185569]
+self_modulate = Color(1.2628156, 1.2140487, 1.353, 1)
+z_index = -9
+scale = Vector2(2.4399977, 2.4399977)
+amount = 5
+texture = ExtResource("1_m3y5v")
+lifetime = 0.4
+explosiveness = 0.9
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.46
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 117.34
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.02
+scale_amount_max = 0.07
+scale_amount_curve = SubResource("Curve_b20qq")
+color_ramp = SubResource("Gradient_ppdx2")
+
+[node name="NotesHitEffect2" type="CPUParticles2D" parent="." unique_id=2042138830]
+self_modulate = Color(1.2628156, 1.2140487, 1.353, 1)
+z_index = -9
+scale = Vector2(2.4399977, 2.4399977)
+amount = 5
+texture = ExtResource("2_ru2kl")
+lifetime = 0.4
+explosiveness = 0.9
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.46
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 117.34
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.02
+scale_amount_max = 0.07
+scale_amount_curve = SubResource("Curve_b20qq")
+color_ramp = SubResource("Gradient_ppdx2")
+
+[node name="NotesHitEffect3" type="CPUParticles2D" parent="." unique_id=956162695]
+self_modulate = Color(1.2628156, 1.2140487, 1.353, 1)
+z_index = -9
+scale = Vector2(2.4399977, 2.4399977)
+amount = 5
+texture = ExtResource("3_ru2kl")
+lifetime = 0.4
+explosiveness = 0.9
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.46
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 117.34
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.02
+scale_amount_max = 0.07
+scale_amount_curve = SubResource("Curve_b20qq")
+color_ramp = SubResource("Gradient_ppdx2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=802354431]
 environment = SubResource("Environment_5nsfc")

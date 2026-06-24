@@ -317,7 +317,7 @@ speed_scale = 0.5
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1821318525]
 scale = Vector2(5.6250005, 5.625)
 color = Color(1, 0.13725491, 1, 1)
-energy = 1.4
+energy = 0.55
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_k8wjv")
 texture_scale = 1.5
