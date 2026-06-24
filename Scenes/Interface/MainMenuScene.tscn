@@ -274,7 +274,7 @@ offset_left = 1538.0
 offset_top = 630.0
 offset_right = 1742.0
 offset_bottom = 672.0
-text = "Story Mode"
+text = "Halo Halo App"
 
 [node name="SettingsButton" type="Button" parent="." unique_id=963021667]
 visible = false
@@ -350,7 +350,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.849211, 0.93130827, 0.30403528, 1)
 theme_override_fonts/font = ExtResource("4_1dxah")
 theme_override_font_sizes/font_size = 45
-text = "Story Mode
+text = "Halo Halo App
 "
 
 [node name="SettingsButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=926610218]
