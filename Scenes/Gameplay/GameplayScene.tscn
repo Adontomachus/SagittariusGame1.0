@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://wxalwh8to6sn"]
 
-[ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/Player Scripts/PlayerScript.gd" id="1_haeiw"]
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/Audio/GameManager.gd" id="1_onpmq"]
 [ext_resource type="Script" uid="uid://0djl3e1qunrm" path="res://Scripts/Player Scripts/PointSystemScript.gd" id="2_qvp00"]
 [ext_resource type="Script" uid="uid://7kgw6x166rkq" path="res://Scripts/Level Based/StageHandler.gd" id="2_vj1fp"]
@@ -15,57 +14,29 @@
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
 [ext_resource type="Script" uid="uid://de550e6jmpmk1" path="res://Scripts/Miscellaneous/UpgradeSystemScript.gd" id="8_hlum5"]
 [ext_resource type="Script" uid="uid://bi5bdlm8b513o" path="res://Scripts/Visuals/ComboParticleSpawner.gd" id="9_nxx5y"]
-[ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="10_bbunm"]
 [ext_resource type="Script" uid="uid://mrnktwdcd6k4" path="res://Scripts/UI Menu, Settings and Post Game/SecondaryShotVisual.gd" id="11_hlum5"]
 [ext_resource type="PackedScene" uid="uid://gexuhd752wwt" path="res://Objects/Instances With Collision/SlowingProjectile.tscn" id="12_4t4xv"]
 [ext_resource type="Script" uid="uid://gea14qkih1ne" path="res://Scripts/UI Menu, Settings and Post Game/Hitflash.gd" id="12_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
-[ext_resource type="Script" uid="uid://cipc737xcdjss" path="res://Scripts/Player Scripts/SecondaryFire.gd" id="13_6uw2w"]
-[ext_resource type="Script" uid="uid://ccacm8ui57prf" path="res://Scripts/Player Scripts/QMoves.gd" id="14_1vk04"]
-[ext_resource type="Script" uid="uid://cov3onfacl4cf" path="res://Scripts/Player Scripts/ChargeShot.gd" id="15_fu6i5"]
 [ext_resource type="Texture2D" uid="uid://22kjjikg08xn" path="res://Sprites/Game Elements/Placeholders/BackgroundPlaceholder.png" id="17_arjvp"]
-[ext_resource type="PackedScene" uid="uid://croljcfbh70xd" path="res://Objects/Instances With Collision/Grenade.tscn" id="17_figfh"]
 [ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="Texture2D" uid="uid://bsy78p5irb164" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles1.png" id="19_evfvu"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
-[ext_resource type="Texture2D" uid="uid://cl2hrpswvmw52" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/04_TurnAround_Idle.png" id="19_nxx5y"]
-[ext_resource type="Texture2D" uid="uid://bov32xwnq5lma" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/03_TurnAround_Idle.png" id="20_exwru"]
 [ext_resource type="Texture2D" uid="uid://c4llkpowa5n1o" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles22.png" id="22_kxwa7"]
 [ext_resource type="Texture2D" uid="uid://oo48xtre3sec" path="res://Sprites/Game Elements/abilityfeedback.png" id="22_yt4p3"]
-[ext_resource type="Texture2D" uid="uid://dg2rfxsiiyxfr" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/07_TurnAround_HighRes_shoot.png" id="27_o710q"]
-[ext_resource type="Texture2D" uid="uid://4mscwnpuov3p" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/07_TurnAround_HighRes_shoot - Copy.png" id="28_hlum5"]
-[ext_resource type="Texture2D" uid="uid://b28c6egnigktl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/02_TurnAround_Idle.png" id="28_jgp33"]
-[ext_resource type="Texture2D" uid="uid://biyaqueoebni4" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/02_TurnAround_HighRes_shoot.png" id="29_4t4xv"]
-[ext_resource type="Texture2D" uid="uid://ccwtuwpbvswre" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/01_TurnAround_Idle.png" id="29_110ka"]
-[ext_resource type="Texture2D" uid="uid://bitnw4i8bxxh1" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/04_TurnAround_HighRes_shoot.png" id="30_e8aea"]
-[ext_resource type="Texture2D" uid="uid://cnew75vddkewy" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/00_TurnAround_Idle.png" id="30_vj1fp"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
-[ext_resource type="Texture2D" uid="uid://bgdhi6mfhofgb" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/07_TurnAround_Idle.png" id="31_o710q"]
-[ext_resource type="Texture2D" uid="uid://cf5urgtoyvu07" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/04_TurnAround_HighRes_shoot - Copy.png" id="31_rp1p4"]
-[ext_resource type="Texture2D" uid="uid://d3veyktjqeeog" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/06_TurnAround_Idle.png" id="32_hlum5"]
-[ext_resource type="Texture2D" uid="uid://bq7vv3px0d3dj" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/05_TurnAround_Idle.png" id="33_4t4xv"]
 [ext_resource type="PackedScene" uid="uid://dm8xgkgs64vpw" path="res://Objects/Instances With Collision/Placeholder Objects/Signpost2.tscn" id="33_evfvu"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
 [ext_resource type="PackedScene" uid="uid://cptsvbx58cmcb" path="res://Objects/Instances With Collision/Placeholder Objects/Signpost3.tscn" id="34_arjvp"]
-[ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="34_xcrri"]
 [ext_resource type="PackedScene" uid="uid://dfxf4c3cjgx3n" path="res://Objects/Instances With Collision/Placeholder Objects/SmallCover3.tscn" id="35_uagus"]
-[ext_resource type="Texture2D" uid="uid://cjvuq0j8108x8" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/00_TurnAround_HighRes_Walk.png" id="36_exwru"]
 [ext_resource type="PackedScene" uid="uid://jc803mevfhf2" path="res://Objects/Instances With Collision/Placeholder Objects/SmallCover.tscn" id="36_kxwa7"]
 [ext_resource type="PackedScene" uid="uid://dtuv5wrf5ipbp" path="res://Objects/Instances With Collision/Placeholder Objects/NewTree.tscn" id="37_r3xg8"]
-[ext_resource type="Texture2D" uid="uid://cknb3kcdifjob" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/01_TurnAround_HighRes_Walk.png" id="37_u1twm"]
-[ext_resource type="Texture2D" uid="uid://cp8ae8x0tyl50" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/02_TurnAround_HighRes_Walk.png" id="38_jgp33"]
 [ext_resource type="PackedScene" uid="uid://dmaqskdm0mpjv" path="res://Objects/Instances With Collision/Placeholder Objects/SmallObject1.tscn" id="38_juvgv"]
-[ext_resource type="Texture2D" uid="uid://nhk7u3mlpejv" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/06_TurnAround_HighRes_Walk - Copy.png" id="39_110ka"]
-[ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="39_mtruf"]
 [ext_resource type="PackedScene" uid="uid://c5oe16n656qhy" path="res://Objects/Instances With Collision/Placeholder Objects/SmallObject2.tscn" id="39_vv5i8"]
 [ext_resource type="PackedScene" uid="uid://3oec1r2gfqn6" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter3.tscn" id="40_4jirl"]
-[ext_resource type="Texture2D" uid="uid://bawq01o7u2ggp" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/06_TurnAround_HighRes_Walk.png" id="40_vj1fp"]
-[ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="40_wipa6"]
-[ext_resource type="Texture2D" uid="uid://bsbr5egwkgnl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/04_TurnAround_HighRes_Walk.png" id="41_o710q"]
 [ext_resource type="PackedScene" uid="uid://xvv7r6rcyin1" path="res://Objects/Instances With Collision/Placeholder Objects/Signpost4.tscn" id="41_uagus"]
-[ext_resource type="Texture2D" uid="uid://cltoyfcxdyhe5" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/05_TurnAround_HighRes_Walk.png" id="42_hlum5"]
 [ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="42_jgp33"]
-[ext_resource type="Texture2D" uid="uid://b0e0c7jtgvlb8" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/03_TurnAround_HighRes_Walk.png" id="43_4t4xv"]
+[ext_resource type="PackedScene" uid="uid://cu2w3y1ythpfd" path="res://Scenes/Gameplay/Player.tscn" id="42_nxx5y"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
@@ -74,14 +45,11 @@
 [ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="62_110ka"]
 [ext_resource type="PackedScene" uid="uid://msc1dy5dlpwm" path="res://Objects/Instances With Collision/Placeholder Objects/Gate.tscn" id="64_iukur"]
 [ext_resource type="PackedScene" uid="uid://ciy2kew35lxgo" path="res://Objects/Instances With Collision/Placeholder Objects/Cover2.tscn" id="65_cacow"]
-[ext_resource type="AudioStream" uid="uid://ba7i3mchr52pl" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-Sound-of-a-special-music-magic-bolt-when-successfu.mp3" id="67_evfvu"]
 [ext_resource type="PackedScene" uid="uid://dcx5cnan17uax" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar1.tscn" id="71_mr3qy"]
-[ext_resource type="AudioStream" uid="uid://dh7dhvinq5p40" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-create-a-sound-file-for-when-a-bolt-hits-our-hero- (1).mp3" id="72_arjvp"]
 [ext_resource type="PackedScene" uid="uid://bkeyqg14iogmb" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar2.tscn" id="72_hkmhq"]
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="73_iukur"]
 [ext_resource type="PackedScene" uid="uid://kyeps04jlmd2" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter.tscn" id="73_mr3qy"]
 [ext_resource type="PackedScene" uid="uid://fb3uredkhal4" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter2.tscn" id="74_hkmhq"]
-[ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="75_kxwa7"]
 [ext_resource type="PackedScene" uid="uid://djcihqdu2wwsg" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall1.tscn" id="75_r3xg8"]
 [ext_resource type="PackedScene" uid="uid://dudlfrh1wpbbr" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall2.tscn" id="76_juvgv"]
 [ext_resource type="PackedScene" uid="uid://bvchnd47dqodk" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall3.tscn" id="77_vv5i8"]
@@ -272,7 +240,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_11ixi"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -454,262 +422,6 @@ sources/4 = SubResource("TileSetAtlasSource_juvgv")
 sources/3 = SubResource("TileSetAtlasSource_uagus")
 sources/5 = SubResource("TileSetAtlasSource_evfvu")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_e8aea"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("30_vj1fp")
-}],
-"loop": true,
-"name": &"idle_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("31_o710q")
-}],
-"loop": true,
-"name": &"idle_down_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_110ka")
-}],
-"loop": true,
-"name": &"idle_down_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("32_hlum5")
-}],
-"loop": true,
-"name": &"idle_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("28_jgp33")
-}],
-"loop": true,
-"name": &"idle_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_nxx5y")
-}],
-"loop": true,
-"name": &"idle_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("33_4t4xv")
-}],
-"loop": true,
-"name": &"idle_up_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_exwru")
-}],
-"loop": true,
-"name": &"idle_up_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("27_o710q")
-}],
-"loop": false,
-"name": &"shoot_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("27_o710q")
-}],
-"loop": false,
-"name": &"shoot_down_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("28_hlum5")
-}],
-"loop": false,
-"name": &"shoot_down_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("27_o710q")
-}],
-"loop": false,
-"name": &"shoot_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_4t4xv")
-}],
-"loop": false,
-"name": &"shoot_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("30_e8aea")
-}],
-"loop": false,
-"name": &"shoot_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("31_rp1p4")
-}],
-"loop": false,
-"name": &"shoot_up_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("30_e8aea")
-}],
-"loop": false,
-"name": &"shoot_up_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("36_exwru")
-}],
-"loop": true,
-"name": &"walk_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("37_u1twm")
-}],
-"loop": true,
-"name": &"walk_down_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("38_jgp33")
-}],
-"loop": true,
-"name": &"walk_down_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("39_110ka")
-}],
-"loop": true,
-"name": &"walk_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("40_vj1fp")
-}],
-"loop": true,
-"name": &"walk_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("41_o710q")
-}],
-"loop": true,
-"name": &"walk_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("42_hlum5")
-}],
-"loop": true,
-"name": &"walk_up_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("43_4t4xv")
-}],
-"loop": true,
-"name": &"walk_up_right",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ydlo6"]
-radius = 18.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b4hlm"]
-radius = 21.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fklr0"]
-radius = 19.104973
-
-[sub_resource type="Gradient" id="Gradient_81epe"]
-colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1plk"]
-gradient = SubResource("Gradient_81epe")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.75641024, 0.20512821)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_p0i5v"]
-radius = 300.0
-
-[sub_resource type="Gradient" id="Gradient_u1twm"]
-colors = PackedColorArray(1, 1, 0.2716998, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ni7mq"]
-gradient = SubResource("Gradient_u1twm")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.517094, 0.46581197)
-
-[sub_resource type="Curve" id="Curve_t1mfx"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49853373, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_wkher"]
-colors = PackedColorArray(0.90683234, 1, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cacow"]
-gradient = SubResource("Gradient_wkher")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.2)
-
-[sub_resource type="Gradient" id="Gradient_mr3qy"]
-colors = PackedColorArray(0.9390932, 0.88857853, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="Environment" id="Environment_hkmhq"]
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 4.0
-glow_strength = 1.5
-
-[sub_resource type="Gradient" id="Gradient_b8xms"]
-offsets = PackedFloat32Array(0.2489712, 0.6893004)
-colors = PackedColorArray(1, 0.93231314, 0.92903274, 1, 0.02311023, 0.012126904, 0.005422621, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_meejx"]
-gradient = SubResource("Gradient_b8xms")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="Gradient" id="Gradient_rp1p4"]
 colors = PackedColorArray(0, 0.28493494, 1, 1, 0, 0, 0, 1)
 
@@ -746,7 +458,16 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.2)
 
+[sub_resource type="Gradient" id="Gradient_81epe"]
+colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
+
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_o710q"]
+gradient = SubResource("Gradient_81epe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75641024, 0.20512821)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1plk"]
 gradient = SubResource("Gradient_81epe")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -953,7 +674,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PlayerHealthText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="0" unique_id=591465270 node_paths=PackedStringArray("health_text", "player_object")]
 health_text = NodePath(".")
-player_object = NodePath("../../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
+player_object = NodePath("")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerLevel" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="3" unique_id=743208092]
@@ -967,7 +688,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" index="0" unique_id=402200278 node_paths=PackedStringArray("experience_text", "player_object")]
 experience_text = NodePath(".")
-player_object = NodePath("../../../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
+player_object = NodePath("")
 metadata/_edit_use_anchors_ = true
 
 [node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="8" unique_id=172310879]
@@ -985,13 +706,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_11ixi")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_11ixi")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_11ixi")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1000,7 +721,7 @@ manager = NodePath("../../../..")
 [node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
 
 [node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
-charge_shot = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ChargeShot")
+charge_shot = NodePath("")
 beat_sync = NodePath("../BeatIndicatorElements/BeatIndicator")
 pulse_scale = Vector2(0.8, 0.8)
 base_scale = Vector2(0.2, 0.2)
@@ -1351,175 +1072,23 @@ visible = false
 position = Vector2(1546, 403)
 scale = Vector2(0.4946371, 0.4946371)
 
-[node name="Player" type="CharacterBody2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1642862581 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "beatSquash", "manager", "charge_shot", "q_moves", "pulse_sound_effect", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") groups=["PlayerObject"]]
+[node name="Player" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=910402363 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "manager", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") instance=ExtResource("42_nxx5y")]
 unique_name_in_owner = true
-process_mode = 3
 position = Vector2(586, 280)
-scale = Vector2(0.8, 0.8)
-script = ExtResource("1_haeiw")
 camera = NodePath("../../../../../../InterfaceElements/PlayerCamera")
 hit_flash = NodePath("../../../../../../InterfaceElements/NewHUD/Hitflash")
 UpgradeScreen = NodePath("../../../../../../InterfaceElements/NewHUD/UI/UpgradeUI")
-beatSquash = NodePath("BeatSquashStretch")
 manager = NodePath("../../../../../..")
-offset_right = Vector2(35, -15)
-offset_down_right = Vector2(40, -30)
-offset_down = Vector2(-50, -10)
-offset_down_left = Vector2(-30, -30)
-offset_left = Vector2(-45, -25)
-offset_up_left = Vector2(-50, -50)
-offset_up = Vector2(45, -35)
-offset_up_right = Vector2(45, -50)
-charge_shot = NodePath("ChargeShot")
-q_moves = NodePath("QMoves")
-grenade_scene = ExtResource("17_figfh")
-pulse_sound_effect = NodePath("PulseSoundEffect")
 charged_shot_ready_interface = NodePath("../../../../../../InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/ChargedShotReadyGlow")
-max_shot_fire_rate = 0.2
-can_use_ability = true
-max_ability_cooldown = 30.0
-can_use_companion_ability = true
-ability_visual_feedback = NodePath("../../../../../../InterfaceElements/NewHUD/AbilityActivationFeedback/ActivationAnimation")
+ability_visual_feedback = NodePath("../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator/BeatPulse")
 cutscene_handler = NodePath("../../../../../../GameSystems/SceneHandler")
-projectile_spawn_offset = 40.0
 
-[node name="ShotPoint" type="Marker2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1755826713]
-position = Vector2(11, -4)
-
-[node name="VisualRoot" type="Node2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=93750855]
-
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/VisualRoot" unique_id=1239785686]
-scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_e8aea")
-animation = &"shoot_up_right"
-
-[node name="CollisionHitbox" type="CollisionShape2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1154990945]
-shape = SubResource("CircleShape2D_ydlo6")
-
-[node name="EnemyCollision" type="Area2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=324191404 groups=["PlayerObject"]]
-
-[node name="MeleeHitbox" type="CollisionShape2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/EnemyCollision" unique_id=180021306 groups=["PlayerObject"]]
-shape = SubResource("CircleShape2D_b4hlm")
-debug_color = Color(0.941486, 9.337366e-06, 0.6125818, 0.41960785)
-
-[node name="ProjectileHitbox" type="Area2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=221594311]
-script = ExtResource("10_bbunm")
-
-[node name="BulletHitbox" type="CollisionShape2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ProjectileHitbox" unique_id=675715082]
-shape = SubResource("CircleShape2D_fklr0")
-debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
-
-[node name="PulseSoundEffect" type="AudioStreamPlayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1605933517]
-stream = ExtResource("34_xcrri")
-volume_db = -10.0
-pitch_scale = 4.0
-bus = &"SFX"
-
-[node name="ShotAudio" type="AudioStreamPlayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=166549679]
-stream = ExtResource("67_evfvu")
-volume_db = -5.0
-pitch_scale = 1.4
-bus = &"SFX"
-
-[node name="CharacterLight" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=553159512]
-visible = false
-scale = Vector2(42.156246, 42.156246)
-energy = 1.16
-texture = SubResource("GradientTexture2D_y1plk")
-
-[node name="AbilityAoE" type="Area2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1762094847]
-collision_layer = 2
-collision_mask = 2
-
-[node name="AoEHurtbox" type="CollisionShape2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/AbilityAoE" unique_id=367302589]
-shape = SubResource("CircleShape2D_p0i5v")
-debug_color = Color(0.5036662, 0.42920431, 0.12006802, 0.011764706)
-
-[node name="AbilityParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/AbilityAoE" unique_id=1200254873]
-scale = Vector2(2.4399977, 2.4399977)
-amount = 25
-texture = SubResource("GradientTexture2D_ni7mq")
-lifetime = 0.85
-emission_shape = 1
-emission_sphere_radius = 128.0
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_max = 10.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-scale_amount_min = 2.0
-scale_amount_max = 5.0
-scale_amount_curve = SubResource("Curve_t1mfx")
-
-[node name="ChargedShotParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=2094922876]
-z_index = 29
-position = Vector2(13, 2)
-amount = 15
-texture = SubResource("GradientTexture2D_cacow")
-lifetime = 0.4
-fixed_fps = 30
-draw_order = 1
-emission_shape = 1
-emission_sphere_radius = 3.0
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, -440)
-initial_velocity_max = 55.15
-scale_amount_min = 0.1
-scale_amount_max = 0.2
-color_ramp = SubResource("Gradient_mr3qy")
-
-[node name="GlowEffect" type="WorldEnvironment" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ChargedShotParticles" unique_id=605545931]
-environment = SubResource("Environment_hkmhq")
-
-[node name="QMoves" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1399160530 node_paths=PackedStringArray("player", "beat_sync")]
-script = ExtResource("14_1vk04")
-player = NodePath("..")
+[node name="QMoves" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="10" unique_id=101531864 node_paths=PackedStringArray("beat_sync")]
 beat_sync = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 
-[node name="ChargeShot" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=918063712 node_paths=PackedStringArray("player")]
-script = ExtResource("15_fu6i5")
-player = NodePath("..")
-
-[node name="SecondaryFire" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1266380933 node_paths=PackedStringArray("beat_sync", "combo_system")]
-script = ExtResource("13_6uw2w")
+[node name="SecondaryFire" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="12" unique_id=679342409 node_paths=PackedStringArray("beat_sync", "combo_system")]
 beat_sync = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 combo_system = NodePath("../../../../../../../GameSystems/ComboSystem")
-
-[node name="BeatSquashStretch" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1709212106 node_paths=PackedStringArray("target") groups=["BeatSquashStretch"]]
-script = ExtResource("39_mtruf")
-target = NodePath("../VisualRoot")
-
-[node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1192582183]
-stream = ExtResource("72_arjvp")
-volume_db = -7.576
-bus = &"SFX"
-
-[node name="HitEffect" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1692245273 instance=ExtResource("40_wipa6")]
-position = Vector2(-81, -41)
-
-[node name="PointLight2D" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=1524399052]
-position = Vector2(-2, 1)
-scale = Vector2(1.1314265, 1.1314266)
-color = Color(4.466578, 4.466578, 4.466578, 1)
-energy = 0.05
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_meejx")
-texture_scale = 13.81
-
-[node name="PointLight2D1" type="PointLight2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/PointLight2D" unique_id=1603308176]
-color = Color(5.342, 5.231, 0, 1)
-energy = 0.04
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_meejx")
-texture_scale = 5.4
-
-[node name="FakeShadow" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=296752886 node_paths=PackedStringArray("player_ref")]
-script = ExtResource("75_kxwa7")
-shadow_offset = Vector2(0, 30)
-shadow_opacity = 1.0
-player_ref = NodePath("..")
 
 [node name="Pillar8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=145494399 instance=ExtResource("71_mr3qy")]
 position = Vector2(3954, -321)
@@ -2039,14 +1608,12 @@ speed_max = 40.0
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform2" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform4" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" method="_ability_pulse_checker"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
-[connection signal="increase_player_attack_charge" from="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" method="_on_beat_indicator_increase_player_attack_charge"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_exit_game"]
 [connection signal="resume_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_resume_game"]
 [connection signal="companion_upgrade" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]
@@ -2055,9 +1622,6 @@ speed_max = 40.0
 [connection signal="send_current_xp" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" method="set_value"]
 [connection signal="send_maximum_health" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_max"]
 [connection signal="send_maximum_xp" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" method="set_max"]
-[connection signal="experience_modify" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ProjectileHitbox" to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" method="modify_current_xp"]
-[connection signal="projectile_health_modify" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ProjectileHitbox" to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" method="modify_current_player_health"]
-[connection signal="player_dash" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/SecondaryFire" to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" method="_on_secondary_fire_player_dash"]
 
 [editable path="InterfaceElements/NewHUD/UI"]
 [editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"]
@@ -2066,5 +1630,6 @@ speed_max = 40.0
 [editable path="InterfaceElements/NewHUD/UI/Settings"]
 [editable path="InterfaceElements/NewHUD/UI/UpgradeUI"]
 [editable path="InterfaceElements/NewHUD/UI/MinimapHUD"]
+[editable path="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player"]
 [editable path="PlayerCatComp"]
 [editable path="PlayerCatComp2"]

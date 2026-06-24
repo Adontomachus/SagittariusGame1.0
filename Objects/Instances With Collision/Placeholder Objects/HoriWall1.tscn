@@ -11,10 +11,10 @@ position = Vector2(9.536743e-07, 9.536743e-07)
 scale = Vector2(0.77050775, 0.77050775)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
-position = Vector2(0, -180.36444)
+position = Vector2(0, -88.21739)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_im2v5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2113146905]
-position = Vector2(0, -180.36443)
+position = Vector2(0, -88.21739)
 polygon = PackedVector2Array(-203.76173, 131.0824, -203.76173, 158.33714, -170.01776, 177.80482, 205.05959, -19.467684, 197.2725, -44.126747, 164.82637, -24.659065, -167.42207, 153.14577)
