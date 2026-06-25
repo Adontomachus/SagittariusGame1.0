@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dcx5cnan17uax"]
 
+[ext_resource type="Texture2D" uid="uid://b7o8gqhjpe7sa" path="res://Sprites/Game Elements/Placeholders/Objects/columns.png" id="1_5fqr7"]
 [ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/Audio/StationaryBeatGlowEffect.gd" id="1_u2iup"]
-[ext_resource type="Texture2D" uid="uid://dp0sfqsw4dj1x" path="res://Sprites/Game Elements/Placeholders/Objects/Pillars3_Isometric_Transparent.webp" id="2_u2iup"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbark"]
-atlas = ExtResource("2_u2iup")
-region = Rect2(18.974304, 36.751778, 156.05331, 286.38354)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfqff"]
+atlas = ExtResource("1_5fqr7")
+region = Rect2(727.3606, 15.963538, 151.64569, 291.9535)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me4gi"]
 size = Vector2(155.74146, 188.18759)
@@ -38,7 +38,7 @@ script = ExtResource("1_u2iup")
 [node name="PillarSprite" type="Sprite2D" parent="." unique_id=381333886]
 position = Vector2(3.6985855, -281.36856)
 scale = Vector2(2.6458564, 2.6458561)
-texture = SubResource("AtlasTexture_rbark")
+texture = SubResource("AtlasTexture_dfqff")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=476666062]
 position = Vector2(2.5956898, -63.594425)
