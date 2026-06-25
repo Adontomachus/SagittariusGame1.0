@@ -77,19 +77,59 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.8, 0.3)
 
-[sub_resource type="Animation" id="Animation_7o7g8"]
-length = 0.46666667
+[sub_resource type="Animation" id="Animation_yik66"]
+resource_name = "Firing"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("InnerShockwave:texture:gradient")
+tracks/0/path = NodePath("GlowEffect:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("Gradient_yik66")]
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlowEffect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.72900003), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GlowEffect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.35355353, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_7o7g8"]
+length = 0.46666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InnerShockwave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.8750002, 1.875)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -106,38 +146,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("InnerShockwave:scale")
+tracks/2/path = NodePath("GlowEffect:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2.8125002, 2.8125)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GlowEffect:modulate")
+tracks/3/path = NodePath("GlowEffect:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0.5416667, 0.5416667)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GlowEffect:scale")
+tracks/4/path = NodePath("GlowEffect:skew")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_orpeu"]
@@ -145,14 +185,14 @@ resource_name = "Telegraph"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("InnerShockwave:texture:gradient")
+tracks/0/path = NodePath("InnerShockwave:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.65),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("Gradient_yik66"), SubResource("Gradient_yik66")]
+"times": PackedFloat32Array(0, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(0.14583334, 0.14583327), Vector2(0.06250002, 0.06249997)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -161,50 +201,39 @@ tracks/1/path = NodePath("InnerShockwave:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 0.65),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1), Color(1.353256, 1.353256, 1.353256, 1), Color(1.353256, 1.353256, 1.353256, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("InnerShockwave:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.65),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2.8125002, 2.8125), Vector2(0.3125, 0.31250015)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GlowEffect:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8666667),
+"times": PackedFloat32Array(0, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("GlowEffect:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8666667),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GlowEffect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.8125, 0.8125), Vector2(0.96875, 0.96875), Vector2(2.1562502, 2.1562502)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.91)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GlowEffect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.35355353),
+"update": 0,
+"values": [Vector2(0.41666666, 0.41666666), Vector2(0.58333325, 0.58333325), Vector2(1.1, 1.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mes1l"]
 _data = {
+&"Firing": SubResource("Animation_yik66"),
 &"RESET": SubResource("Animation_7o7g8"),
 &"Telegraph": SubResource("Animation_orpeu")
 }
@@ -219,7 +248,7 @@ navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(3, 5)
 maxMoveSpeed = 140.0
 maxHealthPoints = 135
-amountOfPointOrbs = 4
+amountOfPointOrbs = 5
 aroundPlayerRadius = 180.0
 shoot_point = NodePath("MovementStretch/Sprite/ShootPoint")
 attackPower = 7.5
@@ -297,8 +326,11 @@ script = ExtResource("8_by624")
 state_to_return = NodePath("../EnemyStateStrafing")
 metadata/_custom_type_script = "uid://djhvfb78j0d1i"
 
-[node name="EnemyStateStrafing" type="Node" parent="EnemyStateMachine" unique_id=1393360863 node_paths=PackedStringArray("recovery_state")]
+[node name="EnemyStateStrafing" type="Node" parent="EnemyStateMachine" unique_id=1393360863 node_paths=PackedStringArray("attack_telegraph_shockwave", "attack_telegrpah_glow", "attack_telegraph", "recovery_state")]
 script = ExtResource("9_phvwr")
+attack_telegraph_shockwave = NodePath("../../InnerShockwave")
+attack_telegrpah_glow = NodePath("../../GlowEffect")
+attack_telegraph = NodePath("../../AttackWarning")
 recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://bw5wcv4mmnc6m"
 
@@ -322,19 +354,19 @@ script = ExtResource("3_aykja")
 shadow_offset = Vector2(0, 60)
 shadow_opacity = 1.0
 
-[node name="AttackTelegraphs" type="Node" parent="." unique_id=266892835]
-
-[node name="InnerShockwave" type="Sprite2D" parent="AttackTelegraphs" unique_id=957796978]
+[node name="InnerShockwave" type="Sprite2D" parent="." unique_id=957796978]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(12, -42)
-scale = Vector2(2.8125002, 2.8125)
+position = Vector2(8.666667, -28.666666)
+scale = Vector2(1.8750002, 1.875)
 texture = SubResource("GradientTexture2D_16esq")
 
-[node name="GlowEffect" type="Sprite2D" parent="AttackTelegraphs" unique_id=1774197202]
-position = Vector2(12.000001, -42.000004)
+[node name="GlowEffect" type="Sprite2D" parent="." unique_id=1774197202]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(8.666668, -28.000004)
+scale = Vector2(0.5416667, 0.5416667)
 texture = SubResource("GradientTexture2D_bhunq")
 
-[node name="AttackWarning" type="AnimationPlayer" parent="AttackTelegraphs" unique_id=895564818]
+[node name="AttackWarning" type="AnimationPlayer" parent="." unique_id=895564818]
 libraries/ = SubResource("AnimationLibrary_mes1l")
 
 [node name="StackingDamageNumbers" parent="." unique_id=1560617677 node_paths=PackedStringArray("enemy_object") instance=ExtResource("14_yik66")]

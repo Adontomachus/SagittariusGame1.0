@@ -251,11 +251,16 @@ func _delete_and_emit_effects():
 	var deathEffect = destroyEffect.instantiate()
 	deathEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", deathEffect)
+	
+	## Rewards the player with experience points upon elimination
+	
 	for xp in range(amountOfPointOrbs):
 		print("ENEMY DESTROYED AND PLAYER REWARDED")
 		var rewards = pointObject.instantiate()
+		rewards.orb_level = 1
 		rewards.position = self.get_global_position()
 		get_tree().get_root().call_deferred("add_child", rewards)
+
 	call_deferred("queue_free")
 	
 	## If the unit is considered the "final boss of the level", play a cutscene 

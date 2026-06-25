@@ -64,27 +64,14 @@ _data = {
 [node name="StationaryTurretEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_j2xs3")
-allow_sprite_flip = null
 stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
-boss_unit = null
-stamina_range = null
-stamina_regeneration_rate = null
-maxMoveSpeed = null
-movement_boosted = null
 maxHealthPoints = 300
-meleeTickRate = null
-amountOfPointOrbs = 7
-aroundPlayerRadius = null
-repositioningTimer = null
-maxRepositioningTimer = null
+amountOfPointOrbs = 9
 shoot_point = NodePath("ShootPoint")
 inaccuracy = 35.0
 attackPower = 7.0
-projectile = null
-damageTaken = null
-fire_rate = null
 successfulChanceToAttack = 5.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]

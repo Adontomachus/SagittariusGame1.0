@@ -3,7 +3,7 @@ extends EnemyState
 
 const CHANCE_RANGE: Vector2 = Vector2(0.0, 10.0)
 var shot_times: int = 0
-
+@export var attack_telegraph: AnimationPlayer
 @export var after_shoot_state: EnemyState
 
 
@@ -16,11 +16,18 @@ func enter() -> void:
 
 func process_physics(delta: float) -> EnemyState:
 	if (GlobalBeatSync.executeAction):
-		shot_times += 1
+
 		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) >= parent.successfulChanceToAttack:
-			parent.shoot_projectile(-17)
-			parent.shoot_projectile()
-			parent.shoot_projectile(17)
+			if shot_times == 0:
+				attack_telegraph.play("Telegraph")
+			shot_times += 1
+			
+	if shot_times >= 2:
+		shot_times = 0
+		attack_telegraph.play("Firing")
+		parent.shoot_projectile(-17)
+		parent.shoot_projectile()
+		parent.shoot_projectile(17)
 	
 	if shot_times >= parent.fire_rate and after_shoot_state:
 		return after_shoot_state

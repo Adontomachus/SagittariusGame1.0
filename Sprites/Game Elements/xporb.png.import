@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be820ngltu8wu"
-path="res://.godot/imported/beatindicator1.png-ebc9887ff294552874e255cbbfd9c611.ctex"
+uid="uid://cqkc55md2trlv"
+path="res://.godot/imported/xporb.png-2987d9976e75add4f33188e76063a29a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/beatindicator1.png"
-dest_files=["res://.godot/imported/beatindicator1.png-ebc9887ff294552874e255cbbfd9c611.ctex"]
+source_file="res://Sprites/Game Elements/xporb.png"
+dest_files=["res://.godot/imported/xporb.png-2987d9976e75add4f33188e76063a29a.ctex"]
 
 [params]
 

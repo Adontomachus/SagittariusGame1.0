@@ -12,10 +12,24 @@ var chaseTarget: bool = false
 @onready var player: Node2D
 @onready var objectTarget: Node2D
 
+## Orb Size
+var orb_level: int = 1
+
 var collEffect := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 func _ready():
+	## Checks the orb level, which determines experience amount given to player
+	match orb_level:
+		1:
+			experienceAmount = 6
+		2:
+			experienceAmount = 12
+		3:
+			experienceAmount = 20
+		4:
+			experienceAmount = 50
+	
 	var combo_system = get_tree().get_first_node_in_group("ComboManager")
-
+	
 	## Checks if the scoring system script is attached
 	
 	objectTarget = get_tree().get_first_node_in_group("PlayerObject")

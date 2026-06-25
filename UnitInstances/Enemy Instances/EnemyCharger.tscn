@@ -141,27 +141,16 @@ _data = {
 [node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_f54ak")
-allow_sprite_flip = null
 stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
-boss_unit = null
 stamina_range = Vector2(8, 10)
 stamina_regeneration_rate = 2.0
 maxMoveSpeed = 75.0
-movement_boosted = null
 maxHealthPoints = 825
 meleeTickRate = 20
-amountOfPointOrbs = 6
-aroundPlayerRadius = null
-repositioningTimer = null
-maxRepositioningTimer = null
-inaccuracy = null
+amountOfPointOrbs = 12
 attackPower = 22.0
-projectile = null
-damageTaken = null
-fire_rate = null
-successfulChanceToAttack = null
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
