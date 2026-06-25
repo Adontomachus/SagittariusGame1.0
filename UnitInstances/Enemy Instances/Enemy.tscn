@@ -151,13 +151,14 @@ target = NodePath("../MovementStretch/Sprite")
 
 [node name="FakeShadow" type="Sprite2D" parent="." unique_id=851053513]
 
-[node name="StackingDamageNumbers" parent="." unique_id=1560617677 instance=ExtResource("13_trf43")]
+[node name="StackingDamageNumbers" parent="." unique_id=1560617677 node_paths=PackedStringArray("enemy_object") instance=ExtResource("13_trf43")]
 offset_left = -160.83333
 offset_top = -95.83333
 offset_right = 218.16667
 offset_bottom = 219.16667
 text = "0"
 damage_value = 0
+enemy_object = NodePath("..")
 
 [connection signal="pulse_damage_number" from="." to="StackingDamageNumbers" method="_flash_number"]
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]

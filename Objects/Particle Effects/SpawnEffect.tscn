@@ -3,11 +3,6 @@
 [ext_resource type="Script" uid="uid://c44x7n773qbif" path="res://Scripts/Visuals/ParticleEffectScript.gd" id="1_2qdvn"]
 [ext_resource type="Shader" uid="uid://n55fw5b5pt02" path="res://Scenes/Gameplay/Ripple.gdshader" id="2_24v3k"]
 
-[sub_resource type="Environment" id="Environment_pdos6"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 0.5
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_chuu8"]
 
 [sub_resource type="Curve" id="Curve_chm42"]
@@ -116,9 +111,6 @@ _data = {
 script = ExtResource("1_2qdvn")
 has_ripple_effects = true
 ripple_fade = NodePath("RippleFade")
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=296923072]
-environment = SubResource("Environment_pdos6")
 
 [node name="AoEEffect" type="CPUParticles2D" parent="." unique_id=582168485]
 self_modulate = Color(1.9749014, 1.9749014, 1.9749014, 1)

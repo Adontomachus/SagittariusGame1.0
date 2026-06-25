@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://ciy2kew35lxgo" path="res://Objects/Instances With Collision/Placeholder Objects/Cover2.tscn" id="65_cacow"]
 [ext_resource type="PackedScene" uid="uid://dcx5cnan17uax" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar1.tscn" id="71_mr3qy"]
 [ext_resource type="PackedScene" uid="uid://bkeyqg14iogmb" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar2.tscn" id="72_hkmhq"]
+[ext_resource type="Texture2D" uid="uid://bfly161xlnqht" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_Quarter Note.png" id="73_11ixi"]
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="73_iukur"]
 [ext_resource type="PackedScene" uid="uid://kyeps04jlmd2" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter.tscn" id="73_mr3qy"]
 [ext_resource type="PackedScene" uid="uid://fb3uredkhal4" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter2.tscn" id="74_hkmhq"]
@@ -535,7 +536,7 @@ script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 enemy_spawn_parent = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World")
-waves_remaining = 3
+waves_remaining = 5
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]

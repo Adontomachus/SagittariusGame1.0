@@ -46,8 +46,11 @@ var unitHitEffects := preload("res://Objects/Particle Effects/UnitHitEffect.tscn
 
 var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 var enemyDamageNumber := preload("res://Objects/UI Elements/EnemyDamageNumbers.tscn")
+
 # Damage number positioning
 var initPosition: Vector2 = Vector2(-125, -105)
+# Boolean for being able to damage instances
+var can_damage: bool = true
 
 #TESTING PURPOSES
 var testEffects := preload("res://Objects/Particle Effects/CollectEffect.tscn")
@@ -86,23 +89,25 @@ func _ready():
 		self.area_entered.connect(func(area) -> void:
 			if (projectileSide == ProjectileSide.Player):
 				if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
-					area.modify_enemy_health(-projectile_damage)
-					
-					var combo_ui := get_tree().get_first_node_in_group("ComboUIFeedback")
-					if combo_ui:
-						combo_ui.on_particle_arrived(hit_combo_value)
-					#Hit feedback
-					var hitEffect = unitHitEffects.instantiate()
-					hitEffect.position = self.get_global_position()
-					get_tree().get_root().call_deferred("add_child", hitEffect)
-					# Damage Number Feedback
-					var damageFeedback = damageNumber.instantiate()
-					damageFeedback.position = self.get_global_position() + initPosition
-					damageFeedback.damage_value = projectile_damage
-					PointSystemScript.total_damage_dealt += projectile_damage
-					get_tree().get_root().call_deferred("add_child", damageFeedback)
-					hit_noise.play()
-					hide()
+					if can_damage:
+						area.modify_enemy_health(-projectile_damage)
+						
+						var combo_ui := get_tree().get_first_node_in_group("ComboUIFeedback")
+						if combo_ui:
+							combo_ui.on_particle_arrived(hit_combo_value)
+						#Hit feedback
+						var hitEffect = unitHitEffects.instantiate()
+						hitEffect.position = self.get_global_position()
+						get_tree().get_root().call_deferred("add_child", hitEffect)
+						# Damage Number Feedback
+						var damageFeedback = damageNumber.instantiate()
+						damageFeedback.position = self.get_global_position() + initPosition
+						damageFeedback.damage_value = projectile_damage
+						PointSystemScript.total_damage_dealt += projectile_damage
+						get_tree().get_root().call_deferred("add_child", damageFeedback)
+						can_damage = false
+						hit_noise.play()
+						hide()
 					await hit_noise.finished
 					queue_free()
 

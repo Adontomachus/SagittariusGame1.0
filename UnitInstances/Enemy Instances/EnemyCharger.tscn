@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dkubcxuval72a" path="res://Audio/Sounds/ChargerRoar.mp3" id="14_ht5vj"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="17_cjrua"]
 [ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="18_ht5vj"]
+[ext_resource type="PackedScene" uid="uid://bfgui25y1y3xj" path="res://Objects/UI Elements/StackingDamageNumbers.tscn" id="20_mb2yq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 54.142277
@@ -137,9 +138,10 @@ _data = {
 &"RESET": SubResource("Animation_r4dr7")
 }
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_f54ak")
+stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 stamina_range = Vector2(8, 10)
@@ -147,7 +149,7 @@ stamina_regeneration_rate = 2.0
 maxMoveSpeed = 75.0
 maxHealthPoints = 825
 meleeTickRate = 20
-amountOfPointOrbs = 6
+amountOfPointOrbs = 12
 attackPower = 22.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
@@ -298,6 +300,16 @@ script = ExtResource("18_ht5vj")
 shadow_offset = Vector2(0, 80)
 shadow_opacity = 1.0
 
+[node name="StackingDamageNumbers" parent="." unique_id=1560617677 node_paths=PackedStringArray("enemy_object") instance=ExtResource("20_mb2yq")]
+offset_left = -160.83333
+offset_top = -95.83333
+offset_right = 218.16667
+offset_bottom = 219.16667
+text = "0"
+damage_value = 0
+enemy_object = NodePath("..")
+
+[connection signal="pulse_damage_number" from="." to="StackingDamageNumbers" method="_flash_number"]
 [connection signal="send_current_health_value" from="." to="HealthBar" method="set_value"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="HealthBar" method="set_max"]
@@ -305,4 +317,5 @@ shadow_opacity = 1.0
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="stacking_feedback" from="ProjectileHitbox" to="." method="_stack_damage"]
 [connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

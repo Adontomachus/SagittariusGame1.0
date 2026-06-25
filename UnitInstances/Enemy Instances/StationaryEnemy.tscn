@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dyra2hjpsjlcu" path="res://Audio/Sounds/HitSoundEffect.wav" id="7_vqhua"]
 [ext_resource type="Script" uid="uid://ddgde4sc35bqi" path="res://Scripts/Enemy Scripts/States/Enemy States/ShoutLobState.gd" id="10_nqpvr"]
 [ext_resource type="Script" uid="uid://cwx61adas85vb" path="res://Scripts/Enemy Scripts/HitFlashEnemy.gd" id="12_ad3to"]
+[ext_resource type="PackedScene" uid="uid://bfgui25y1y3xj" path="res://Objects/UI Elements/StackingDamageNumbers.tscn" id="13_4a4bm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 39.783783
@@ -60,13 +61,14 @@ _data = {
 &"RESET": SubResource("Animation_r4dr7")
 }
 
-[node name="StationaryTurretEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
+[node name="StationaryTurretEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent", "shoot_point") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_j2xs3")
+stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 maxHealthPoints = 300
-amountOfPointOrbs = 7
+amountOfPointOrbs = 9
 shoot_point = NodePath("ShootPoint")
 inaccuracy = 35.0
 attackPower = 7.0
@@ -163,9 +165,20 @@ libraries/ = SubResource("AnimationLibrary_bvebc")
 script = ExtResource("12_ad3to")
 target = NodePath("../Sprite")
 
+[node name="StackingDamageNumbers" parent="." unique_id=1560617677 node_paths=PackedStringArray("enemy_object") instance=ExtResource("13_4a4bm")]
+offset_left = -160.83333
+offset_top = -95.83333
+offset_right = 218.16667
+offset_bottom = 219.16667
+text = "0"
+damage_value = 0
+enemy_object = NodePath("..")
+
+[connection signal="pulse_damage_number" from="." to="StackingDamageNumbers" method="_flash_number"]
 [connection signal="send_current_health_value" from="." to="UpdatedHealthBar" method="set_value"]
 [connection signal="send_maximum_health_value" from="." to="UpdatedHealthBar" method="set_max"]
 [connection signal="toggle_healthbar_visibility" from="." to="UpdatedHealthBar" method="set_visible"]
 [connection signal="display_damage_feedback" from="ProjectileHitbox" to="." method="_aoe_damage_feedback"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_health"]
+[connection signal="stacking_feedback" from="ProjectileHitbox" to="." method="_stack_damage"]
 [connection signal="state_changed" from="EnemyStateMachine" to="Label" method="set_text"]

@@ -1191,6 +1191,15 @@ shadow_size = 6
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5.12, 2.305)
 
+[sub_resource type="Gradient" id="Gradient_5m4nd"]
+offsets = PackedFloat32Array(0, 0.3962264, 0.5974843, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.8164007, 0.97814435, 0.6893704, 0.97800004, 0.8156863, 0.9764706, 0.6901961, 0.9764706, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
+gradient = SubResource("Gradient_5m4nd")
+fill_from = Vector2(0.2, 0)
+fill_to = Vector2(0.8, 0)
+
 [sub_resource type="Animation" id="Animation_4t4xv"]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1335,6 +1344,54 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1776.0001, 411)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UpdatedRhythmLine:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(728, 994)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("UpdatedRhythmLine:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("UpdatedRhythmLine2:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(970, 992)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("UpdatedRhythmLine2:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_e8aea"]
@@ -1483,6 +1540,54 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1776.0001, 411), Vector2(1778.0002, 396.00003), Vector2(1776.0001, 411)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UpdatedRhythmLine:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(720, 992), Vector2(970, 992)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("UpdatedRhythmLine:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("UpdatedRhythmLine2:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1210.5, 992), Vector2(978, 992)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("UpdatedRhythmLine2:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.66),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
@@ -1930,7 +2035,14 @@ position = Vector2(974, 965.5)
 scale = Vector2(0.14765143, 0.13233833)
 texture = ExtResource("7_ev13k")
 
+[node name="UpdatedBeatIndicator" type="Sprite2D" parent="BeatIndicatorElements" unique_id=227962521]
+z_index = -5
+position = Vector2(975, 987)
+scale = Vector2(0.26795602, 0.26795602)
+texture = ExtResource("15_n87py")
+
 [node name="BeatIndicatorLine" type="ColorRect" parent="BeatIndicatorElements" unique_id=1426185933]
+visible = false
 z_index = -1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1991,7 +2103,7 @@ texture = ExtResource("17_3tu8g")
 z_index = -1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0007
+offset_right = 1225.0016
 offset_bottom = 1019.0
 color = Color(0.85559684, 1, 0.64379185, 1)
 
@@ -2008,7 +2120,7 @@ color = Color(0.51124996, 0.4563635, 0.27770182, 1)
 z_index = -1
 offset_left = 1104.0
 offset_top = 975.0
-offset_right = 1109.4984
+offset_right = 1109.4983
 offset_bottom = 1014.0003
 scale = Vector2(0.64, 1)
 color = Color(0.51124996, 0.4563635, 0.27770182, 1)
