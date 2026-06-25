@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxrvqcxt4j3gv"]
 
 [ext_resource type="Script" uid="uid://bpw6c53jd7tjv" path="res://Scripts/Player Scripts/OrbScript.gd" id="1_hrftc"]
-[ext_resource type="Texture2D" uid="uid://ceqllopkut21u" path="res://Sprites/Game Elements/point_orb.png" id="2_k480p"]
+[ext_resource type="Texture2D" uid="uid://cqkc55md2trlv" path="res://Sprites/Game Elements/xporb.png" id="2_hrftc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4og7"]
 radius = 6.505278
@@ -11,13 +11,27 @@ background_mode = 3
 glow_enabled = true
 glow_intensity = 1.0
 
+[sub_resource type="Gradient" id="Gradient_k480p"]
+offsets = PackedFloat32Array(0.006289308, 1)
+colors = PackedColorArray(0.25634766, 1.2373047, 1.2353516, 1, 0.33905056, 1.2746007, 1.2589601, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
+gradient = SubResource("Gradient_k480p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.82051283, 0.15384616)
+
+[sub_resource type="Gradient" id="Gradient_riqys"]
+colors = PackedColorArray(1, 1, 1, 1, 0.64228314, 0.57930446, 0.9999979, 0)
+
 [node name="AreaCollision" type="Area2D" unique_id=934945096]
 script = ExtResource("1_hrftc")
 
 [node name="OrbSprite" type="Sprite2D" parent="." unique_id=1535145071]
 self_modulate = Color(1.3135986, 2.8157141, 2.8157141, 1)
-scale = Vector2(0.81249994, 0.81249994)
-texture = ExtResource("2_k480p")
+position = Vector2(-1, -5)
+scale = Vector2(0.07920792, 0.07920794)
+texture = ExtResource("2_hrftc")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=596575799]
 position = Vector2(-0.48484847, 0.48484847)
@@ -25,3 +39,14 @@ shape = SubResource("CircleShape2D_w4og7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=203475315]
 environment = SubResource("Environment_3piun")
+
+[node name="Trail" type="CPUParticles2D" parent="." unique_id=53715948]
+amount = 25
+texture = SubResource("GradientTexture2D_bhunq")
+emission_shape = 1
+emission_sphere_radius = 3.55
+gravity = Vector2(0, 0)
+initial_velocity_max = 5.0
+scale_amount_min = 0.01
+scale_amount_max = 0.25
+color_ramp = SubResource("Gradient_riqys")

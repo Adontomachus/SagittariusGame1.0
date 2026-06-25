@@ -11,10 +11,10 @@ enum AbilityType {Q_NONE ,AOE_PULSE, DIRECTIONAL_CONE }
 @export var beat_sync: BeatSync_Script
 
 @export_category("Ability Stats")
-@export var damage_divisor_min: float = 1.8
-@export var damage_divisor_max: float = 2.2
+@export var damage_divisor_min: float = 1.2
+@export var damage_divisor_max: float = 1.5
 # How many (half)beats the ability activates
-@export var ability_duration_beats: int = 22
+@export var ability_duration_beats: int = 26
 
 @export_category("Directional Cone Settings")
 @export var cone_projectile_count: int = 5

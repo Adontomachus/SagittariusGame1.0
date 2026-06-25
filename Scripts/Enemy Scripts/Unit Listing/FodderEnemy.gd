@@ -251,11 +251,16 @@ func _delete_and_emit_effects():
 	var deathEffect = destroyEffect.instantiate()
 	deathEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", deathEffect)
+	
+	## Rewards the player with experience points upon elimination
+	
 	for xp in range(amountOfPointOrbs):
 		print("ENEMY DESTROYED AND PLAYER REWARDED")
 		var rewards = pointObject.instantiate()
+		rewards.orb_level = 1
 		rewards.position = self.get_global_position()
 		get_tree().get_root().call_deferred("add_child", rewards)
+
 	call_deferred("queue_free")
 	
 	## If the unit is considered the "final boss of the level", play a cutscene 
@@ -291,12 +296,10 @@ func _aoe_damage_feedback(increment: int):
 
 #func change_unit_stats(health: int, new_damage: int) -> void:
 
-
 func _stack_damage(damage_value: int) -> void:
 	damageTakenDuration = 1
-	if stacking_damage_numbers:
-		stacking_damage_numbers.before_fade_duration = 1
-		stacking_damage_numbers.text = str(round(damageTaken))
-		pulse_damage_number.emit()
 	damageTaken += damage_value
+	if stacking_damage_numbers:
+		pulse_damage_number.emit()
+		stacking_damage_numbers.text = str(round(damageTaken))
 	pass # Replace with function body.

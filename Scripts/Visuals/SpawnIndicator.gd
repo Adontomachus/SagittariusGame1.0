@@ -90,4 +90,4 @@ func _spawn_enemy(enemy_scene: PackedScene, spawn_pos: Vector2) -> void:
 	# Spawning visuals
 	var spawn_visual = spawn_effect.instantiate()
 	get_tree().current_scene.add_child(spawn_visual)
-	spawn_visual.global_position = spawn_pos
+	spawn_visual.global_position = self.global_position

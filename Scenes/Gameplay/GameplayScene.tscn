@@ -79,8 +79,11 @@
 [ext_resource type="PackedScene" uid="uid://ciy2kew35lxgo" path="res://Objects/Instances With Collision/Placeholder Objects/Cover2.tscn" id="65_cacow"]
 [ext_resource type="AudioStream" uid="uid://ba7i3mchr52pl" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-Sound-of-a-special-music-magic-bolt-when-successfu.mp3" id="67_evfvu"]
 [ext_resource type="PackedScene" uid="uid://dcx5cnan17uax" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar1.tscn" id="71_mr3qy"]
+[ext_resource type="Texture2D" uid="uid://dk30u7vtiinfa" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_8th Note.png" id="71_vv5i8"]
+[ext_resource type="Texture2D" uid="uid://gb11ffyjjpws" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_Beam Note 8th.png" id="72_4jirl"]
 [ext_resource type="AudioStream" uid="uid://dh7dhvinq5p40" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-create-a-sound-file-for-when-a-bolt-hits-our-hero- (1).mp3" id="72_arjvp"]
 [ext_resource type="PackedScene" uid="uid://bkeyqg14iogmb" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar2.tscn" id="72_hkmhq"]
+[ext_resource type="Texture2D" uid="uid://bfly161xlnqht" path="res://Sprites/Game Elements/Updated and Latest Sprites/Particles/MN_Quarter Note.png" id="73_11ixi"]
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="73_iukur"]
 [ext_resource type="PackedScene" uid="uid://kyeps04jlmd2" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter.tscn" id="73_mr3qy"]
 [ext_resource type="PackedScene" uid="uid://fb3uredkhal4" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter2.tscn" id="74_hkmhq"]
@@ -521,7 +524,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_vj1fp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down",
 "speed": 5.0
 }, {
@@ -529,7 +532,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("31_o710q")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down_left",
 "speed": 5.0
 }, {
@@ -537,7 +540,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("29_110ka")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down_right",
 "speed": 5.0
 }, {
@@ -545,7 +548,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("32_hlum5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_left",
 "speed": 5.0
 }, {
@@ -553,7 +556,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28_jgp33")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_right",
 "speed": 5.0
 }, {
@@ -561,7 +564,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_nxx5y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up",
 "speed": 5.0
 }, {
@@ -569,7 +572,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("33_4t4xv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up_left",
 "speed": 5.0
 }, {
@@ -577,7 +580,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_exwru")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up_right",
 "speed": 5.0
 }, {
@@ -585,7 +588,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_o710q")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_down",
 "speed": 5.0
 }, {
@@ -593,7 +596,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_o710q")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_down_left",
 "speed": 5.0
 }, {
@@ -601,7 +604,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28_hlum5")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_down_right",
 "speed": 5.0
 }, {
@@ -609,7 +612,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_o710q")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_left",
 "speed": 5.0
 }, {
@@ -617,7 +620,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("29_4t4xv")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_right",
 "speed": 5.0
 }, {
@@ -625,7 +628,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_e8aea")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_up",
 "speed": 5.0
 }, {
@@ -633,7 +636,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("31_rp1p4")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_up_left",
 "speed": 5.0
 }, {
@@ -641,7 +644,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_e8aea")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_up_right",
 "speed": 5.0
 }, {
@@ -649,7 +652,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("36_exwru")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down",
 "speed": 5.0
 }, {
@@ -657,7 +660,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("37_u1twm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down_left",
 "speed": 5.0
 }, {
@@ -665,7 +668,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("38_jgp33")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down_right",
 "speed": 5.0
 }, {
@@ -673,7 +676,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("39_110ka")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_left",
 "speed": 5.0
 }, {
@@ -681,7 +684,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("40_vj1fp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_right",
 "speed": 5.0
 }, {
@@ -689,7 +692,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("41_o710q")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up",
 "speed": 5.0
 }, {
@@ -697,7 +700,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("42_hlum5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up_left",
 "speed": 5.0
 }, {
@@ -705,7 +708,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("43_4t4xv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up_right",
 "speed": 5.0
 }]
@@ -730,15 +733,6 @@ fill_to = Vector2(0.75641024, 0.20512821)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0i5v"]
 radius = 300.0
-
-[sub_resource type="Gradient" id="Gradient_u1twm"]
-colors = PackedColorArray(1, 1, 0.2716998, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ni7mq"]
-gradient = SubResource("Gradient_u1twm")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.517094, 0.46581197)
 
 [sub_resource type="Curve" id="Curve_t1mfx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49853373, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -863,7 +857,7 @@ script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 enemy_spawn_parent = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World")
-waves_remaining = 3
+waves_remaining = 5
 player_target = NodePath("InterfaceElements/PlayerTarget")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
@@ -1494,9 +1488,9 @@ shape = SubResource("CircleShape2D_p0i5v")
 debug_color = Color(0.5036662, 0.42920431, 0.12006802, 0.011764706)
 
 [node name="AbilityParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/AbilityAoE" unique_id=1200254873]
+self_modulate = Color(1.7162727, 1.5984733, 0.6915149, 1)
 scale = Vector2(2.4399977, 2.4399977)
-amount = 25
-texture = SubResource("GradientTexture2D_ni7mq")
+texture = ExtResource("71_vv5i8")
 lifetime = 0.85
 emission_shape = 1
 emission_sphere_radius = 128.0
@@ -1504,10 +1498,44 @@ direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_max = 10.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-scale_amount_min = 2.0
-scale_amount_max = 5.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_t1mfx")
+
+[node name="AbilityParticles2" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/AbilityAoE" unique_id=915331328]
+self_modulate = Color(1.7162727, 1.5984733, 0.6915149, 1)
+scale = Vector2(2.4399977, 2.4399977)
+texture = ExtResource("72_4jirl")
+lifetime = 0.85
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 10.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_t1mfx")
+
+[node name="AbilityParticles3" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/AbilityAoE" unique_id=1841295590]
+self_modulate = Color(1.7162727, 1.5984733, 0.6915149, 1)
+scale = Vector2(2.4399977, 2.4399977)
+texture = ExtResource("73_11ixi")
+lifetime = 0.85
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 10.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_t1mfx")
 
 [node name="ChargedShotParticles" type="CPUParticles2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" unique_id=2094922876]

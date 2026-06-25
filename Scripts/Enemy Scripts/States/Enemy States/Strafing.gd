@@ -10,6 +10,9 @@ var shot_times: int = 0
 
 # Attack Point
 @onready var attack_point: Marker2D = $"../../MovementStretch/Sprite/AttackPoint"
+@export var attack_telegraph_shockwave: Sprite2D
+@export var attack_telegrpah_glow: Sprite2D
+@export var attack_telegraph: AnimationPlayer
 
 func enter() -> void:
 	super()
@@ -30,12 +33,18 @@ func process_physics(delta: float) -> EnemyState:
 	# Shoot on beat
 	if (GlobalBeatSync.executeAction):
 		if randf_range(CHANCE_RANGE.x, CHANCE_RANGE.y) >= parent.successfulChanceToAttack:
+			if shot_times == 0:
+				attack_telegraph.play("Telegraph")
 			shot_times += 1
 			
-		if shot_times >= 2:
-			shot_times = 0
-			parent.shoot_projectile()
+	# Shot time threshold checker
+	if shot_times >= 2:
+		shot_times = 0
+		attack_telegraph.play("Firing")
+		parent.shoot_projectile()
 			
+	#if shot_times == 1:
+	#	
 	if parent.navAgent.is_navigation_finished() and after_strafing_state:
 		return after_strafing_state
 
