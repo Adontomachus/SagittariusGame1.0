@@ -241,7 +241,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_jgp33"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -681,18 +681,19 @@ combo_system = NodePath("../../../../GameSystems/ComboSystem")
 [node name="WaveNotification" parent="InterfaceElements/NewHUD/UI" index="5" unique_id=1761094799]
 metadata/_edit_use_anchors_ = true
 
-[node name="UpdatedPlayerHealthBar" parent="InterfaceElements/NewHUD/UI" index="6" unique_id=784477876]
+[node name="ExperienceText" parent="InterfaceElements/NewHUD/UI/EXPBar" parent_id_path=PackedInt32Array(2071023402, 339255093) index="0" unique_id=1944989475 node_paths=PackedStringArray("experience_text", "player_object")]
+experience_text = NodePath(".")
+player_object = NodePath("../../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
+
+[node name="UpdatedPlayerHealthBar" parent="InterfaceElements/NewHUD/UI" index="7" unique_id=784477876]
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayerHealthText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="0" unique_id=591465270 node_paths=PackedStringArray("health_text")]
+[node name="PlayerHealthText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="0" unique_id=591465270 node_paths=PackedStringArray("health_text", "player_object")]
 health_text = NodePath(".")
-metadata/_edit_use_anchors_ = true
+player_object = NodePath("../../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 
 [node name="PlayerLevel" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="3" unique_id=743208092]
 metadata/_edit_use_anchors_ = true
-
-[node name="GlowFeedback" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="7" unique_id=1353301075]
-visible = false
 
 [node name="UpdatedExperienceBar" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="8" unique_id=1561454494]
 metadata/_edit_use_anchors_ = true
@@ -701,7 +702,7 @@ metadata/_edit_use_anchors_ = true
 experience_text = NodePath(".")
 metadata/_edit_use_anchors_ = true
 
-[node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="8" unique_id=172310879]
+[node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="10" unique_id=172310879]
 metadata/_edit_use_anchors_ = true
 
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
@@ -712,25 +713,25 @@ good_hit = 0.15
 ok_hit = 0.14
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="12" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
+[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="14" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_jgp33")
+button_group = SubResource("ButtonGroup_exwru")
 
-[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
+[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 manager = NodePath("../../../..")
 
 [node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
 
-[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=1126182348 node_paths=PackedStringArray("beat_sync")]
+[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=1126182348 node_paths=PackedStringArray("beat_sync")]
 beat_sync = NodePath("../BeatIndicatorElements/BeatIndicator")
 pulse_scale = Vector2(0.8, 0.8)
 base_scale = Vector2(0.2, 0.2)
@@ -1628,9 +1629,9 @@ speed_max = 40.0
 [connection signal="companion_upgrade" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="PlayerCatComp" method="_on_player_companion_upgrade"]
 [connection signal="companion_upgrade" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="PlayerCatComp2" method="_on_player_companion_upgrade"]
 [connection signal="send_current_health" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_value"]
-[connection signal="send_current_xp" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" method="set_value"]
+[connection signal="send_current_xp" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/EXPBar" method="set_value"]
 [connection signal="send_maximum_health" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" method="set_max"]
-[connection signal="send_maximum_xp" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar/UpdatedExperienceBar" method="set_max"]
+[connection signal="send_maximum_xp" from="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" to="InterfaceElements/NewHUD/UI/EXPBar" method="set_max"]
 
 [editable path="InterfaceElements/NewHUD/UI"]
 [editable path="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode/WinScreen"]

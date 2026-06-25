@@ -11,7 +11,7 @@ var tween: Tween
 ## Color & Glow Effects
 @onready var updated_player_health_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar
 @onready var updated_boss_health_bar: TextureProgressBar = $UI/UpdatedBossHealthBar
-@onready var updated_experience_bar: TextureProgressBar = $UI/UpdatedPlayerHealthBar/UpdatedExperienceBar
+@onready var updated_experience_bar: TextureProgressBar = $UI/EXPBar
 @onready var companion_progress_bar: TextureProgressBar = $UI/CompanionProgressBar
 
 @onready var updated_combo_counter: Label = $UI/UpdatedComboCounter
