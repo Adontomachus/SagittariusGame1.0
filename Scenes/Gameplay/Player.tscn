@@ -230,8 +230,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8espc"]
-radius = 9.999999
-height = 84.999985
+radius = 51.249996
+height = 114.99999
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muue2"]
 height = 124.499794
@@ -293,17 +293,16 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=910402363 node_paths=PackedStringArray("beatSquash", "charge_shot", "q_moves", "pulse_sound_effect") groups=["PlayerObject"]]
 process_mode = 3
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_8espc")
 beatSquash = NodePath("BeatSquashStretch")
-offset_right = Vector2(35, -15)
-offset_down_right = Vector2(40, -30)
-offset_down = Vector2(-50, -10)
-offset_down_left = Vector2(-30, -30)
-offset_left = Vector2(-45, -25)
-offset_up_left = Vector2(-50, -50)
-offset_up = Vector2(45, -35)
-offset_up_right = Vector2(45, -50)
+offset_right = Vector2(35, -80)
+offset_down_right = Vector2(40, -95)
+offset_down = Vector2(-50, -75)
+offset_down_left = Vector2(-30, -95)
+offset_left = Vector2(-45, -90)
+offset_up_left = Vector2(-50, -115)
+offset_up = Vector2(45, -100)
+offset_up_right = Vector2(45, -115)
 charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("2_aekym")
@@ -326,7 +325,7 @@ sprite_frames = SubResource("SpriteFrames_e8aea")
 animation = &"shoot_up_right"
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="." unique_id=608752885]
-position = Vector2(0, -43.75)
+position = Vector2(-2.4999998, -16.250002)
 shape = SubResource("CapsuleShape2D_8espc")
 
 [node name="EnemyCollision" type="Area2D" parent="." unique_id=118625795 groups=["PlayerObject"]]

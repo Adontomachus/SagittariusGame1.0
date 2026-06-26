@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://dfknex4vneyns" path="res://Scripts/Audio/UIFeedback.gd" id="3_exhb5"]
 [ext_resource type="Script" uid="uid://xhr0roivh2ff" path="res://Scripts/Player Scripts/CameraScript.gd" id="4_b5kf5"]
 [ext_resource type="Script" uid="uid://bsk5nfp8klfyc" path="res://Scripts/Level Based/DynamicLevelScript.gd" id="5_jgp33"]
-[ext_resource type="PackedScene" uid="uid://bsh7kuwbmi8sf" path="res://Objects/Instances With Collision/Wall.tscn" id="5_nt06h"]
 [ext_resource type="Script" uid="uid://crr4fdev6qi70" path="res://Scripts/Miscellaneous/CinematicsHandler.gd" id="6_110ka"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="6_y268v"]
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="8_f1byq"]
@@ -19,38 +18,48 @@
 [ext_resource type="Script" uid="uid://gea14qkih1ne" path="res://Scripts/UI Menu, Settings and Post Game/Hitflash.gd" id="12_fu6i5"]
 [ext_resource type="PackedScene" uid="uid://33v5wjfmxcfx" path="res://Scenes/Gameplay/GameplayUI.tscn" id="12_yt4p3"]
 [ext_resource type="Texture2D" uid="uid://22kjjikg08xn" path="res://Sprites/Game Elements/Placeholders/BackgroundPlaceholder.png" id="17_arjvp"]
-[ext_resource type="Texture2D" uid="uid://cpvuw4qc3gpsv" path="res://Sprites/Game Elements/floordecoration.png" id="17_x4iy2"]
 [ext_resource type="Texture2D" uid="uid://bsy78p5irb164" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles1.png" id="19_evfvu"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="19_exhb5"]
 [ext_resource type="Texture2D" uid="uid://cwq3rhpr0a4or" path="res://Sprites/Game Elements/Placeholders/Ground/SaggGameTiles_Test1.png" id="19_exwru"]
 [ext_resource type="Texture2D" uid="uid://c4llkpowa5n1o" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles22.png" id="22_kxwa7"]
+[ext_resource type="Texture2D" uid="uid://nnk02fnsar20" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/wallstiles.png" id="22_u1twm"]
 [ext_resource type="Texture2D" uid="uid://oo48xtre3sec" path="res://Sprites/Game Elements/abilityfeedback.png" id="22_yt4p3"]
+[ext_resource type="Texture2D" uid="uid://cnw61pdc78sfn" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/newsprites/wallspritess.png" id="23_jgp33"]
 [ext_resource type="Texture2D" uid="uid://bkqmqcy2d2wk5" path="res://Sprites/Game Elements/floordecal2.png" id="31_40ckn"]
-[ext_resource type="PackedScene" uid="uid://dm8xgkgs64vpw" path="res://Objects/Instances With Collision/Placeholder Objects/Signpost2.tscn" id="33_evfvu"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="33_y268v"]
-[ext_resource type="PackedScene" uid="uid://cptsvbx58cmcb" path="res://Objects/Instances With Collision/Placeholder Objects/Signpost3.tscn" id="34_arjvp"]
-[ext_resource type="PackedScene" uid="uid://dfxf4c3cjgx3n" path="res://Objects/Instances With Collision/Placeholder Objects/SmallCover3.tscn" id="35_uagus"]
-[ext_resource type="PackedScene" uid="uid://jc803mevfhf2" path="res://Objects/Instances With Collision/Placeholder Objects/SmallCover.tscn" id="36_kxwa7"]
-[ext_resource type="PackedScene" uid="uid://dtuv5wrf5ipbp" path="res://Objects/Instances With Collision/Placeholder Objects/NewTree.tscn" id="37_r3xg8"]
-[ext_resource type="PackedScene" uid="uid://dmaqskdm0mpjv" path="res://Objects/Instances With Collision/Placeholder Objects/SmallObject1.tscn" id="38_juvgv"]
-[ext_resource type="PackedScene" uid="uid://c5oe16n656qhy" path="res://Objects/Instances With Collision/Placeholder Objects/SmallObject2.tscn" id="39_vv5i8"]
-[ext_resource type="PackedScene" uid="uid://3oec1r2gfqn6" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter3.tscn" id="40_4jirl"]
-[ext_resource type="PackedScene" uid="uid://xvv7r6rcyin1" path="res://Objects/Instances With Collision/Placeholder Objects/Signpost4.tscn" id="41_uagus"]
+[ext_resource type="Texture2D" uid="uid://dravfqer0ycdu" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_01.png" id="37_e8aea"]
+[ext_resource type="Texture2D" uid="uid://bfhrraetolnne" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_02.png" id="38_rp1p4"]
+[ext_resource type="Texture2D" uid="uid://dytau6l5bvs5h" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_11.png" id="39_b8xms"]
+[ext_resource type="Texture2D" uid="uid://c7vma1b0gmwiq" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_12.png" id="40_wkher"]
+[ext_resource type="Texture2D" uid="uid://4a7qgkvtv0lu" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_13.png" id="41_meejx"]
+[ext_resource type="Texture2D" uid="uid://b1dbygn6t87rx" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_14.png" id="42_cacow"]
 [ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="42_jgp33"]
 [ext_resource type="PackedScene" uid="uid://cu2w3y1ythpfd" path="res://Scenes/Gameplay/Player.tscn" id="42_nxx5y"]
+[ext_resource type="Texture2D" uid="uid://xemeelgii22" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_15.png" id="43_mr3qy"]
+[ext_resource type="Texture2D" uid="uid://sf8t0e1evacb" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_16.png" id="44_hkmhq"]
+[ext_resource type="Texture2D" uid="uid://575jjesdv78h" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_17.png" id="45_iukur"]
+[ext_resource type="Texture2D" uid="uid://b2ukcn4wumwmt" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_18.png" id="46_8x0uy"]
+[ext_resource type="Texture2D" uid="uid://c8yj4cnh4y12t" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_19.png" id="47_drcco"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
+[ext_resource type="Texture2D" uid="uid://ites8hygmuq5" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_20.png" id="48_mjiq8"]
+[ext_resource type="Texture2D" uid="uid://2gi2iyw2jy1x" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_03.png" id="49_7bgac"]
+[ext_resource type="Texture2D" uid="uid://d284nv6847l0v" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_21.png" id="50_w47cw"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="51_6uw2w"]
+[ext_resource type="Texture2D" uid="uid://c5de3qb45cf45" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_22.png" id="51_d3liw"]
+[ext_resource type="Texture2D" uid="uid://db2s3t1ubslev" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/propsprites.png" id="52_evfvu"]
 [ext_resource type="Texture2D" uid="uid://cduo7jlc6l5fe" path="res://Sprites/Game Elements/Updated and Latest Sprites/IMG_8606.PNG" id="52_vj1fp"]
-[ext_resource type="PackedScene" uid="uid://doqcq5cen5g5q" path="res://Objects/Instances With Collision/Placeholder Objects/Cover1.tscn" id="53_b8xms"]
+[ext_resource type="Texture2D" uid="uid://d1be1iwvtyab5" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_04.png" id="53_arjvp"]
+[ext_resource type="Texture2D" uid="uid://b0742pldh3wp6" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_05.png" id="54_uagus"]
+[ext_resource type="Texture2D" uid="uid://dokmriteeo2kc" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_06.png" id="55_kxwa7"]
+[ext_resource type="Texture2D" uid="uid://qw14frvisfq3" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_07.png" id="56_r3xg8"]
+[ext_resource type="Texture2D" uid="uid://dx4k5mnxwclhs" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_08.png" id="57_juvgv"]
+[ext_resource type="Texture2D" uid="uid://bw6w2v67p3bn3" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_09.png" id="58_vv5i8"]
+[ext_resource type="Texture2D" uid="uid://dl4gx75ibbytk" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_10.png" id="59_4jirl"]
 [ext_resource type="Texture2D" uid="uid://b14w4hmgkcrgc" path="res://Sprites/Game Elements/Placeholders/Ground/Ground_Tileset.png" id="61_hlum5"]
 [ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="62_110ka"]
-[ext_resource type="PackedScene" uid="uid://msc1dy5dlpwm" path="res://Objects/Instances With Collision/Placeholder Objects/Gate.tscn" id="64_iukur"]
-[ext_resource type="PackedScene" uid="uid://ciy2kew35lxgo" path="res://Objects/Instances With Collision/Placeholder Objects/Cover2.tscn" id="65_cacow"]
 [ext_resource type="PackedScene" uid="uid://dcx5cnan17uax" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar1.tscn" id="71_mr3qy"]
 [ext_resource type="PackedScene" uid="uid://bkeyqg14iogmb" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar2.tscn" id="72_hkmhq"]
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="73_iukur"]
-[ext_resource type="PackedScene" uid="uid://kyeps04jlmd2" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter.tscn" id="73_mr3qy"]
-[ext_resource type="PackedScene" uid="uid://fb3uredkhal4" path="res://Objects/Instances With Collision/Placeholder Objects/Clutter2.tscn" id="74_hkmhq"]
 [ext_resource type="PackedScene" uid="uid://djcihqdu2wwsg" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall1.tscn" id="75_r3xg8"]
 [ext_resource type="PackedScene" uid="uid://dudlfrh1wpbbr" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall2.tscn" id="76_juvgv"]
 [ext_resource type="PackedScene" uid="uid://bvchnd47dqodk" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall3.tscn" id="77_vv5i8"]
@@ -59,7 +68,6 @@
 [ext_resource type="PackedScene" uid="uid://dnor5ydfjb5yn" path="res://Objects/Instances With Collision/Placeholder Objects/CornerWall.tscn" id="80_vly5y"]
 [ext_resource type="PackedScene" uid="uid://dgt7srjhaig0i" path="res://Objects/Instances With Collision/Placeholder Objects/VertWall3.tscn" id="81_iiaqm"]
 [ext_resource type="PackedScene" uid="uid://uebty6xxsh7o" path="res://Objects/Instances With Collision/Placeholder Objects/VertWall.tscn" id="82_yrgee"]
-[ext_resource type="PackedScene" uid="uid://c6a8p2jw6t2ag" path="res://Objects/Instances With Collision/Placeholder Objects/Lamp.tscn" id="83_evfvu"]
 
 [sub_resource type="Environment" id="Environment_bhunq"]
 background_mode = 3
@@ -241,7 +249,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_11ixi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -433,6 +441,383 @@ sources/4 = SubResource("TileSetAtlasSource_juvgv")
 sources/3 = SubResource("TileSetAtlasSource_uagus")
 sources/5 = SubResource("TileSetAtlasSource_evfvu")
 sources/0 = SubResource("TileSetAtlasSource_jgp33")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_110ka"]
+texture = ExtResource("22_u1twm")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 230)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 230)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 230)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 230)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 230)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 230)
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 230)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 230)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -172.5, -230, 57.5, -115, 115, 230, -115)
+8:0/0 = 0
+8:0/0/texture_origin = Vector2i(0, 230)
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+9:0/0 = 0
+9:0/0/texture_origin = Vector2i(0, 230)
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 230)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 230)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 230)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 230)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 230)
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+5:1/0 = 0
+5:1/0/texture_origin = Vector2i(0, 230)
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+6:1/0 = 0
+6:1/0/texture_origin = Vector2i(0, 230)
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+7:1/0 = 0
+7:1/0/texture_origin = Vector2i(0, 230)
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+8:1/0 = 0
+8:1/0/texture_origin = Vector2i(0, 230)
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+9:1/0 = 0
+9:1/0/texture_origin = Vector2i(0, 230)
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 230)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 230)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 230)
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 57.5, -115, -115, -230, -57.5, 115, 115)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 230)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(230, 0, 115, -57.5, 0, 0, 0, 0, -115, -57.5, -230, 0, 0, 115, 0, 115)
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, 230)
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(192.06561, 38.584595, 102.89227, -11.1466675, 0, 57.5, 94.31793, 107.17944)
+4:2/0/physics_layer_0/polygon_1/points = PackedVector2Array(-138.90454, -7.716919, -53.16101, -66.02255, -132.04504, -98.6051, -209.21426, -38.58461)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vj1fp"]
+texture = ExtResource("23_jgp33")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 131)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 131)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 131)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 131)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 131)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 131)
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 131)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 131)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+8:0/0 = 0
+8:0/0/texture_origin = Vector2i(0, 131)
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+9:0/0 = 0
+9:0/0/texture_origin = Vector2i(0, 131)
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(115, -57.5, -115, 57.5, 0, 115, 230, 0)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 131)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 131)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 131)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 131)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 131)
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+5:1/0 = 0
+5:1/0/texture_origin = Vector2i(0, 131)
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+6:1/0 = 0
+6:1/0/texture_origin = Vector2i(0, 131)
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+7:1/0 = 0
+7:1/0/texture_origin = Vector2i(0, 131)
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+8:1/0 = 0
+8:1/0/texture_origin = Vector2i(0, 131)
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+9:1/0 = 0
+9:1/0/texture_origin = Vector2i(0, 131)
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 131)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 131)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 131)
+2:2/0/y_sort_origin = -5
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 131)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-115, -57.5, -230, 0, 0, 115, 115, 57.5)
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, 131)
+
+[sub_resource type="TileSet" id="TileSet_vj1fp"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(460, 230)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_110ka")
+sources/79 = SubResource("TileSetAtlasSource_vj1fp")
+tile_proxies/coords_level = [[54, Vector2i(0, 0)], [79, Vector2i(0, 0)], [55, Vector2i(0, 0)], [79, Vector2i(1, 0)], [56, Vector2i(0, 0)], [79, Vector2i(2, 0)], [57, Vector2i(0, 0)], [79, Vector2i(3, 0)], [58, Vector2i(0, 0)], [79, Vector2i(4, 0)], [59, Vector2i(0, 0)], [79, Vector2i(5, 0)], [60, Vector2i(0, 0)], [79, Vector2i(6, 0)], [61, Vector2i(0, 0)], [79, Vector2i(7, 0)], [62, Vector2i(0, 0)], [79, Vector2i(8, 0)], [63, Vector2i(0, 0)], [79, Vector2i(9, 0)], [64, Vector2i(0, 0)], [79, Vector2i(0, 1)], [65, Vector2i(0, 0)], [79, Vector2i(1, 1)], [66, Vector2i(0, 0)], [79, Vector2i(2, 1)], [67, Vector2i(0, 0)], [79, Vector2i(3, 1)], [68, Vector2i(0, 0)], [79, Vector2i(4, 1)], [69, Vector2i(0, 0)], [79, Vector2i(5, 1)], [70, Vector2i(0, 0)], [79, Vector2i(6, 1)], [71, Vector2i(0, 0)], [79, Vector2i(7, 1)], [72, Vector2i(0, 0)], [79, Vector2i(8, 1)], [73, Vector2i(0, 0)], [79, Vector2i(9, 1)], [74, Vector2i(0, 0)], [79, Vector2i(0, 2)], [75, Vector2i(0, 0)], [79, Vector2i(1, 2)], [76, Vector2i(0, 0)], [79, Vector2i(2, 2)], [77, Vector2i(0, 0)], [79, Vector2i(3, 2)], [78, Vector2i(0, 0)], [79, Vector2i(4, 2)]]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppdx2"]
+texture = ExtResource("37_e8aea")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vly5y"]
+texture = ExtResource("38_rp1p4")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iiaqm"]
+texture = ExtResource("39_b8xms")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yrgee"]
+texture = ExtResource("40_wkher")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlrdo"]
+texture = ExtResource("41_meejx")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sjr7y"]
+texture = ExtResource("42_cacow")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxpbb"]
+texture = ExtResource("43_mr3qy")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ofi2"]
+texture = ExtResource("44_hkmhq")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c04ix"]
+texture = ExtResource("45_iukur")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8t6s"]
+texture = ExtResource("46_8x0uy")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgfjo"]
+texture = ExtResource("47_drcco")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgtit"]
+texture = ExtResource("48_mjiq8")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vtbb7"]
+texture = ExtResource("49_7bgac")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fa1ag"]
+texture = ExtResource("50_w47cw")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5d30"]
+texture = ExtResource("51_d3liw")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tdi3"]
+texture = ExtResource("52_evfvu")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 230)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 230)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 230)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 230)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 230)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 230)
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 230)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -115, 57.5, 0, 115, 115, 57.5)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 230)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+8:0/0 = 0
+8:0/0/texture_origin = Vector2i(0, 230)
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+9:0/0 = 0
+9:0/0/texture_origin = Vector2i(0, 230)
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, -115, 57.5, 115, -57.5)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 230)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 230)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 230)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 230)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 230)
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -115, -57.5, 115, 57.5, 230, 0)
+5:1/0 = 0
+5:1/0/texture_origin = Vector2i(0, 230)
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+6:1/0 = 0
+6:1/0/texture_origin = Vector2i(0, 230)
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+7:1/0 = 0
+7:1/0/texture_origin = Vector2i(0, 230)
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+8:1/0 = 0
+8:1/0/texture_origin = Vector2i(0, 230)
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+9:1/0 = 0
+9:1/0/texture_origin = Vector2i(0, 230)
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 230)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 230)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -115, -230, 0, 0, 115, 230, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yhgq"]
+texture = ExtResource("53_arjvp")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewqse"]
+texture = ExtResource("54_uagus")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_turqw"]
+texture = ExtResource("55_kxwa7")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s2pik"]
+texture = ExtResource("56_r3xg8")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ylxxw"]
+texture = ExtResource("57_juvgv")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44gan"]
+texture = ExtResource("58_vv5i8")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfe01"]
+texture = ExtResource("59_4jirl")
+texture_region_size = Vector2i(460, 690)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jdq8l"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(460, 230)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ppdx2")
+sources/1 = SubResource("TileSetAtlasSource_vly5y")
+sources/2 = SubResource("TileSetAtlasSource_vtbb7")
+sources/3 = SubResource("TileSetAtlasSource_2yhgq")
+sources/4 = SubResource("TileSetAtlasSource_ewqse")
+sources/5 = SubResource("TileSetAtlasSource_turqw")
+sources/6 = SubResource("TileSetAtlasSource_s2pik")
+sources/7 = SubResource("TileSetAtlasSource_ylxxw")
+sources/8 = SubResource("TileSetAtlasSource_44gan")
+sources/9 = SubResource("TileSetAtlasSource_mfe01")
+sources/10 = SubResource("TileSetAtlasSource_iiaqm")
+sources/11 = SubResource("TileSetAtlasSource_yrgee")
+sources/12 = SubResource("TileSetAtlasSource_tlrdo")
+sources/13 = SubResource("TileSetAtlasSource_sjr7y")
+sources/14 = SubResource("TileSetAtlasSource_uxpbb")
+sources/15 = SubResource("TileSetAtlasSource_0ofi2")
+sources/16 = SubResource("TileSetAtlasSource_c04ix")
+sources/17 = SubResource("TileSetAtlasSource_x8t6s")
+sources/18 = SubResource("TileSetAtlasSource_xgfjo")
+sources/19 = SubResource("TileSetAtlasSource_vgtit")
+sources/20 = SubResource("TileSetAtlasSource_fa1ag")
+sources/21 = SubResource("TileSetAtlasSource_h5d30")
+sources/22 = SubResource("TileSetAtlasSource_0tdi3")
 
 [sub_resource type="Gradient" id="Gradient_rp1p4"]
 colors = PackedColorArray(0, 0.28493494, 1, 1, 0, 0, 0, 1)
@@ -717,13 +1102,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_11ixi")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_11ixi")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_11ixi")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -731,7 +1116,8 @@ manager = NodePath("../../../..")
 
 [node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
 
-[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=1126182348 node_paths=PackedStringArray("beat_sync")]
+[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="21" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
+charge_shot = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ChargeShot")
 beat_sync = NodePath("../BeatIndicatorElements/BeatIndicator")
 pulse_scale = Vector2(0.8, 0.8)
 base_scale = Vector2(0.2, 0.2)
@@ -801,165 +1187,16 @@ tile_set = SubResource("TileSet_cacow")
 [node name="World" type="Node2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=1895055935]
 y_sort_enabled = true
 
-[node name="Clutter11" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=430981844 instance=ExtResource("83_evfvu")]
-position = Vector2(2534, 1708)
+[node name="WallTileMap" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=629557430 groups=["MapObstacle"]]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAAAAoATwAAAAEAAAABAAoATwAAAAEAAAACAAoATwAAAAEAAAADAAoATwAAAAAAAAADAAsATwAAAAAAAAADAAwATwAAAAAAAAADAA0ATwAAAAAAAAA=")
+tile_set = SubResource("TileSet_vj1fp")
 
-[node name="Pillar7" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1921287727 instance=ExtResource("72_hkmhq")]
-position = Vector2(-1350, 2163)
-
-[node name="topleft corner" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=44997820 instance=ExtResource("72_hkmhq")]
-position = Vector2(-1994, 5359)
-
-[node name="bottem left corner" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1161000451 instance=ExtResource("72_hkmhq")]
-position = Vector2(-5218, 3577)
-
-[node name="bottomrightcorner" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=844755832 instance=ExtResource("72_hkmhq")]
-position = Vector2(1516, 2612)
-
-[node name="toprightcorner" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=613983156 instance=ExtResource("72_hkmhq")]
-position = Vector2(2817, -1490)
-
-[node name="Pillar9" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=128262390 instance=ExtResource("72_hkmhq")]
-position = Vector2(-264, 2819)
-
-[node name="Wall22" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=229515535 instance=ExtResource("53_b8xms")]
-position = Vector2(3569, -264)
-
-[node name="Wall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1573695310 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(-200, 547)
-
-[node name="Wall2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1369542608 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(110, 538)
-
-[node name="Wall3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=221904683 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(-1827, 1929)
-
-[node name="Wall4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1661139557 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(828, 599)
-
-[node name="Wall5" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=470109116 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(898, 638)
-
-[node name="Wall6" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=737682561 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(110, 329)
-
-[node name="Wall7" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1495814750 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(963, 678)
-
-[node name="Wall8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=971025487 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(1027, 716)
-
-[node name="Wall9" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1882345351 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(363, 559)
-
-[node name="Wall10" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=316081175 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(436, 601)
-
-[node name="Wall11" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=22576572 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(509, 643)
-
-[node name="Floordecoration" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=2103623591]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -13
-position = Vector2(67.83904, -13.499973)
-scale = Vector2(0.14391698, 0.14391698)
-texture = ExtResource("17_x4iy2")
-
-[node name="Floordecoration2" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=255453842]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -13
-position = Vector2(466, 1181.9999)
-scale = Vector2(0.13056332, 0.1305633)
-texture = ExtResource("17_x4iy2")
-
-[node name="Floordecoration3" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1468736820]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -13
-position = Vector2(2077, 1569)
-scale = Vector2(0.11572719, 0.11572718)
-texture = ExtResource("17_x4iy2")
-
-[node name="Floordecoration4" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=2141459531]
-modulate = Color(0.5210043, 0.5210043, 0.5210043, 1)
-z_index = -13
-position = Vector2(2476, -228)
-scale = Vector2(0.0979229, 0.09792287)
-texture = ExtResource("17_x4iy2")
-
-[node name="Wall12" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1501938174 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(1299, 769)
-
-[node name="Wall20" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=740812794 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2948, 1233)
-
-[node name="Wall13" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1286809218 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(1546, 543)
-
-[node name="Wall31" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1625720279 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2847.0002, 620)
-
-[node name="Wall21" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=2023856401 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2909.0002, 644)
-
-[node name="Wall32" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=422458982 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(3030.9998, 690)
-
-[node name="Wall33" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=800381559 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2969, 666)
-
-[node name="Wall34" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1286053279 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2604, 522)
-
-[node name="Wall35" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=157888580 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2666, 546)
-
-[node name="Wall36" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1009301672 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2787.9995, 592)
-
-[node name="Wall37" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1301416658 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2725.9998, 568)
-
-[node name="Wall14" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1580122650 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(1737, 347)
-
-[node name="Wall15" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1832107586 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2112, 173)
-
-[node name="Wall19" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1527721893 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(2112, 173)
-
-[node name="Wall16" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=533129430 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(1641, 1331)
-
-[node name="Wall17" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1837305217 instance=ExtResource("5_nt06h")]
-modulate = Color(1.353256, 1.353256, 1.353256, 1)
-position = Vector2(1021, 1241)
+[node name="TileMapLayer" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1929160255 groups=["MapObstacle"]]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAlADMAFgAEAAEAAAAmADMAFgAEAAEAAAAkADAAFgABAAAAAAAjACwAFgAHAAAAAAAiACsAFgAJAAAAAAAiACoAFgAJAAAAAAAiACkAFgAJAAAAAAAiACgAFgAJAAAAAAAkACwAFgAAAAEAAAAlACwAFgAAAAEAAAAmACwAFgAAAAEAAAAnACwAFgACAAEAAAAlACEAFgAHAAEAAAAoACIAFgAIAAEAAAAbAB8AFgAIAAEAAAATACoAFgABAAIAAAAWABkAFgAFAAAAAAARABoAFgAGAAAAAAAVAA8AFgACAAAAAAAaABMAFgAJAAEAAAANABYAFgADAAEAAAAOABYAFgADAAEAAAAPABYAFgADAAEAAAATAAUAFgAGAAAAAAAMAAIAFgAGAAAAAAALAP7/FgAIAAAAAAAKAA0AFgAAAAEAAAAKAAgAFgACAAEAAAA=")
+tile_set = SubResource("TileSet_jdq8l")
 
 [node name="Pillar" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1817997377 instance=ExtResource("71_mr3qy")]
 position = Vector2(-690, 1255)
@@ -981,86 +1218,6 @@ position = Vector2(2320, 608)
 
 [node name="Pillar10" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=504242283 instance=ExtResource("72_hkmhq")]
 position = Vector2(3612, -552)
-
-[node name="Wall23" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1831841627 instance=ExtResource("64_iukur")]
-position = Vector2(3153, -553)
-scale = Vector2(1, 1)
-
-[node name="Clutter" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=487081434 instance=ExtResource("73_mr3qy")]
-position = Vector2(2818, -667)
-
-[node name="Clutter2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=238079674 instance=ExtResource("74_hkmhq")]
-position = Vector2(3208, -868)
-scale = Vector2(1, 1)
-
-[node name="Clutter3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=568448658 instance=ExtResource("74_hkmhq")]
-position = Vector2(3012, -752)
-scale = Vector2(1, 1)
-
-[node name="Clutter4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=248404880 instance=ExtResource("65_cacow")]
-position = Vector2(2840, -551)
-
-[node name="Clutter17" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=8547425 instance=ExtResource("65_cacow")]
-position = Vector2(4468, -71)
-
-[node name="Clutter18" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1925795139 instance=ExtResource("65_cacow")]
-position = Vector2(4640, 18)
-
-[node name="Wall18" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=922484909 instance=ExtResource("37_r3xg8")]
-position = Vector2(1781, 1512)
-scale = Vector2(2, 2)
-
-[node name="Clutter5" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=261586665 instance=ExtResource("33_evfvu")]
-position = Vector2(508, 2569)
-scale = Vector2(0.6, 0.6)
-
-[node name="Clutter6" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1887745300 instance=ExtResource("34_arjvp")]
-position = Vector2(3864, -508)
-scale = Vector2(0.5, 0.5)
-
-[node name="Wall24" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1708077161 instance=ExtResource("35_uagus")]
-position = Vector2(1992, -229)
-
-[node name="Wall25" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=581101870 instance=ExtResource("36_kxwa7")]
-position = Vector2(3703, -341)
-
-[node name="Wall26" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=925180306 instance=ExtResource("36_kxwa7")]
-position = Vector2(3777, -305)
-
-[node name="Wall27" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=971236172 instance=ExtResource("37_r3xg8")]
-position = Vector2(3293, 707)
-scale = Vector2(2, 2)
-
-[node name="Wall28" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1279257616 instance=ExtResource("37_r3xg8")]
-position = Vector2(3819, -96)
-scale = Vector2(2, 2)
-
-[node name="Wall30" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=312829657 instance=ExtResource("37_r3xg8")]
-position = Vector2(4788, 432)
-scale = Vector2(2, 2)
-
-[node name="Wall29" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1640759111 instance=ExtResource("37_r3xg8")]
-position = Vector2(2677, -356)
-scale = Vector2(2, 2)
-
-[node name="Clutter7" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1075601248 instance=ExtResource("38_juvgv")]
-position = Vector2(-910, 1204)
-scale = Vector2(0.25, 0.25)
-
-[node name="Clutter8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=415691331 instance=ExtResource("39_vv5i8")]
-position = Vector2(2080, -462)
-scale = Vector2(0.3, 0.3)
-
-[node name="Clutter12" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1821030198 instance=ExtResource("41_uagus")]
-position = Vector2(-1029, 1517)
-scale = Vector2(0.23115234, 0.23115234)
-
-[node name="Clutter9" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=930084979 instance=ExtResource("39_vv5i8")]
-position = Vector2(2339, -129)
-scale = Vector2(0.3, 0.3)
-
-[node name="Clutter10" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1141554092 instance=ExtResource("40_4jirl")]
-position = Vector2(1372, -59)
 
 [node name="GlowingPlatform" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1709142336 instance=ExtResource("33_y268v")]
 visible = false
@@ -1102,20 +1259,6 @@ combo_system = NodePath("../../../../../../../GameSystems/ComboSystem")
 
 [node name="Pillar8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=145494399 instance=ExtResource("71_mr3qy")]
 position = Vector2(3954, -321)
-
-[node name="Clutter13" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=122557946 instance=ExtResource("74_hkmhq")]
-position = Vector2(3411, -978)
-scale = Vector2(1, 1)
-
-[node name="Clutter14" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=615383332 instance=ExtResource("74_hkmhq")]
-position = Vector2(3618, -1087)
-scale = Vector2(1, 1)
-
-[node name="Clutter15" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=964556511 instance=ExtResource("83_evfvu")]
-position = Vector2(1034, 2315)
-
-[node name="Clutter16" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1693787230 instance=ExtResource("83_evfvu")]
-position = Vector2(4375, 789)
 
 [node name="HoriWall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=251649228 instance=ExtResource("75_r3xg8")]
 position = Vector2(-426, -101)
@@ -1285,9 +1428,6 @@ visible = false
 modulate = Color(0.91627353, 0.91627353, 0.91627353, 1)
 z_index = -14
 position = Vector2(-591, 74.999985)
-
-[node name="Clutter" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=560080571 instance=ExtResource("83_evfvu")]
-position = Vector2(3413, -515)
 
 [node name="Floordecal11" type="Sprite2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals" unique_id=871525315]
 modulate = Color(0.49176726, 0.49176726, 0.49176726, 1)
