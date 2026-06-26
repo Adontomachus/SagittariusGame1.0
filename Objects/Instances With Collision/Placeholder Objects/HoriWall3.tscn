@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bvchnd47dqodk"]
+
+[ext_resource type="Texture2D" uid="uid://cmel4eau8jqr1" path="res://Sprites/Game Elements/Placeholders/Objects/Pillars_Walls_Isometric_Transparent.png" id="1_auxi0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im2v5"]
+atlas = ExtResource("1_auxi0")
+region = Rect2(790.705, 71.17499, 107.569214, 149.45398)
+
+[node name="HoriWall" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
+position = Vector2(68, 22)
+scale = Vector2(0.77050775, 0.77050775)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+position = Vector2(-75.923965, -108.36092)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_im2v5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2113146905]
+position = Vector2(-75.923965, -108.36089)
+polygon = PackedVector2Array(-95.39164, 79.80829, -99.28518, 109.65874, -105.12548, 132.38023, -76.57288, 150.55008, 95.39165, 61.63845, 87.604576, 17.511703, -69.43473, 81.10613)
