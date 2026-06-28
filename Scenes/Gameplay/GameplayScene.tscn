@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://575jjesdv78h" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_17.png" id="45_iukur"]
 [ext_resource type="Texture2D" uid="uid://b2ukcn4wumwmt" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_18.png" id="46_8x0uy"]
 [ext_resource type="Texture2D" uid="uid://c8yj4cnh4y12t" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_19.png" id="47_drcco"]
+[ext_resource type="PackedScene" uid="uid://bnrvdcksjalq6" path="res://Objects/Instances With Collision/ClickableTome.tscn" id="47_rp1p4"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="47_vwi3h"]
 [ext_resource type="Texture2D" uid="uid://ites8hygmuq5" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_20.png" id="48_mjiq8"]
 [ext_resource type="Texture2D" uid="uid://2gi2iyw2jy1x" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/propsprites/sprite_03.png" id="49_7bgac"]
@@ -61,8 +62,6 @@
 [ext_resource type="PackedScene" uid="uid://bkeyqg14iogmb" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar2.tscn" id="72_hkmhq"]
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="73_iukur"]
 [ext_resource type="PackedScene" uid="uid://djcihqdu2wwsg" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall1.tscn" id="75_r3xg8"]
-[ext_resource type="PackedScene" uid="uid://dudlfrh1wpbbr" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall2.tscn" id="76_juvgv"]
-[ext_resource type="PackedScene" uid="uid://bvchnd47dqodk" path="res://Objects/Instances With Collision/Placeholder Objects/HoriWall3.tscn" id="77_vv5i8"]
 [ext_resource type="PackedScene" uid="uid://bprjra5c3k3k4" path="res://Objects/Instances With Collision/Placeholder Objects/VertWall1.tscn" id="78_11ixi"]
 [ext_resource type="PackedScene" uid="uid://b08c73fdejvlv" path="res://Objects/Instances With Collision/Placeholder Objects/VertWall2.tscn" id="79_ppdx2"]
 [ext_resource type="PackedScene" uid="uid://dnor5ydfjb5yn" path="res://Objects/Instances With Collision/Placeholder Objects/CornerWall.tscn" id="80_vly5y"]
@@ -249,7 +248,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_11ixi"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_4t4xv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("6_y268v")
@@ -913,15 +912,14 @@ size = Vector2(12452.658, 63.552734)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uagus"]
 size = Vector2(86.35339, 4951.677)
 
-[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "enemy_spawn_parent", "player_target") groups=["GameManagerSystems"]]
+[node name="Manager" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "enemy_spawn_parent") groups=["GameManagerSystems"]]
 y_sort_enabled = true
 position = Vector2(-5, 2)
 script = ExtResource("1_onpmq")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
-enemy_spawn_parent = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World")
-waves_remaining = 3
-player_target = NodePath("InterfaceElements/PlayerTarget")
+enemy_spawn_parent = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles/StaticBody2D/SpawnArea")
+waves_remaining = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
 color = Color(0.30196026, 0.26415148, 0.48281467, 1)
@@ -1102,13 +1100,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_11ixi")
+button_group = SubResource("ButtonGroup_4t4xv")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_11ixi")
+button_group = SubResource("ButtonGroup_4t4xv")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_11ixi")
+button_group = SubResource("ButtonGroup_4t4xv")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1261,28 +1259,8 @@ combo_system = NodePath("../../../../../../../GameSystems/ComboSystem")
 position = Vector2(3954, -321)
 
 [node name="HoriWall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=251649228 instance=ExtResource("75_r3xg8")]
-position = Vector2(-426, -101)
+position = Vector2(1008, 285)
 scale = Vector2(1, 1)
-
-[node name="HoriWall2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1082992059 instance=ExtResource("75_r3xg8")]
-position = Vector2(-57, -300)
-scale = Vector2(1, 1)
-
-[node name="HoriWall4" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1095721625 instance=ExtResource("76_juvgv")]
-position = Vector2(-680, 27)
-
-[node name="HoriWall5" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1776370427 instance=ExtResource("77_vv5i8")]
-position = Vector2(-802, 107)
-
-[node name="HoriWall6" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1758390591 instance=ExtResource("75_r3xg8")]
-position = Vector2(569, 233)
-
-[node name="HoriWall3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=262851649 instance=ExtResource("75_r3xg8")]
-position = Vector2(613, -633)
-scale = Vector2(1, 1)
-
-[node name="HoriWall7" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1740264046 instance=ExtResource("76_juvgv")]
-position = Vector2(771, 83)
 
 [node name="Vertwall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1556078481 instance=ExtResource("78_11ixi")]
 position = Vector2(-730, 215)
@@ -1292,10 +1270,6 @@ position = Vector2(-477, 337)
 
 [node name="Vertwall3" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1570013245 instance=ExtResource("79_ppdx2")]
 position = Vector2(-235, 448)
-
-[node name="HoriWall8" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=76060329 instance=ExtResource("77_vv5i8")]
-position = Vector2(900, 52.999985)
-scale = Vector2(0.59368217, 0.59368217)
 
 [node name="CornerWall" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1329496647 instance=ExtResource("80_vly5y")]
 position = Vector2(-25, 331)
@@ -1750,6 +1724,9 @@ fog_layer_count = 1
 fog_texture = ExtResource("42_jgp33")
 speed_min = 22.0
 speed_max = 40.0
+
+[node name="ClickableTome" parent="." unique_id=951240953 instance=ExtResource("47_rp1p4")]
+position = Vector2(2053, -257)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]

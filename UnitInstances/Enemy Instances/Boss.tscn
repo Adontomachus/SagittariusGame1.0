@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d24063yq0kgko"]
 
 [ext_resource type="Script" uid="uid://brnjgbc0at8y0" path="res://Scripts/Enemy Scripts/Unit Listing/FodderEnemy.gd" id="1_t5eiy"]
+[ext_resource type="Texture2D" uid="uid://bb2x1k8tgxx0s" path="res://Sprites/Game Elements/Placeholders/Enemy/boss1_highrezedit.png" id="2_4cq4n"]
 [ext_resource type="Texture2D" uid="uid://b45cxrltkh7ff" path="res://Sprites/Game Elements/icon.svg" id="2_g16c8"]
-[ext_resource type="Texture2D" uid="uid://dnrjhppgu80jc" path="res://Sprites/Game Elements/enemysprite.png" id="2_oc4nc"]
 [ext_resource type="Script" uid="uid://310roieyagw8" path="res://Scripts/Enemy Scripts/Miscellaneous Enemy Scripts/EnemyProjectileHitbox.gd" id="3_w0bs6"]
 [ext_resource type="Script" uid="uid://4nb635ctjjm" path="res://Scripts/Enemy Scripts/StateMachine/EnemyStateMachine.gd" id="4_b7mrf"]
 [ext_resource type="Texture2D" uid="uid://c6s6mr8evytid" path="res://Sprites/UI/enemyhpbar.png" id="4_kdy0d"]
@@ -19,6 +19,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s7bn3"]
 radius = 103.84142
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jftok"]
+atlas = ExtResource("2_4cq4n")
+region = Rect2(0, 0, 145.45905, 216.29828)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mepa4"]
 radius = 83.02409
@@ -96,8 +100,7 @@ shape = SubResource("CircleShape2D_s7bn3")
 position = Vector2(1, -1)
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=678723821]
-scale = Vector2(0.24122807, 0.24122804)
-texture = ExtResource("2_oc4nc")
+texture = SubResource("AtlasTexture_jftok")
 
 [node name="Sprite" type="Sprite2D" parent="Sprite" unique_id=1101179799]
 visible = false

@@ -111,6 +111,8 @@ func _spawn_boss() -> void:
 
 ## Sets up the spawning mechanics and pause
 func _ready() -> void:
+	get_viewport().physics_object_picking = true
+	print(get_viewport().physics_object_picking)
 	add_to_group("GManager")
 	is_transitioning = false
 	boss_spawned = false
