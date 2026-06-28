@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://btryh5rw6b10x" path="res://Scripts/Visuals/SpriteTrailEffect.gd" id="3_7a4nw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wix7r"]
-size = Vector2(31, 18)
+size = Vector2(50, 30)
 
 [sub_resource type="Environment" id="Environment_hex5x"]
 background_mode = 3
@@ -72,7 +72,6 @@ texture = ExtResource("2_7a4nw")
 script = ExtResource("3_7a4nw")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1654839371]
-position = Vector2(5.5, 0)
 shape = SubResource("RectangleShape2D_wix7r")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1978019399]

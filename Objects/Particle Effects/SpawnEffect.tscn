@@ -108,6 +108,7 @@ _data = {
 }
 
 [node name="SpawnEffect" type="Node2D" unique_id=1692245273 node_paths=PackedStringArray("ripple_fade")]
+z_index = 50
 script = ExtResource("1_2qdvn")
 has_ripple_effects = true
 ripple_fade = NodePath("RippleFade")
