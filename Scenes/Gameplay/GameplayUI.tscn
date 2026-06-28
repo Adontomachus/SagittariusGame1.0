@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://dt7sgxyxn8e3" path="res://Sprites/Game Elements/EyeClose.png" id="27_l6g6h"]
 [ext_resource type="Texture2D" uid="uid://dsrldstpph3qh" path="res://Sprites/Game Elements/EyeHalf.png" id="28_vdje8"]
 [ext_resource type="Texture2D" uid="uid://2lxhtsyypdef" path="res://Sprites/Game Elements/EyeFull.png" id="29_qj281"]
+[ext_resource type="Shader" uid="uid://dl5lk71shldso" path="res://Scenes/Gameplay/Minimap.gdshader" id="32_3tu8g"]
+[ext_resource type="Texture2D" uid="uid://dqtyg5mdmcf2g" path="res://Sprites/Game Elements/Placeholders/UI Elements/Minimapborder.png" id="32_7363f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
 font = ExtResource("13_qj281")
@@ -1681,7 +1683,10 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_dw111"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_qj38p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
+shader = ExtResource("32_3tu8g")
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -2037,10 +2042,10 @@ label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="EnemyCounter" type="Label" parent="." unique_id=172310879]
 layout_mode = 0
-offset_left = 1591.0
-offset_top = 323.0
-offset_right = 2037.0
-offset_bottom = 351.0
+offset_left = 1556.0
+offset_top = 372.0
+offset_right = 2002.0
+offset_bottom = 400.0
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
@@ -2257,7 +2262,7 @@ layout_mode = 0
 offset_left = 1776.0001
 offset_top = 411.0
 offset_right = 1844.1843
-offset_bottom = 482.3243
+offset_bottom = 482.32434
 rotation = 0.113265686
 
 [node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
@@ -2309,13 +2314,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_dw111")
+button_group = SubResource("ButtonGroup_qj38p")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_dw111")
+button_group = SubResource("ButtonGroup_qj38p")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_dw111")
+button_group = SubResource("ButtonGroup_qj38p")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
@@ -2338,13 +2343,20 @@ offset_bottom = 172.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" parent="MinimapHUD/MinimapContainer" index="0" unique_id=1472134649]
+visible = false
 offset_left = -8.519897
 offset_top = -7.199997
 offset_right = 256.0
 offset_bottom = 256.8
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=2095466810]
+[node name="Sprite2D" type="Sprite2D" parent="MinimapHUD/MinimapContainer" index="1" unique_id=459562973]
+position = Vector2(124.00001, 119.99999)
+scale = Vector2(0.5443725, 0.5443725)
+texture = ExtResource("32_7363f")
+
+[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=2095466810]
+material = SubResource("ShaderMaterial_qj38p")
 offset_left = -1.5198975
 offset_top = -0.19999695
 offset_right = 248.4801
@@ -2358,7 +2370,7 @@ size = Vector2i(250, 250)
 position = Vector2(0, 22)
 minimap_display_size = Vector2(300, 300)
 
-[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
+[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="3" unique_id=117072874]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15

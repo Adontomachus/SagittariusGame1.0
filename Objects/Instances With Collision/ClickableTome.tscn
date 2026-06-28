@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bnrvdcksjalq6"]
+
+[ext_resource type="Script" uid="uid://xd7prm7w08vf" path="res://Scripts/Miscellaneous/ClickableLink.gd" id="1_f3h24"]
+[ext_resource type="Texture2D" uid="uid://c3oga8p5npi42" path="res://Sprites/Game Elements/Placeholders/Objects/tomepedestal.png" id="2_f3h24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3h24"]
+size = Vector2(257.25, 283)
+
+[node name="ClickableTome" type="Area2D" unique_id=951240953]
+script = ExtResource("1_f3h24")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=880789055]
+texture = ExtResource("2_f3h24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=256974200]
+process_mode = 3
+position = Vector2(-3, -3)
+shape = SubResource("RectangleShape2D_f3h24")
