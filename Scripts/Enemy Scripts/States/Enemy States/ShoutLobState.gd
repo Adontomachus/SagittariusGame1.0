@@ -8,6 +8,8 @@ extends EnemyState
 @export var aim_randomness: float = 300
 # Chance of fire per beat if they can already
 @export_range(0.0, 1.0) var shoot_chance_per_beat: float = 0.25
+# Range on how far can the unit shoot its lobbed attacks
+@export var attack_range: float = 500
 
 var beats_waited: int = 0
 var last_beat: float = 0
@@ -25,6 +27,9 @@ func enter() -> void:
 
 # Wait for beats_between_shots before shoot
 func process_frame(_delta: float) -> EnemyState:
+	# Checks the range between unit and player
+	var target_distance = parent.global_position.distance_to(parent.target.global_position)
+	
 	if beat_sync == null:
 		print("beat_sync not connected")
 		return null
@@ -37,7 +42,8 @@ func process_frame(_delta: float) -> EnemyState:
 		if beats_waited >= beats_between_shots:
 			if randf() < shoot_chance_per_beat:
 				beats_waited = 0
-				_fire_shout()
+				if target_distance < attack_range:
+					_fire_shout()
 
 	return null
 

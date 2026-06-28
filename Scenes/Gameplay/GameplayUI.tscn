@@ -36,6 +36,106 @@
 [ext_resource type="Texture2D" uid="uid://dsrldstpph3qh" path="res://Sprites/Game Elements/EyeHalf.png" id="28_vdje8"]
 [ext_resource type="Texture2D" uid="uid://2lxhtsyypdef" path="res://Sprites/Game Elements/EyeFull.png" id="29_qj281"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
+font = ExtResource("13_qj281")
+font_size = 31
+font_color = Color(0.9893481, 1, 0.6877252, 1)
+outline_size = 5
+outline_color = Color(0.75922, 1, 0, 1)
+shadow_size = 15
+shadow_color = Color(0.25359216, 0.25359216, 0.25359216, 1)
+
+[sub_resource type="Gradient" id="Gradient_dw111"]
+colors = PackedColorArray(0.8198382, 1, 0.1680183, 1, 0.80118275, 0.8670702, 1.540184e-06, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
+gradient = SubResource("Gradient_dw111")
+
+[sub_resource type="Animation" id="Animation_3tu8g"]
+resource_name = "LevelUp"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelUpFeedback:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.7891456, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelUpFeedback:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.24843472, 0.7745318, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(116, 143), Vector2(205, 143), Vector2(378, 143), Vector2(569, 143)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelUpGlow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.832987, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.56600004), Color(1, 1, 1, 0.21100001), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7363f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelUpFeedback:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelUpFeedback:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(116, 143)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelUpGlow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qj38p"]
+_data = {
+&"LevelUp": SubResource("Animation_3tu8g"),
+&"RESET": SubResource("Animation_7363f")
+}
+
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
 length = 5.0
@@ -1581,7 +1681,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_n87py"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_dw111"]
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1592,6 +1692,29 @@ offset_right = 13.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelUpFeedback" type="Label" parent="." unique_id=724700151]
+modulate = Color(1, 1, 1, 0)
+z_index = 59
+layout_mode = 0
+offset_left = 116.0
+offset_top = 143.0
+offset_right = 228.3899
+offset_bottom = 190.0
+text = "Level Up!"
+label_settings = SubResource("LabelSettings_bhunq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUpGlow" type="Sprite2D" parent="." unique_id=844571841]
+show_behind_parent = true
+z_index = 10
+position = Vector2(328.99994, 174)
+scale = Vector2(10.249999, 3.5625005)
+texture = SubResource("GradientTexture2D_bhunq")
+
+[node name="LevelUpAnimation" type="AnimationPlayer" parent="." unique_id=779161985]
+libraries/ = SubResource("AnimationLibrary_qj38p")
 
 [node name="CutsceneUI" type="Node" parent="." unique_id=280775099]
 process_mode = 3
@@ -2186,13 +2309,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_n87py")
+button_group = SubResource("ButtonGroup_dw111")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_n87py")
+button_group = SubResource("ButtonGroup_dw111")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_n87py")
+button_group = SubResource("ButtonGroup_dw111")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
