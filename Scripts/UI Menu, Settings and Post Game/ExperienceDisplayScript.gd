@@ -17,5 +17,5 @@ func _process(delta: float):
 func _update_experience_text() -> void:
 	current_experience = player_object.experiencePoints 
 	max_experience_amount_needed = player_object.maxExperiencePoints
-	experience_text.text = str(current_experience) + " | " + str(max_experience_amount_needed) + " Experience"
+	experience_text.text = str(current_experience) + " | " + str(max_experience_amount_needed) + " XP"
 	pass
