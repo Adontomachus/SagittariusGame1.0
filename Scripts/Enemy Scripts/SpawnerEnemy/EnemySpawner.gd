@@ -37,6 +37,7 @@ var world_parent: Node2D
 func _ready() -> void:
 	super()
 	allow_sprite_flip = false
+	self.visible = true
 	add_to_group("GeneralEnemyInstance")
 	beat_sync = get_tree().get_first_node_in_group("BeatSync")
 	if beat_sync == null:

@@ -50,6 +50,11 @@ func _on_finished() -> void:
 	pass # Replace with function body.
 "
 
+[sub_resource type="Environment" id="Environment_5nsfc"]
+glow_enabled = true
+glow_intensity = 3.86
+glow_strength = 0.95
+
 [sub_resource type="Curve" id="Curve_b20qq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.46176472, 0.9248121), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -57,11 +62,6 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_ppdx2"]
 offsets = PackedFloat32Array(0, 0.79617834)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="Environment" id="Environment_5nsfc"]
-glow_enabled = true
-glow_intensity = 3.86
-glow_strength = 0.95
 
 [node name="UnitHitEffect" type="CPUParticles2D" unique_id=1427452623]
 self_modulate = Color(3.2944162, 3.2944162, 3.2944162, 1)
@@ -90,6 +90,9 @@ hue_variation_min = -0.22
 hue_variation_max = -0.14
 anim_speed_curve = SubResource("Curve_jhxfm")
 script = SubResource("GDScript_h052y")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=615865206]
+environment = SubResource("Environment_5nsfc")
 
 [node name="NotesHitEffect" type="CPUParticles2D" parent="." unique_id=710185569]
 self_modulate = Color(1.2628156, 1.2140487, 1.353, 1)
@@ -158,9 +161,6 @@ scale_amount_curve = SubResource("Curve_b20qq")
 color_ramp = SubResource("Gradient_ppdx2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="NotesHitEffect3" unique_id=802354431]
-environment = SubResource("Environment_5nsfc")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=615865206]
 environment = SubResource("Environment_5nsfc")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

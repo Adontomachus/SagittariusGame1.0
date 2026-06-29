@@ -1712,6 +1712,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LevelUpGlow" type="Sprite2D" parent="." unique_id=844571841]
+visible = false
 show_behind_parent = true
 z_index = 10
 position = Vector2(328.99994, 174)
