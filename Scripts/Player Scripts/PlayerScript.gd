@@ -17,6 +17,9 @@ signal send_current_xp(xp: float)
 # Companion upgrade signal
 signal companion_upgrade
 
+# Level up visual signal
+signal visual_upgrade_effects
+
 @export var hit_flash: HitFlash
 @export var UpgradeScreen : Control
 @export var beatSquash : BeatSquashStretch
