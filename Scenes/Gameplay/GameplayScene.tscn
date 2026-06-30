@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://wxalwh8to6sn"]
 
 [ext_resource type="Script" uid="uid://cht6bexesl8x8" path="res://Scripts/Audio/GameManager.gd" id="1_4t4xv"]
-[ext_resource type="PackedScene" uid="uid://krp0oqtapmio" path="res://UnitInstances/Enemy Instances/SpawnerEnemy.tscn" id="2_e8aea"]
 [ext_resource type="Script" uid="uid://7kgw6x166rkq" path="res://Scripts/Level Based/StageHandler.gd" id="3_rp1p4"]
 [ext_resource type="Script" uid="uid://bsk5nfp8klfyc" path="res://Scripts/Level Based/DynamicLevelScript.gd" id="4_b8xms"]
 [ext_resource type="Script" uid="uid://c810xbguv6vjc" path="res://Scripts/Player Scripts/ComboSystemScript.gd" id="5_wkher"]
@@ -240,7 +239,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_4fkv1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_wipa6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("15_w47cw")
@@ -908,7 +907,6 @@ size = Vector2(86.35339, 4951.677)
 y_sort_enabled = true
 position = Vector2(-5, 2)
 script = ExtResource("1_4t4xv")
-spawner_scene = ExtResource("2_e8aea")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 waves_remaining = 5
@@ -1080,7 +1078,7 @@ metadata/_edit_use_anchors_ = true
 [node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="13" unique_id=172310879]
 metadata/_edit_use_anchors_ = true
 
-[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="12" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
+[node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
 secondary_ammo_counter = NodePath("../../../SecondaryShotBars")
 perfect_hit = 0.07
@@ -1092,13 +1090,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_4fkv1")
+button_group = SubResource("ButtonGroup_wipa6")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_4fkv1")
+button_group = SubResource("ButtonGroup_wipa6")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_4fkv1")
+button_group = SubResource("ButtonGroup_wipa6")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="22" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1229,9 +1227,12 @@ visible = false
 position = Vector2(1546, 403)
 scale = Vector2(0.4946371, 0.4946371)
 
-[node name="Player" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=910402363 node_paths=PackedStringArray("camera", "hit_flash", "UpgradeScreen", "manager", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") instance=ExtResource("52_fs22w")]
+[node name="Player" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=910402363 node_paths=PackedStringArray("chain_tier_ui", "chain_border_glow", "chain_aura", "camera", "hit_flash", "UpgradeScreen", "manager", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") instance=ExtResource("52_fs22w")]
 unique_name_in_owner = true
 position = Vector2(586, 280)
+chain_tier_ui = NodePath("../../../../../../InterfaceElements/NewHUD/UI/ChainTierUI")
+chain_border_glow = NodePath("../../../../../../InterfaceElements/NewHUD/UI/ChainGlow")
+chain_aura = NodePath("GPUParticles2D")
 camera = NodePath("../../../../../../InterfaceElements/PlayerCamera")
 hit_flash = NodePath("../../../../../../InterfaceElements/NewHUD/Hitflash")
 UpgradeScreen = NodePath("../../../../../../InterfaceElements/NewHUD/UI/UpgradeUI")
