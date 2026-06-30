@@ -9,7 +9,7 @@ extends EnemyState
 # Chance of fire per beat if they can already
 @export_range(0.0, 1.0) var shoot_chance_per_beat: float = 0.25
 # Range on how far can the unit shoot its lobbed attacks
-@export var attack_range: float = 500
+@export var attack_range: float = 1000
 
 var beats_waited: int = 0
 var last_beat: float = 0

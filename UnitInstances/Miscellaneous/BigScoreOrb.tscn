@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bxrvqcxt4j3gv"]
+[gd_scene format=3 uid="uid://bwwx03iutywod"]
 
-[ext_resource type="Script" uid="uid://bpw6c53jd7tjv" path="res://Scripts/Player Scripts/OrbScript.gd" id="1_hrftc"]
-[ext_resource type="Texture2D" uid="uid://cqkc55md2trlv" path="res://Sprites/Game Elements/xporb.png" id="2_hrftc"]
+[ext_resource type="Script" uid="uid://bpw6c53jd7tjv" path="res://Scripts/Player Scripts/OrbScript.gd" id="1_6j581"]
+[ext_resource type="Texture2D" uid="uid://cqkc55md2trlv" path="res://Sprites/Game Elements/xporb.png" id="2_e3cbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4og7"]
 radius = 6.505278
@@ -25,13 +25,13 @@ fill_to = Vector2(0.82051283, 0.15384616)
 colors = PackedColorArray(1, 1, 1, 1, 0.64228314, 0.57930446, 0.9999979, 0)
 
 [node name="AreaCollision" type="Area2D" unique_id=934945096]
-script = ExtResource("1_hrftc")
+script = ExtResource("1_6j581")
 
 [node name="OrbSprite" type="Sprite2D" parent="." unique_id=1535145071]
 self_modulate = Color(1.3135986, 2.8157141, 2.8157141, 1)
 position = Vector2(-0.9999995, -8.999998)
 scale = Vector2(0.13861386, 0.1386139)
-texture = ExtResource("2_hrftc")
+texture = ExtResource("2_e3cbq")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=596575799]
 position = Vector2(-0.48484847, 0.48484847)

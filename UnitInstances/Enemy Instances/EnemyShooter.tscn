@@ -286,14 +286,35 @@ damage_flash_effect = NodePath("../DamageFlash")
 shape = SubResource("CircleShape2D_mepa4")
 debug_color = Color(0.88687, 0.21789873, 0.6238485, 0.41960785)
 
+[node name="HealthBarDamage" type="TextureProgressBar" parent="." unique_id=1014100573]
+modulate = Color(1.353256, 0, 0, 1)
+offset_left = -24.666662
+offset_top = -65.33333
+offset_right = 33.63376
+offset_bottom = -34.735382
+rotation = 0.27375698
+value = 41.0
+nine_patch_stretch = true
+texture_progress = ExtResource("5_rakrl")
+
+[node name="HealthBarDecal" type="TextureProgressBar" parent="." unique_id=317744369]
+offset_left = -24.666662
+offset_top = -65.33333
+offset_right = 33.63376
+offset_bottom = -34.735382
+rotation = 0.27375698
+value = 39.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_ciy0g")
+
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=1971254556]
 offset_left = -24.66666
 offset_top = -65.33333
 offset_right = 33.633762
 offset_bottom = -34.735382
 rotation = 0.27375698
+value = 39.0
 nine_patch_stretch = true
-texture_under = ExtResource("4_ciy0g")
 texture_progress = ExtResource("5_rakrl")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1384008136]

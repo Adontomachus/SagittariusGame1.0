@@ -96,14 +96,14 @@ func _spawn_boss() -> void:
 	boss.boss_unit = true
 	add_child(boss)
 	print("Boss spawned!")
-	_spawn_wave_spawners(2)
+	_spawn_wave_spawners(6)
 	player.camera._change_camera_focus_to_boss()
 	await get_tree().create_timer(2.0).timeout
 	player.camera._change_camera_focus_to_player()
 	
-	while boss:
-			_spawn_wave_spawners(1)
-			await get_tree().create_timer(10.0).timeout
+	#while boss:
+	#		_spawn_wave_spawners(1)
+	#		await get_tree().create_timer(40.0).timeout
 	
 
 	## Update wave notification
@@ -245,8 +245,8 @@ func _spawn_wave_spawners(spawnerCount: int) -> void:
 		spawner.position = _get_random_spawn_position()
 		spawner.rarityWeight = rarityWeight          
 		spawner.final_wave = waves_remaining == 0   
-		if enemy_spawn_parent != null:
-			enemy_spawn_parent.add_child(spawner)
+		#if enemy_spawn_parent != null:
+		add_child(spawner)#	enemy_spawn_parent.add_child(spawner)
 		print("Spawned EnemySpawner ", i + 1, "/", spawner_count_per_wave)
 
 func _is_inside_spawn_bounds(pos: Vector2) -> bool:

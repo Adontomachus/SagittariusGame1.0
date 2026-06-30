@@ -21,13 +21,14 @@ func process_physics(delta: float) -> EnemyState:
 			if shot_times == 0:
 				attack_telegraph.play("Telegraph")
 			shot_times += 1
+
 			
 	if shot_times >= 2:
 		shot_times = 0
 		attack_telegraph.play("Firing")
-		parent.shoot_projectile(-17)
+		parent.shoot_projectile(-24)
 		parent.shoot_projectile()
-		parent.shoot_projectile(17)
+		parent.shoot_projectile(24)
 	
 	if shot_times >= parent.fire_rate and after_shoot_state:
 		return after_shoot_state
