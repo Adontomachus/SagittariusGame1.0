@@ -36,7 +36,6 @@ func process_physics(delta: float) -> EnemyState:
 			if shot_times == 0:
 				attack_telegraph.play("Telegraph")
 			shot_times += 1
-			
 	# Shot time threshold checker
 	if shot_times >= 2:
 		shot_times = 0

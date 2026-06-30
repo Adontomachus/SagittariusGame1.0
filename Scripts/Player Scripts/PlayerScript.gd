@@ -29,7 +29,8 @@ signal visual_upgrade_effects
 		healthPoints = clampi(value, 0, maxHealthPoints)
 	get:
 		return healthPoints
-
+# Visuals for when the player gets damaged (The red fill underneath the health bar that tweens)
+var damagedHealthPoints: float
 # Exports the main game manager from the current gameplay scene		
 @export var manager: GManager
 
@@ -193,6 +194,7 @@ func _get_active_sprite() -> AnimatedSprite2D:
 	return null
 
 func _ready():
+
 	# Resets upgrades
 	UpgradeSystemScript.reset()
 	# Sets up move speed
@@ -208,6 +210,8 @@ func _ready():
 	# Setting the current health from max HP value and disabling active ability on start
 	ability_active = false
 	healthPoints = maxHealthPoints
+	# Sets the damaged health fill equal to current health points
+	damagedHealthPoints = healthPoints
 	
 	# Hides the AoE ability effect on start since it is disabled
 	ability_aoe_node.hide()
@@ -588,10 +592,11 @@ func upgrade_player_stats() -> void:
 	healthPoints += maxHealthPoints / 5
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
 	
-	# Level up effects
+	# Level up effect section, also calls the level up signal visuals for the UI
 	var levelUpEffect = upgradeEffect.instantiate()
 	levelUpEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", levelUpEffect)
+	visual_upgrade_effects.emit()
 	# Updates maximum health values
 	send_current_xp.emit(experiencePoints)
 	send_maximum_xp.emit(maxExperiencePoints)
@@ -641,3 +646,6 @@ func _grenade() -> void:
 	await get_tree().create_timer(grenade_cooldown).timeout
 	grenade_ready = true
 #endregion
+
+func _tween_damaged_health() -> void:
+	pass

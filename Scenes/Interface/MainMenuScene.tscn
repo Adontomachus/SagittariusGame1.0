@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://bkent1jhnqg5y" path="res://Scripts/Scene Management/MainMenuScript.gd" id="1_xamtj"]
 [ext_resource type="PackedScene" uid="uid://ctnoi5oldo47k" path="res://Scenes/Interface/TutorialInterface.tscn" id="2_o310p"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="3_o310p"]
-[ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_1dxah"]
+[ext_resource type="Texture2D" uid="uid://1ddfyxpis5at" path="res://Sprites/UI Sprites/Sagittarius_logo.png" id="4_b5x3o"]
+[ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="5_wikew"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_1dxah"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wikew"]
 line_spacing = 4.0
-font = ExtResource("4_1dxah")
+font = ExtResource("5_wikew")
 font_size = 63
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dxah"]
@@ -99,7 +100,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Label:text")
+tracks/5/path = NodePath("Sprite2D/TitleLabel:text")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -111,14 +112,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Label:position")
+tracks/6/path = NodePath("Sprite2D/TitleLabel:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-678, 32), Vector2(98, 32)]
+"values": [Vector2(-1522.8235, 80.941185), Vector2(229.647, 81)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D/TitleLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.98, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1dxah"]
@@ -186,7 +199,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Label:text")
+tracks/5/path = NodePath("Sprite2D/TitleLabel:text")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -198,7 +211,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Label:position")
+tracks/6/path = NodePath("Sprite2D/TitleLabel:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -206,6 +219,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-682, 32)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D/TitleLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1dxah"]
@@ -301,7 +326,13 @@ text = "Level Select Test
 
 "
 
-[node name="Label" type="Label" parent="." unique_id=1559997822]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2011769590]
+position = Vector2(420, 176)
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("4_b5x3o")
+
+[node name="TitleLabel" type="Label" parent="Sprite2D" unique_id=1559997822]
+modulate = Color(1, 1, 1, 0)
 offset_left = -682.0
 offset_top = 32.0
 offset_right = -15.0
@@ -317,11 +348,11 @@ offset_bottom = 550.0
 text = "Background Splash Art"
 
 [node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=879553533]
-offset_left = 112.00001
-offset_top = 622.0
-offset_right = 521.0
-offset_bottom = 1005.0
-rotation = -0.08609183
+offset_left = 80.99999
+offset_top = 602.99994
+offset_right = 668.9492
+offset_bottom = 1020.99994
+rotation = 0.0003057141
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer" unique_id=1933681317]
 layout_mode = 2
@@ -330,8 +361,8 @@ layout_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85646725, 0.90982777, 0.2400937, 1)
-theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("5_wikew")
+theme_override_font_sizes/font_size = 72
 theme_override_styles/normal = SubResource("StyleBoxFlat_1dxah")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_wikew")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_e17d6")
@@ -348,8 +379,8 @@ text = "Start Game"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.849211, 0.93130827, 0.30403528, 1)
-theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("5_wikew")
+theme_override_font_sizes/font_size = 72
 text = "Halo Halo App
 "
 
@@ -357,8 +388,8 @@ text = "Halo Halo App
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81352156, 0.91330606, 0.28060427, 1)
-theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("5_wikew")
+theme_override_font_sizes/font_size = 72
 text = "Settings
 "
 
@@ -366,8 +397,8 @@ text = "Settings
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.84648824, 0.93378747, 0.2541813, 1)
-theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("5_wikew")
+theme_override_font_sizes/font_size = 72
 text = "Learn to Play
 "
 
@@ -375,8 +406,8 @@ text = "Learn to Play
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87332916, 0.92027265, 0.36795154, 1)
-theme_override_fonts/font = ExtResource("4_1dxah")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("5_wikew")
+theme_override_font_sizes/font_size = 72
 text = "Exit
 "
 

@@ -7,7 +7,11 @@ signal projectile_health_modify(modification: int)
 signal score_modify(modification: int)
 signal experience_modify(modification: int)
 
+## Signal for Health Damaged Visuals
+signal shake_healthbar
+
 func modify_player_health(modification: int) -> void:
+	shake_healthbar.emit()
 	print("Player is hit!")
 	# Hit feedback
 	var hitEffect = unit_hit_effect.instantiate()
