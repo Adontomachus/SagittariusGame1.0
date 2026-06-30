@@ -314,8 +314,8 @@ orbit_velocity_max = 0.5000001
 gravity = Vector3(0, -50, 0)
 damping_min = 1.0
 damping_max = 1.0
-scale_min = 0.39999998
-scale_max = 0.59999996
+scale_min = 0.099999994
+scale_max = 0.099999994
 
 [node name="Player" type="CharacterBody2D" unique_id=910402363 node_paths=PackedStringArray("beatSquash", "charge_shot", "q_moves", "pulse_sound_effect") groups=["PlayerObject"]]
 process_mode = 3
@@ -483,6 +483,7 @@ player_ref = NodePath("..")
 neutral_offset = Vector2(0, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1722241233]
+visible = false
 position = Vector2(0, -64)
 emitting = false
 amount = 11
