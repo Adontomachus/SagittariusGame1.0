@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://tnwux3ic8xx7"]
+
+[ext_resource type="Script" uid="uid://d2x2xjq7viba4" path="res://Scripts/Player Scripts/KapreSmokeEffect.gd" id="1_5mbnu"]
+
+[sub_resource type="Gradient" id="Gradient_5mbnu"]
+offsets = PackedFloat32Array(0.086134456, 0.9264706)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r2h4p"]
+gradient = SubResource("Gradient_5mbnu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8803419, 0.20683761)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxa4v"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 40.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = -20.000015
+angular_velocity_max = 19.999983
+gravity = Vector3(0, -15, 0)
+damping_min = 5.0
+damping_max = 15.000001
+scale_min = 0.59999996
+
+[node name="KapreSmokeEffect" type="Node2D" unique_id=964334791]
+script = ExtResource("1_5mbnu")
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="." unique_id=1116640595]
+emitting = false
+amount = 10
+texture = SubResource("GradientTexture2D_r2h4p")
+lifetime = 3.0
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_cxa4v")

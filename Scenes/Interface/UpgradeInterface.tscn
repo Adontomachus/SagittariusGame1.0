@@ -161,6 +161,7 @@ font_color = Color(0.8634428, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_oasdf"]
 font = ExtResource("2_wfrvm")
+font_size = 24
 font_color = Color(0.8823829, 0.96166515, 0, 1)
 outline_size = 5
 outline_color = Color(0.20470095, 0.204701, 2.4065375e-08, 1)
@@ -218,6 +219,13 @@ offset_top = 330.0
 offset_right = 527.0
 offset_bottom = 828.0
 
+[node name="Icon" type="TextureRect" parent="CanvasLayer/UpgradeText/Card1" unique_id=899203531]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 114.0
+offset_right = 294.0
+offset_bottom = 272.0
+
 [node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card1" unique_id=1983420145]
 layout_mode = 0
 offset_left = 48.0
@@ -268,14 +276,21 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Card2" type="Button" parent="CanvasLayer/UpgradeText" unique_id=765980183]
+[node name="Card2" type="Button" parent="CanvasLayer/UpgradeText" unique_id=441943595]
 layout_mode = 0
 offset_left = 621.0
 offset_top = 330.0
 offset_right = 1071.0
 offset_bottom = 828.0
 
-[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=978098320]
+[node name="Icon" type="TextureRect" parent="CanvasLayer/UpgradeText/Card2" unique_id=1500054298]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 114.0
+offset_right = 294.0
+offset_bottom = 272.0
+
+[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=970057534]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 19.0
@@ -285,7 +300,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_bl1lb")
 vertical_alignment = 1
 
-[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=550530408]
+[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=937953746]
 visible = false
 layout_mode = 0
 offset_left = 51.0
@@ -298,7 +313,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=1725829500]
+[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=1977914500]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 297.0
@@ -314,7 +329,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=1430892237]
+[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card2" unique_id=1168482730]
 layout_mode = 0
 offset_left = 51.0
 offset_top = -127.0
@@ -325,14 +340,21 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Card3" type="Button" parent="CanvasLayer/UpgradeText" unique_id=641972485]
+[node name="Card3" type="Button" parent="CanvasLayer/UpgradeText" unique_id=2139259708]
 layout_mode = 0
-offset_left = 1148.0
+offset_left = 1146.0
 offset_top = 330.0
-offset_right = 1598.0
+offset_right = 1596.0
 offset_bottom = 828.0
 
-[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=867185409]
+[node name="Icon" type="TextureRect" parent="CanvasLayer/UpgradeText/Card3" unique_id=56392086]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 114.0
+offset_right = 294.0
+offset_bottom = 272.0
+
+[node name="Level" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=410878520]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 19.0
@@ -342,7 +364,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_bl1lb")
 vertical_alignment = 1
 
-[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=711979889]
+[node name="Category" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=418507457]
 visible = false
 layout_mode = 0
 offset_left = 51.0
@@ -355,7 +377,7 @@ label_settings = SubResource("LabelSettings_bl1lb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=704710783]
+[node name="Description" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=1523802155]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 297.0
@@ -371,7 +393,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=691982646]
+[node name="Name" type="Label" parent="CanvasLayer/UpgradeText/Card3" unique_id=1059721725]
 layout_mode = 0
 offset_left = 51.0
 offset_top = -127.0
@@ -383,5 +405,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/UpgradeText/Card1" to="." method="_on_card_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradeText/Card2" to="." method="_on_card_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradeText/Card3" to="." method="_on_card_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card2" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card3" to="." method="_on_card_1_pressed"]

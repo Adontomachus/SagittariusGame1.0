@@ -1,6 +1,12 @@
 class_name ProjectileCommon
 extends Area2D
 
+## For Kapre Shot
+@export var is_kapre_shot: bool = false
+var kapre_smoke_scene := preload("res://Objects/Particle Effects/KapreSmokeEffect.tscn")
+var kapre_aoe_scene := preload("res://Objects/Instances With Collision/SplashDamage.tscn")
+var kapre_damage: float = 0.0
+
 signal set_projectile_modulate(color: Color)
 var hit_combo_value: float = 0.0
 
@@ -80,6 +86,8 @@ func _ready():
 				var hitEffect = wallHitEffects.instantiate()
 				hitEffect.position = self.get_global_position()
 				get_tree().get_root().call_deferred("add_child", hitEffect)
+				if is_kapre_shot:
+					_trigger_kapre_explosion()
 				#hit_noise.play()
 				#hide()
 				#await hit_noise.finished
@@ -87,29 +95,56 @@ func _ready():
 		)
 
 		self.area_entered.connect(func(area) -> void:
-			if (projectileSide == ProjectileSide.Player):
-				if area is EnemyProjectileHitbox: #(area.is_in_group("EnemyObject")):
+			if projectileSide == ProjectileSide.Player:
+				if area is EnemyProjectileHitbox:
 					if can_damage:
+						## Call modify_enemy_health once only
 						area.modify_enemy_health(-projectile_damage)
-						
+
+						## Harana Flame — on perfect hits only (hit_combo_value >= 40 means perfect)
+						var player := get_tree().get_first_node_in_group("PlayerObject") as PlayerCharacter
+						if player and player.harana_flame and hit_combo_value >= 40.0:
+							var enemy : Node = area.get_parent()
+							player._apply_harana_flame(enemy)
+
 						var combo_ui := get_tree().get_first_node_in_group("ComboUIFeedback")
 						if combo_ui:
 							combo_ui.on_particle_arrived(hit_combo_value)
-						#Hit feedback
+
+						## Hit feedback
 						var hitEffect = unitHitEffects.instantiate()
 						hitEffect.position = self.get_global_position()
 						get_tree().get_root().call_deferred("add_child", hitEffect)
-						# Damage Number Feedback
+
+						## Damage number
 						var damageFeedback = damageNumber.instantiate()
 						damageFeedback.position = self.get_global_position() + initPosition
 						damageFeedback.damage_value = projectile_damage
 						PointSystemScript.total_damage_dealt += projectile_damage
 						get_tree().get_root().call_deferred("add_child", damageFeedback)
+						if is_kapre_shot:
+							_trigger_kapre_explosion()
 						can_damage = false
 						hit_noise.play()
 						hide()
+
 					await hit_noise.finished
 					queue_free()
+
+			if projectileSide == ProjectileSide.Enemy:
+				if area is PlayerProjectileHitbox:
+					var hitEffect = unitHitEffects.instantiate()
+					hitEffect.position = self.get_global_position()
+					get_tree().get_root().call_deferred("add_child", hitEffect)
+
+					var enemyDamageFeedback = enemyDamageNumber.instantiate()
+					enemyDamageFeedback.position = self.get_global_position() + initPosition
+					enemyDamageFeedback.damage_value = projectile_damage
+					get_tree().get_root().call_deferred("add_child", enemyDamageFeedback)
+
+					area.modify_player_health(-projectile_damage)
+					queue_free()
+		
 
 			if (projectileSide == ProjectileSide.Enemy):
 				if area is PlayerProjectileHitbox: #(area.is_in_group("PlayerObject")):
@@ -187,11 +222,23 @@ func change_projectile_side(new_side: ProjectileSide) -> void:
 func change_projectile_modulation(color: Color) -> void:
 	modulate = color
 
-	# if emitter.color_ramp:
-		## Duplicate so this projectile has its own ramp
-	#	emitter.color_ramp = emitter.color_ramp.duplicate()
+func _trigger_kapre_explosion() -> void:
+	var impact_pos := global_position
 
-	#	emitter.color_ramp.set_color(0, color)
-	#	emitter.color_ramp.set_color(1, color.darkened(0.4))
-	#else:
-	#	emitter.color = color
+	## Damage AoE at impact point
+	var aoe = kapre_aoe_scene.instantiate()
+	aoe.change_damage(kapre_damage)
+	aoe.position = impact_pos
+	get_tree().get_root().call_deferred("add_child", aoe)
+	var world_parent = get_tree().current_scene.get_node_or_null(
+		"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
+	## Smoke cloud at impact point
+	var smoke = kapre_smoke_scene.instantiate()
+	world_parent.add_child(smoke)
+	smoke.global_position = impact_pos
+
+	## Camera bump
+	var camera := get_tree().get_first_node_in_group("CameraControl")
+	if camera:
+		camera.add_trauma(0.8)

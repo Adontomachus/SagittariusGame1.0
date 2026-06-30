@@ -37,6 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://2lxhtsyypdef" path="res://Sprites/Game Elements/EyeFull.png" id="29_qj281"]
 [ext_resource type="Shader" uid="uid://dl5lk71shldso" path="res://Scenes/Gameplay/Minimap.gdshader" id="32_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://dqtyg5mdmcf2g" path="res://Sprites/Game Elements/Placeholders/UI Elements/Minimapborder.png" id="32_7363f"]
+[ext_resource type="Script" uid="uid://1hydwbvp5fas" path="res://Scripts/UI Menu, Settings and Post Game/ChainTierUI.gd" id="38_qj38p"]
+[ext_resource type="Shader" uid="uid://ddb338jqre7wr" path="res://Scenes/Gameplay/ChainGlow.gdshader" id="39_kpxyp"]
+[ext_resource type="Script" uid="uid://dm4syv3ardxe6" path="res://Scenes/Gameplay/ChainGlow.gd" id="39_xrjep"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
 font = ExtResource("13_qj281")
@@ -949,7 +952,7 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_uyhx3"]
 font = ExtResource("4_0if8i")
 font_size = 100
-font_color = Color(1.0730962, 1.0629185, 0.5682854, 1)
+font_color = Color(1.073, 1.063, 0.568, 1)
 shadow_size = 12
 shadow_color = Color(0, 0, 0, 0.89800006)
 shadow_offset = Vector2(2.26, 2.105)
@@ -1426,18 +1429,6 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../RMBContainer:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1776.0001, 411)]
-}
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
@@ -1683,10 +1674,30 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_7363f"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_kpxyp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qj38p"]
+font = ExtResource("13_qj281")
+font_size = 34
+font_color = Color(1.0731114, 1.0647249, 0.56991154, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.8980392)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrjep"]
+font = ExtResource("13_qj281")
+font_size = 60
+outline_size = 20
+outline_color = Color(0.28627452, 0.16862746, 0, 1)
+shadow_size = 25
+shadow_color = Color(0.15294118, 0.039215688, 0, 0.93333334)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sg81t"]
+shader = ExtResource("39_kpxyp")
+shader_parameter/glow_color = Color(1, 0.8, 0.4, 1)
+shader_parameter/intensity = 0.0
 
 [node name="UI" type="Control" unique_id=2071023402]
 layout_mode = 3
@@ -1786,6 +1797,7 @@ libraries/ = SubResource("AnimationLibrary_fu6i5")
 libraries/ = SubResource("AnimationLibrary_110ka")
 
 [node name="BeatPulseIndicatorLeft" type="ColorRect" parent="Border Pulse" unique_id=290467002]
+visible = false
 offset_top = 12.0
 offset_right = 12.0
 offset_bottom = 1068.0
@@ -1793,6 +1805,7 @@ scale = Vector2(2, 1)
 color = Color(0.93929464, 0.9131191, 0.63476855, 1)
 
 [node name="BeatPulseIndicatorLeft3" type="ColorRect" parent="Border Pulse" unique_id=1925153887]
+visible = false
 offset_left = 1908.0
 offset_top = 12.0
 offset_right = 1920.0
@@ -1801,6 +1814,7 @@ scale = Vector2(2, 1)
 color = Color(0.9411765, 0.9137255, 0.63529414, 1)
 
 [node name="BeatPulseIndicatorLeft2" type="ColorRect" parent="Border Pulse" unique_id=1069584845]
+visible = false
 offset_top = 1068.0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -1808,6 +1822,7 @@ scale = Vector2(1, 2)
 color = Color(0.9411765, 0.9137255, 0.63529414, 1)
 
 [node name="BeatPulseIndicatorLeft4" type="ColorRect" parent="Border Pulse" unique_id=635373106]
+visible = false
 offset_right = 1920.0
 offset_bottom = 12.0
 scale = Vector2(1, 2)
@@ -1868,8 +1883,8 @@ custom_minimum_size = Vector2(0, 170)
 layout_mode = 0
 offset_left = 22.0
 offset_top = 50.0
-offset_right = 653.1271
-offset_bottom = 291.0
+offset_right = 622.0
+offset_bottom = 250.0
 nine_patch_stretch = true
 texture_under = ExtResource("7_5m4nd")
 texture_progress = ExtResource("8_5m4nd")
@@ -1877,10 +1892,10 @@ texture_progress = ExtResource("8_5m4nd")
 [node name="ExperienceText" type="Label" parent="EXPBar" unique_id=1944989475]
 z_index = 4
 layout_mode = 0
-offset_left = 405.0
-offset_top = 147.0
-offset_right = 872.8752
-offset_bottom = 185.0
+offset_left = 389.0
+offset_top = 119.0
+offset_right = 856.8752
+offset_bottom = 157.0
 theme_override_font_sizes/font_size = 28
 text = "0 | 100 XP"
 label_settings = SubResource("LabelSettings_3825n")
@@ -1892,8 +1907,8 @@ custom_minimum_size = Vector2(0, 170)
 layout_mode = 0
 offset_left = 22.0
 offset_top = 50.0
-offset_right = 653.1271
-offset_bottom = 291.0
+offset_right = 622.0
+offset_bottom = 250.0
 nine_patch_stretch = true
 texture_under = ExtResource("7_5m4nd")
 texture_progress = ExtResource("8_qj281")
@@ -1901,10 +1916,10 @@ texture_progress = ExtResource("8_qj281")
 [node name="PlayerHealthText" type="Label" parent="UpdatedPlayerHealthBar" unique_id=591465270]
 z_index = 4
 layout_mode = 0
-offset_left = 160.0
-offset_top = 100.0
-offset_right = 562.8752
-offset_bottom = 138.0
+offset_left = 157.0
+offset_top = 79.0
+offset_right = 559.8752
+offset_bottom = 117.0
 theme_override_font_sizes/font_size = 15
 text = "0 | 100 Health"
 label_settings = SubResource("LabelSettings_pdrc1")
@@ -1937,10 +1952,10 @@ value = 2.1
 [node name="PlayerLevel" type="Label" parent="UpdatedPlayerHealthBar" unique_id=743208092]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
-offset_left = 221.0
-offset_top = 70.0
-offset_right = 559.0
-offset_bottom = 103.0
+offset_left = 210.0
+offset_top = 56.0
+offset_right = 548.0
+offset_bottom = 89.0
 text = "Player Level: 1"
 label_settings = SubResource("LabelSettings_o710q")
 
@@ -2043,10 +2058,10 @@ label_settings = SubResource("LabelSettings_ve3xx")
 
 [node name="EnemyCounter" type="Label" parent="." unique_id=172310879]
 layout_mode = 0
-offset_left = 1556.0
-offset_top = 372.0
-offset_right = 2002.0
-offset_bottom = 400.0
+offset_left = 1554.0
+offset_top = 402.0
+offset_right = 2000.0
+offset_bottom = 430.0
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
@@ -2260,10 +2275,10 @@ texture = ExtResource("21_vdje8")
 
 [node name="RMBContainer" type="ColorRect" parent="." unique_id=1169418434]
 layout_mode = 0
-offset_left = 1776.0001
-offset_top = 411.0
-offset_right = 1844.1843
-offset_bottom = 482.32434
+offset_left = 1737.0002
+offset_top = 534.0
+offset_right = 1805.1844
+offset_bottom = 605.32434
 rotation = 0.113265686
 
 [node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
@@ -2315,13 +2330,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_7363f")
+button_group = SubResource("ButtonGroup_kpxyp")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_7363f")
+button_group = SubResource("ButtonGroup_kpxyp")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_7363f")
+button_group = SubResource("ButtonGroup_kpxyp")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
@@ -2331,16 +2346,16 @@ layout_mode = 1
 layer = 0
 
 [node name="MinimapContainer" parent="MinimapHUD" index="0" unique_id=1762052833]
-custom_minimum_size = Vector2(250, 250)
+custom_minimum_size = Vector2(200, 200)
 anchors_preset = -1
 anchor_left = 0.831
 anchor_top = 0.015
 anchor_right = 0.897
 anchor_bottom = 0.125
 offset_left = 2.4801025
-offset_top = 40.800003
-offset_right = 125.76001
-offset_bottom = 172.0
+offset_top = 77.8
+offset_right = 75.76001
+offset_bottom = 159.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" parent="MinimapHUD/MinimapContainer" index="0" unique_id=1472134649]
@@ -2351,39 +2366,46 @@ offset_right = 256.0
 offset_bottom = 256.8
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="MinimapHUD/MinimapContainer" index="1" unique_id=459562973]
-position = Vector2(124.00001, 119.99999)
-scale = Vector2(0.5443725, 0.5443725)
-texture = ExtResource("32_7363f")
-
-[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=2095466810]
+[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=2095466810]
 material = SubResource("ShaderMaterial_qj38p")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.012400513
+anchor_top = 0.0009999848
+anchor_right = -0.012400513
+anchor_bottom = 0.0009999848
 offset_left = -1.5198975
 offset_top = -0.19999695
-offset_right = 248.4801
-offset_bottom = 249.8
+offset_right = 198.4801
+offset_bottom = 199.8
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" parent="MinimapHUD/MinimapContainer/SubViewportContainer" index="0" unique_id=2109862884]
-size = Vector2i(250, 250)
+size = Vector2i(200, 200)
 
 [node name="MinimapCamera" parent="MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" index="0" unique_id=1648225918 groups=["MinimapCamera"]]
 position = Vector2(0, 22)
-minimap_display_size = Vector2(300, 300)
 
-[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="3" unique_id=117072874]
+[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.012400513
+anchor_top = 0.0009999848
+anchor_right = 0.9875995
+anchor_bottom = 1.0009999
 offset_left = -1.5198975
 offset_top = -0.19999695
 offset_right = -1.5198975
-offset_bottom = -0.2000122
+offset_bottom = -0.19998169
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MinimapHUD/MinimapContainer" index="3" unique_id=459562973]
+position = Vector2(97, 96)
+scale = Vector2(0.434, 0.434)
+texture = ExtResource("32_7363f")
 
 [node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full", "light")]
 position = Vector2(14, 831)
@@ -2420,6 +2442,54 @@ scale = Vector2(2.2149193, 2.272444)
 color = Color(3.294, 3.294, 3.294, 1)
 energy = 4.0
 texture = SubResource("GradientTexture2D_8hfiw")
+
+[node name="ChainTierUI" type="Control" parent="." unique_id=1502570468 node_paths=PackedStringArray("tier_label", "banner_label", "banner_container")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("38_qj38p")
+tier_label = NodePath("ChainLabel")
+banner_label = NodePath("BannerContainer/BannerLabel")
+banner_container = NodePath("BannerContainer")
+
+[node name="ChainLabel" type="Label" parent="ChainTierUI" unique_id=1156803707]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 483.0
+offset_right = 265.0
+offset_bottom = 556.0
+text = "Sample
+"
+label_settings = SubResource("LabelSettings_qj38p")
+
+[node name="BannerContainer" type="Control" parent="ChainTierUI" unique_id=1330930065]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BannerLabel" type="Label" parent="ChainTierUI/BannerContainer" unique_id=181406935]
+layout_mode = 1
+offset_left = 790.0
+offset_top = 701.0
+offset_right = 964.0
+offset_bottom = 826.0
+text = "Sample
+"
+label_settings = SubResource("LabelSettings_xrjep")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChainGlow" type="ColorRect" parent="." unique_id=83664289]
+material = SubResource("ShaderMaterial_sg81t")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("39_xrjep")
 
 [editable path="CutsceneUI/GameOverNode/WinScreen"]
 [editable path="CutsceneUI/GameOverNode/LoseScreen"]

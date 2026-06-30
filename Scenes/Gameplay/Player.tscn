@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dh7dhvinq5p40" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-create-a-sound-file-for-when-a-bolt-hits-our-hero- (1).mp3" id="31_ss6nw"]
 [ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="32_1a1k3"]
 [ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="33_1fgkr"]
+[ext_resource type="Script" uid="uid://d4wvkv64i10g" path="res://Scripts/Player Scripts/ChainAura.gd" id="34_aekym"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8aea"]
 animations = [{
@@ -230,8 +231,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8espc"]
-radius = 51.249996
-height = 114.99999
+radius = 30.0
+height = 106.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muue2"]
 height = 124.499794
@@ -291,6 +292,31 @@ gradient = SubResource("Gradient_b8xms")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_aekym"]
+offsets = PackedFloat32Array(0.39285713, 0.97689074)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_muue2"]
+gradient = SubResource("Gradient_aekym")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7709402, 0.25470087)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aekym"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.99
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, 0)
+spread = 160.824
+orbit_velocity_min = 0.5000001
+orbit_velocity_max = 0.5000001
+gravity = Vector3(0, -50, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_min = 0.39999998
+scale_max = 0.59999996
+
 [node name="Player" type="CharacterBody2D" unique_id=910402363 node_paths=PackedStringArray("beatSquash", "charge_shot", "q_moves", "pulse_sound_effect") groups=["PlayerObject"]]
 process_mode = 3
 script = ExtResource("1_8espc")
@@ -325,7 +351,7 @@ sprite_frames = SubResource("SpriteFrames_e8aea")
 animation = &"shoot_up_right"
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="." unique_id=608752885]
-position = Vector2(-2.4999998, -16.250002)
+position = Vector2(-1, -38)
 shape = SubResource("CapsuleShape2D_8espc")
 
 [node name="EnemyCollision" type="Area2D" parent="." unique_id=118625795 groups=["PlayerObject"]]
@@ -455,6 +481,17 @@ shadow_offset = Vector2(0, 0)
 shadow_opacity = 1.0
 player_ref = NodePath("..")
 neutral_offset = Vector2(0, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1722241233]
+position = Vector2(0, -64)
+emitting = false
+amount = 11
+texture = SubResource("GradientTexture2D_muue2")
+speed_scale = 7.75
+explosiveness = 1.0
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_aekym")
+script = ExtResource("34_aekym")
 
 [connection signal="experience_modify" from="ProjectileHitbox" to="." method="modify_current_xp"]
 [connection signal="projectile_health_modify" from="ProjectileHitbox" to="." method="modify_current_player_health"]

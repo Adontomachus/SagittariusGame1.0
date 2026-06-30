@@ -45,6 +45,11 @@ func _populate_card(card: Button, upgrade: UpgradeData) -> void:
 	card.get_node("Description").text = upgrade.get_description()
 	card.get_node("Category").text = UpgradeData.UpgradeCategory.keys()[upgrade.category]
 	card.get_node("Level").text = upgrade.get_level_label()
+	
+	var icon_node := card.get_node_or_null("Icon") as TextureRect
+	if icon_node:
+		icon_node.texture = upgrade.icon
+		icon_node.visible = upgrade.icon != null
 
 
 func _on_card_1_pressed() -> void:

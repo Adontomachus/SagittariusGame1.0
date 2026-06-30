@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dbjpa6jj0a5y4"]
+
+[ext_resource type="Script" uid="uid://0l5p6unw7vsg" path="res://Objects/Particle Effects/NovaRing.gd" id="1_hfme3"]
+
+[node name="NovaRing" type="Node2D" unique_id=978676673]
+script = ExtResource("1_hfme3")

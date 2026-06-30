@@ -13,11 +13,25 @@ func _ready() -> void:
 func flash() -> void:
 	if tween:
 		tween.kill()
-
-	## Instantly set to flash color then fade out
 	color = flash_color
 	modulate = flash_color
 	tween = create_tween()
 	tween.tween_property(self, "modulate", Color(flash_color.r, flash_color.g, flash_color.b, 0.0), flash_duration)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	print("isFlashing")
+
+func nova_flash() -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	color = Color(1.0, 1.0, 1.0, 1.0)
+	visible = true
+	## Hold briefly at full white
+	tween.tween_interval(0.08)
+	tween.tween_property(self, "color",
+		Color(0.1, 0.8, 1.0, 0.6), 0.1)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	## Fully fade out
+	tween.tween_property(self, "color",
+		Color(0.1, 0.8, 1.0, 0.0), 0.4)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)

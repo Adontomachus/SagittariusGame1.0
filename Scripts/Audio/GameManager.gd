@@ -5,7 +5,7 @@ extends Node2D
 var boss_spawned: bool = false
 
 @export_category("Enemy Spawner")
-@export var spawner_scene: PackedScene #= preload("res://UnitInstances/Enemy Instances/SpawnerEnemy.tscn")
+@export var spawner_scene: PackedScene = preload("res://UnitInstances/Enemy Instances/SpawnerEnemy.tscn")
 @export var spawner_count_per_wave: int = 3
 
 @export var beatIndicator: Panel # = $InterfaceElements/HUD/BeatIndicator
@@ -241,7 +241,7 @@ func _spawn_wave_spawners(spawnerCount: int) -> void:
 			return
 		var spawner = spawner_scene.instantiate()
 		spawner.visible = true
-		spawner.z_index = 0
+		#spawner.z_index = 0
 		spawner.position = _get_random_spawn_position()
 		spawner.rarityWeight = rarityWeight          
 		spawner.final_wave = waves_remaining == 0   

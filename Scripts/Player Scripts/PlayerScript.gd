@@ -1,6 +1,10 @@
 class_name PlayerCharacter
 extends CharacterBody2D
 
+@export var chain_tier_ui: ChainTierUI
+@export var chain_border_glow: ChainBorderGlow
+@export var chain_aura: ChainAura
+
 @export var camera : CameraControl
 @onready var hit_sound: AudioStreamPlayer2D = $PlayerHitSound
 
@@ -78,6 +82,8 @@ var playerDirection: Vector2
 @export var projectile_damage: float = 30
 #endregion
 
+var kapre_smoke_effect := preload("res://Objects/Particle Effects/KapreSmokeEffect.tscn")
+
 @export_category("Alternate Attacks")
 @export var charge_shot: ChargeShot
 @export var q_moves: QMoves
@@ -96,6 +102,50 @@ var dash_velocity: Vector2 = Vector2.ZERO
 @export var grenade_damage_divisor_min: float = 1.08
 @export var grenade_divisor_max: float = 0.92
 var grenade_ready: bool = true
+
+#New upgrade things
+#region AGIMAT PASSIVES
+var agimat_echo: bool = false
+var balete_heart: bool = false
+var tikbalang_step: bool = false
+var harana_flame: bool = false
+var anito_blessing: bool = false
+var kundiman_shield: bool = false
+var kundiman_shield_used: bool = false
+var sarimanok_feather: bool = false
+var diwata_veil: bool = false
+var kapre_smoke: bool = true
+var nuno_root: bool = false
+#endregion
+
+# For agimats
+#region EXTRA AGIMAT VARIABLES
+var diwata_invulnerable: bool = false
+var kapre_shot_counter: int = 0
+var _diwata_timer: float = 0.0
+var _nuno_root_timer: float = 0.0
+var _nuno_regen_tick: float = 0.0
+const NUNO_STILL_THRESHOLD: float = 10.0   ## speed below this counts as standing still
+const NUNO_REGEN_INTERVAL: float = 1.0    ## regen tick every second
+const NUNO_REGEN_AMOUNT: float = 3.0      ## HP per tick
+#endregion
+
+# For perfect chain
+#region PERFECT CHAIN SYSTEM
+var perfect_chain: int = 0
+
+var cadence_mode: bool = false
+var cadence_charge_multiplier: float = 1.0
+
+var projectile_size_multiplier: float = 1.0
+var projectile_speed_multiplier: float = 1.0
+var projectile_damage_multiplier: float = 1.0
+#endregion
+
+#region TIKBALANG STEP
+var tikbalang_speed_timer: float = 0.0
+var tikbalang_speed_bonus: float = 1.5
+#endregion
 
 #region Reference object 
 # Projectile types
@@ -158,20 +208,6 @@ var can_control_unit: bool = true
 ## TESTING PURPOSES
 @onready var player_sprite_up_right_walking: AnimatedSprite2D = $PlayerSpriteUpRightWalking
 
-#region Sprites section
-## Sprites for the orthographic direction to face where the player's cursor is
-## There are 8 directions mimicking the compass directions
-@export_category("Orthographic Sprite Rotations")
-@export var sprite_up: AnimatedSprite2D
-@export var sprite_up_right: AnimatedSprite2D
-@export var sprite_right: AnimatedSprite2D
-@export var sprite_down_right: AnimatedSprite2D
-@export var sprite_down: AnimatedSprite2D
-@export var sprite_down_left: AnimatedSprite2D
-@export var sprite_left: AnimatedSprite2D
-@export var sprite_up_left: AnimatedSprite2D
-#endregion
-
 #region Companion Progression System
 @export_category("Companion Progression Statistics")
 @export var max_points_to_transform: float = 2000
@@ -179,18 +215,6 @@ var can_control_unit: bool = true
 
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
-
-# Helper function to get which sprite is active
-func _get_active_sprite() -> AnimatedSprite2D:
-	if sprite_up.visible: return sprite_up
-	if sprite_up_right.visible: return sprite_up_right
-	if sprite_right.visible: return sprite_right
-	if sprite_down_right.visible: return sprite_down_right
-	if sprite_down.visible: return sprite_down
-	if sprite_down_left.visible: return sprite_down_left
-	if sprite_left.visible: return sprite_left
-	if sprite_up_left.visible: return sprite_up_left
-	return null
 
 func _ready():
 	# Resets upgrades
@@ -248,6 +272,24 @@ func activate_player_ability() -> void:
 func _process(delta):
 	# This short code increments the fire rate per second (0.3 max fire rate allows players to fire at 0.3 shots)
 	shot_fire_rate += 1 * delta
+
+	## Tikbalang Step timer decay
+	if tikbalang_step and tikbalang_speed_timer > 0:
+		tikbalang_speed_timer -= delta
+		moveSpeed = maxMoveSpeed * tikbalang_speed_bonus
+	elif tikbalang_step and tikbalang_speed_timer <= 0:
+		moveSpeed = maxMoveSpeed
+
+	## Nuno Root — regen health while standing still
+	if nuno_root:
+		_process_nuno_root(delta)
+
+	## Diwata Veil — invulnerability timer
+	if diwata_invulnerable:
+		_diwata_timer -= delta
+		if _diwata_timer <= 0:
+			diwata_invulnerable = false
+
 	
 	## Handled by new script
 	##region Section for charged shot feedback
@@ -390,38 +432,185 @@ func _physics_process(delta):
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 	camera.add_trauma(0.5)
 	play_action("shoot")
-	if shot_fire_rate > max_shot_fire_rate:
-		## Spawn position is the hand offset in world space
-		var spawn_pos := global_position + _get_facing_offset()
-		## Rotation calculated from spawn pos to mouse — not player center to mouse
-		var spawn_rotation := _get_projectile_rotation_from_spawn(spawn_pos)
+	
+	if shot_fire_rate < max_shot_fire_rate:
+		return
+	shot_fire_rate = 0
+	var spawn_pos := global_position + _get_facing_offset()
+	var spawn_rotation := _get_projectile_rotation_from_spawn(spawn_pos)
+	## Kapre Smoke counter
+	var this_shot_is_kapre := false
+	if kapre_smoke:
+		kapre_shot_counter += 1
+		if kapre_shot_counter >= 8:
+			kapre_shot_counter = 0
+			this_shot_is_kapre = true
 
-		if charge_shot.consume(modifier):
-			shot_sound.play()
-		else:
-			var projectile_instance = projectile.instantiate()
-			shot_sound.play()
-			projectile_instance.change_damage(projectile_damage * modifier)
-			projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
-			projectile_instance.change_projectile_modulation(color)
-			projectile_instance.position = spawn_pos
-			projectile_instance.rotation_degrees = spawn_rotation
-			projectile_instance.hit_combo_value = _get_combo_value_for_shot(modifier)
-			projectile_instance.get_node("OrbitingParticles").set_effect_color(color)
-			get_tree().get_root().call_deferred("add_child", projectile_instance)
+	if charge_shot.consume(modifier):
+		shot_sound.play()
+	else:
+		var projectile_instance = projectile.instantiate()
+		shot_sound.play()
 
-		var shotEffect = projectileShotEffect.instantiate()
-		var was_perfect := modifier >= 1.45
-		shotEffect.set_effect_color(color, was_perfect)
-		shotEffect.position = spawn_pos
-		shotEffect.set_effect_color(color)
-		get_tree().get_root().call_deferred("add_child", shotEffect)
-		shot_fire_rate = 0
-		print_debug("Damage: %s" % (projectile_damage * modifier))
+		var final_damage := projectile_damage * modifier * projectile_damage_multiplier
+		projectile_instance.change_damage(int(final_damage))
+		projectile_instance.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+		projectile_instance.change_projectile_modulation(color)
+		projectile_instance.position = spawn_pos
+		projectile_instance.rotation_degrees = spawn_rotation
+		projectile_instance.hit_combo_value = _get_combo_value_for_shot(modifier)
+		if this_shot_is_kapre:
+			projectile_instance.is_kapre_shot = true
+			projectile_instance.kapre_damage = final_damage * 1.5
+		if projectile_size_multiplier != 1.0:
+			projectile_instance.set_projectile_size(projectile_size_multiplier)
+
+		if projectile_speed_multiplier != 1.0:
+			projectile_instance.projectileVelocity *= projectile_speed_multiplier
+
+		projectile_instance.get_node("OrbitingParticles").set_effect_color(color)
+		get_tree().get_root().call_deferred("add_child", projectile_instance)
+
+		if sarimanok_feather:
+			_shoot_sarimanok_spread(modifier, color)
+		if agimat_echo and modifier >= 1.45:
+			_shoot_echo.call_deferred(modifier, color)
+
+	var shotEffect = projectileShotEffect.instantiate()
+	var was_perfect := modifier >= 1.45
+	shotEffect.set_effect_color(color, was_perfect)
+	shotEffect.position = spawn_pos
+	get_tree().get_root().call_deferred("add_child", shotEffect)
+	print_debug("Damage: %s" % (projectile_damage * modifier * projectile_damage_multiplier))
 
 ## Offset distance from player center — adjust to match your sprite size
 @export var projectile_spawn_offset: float = 20.0
 
+func _on_perfect_hit() -> void:
+	perfect_chain += 1
+
+	## Tikbalang Step
+	if tikbalang_step:
+		tikbalang_speed_timer = 1.25
+
+	## Perfect Chain x4
+	if perfect_chain >= 4:
+		_enable_comet_projectile()
+
+	## Perfect Chain x8
+	if perfect_chain >= 8 and !cadence_mode:
+		_enter_cadence_mode()
+
+	## Perfect Chain x16
+	if perfect_chain >= 16:
+		_trigger_echo_nova()
+
+func _on_missed_beat():
+	if kundiman_shield and not kundiman_shield_used:
+		kundiman_shield_used = true
+		print("Kundiman Shield protected combo!")
+		return
+
+	perfect_chain = 0
+	cadence_mode = false
+	cadence_charge_multiplier = 1.0
+	projectile_size_multiplier = 1.0
+	projectile_speed_multiplier = 1.0
+	projectile_damage_multiplier = 1.0
+	if player_sprite:
+		player_sprite.modulate = Color.WHITE
+	_clear_chain_visuals()
+	
+func _update_chain_visuals() -> void:
+	var tier := 0
+	var color := Color.WHITE
+	if perfect_chain >= 16:
+		tier = 16
+		color = Color(1.0, 0.3, 0.9)
+	elif perfect_chain >= 8:
+		tier = 8
+		color = Color(0.5, 0.9, 1.0)
+	elif perfect_chain >= 4:
+		tier = 4
+		color = Color(1.0, 0.8, 0.4)
+
+	if chain_tier_ui:
+		chain_tier_ui.update_tier(perfect_chain)
+	if chain_border_glow:
+		chain_border_glow.set_tier(tier, color)
+	if chain_aura:
+		chain_aura.set_tier(tier, color)
+
+
+func _clear_chain_visuals() -> void:
+	if chain_tier_ui:
+		chain_tier_ui.reset_tier()
+	if chain_border_glow:
+		chain_border_glow.clear()
+	if chain_aura:
+		chain_aura.set_tier(0, Color.WHITE)
+
+func _enable_comet_projectile() -> void:
+	projectile_size_multiplier = 1.5
+	projectile_speed_multiplier = 1.25
+	projectile_damage_multiplier = 1.35
+	print("Comet Form activated!")
+	if player_sprite:
+		player_sprite.modulate = Color(1.2, 1.0, 0.6, 1.0)
+	_update_chain_visuals()
+
+
+func _enter_cadence_mode() -> void:
+	cadence_mode = true
+	cadence_charge_multiplier = 2.0
+	print("Cadence Mode activated!")
+	if player_sprite:
+		player_sprite.modulate = Color(0.6, 1.0, 1.4, 1.0)
+	_update_chain_visuals()
+
+
+func _trigger_echo_nova() -> void:
+	print("Echo Nova!")
+
+	## Only damage enemies within nova radius
+	var nova_radius := 400.0
+	var enemies := get_tree().get_nodes_in_group("GeneralEnemyInstance")
+	for enemy in enemies:
+		if not is_instance_valid(enemy):
+			continue
+		if enemy.has_method("modify_health"):
+			var dist := global_position.distance_to(enemy.global_position)
+			if dist <= nova_radius:
+				enemy.modify_health(-int(projectile_damage * 2.0))
+
+	## Spawn AoE damage zone at player
+	var nova := pulse_aoe.instantiate()
+	nova.change_damage(int(projectile_damage * 2.0))
+	nova.position = global_position
+	nova.scale = Vector2(4.0, 4.0)
+	get_tree().get_root().call_deferred("add_child", nova)
+
+	## Big camera trauma
+	camera.add_trauma(1.5)
+
+	## Full screen flash
+	if hit_flash:
+		hit_flash.nova_flash()
+	var nova_ring = load("res://Objects/Particle Effects/NovaRing.tscn").instantiate()
+	nova_ring.position = global_position
+	nova_ring.max_radius = 1000.0
+	get_tree().get_root().call_deferred("add_child", nova_ring)
+
+	## Reset chain
+	perfect_chain = 0
+	cadence_mode = false
+	cadence_charge_multiplier = 1.0
+	projectile_size_multiplier = 1.0
+	projectile_speed_multiplier = 1.0
+	projectile_damage_multiplier = 1.0
+	if player_sprite:
+		player_sprite.modulate = Color.WHITE
+	_clear_chain_visuals()
 
 func _get_facing_offset() -> Vector2:
 	match current_facing:
@@ -542,6 +731,10 @@ func update_sprite_rotations(cursor_direction):
 #region Player stat modifications
 # Modifies current player health
 func modify_current_player_health(modification: int) -> void:
+	if modification < 0 and diwata_invulnerable:
+		print("Diwata Veil blocked damage!")
+		return
+		
 	print("Player HP is now: ", healthPoints)
 	healthPoints += modification
 	if (healthPoints > maxHealthPoints): healthPoints = maxHealthPoints
@@ -641,3 +834,85 @@ func _grenade() -> void:
 	await get_tree().create_timer(grenade_cooldown).timeout
 	grenade_ready = true
 #endregion
+
+#region Agimats Implementation
+## Nuno Root — regen while still
+func _process_nuno_root(delta: float) -> void:
+	if velocity.length() < NUNO_STILL_THRESHOLD:
+		_nuno_root_timer += delta
+		if _nuno_root_timer >= NUNO_REGEN_INTERVAL:
+			_nuno_root_timer = 0.0
+			modify_current_player_health(int(NUNO_REGEN_AMOUNT))
+	else:
+		_nuno_root_timer = 0.0
+
+
+## Diwata Veil — called when player takes damage
+func _trigger_diwata_veil() -> void:
+	diwata_invulnerable = true
+	_diwata_timer = 1.0
+
+
+## Sarimanok Feather — fires spread projectiles
+func _shoot_sarimanok_spread(modifier: float, color: Color) -> void:
+	var spread_angles := [-18.0, 18.0]  ## left and right spread
+	for angle_offset in spread_angles:
+		var spread_projectile = projectile.instantiate()
+		var spawn_pos := global_position + _get_facing_offset()
+		spread_projectile.change_damage(projectile_damage * modifier * 0.6)
+		spread_projectile.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+		spread_projectile.change_projectile_modulation(color)
+		spread_projectile.position = spawn_pos
+		spread_projectile.rotation_degrees = _get_projectile_rotation_from_spawn(spawn_pos) + angle_offset
+		spread_projectile.hit_combo_value = 0.0
+		get_tree().get_root().call_deferred("add_child", spread_projectile)
+
+
+## Kapre Smoke — explosion projectile
+func _shoot_kapre_explosion(modifier: float, color: Color) -> void:
+	var spawn_pos := global_position + _get_facing_offset()
+	var spawn_rotation := _get_projectile_rotation_from_spawn(spawn_pos)
+
+	## Damage AoE
+	var aoe = pulse_aoe.instantiate()
+	aoe.change_damage(int(projectile_damage * modifier * 1.5))
+	aoe.position = spawn_pos
+	get_tree().get_root().call_deferred("add_child", aoe)
+
+	var smoke = kapre_smoke_effect.instantiate()
+	smoke.position = spawn_pos
+	get_tree().get_root().call_deferred("add_child", smoke)
+
+	camera.add_trauma(0.4)
+
+
+## Harana Flame — burn trail DOT
+func _apply_harana_flame(enemy: Node) -> void:
+	if not enemy.has_method("modify_health"):
+		return
+	## Tick 3 times over 1.5 seconds
+	_harana_burn_coroutine(enemy)
+
+
+func _harana_burn_coroutine(enemy: Node) -> void:
+	for i in range(3):
+		await get_tree().create_timer(0.5).timeout
+		if is_instance_valid(enemy):
+			enemy.modify_health(-int(projectile_damage * 0.2))
+
+
+## Agimat Echo — repeat shot at 50%
+func _shoot_echo(modifier: float, color: Color) -> void:
+	await get_tree().create_timer(0.15).timeout  ## slight delay for visual separation
+	if not is_instance_valid(self):
+		return
+	var spawn_pos := global_position + _get_facing_offset()
+	var echo_proj = projectile.instantiate()
+	echo_proj.change_damage(projectile_damage * modifier * 0.5)
+	echo_proj.change_projectile_side(ProjectileCommon.ProjectileSide.Player)
+	echo_proj.change_projectile_modulation(color.darkened(0.3))
+	echo_proj.position = spawn_pos
+	echo_proj.rotation_degrees = _get_projectile_rotation_from_spawn(spawn_pos)
+	echo_proj.hit_combo_value = 0.0
+	get_tree().get_root().call_deferred("add_child", echo_proj)
+	#endregion

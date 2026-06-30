@@ -25,6 +25,7 @@ var pulsePerBeat = 60.0 / tempo
 var halfPulsePerBeat = 60.0 / (tempo * 2)
 var halfLastBeat = 0
 var lastBeat = 0
+var player
 
 ## Node export for a working secondary ammo counter
 @export var secondary_ammo_counter: Node
@@ -90,7 +91,7 @@ var tween: Tween
 
 func _ready() -> void:
 	# Connect the shooting response to the player shoot function
-	var player = get_tree().get_first_node_in_group("PlayerObject")
+	player = get_tree().get_first_node_in_group("PlayerObject")
 	player_shoot_projectile.connect(player._shoot_projectile)
 	increase_player_attack_charge.connect(player.increment_player_charge_attack)
 	# Get the latency
@@ -168,6 +169,7 @@ func _input(event: InputEvent) -> void:
 		player_shoot_projectile.emit(result.damage, result.color)
 
 func evaluate_shot(timing: float) -> Dictionary:
+	## PERFECT HIT
 	if timing < perfect_hit:
 		comboCounter += 1
 		combo_audio_pitch = 1 + (comboCounter * 0.06)
@@ -176,17 +178,55 @@ func evaluate_shot(timing: float) -> Dictionary:
 		border_pulse.emit()
 		p_combo_sound.play()
 		increase_player_attack_charge.emit()
-		#combo_systems.combo_strength += 40
-		return { "damage": 1.45, "color": Color.html("#1ce1ebff") }
+		if player.cadence_mode:
+			increase_player_attack_charge.emit()
+		player.perfect_chain += 1
+		player._update_chain_visuals()
+		if player.tikbalang_step:
+			player.tikbalang_speed_timer = 1.25
+		if player.perfect_chain == 4:
+			player._enable_comet_projectile()
+		if player.perfect_chain == 8:
+			player._enter_cadence_mode()
+		if player.perfect_chain >= 16:
+			player._trigger_echo_nova()
+		return {"damage": 1.45, "color": Color.html("#1ce1ebff")}
+	## GOOD HIT messes up perfect hit
 	if timing < good_hit:
 		comboCounter += 1
-		#combo_systems.combo_strength += 15
-		return { "damage": 1.0, "color": Color.html("#53bc07ff") }
+		player._on_missed_beat()   
+		if player.anito_blessing:
+			if randf() <= 0.20:
+				return evaluate_shot(perfect_hit * 0.5)
+		return {"damage": 1.0, "color": Color.html("#53bc07ff")}
+	## OK HIT — chain breaks 
 	if timing < ok_hit:
 		comboCounter += 1
-		return { "damage": 0.8, "color": Color.html("#f0f816ff") }
+		player._on_missed_beat()   
+		return {"damage": 0.8, "color": Color.html("#f0f816ff")}
+	## MISS — Kundiman Shield check
+	if player.kundiman_shield and not player.kundiman_shield_used:
+		print("Kundiman Shield saved the combo!")
+		beat_consumed = true
+		return {"damage": 0.5, "color": Color.html("#ffffff")}
+	## Full miss — reset everything
 	comboCounter = 0
-	return { "damage": 0.1, "color": Color.html("#ff3b2dff") }
+	player._on_missed_beat()
+	return {"damage": 0.1, "color": Color.html("#ff3b2dff")}
+	#endregion
+
+	## Reset combo and perfect chain
+	comboCounter = 0
+	player.perfect_chain = 0
+	player.cadence_mode = false
+	player.projectile_size_multiplier = 1.0
+	player.projectile_speed_multiplier = 1.0
+	player.projectile_damage_multiplier = 1.0
+
+	return {
+		"damage": 0.1,
+		"color": Color.html("#ff3b2dff")
+	}
 
 
 

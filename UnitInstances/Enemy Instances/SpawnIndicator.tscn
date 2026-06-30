@@ -1,15 +1,8 @@
 [gd_scene format=3 uid="uid://kiiemccptjkt"]
 
-[ext_resource type="Shader" uid="uid://cmcbtd2h3hc73" path="res://UnitInstances/Enemy Instances/SpawnerEnemy.gdshader" id="1_plykr"]
 [ext_resource type="Script" uid="uid://bah7vi83g0exa" path="res://Scripts/Visuals/SpawnIndicator.gd" id="2_1imb6"]
 [ext_resource type="PackedScene" uid="uid://dckgpa6wf8i53" path="res://Objects/Particle Effects/SpawnEffect.tscn" id="2_6popb"]
 [ext_resource type="Texture2D" uid="uid://dm2mkf52fju30" path="res://Sprites/Game Elements/enemyportal.png" id="3_plykr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_plykr"]
-shader = ExtResource("1_plykr")
-shader_parameter/reveal_progress = 0.0
-shader_parameter/indicator_color = Color(0.8, 0.2, 0.2, 1)
-shader_parameter/glow_width = 0.05
 
 [sub_resource type="Animation" id="Animation_1imb6"]
 length = 0.001
@@ -73,7 +66,6 @@ indicator_color = Color(0.26406133, 0.14513674, 0.12718004, 1)
 spawn_effect = ExtResource("2_6popb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1678540434]
-material = SubResource("ShaderMaterial_plykr")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_plykr")
 

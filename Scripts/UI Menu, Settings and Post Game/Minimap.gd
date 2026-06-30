@@ -41,11 +41,6 @@ func _process(_delta: float) -> void:
 	dot_layer.queue_redraw()
 
 
-func _draw_dots() -> void:
-	## Called by dot_layer — see MinimapDotLayer below
-	pass
-
-
 ## Converts a world position to minimap local position
 func world_to_minimap(world_pos: Vector2) -> Vector2:
 	if player == null:

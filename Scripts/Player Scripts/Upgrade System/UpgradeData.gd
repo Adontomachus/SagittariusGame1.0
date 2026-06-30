@@ -1,12 +1,13 @@
 class_name UpgradeData
 extends Resource
 
-enum UpgradeCategory { STAT, SECONDARY_FIRE, Q_MOVE, CHARGE_SHOT }
+enum UpgradeCategory { STAT, SECONDARY_FIRE, Q_MOVE, CHARGE_SHOT, AGIMAT }
 
 @export var id: String
 @export var display_name: String
 @export var category: UpgradeCategory
 @export var max_level: int = 5
+@export var icon: Texture2D
 
 ## Description shown on the card — use {value} as a placeholder for the next level's value
 ## e.g. "Increase damage by {value}%"
@@ -34,6 +35,8 @@ func get_description() -> String:
 
 
 func get_level_label() -> String:
+	if category == 4:
+		return "Agimat"
 	if max_level == 1:
 		return "Unique"
 	return "Level %d / %d" % [current_level, max_level]

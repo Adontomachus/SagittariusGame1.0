@@ -163,3 +163,9 @@ func modify_health(increment: int) -> void:
 	super(increment)
 	if baseHealthPoints <= 0:
 		is_active = false
+		## Balete Heart — heal player when spawner is cleared
+		var player := get_tree().get_first_node_in_group("PlayerObject") as PlayerCharacter
+		if player and player.balete_heart:
+			var heal_amount := int(player.maxHealthPoints * 0.08)  ## 8% max HP
+			player.modify_current_player_health(heal_amount)
+			print("Balete Heart healed player for: ", heal_amount)
