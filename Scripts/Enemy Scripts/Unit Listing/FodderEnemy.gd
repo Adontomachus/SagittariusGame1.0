@@ -141,7 +141,7 @@ func _ready():
 	baseHealthPoints = maxHealthPoints
 
 	# Setup healthbar
-	toggle_healthbar_visibility.emit(false) # Hide the health bar until damaged
+	toggle_healthbar_visibility.emit(true) # Hide the health bar until damaged
 	send_maximum_health_value.emit(maxHealthPoints)
 	send_current_health_value.emit(baseHealthPoints)
 	

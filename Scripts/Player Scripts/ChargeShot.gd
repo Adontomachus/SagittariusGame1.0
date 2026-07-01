@@ -27,16 +27,20 @@ func increment() -> void:
 
 
 func consume(modifier: float) -> bool:
-	## Returns true if a charged shot was fired, false if not ready
 	if not is_charged():
 		return false
 
 	var enhanced_projectile = powered_projectile.instantiate()
 	player.shot_sound.play()
-	enhanced_projectile.change_damage((player.projectile_damage * modifier) * damage_multiplier)
-	enhanced_projectile.position = player.shot_point.get_global_position()
-	enhanced_projectile.rotation_degrees = player.shot_point.rotation_degrees
+
+	var spawn_pos := player.global_position + player._get_facing_offset()
+	var spawn_rotation := player._get_projectile_rotation_from_spawn(spawn_pos)
+
+	enhanced_projectile.change_damage(int((player.projectile_damage * modifier) * damage_multiplier))
+	enhanced_projectile.position = spawn_pos
+	enhanced_projectile.rotation_degrees = spawn_rotation
 	player.get_tree().get_root().call_deferred("add_child", enhanced_projectile)
+
 	shots_for_charged = 0
 	_update_feedback()
 	return true

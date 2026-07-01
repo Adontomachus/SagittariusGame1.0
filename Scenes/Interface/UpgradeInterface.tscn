@@ -166,7 +166,7 @@ font_color = Color(0.8823829, 0.96166515, 0, 1)
 outline_size = 5
 outline_color = Color(0.20470095, 0.204701, 2.4065375e-08, 1)
 
-[node name="UpgradeScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("animator")]
+[node name="UpgradeScreen" type="Control" unique_id=1347961824 node_paths=PackedStringArray("animator", "card_1", "card_2", "card_3")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -176,6 +176,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xfjfj")
 animator = NodePath("CanvasLayer")
+card_1 = NodePath("CanvasLayer/UpgradeText/Card1")
+card_2 = NodePath("CanvasLayer/UpgradeText/Card2")
+card_3 = NodePath("CanvasLayer/UpgradeText/Card3")
 
 [node name="WinPanel" type="PanelContainer" parent="." unique_id=245152519]
 visible = false
@@ -405,5 +408,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/UpgradeText/Card1" to="." method="_on_card_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradeText/Card2" to="." method="_on_card_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradeText/Card3" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card2" to="." method="_on_card_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradeText/Card3" to="." method="_on_card_3_pressed"]
