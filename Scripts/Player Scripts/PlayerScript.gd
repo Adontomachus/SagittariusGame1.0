@@ -602,7 +602,11 @@ func _trigger_echo_nova() -> void:
 	nova_ring.position = global_position
 	nova_ring.max_radius = 1000.0
 	get_tree().get_root().call_deferred("add_child", nova_ring)
-
+	var companions := get_tree().get_nodes_in_group("Companion1") + \
+					  get_tree().get_nodes_in_group("Companion2")
+	for companion in companions:
+		if is_instance_valid(companion) and companion.visible:
+			companion.on_echo_nova()
 	## Reset chain
 	perfect_chain = 0
 	cadence_mode = false

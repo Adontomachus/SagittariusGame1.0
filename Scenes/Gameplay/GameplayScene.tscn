@@ -51,6 +51,8 @@
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="50_7ji1i"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="51_poy5f"]
 [ext_resource type="PackedScene" uid="uid://cu2w3y1ythpfd" path="res://Scenes/Gameplay/Player.tscn" id="52_fs22w"]
+[ext_resource type="Texture2D" uid="uid://3ucie8ixqomw" path="res://Sprites/Game Elements/Placeholders/Companions/catpink_Transparent.png" id="55_exwru"]
+[ext_resource type="Texture2D" uid="uid://rbafa2tjb1ji" path="res://Sprites/Game Elements/Placeholders/Companions/catblue_Transparent.png" id="57_u1twm"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="60_fa1e4"]
 [ext_resource type="Texture2D" uid="uid://b14w4hmgkcrgc" path="res://Sprites/Game Elements/Placeholders/Ground/Ground_Tileset.png" id="62_cw58p"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="63_584ly"]
@@ -903,6 +905,14 @@ size = Vector2(12452.658, 63.552734)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uagus"]
 size = Vector2(86.35339, 4951.677)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgp33"]
+atlas = ExtResource("55_exwru")
+region = Rect2(228.92352, 46.124718, 130.72467, 217.87445)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_110ka"]
+atlas = ExtResource("57_u1twm")
+region = Rect2(221.25098, 65.800735, 136.94965, 211.64946)
+
 [node name="SpawnArea" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "enemy_spawn_parent") groups=["GameManagerSystems"]]
 y_sort_enabled = true
 position = Vector2(-5, 2)
@@ -1574,9 +1584,16 @@ disabled = true
 visible = false
 position = Vector2(753, 383)
 
+[node name="CatSprite" parent="PlayerCatComp" index="4" unique_id=927494965]
+texture = SubResource("AtlasTexture_jgp33")
+
 [node name="PlayerCatComp2" parent="." unique_id=1653798 groups=["Companion2"] instance=ExtResource("64_nyo1o")]
 visible = false
 position = Vector2(447, 398)
+role = 1
+
+[node name="CatSprite" parent="PlayerCatComp2" index="4" unique_id=927494965]
+texture = SubResource("AtlasTexture_110ka")
 
 [node name="MovingFog" type="Node2D" parent="." unique_id=1222811387]
 visible = false
@@ -1590,6 +1607,7 @@ speed_min = 22.0
 speed_max = 40.0
 
 [node name="ClickableTome" parent="." unique_id=951240953 instance=ExtResource("67_0n07p")]
+visible = false
 position = Vector2(2053, -257)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]

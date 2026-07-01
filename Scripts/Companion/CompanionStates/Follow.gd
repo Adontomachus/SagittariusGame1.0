@@ -45,5 +45,12 @@ func process_physics(delta: float) -> CompanionState:
 
 func reposition(playerRadius) -> void:
 	if parent.player_target:
-		var randomPosition = Vector2(randf_range(-playerRadius,playerRadius), randf_range(-playerRadius,playerRadius))
+		## Support companion orbits further out for better shooting angles
+		var radius : float = playerRadius
+		if parent.role == CompanionGroup.CompanionRole.RANGED_SUPPORT:
+			radius *= 1.5
+		var randomPosition := Vector2(
+			randf_range(-radius, radius),
+			randf_range(-radius, radius)
+		)
 		parent.pathfinding.target_position = parent.player_target.global_position + randomPosition
