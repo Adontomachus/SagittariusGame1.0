@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://c6ui2chq7s5vo" path="res://Scripts/UI Menu, Settings and Post Game/ExperienceDisplayScript.gd" id="18_0if8i"]
 [ext_resource type="Texture2D" uid="uid://d36pqi4juvr75" path="res://Sprites/UI/companionprogress.png" id="18_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://yutu2v2k25fn" path="res://Sprites/UI/experiencebar2.png" id="18_ev13k"]
+[ext_resource type="Texture2D" uid="uid://cj66v7h843m85" path="res://Sprites/Game Elements/Placeholders/UI Elements/Beat_Pip_Half.png" id="18_sg81t"]
 [ext_resource type="Texture2D" uid="uid://yokg4xj28d6r" path="res://Sprites/UI/companionprogressfill.png" id="19_7363f"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="20_ge5ss"]
 [ext_resource type="PackedScene" uid="uid://c80tvtjnru5m3" path="res://Scenes/Interface/UpgradeInterface.tscn" id="21_3825n"]
@@ -1429,6 +1430,42 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("RhythmLines/TextureRect2:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("RhythmLines2/TextureRectLine:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
@@ -1443,7 +1480,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85559684, 1, 0.64379185, 1)]
+"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85538745, 1, 0.6437342, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1455,7 +1492,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85538745, 1, 0.6437342, 1)]
+"values": [Color(0.85538745, 1, 0.6437342, 0), Color(0.85538745, 1, 0.6437342, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1577,6 +1614,42 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(1776.0001, 411), Vector2(1778.0002, 396.00003), Vector2(1776.0001, 411)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("RhythmLines/TextureRect2:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("RhythmLines2/TextureRectLine:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 1), Color(1.353256, 1.353256, 1.353256, 0), Color(1.353256, 1.353256, 1.353256, 0), Color(1.353256, 1.353256, 1.353256, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp1p4"]
 _data = {
@@ -1674,7 +1747,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kpxyp"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_oa3hr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -2097,10 +2170,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -354.00012
-offset_top = -135.0
-offset_right = 1438.9999
-offset_bottom = 463.0
+offset_left = -354.0
+offset_top = -128.0
+offset_right = 1439.0
+offset_bottom = 470.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.4, 0.4)
@@ -2128,10 +2201,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.000001
-offset_top = -12.000002
-offset_right = 38.0
-offset_bottom = 48.0
+offset_left = -16.5
+offset_top = -31.999025
+offset_right = 67.83146
+offset_bottom = 127.99609
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
@@ -2145,6 +2218,23 @@ offset_right = 1225.0007
 offset_bottom = 1019.0
 color = Color(0.85559684, 1, 0.64379185, 1)
 
+[node name="TextureRectLine" type="TextureRect" parent="BeatIndicatorElements/RhythmLines2" unique_id=372978505]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -31.999025
+offset_right = 67.83146
+offset_bottom = 127.99609
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("17_3tu8g")
+
 [node name="HalfBeatLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=1627583558]
 z_index = -1
 offset_left = 843.0
@@ -2152,7 +2242,24 @@ offset_top = 975.0
 offset_right = 848.5001
 offset_bottom = 1014.0
 scale = Vector2(0.64, 1)
-color = Color(0.51124996, 0.4563635, 0.27770182, 1)
+color = Color(0.5116678, 0.4565437, 0.2784093, 0)
+
+[node name="TextureRectLine" type="TextureRect" parent="BeatIndicatorElements/HalfBeatLines" unique_id=610774790]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.421894
+offset_top = -26.500002
+offset_right = 67.90956
+offset_bottom = 133.49512
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("18_sg81t")
 
 [node name="HalfBeatLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=1028365080]
 z_index = -1
@@ -2161,7 +2268,24 @@ offset_top = 975.0
 offset_right = 1109.4984
 offset_bottom = 1014.0003
 scale = Vector2(0.64, 1)
-color = Color(0.51124996, 0.4563635, 0.27770182, 1)
+color = Color(0.5116678, 0.4565437, 0.2784093, 0)
+
+[node name="TextureRectLine" type="TextureRect" parent="BeatIndicatorElements/HalfBeatLines2" unique_id=30748457]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.421894
+offset_top = -26.500002
+offset_right = 67.90956
+offset_bottom = 133.49512
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("18_sg81t")
 
 [node name="BeatIndicatorAnimation" type="AnimationPlayer" parent="BeatIndicatorElements" unique_id=1848896088]
 libraries/ = SubResource("AnimationLibrary_rp1p4")
@@ -2275,10 +2399,10 @@ texture = ExtResource("21_vdje8")
 
 [node name="RMBContainer" type="ColorRect" parent="." unique_id=1169418434]
 layout_mode = 0
-offset_left = 1737.0002
-offset_top = 534.0
-offset_right = 1805.1844
-offset_bottom = 605.32434
+offset_left = 1776.0001
+offset_top = 411.0
+offset_right = 1844.1843
+offset_bottom = 482.32434
 rotation = 0.113265686
 
 [node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
@@ -2330,13 +2454,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_oa3hr")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_oa3hr")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_oa3hr")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
