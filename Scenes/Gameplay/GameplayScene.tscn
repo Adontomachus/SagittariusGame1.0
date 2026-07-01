@@ -903,12 +903,13 @@ size = Vector2(12452.658, 63.552734)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uagus"]
 size = Vector2(86.35339, 4951.677)
 
-[node name="SpawnArea" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player") groups=["GameManagerSystems"]]
+[node name="SpawnArea" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "enemy_spawn_parent") groups=["GameManagerSystems"]]
 y_sort_enabled = true
 position = Vector2(-5, 2)
 script = ExtResource("1_4t4xv")
 beatIndicator = NodePath("InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 player = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
+enemy_spawn_parent = NodePath("GameLevelNode/Stage1/EnemyNavRegion/Map Objects/MapEdgeObstacles/StaticBody2D/SpawnArea")
 waves_remaining = 5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=862454144]
@@ -954,7 +955,7 @@ script = ExtResource("10_iukur")
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
-zoom = Vector2(1.1, 1.1)
+zoom = Vector2(0.8, 0.8)
 script = ExtResource("11_8x0uy")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]

@@ -1,24 +1,41 @@
 class_name SpriteBeatGlow
 extends Node2D
 
-
-
 @onready var glow_effect: PointLight2D = $GlowEffect
 
-var energyIntensity: float
+@export var base_energy: float = 0.8
+@export var peak_energy: float = 3.2
+
 
 func _ready() -> void:
+	glow_effect.energy = base_energy
 	_glow_on_beat()
-	return
 
 
-
-# Temporary Function
+# Flame-like glow pulse
 func _glow_on_beat() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(glow_effect, "energy", 4, 0.02)
-	tween.tween_property(glow_effect, "energy", 0, 0.3)
-	tween.play()
-	await tween.finished
-	tween.kill()
-	return # Replace with function body.
+	var tween := create_tween()
+
+	## Randomized peak for organic flame flicker
+	var random_peak := randf_range(peak_energy * 0.85, peak_energy * 1.15)
+
+	tween.tween_property(
+		glow_effect,
+		"energy",
+		random_peak,
+		0.12
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(
+		glow_effect,
+		"energy",
+		base_energy + randf_range(0.15, 0.4),
+		0.18
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		glow_effect,
+		"energy",
+		base_energy,
+		0.25
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)

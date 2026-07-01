@@ -8,7 +8,7 @@ atlas = ExtResource("1_38ohp")
 region = Rect2(492.78214, 17.23851, 65.16513, 250.37141)
 
 [sub_resource type="Gradient" id="Gradient_u2iup"]
-colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.53333336, 0.12941177, 0.07450981, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f321n"]
 gradient = SubResource("Gradient_u2iup")

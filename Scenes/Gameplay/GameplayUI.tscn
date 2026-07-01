@@ -2485,6 +2485,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChainGlow" type="ColorRect" parent="." unique_id=83664289]
+visible = false
 material = SubResource("ShaderMaterial_sg81t")
 layout_mode = 0
 offset_right = 1920.0

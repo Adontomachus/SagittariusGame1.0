@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl2evt3pxmpmn"]
 
 [ext_resource type="Script" uid="uid://2yw30lmn50nk" path="res://Scripts/Audio/StationaryBeatGlowEffect.gd" id="1_dfqff"]
-[ext_resource type="Texture2D" uid="uid://dp0sfqsw4dj1x" path="res://Sprites/Game Elements/Placeholders/Objects/Pillars3_Isometric_Transparent.webp" id="2_dfqff"]
+[ext_resource type="Texture2D" uid="uid://bwkdmma5b3wj" path="res://Sprites/Game Elements/Placeholders/Objects/Pillars3_Isometric_Transparent.webp" id="2_dfqff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxnj5"]
 atlas = ExtResource("2_dfqff")
@@ -11,7 +11,7 @@ region = Rect2(488.92535, 312.7251, 130.72461, 238.62445)
 size = Vector2(155.74146, 188.18759)
 
 [sub_resource type="Gradient" id="Gradient_knn8v"]
-colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.53333336, 0.12941177, 0.07450981, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sxnj5"]
 gradient = SubResource("Gradient_knn8v")
