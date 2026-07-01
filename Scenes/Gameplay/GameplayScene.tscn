@@ -955,7 +955,6 @@ script = ExtResource("10_iukur")
 [node name="InterfaceElements" type="Node" parent="." unique_id=774515718]
 
 [node name="PlayerCamera" type="Camera2D" parent="InterfaceElements" unique_id=760553956 groups=["CameraControl"]]
-zoom = Vector2(0.8, 0.8)
 script = ExtResource("11_8x0uy")
 
 [node name="PlayerTarget" type="Marker2D" parent="InterfaceElements" unique_id=141121061]
@@ -1079,6 +1078,22 @@ metadata/_edit_use_anchors_ = true
 [node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="13" unique_id=172310879]
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicatorLine" parent_id_path=PackedInt32Array(2071023402, 1426185933) index="0" unique_id=1073552229]
+offset_top = -135.0
+offset_bottom = 463.0
+
+[node name="TextureRect2" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/RhythmLines" parent_id_path=PackedInt32Array(2071023402, 882339640) index="0" unique_id=871230433]
+offset_left = -8.000001
+offset_top = -12.000002
+offset_right = 38.0
+offset_bottom = 48.0
+
+[node name="HalfBeatLines" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="4" unique_id=1627583558]
+color = Color(0.51124996, 0.4563635, 0.27770182, 1)
+
+[node name="HalfBeatLines2" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="5" unique_id=1028365080]
+color = Color(0.51124996, 0.4563635, 0.27770182, 1)
+
 [node name="BeatIndicator" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements" parent_id_path=PackedInt32Array(2071023402, 972979635) index="8" unique_id=267262060 node_paths=PackedStringArray("combo_systems", "secondary_ammo_counter") groups=["BeatSync"]]
 combo_systems = NodePath("../../../../../GameSystems/ComboSystem")
 secondary_ammo_counter = NodePath("../../../SecondaryShotBars")
@@ -1089,6 +1104,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
+
+[node name="RMBContainer" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=1169418434]
+offset_left = 1737.0002
+offset_top = 534.0
+offset_right = 1805.1844
+offset_bottom = 605.32434
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
 button_group = SubResource("ButtonGroup_wipa6")
@@ -1181,7 +1202,7 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAAAAoATwAAAAEAAAABAAoATwAAAAEAAAACAAoATwAAAAEAAAADAAoATwAAAAAAAAADAAsATwAAAAAAAAADAAwATwAAAAAAAAADAA0ATwAAAAAAAAAQAA4AAQACAAAAAAAQABAAAQACAAAAAAAQABIAAQACAAAAAAAQABQAAQACAAAAAAAQABYAAQACAAAAAAAQAAwAAQACAAAAAAAQAAoAAQACAAAAAAAQAAgAAQACAAAAAAAQAAYAAQACAAAAAAAQAAQAAQACAAAAAAAQAAIAAQACAAAAAAAQAAAAAQACAAAAAAAQAP7/AQACAAAAAAAQAPz/AQACAAAAAAAQAPr/AQACAAAAAAAQAPj/AQACAAAAAAAQAPb/AQACAAAAAAAPAPX/AQAEAAEAAAANAPX/AQAEAAEAAAALAPX/AQAEAAEAAAAJAPX/AQAEAAEAAAAHAPX/AQAEAAEAAAAFAPX/AQAEAAEAAAADAPX/AQAEAAEAAAABAPX/AQAEAAEAAAD///X/AQAEAAEAAAD+//b/AQACAAAAAAD+//j/AQACAAAAAAD+//r/AQACAAAAAAD+//z/AQACAAAAAAD+//7/AQACAAAAAAD+/wAAAQACAAAAAAD+/wYAAQACAAAAAAD+/wIAAQACAAAAAAD+/wQAAQACAAAAAAAJABUATwAEAAAAAAAJABMATwAEAAAAAAAFABMATwAIAAAAAAAFABEATwAGAAEAAAABAA8ATwABAAEAAAAHABgATwADAAAAAAALABkATwAAAAEAAAANABkATwAAAAEAAAALAAAATwAGAAEAAAAIAAAATwAGAAEAAAAKAPr/TwAJAAAAAAAHAPr/TwAEAAAAABAFAPr/TwAEAAAAABA=")
 tile_set = SubResource("TileSet_vj1fp")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1929160255 groups=["MapObstacle"]]
+[node name="ClutterTileMap" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1929160255 groups=["MapObstacle"]]
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAAlADMAFgAEAAEAAAAmADMAFgAEAAEAAAAkADAAFgABAAAAAAAjACwAFgAHAAAAAAAiACsAFgAJAAAAAAAiACoAFgAJAAAAAAAiACkAFgAJAAAAAAAiACgAFgAJAAAAAAAkACwAFgAAAAEAAAAlACwAFgAAAAEAAAAmACwAFgAAAAEAAAAnACwAFgACAAEAAAAlACEAFgAHAAEAAAAoACIAFgAIAAEAAAAbAB8AFgAIAAEAAAATACoAFgABAAIAAAAWABkAFgAFAAAAAAARABoAFgAGAAAAAAAVAA8AFgACAAAAAAAaABMAFgAJAAEAAAANABYAFgADAAEAAAAOABYAFgADAAEAAAAPABYAFgADAAEAAAATAAUAFgAGAAAAAAAMAAIAFgAGAAAAAAALAP7/FgAIAAAAAAAKAA0AFgAAAAEAAAAKAAgAFgACAAEAAAAXACQAAwAAAAAAAAAXAP//AQAAAAAAAAAIACIAAAAAAAAAAAA=")

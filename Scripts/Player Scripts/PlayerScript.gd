@@ -114,7 +114,7 @@ var kundiman_shield: bool = false
 var kundiman_shield_used: bool = false
 var sarimanok_feather: bool = false
 var diwata_veil: bool = false
-var kapre_smoke: bool = true
+var kapre_smoke: bool = false
 var nuno_root: bool = false
 #endregion
 
@@ -510,7 +510,9 @@ func _on_missed_beat():
 		kundiman_shield_used = true
 		print("Kundiman Shield protected combo!")
 		return
-
+	if charge_shot:
+		charge_shot.shots_for_charged = 0
+		charge_shot._update_feedback()
 	perfect_chain = 0
 	cadence_mode = false
 	cadence_charge_multiplier = 1.0
