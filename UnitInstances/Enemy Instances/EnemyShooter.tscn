@@ -257,7 +257,6 @@ successfulChanceToAttack = 5.0
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
 radius = 120.0
-debug_enabled = true
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)
@@ -325,6 +324,7 @@ offset_right = 46.0
 offset_bottom = -35.0
 
 [node name="Label" type="Label" parent="." unique_id=1283275294]
+visible = false
 offset_left = -35.0
 offset_top = 23.0
 offset_right = 37.0

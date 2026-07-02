@@ -69,8 +69,8 @@ _data = {
 [node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_ewdkc")
-max_spawn_count = 5
-beats_between_spawns = 12
+max_spawn_count = 8
+beats_between_spawns = 10
 spawn_radius = 20.0
 spawner_sprite = NodePath("Sprite")
 state_machine = NodePath("EnemyStateMachine")
@@ -81,7 +81,6 @@ amountOfPointOrbs = 12
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
 radius = 120.0
-debug_enabled = true
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 position = Vector2(0.25, -10.750004)
@@ -128,6 +127,7 @@ texture_progress = ExtResource("5_eht03")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=1865937429]
+visible = false
 offset_left = -40.0
 offset_top = 35.0
 offset_right = 40.0

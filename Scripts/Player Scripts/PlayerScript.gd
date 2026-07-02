@@ -77,7 +77,7 @@ var levels_left_for_item_upgrade: int = 8
 
 # PLAYER MOVEMENT VARIABLES
 var moveSpeed: float
-@export var maxMoveSpeed: float = 300.0
+@export var maxMoveSpeed: float = 350.0
 var playerDirection: Vector2
 @export var projectile_damage: float = 30
 #endregion

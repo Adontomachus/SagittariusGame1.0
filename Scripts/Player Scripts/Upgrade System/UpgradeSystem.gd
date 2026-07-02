@@ -1,7 +1,7 @@
 class_name UpgradeSystem
 extends Node
 
-const UPGRADE_THRESHOLDS: Array[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 44, 48, 52, 56, 60]
+const UPGRADE_THRESHOLDS: Array[int] = [ 2, 4, 6, 8, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 44, 48, 52, 56, 60]
 const CARDS_TO_SHOW: int = 3
 
 var all_upgrades: Array[UpgradeData] = []

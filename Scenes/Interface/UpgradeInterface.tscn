@@ -58,7 +58,7 @@ func play_popup() -> void:
 
 	## Background fades in
 	if background_panel:
-		tween.tween_property(background_panel, \"modulate:a\", 1, 0.35)\\
+		tween.tween_property(background_panel, \"modulate:a\", 1, 1)\\
 			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 	## Card 1

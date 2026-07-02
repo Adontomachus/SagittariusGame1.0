@@ -265,7 +265,6 @@ successfulChanceToAttack = 5.0
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
 radius = 120.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0, 0, 1, 1)
 
@@ -365,6 +364,7 @@ recovery_state = NodePath("../EnemyStateRecovery")
 metadata/_custom_type_script = "uid://dykdysmx667ac"
 
 [node name="Label" type="Label" parent="." unique_id=1557014478]
+visible = false
 offset_left = -55.0
 offset_top = 34.0
 offset_right = 55.0

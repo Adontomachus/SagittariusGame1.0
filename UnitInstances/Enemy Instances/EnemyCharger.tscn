@@ -155,7 +155,6 @@ attackPower = 22.0
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
 radius = 120.0
-debug_enabled = true
 
 [node name="MovementStretch" type="Node2D" parent="." unique_id=1251352991 node_paths=PackedStringArray("sprite_to_wrap", "velocity_source")]
 scale = Vector2(0.578125, 0.578125)
@@ -279,6 +278,7 @@ environment = SubResource("Environment_ht5vj")
 libraries/ = SubResource("AnimationLibrary_axsu2")
 
 [node name="Label" type="Label" parent="." unique_id=1482108619]
+visible = false
 offset_left = -43.750027
 offset_top = 50.00003
 offset_right = 49.249973

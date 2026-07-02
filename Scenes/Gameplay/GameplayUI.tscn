@@ -1832,6 +1832,7 @@ color = Color(0.8531885, 0.8544415, 0.4723053, 1)
 
 [node name="WinScreen" parent="CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("1_r2md4")]
 visible = false
+z_index = 6
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 highest_level_reached = NodePath("HighestLevelReached")
 
@@ -1859,6 +1860,7 @@ modulate = Color(1, 1, 1, 0)
 [node name="LoseScreen" parent="CutsceneUI/GameOverNode" unique_id=1951929927 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("2_ge5ss")]
 visible = false
 modulate = Color(1, 1, 1, 0)
+z_index = 6
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 highest_level_reached = NodePath("BigLoseText/HighestLevelReached")
 
@@ -2478,6 +2480,7 @@ button_group = SubResource("ButtonGroup_xrjep")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
+z_index = 4
 layout_mode = 1
 
 [node name="MinimapHUD" parent="." unique_id=1010004399 instance=ExtResource("22_0if8i")]

@@ -77,7 +77,6 @@ successfulChanceToAttack = 5.0
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 avoidance_enabled = true
 radius = 120.0
-debug_enabled = true
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)
@@ -117,6 +116,7 @@ texture_under = ExtResource("4_ukt1m")
 texture_progress = ExtResource("5_3aqhm")
 
 [node name="Label" type="Label" parent="." unique_id=1865937429]
+visible = false
 offset_left = -40.0
 offset_top = 35.0
 offset_right = 40.0

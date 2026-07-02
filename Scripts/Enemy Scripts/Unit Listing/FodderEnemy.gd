@@ -37,9 +37,9 @@ var target: CharacterBody2D
 # STAMINA
 @export_group("Movement Stats")
 ## The random range of the entity's maximum stamina
-@export var stamina_range: Vector2 = Vector2(2, 5)
-@export var stamina_regeneration_rate: float = 1.0
-@export var maxMoveSpeed: float = 100.0
+@export var stamina_range: Vector2 = Vector2(4, 8)
+@export var stamina_regeneration_rate: float = 1.5
+@export var maxMoveSpeed: float = 200.0
 @export var movement_boosted: bool = false
 
 var stamina: float:

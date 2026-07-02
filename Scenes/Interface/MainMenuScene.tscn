@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1ddfyxpis5at" path="res://Sprites/UI Sprites/Sagittarius_logo.png" id="4_b5x3o"]
 [ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="5_wikew"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1dxah"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_wikew"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wikew"]
 line_spacing = 4.0
@@ -269,13 +269,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_1dxah")
+button_group = SubResource("ButtonGroup_wikew")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_1dxah")
+button_group = SubResource("ButtonGroup_wikew")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_1dxah")
+button_group = SubResource("ButtonGroup_wikew")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
 visible = false
@@ -318,6 +318,7 @@ offset_bottom = 794.0
 text = "Calibration"
 
 [node name="LevelSelectButton" type="Button" parent="." unique_id=2085939534]
+visible = false
 offset_left = 1237.0
 offset_top = 691.0
 offset_right = 1604.0
@@ -341,6 +342,7 @@ text = "Sagittarius: The Game"
 label_settings = SubResource("LabelSettings_wikew")
 
 [node name="BGSplash" type="Label" parent="." unique_id=196103953]
+visible = false
 offset_left = 1108.0
 offset_top = 508.0
 offset_right = 1331.0
