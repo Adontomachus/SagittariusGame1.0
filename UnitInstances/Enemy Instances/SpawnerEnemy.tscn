@@ -67,7 +67,7 @@ _data = {
 }
 
 [node name="SpawnerEnemy" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("spawner_sprite", "state_machine", "navAgent") groups=["EnemyObject", "FodderType", "GeneralEnemyInstance"]]
-scale = Vector2(4, 4)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_ewdkc")
 max_spawn_count = 5
 beats_between_spawns = 12
@@ -117,10 +117,10 @@ offset_right = 46.0
 offset_bottom = -35.0
 
 [node name="UpdatedHealthBar" type="TextureProgressBar" parent="." unique_id=2135190990]
-offset_left = -34.5
-offset_top = -98.0
-offset_right = 45.57058
-offset_bottom = -55.976364
+offset_left = -28.8
+offset_top = -251.6
+offset_right = 51.27058
+offset_bottom = -209.57637
 rotation = 0.26432014
 nine_patch_stretch = true
 texture_under = ExtResource("4_keiqf")

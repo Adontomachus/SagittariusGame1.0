@@ -219,29 +219,29 @@ func _register_upgrades() -> void:
 	## COMPANION UPGRADES
 	## -------------------------
 	all_upgrades.append(_make_upgrade(
-		"companion_1_unlock", "Unlock Companion 1",
-		"Unlock your first companion",
+		"companion_1_unlock", "Unlock Melee Companion",
+		"Unlock your melee companion",
 		UpgradeData.UpgradeCategory.STAT, 1,
 		[1.0],
 		"res://Sprites/Legacy/Sagittarius.png"
 	))
 	all_upgrades.append(_make_upgrade(
-		"companion_1_level", "Empower Companion 1",
-		"Increase companion 1 power — speed +{value}%, damage +{value}%, bigger hitbox",
+		"companion_1_level", "Empower Melee Companion",
+		"Make melee companion stronger!",
 		UpgradeData.UpgradeCategory.STAT, 3,
 		[15.0, 15.0, 20.0],
 		"res://Sprites/Legacy/Sagittarius.png"
 	))
 	all_upgrades.append(_make_upgrade(
-		"companion_2_unlock", "Unlock Companion 2",
-		"Unlock your second companion",
+		"companion_2_unlock", "Unlock Ranged Companion",
+		"Unlock your ranged companion",
 		UpgradeData.UpgradeCategory.STAT, 1,
 		[1.0],
 		"res://Sprites/Legacy/Sagittarius.png"
 	))
 	all_upgrades.append(_make_upgrade(
-		"companion_2_level", "Empower Companion 2",
-		"Increase companion 2 power — speed +{value}%, damage +{value}%, bigger hitbox",
+		"companion_2_level", "Empower Ranged Companion",
+		"Make ranged companion stronger!",
 		UpgradeData.UpgradeCategory.STAT, 3,
 		[15.0, 15.0, 20.0],
 		"res://Sprites/Legacy/Sagittarius.png"

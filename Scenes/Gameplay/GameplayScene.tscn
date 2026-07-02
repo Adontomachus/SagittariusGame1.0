@@ -59,7 +59,6 @@
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="64_nyo1o"]
 [ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="65_bgm4d"]
 [ext_resource type="Texture2D" uid="uid://c8rtwbnwk0xmc" path="res://Sprites/Game Elements/Fog.png" id="66_pwom7"]
-[ext_resource type="PackedScene" uid="uid://bnrvdcksjalq6" path="res://Objects/Instances With Collision/ClickableTome.tscn" id="67_0n07p"]
 
 [sub_resource type="Environment" id="Environment_bhunq"]
 background_mode = 3
@@ -241,7 +240,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_wipa6"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("15_w47cw")
@@ -913,7 +912,7 @@ region = Rect2(228.92352, 46.124718, 130.72467, 217.87445)
 atlas = ExtResource("57_u1twm")
 region = Rect2(221.25098, 65.800735, 136.94965, 211.64946)
 
-[node name="SpawnArea" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "enemy_spawn_parent") groups=["GameManagerSystems"]]
+[node name="ClickableTome" type="Node2D" unique_id=908512217 node_paths=PackedStringArray("beatIndicator", "player", "enemy_spawn_parent") groups=["GameManagerSystems"]]
 y_sort_enabled = true
 position = Vector2(-5, 2)
 script = ExtResource("1_4t4xv")
@@ -1122,13 +1121,13 @@ offset_right = 1805.1844
 offset_bottom = 605.32434
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_wipa6")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_wipa6")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_wipa6")
+button_group = SubResource("ButtonGroup_exwru")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="22" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1605,10 +1604,6 @@ fog_layer_count = 1
 fog_texture = ExtResource("66_pwom7")
 speed_min = 22.0
 speed_max = 40.0
-
-[node name="ClickableTome" parent="." unique_id=951240953 instance=ExtResource("67_0n07p")]
-visible = false
-position = Vector2(2053, -257)
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]

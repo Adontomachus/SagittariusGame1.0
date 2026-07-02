@@ -2,27 +2,30 @@
 
 [ext_resource type="Script" uid="uid://bmyhsoairw6xs" path="res://Scripts/Player Scripts/PlayerScript.gd" id="1_8espc"]
 [ext_resource type="PackedScene" uid="uid://croljcfbh70xd" path="res://Objects/Instances With Collision/Grenade.tscn" id="2_aekym"]
-[ext_resource type="Texture2D" uid="uid://cnew75vddkewy" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/00_TurnAround_Idle.png" id="3_muue2"]
-[ext_resource type="Texture2D" uid="uid://bgdhi6mfhofgb" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/07_TurnAround_Idle.png" id="4_f1mng"]
-[ext_resource type="Texture2D" uid="uid://ccwtuwpbvswre" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/01_TurnAround_Idle.png" id="5_iefl7"]
-[ext_resource type="Texture2D" uid="uid://d3veyktjqeeog" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/06_TurnAround_Idle.png" id="6_kb180"]
-[ext_resource type="Texture2D" uid="uid://b28c6egnigktl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/02_TurnAround_Idle.png" id="7_4yq8l"]
-[ext_resource type="Texture2D" uid="uid://cl2hrpswvmw52" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/04_TurnAround_Idle.png" id="8_sine3"]
-[ext_resource type="Texture2D" uid="uid://bq7vv3px0d3dj" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/05_TurnAround_Idle.png" id="9_cn68g"]
-[ext_resource type="Texture2D" uid="uid://bov32xwnq5lma" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/03_TurnAround_Idle.png" id="10_yibm1"]
-[ext_resource type="Texture2D" uid="uid://dg2rfxsiiyxfr" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/07_TurnAround_HighRes_shoot.png" id="11_mpg5p"]
-[ext_resource type="Texture2D" uid="uid://4mscwnpuov3p" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/07_TurnAround_HighRes_shoot - Copy.png" id="12_rcra0"]
-[ext_resource type="Texture2D" uid="uid://biyaqueoebni4" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/02_TurnAround_HighRes_shoot.png" id="13_52vsc"]
-[ext_resource type="Texture2D" uid="uid://bitnw4i8bxxh1" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/04_TurnAround_HighRes_shoot.png" id="14_6d3l6"]
-[ext_resource type="Texture2D" uid="uid://cf5urgtoyvu07" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/04_TurnAround_HighRes_shoot - Copy.png" id="15_cb2dj"]
-[ext_resource type="Texture2D" uid="uid://cjvuq0j8108x8" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/00_TurnAround_HighRes_Walk.png" id="16_cgavl"]
-[ext_resource type="Texture2D" uid="uid://cknb3kcdifjob" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/01_TurnAround_HighRes_Walk.png" id="17_o08un"]
-[ext_resource type="Texture2D" uid="uid://cp8ae8x0tyl50" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/02_TurnAround_HighRes_Walk.png" id="18_15r7v"]
-[ext_resource type="Texture2D" uid="uid://nhk7u3mlpejv" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/06_TurnAround_HighRes_Walk - Copy.png" id="19_0fdb4"]
-[ext_resource type="Texture2D" uid="uid://bawq01o7u2ggp" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/06_TurnAround_HighRes_Walk.png" id="20_u7uci"]
-[ext_resource type="Texture2D" uid="uid://bsbr5egwkgnl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/04_TurnAround_HighRes_Walk.png" id="21_he06m"]
-[ext_resource type="Texture2D" uid="uid://cltoyfcxdyhe5" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/05_TurnAround_HighRes_Walk.png" id="22_m7ieb"]
-[ext_resource type="Texture2D" uid="uid://b0e0c7jtgvlb8" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/03_TurnAround_HighRes_Walk.png" id="23_or0xv"]
+[ext_resource type="Texture2D" uid="uid://c26qxgb2xr87p" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_Down.png" id="3_aekym"]
+[ext_resource type="Texture2D" uid="uid://bagve070pwslg" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_DownLeft.png" id="4_muue2"]
+[ext_resource type="Texture2D" uid="uid://bceu0rfee0jkl" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_DownRightpng.png" id="5_f1mng"]
+[ext_resource type="Texture2D" uid="uid://d1h24bpbulhrs" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_Left.png" id="6_iefl7"]
+[ext_resource type="Texture2D" uid="uid://dsmuv8uxr3nsa" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_Right.png" id="7_kb180"]
+[ext_resource type="Texture2D" uid="uid://8vg54cxmmt7a" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_Up.png" id="8_4yq8l"]
+[ext_resource type="Texture2D" uid="uid://dy3l7ta4v2h47" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_UpLeft.png" id="9_sine3"]
+[ext_resource type="Texture2D" uid="uid://dl6qddhtf4v6s" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/NewTurnaround/Idle_UpRight.png" id="10_cn68g"]
+[ext_resource type="Texture2D" uid="uid://ch513k86ho5i0" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_Down.png" id="11_iefl7"]
+[ext_resource type="Texture2D" uid="uid://cnnxtrv8morut" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_DownLeft.png" id="12_kb180"]
+[ext_resource type="Texture2D" uid="uid://dpdicqp53abvf" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_DownRight.png" id="13_4yq8l"]
+[ext_resource type="Texture2D" uid="uid://duyg5sa63msth" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_Left.png" id="14_sine3"]
+[ext_resource type="Texture2D" uid="uid://c054xpc8ewdhr" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_Right.png" id="15_cn68g"]
+[ext_resource type="Texture2D" uid="uid://bk2y3brpb7o3e" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Down_Walk.png" id="16_aekym"]
+[ext_resource type="Texture2D" uid="uid://bhfpta8ko6x63" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_Up.png" id="16_yibm1"]
+[ext_resource type="Texture2D" uid="uid://b2fgt5ls4s4li" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_UpLeft.png" id="17_mpg5p"]
+[ext_resource type="Texture2D" uid="uid://dtqc6fjfya63a" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/DownLeft_Walkpng.png" id="17_muue2"]
+[ext_resource type="Texture2D" uid="uid://bdtrehywc8pgc" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/DownRight_Walkpng.png" id="18_f1mng"]
+[ext_resource type="Texture2D" uid="uid://bj73nt5ggar7j" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/shoot/New Shoot/Shoot_UpRight.png" id="18_rcra0"]
+[ext_resource type="Texture2D" uid="uid://04dq670q6e8e" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Left_Walkpng.png" id="19_iefl7"]
+[ext_resource type="Texture2D" uid="uid://tgu3nq3tmqly" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Right_Walk.png" id="20_kb180"]
+[ext_resource type="Texture2D" uid="uid://n3b6a6cmm0rn" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Up_Walk.png" id="21_4yq8l"]
+[ext_resource type="Texture2D" uid="uid://di16r8tl3061e" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/UpLeft_Walk.png" id="22_aekym"]
+[ext_resource type="Texture2D" uid="uid://cjcihnvktfpme" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/UpRight_Walk.png" id="23_muue2"]
 [ext_resource type="Script" uid="uid://cd025dvieaej7" path="res://Scripts/Player Scripts/PlayerProjectileHitbox.gd" id="24_cc6k5"]
 [ext_resource type="AudioStream" uid="uid://bkkj40ohcrfjm" path="res://Audio/Sounds/Charging.wav" id="25_5pmxy"]
 [ext_resource type="AudioStream" uid="uid://ba7i3mchr52pl" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-Sound-of-a-special-music-magic-bolt-when-successfu.mp3" id="26_hvbri"]
@@ -39,7 +42,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_muue2")
+"texture": ExtResource("3_aekym")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -47,7 +50,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_f1mng")
+"texture": ExtResource("4_muue2")
 }],
 "loop": true,
 "name": &"idle_down_left",
@@ -55,7 +58,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_iefl7")
+"texture": ExtResource("5_f1mng")
 }],
 "loop": true,
 "name": &"idle_down_right",
@@ -63,7 +66,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_kb180")
+"texture": ExtResource("6_iefl7")
 }],
 "loop": true,
 "name": &"idle_left",
@@ -71,7 +74,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_4yq8l")
+"texture": ExtResource("7_kb180")
 }],
 "loop": true,
 "name": &"idle_right",
@@ -79,7 +82,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_sine3")
+"texture": ExtResource("8_4yq8l")
 }],
 "loop": true,
 "name": &"idle_up",
@@ -87,7 +90,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_cn68g")
+"texture": ExtResource("9_sine3")
 }],
 "loop": true,
 "name": &"idle_up_left",
@@ -95,7 +98,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_yibm1")
+"texture": ExtResource("10_cn68g")
 }],
 "loop": true,
 "name": &"idle_up_right",
@@ -103,7 +106,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_mpg5p")
+"texture": ExtResource("11_iefl7")
 }],
 "loop": false,
 "name": &"shoot_down",
@@ -111,7 +114,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_mpg5p")
+"texture": ExtResource("12_kb180")
 }],
 "loop": false,
 "name": &"shoot_down_left",
@@ -119,7 +122,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_rcra0")
+"texture": ExtResource("13_4yq8l")
 }],
 "loop": false,
 "name": &"shoot_down_right",
@@ -127,7 +130,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_mpg5p")
+"texture": ExtResource("14_sine3")
 }],
 "loop": false,
 "name": &"shoot_left",
@@ -135,7 +138,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_52vsc")
+"texture": ExtResource("15_cn68g")
 }],
 "loop": false,
 "name": &"shoot_right",
@@ -143,7 +146,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_6d3l6")
+"texture": ExtResource("16_yibm1")
 }],
 "loop": false,
 "name": &"shoot_up",
@@ -151,7 +154,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_cb2dj")
+"texture": ExtResource("17_mpg5p")
 }],
 "loop": false,
 "name": &"shoot_up_left",
@@ -159,7 +162,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_6d3l6")
+"texture": ExtResource("18_rcra0")
 }],
 "loop": false,
 "name": &"shoot_up_right",
@@ -167,7 +170,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_cgavl")
+"texture": ExtResource("16_aekym")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -175,7 +178,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_o08un")
+"texture": ExtResource("17_muue2")
 }],
 "loop": true,
 "name": &"walk_down_left",
@@ -183,7 +186,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_15r7v")
+"texture": ExtResource("18_f1mng")
 }],
 "loop": true,
 "name": &"walk_down_right",
@@ -191,7 +194,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_0fdb4")
+"texture": ExtResource("19_iefl7")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -199,7 +202,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_u7uci")
+"texture": ExtResource("20_kb180")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -207,7 +210,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_he06m")
+"texture": ExtResource("21_4yq8l")
 }],
 "loop": true,
 "name": &"walk_up",
@@ -215,7 +218,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("22_m7ieb")
+"texture": ExtResource("22_aekym")
 }],
 "loop": true,
 "name": &"walk_up_left",
@@ -223,7 +226,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_or0xv")
+"texture": ExtResource("23_muue2")
 }],
 "loop": true,
 "name": &"walk_up_right",
@@ -321,13 +324,13 @@ scale_max = 0.099999994
 process_mode = 3
 script = ExtResource("1_8espc")
 beatSquash = NodePath("BeatSquashStretch")
-offset_right = Vector2(35, -80)
+offset_right = Vector2(35, -90)
 offset_down_right = Vector2(40, -95)
 offset_down = Vector2(-50, -75)
-offset_down_left = Vector2(-30, -95)
+offset_down_left = Vector2(-30, -105)
 offset_left = Vector2(-45, -90)
 offset_up_left = Vector2(-50, -115)
-offset_up = Vector2(45, -100)
+offset_up = Vector2(-50, -100)
 offset_up_right = Vector2(45, -115)
 charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
@@ -344,9 +347,9 @@ position = Vector2(11, -67.4999)
 
 [node name="VisualRoot" type="Node2D" parent="." unique_id=2072254445]
 position = Vector2(0, -63.4999)
+scale = Vector2(0.3, 0.3)
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="VisualRoot" unique_id=1219775596]
-scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_e8aea")
 animation = &"shoot_up_right"
 

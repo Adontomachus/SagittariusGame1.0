@@ -1745,7 +1745,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_sg81t"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_xrjep"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -2190,7 +2190,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_dw111")
 
 [node name="RhythmLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=882339640]
-z_index = -1
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -2205,6 +2205,7 @@ grow_vertical = 2
 color = Color(0.85559684, 1, 0.64379185, 1)
 
 [node name="TextureRect2" type="TextureRect" parent="BeatIndicatorElements/RhythmLines" unique_id=871230433]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2221,7 +2222,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("17_3tu8g")
 
 [node name="RhythmLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=1196783716]
-z_index = -1
+z_index = 1
 offset_left = 1216.0
 offset_top = 969.0
 offset_right = 1225.0007
@@ -2230,6 +2231,7 @@ color = Color(0.85559684, 1, 0.64379185, 1)
 
 [node name="TextureRectLine" type="TextureRect" parent="BeatIndicatorElements/RhythmLines2" unique_id=372978505]
 modulate = Color(1, 1, 1, 0)
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2246,7 +2248,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("17_3tu8g")
 
 [node name="HalfBeatLines" type="ColorRect" parent="BeatIndicatorElements" unique_id=1627583558]
-z_index = -1
+z_index = 1
 offset_left = 843.0
 offset_top = 975.0
 offset_right = 848.5001
@@ -2256,6 +2258,7 @@ color = Color(0.5116678, 0.4565437, 0.2784093, 0)
 
 [node name="TextureRectLine" type="TextureRect" parent="BeatIndicatorElements/HalfBeatLines" unique_id=610774790]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2272,7 +2275,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("18_sg81t")
 
 [node name="HalfBeatLines2" type="ColorRect" parent="BeatIndicatorElements" unique_id=1028365080]
-z_index = -1
+z_index = 1
 offset_left = 1104.0
 offset_top = 975.0
 offset_right = 1109.4984
@@ -2282,6 +2285,7 @@ color = Color(0.5116678, 0.4565437, 0.2784093, 0)
 
 [node name="TextureRectLine" type="TextureRect" parent="BeatIndicatorElements/HalfBeatLines2" unique_id=30748457]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2464,13 +2468,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_sg81t")
+button_group = SubResource("ButtonGroup_xrjep")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_sg81t")
+button_group = SubResource("ButtonGroup_xrjep")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_sg81t")
+button_group = SubResource("ButtonGroup_xrjep")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
