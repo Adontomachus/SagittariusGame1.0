@@ -7,6 +7,7 @@ var velocity: Vector2
 @export var pointsAmount = 150
 @export var experienceAmount: int = 6
 @export var healAmount: float = 0.4
+@onready var orb_sprite: Sprite2D = $OrbSprite
 var homeTowardsPlayer = false
 var chaseTarget: bool = false
 @onready var player: Node2D
@@ -67,6 +68,7 @@ func _physics_process(delta):
 	if chaseTarget and objectTarget:
 		movespeed += 355 * delta
 		look_at(objectTarget.global_position)
+		orb_sprite.global_rotation = 0
 
 
 func emit_effects():

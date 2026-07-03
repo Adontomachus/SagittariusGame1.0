@@ -14,9 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://c6m7eu5rshvxj" path="res://Audio/Music/Bebot_Updated.mp3" id="9_0gr54"]
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="10_ntvnh"]
 [ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="11_7i2y7"]
-[ext_resource type="Texture2D" uid="uid://iyjlnnyf8lls" path="res://Sprites/UI/bosshpbar.png" id="12_l6g6h"]
 [ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="13_qj281"]
-[ext_resource type="Texture2D" uid="uid://bkplkg5pacly4" path="res://Sprites/UI/bosshpbarfill.png" id="13_vdje8"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="14_qj281"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
 [ext_resource type="Texture2D" uid="uid://bsa1w30ap4xpb" path="res://Sprites/Game Elements/Placeholders/UI Elements/beatindicator.png" id="16_dw111"]
@@ -32,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://5x6ck6h8h66u" path="res://Sprites/UI Sprites/Secondary Grenade.png" id="21_vdje8"]
 [ext_resource type="PackedScene" uid="uid://dso7bf0d6wiff" path="res://Scenes/Interface/Minimap.tscn" id="22_0if8i"]
 [ext_resource type="Texture2D" uid="uid://cbne2taibbhv4" path="res://Sprites/UI Sprites/Skill AOE.png" id="22_qj281"]
+[ext_resource type="Texture2D" uid="uid://dtr12hy8o0k5a" path="res://Sprites/Game Elements/Placeholders/UI Elements/bosshealthindicator.png" id="22_xrjep"]
+[ext_resource type="Texture2D" uid="uid://dka62u2hf8fsn" path="res://Sprites/Game Elements/Placeholders/UI Elements/bosshealthindicator_fill.png" id="23_kpxyp"]
 [ext_resource type="Script" uid="uid://d3iaealb3gp1c" path="res://Scripts/UI Menu, Settings and Post Game/ChargeShotUI.gd" id="26_7i2y7"]
 [ext_resource type="Shader" uid="uid://dl5lk71shldso" path="res://Scenes/Gameplay/Minimap.gdshader" id="32_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://dqtyg5mdmcf2g" path="res://Sprites/Game Elements/Placeholders/UI Elements/Minimapborder.png" id="32_7363f"]
@@ -1728,7 +1728,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_hlum5"]
 font = ExtResource("13_qj281")
-font_size = 48
+font_size = 32
 font_color = Color(1, 0.86981654, 0, 1)
 outline_size = 25
 outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
@@ -1745,7 +1745,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_xrjep"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_sg81t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -1955,10 +1955,10 @@ libraries/ = SubResource("AnimationLibrary_7yb2d")
 [node name="WaveNotification" type="Label" parent="." unique_id=1761094799]
 self_modulate = Color(1.353256, 1.353256, 1.353256, 1)
 layout_mode = 0
-offset_left = 698.0
-offset_top = 159.0
-offset_right = 1227.5652
-offset_bottom = 249.0
+offset_left = 720.0
+offset_top = 254.0
+offset_right = 1249.5652
+offset_bottom = 344.0
 text = "WAVE INCOMING!"
 label_settings = SubResource("LabelSettings_6uhl4")
 horizontal_alignment = 1
@@ -2356,25 +2356,25 @@ bus = &"SFX"
 
 [node name="UpdatedBossHealthBar" type="TextureProgressBar" parent="." unique_id=13669307 groups=["BossHealthUI"]]
 layout_mode = 0
-offset_left = 492.99997
-offset_top = 806.0
-offset_right = 2805.4998
-offset_bottom = 1161.0
+offset_left = 660.0
+offset_top = 51.0
+offset_right = 2622.8196
+offset_bottom = 542.0001
 scale = Vector2(0.4, 0.4)
 value = 55.0
 nine_patch_stretch = true
-texture_under = ExtResource("12_l6g6h")
-texture_progress = ExtResource("13_vdje8")
+texture_under = ExtResource("22_xrjep")
+texture_progress = ExtResource("23_kpxyp")
 script = ExtResource("14_qj281")
 
 [node name="BossLabel" type="Label" parent="UpdatedBossHealthBar" unique_id=1628928624]
 layout_mode = 0
-offset_left = 862.5
-offset_top = 7.5000134
-offset_right = 1537.5
-offset_bottom = 87.500015
+offset_left = 762.5
+offset_top = 105.00001
+offset_right = 1415.0
+offset_bottom = 147.5
 theme_override_font_sizes/font_size = 40
-text = "Boss Health"
+text = "The Unraveling One"
 label_settings = SubResource("LabelSettings_hlum5")
 horizontal_alignment = 1
 
@@ -2470,13 +2470,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_xrjep")
+button_group = SubResource("ButtonGroup_sg81t")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_xrjep")
+button_group = SubResource("ButtonGroup_sg81t")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_xrjep")
+button_group = SubResource("ButtonGroup_sg81t")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 instance=ExtResource("21_3825n")]
 visible = false
@@ -2615,10 +2615,10 @@ grow_vertical = 2
 
 [node name="BannerLabel" type="Label" parent="ChainTierUI/BannerContainer" unique_id=181406935]
 layout_mode = 1
-offset_left = 790.0
-offset_top = 701.0
-offset_right = 964.0
-offset_bottom = 826.0
+offset_left = 792.0
+offset_top = 793.0
+offset_right = 966.0
+offset_bottom = 918.0
 text = "Sample
 "
 label_settings = SubResource("LabelSettings_xrjep")

@@ -41,7 +41,7 @@ shape = SubResource("CircleShape2D_w4og7")
 environment = SubResource("Environment_3piun")
 
 [node name="Trail" type="CPUParticles2D" parent="." unique_id=53715948]
-amount = 25
+amount = 10
 texture = SubResource("GradientTexture2D_bhunq")
 emission_shape = 1
 emission_sphere_radius = 3.55

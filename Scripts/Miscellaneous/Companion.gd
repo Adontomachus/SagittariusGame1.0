@@ -7,6 +7,8 @@ enum CompanionRole {
 	RANGED_SUPPORT   ## Companion 2 — ranged, chain-reactive, buffer
 }
 
+@onready var cat_sprite: Sprite2D = $CatSprite
+
 @export var role: CompanionRole = CompanionRole.MELEE_STRIKER
 
 #region Variables with export groups
@@ -69,6 +71,7 @@ var support_buff_timer: float = 0.0
 
 
 func _ready() -> void:
+	cat_sprite.global_rotation = 0
 	state_machine.init(self)
 	player_target = get_tree().get_first_node_in_group("PlayerObject")
 
@@ -88,6 +91,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	cat_sprite.global_rotation = 0
 	nearest_enemy = _find_closest_enemy()
 	if nearest_enemy:
 		enemy_target_marker.global_position = nearest_enemy.global_position

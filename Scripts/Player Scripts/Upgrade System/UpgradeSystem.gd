@@ -1,7 +1,7 @@
 class_name UpgradeSystem
 extends Node
 
-const UPGRADE_THRESHOLDS: Array[int] = [ 2, 4, 6, 8, 10, 13, 16, 19, 22, 25, 28, 31, 34, 37, 40, 44, 48, 52, 56, 60]
+const UPGRADE_THRESHOLDS: Array[int] = [ 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
 const CARDS_TO_SHOW: int = 3
 
 var all_upgrades: Array[UpgradeData] = []
@@ -125,15 +125,15 @@ func _register_upgrades() -> void:
 	## SECONDARY FIRE UPGRADES
 	## -------------------------
 	all_upgrades.append(_make_upgrade(
-		"secondary_grenade_damage", "Hotter Flames",
-		"Grenade damage +{value}%",
+		"secondary_grenade_damage", "Damaging Noise",
+		"Music bomb damage +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
 		"res://Sprites/Legacy/Sagittarius.png"
 	))
 	all_upgrades.append(_make_upgrade(
-		"secondary_grenade_radius", "Bigger Flames",
-		"Grenade radius +{value}%",
+		"secondary_grenade_radius", "Bigger Noise",
+		"Music bomb radius +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
 		"res://Sprites/Legacy/Sagittarius.png"
@@ -146,8 +146,8 @@ func _register_upgrades() -> void:
 		"res://Sprites/Legacy/Sagittarius.png"
 	))
 	all_upgrades.append(_make_upgrade(
-		"secondary_swap_grenade", "Grenade",
-		"Unlock grenade as secondary fire",
+		"secondary_swap_grenade", "Music Bomb",
+		"Unlock music bomb as secondary fire",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 1,
 		[1.0],
 		"res://Sprites/Legacy/Sagittarius.png"

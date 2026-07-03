@@ -1590,7 +1590,7 @@ visibility_layer = 0
 z_index = 2
 z_as_relative = false
 position = Vector2(-280, 553)
-polygon = PackedVector2Array(-6497, 2588, -2151, 4745, 7320, -220, 3116, -2219)
+polygon = PackedVector2Array(-5907, 2409, -2151, 4322, 6057, 218, 2371, -1597)
 disabled = true
 
 [node name="PlayerCatComp" parent="." unique_id=1754029293 instance=ExtResource("63_584ly")]

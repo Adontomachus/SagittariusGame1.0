@@ -64,6 +64,7 @@ _data = {
 }
 
 [node name="BossUnit" type="CharacterBody2D" unique_id=1394345447 node_paths=PackedStringArray("stacking_damage_numbers", "state_machine", "navAgent", "shoot_point") groups=["BossType", "EnemyObject", "FodderType"]]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_t5eiy")
 stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
