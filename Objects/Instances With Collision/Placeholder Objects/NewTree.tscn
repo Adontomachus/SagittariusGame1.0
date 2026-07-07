@@ -1,19 +1,16 @@
 [gd_scene format=3 uid="uid://dtuv5wrf5ipbp"]
 
-[ext_resource type="Texture2D" uid="uid://b6e5shpvt207o" path="res://Sprites/Game Elements/Placeholders/Ground/clutter.png" id="1_oyk3o"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5u2p"]
-atlas = ExtResource("1_oyk3o")
-region = Rect2(5.7608337, 471.67706, 190.35086, 246.94171)
+[ext_resource type="Texture2D" uid="uid://dcfk1gnc5ou55" path="res://Sprites/Game Elements/Placeholders/Tree_1.png" id="1_oyk3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25uh2"]
 size = Vector2(52.8289, 47.637516)
 
 [node name="Wall2" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
-position = Vector2(9.536743e-07, 9.536743e-07)
+position = Vector2(11, -105)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
-texture = SubResource("AtlasTexture_c5u2p")
+position = Vector2(19, -93)
+texture = ExtResource("1_oyk3o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
 position = Vector2(-8.244616, 58.860588)
