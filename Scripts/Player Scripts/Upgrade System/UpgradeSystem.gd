@@ -23,7 +23,7 @@ func _register_upgrades() -> void:
 		"Perfect shots repeat once at 50% power",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/echo.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -31,7 +31,7 @@ func _register_upgrades() -> void:
 		"Gain health when clearing an enemy spawner",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/heart.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -39,7 +39,7 @@ func _register_upgrades() -> void:
 		"Perfect hits grant temporary movement speed",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/tikbalang.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -47,7 +47,7 @@ func _register_upgrades() -> void:
 		"Perfect shots burn enemies over time",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/harana.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -55,7 +55,7 @@ func _register_upgrades() -> void:
 		"20% chance for Good hits to become Perfect",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/anito.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -63,14 +63,14 @@ func _register_upgrades() -> void:
 		"Missing a beat once does not break combo",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/kundiman.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"sarimanok_feather", "Sarimanok Feather",
 		"+1 extra projectile spread",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/sarimanok.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -78,7 +78,7 @@ func _register_upgrades() -> void:
 		"Become invulnerable briefly after taking damage",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/diwata.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -86,7 +86,7 @@ func _register_upgrades() -> void:
 		"Every 8th shot explodes",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/kapre.png"
 	))
 
 	all_upgrades.append(_make_upgrade(
@@ -94,7 +94,7 @@ func _register_upgrades() -> void:
 		"Regenerate health while standing still",
 		UpgradeData.UpgradeCategory.AGIMAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/nuno.png"
 	))
 	## -------------------------
 	## STAT UPGRADES
@@ -104,21 +104,21 @@ func _register_upgrades() -> void:
 		"Projectile damage +{value}%",
 		UpgradeData.UpgradeCategory.STAT, 5,
 		[10.0, 10.0, 12.0, 12.0, 15.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/strength.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"stat_move_speed", "Speed",
 		"Move speed +{value}%",
 		UpgradeData.UpgradeCategory.STAT, 5,
 		[10.0, 10.0, 12.0, 12.0, 15.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/speed.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"stat_max_health", "Vitality",
 		"Max health +{value}%",
 		UpgradeData.UpgradeCategory.STAT, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/vitality.png"
 	))
 
 	## -------------------------
@@ -129,35 +129,35 @@ func _register_upgrades() -> void:
 		"Music bomb damage +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/bomb.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"secondary_grenade_radius", "Bigger Noise",
 		"Music bomb radius +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/noise.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"secondary_dash_force", "Swift Feet",
 		"Dash force +{value}%",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/flash.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"secondary_swap_grenade", "Music Bomb",
 		"Unlock music bomb as secondary fire",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/bomb.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"secondary_swap_dash", "Dash",
 		"Unlock dashing as secondary fire",
 		UpgradeData.UpgradeCategory.SECONDARY_FIRE, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/dash.png"
 		))
 	## -------------------------
 	## Q MOVE UPGRADES
@@ -167,42 +167,42 @@ func _register_upgrades() -> void:
 		"Swap Q move to directional cone burst",
 		UpgradeData.UpgradeCategory.Q_MOVE, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/cone.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"qmove_swap_aoe_pulse", "Rhythm Pulse",
 		"Unlock Rhythm pulse as Q move",
 		UpgradeData.UpgradeCategory.Q_MOVE, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/pulse.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"qmove_aoe_damage", "Shockwave",
 		"AoE pulse damage +{value}%",
 		UpgradeData.UpgradeCategory.Q_MOVE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/shock.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"qmove_aoe_duration", "Sustained Pulse",
 		"AoE pulse duration +{value} beats",
 		UpgradeData.UpgradeCategory.Q_MOVE, 5,
 		[3.0, 3.0, 5.0, 5.0, 7.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/sustained.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"qmove_cone_count", "Wider Spread",
 		"Cone fires +{value} extra projectiles",
 		UpgradeData.UpgradeCategory.Q_MOVE, 5,
 		[1.0, 1.0, 2.0, 2.0, 3.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/wider.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"qmove_cone_damage", "Focused Fire",
 		"Cone projectile damage +{value}%",
 		UpgradeData.UpgradeCategory.Q_MOVE, 5,
 		[15.0, 15.0, 20.0, 20.0, 25.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/focused.png"
 	))
 
 	## -------------------------
@@ -213,7 +213,7 @@ func _register_upgrades() -> void:
 		"Charged shot damage multiplier +{value}",
 		UpgradeData.UpgradeCategory.CHARGE_SHOT, 5,
 		[0.5, 0.5, 0.8, 0.8, 1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/over.png"
 	))
 	## -------------------------
 	## COMPANION UPGRADES
@@ -223,28 +223,28 @@ func _register_upgrades() -> void:
 		"Unlock your melee companion",
 		UpgradeData.UpgradeCategory.STAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/melee.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"companion_1_level", "Empower Melee Companion",
 		"Make melee companion stronger!",
 		UpgradeData.UpgradeCategory.STAT, 3,
 		[15.0, 15.0, 20.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/buffmelee.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"companion_2_unlock", "Unlock Ranged Companion",
 		"Unlock your ranged companion",
 		UpgradeData.UpgradeCategory.STAT, 1,
 		[1.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/ranged.png"
 	))
 	all_upgrades.append(_make_upgrade(
 		"companion_2_level", "Empower Ranged Companion",
 		"Make ranged companion stronger!",
 		UpgradeData.UpgradeCategory.STAT, 3,
 		[15.0, 15.0, 20.0],
-		"res://Sprites/Legacy/Sagittarius.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/buffranged.png"
 	))
 
 

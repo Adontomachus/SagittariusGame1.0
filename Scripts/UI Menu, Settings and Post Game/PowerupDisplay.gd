@@ -3,7 +3,7 @@ extends Control
 
 ## Max icons per row before wrapping to next row
 @export var icons_per_row: int = 10
-@export var icon_size: Vector2 = Vector2(32, 32)
+@export var icon_size: Vector2 = Vector2(48, 48)
 @export var icon_spacing: Vector2 = Vector2(4, 4)
 @export var icon_scene: PackedScene  ## optional — leave null to generate icons in code
 
@@ -43,32 +43,32 @@ func add_upgrade_icon(upgrade: UpgradeData) -> void:
 
 
 func _create_icon(upgrade: UpgradeData) -> Control:
-	var container := Panel.new()
+	var container := Control.new()
 	container.custom_minimum_size = icon_size
 	container.size = icon_size
 
-	## Background color tinted by category
-	var style := StyleBoxFlat.new()
-	style.bg_color = category_colors.get(upgrade.category, Color.GRAY)
-	style.border_color = Color.WHITE
-	style.set_border_width_all(1)
-	style.set_corner_radius_all(3)
-	container.add_theme_stylebox_override("panel", style)
+	## Tooltip on hover
+	container.tooltip_text = "%s\n%s" % [upgrade.display_name, upgrade.get_description()]
 
-	## Icon texture if available
 	if upgrade.icon != null:
 		var tex := TextureRect.new()
 		tex.texture = upgrade.icon
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		tex.stretch_mode = TextureRect.STRETCH_SCALE
+		## Fill the entire container with no padding
 		tex.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		tex.offset_left = 2
-		tex.offset_top = 2
-		tex.offset_right = -2
-		tex.offset_bottom = -2
+		tex.offset_left = 0
+		tex.offset_top = 0
+		tex.offset_right = 0
+		tex.offset_bottom = 0
 		container.add_child(tex)
 	else:
-		## Fallback — show first letter of upgrade name
+		## Fallback — category colored box with letter only when no icon
+		var fallback := ColorRect.new()
+		fallback.color = category_colors.get(upgrade.category, Color.GRAY)
+		fallback.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		container.add_child(fallback)
+
 		var label := Label.new()
 		label.text = upgrade.display_name.left(1).to_upper()
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -76,9 +76,6 @@ func _create_icon(upgrade: UpgradeData) -> Control:
 		label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		label.add_theme_font_size_override("font_size", 10)
 		container.add_child(label)
-
-	## Tooltip on hover
-	container.tooltip_text = "%s\n%s" % [upgrade.display_name, upgrade.get_description()]
 
 	return container
 
