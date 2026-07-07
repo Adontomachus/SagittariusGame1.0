@@ -24,13 +24,110 @@ fill_to = Vector2(0.82051283, 0.15384616)
 [sub_resource type="Gradient" id="Gradient_riqys"]
 colors = PackedColorArray(1, 1, 1, 1, 0.64228314, 0.57930446, 0.9999979, 0)
 
-[node name="AreaCollision" type="Area2D" unique_id=934945096]
+[sub_resource type="Gradient" id="Gradient_hrftc"]
+offsets = PackedFloat32Array(0, 0.8584906, 1)
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 0.93900007, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_riqys"]
+gradient = SubResource("Gradient_hrftc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.2)
+
+[sub_resource type="Animation" id="Animation_k480p"]
+resource_name = "DrawIn"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowReady:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.0333333),
+"transitions": PackedFloat32Array(2.8284276, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlowReady:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(0.305, 0.305)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OrbSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(12.12574, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5jjul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlowReady:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlowReady:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.875, 2.875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OrbSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wdsb"]
+_data = {
+&"DrawIn": SubResource("Animation_k480p"),
+&"RESET": SubResource("Animation_5jjul")
+}
+
+[node name="AreaCollision" type="Area2D" unique_id=934945096 node_paths=PackedStringArray("channel_animation")]
 script = ExtResource("1_hrftc")
+channel_animation = NodePath("ReadyingAnimation")
 
 [node name="OrbSprite" type="Sprite2D" parent="." unique_id=1535145071]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1.3135986, 2.8157141, 2.8157141, 1)
 position = Vector2(-0.9999995, -8.999998)
-scale = Vector2(0.13861386, 0.1386139)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_hrftc")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=596575799]
@@ -50,3 +147,11 @@ initial_velocity_max = 5.0
 scale_amount_min = 0.01
 scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_riqys")
+
+[node name="GlowReady" type="Sprite2D" parent="." unique_id=966728632]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2.875, 2.875)
+texture = SubResource("GradientTexture2D_riqys")
+
+[node name="ReadyingAnimation" type="AnimationPlayer" parent="." unique_id=326919589]
+libraries/ = SubResource("AnimationLibrary_5wdsb")

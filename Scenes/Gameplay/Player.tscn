@@ -33,8 +33,11 @@
 [ext_resource type="Script" uid="uid://cov3onfacl4cf" path="res://Scripts/Player Scripts/ChargeShot.gd" id="28_pjvpr"]
 [ext_resource type="Script" uid="uid://cipc737xcdjss" path="res://Scripts/Player Scripts/SecondaryFire.gd" id="29_rnqx7"]
 [ext_resource type="Script" uid="uid://b8i8fepdrf741" path="res://Scripts/Miscellaneous/BeatSquashStretch.gd" id="30_1w4kd"]
+[ext_resource type="AudioStream" uid="uid://cun4ompuq4u3i" path="res://Audio/Sounds/CometMode.wav" id="30_sine3"]
+[ext_resource type="AudioStream" uid="uid://1p45twclboix" path="res://Audio/Sounds/CadenceMode.wav" id="31_cn68g"]
 [ext_resource type="AudioStream" uid="uid://dh7dhvinq5p40" path="res://Audio/Sounds/NewSounds/PlayerSounds/audio-create-a-sound-file-for-when-a-bolt-hits-our-hero- (1).mp3" id="31_ss6nw"]
 [ext_resource type="PackedScene" uid="uid://b0c3leeahxy3x" path="res://Objects/Particle Effects/ExplosionEffect.tscn" id="32_1a1k3"]
+[ext_resource type="AudioStream" uid="uid://l25iuw1kspyv" path="res://Audio/Sounds/EchoNova.wav" id="32_yibm1"]
 [ext_resource type="Script" uid="uid://dtaaeay73ofgq" path="res://Scripts/Miscellaneous/FakeShadow.gd" id="33_1fgkr"]
 [ext_resource type="Script" uid="uid://d4wvkv64i10g" path="res://Scripts/Player Scripts/ChainAura.gd" id="34_aekym"]
 
@@ -44,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_aekym")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down",
 "speed": 5.0
 }, {
@@ -52,7 +55,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_muue2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down_left",
 "speed": 5.0
 }, {
@@ -60,7 +63,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_f1mng")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down_right",
 "speed": 5.0
 }, {
@@ -68,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_iefl7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_left",
 "speed": 5.0
 }, {
@@ -76,7 +79,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_kb180")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_right",
 "speed": 5.0
 }, {
@@ -84,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_4yq8l")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up",
 "speed": 5.0
 }, {
@@ -92,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_sine3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up_left",
 "speed": 5.0
 }, {
@@ -100,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_cn68g")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up_right",
 "speed": 5.0
 }, {
@@ -108,7 +111,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_iefl7")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_down",
 "speed": 5.0
 }, {
@@ -116,7 +119,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_kb180")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_down_left",
 "speed": 5.0
 }, {
@@ -124,7 +127,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_4yq8l")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_down_right",
 "speed": 5.0
 }, {
@@ -132,7 +135,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_sine3")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_left",
 "speed": 5.0
 }, {
@@ -140,7 +143,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_cn68g")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_right",
 "speed": 5.0
 }, {
@@ -148,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_yibm1")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_up",
 "speed": 5.0
 }, {
@@ -156,7 +159,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_mpg5p")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_up_left",
 "speed": 5.0
 }, {
@@ -164,7 +167,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_rcra0")
 }],
-"loop": false,
+"loop": 0,
 "name": &"shoot_up_right",
 "speed": 5.0
 }, {
@@ -172,7 +175,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_aekym")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down",
 "speed": 5.0
 }, {
@@ -180,7 +183,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_muue2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down_left",
 "speed": 5.0
 }, {
@@ -188,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("18_f1mng")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down_right",
 "speed": 5.0
 }, {
@@ -196,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_iefl7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_left",
 "speed": 5.0
 }, {
@@ -204,7 +207,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_kb180")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_right",
 "speed": 5.0
 }, {
@@ -212,7 +215,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("21_4yq8l")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up",
 "speed": 5.0
 }, {
@@ -220,7 +223,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_aekym")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up_left",
 "speed": 5.0
 }, {
@@ -228,7 +231,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("23_muue2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up_right",
 "speed": 5.0
 }]
@@ -240,8 +243,8 @@ height = 106.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muue2"]
 height = 124.499794
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aekym"]
-height = 126.999794
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yibm1"]
+size = Vector2(35, 77)
 
 [sub_resource type="Gradient" id="Gradient_81epe"]
 colors = PackedColorArray(0.85931724, 0.44173515, 0.22150633, 1, 0, 0, 0, 1)
@@ -369,7 +372,8 @@ position = Vector2(0, -63.4999)
 script = ExtResource("24_cc6k5")
 
 [node name="BulletHitbox" type="CollisionShape2D" parent="ProjectileHitbox" unique_id=2033357806]
-shape = SubResource("CapsuleShape2D_aekym")
+position = Vector2(0.5, 3.9999008)
+shape = SubResource("RectangleShape2D_yibm1")
 debug_color = Color(0.69913423, 0.3407836, 0.8957267, 0.41960785)
 
 [node name="PulseSoundEffect" type="AudioStreamPlayer" parent="." unique_id=1828210837]
@@ -382,6 +386,19 @@ bus = &"SFX"
 stream = ExtResource("26_hvbri")
 volume_db = -5.0
 pitch_scale = 1.4
+bus = &"SFX"
+
+[node name="CometModeAudio" type="AudioStreamPlayer" parent="." unique_id=683423020]
+stream = ExtResource("30_sine3")
+bus = &"SFX"
+
+[node name="CadenceAudio" type="AudioStreamPlayer" parent="." unique_id=2068268861]
+stream = ExtResource("31_cn68g")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="EchoNovaAudio" type="AudioStreamPlayer" parent="." unique_id=147801228]
+stream = ExtResource("32_yibm1")
 bus = &"SFX"
 
 [node name="CharacterLight" type="PointLight2D" parent="." unique_id=1808427930]

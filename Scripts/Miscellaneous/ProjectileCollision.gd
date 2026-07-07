@@ -146,21 +146,6 @@ func _ready():
 					queue_free()
 		
 
-			if (projectileSide == ProjectileSide.Enemy):
-				if area is PlayerProjectileHitbox: #(area.is_in_group("PlayerObject")):
-					# Hit feedback
-					var hitEffect = unitHitEffects.instantiate()
-					hitEffect.position = self.get_global_position()
-					get_tree().get_root().call_deferred("add_child", hitEffect)
-					
-					# Enemy Damage Number Feedback
-					var enemyDamageFeedback = enemyDamageNumber.instantiate()
-					enemyDamageFeedback.position = self.get_global_position() + initPosition
-					enemyDamageFeedback.damage_value = projectile_damage
-					get_tree().get_root().call_deferred("add_child", enemyDamageFeedback)
-					
-					area.modify_player_health(-projectile_damage)
-					queue_free()
 		)
 	elif damage_type == DamageType.AreaOfEffect:
 		self.area_entered.connect(func(area) -> void:

@@ -38,9 +38,10 @@ func process_physics(delta: float) -> EnemyState:
 			shot_times += 1
 	# Shot time threshold checker
 	if shot_times >= 2:
-		shot_times = 0
 		attack_telegraph.play("Firing")
 		parent.shoot_projectile()
+		shot_times = 0
+
 			
 	#if shot_times == 1:
 	#	

@@ -13,6 +13,7 @@ enum AbilityType {Q_NONE ,AOE_PULSE, DIRECTIONAL_CONE }
 @export_category("Ability Stats")
 @export var damage_divisor_min: float = 1.2
 @export var damage_divisor_max: float = 1.5
+
 # How many (half)beats the ability activates
 @export var ability_duration_beats: int = 26
 
@@ -27,6 +28,9 @@ var ability_duration: int = 0
 var pulse_aoe := preload("res://Objects/Instances With Collision/SplashDamage.tscn")
 var projectile := preload("res://Objects/Instances With Collision/PrototypeProjectile.tscn")
 
+## Section where the character portrait appears when using an ability, which acts as a visual feedback
+@export_category("Animation Feedback")
+@export var ult_animation_feedback: AnimationPlayer
 
 func _ready() -> void:
 	pass
@@ -36,6 +40,7 @@ func activate() -> void:
 		return
 	ability_duration = ability_duration_beats
 	ability_active = true
+	ult_animation_feedback.play("Activation")
 	player.ability_aoe_node.show()
 
 

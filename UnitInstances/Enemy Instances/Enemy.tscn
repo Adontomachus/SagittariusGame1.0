@@ -65,7 +65,7 @@ script = ExtResource("1_s7bn3")
 stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
-amountOfPointOrbs = 1
+amountOfPointsInOrb = 18
 attackPower = 9.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]

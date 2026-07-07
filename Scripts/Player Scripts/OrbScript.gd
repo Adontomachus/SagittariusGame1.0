@@ -1,12 +1,13 @@
 class_name ExperienceParticle
 extends Area2D
 
-var movespeed = randf_range(5,500)
+var movespeed = 0
 var velocity: Vector2
 @export_category("Orb Stats")
 @export var pointsAmount = 150
 @export var experienceAmount: int = 6
 @export var healAmount: float = 0.4
+@export var channel_animation: AnimationPlayer
 @onready var orb_sprite: Sprite2D = $OrbSprite
 var homeTowardsPlayer = false
 var chaseTarget: bool = false
@@ -18,16 +19,6 @@ var orb_level: int = 1
 
 var collEffect := preload("res://Objects/Particle Effects/CollectEffect.tscn")
 func _ready():
-	## Checks the orb level, which determines experience amount given to player
-	match orb_level:
-		1:
-			experienceAmount = 6
-		2:
-			experienceAmount = 12
-		3:
-			experienceAmount = 20
-		4:
-			experienceAmount = 50
 	
 	var combo_system = get_tree().get_first_node_in_group("ComboManager")
 	
@@ -36,7 +27,9 @@ func _ready():
 	objectTarget = get_tree().get_first_node_in_group("PlayerObject")
 	print("Found: ", objectTarget)
 	rotation_degrees = randf_range(0,360)
-	pass
+	channel_animation.play("DrawIn")
+	await channel_animation.animation_finished
+	chaseTarget = true
 	
 	self.area_entered.connect(func(area) -> void:
 		if area is PlayerProjectileHitbox:
@@ -61,10 +54,10 @@ func _physics_process(delta):
 
 	#OFFICIAL SCRIPT
 	position += transform.x * movespeed * delta
-	if !chaseTarget:
-		movespeed -=  300 * delta
-	if (movespeed <= 0):
-		chaseTarget = true
+	#if !chaseTarget:
+	#	movespeed -=  300 * delta
+	#if (movespeed <= 0):
+	#	chaseTarget = true
 	if chaseTarget and objectTarget:
 		movespeed += 355 * delta
 		look_at(objectTarget.global_position)

@@ -68,6 +68,7 @@ stacking_damage_numbers = NodePath("StackingDamageNumbers")
 state_machine = NodePath("EnemyStateMachine")
 navAgent = NodePath("Pathfinding")
 maxHealthPoints = 300
+amountOfPointsInOrb = 48
 shoot_point = NodePath("ShootPoint")
 inaccuracy = 35.0
 attackPower = 7.0
