@@ -8,14 +8,24 @@ extends Node2D
 
 var tween: Tween
 
+@onready var telegraph_texture_rect: TextureRect = $TextureRect
+@export var telegraph_texture: Texture2D
+
 
 func _ready() -> void:
-	## Centered rect so extends from elite
 	telegraph_rect.size = Vector2(telegraph_width, telegraph_length)
 	telegraph_rect.position = Vector2(-telegraph_width / 2.0, 0)
-	telegraph_rect.color = Color(1.0, 0.5, 0.0, 0.3)
-	hide()
+	telegraph_rect.color = Color(1.0, 0.5, 0.0, 0.0)  ## fully transparent, just for flash
 
+	if telegraph_texture and telegraph_texture_rect:
+		telegraph_texture_rect.texture = telegraph_texture
+		telegraph_texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+		telegraph_texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		telegraph_texture_rect.size = Vector2(telegraph_width, telegraph_length)
+		telegraph_texture_rect.position = Vector2(-telegraph_width / 2.0, 0)
+		telegraph_texture_rect.modulate = Color(1.0, 1.0, 1.0, 0.3)
+
+	hide()
 
 func show_charging() -> void:
 	show()

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bk63h6cmnbpha"]
+
+[ext_resource type="Script" uid="uid://l3y85c5608g6" path="res://Scripts/GDCEF/BrowserWindow.gd" id="1_5lmat"]
+[ext_resource type="Script" uid="uid://dd55sccwudd14" path="res://Scenes/Interface/WindowInput.gd" id="2_l1i7r"]
+
+[node name="BrowserWindow" type="CanvasLayer" unique_id=63176195 groups=["BrowserWindow"]]
+process_mode = 3
+script = ExtResource("1_5lmat")
+
+[node name="Background" type="ColorRect" parent="." unique_id=622011664]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Window" type="Panel" parent="." unique_id=1995429228]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Window" unique_id=1943658534]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -554.66675
+offset_top = -312.0
+offset_right = 554.66675
+offset_bottom = 312.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("2_l1i7r")
+
+[node name="Button" type="Button" parent="Window" unique_id=121408003]
+layout_mode = 0
+offset_left = 1537.0
+offset_top = 241.0
+offset_right = 1555.0
+offset_bottom = 272.0
+text = "X"
+
+[node name="Label" type="Label" parent="Window" unique_id=1801115743]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

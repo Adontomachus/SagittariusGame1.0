@@ -62,17 +62,25 @@ func _on_card_3_pressed() -> void:
 	_pick(2)
 
 
+@export var powerup_display: PowerUpDisplay
+
+
 func _pick(index: int) -> void:
 	if player == null:
 		push_error("UpgradeUI: player is null in _pick")
 		return
 	if index >= current_cards.size():
 		return
-
 	if animator:
 		await animator.play_dismiss(index)
 
-	UpgradeSystemScript.apply_upgrade(current_cards[index], player)
+	var chosen := current_cards[index]
+	UpgradeSystemScript.apply_upgrade(chosen, player)
+
+	## Add icon to HUD display
+	if powerup_display:
+		powerup_display.add_upgrade_icon(chosen)
+
 	_close()
 
 

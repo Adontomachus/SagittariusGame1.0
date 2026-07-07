@@ -1746,7 +1746,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kpxyp"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_sg81t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -2471,13 +2471,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_sg81t")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_sg81t")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_sg81t")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 node_paths=PackedStringArray("powerup_display") instance=ExtResource("21_3825n")]
 visible = false
@@ -2637,10 +2637,10 @@ script = ExtResource("39_xrjep")
 
 [node name="PowerUpDisplay" type="Control" parent="." unique_id=1259457449]
 anchors_preset = 0
-offset_left = 214.0
-offset_top = 237.0
-offset_right = 587.0
-offset_bottom = 312.0
+offset_left = 128.0
+offset_top = 239.0
+offset_right = 589.0
+offset_bottom = 352.0
 script = ExtResource("40_kpxyp")
 
 [node name="IconContainer" type="Control" parent="PowerUpDisplay" unique_id=153079643]

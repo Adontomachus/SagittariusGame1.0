@@ -109,8 +109,15 @@ func _spawn_boss() -> void:
 	## Update wave notification
 	wave_notification.text = "FINAL WAVE — BOSS INCOMING!"
 
+@onready var cef: GdCEF = $GdCEF
 ## Sets up the spawning mechanics and pause
 func _ready() -> void:
+	var success := cef.initialize({})
+	if !success:
+		push_error(cef.get_error())
+	else:
+		print("CEF initialized!")
+		
 	get_viewport().physics_object_picking = true
 	print(get_viewport().physics_object_picking)
 	add_to_group("GManager")
@@ -376,3 +383,6 @@ func _on_pause_screen_resume_game() -> void:
 
 func _add_combo_level(strength_value: float) -> void:
 	pass # Replace with function body.
+
+func _exit_tree():
+	cef.shutdown()

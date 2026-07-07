@@ -38,6 +38,7 @@ UpgradeSystemScript="*uid://bkox5sxfwc7w6"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/canvas_textures/default_texture_filter=1
 
@@ -97,6 +98,8 @@ Companion1=""
 Companion2=""
 BossHealthUI=""
 BossUI=""
+BrowserWindow=""
+CEF=""
 
 [input]
 

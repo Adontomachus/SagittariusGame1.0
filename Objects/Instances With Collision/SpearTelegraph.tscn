@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://cal48vi61pbk6"]
 
 [ext_resource type="Script" uid="uid://bgwkr2oc6lhp3" path="res://Scripts/Enemy Scripts/EliteEnemyStates/SpearTelegraph.gd" id="1_hm76p"]
+[ext_resource type="Texture2D" uid="uid://b4iuydsmd82ky" path="res://Sprites/Game Elements/Placeholders/Enemy/AoEline.png" id="2_m2dfr"]
 
 [node name="SpearTelegraph" type="Node2D" unique_id=904275285]
 script = ExtResource("1_hm76p")
+telegraph_texture = ExtResource("2_m2dfr")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1542896258]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Sprite2D" type="TextureRect" parent="ColorRect" unique_id=1242092656]
+layout_mode = 0

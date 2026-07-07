@@ -253,4 +253,4 @@ func _combo_pulse() -> void:
 	combo_animation_pulse.play("UIBeatPulse")
 	beat_indicator_animation.speed_scale = tempo / 32
 	beat_indicator_animation.play("RhythmIndicator")
-	glow_effect.play("GlowPulse")
+	#glow_effect.play("GlowPulse")

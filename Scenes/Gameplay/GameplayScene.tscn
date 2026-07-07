@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j7vifn1y5ut" path="res://Sprites/Game Elements/PhysicsSolutions.png" id="19_uagus"]
 [ext_resource type="Texture2D" uid="uid://cwq3rhpr0a4or" path="res://Sprites/Game Elements/Placeholders/Ground/SaggGameTiles_Test1.png" id="20_kxwa7"]
 [ext_resource type="Texture2D" uid="uid://bsy78p5irb164" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles1.png" id="21_r3xg8"]
+[ext_resource type="PackedScene" uid="uid://bnrvdcksjalq6" path="res://Objects/Instances With Collision/ClickableTome.tscn" id="22_jgp33"]
 [ext_resource type="Texture2D" uid="uid://c4llkpowa5n1o" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles22.png" id="22_juvgv"]
 [ext_resource type="Texture2D" uid="uid://nnk02fnsar20" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/wallstiles.png" id="23_vv5i8"]
 [ext_resource type="Texture2D" uid="uid://cnw61pdc78sfn" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/newsprites/wallspritess.png" id="24_4jirl"]
@@ -52,10 +53,12 @@
 [ext_resource type="PackedScene" uid="uid://dl2evt3pxmpmn" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar.tscn" id="50_7ji1i"]
 [ext_resource type="PackedScene" uid="uid://bhvw2s00lemop" path="res://Objects/Instances With Collision/GlowingPlatform.tscn" id="51_poy5f"]
 [ext_resource type="PackedScene" uid="uid://cu2w3y1ythpfd" path="res://Scenes/Gameplay/Player.tscn" id="52_fs22w"]
+[ext_resource type="PackedScene" uid="uid://bb1t1b7swbbyx" path="res://UnitInstances/Enemy Instances/EliteEnemy.tscn" id="52_u1twm"]
 [ext_resource type="Texture2D" uid="uid://3ucie8ixqomw" path="res://Sprites/Game Elements/Placeholders/Companions/catpink_Transparent.png" id="55_exwru"]
 [ext_resource type="Texture2D" uid="uid://rbafa2tjb1ji" path="res://Sprites/Game Elements/Placeholders/Companions/catblue_Transparent.png" id="57_u1twm"]
 [ext_resource type="PackedScene" uid="uid://cr4cdt8k115vb" path="res://Objects/Instances With Collision/RhythmicPlant.tscn" id="60_fa1e4"]
 [ext_resource type="Texture2D" uid="uid://b14w4hmgkcrgc" path="res://Sprites/Game Elements/Placeholders/Ground/Ground_Tileset.png" id="62_cw58p"]
+[ext_resource type="PackedScene" uid="uid://bk63h6cmnbpha" path="res://Scenes/Interface/BrowserWindow.tscn" id="63_110ka"]
 [ext_resource type="PackedScene" uid="uid://3d11rnfax46i" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatComp.tscn" id="63_584ly"]
 [ext_resource type="PackedScene" uid="uid://blyjqr3kvhq5w" path="res://UnitInstances/Gameplay Instances/Player Companions/PlayerCatCompRed.tscn" id="64_nyo1o"]
 [ext_resource type="Script" uid="uid://ci4g4htylma7b" path="res://Scripts/Visuals/MovingFog.gd" id="65_bgm4d"]
@@ -241,7 +244,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_exwru"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_110ka"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("15_w47cw")
@@ -1123,13 +1126,13 @@ offset_right = 1805.1844
 offset_bottom = 605.32434
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_110ka")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_110ka")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_exwru")
+button_group = SubResource("ButtonGroup_110ka")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="22" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1209,6 +1212,8 @@ tile_set = SubResource("TileSet_cacow")
 [node name="World" type="Node2D" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=1895055935]
 y_sort_enabled = true
 
+[node name="ClickableTome" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=951240953 instance=ExtResource("22_jgp33")]
+
 [node name="WallTileMap" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=629557430 groups=["MapObstacle"]]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAAAAoATwAAAAEAAAABAAoATwAAAAEAAAACAAoATwAAAAEAAAADAAoATwAAAAAAAAADAAsATwAAAAAAAAADAAwATwAAAAAAAAADAA0ATwAAAAAAAAAQAA4AAQACAAAAAAAQABAAAQACAAAAAAAQABIAAQACAAAAAAAQABQAAQACAAAAAAAQABYAAQACAAAAAAAQAAwAAQACAAAAAAAQAAoAAQACAAAAAAAQAAgAAQACAAAAAAAQAAYAAQACAAAAAAAQAAQAAQACAAAAAAAQAAIAAQACAAAAAAAQAAAAAQACAAAAAAAQAP7/AQACAAAAAAAQAPz/AQACAAAAAAAQAPr/AQACAAAAAAAQAPj/AQACAAAAAAAQAPb/AQACAAAAAAAPAPX/AQAEAAEAAAANAPX/AQAEAAEAAAALAPX/AQAEAAEAAAAJAPX/AQAEAAEAAAAHAPX/AQAEAAEAAAAFAPX/AQAEAAEAAAADAPX/AQAEAAEAAAABAPX/AQAEAAEAAAD///X/AQAEAAEAAAD+//b/AQACAAAAAAAJABUATwAEAAAAAAAJABMATwAEAAAAAAAFABMATwAIAAAAAAAFABEATwAGAAEAAAABAA8ATwABAAEAAAAHABgATwADAAAAAAALABkATwAAAAEAAAANABkATwAAAAEAAAALAAAATwAGAAEAAAAIAAAATwAGAAEAAAAKAPr/TwAJAAAAAAAHAPr/TwAEAAAAABAFAPr/TwAEAAAAABAKAAYATwAEAAIAAAAMAAYATwAEAAIAAAAJAAcATwAEAAIAABAJAAkATwAEAAIAABAKAAoATwAEAAIAAAANAAcATwAEAAIAABANAAkATwAEAAIAABAMAAoATwAEAAIAAAAAAPf/TwAGAAAAAAABAPb/TwAFAAAAABACAPf/TwAEAAAAAAABAPj/TwACAAEAAAD+/woAAQACAAAAAAD+/wwAAQACAAAAAAD+/w4AAQACAAAAAAD+/xAAAQACAAAAAAD+/xIAAQACAAAAAAD+/xQAAQACAAAAAAD+/xYAAQACAAAAAAD+/xgAAQACAAAAAAD+/xoAAQACAAAAAAD+/xwAAQACAAAAAAD//xwAAQACAAAAABABABwAAQACAAAAABADABwAAQACAAAAABAFABwAAQACAAAAABAHABwAAQACAAAAABAJABwAAQACAAAAABALABwAAQACAAAAABANABwAAQACAAAAABAPABwAAQACAAAAABAQABsAAQACAAAAAAAQABgAAQACAAAAAAAQABkAAQACAAAAAAA=")
@@ -1271,6 +1276,11 @@ scale = Vector2(0.46800014, 0.46800014)
 visible = false
 position = Vector2(1546, 403)
 scale = Vector2(0.4946371, 0.4946371)
+
+[node name="Elite" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1394345447 instance=ExtResource("52_u1twm")]
+
+[node name="Elite2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1929347847 instance=ExtResource("52_u1twm")]
+position = Vector2(468, 515)
 
 [node name="Player" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=910402363 node_paths=PackedStringArray("chain_tier_ui", "chain_border_glow", "chain_aura", "camera", "hit_flash", "UpgradeScreen", "manager", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") instance=ExtResource("52_fs22w")]
 unique_name_in_owner = true
@@ -1629,17 +1639,14 @@ fog_texture = ExtResource("66_pwom7")
 speed_min = 22.0
 speed_max = 40.0
 
+[node name="GdCEF" type="GdCEF" parent="." unique_id=740782749 groups=["CEF"]]
+process_mode = 3
+
+[node name="BrowserWindow" parent="." unique_id=63176195 instance=ExtResource("63_110ka")]
+
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator" method="_combo_pulse"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform2" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform3" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/GlowingPlatform4" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant2" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant3" method="_glow_on_beat"]
-[connection signal="pulse_on_beat" from="." to="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/BGDecals/Rhythmplant4" method="_glow_on_beat"]
 [connection signal="scale_on_next_wave" from="." to="GameSystems/ScalingSystem" method="increment_scaling"]
 [connection signal="set_current_progress" from="GameSystems/ComboSystem" to="InterfaceElements/NewHUD/UI/UpdatedComboCounter/ComboCounterProgressBar" method="set_value"]
 [connection signal="exit_game" from="InterfaceElements/NewHUD/UI/PauseScreen" to="." method="_on_pause_screen_exit_game"]

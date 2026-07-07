@@ -147,6 +147,7 @@ func _ready():
 	
 	# For the boss healthbar
 	if boss_unit:
+		toggle_healthbar_visibility.emit(false)
 		add_to_group("BossType")
 		var boss_bar = get_tree().get_first_node_in_group("BossHealthUI")
 		if boss_bar:
