@@ -24,18 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c4llkpowa5n1o" path="res://Sprites/Game Elements/Placeholders/Ground/Upscaledtiles22.png" id="22_juvgv"]
 [ext_resource type="Texture2D" uid="uid://nnk02fnsar20" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/wallstiles.png" id="23_vv5i8"]
 [ext_resource type="Texture2D" uid="uid://cnw61pdc78sfn" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/newsprites/wallspritess.png" id="24_4jirl"]
-[ext_resource type="Texture2D" uid="uid://b3lmw4ea1vbug" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/brokewall1.png" id="25_1vk04"]
-[ext_resource type="Texture2D" uid="uid://dk4w1fn4ei6eb" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/brokewall2.png" id="26_fu6i5"]
-[ext_resource type="Texture2D" uid="uid://wxk4d2lkdi8c" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/corner1.png" id="27_mtruf"]
-[ext_resource type="Texture2D" uid="uid://cwxjgtqfad5kv" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/corner2.png" id="28_rr6op"]
-[ext_resource type="Texture2D" uid="uid://d5fw1w0n1hjx" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/fence 1.png" id="29_wipa6"]
-[ext_resource type="Texture2D" uid="uid://bxwxtlfuoqoom" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/fence 2.png" id="30_nxx5y"]
-[ext_resource type="Texture2D" uid="uid://dnhjkhqg73vev" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/gate 1.png" id="31_exwru"]
-[ext_resource type="Texture2D" uid="uid://cmmpnxs4nalv2" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/gate 2.png" id="32_u1twm"]
-[ext_resource type="Texture2D" uid="uid://ck6qjcsjw04fi" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/lwg1.png" id="33_jgp33"]
-[ext_resource type="Texture2D" uid="uid://6uq1yif7vcug" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/lwg2.png" id="34_110ka"]
-[ext_resource type="Texture2D" uid="uid://oixipfkfy35e" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/wall1.png" id="35_vj1fp"]
-[ext_resource type="Texture2D" uid="uid://ct4i4pw24ecsi" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/misc/wall2.png" id="36_o710q"]
+[ext_resource type="Texture2D" uid="uid://0nowrwsd2gbj" path="res://Sprites/Game Elements/Placeholders/wall1_new.png" id="25_uyhx3"]
 [ext_resource type="Texture2D" uid="uid://byk37n1dwmai2" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/pillar/pillar_1.png" id="37_hlum5"]
 [ext_resource type="Texture2D" uid="uid://b60lqk3ohffu3" path="res://Sprites/Game Elements/Placeholders/wall1.png" id="38_4t4xv"]
 [ext_resource type="Texture2D" uid="uid://y3lbibyjgt65" path="res://Sprites/Game Elements/Placeholders/tallwall1.png" id="39_fu6i5"]
@@ -238,7 +227,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_e8aea"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_rr6op"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("15_w47cw")
@@ -599,56 +588,12 @@ sources/1 = SubResource("TileSetAtlasSource_110ka")
 sources/79 = SubResource("TileSetAtlasSource_vj1fp")
 tile_proxies/coords_level = [[54, Vector2i(0, 0)], [79, Vector2i(0, 0)], [55, Vector2i(0, 0)], [79, Vector2i(1, 0)], [56, Vector2i(0, 0)], [79, Vector2i(2, 0)], [57, Vector2i(0, 0)], [79, Vector2i(3, 0)], [58, Vector2i(0, 0)], [79, Vector2i(4, 0)], [59, Vector2i(0, 0)], [79, Vector2i(5, 0)], [60, Vector2i(0, 0)], [79, Vector2i(6, 0)], [61, Vector2i(0, 0)], [79, Vector2i(7, 0)], [62, Vector2i(0, 0)], [79, Vector2i(8, 0)], [63, Vector2i(0, 0)], [79, Vector2i(9, 0)], [64, Vector2i(0, 0)], [79, Vector2i(0, 1)], [65, Vector2i(0, 0)], [79, Vector2i(1, 1)], [66, Vector2i(0, 0)], [79, Vector2i(2, 1)], [67, Vector2i(0, 0)], [79, Vector2i(3, 1)], [68, Vector2i(0, 0)], [79, Vector2i(4, 1)], [69, Vector2i(0, 0)], [79, Vector2i(5, 1)], [70, Vector2i(0, 0)], [79, Vector2i(6, 1)], [71, Vector2i(0, 0)], [79, Vector2i(7, 1)], [72, Vector2i(0, 0)], [79, Vector2i(8, 1)], [73, Vector2i(0, 0)], [79, Vector2i(9, 1)], [74, Vector2i(0, 0)], [79, Vector2i(0, 2)], [75, Vector2i(0, 0)], [79, Vector2i(1, 2)], [76, Vector2i(0, 0)], [79, Vector2i(2, 2)], [77, Vector2i(0, 0)], [79, Vector2i(3, 2)], [78, Vector2i(0, 0)], [79, Vector2i(4, 2)]]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rp1p4"]
-texture = ExtResource("25_1vk04")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8xms"]
-texture = ExtResource("26_fu6i5")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkher"]
-texture = ExtResource("27_mtruf")
-texture_region_size = Vector2i(460, 230)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwi3h"]
+texture = ExtResource("25_uyhx3")
+texture_region_size = Vector2i(460, 500)
 0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_meejx"]
-texture = ExtResource("28_rr6op")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cacow"]
-texture = ExtResource("29_wipa6")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mr3qy"]
-texture = ExtResource("30_nxx5y")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hkmhq"]
-texture = ExtResource("31_exwru")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iukur"]
-texture = ExtResource("32_u1twm")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8x0uy"]
-texture = ExtResource("33_jgp33")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_drcco"]
-texture = ExtResource("34_110ka")
-texture_region_size = Vector2i(460, 230)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjiq8"]
-texture = ExtResource("35_vj1fp")
-texture_region_size = Vector2i(282, 261)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bgac"]
-texture = ExtResource("36_o710q")
-texture_region_size = Vector2i(276, 258)
-0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 130)
+0:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w47cw"]
 texture = ExtResource("37_hlum5")
@@ -680,22 +625,11 @@ tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(460, 230)
 physics_layer_0/collision_layer = 1
-sources/54 = SubResource("TileSetAtlasSource_rp1p4")
-sources/55 = SubResource("TileSetAtlasSource_b8xms")
-sources/56 = SubResource("TileSetAtlasSource_wkher")
-sources/57 = SubResource("TileSetAtlasSource_meejx")
-sources/58 = SubResource("TileSetAtlasSource_cacow")
-sources/59 = SubResource("TileSetAtlasSource_mr3qy")
-sources/60 = SubResource("TileSetAtlasSource_hkmhq")
-sources/61 = SubResource("TileSetAtlasSource_iukur")
-sources/62 = SubResource("TileSetAtlasSource_8x0uy")
-sources/63 = SubResource("TileSetAtlasSource_drcco")
-sources/64 = SubResource("TileSetAtlasSource_mjiq8")
-sources/65 = SubResource("TileSetAtlasSource_7bgac")
-sources/66 = SubResource("TileSetAtlasSource_w47cw")
-sources/67 = SubResource("TileSetAtlasSource_d3liw")
-sources/68 = SubResource("TileSetAtlasSource_mtruf")
 sources/69 = SubResource("TileSetAtlasSource_wipa6")
+sources/68 = SubResource("TileSetAtlasSource_mtruf")
+sources/67 = SubResource("TileSetAtlasSource_d3liw")
+sources/66 = SubResource("TileSetAtlasSource_w47cw")
+sources/102 = SubResource("TileSetAtlasSource_vwi3h")
 
 [sub_resource type="Gradient" id="Gradient_rp1p4"]
 colors = PackedColorArray(0, 0.28493494, 1, 1, 0, 0, 0, 1)
@@ -1009,13 +943,13 @@ offset_right = 1805.1844
 offset_bottom = 605.32434
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_e8aea")
+button_group = SubResource("ButtonGroup_rr6op")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_e8aea")
+button_group = SubResource("ButtonGroup_rr6op")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_e8aea")
+button_group = SubResource("ButtonGroup_rr6op")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="22" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1111,16 +1045,21 @@ tile_set = SubResource("TileSet_jdq8l")
 
 [node name="ClutterTileMap2" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=703775402 groups=["MapObstacle"]]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD+//r/FgAJAAAAAAD+//v/FgAJAAAAAAD+//z/FgAJAAAAAAD+//3/FgAJAAAAAAD+//7/FgAJAAAAAAD+////FgAJAAAAAAD+/wAAFgAJAAAAAAD+/wEAFgAJAAAAAAD+/wIAFgAJAAAAAAD+/wMAFgAJAAAAAAD+/wQAFgAJAAAAAAD+/wUAFgAJAAAAAAD+/wYAFgAJAAAAAAD+/wcAFgAJAAAAAAD+/wgAFgAJAAAAAAANAP3/FgAFAAEAAAAIAPz/FgAFAAEAAAD+//X/FgABAAEAAAD+//b/FgAJAAAAAAD+//f/FgAJAAAAAAD+//j/FgAJAAAAAAD+//n/FgAJAAAAAAD///X/FgABAAEAAAAAAPX/FgABAAEAAAABAPX/FgABAAEAAAACAPX/FgABAAEAAAADAPX/FgABAAEAAAAEAPX/FgABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+//r/FgAJAAAAAAD+//v/FgAJAAAAAAD+//z/FgAJAAAAAAD+//3/FgAJAAAAAAD+//7/FgAJAAAAAAD+////FgAJAAAAAAD+/wAAFgAJAAAAAAD+/wEAFgAJAAAAAAD+/wIAFgAJAAAAAAD+/wMAFgAJAAAAAAD+/wQAFgAJAAAAAAD+/wUAFgAJAAAAAAD+/wYAFgAJAAAAAAD+/wcAFgAJAAAAAAD+/wgAFgAJAAAAAAANAP3/FgAFAAEAAAAIAPz/FgAFAAEAAAD+//X/FgABAAEAAAD+//b/FgAJAAAAAAD+//f/FgAJAAAAAAD+//j/FgAJAAAAAAD+//n/FgAJAAAAAAD///X/FgABAAEAAAAAAPX/FgABAAEAAAABAPX/FgABAAEAAAACAPX/FgABAAEAAAADAPX/FgABAAEAAAAEAPX/FgABAAEAAAAEAAAAZgAAAAAAAAAFAAAAZgAAAAAAAAAGAAAAZgAAAAAAAAA=")
 tile_set = SubResource("TileSet_jdq8l")
 
 [node name="ClutterTileMap3" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1670564570 groups=["MapObstacle"]]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAAAAMALAAAAAAAAAABAPz/LgAAAAAAAAAAAP7/LgAAAAAAAAAKAP3/QAAAAAAAAAALAP3/QAAAAAAAAAAMAP3/QAAAAAAAAAABAPr/QwAAAAAAAAACAPr/RAAAAAAAAAADAPr/RAAAAAAAAAAEAPr/RAAAAAAAAAAFAPr/QwAAAAAAAAAGAPr/RAAAAAAAAAAAAPr/RQAAAAAAAAD///r/RQAAAAAAAAD+//r/RQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAMALAAAAAAAAAABAPz/QwAAAAAAAAAAAP7/LgAAAAAAAAAKAP3/QAAAAAAAAAALAP3/QAAAAAAAAAAMAP3/QAAAAAAAAAABAPr/QwAAAAAAAAACAPr/RAAAAAAAAAADAPr/RAAAAAAAAAAEAPr/RAAAAAAAAAAFAPr/QwAAAAAAAAAGAPr/RAAAAAAAAAAAAPr/RQAAAAAAAAD///r/RQAAAAAAAAD+//r/RQAAAAAAAAADAPz/QwAAAAAAAAAEAPz/QwAAAAAAAAACAPz/QwAAAAAAAAAAAPz/QwAAAAAAAAA=")
+tile_set = SubResource("TileSet_jdq8l")
+
+[node name="ClutterTileMap4" type="TileMapLayer" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=29098073 groups=["MapObstacle"]]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_jdq8l")
 
 [node name="Wall2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=430981844 instance=ExtResource("40_mtruf")]
 position = Vector2(-676, 297)
+scale = Vector2(2, 2)
 
 [node name="Clutter" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=2026744433 instance=ExtResource("47_exwru")]
 position = Vector2(-916, 1493)

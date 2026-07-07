@@ -10,6 +10,7 @@ position = Vector2(11, -105)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
 position = Vector2(19, -93)
+scale = Vector2(2, 2)
 texture = ExtResource("1_oyk3o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476666062]
