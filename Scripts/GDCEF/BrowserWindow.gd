@@ -61,4 +61,7 @@ func forward_input(event):
 				browser.set_mouse_wheel_vertical(-1)
 
 func _on_pressed():
-	browser.close()
+	var gmanager = get_tree().get_first_node_in_group("GManager")
+	if gmanager:
+		gmanager._resumeGame()
+	visible = false

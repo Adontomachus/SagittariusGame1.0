@@ -7,10 +7,6 @@
 process_mode = 3
 script = ExtResource("1_5lmat")
 
-[node name="Background" type="ColorRect" parent="." unique_id=622011664]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Window" type="Panel" parent="." unique_id=1995429228]
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -33,13 +29,16 @@ script = ExtResource("2_l1i7r")
 
 [node name="Button" type="Button" parent="Window" unique_id=121408003]
 layout_mode = 0
-offset_left = 1537.0
-offset_top = 241.0
-offset_right = 1555.0
-offset_bottom = 272.0
+offset_left = 1452.0
+offset_top = 198.0
+offset_right = 1470.0
+offset_bottom = 229.0
 text = "X"
 
 [node name="Label" type="Label" parent="Window" unique_id=1801115743]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[connection signal="pressed" from="Window/Button" to="." method="_on_pressed"]
