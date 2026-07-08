@@ -877,27 +877,27 @@ libraries/ = SubResource("AnimationLibrary_mr3qy")
 
 [node name="UI" parent="InterfaceElements/NewHUD" unique_id=2071023402 instance=ExtResource("14_7bgac")]
 
-[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="1" unique_id=1347961824 node_paths=PackedStringArray("game_manager")]
+[node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="4" unique_id=1347961824 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
-[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="2" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
+[node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="5" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
 game_manager = NodePath("../../../../../..")
 
 [node name="BeatPulseIndicatorLeft4" parent="InterfaceElements/NewHUD/UI/Border Pulse" parent_id_path=PackedInt32Array(2071023402, 1316466780) index="5" unique_id=635373106]
 metadata/_edit_use_anchors_ = true
 
-[node name="UpdatedComboCounter" parent="InterfaceElements/NewHUD/UI" index="6" unique_id=654270409 node_paths=PackedStringArray("combo_label", "combo_system")]
+[node name="UpdatedComboCounter" parent="InterfaceElements/NewHUD/UI" index="12" unique_id=654270409 node_paths=PackedStringArray("combo_label", "combo_system")]
 combo_label = NodePath(".")
 combo_system = NodePath("../../../../GameSystems/ComboSystem")
 
-[node name="WaveNotification" parent="InterfaceElements/NewHUD/UI" index="8" unique_id=1761094799]
+[node name="WaveNotification" parent="InterfaceElements/NewHUD/UI" index="14" unique_id=1761094799]
 metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceText" parent="InterfaceElements/NewHUD/UI/EXPBar" parent_id_path=PackedInt32Array(2071023402, 339255093) index="0" unique_id=1944989475 node_paths=PackedStringArray("experience_text", "player_object")]
 experience_text = NodePath(".")
 player_object = NodePath("../../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 
-[node name="UpdatedPlayerHealthBar" parent="InterfaceElements/NewHUD/UI" index="10" unique_id=784477876]
+[node name="UpdatedPlayerHealthBar" parent="InterfaceElements/NewHUD/UI" index="16" unique_id=784477876]
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerHealthText" parent="InterfaceElements/NewHUD/UI/UpdatedPlayerHealthBar" index="0" unique_id=591465270 node_paths=PackedStringArray("health_text", "player_object")]
@@ -914,7 +914,7 @@ metadata/_edit_use_anchors_ = true
 experience_text = NodePath(".")
 metadata/_edit_use_anchors_ = true
 
-[node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="13" unique_id=172310879]
+[node name="EnemyCounter" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=172310879]
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" parent="InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicatorLine" parent_id_path=PackedInt32Array(2071023402, 1426185933) index="0" unique_id=1073552229]
@@ -941,10 +941,10 @@ good_hit = 0.15
 ok_hit = 0.14
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="17" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
+[node name="PauseScreen" parent="InterfaceElements/NewHUD/UI" index="23" unique_id=1037397089 node_paths=PackedStringArray("SettingsScreen")]
 SettingsScreen = NodePath("../Settings")
 
-[node name="RMBContainer" parent="InterfaceElements/NewHUD/UI" index="19" unique_id=1169418434]
+[node name="RMBContainer" parent="InterfaceElements/NewHUD/UI" index="25" unique_id=1169418434]
 offset_left = 1737.0002
 offset_top = 534.0
 offset_right = 1805.1844
@@ -959,13 +959,13 @@ button_group = SubResource("ButtonGroup_rr6op")
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
 button_group = SubResource("ButtonGroup_rr6op")
 
-[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="22" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
+[node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="28" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
 manager = NodePath("../../../..")
 
 [node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
 
-[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="24" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
+[node name="EyeControl" parent="InterfaceElements/NewHUD/UI" index="30" unique_id=1126182348 node_paths=PackedStringArray("charge_shot", "beat_sync")]
 charge_shot = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player/ChargeShot")
 beat_sync = NodePath("../BeatIndicatorElements/BeatIndicator")
 pulse_scale = Vector2(0.8, 0.8)
@@ -1123,9 +1123,12 @@ scale = Vector2(0.4946371, 0.4946371)
 [node name="Elite2" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=1929347847 instance=ExtResource("52_u1twm")]
 position = Vector2(468, 515)
 
-[node name="Player" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=910402363 node_paths=PackedStringArray("chain_tier_ui", "chain_border_glow", "chain_aura", "camera", "hit_flash", "UpgradeScreen", "manager", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") instance=ExtResource("52_fs22w")]
+[node name="Player" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=910402363 node_paths=PackedStringArray("comet_sfx", "cadence_sfx", "echo_nova_sfx", "chain_tier_ui", "chain_border_glow", "chain_aura", "camera", "hit_flash", "UpgradeScreen", "manager", "charged_shot_ready_interface", "ability_visual_feedback", "cutscene_handler") instance=ExtResource("52_fs22w")]
 unique_name_in_owner = true
 position = Vector2(586, 280)
+comet_sfx = NodePath("CometModeAudio")
+cadence_sfx = NodePath("CadenceAudio")
+echo_nova_sfx = NodePath("EchoNovaAudio")
 chain_tier_ui = NodePath("../../../../../../InterfaceElements/NewHUD/UI/ChainTierUI")
 chain_border_glow = NodePath("../../../../../../InterfaceElements/NewHUD/UI/ChainGlow")
 chain_aura = NodePath("GPUParticles2D")
@@ -1137,10 +1140,23 @@ charged_shot_ready_interface = NodePath("../../../../../../InterfaceElements/New
 ability_visual_feedback = NodePath("../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator/BeatPulse")
 cutscene_handler = NodePath("../../../../../../GameSystems/SceneHandler")
 
-[node name="QMoves" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="10" unique_id=101531864 node_paths=PackedStringArray("beat_sync")]
-beat_sync = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
+[node name="ProjectileHitbox" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="4" unique_id=668157982 node_paths=PackedStringArray("xp_feedback")]
+xp_feedback = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/XPFeedback")
 
-[node name="SecondaryFire" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="12" unique_id=679342409 node_paths=PackedStringArray("beat_sync", "combo_system")]
+[node name="CometModeAudio" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="7" unique_id=683423020]
+volume_db = 8.0
+
+[node name="CadenceAudio" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="8" unique_id=2068268861]
+volume_db = 0.0
+
+[node name="EchoNovaAudio" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="9" unique_id=147801228]
+volume_db = 15.0
+
+[node name="QMoves" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="13" unique_id=101531864 node_paths=PackedStringArray("beat_sync", "ult_animation_feedback")]
+beat_sync = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
+ult_animation_feedback = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/QAnimation")
+
+[node name="SecondaryFire" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player" index="15" unique_id=679342409 node_paths=PackedStringArray("beat_sync", "combo_system")]
 beat_sync = NodePath("../../../../../../../InterfaceElements/NewHUD/UI/BeatIndicatorElements/BeatIndicator")
 combo_system = NodePath("../../../../../../../GameSystems/ComboSystem")
 

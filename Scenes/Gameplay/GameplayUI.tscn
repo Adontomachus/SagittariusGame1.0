@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://33v5wjfmxcfx"]
 
+[ext_resource type="Texture2D" uid="uid://bx713tj7mew3o" path="res://Sprites/UI Sprites/Sagittarius_AbilityImage2_Transparent.png" id="1_oa3hr"]
 [ext_resource type="PackedScene" uid="uid://baq8lvbpwxgpg" path="res://Scenes/Interface/WinInterface.tscn" id="1_r2md4"]
 [ext_resource type="PackedScene" uid="uid://djpbi3ti2qmdk" path="res://Scenes/Interface/DefeatInterface.tscn" id="2_ge5ss"]
+[ext_resource type="Texture2D" uid="uid://chdq4u843n1eq" path="res://Sprites/Game Elements/enemyaoetelegraph.png" id="2_sg81t"]
 [ext_resource type="Script" uid="uid://bsi28hfemc0xs" path="res://Scripts/Audio/BorderBeatIndicator.gd" id="3_3825n"]
 [ext_resource type="FontFile" uid="uid://d2byx1y3fruut" path="res://Fonts/Oswald.ttf" id="4_0if8i"]
+[ext_resource type="Texture2D" uid="uid://cnew75vddkewy" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/00_TurnAround_Idle.png" id="4_kpxyp"]
 [ext_resource type="Script" uid="uid://bot8d5sh57oe7" path="res://Scripts/UI Menu, Settings and Post Game/ComboCounterFeedback.gd" id="5_gwjna"]
 [ext_resource type="Texture2D" uid="uid://bb18snxy5l4v2" path="res://Sprites/Game Elements/Placeholders/UI Elements/sagittarius_hud_reference_transparent.png" id="7_5m4nd"]
 [ext_resource type="Texture2D" uid="uid://rpsk7d7xxs3r" path="res://Sprites/UI/sagibeatindicator.png" id="7_ev13k"]
@@ -41,6 +44,64 @@
 [ext_resource type="Script" uid="uid://dm4syv3ardxe6" path="res://Scenes/Gameplay/ChainGlow.gd" id="39_xrjep"]
 [ext_resource type="Script" uid="uid://bhpjs75w4xnwa" path="res://Scripts/UI Menu, Settings and Post Game/PowerupDisplay.gd" id="40_kpxyp"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_riqys"]
+font = ExtResource("13_qj281")
+font_size = 56
+font_color = Color(1, 1, 0.56294864, 1)
+outline_size = 15
+outline_color = Color(0.13810807, 0.18710488, 2.6471912e-07, 1)
+
+[sub_resource type="Animation" id="Animation_oa3hr"]
+resource_name = "Glow"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ljmjq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5aaa3"]
+_data = {
+&"Glow": SubResource("Animation_oa3hr"),
+&"RESET": SubResource("Animation_ljmjq")
+}
+
+[sub_resource type="Gradient" id="Gradient_p4yn2"]
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6f8o3"]
+gradient = SubResource("Gradient_p4yn2")
+fill_from = Vector2(0.1, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ljmjq"]
+colors = PackedColorArray(0.65457314, 1, 0, 1, 0.5657284, 0.8001019, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sn0t7"]
+gradient = SubResource("Gradient_ljmjq")
+
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
 font = ExtResource("13_qj281")
 font_size = 31
@@ -55,6 +116,139 @@ colors = PackedColorArray(0.8198382, 1, 0.1680183, 1, 0.80118275, 0.8670702, 1.5
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
 gradient = SubResource("Gradient_dw111")
+
+[sub_resource type="Animation" id="Animation_5aaa3"]
+resource_name = "Activation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QMoveSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.42044818, 1),
+"update": 0,
+"values": [Vector2(-412, 705), Vector2(329, 705)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QGradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.68), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QMoveSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("QLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2666667),
+"transitions": PackedFloat32Array(0.26794365, 1),
+"update": 0,
+"values": [Vector2(-466, 939), Vector2(180, 939)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("QLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.80372757, 1.252038),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p4yn2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QMoveSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-412, 705)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("QGradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("QMoveSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("QLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-376, 939)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("QLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0v1a"]
+_data = {
+&"Activation": SubResource("Animation_5aaa3"),
+&"RESET": SubResource("Animation_p4yn2")
+}
 
 [sub_resource type="Animation" id="Animation_3tu8g"]
 resource_name = "LevelUp"
@@ -141,9 +335,18 @@ _data = {
 &"RESET": SubResource("Animation_7363f")
 }
 
+[sub_resource type="Gradient" id="Gradient_sg81t"]
+colors = PackedColorArray(0.85050595, 1, 0, 1, 0.8439394, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_riqys"]
+gradient = SubResource("Gradient_sg81t")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.2)
+
 [sub_resource type="Animation" id="Animation_vj1fp"]
 resource_name = "GameOver"
-length = 5.0
+length = 10.066667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -151,10 +354,10 @@ tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.025962181, 0.033333335, 0.7500671),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.025962181, 0.0333, 0.033333335, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.0035705566, 0.012617111, 0, 0), Color(8.674749, 14.716483, 0, 0), Color(11.142518, 18.892157, 0, 1), Color(0.003570664, 0.012617188, 0, 1)]
+"values": [Color(0.0035705566, 0.012617111, 0, 0), Color(8.674749, 14.716483, 0, 0), Color(1.0936384, 1.2724323, 0.30016878, 0.9954778), Color(1.0591991, 1.2113603, 0.3015324, 1), Color(0.1428257, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -175,7 +378,7 @@ tracks/2/path = NodePath("GameOverNode/LoseScreen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.9, 2.7666667),
+"times": PackedFloat32Array(0, 7.066667, 7.933334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -187,10 +390,94 @@ tracks/3/path = NodePath("GameOverNode/LoseScreen/BigLoseText:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.3666666, 4.52),
+"times": PackedFloat32Array(8.533333, 9.633333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverNode/SagittariusCutscene:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7663985, 5.992327, 6.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameOverNode/TelegraphCutscene:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2, 2.25, 5, 6, 6.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(18.892157, 18.892157, 18.892157, 1), Color(0.012617188, 0.012617188, 0.012617188, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameOverNode/SagittariusCutscene:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.053798, 5.992327, 6.05),
+"transitions": PackedFloat32Array(0.26794365, 0.18946503, 1, 1),
+"update": 0,
+"values": [Vector2(937, 690), Vector2(937, 722.00006), Vector2(937, 722.00006), Vector2(937, 615)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameOverNode/TelegraphCutscene:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2, 6),
+"transitions": PackedFloat32Array(0.39229217, 1),
+"update": 0,
+"values": [0.0, 18.849556]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameOverNode/CharacterGlow:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 5.992629, 6, 6.0666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameOverNode/CharacterGlow:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(5.999937, 6.066466),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10.312499, 10.312499), Vector2(18.593746, 18.593746)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GameOverNode/TelegraphCutscene:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(6, 6.131912),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2556736, 1.2556738)]
 }
 
 [sub_resource type="Animation" id="Animation_hlum5"]
@@ -242,6 +529,90 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverNode/SagittariusCutscene:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameOverNode/TelegraphCutscene:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameOverNode/SagittariusCutscene:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(937, 690)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameOverNode/TelegraphCutscene:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GameOverNode/CharacterGlow:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GameOverNode/CharacterGlow:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10.312499, 10.312499)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("GameOverNode/TelegraphCutscene:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o710q"]
@@ -1746,7 +2117,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kpxyp"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_u0v1a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -1793,13 +2164,47 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="QLabel" type="Label" parent="." unique_id=177446406]
+z_index = 9
+layout_mode = 0
+offset_left = -376.0
+offset_top = 939.0
+offset_right = -41.0
+offset_bottom = 997.0
+text = "Pulse of Taurus"
+label_settings = SubResource("LabelSettings_riqys")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XPFeedback" type="AnimationPlayer" parent="." unique_id=1684997429]
+root_node = NodePath("../XPGradientFeedback")
+libraries/ = SubResource("AnimationLibrary_5aaa3")
+
+[node name="XPGradientFeedback" type="Sprite2D" parent="." unique_id=604598028]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(305, 186.00002)
+scale = Vector2(3.1562498, 0.46875)
+texture = SubResource("GradientTexture2D_6f8o3")
+
+[node name="QGradient" type="Sprite2D" parent="." unique_id=1166225220]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(336, 670.5)
+scale = Vector2(10.484375, 12.890624)
+texture = SubResource("GradientTexture2D_sn0t7")
+
+[node name="QMoveSprite" type="Sprite2D" parent="." unique_id=94232148]
+z_index = -1
+position = Vector2(-412, 705)
+scale = Vector2(0.24229549, 0.24229543)
+texture = ExtResource("1_oa3hr")
+
 [node name="LevelUpFeedback" type="Label" parent="." unique_id=724700151]
 modulate = Color(1, 1, 1, 0)
 z_index = 59
 layout_mode = 0
 offset_left = 116.0
 offset_top = 143.0
-offset_right = 228.3899
+offset_right = 228.38992
 offset_bottom = 190.0
 text = "Level Up!"
 label_settings = SubResource("LabelSettings_bhunq")
@@ -1814,6 +2219,9 @@ position = Vector2(328.99994, 174)
 scale = Vector2(10.249999, 3.5625005)
 texture = SubResource("GradientTexture2D_bhunq")
 
+[node name="QAnimation" type="AnimationPlayer" parent="." unique_id=285333041]
+libraries/ = SubResource("AnimationLibrary_u0v1a")
+
 [node name="LevelUpAnimation" type="AnimationPlayer" parent="." unique_id=779161985]
 libraries/ = SubResource("AnimationLibrary_qj38p")
 
@@ -1827,9 +2235,30 @@ process_mode = 3
 process_mode = 3
 visible = false
 modulate = Color(0.71932274, 1, 0, 1)
+z_index = 62
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.8531885, 0.8544415, 0.4723053, 1)
+
+[node name="TelegraphCutscene" type="Sprite2D" parent="CutsceneUI/GameOverNode" unique_id=1039967942]
+modulate = Color(1, 1, 1, 0)
+z_index = 113
+position = Vector2(939, 678)
+texture = ExtResource("2_sg81t")
+
+[node name="SagittariusCutscene" type="Sprite2D" parent="CutsceneUI/GameOverNode" unique_id=1067691019]
+modulate = Color(1, 1, 1, 0)
+z_index = 77
+position = Vector2(937, 690)
+scale = Vector2(1.5666667, 1.5666666)
+texture = ExtResource("4_kpxyp")
+
+[node name="CharacterGlow" type="Sprite2D" parent="CutsceneUI/GameOverNode" unique_id=764672079]
+modulate = Color(1, 1, 1, 0)
+z_index = 82
+position = Vector2(939.00006, 702.00006)
+scale = Vector2(10.312499, 10.312499)
+texture = SubResource("GradientTexture2D_riqys")
 
 [node name="WinScreen" parent="CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("1_r2md4")]
 visible = false
@@ -1864,6 +2293,30 @@ modulate = Color(1, 1, 1, 0)
 z_index = 6
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 highest_level_reached = NodePath("BigLoseText/HighestLevelReached")
+
+[node name="LosePanel" parent="CutsceneUI/GameOverNode/LoseScreen" index="0" unique_id=245152519]
+z_index = 20
+
+[node name="BigLoseText" parent="CutsceneUI/GameOverNode/LoseScreen" index="1" unique_id=1560795430]
+z_index = 85
+
+[node name="ExitButton" parent="CutsceneUI/GameOverNode/LoseScreen/BigLoseText" index="0" unique_id=1817500599]
+z_index = 85
+
+[node name="ResumeButton" parent="CutsceneUI/GameOverNode/LoseScreen/BigLoseText" index="1" unique_id=1378675360]
+z_index = 85
+
+[node name="ScoreStats" parent="CutsceneUI/GameOverNode/LoseScreen/BigLoseText" index="2" unique_id=1698478150]
+z_index = 85
+
+[node name="RhythmAccuracy" parent="CutsceneUI/GameOverNode/LoseScreen/BigLoseText" index="3" unique_id=1119409431]
+z_index = 85
+
+[node name="DamageDealt" parent="CutsceneUI/GameOverNode/LoseScreen/BigLoseText" index="4" unique_id=505090490]
+z_index = 85
+
+[node name="HighestLevelReached" parent="CutsceneUI/GameOverNode/LoseScreen/BigLoseText" index="5" unique_id=1826464257]
+z_index = 85
 
 [node name="GameOverAnimations" type="AnimationPlayer" parent="CutsceneUI/GameOverNode" unique_id=1095723877]
 process_mode = 3
@@ -1916,9 +2369,10 @@ color = Color(0.9411765, 0.9137255, 0.63529414, 1)
 
 [node name="ComboReachFeedback" type="ColorRect" parent="." unique_id=485824745]
 layout_mode = 0
-offset_left = -19.0
-offset_right = 1904.0
-offset_bottom = 1078.0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1924.0
+offset_bottom = 1075.0
 color = Color(0.7953644, 1, 0, 0)
 
 [node name="GlowEffect" type="AnimationPlayer" parent="ComboReachFeedback" unique_id=367885733]
@@ -2471,13 +2925,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_u0v1a")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_u0v1a")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_kpxyp")
+button_group = SubResource("ButtonGroup_u0v1a")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 node_paths=PackedStringArray("powerup_display") instance=ExtResource("21_3825n")]
 visible = false
@@ -2628,7 +3082,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChainGlow" type="ColorRect" parent="." unique_id=83664289]
-visible = false
 material = SubResource("ShaderMaterial_sg81t")
 layout_mode = 0
 offset_right = 1920.0

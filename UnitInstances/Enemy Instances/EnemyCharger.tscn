@@ -149,6 +149,7 @@ stamina_regeneration_rate = 2.0
 maxMoveSpeed = 75.0
 maxHealthPoints = 825
 meleeTickRate = 20
+amountOfPointsInOrb = 84
 attackPower = 22.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]

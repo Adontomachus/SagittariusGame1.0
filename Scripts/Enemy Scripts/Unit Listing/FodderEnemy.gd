@@ -54,7 +54,9 @@ var currentMoveSpeed
 @export_group("Vitality Stats")
 @export var maxHealthPoints: int = 80
 @export var meleeTickRate: int = 60
-@export var amountOfPointOrbs: int = 3
+@export var amountOfPointsInOrb: int = 3
+## Values for larger orbs
+
 var baseHealthPoints: int = 80
 
 # PATHFINDING MECHANICS
@@ -100,6 +102,15 @@ var damageNumber := preload("res://Objects/UI Elements/DamageNumbers.tscn")
 var tickDamageNumber := preload("res://Objects/UI Elements/TickDamageNumbers.tscn")
 # START
 func _ready():
+	## Point orb distribution
+	#smallOrbs = amountOfPointOrbs
+	#if amountOfPointOrbs % 3 == 0:
+		#largeOrbs += 1
+		#smallOrbs -= 3
+	#if largeOrbs % 3 == 0:
+		#giantOrbs += 1
+		#largeOrbs -= 3
+	
 	state_machine.init(self)#, animations, audio_sfx)
 	
 	# For boss type units, finds the node for the the cinematic handler to play a scene when the boss reaches 0 HP.
@@ -253,14 +264,24 @@ func _delete_and_emit_effects():
 	deathEffect.position = self.get_global_position()
 	get_tree().get_root().call_deferred("add_child", deathEffect)
 	
-	## Rewards the player with experience points upon elimination
 	
-	for xp in range(amountOfPointOrbs):
-		print("ENEMY DESTROYED AND PLAYER REWARDED")
-		var rewards = pointObject.instantiate()
-		rewards.orb_level = 1
-		rewards.position = self.get_global_position()
-		get_tree().get_root().call_deferred("add_child", rewards)
+	## Rewards the player with experience points upon elimination
+	## This section is for XP orb size distribution
+
+	print("ENEMY DESTROYED AND PLAYER REWARDED")
+	var rewards = pointObject.instantiate()
+	rewards.experienceAmount = amountOfPointsInOrb
+	rewards.healAmount = 1
+	rewards.position = self.get_global_position()
+	get_tree().get_root().call_deferred("add_child", rewards)
+#	for bxp in range(largeOrbs):
+#		var rewards2 = largePointObject.instantiate()
+#		rewards2.position = self.get_global_position()
+#		get_tree().get_root().call_deferred("add_child", rewards2)
+#	for gxp in range(giantOrbs):
+#		var rewards2 = giantPointObject.instantiate()
+#		rewards2.position = self.get_global_position()
+#		get_tree().get_root().call_deferred("add_child", rewards2)
 
 	call_deferred("queue_free")
 	

@@ -52,8 +52,9 @@ func _update_scaling_rates() -> void:
 
 func _process(delta: float) -> void:
 	var current_scene = get_tree().current_scene
-	if current_scene == null or current_scene.name != "SpawnArea":
-		return
+	## TEMPORARY
+	#if current_scene == null or current_scene.name != "GameplayScene":
+	#	return
 	health_scaling += _health_rate * delta
 	attack_power_scaling += _attack_rate * delta
 

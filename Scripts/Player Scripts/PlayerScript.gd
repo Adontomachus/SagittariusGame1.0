@@ -1,12 +1,19 @@
 class_name PlayerCharacter
 extends CharacterBody2D
 
+@export_category("Chain Combo Audio")
+@export var comet_sfx: AudioStreamPlayer
+@export var cadence_sfx: AudioStreamPlayer
+@export var echo_nova_sfx: AudioStreamPlayer
+
 @export var chain_tier_ui: ChainTierUI
 @export var chain_border_glow: ChainBorderGlow
 @export var chain_aura: ChainAura
 
 @export var camera : CameraControl
 @onready var hit_sound: AudioStreamPlayer2D = $PlayerHitSound
+
+
 
 signal camera_shake(shakeDuration, shakeStrength)
 
@@ -553,6 +560,7 @@ func _clear_chain_visuals() -> void:
 		chain_aura.set_tier(0, Color.WHITE)
 
 func _enable_comet_projectile() -> void:
+	comet_sfx.play()
 	projectile_size_multiplier = 1.5
 	projectile_speed_multiplier = 1.25
 	projectile_damage_multiplier = 1.35
@@ -563,6 +571,7 @@ func _enable_comet_projectile() -> void:
 
 
 func _enter_cadence_mode() -> void:
+	cadence_sfx.play()
 	cadence_mode = true
 	cadence_charge_multiplier = 2.0
 	print("Cadence Mode activated!")
@@ -572,6 +581,7 @@ func _enter_cadence_mode() -> void:
 
 
 func _trigger_echo_nova() -> void:
+	echo_nova_sfx.play()
 	print("Echo Nova!")
 
 	## Only damage enemies within nova radius
