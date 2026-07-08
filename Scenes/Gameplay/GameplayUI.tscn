@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://dpkv5vduqrw7c" path="res://Scripts/UI Menu, Settings and Post Game/HealthDisplayScript.gd" id="7_gwjna"]
 [ext_resource type="Script" uid="uid://u3e32t8ocv0n" path="res://Scripts/Audio/PlayerBeatSync.gd" id="8_5f62o"]
 [ext_resource type="Texture2D" uid="uid://cajwmk0mnegaa" path="res://Sprites/Game Elements/Placeholders/UI Elements/ExpFill.png" id="8_5m4nd"]
+[ext_resource type="Texture2D" uid="uid://pi5x8bmwviqa" path="res://Sprites/Game Elements/Placeholders/UI Elements/comboindicator.png" id="8_ljmjq"]
 [ext_resource type="Texture2D" uid="uid://dgai5fot827s1" path="res://Sprites/Game Elements/Placeholders/UI Elements/sagittarius_hp_fill_full.png" id="8_qj281"]
 [ext_resource type="AudioStream" uid="uid://c6m7eu5rshvxj" path="res://Audio/Music/Bebot_Updated.mp3" id="9_0gr54"]
 [ext_resource type="AudioStream" uid="uid://cvvg82ju8n63a" path="res://Audio/Sounds/ComboShotSound.wav" id="10_ntvnh"]
-[ext_resource type="PackedScene" uid="uid://coenikilhyj6y" path="res://Objects/UI Elements/GlowingGemUI.tscn" id="11_7i2y7"]
 [ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="13_qj281"]
 [ext_resource type="Script" uid="uid://c1owtw0ch21d3" path="res://Scripts/Feedback/UpdatedBossHealthUI.gd" id="14_qj281"]
 [ext_resource type="PackedScene" uid="uid://ct8plkb2tiyxh" path="res://Scenes/Interface/pause_screen.tscn" id="15_5m4nd"]
@@ -1322,7 +1322,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_uyhx3"]
 font = ExtResource("4_0if8i")
-font_size = 100
+font_size = 80
 font_color = Color(1.073, 1.063, 0.568, 1)
 shadow_size = 12
 shadow_color = Color(0, 0, 0, 0.89800006)
@@ -1333,55 +1333,55 @@ length = 0.16666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:label_settings:font")
+tracks/0/path = NodePath("../PlayerInfo/Score:label_settings:font_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_0if8i")]
+"values": [42]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:label_settings:font_size")
+tracks/1/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [100]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PlayerInfo/Score:label_settings:font_size")
+tracks/2/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [42]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:scale")
+tracks/3/path = NodePath("../PlayerInfo/Score:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../UpdatedPlayerHealthBar/PlayerLevel:self_modulate")
+tracks/4/path = NodePath("../UpdatedPlayerHealthBar/PlayerHealthText:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1393,7 +1393,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../PlayerInfo/Score:modulate")
+tracks/5/path = NodePath("../UpdatedPlayerHealthBar/UpdatedExperienceBar/ExperienceText:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1405,7 +1405,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../UpdatedPlayerHealthBar/PlayerHealthText:modulate")
+tracks/6/path = NodePath("../PlayerInfo/WaveCounter:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1417,7 +1417,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../UpdatedPlayerHealthBar/UpdatedExperienceBar/ExperienceText:modulate")
+tracks/7/path = NodePath("../EnemyCounter:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1429,26 +1429,14 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../PlayerInfo/WaveCounter:modulate")
+tracks/8/path = NodePath(".:label_settings:font_size")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../EnemyCounter:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [80]
 }
 
 [sub_resource type="Animation" id="Animation_vwi3h"]
@@ -1473,10 +1461,10 @@ tracks/1/path = NodePath(".:label_settings:font_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-3.7252903e-09, 0.1, 0.23333333),
+"times": PackedFloat32Array(0, 0.1, 0.23333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [125, 100, 125]
+"values": [80, 60, 80]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1617,36 +1605,6 @@ font_color = Color(0.86663747, 1, 0.1931151, 1)
 outline_size = 5
 outline_color = Color(0.16142681, 0.10905563, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_gwjna"]
-offsets = PackedFloat32Array(0.5157233, 1)
-colors = PackedColorArray(0.9187369, 0.97723854, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev13k"]
-gradient = SubResource("Gradient_gwjna")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.2)
-
-[sub_resource type="Gradient" id="Gradient_knn8v"]
-colors = PackedColorArray(0.80655646, 1, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hfiw"]
-gradient = SubResource("Gradient_knn8v")
-width = 70
-height = 70
-fill = 1
-fill_from = Vector2(0.50220263, 0.4889868)
-fill_to = Vector2(0.7008547, 0.32478634)
-
-[sub_resource type="Gradient" id="Gradient_b8xms"]
-colors = PackedColorArray(0.971323, 1, 0.4649247, 1, 0.012617188, 0.012617188, 0.012617188, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_meejx"]
-gradient = SubResource("Gradient_b8xms")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.90000004, 0.1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_ve3xx"]
 font = ExtResource("4_0if8i")
 font_size = 42
@@ -1731,7 +1689,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Ability1Container:scale")
+tracks/5/path = NodePath("../Ability1Container/AbililtyKey2:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1743,43 +1701,43 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Ability1Container/AbililtyKey2:scale")
+tracks/6/path = NodePath("HalfBeatLines:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(843, 975)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HalfBeatLines:position")
+tracks/7/path = NodePath("HalfBeatLines2:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(843, 975)]
+"values": [Vector2(1104, 975)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HalfBeatLines2:position")
+tracks/8/path = NodePath("HalfBeatLines:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1104, 975)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HalfBeatLines:modulate")
+tracks/9/path = NodePath("HalfBeatLines2:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1791,7 +1749,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HalfBeatLines2:modulate")
+tracks/10/path = NodePath("RhythmLines/TextureRect2:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1803,34 +1761,22 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("RhythmLines/TextureRect2:modulate")
+tracks/11/path = NodePath("RhythmLines2/TextureRectLine:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("RhythmLines2/TextureRectLine:modulate")
+tracks/12/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1839,7 +1785,7 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_e8aea"]
 resource_name = "RhythmIndicator"
-length = 1.66
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1871,10 +1817,10 @@ tracks/2/path = NodePath("RhythmLines2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.66),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1210.5, 960), Vector2(970, 960)]
+"values": [Vector2(1250, 960), Vector2(960, 960)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1883,10 +1829,10 @@ tracks/3/path = NodePath("RhythmLines:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.66),
+"times": PackedFloat32Array(0, 1.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(709.5, 960), Vector2(970, 960)]
+"values": [Vector2(672, 960), Vector2(960, 960)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1903,7 +1849,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Ability1Container:scale")
+tracks/5/path = NodePath("../Ability1Container/AbililtyKey2:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1915,47 +1861,47 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Ability1Container/AbililtyKey2:scale")
+tracks/6/path = NodePath("HalfBeatLines:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.04270354, 0.26666668),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.85, 0.8666667, 1.66),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+"values": [Vector2(815, 960), Vector2(970, 960), Vector2(670, 960), Vector2(834.75, 960)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HalfBeatLines:position")
+tracks/7/path = NodePath("HalfBeatLines2:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.85, 0.8666667, 1.66),
+"times": PackedFloat32Array(0, 0.85, 0.8666667, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(834.75, 960), Vector2(970, 960), Vector2(709.5, 960), Vector2(834.75, 960)]
+"values": [Vector2(1105, 960), Vector2(960, 960), Vector2(1210.5, 960), Vector2(1105, 960)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HalfBeatLines2:position")
+tracks/8/path = NodePath("HalfBeatLines:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.85, 0.8666667, 1.66),
+"times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1085.25, 960), Vector2(970, 960), Vector2(1210.5, 960), Vector2(1085.25, 960)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HalfBeatLines:modulate")
+tracks/9/path = NodePath("HalfBeatLines2:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
+"times": PackedFloat32Array(0.83998686, 0.85, 0.86, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1963,58 +1909,34 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HalfBeatLines2:modulate")
+tracks/10/path = NodePath("RhythmLines/TextureRect2:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.83998686, 0.85, 0.86, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../RMBContainer:position")
+tracks/11/path = NodePath("RhythmLines2/TextureRectLine:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1776.0001, 411), Vector2(1778.0002, 396.00003), Vector2(1776.0001, 411)]
+"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("RhythmLines/TextureRect2:modulate")
+tracks/12/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("RhythmLines2/TextureRectLine:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
@@ -2027,14 +1949,14 @@ _data = {
 &"RhythmIndicator": SubResource("Animation_e8aea")
 }
 
-[sub_resource type="Gradient" id="Gradient_u1twm"]
-colors = PackedColorArray(0.97969264, 0.97969264, 6.160736e-06, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_b8xms"]
+colors = PackedColorArray(0.971323, 1, 0.4649247, 1, 0.012617188, 0.012617188, 0.012617188, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jgp33"]
-gradient = SubResource("Gradient_u1twm")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_meejx"]
+gradient = SubResource("Gradient_b8xms")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.7905983, 0.14957266)
+fill_to = Vector2(0.90000004, 0.1)
 
 [sub_resource type="Animation" id="Animation_wckvk"]
 resource_name = "Pulse"
@@ -2117,7 +2039,7 @@ font_size = 24
 outline_size = 12
 outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_u0v1a"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_oa3hr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -2378,13 +2300,21 @@ color = Color(0.7953644, 1, 0, 0)
 [node name="GlowEffect" type="AnimationPlayer" parent="ComboReachFeedback" unique_id=367885733]
 libraries/ = SubResource("AnimationLibrary_6uw2w")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=395469086]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 392.0
+offset_right = 356.38812
+offset_bottom = 696.0
+texture = ExtResource("8_ljmjq")
+expand_mode = 1
+
 [node name="UpdatedComboCounter" type="Label" parent="." unique_id=654270409 groups=["ComboUIFeedback"]]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 453.666
-offset_right = 226.4289
-offset_bottom = 636.6527
-rotation = -0.10770728
+offset_left = 99.0
+offset_top = 445.0
+offset_right = 235.4289
+offset_bottom = 627.9867
 text = "1x"
 label_settings = SubResource("LabelSettings_uyhx3")
 horizontal_alignment = 1
@@ -2395,11 +2325,10 @@ script = ExtResource("5_gwjna")
 modulate = Color(0.8823364, 0.87131125, 0.4739384, 1)
 self_modulate = Color(2.40685, 2.40685, 2.2780478, 1)
 layout_mode = 0
-offset_left = -40.12066
-offset_top = 175.70528
-offset_right = 107.23948
-offset_bottom = 194.82428
-rotation = -1.5803438
+offset_left = 173.0
+offset_top = 150.00002
+offset_right = 339.0
+offset_bottom = 169.11902
 value = 55.0
 show_percentage = false
 
@@ -2498,34 +2427,6 @@ offset_right = 548.0
 offset_bottom = 89.0
 text = "Player Level: 1"
 label_settings = SubResource("LabelSettings_o710q")
-
-[node name="ChargedShotReadyGlow" type="Sprite2D" parent="UpdatedPlayerHealthBar" unique_id=1344796115]
-visible = false
-modulate = Color(1, 1, 1, 0.193)
-position = Vector2(110.5, 110.14274)
-scale = Vector2(2.7031248, 2.7232106)
-texture = SubResource("GradientTexture2D_ev13k")
-
-[node name="GlowingGem2" parent="UpdatedPlayerHealthBar" unique_id=2110462969 instance=ExtResource("11_7i2y7")]
-visible = false
-self_modulate = Color(2.137626, 2.137626, 2.137626, 1)
-position = Vector2(111.99996, 113.28547)
-scale = Vector2(0.3125001, 0.43749982)
-
-[node name="GlowEffect" type="PointLight2D" parent="UpdatedPlayerHealthBar" unique_id=270638802]
-visible = false
-z_index = 25
-position = Vector2(111.00001, 114)
-scale = Vector2(2.2149193, 2.272444)
-color = Color(3.294, 3.294, 3.294, 1)
-energy = 4.0
-texture = SubResource("GradientTexture2D_8hfiw")
-
-[node name="GlowFeedback" type="Sprite2D" parent="UpdatedPlayerHealthBar" unique_id=1353301075]
-visible = false
-position = Vector2(112, 107)
-scale = Vector2(1.59375, 1.59375)
-texture = SubResource("GradientTexture2D_meejx")
 
 [node name="UpdatedExperienceBar" type="TextureProgressBar" parent="UpdatedPlayerHealthBar" unique_id=1561454494]
 visible = false
@@ -2671,7 +2572,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -16.5
 offset_top = -31.999025
-offset_right = 67.83146
+offset_right = 67.83142
 offset_bottom = 127.99609
 grow_horizontal = 2
 grow_vertical = 2
@@ -2682,7 +2583,7 @@ texture = ExtResource("17_3tu8g")
 z_index = 1
 offset_left = 1216.0
 offset_top = 969.0
-offset_right = 1225.0007
+offset_right = 1225.0046
 offset_bottom = 1019.0
 color = Color(0.85559684, 1, 0.64379185, 1)
 
@@ -2735,7 +2636,7 @@ texture = ExtResource("18_sg81t")
 z_index = 1
 offset_left = 1104.0
 offset_top = 975.0
-offset_right = 1109.4984
+offset_right = 1109.4979
 offset_bottom = 1014.0003
 scale = Vector2(0.64, 1)
 color = Color(0.5116678, 0.4565437, 0.2784093, 0)
@@ -2787,12 +2688,6 @@ combo_animation_pulse = NodePath("../../ComboNumberPulse")
 perfect_hit = 0.4
 good_hit = 0.32
 ok_hit = 0.2
-
-[node name="BeatIndicatorLight" type="PointLight2D" parent="BeatIndicatorElements/BeatIndicator" unique_id=1398920605]
-z_index = 176
-position = Vector2(38, 166)
-scale = Vector2(1.7500001, 2.0329173)
-texture = SubResource("GradientTexture2D_jgp33")
 
 [node name="BeatPulse" type="AnimationPlayer" parent="BeatIndicatorElements/BeatIndicator" unique_id=691549867]
 libraries/ = SubResource("AnimationLibrary_onpmq")
@@ -2870,10 +2765,10 @@ texture = ExtResource("21_vdje8")
 
 [node name="RMBContainer" type="ColorRect" parent="." unique_id=1169418434]
 layout_mode = 0
-offset_left = 1776.0001
-offset_top = 411.0
-offset_right = 1844.1843
-offset_bottom = 482.32434
+offset_left = 1781.0002
+offset_top = 555.0
+offset_right = 1849.1844
+offset_bottom = 626.32434
 rotation = 0.113265686
 
 [node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
@@ -2925,13 +2820,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_u0v1a")
+button_group = SubResource("ButtonGroup_oa3hr")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_u0v1a")
+button_group = SubResource("ButtonGroup_oa3hr")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_u0v1a")
+button_group = SubResource("ButtonGroup_oa3hr")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 node_paths=PackedStringArray("powerup_display") instance=ExtResource("21_3825n")]
 visible = false
@@ -3013,32 +2908,23 @@ sprite_full = NodePath("EyeOpen")
 pulse_scale = Vector2(0.1, 0.1)
 pulse_duration = 0.2
 base_scale = Vector2(0.1, 0.1)
-light = NodePath("GlowEffect")
+light = NodePath("")
 light_pulse_speed = 1.0
 
 [node name="EyeClose" type="Sprite2D" parent="EyeControl" unique_id=1160683826]
-position = Vector2(960, 156.51053)
+position = Vector2(952.5, 155.51053)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_oa3hr")
 
 [node name="EyeHalf" type="Sprite2D" parent="EyeControl" unique_id=998397801]
-position = Vector2(960, 156.51053)
+position = Vector2(952.5, 155.51053)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_ljmjq")
 
 [node name="EyeOpen" type="Sprite2D" parent="EyeControl" unique_id=1169481389]
-position = Vector2(967, 153.00003)
+position = Vector2(952.5, 152)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_xrjep")
-
-[node name="GlowEffect" type="PointLight2D" parent="EyeControl" unique_id=432501023]
-visible = false
-z_index = 25
-position = Vector2(960, 157.536)
-scale = Vector2(2.2149193, 2.272444)
-color = Color(3.294, 3.294, 3.294, 1)
-energy = 4.0
-texture = SubResource("GradientTexture2D_8hfiw")
 
 [node name="ChainTierUI" type="Control" parent="." unique_id=1502570468 node_paths=PackedStringArray("tier_label", "banner_label", "banner_container")]
 anchors_preset = 0
@@ -3051,10 +2937,10 @@ banner_container = NodePath("BannerContainer")
 
 [node name="ChainLabel" type="Label" parent="ChainTierUI" unique_id=1156803707]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 660.666
-offset_right = 260.0
-offset_bottom = 733.666
+offset_left = 290.0
+offset_top = 524.0
+offset_right = 474.0
+offset_bottom = 597.0
 text = "Sample
 "
 label_settings = SubResource("LabelSettings_qj38p")
@@ -3082,6 +2968,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChainGlow" type="ColorRect" parent="." unique_id=83664289]
+visible = false
 material = SubResource("ShaderMaterial_sg81t")
 layout_mode = 0
 offset_right = 1920.0

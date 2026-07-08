@@ -41,6 +41,7 @@ blend_mode = 1
 light_mode = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwxp5"]
+particle_flag_rotate_y = true
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(-150, 0, 0)
 emission_shape = 1
@@ -61,6 +62,7 @@ damping_min = 30.000002
 damping_max = 60.000004
 scale_min = 0.02
 scale_max = 0.04
+sub_emitter_keep_velocity = true
 
 [sub_resource type="Gradient" id="Gradient_ej3rb"]
 
@@ -75,8 +77,9 @@ ambient_light_color = Color(0.5764706, 0, 0, 1)
 glow_enabled = true
 glow_intensity = 1.0
 
-[node name="PlayerBullet" type="Area2D" unique_id=132848767 node_paths=PackedStringArray("faint_glow", "enemy_glow", "emitter")]
+[node name="PlayerBullet" type="Area2D" unique_id=132848767 node_paths=PackedStringArray("projectile_sprite", "faint_glow", "enemy_glow", "emitter")]
 script = ExtResource("1_5eb27")
+projectile_sprite = NodePath("Sprite")
 projectileVelocity = 762.0
 projectileLifetime = 60.0
 faint_glow = NodePath("FaintGlow")

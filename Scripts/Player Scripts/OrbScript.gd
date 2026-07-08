@@ -13,6 +13,8 @@ var homeTowardsPlayer = false
 var chaseTarget: bool = false
 @onready var player: Node2D
 @onready var objectTarget: Node2D
+@export_category("Follow Settings")
+@export var follow_offset: Vector2 = Vector2(0, -48)
 
 ## Orb Size
 var orb_level: int = 1
@@ -60,7 +62,7 @@ func _physics_process(delta):
 	#	chaseTarget = true
 	if chaseTarget and objectTarget:
 		movespeed += 355 * delta
-		look_at(objectTarget.global_position)
+		look_at(objectTarget.global_position + follow_offset)
 		orb_sprite.global_rotation = 0
 
 

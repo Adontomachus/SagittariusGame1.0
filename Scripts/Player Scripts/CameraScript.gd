@@ -7,7 +7,8 @@ enum CameraMode {
 	SpawnView,
 	CinematicView
 }
-
+@export_category("Follow Settings")
+@export var follow_offset: Vector2 = Vector2(0, -50)
 @export var camera_mode: CameraMode = CameraMode.PlayerView
 var camera_focus_target: CharacterBody2D
 
@@ -63,12 +64,12 @@ func _physics_process(delta):
 	if camera_focus_target:
 		## Smoothly follow target without mouse drag
 		if cameraShakeEffect > 0:
-			cameraPosition = Vector2(
-				camera_focus_target.global_position.x + randf_range(-cameraShakeStrength, cameraShakeStrength),
-				camera_focus_target.global_position.y + randf_range(-cameraShakeStrength, cameraShakeStrength)
+			cameraPosition = camera_focus_target.global_position + follow_offset + Vector2(
+					randf_range(-cameraShakeStrength, cameraShakeStrength),
+					randf_range(-cameraShakeStrength, cameraShakeStrength)
 			)
 		else:
-			cameraPosition = camera_focus_target.global_position
+			cameraPosition = camera_focus_target.global_position + follow_offset
 
 		global_position = global_position.lerp(cameraPosition, delta * camMoveSpeed)
 

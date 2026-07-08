@@ -49,9 +49,9 @@ func consume(modifier: float) -> bool:
 func _update_feedback() -> void:
 	if shots_for_charged >= particle_threshold:
 		can_fire_charged_shot = true
-		player.charged_shot_ready_interface.show()
+		#player.charged_shot_ready_interface.show()
 		player.charged_shot_particles.show()
 	else:
 		can_fire_charged_shot = false
-		player.charged_shot_ready_interface.hide()
+		#player.charged_shot_ready_interface.hide()
 		player.charged_shot_particles.hide()

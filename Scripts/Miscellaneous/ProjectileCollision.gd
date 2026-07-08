@@ -24,7 +24,7 @@ enum ProjectileVelocityType {
 	Constant,
 	Slowing
 }
-
+@export var projectile_sprite: Node2D
 # Projectile properties containing projectile side and velocity types
 @export_category("Projectile Properties")
 @export var projectileSide = ProjectileSide.Player
@@ -75,7 +75,7 @@ func _setup_visuals() -> void:
 		enemy_glow.visible = true
 		if particles:
 			particles.visible = false
-
+			
 func _ready():
 	call_deferred("_setup_visuals")
 	## Check if the projectile velocity type is constant or changing.
@@ -188,6 +188,12 @@ func change_lifetime(new_lifetime: float) -> void:
 	projectileLifetime = new_lifetime
 
 func _physics_process(delta):
+	var angle := fposmod(rotation_degrees, 360.0)
+	if particles:
+		if angle > 90.0 and angle < 270.0:
+			particles.scale.y = -1.0
+		else:
+			particles.scale.y = 1.0
 	position += transform.x * projectileVelocity * delta
 
 func _fade_projectile_velocity(delta) -> void:

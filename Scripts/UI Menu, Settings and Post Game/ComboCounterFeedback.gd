@@ -5,9 +5,9 @@ extends Node
 @export var combo_system: ComboSystems
 
 @export_category("Punch Settings")
-@export var punch_scale: Vector2 = Vector2(1.3, 1.3)
+@export var punch_scale: Vector2 = Vector2(1, 1)
 @export var punch_duration: float = 0.12
-@export var base_scale: Vector2 = Vector2(1.0, 1.0)
+@export var base_scale: Vector2 = Vector2(1, 1)
 
 @export_category("Shake Settings")
 @export var shake_strength: float = 8.0
