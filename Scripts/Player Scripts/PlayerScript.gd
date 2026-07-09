@@ -593,7 +593,7 @@ func _trigger_echo_nova() -> void:
 		if enemy.has_method("modify_health"):
 			var dist := global_position.distance_to(enemy.global_position)
 			if dist <= nova_radius:
-				enemy.modify_health(-int(projectile_damage * 2.0))
+				enemy.modify_health(-int(projectile_damage * 3.0))
 
 	## Spawn AoE damage zone at player
 	var nova := pulse_aoe.instantiate()

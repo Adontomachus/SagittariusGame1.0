@@ -32,12 +32,14 @@
 [ext_resource type="PackedScene" uid="uid://c80tvtjnru5m3" path="res://Scenes/Interface/UpgradeInterface.tscn" id="21_3825n"]
 [ext_resource type="Texture2D" uid="uid://5x6ck6h8h66u" path="res://Sprites/UI Sprites/Secondary Grenade.png" id="21_vdje8"]
 [ext_resource type="PackedScene" uid="uid://dso7bf0d6wiff" path="res://Scenes/Interface/Minimap.tscn" id="22_0if8i"]
-[ext_resource type="Texture2D" uid="uid://cbne2taibbhv4" path="res://Sprites/UI Sprites/Skill AOE.png" id="22_qj281"]
 [ext_resource type="Texture2D" uid="uid://dtr12hy8o0k5a" path="res://Sprites/Game Elements/Placeholders/UI Elements/bosshealthindicator.png" id="22_xrjep"]
 [ext_resource type="Texture2D" uid="uid://dka62u2hf8fsn" path="res://Sprites/Game Elements/Placeholders/UI Elements/bosshealthindicator_fill.png" id="23_kpxyp"]
 [ext_resource type="Script" uid="uid://d3iaealb3gp1c" path="res://Scripts/UI Menu, Settings and Post Game/ChargeShotUI.gd" id="26_7i2y7"]
+[ext_resource type="Texture2D" uid="uid://cmnq88co8lvyl" path="res://Sprites/Game Elements/Placeholders/UI Elements/Skill_Container.png" id="29_p4yn2"]
+[ext_resource type="Texture2D" uid="uid://c8xghx45mplpv" path="res://Sprites/Game Elements/Placeholders/UI Elements/Left Click.png" id="31_u0v1a"]
 [ext_resource type="Shader" uid="uid://dl5lk71shldso" path="res://Scenes/Gameplay/Minimap.gdshader" id="32_3tu8g"]
 [ext_resource type="Texture2D" uid="uid://dqtyg5mdmcf2g" path="res://Sprites/Game Elements/Placeholders/UI Elements/Minimapborder.png" id="32_7363f"]
+[ext_resource type="Texture2D" uid="uid://b06ipgpovwl5y" path="res://Sprites/Game Elements/Placeholders/UI Elements/Right Click.png" id="32_uhxm8"]
 [ext_resource type="Texture2D" uid="uid://ddulcbab6a2k6" path="res://Sprites/Game Elements/Placeholders/UI Elements/beatindicator2_Highrez.png" id="36_kpxyp"]
 [ext_resource type="Script" uid="uid://1hydwbvp5fas" path="res://Scripts/UI Menu, Settings and Post Game/ChainTierUI.gd" id="38_qj38p"]
 [ext_resource type="Shader" uid="uid://ddb338jqre7wr" path="res://Scenes/Gameplay/ChainGlow.gdshader" id="39_kpxyp"]
@@ -1689,43 +1691,43 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Ability1Container/AbililtyKey2:scale")
+tracks/5/path = NodePath("HalfBeatLines:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(843, 975)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HalfBeatLines:position")
+tracks/6/path = NodePath("HalfBeatLines2:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(843, 975)]
+"values": [Vector2(1104, 975)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HalfBeatLines2:position")
+tracks/7/path = NodePath("HalfBeatLines:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1104, 975)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HalfBeatLines:modulate")
+tracks/8/path = NodePath("HalfBeatLines2:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1737,7 +1739,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HalfBeatLines2:modulate")
+tracks/9/path = NodePath("RhythmLines/TextureRect2:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1749,34 +1751,22 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("RhythmLines/TextureRect2:modulate")
+tracks/10/path = NodePath("RhythmLines2/TextureRectLine:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("RhythmLines2/TextureRectLine:modulate")
+tracks/11/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1849,47 +1839,47 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Ability1Container/AbililtyKey2:scale")
+tracks/5/path = NodePath("HalfBeatLines:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.04270354, 0.26666668),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("HalfBeatLines:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.85, 0.8666667, 1.66),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(815, 960), Vector2(970, 960), Vector2(670, 960), Vector2(834.75, 960)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("HalfBeatLines2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HalfBeatLines2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.85, 0.8666667, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1105, 960), Vector2(960, 960), Vector2(1210.5, 960), Vector2(1105, 960)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HalfBeatLines:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HalfBeatLines:modulate")
+tracks/8/path = NodePath("HalfBeatLines2:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
+"times": PackedFloat32Array(0.83998686, 0.85, 0.86, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1897,19 +1887,19 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HalfBeatLines2:modulate")
+tracks/9/path = NodePath("RhythmLines/TextureRect2:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.83998686, 0.85, 0.86, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("RhythmLines/TextureRect2:modulate")
+tracks/10/path = NodePath("RhythmLines2/TextureRectLine:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1921,22 +1911,10 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("RhythmLines2/TextureRectLine:modulate")
+tracks/11/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1.353256, 1.353256, 1.353256, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("HalfBeatLines/TextureRectLine:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0.84, 0.85, 0.86, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
@@ -2027,19 +2005,20 @@ font_color = Color(1, 0.86981654, 0, 1)
 outline_size = 25
 outline_color = Color(0.3268825, 1.6996171e-06, 9.024516e-07, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_x4l4c"]
+font = ExtResource("13_qj281")
+font_size = 25
+font_color = Color(0.8666667, 1, 0.19215687, 1)
+outline_size = 5
+outline_color = Color(0.16078432, 0.10980392, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_48svx"]
 font = ExtResource("13_qj281")
 font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_gwjna"]
-font = ExtResource("13_qj281")
-font_size = 24
-outline_size = 12
-outline_color = Color(0.29271495, 0.086019926, 0.08628049, 1)
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_oa3hr"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_lpnfh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -2740,52 +2719,86 @@ offset_bottom = 524.0
 visible = false
 layout_mode = 1
 
-[node name="Ability1Container" type="ColorRect" parent="." unique_id=1865306640]
+[node name="LMBContainer" type="TextureRect" parent="." unique_id=1914298710]
 layout_mode = 0
-offset_left = 1646.5227
-offset_top = 734.00006
-offset_right = 1760.9
-offset_bottom = 853.6449
-rotation = 0.113265686
+offset_left = 1398.0
+offset_top = 948.0
+offset_right = 1500.3824
+offset_bottom = 1027.0
+texture = ExtResource("29_p4yn2")
+expand_mode = 1
 
-[node name="AbililtyKey2" type="Label" parent="Ability1Container" unique_id=1285908341]
+[node name="TextureRect" type="TextureRect" parent="LMBContainer" unique_id=1292988631]
 layout_mode = 0
-offset_left = 42.178204
-offset_top = 154.22101
-offset_right = 74.15904
-offset_bottom = 235.98871
-rotation = -9.697676e-05
-theme_override_font_sizes/font_size = 16
-text = "Q"
-label_settings = SubResource("LabelSettings_48svx")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ability1Container" unique_id=230064290]
-position = Vector2(54.1819, 69.32035)
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 96.588234
+offset_bottom = 83.0
 texture = ExtResource("21_vdje8")
+expand_mode = 1
 
-[node name="RMBContainer" type="ColorRect" parent="." unique_id=1169418434]
+[node name="TextureRect2" type="TextureRect" parent="LMBContainer" unique_id=767203860]
 layout_mode = 0
-offset_left = 1781.0002
-offset_top = 555.0
-offset_right = 1849.1844
-offset_bottom = 626.32434
-rotation = 0.113265686
+offset_left = 39.0
+offset_top = 85.0
+offset_right = 65.0
+offset_bottom = 111.0
+texture = ExtResource("31_u0v1a")
+expand_mode = 1
 
-[node name="RMBKey" type="Label" parent="RMBContainer" unique_id=438466050]
+[node name="RMBContainer" type="TextureRect" parent="." unique_id=651930580]
 layout_mode = 0
-offset_left = 9.856576
-offset_top = 95.49789
-offset_right = 55.856575
-offset_bottom = 177.2656
-rotation = -9.697676e-05
-theme_override_font_sizes/font_size = 16
-text = "RMB"
-label_settings = SubResource("LabelSettings_gwjna")
+offset_left = 1532.0
+offset_top = 948.0
+offset_right = 1634.3824
+offset_bottom = 1027.0
+texture = ExtResource("29_p4yn2")
+expand_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="RMBContainer" unique_id=1950912848]
-position = Vector2(34.846413, 23.21025)
-scale = Vector2(0.7564583, 0.7564583)
-texture = ExtResource("22_qj281")
+[node name="TextureRect" type="TextureRect" parent="RMBContainer" unique_id=1179285604]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 96.588234
+offset_bottom = 83.0
+texture = ExtResource("21_vdje8")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="RMBContainer" unique_id=834371737]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 85.0
+offset_right = 65.0
+offset_bottom = 111.0
+texture = ExtResource("32_uhxm8")
+expand_mode = 1
+
+[node name="QContainer4" type="TextureRect" parent="." unique_id=826680606]
+layout_mode = 0
+offset_left = 1659.0
+offset_top = 948.0
+offset_right = 1761.3824
+offset_bottom = 1027.0
+texture = ExtResource("29_p4yn2")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="QContainer4" unique_id=1064497623]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 96.588234
+offset_bottom = 83.0
+texture = ExtResource("21_vdje8")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="QContainer4" unique_id=1761627308]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 82.0
+offset_right = 83.0
+offset_bottom = 108.0
+text = "Q"
+label_settings = SubResource("LabelSettings_x4l4c")
 
 [node name="CompanionProgressBar" type="TextureProgressBar" parent="." unique_id=60829247]
 visible = false
@@ -2820,13 +2833,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_oa3hr")
+button_group = SubResource("ButtonGroup_lpnfh")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_oa3hr")
+button_group = SubResource("ButtonGroup_lpnfh")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_oa3hr")
+button_group = SubResource("ButtonGroup_lpnfh")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 node_paths=PackedStringArray("powerup_display") instance=ExtResource("21_3825n")]
 visible = false
@@ -2899,7 +2912,7 @@ position = Vector2(97, 96)
 scale = Vector2(0.434, 0.434)
 texture = ExtResource("32_7363f")
 
-[node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full", "light")]
+[node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full")]
 position = Vector2(14, 831)
 script = ExtResource("26_7i2y7")
 sprite_empty = NodePath("EyeClose")
@@ -2908,7 +2921,6 @@ sprite_full = NodePath("EyeOpen")
 pulse_scale = Vector2(0.1, 0.1)
 pulse_duration = 0.2
 base_scale = Vector2(0.1, 0.1)
-light = NodePath("")
 light_pulse_speed = 1.0
 
 [node name="EyeClose" type="Sprite2D" parent="EyeControl" unique_id=1160683826]

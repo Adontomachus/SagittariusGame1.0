@@ -112,6 +112,9 @@ func _spawn_boss() -> void:
 @onready var cef: GdCEF = $GdCEF
 ## Sets up the spawning mechanics and pause
 func _ready() -> void:
+	world_parent = get_tree().current_scene.get_node_or_null(
+		"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
 	var success := cef.initialize({})
 	if !success:
 		push_error(cef.get_error())
@@ -240,6 +243,7 @@ func _process(delta: float) -> void:
 	get_tree().paused = gamePaused == 1
 #region ENEMY SPAWNING FUNCTION	
 
+var world_parent: Node2D
 # spawns spawners
 func _spawn_wave_spawners(spawnerCount: int) -> void:
 	for i in range(spawnerCount):
@@ -253,7 +257,7 @@ func _spawn_wave_spawners(spawnerCount: int) -> void:
 		spawner.rarityWeight = rarityWeight          
 		spawner.final_wave = waves_remaining == 0   
 		#if enemy_spawn_parent != null:
-		add_child(spawner)#	enemy_spawn_parent.add_child(spawner)
+		world_parent.add_child(spawner)#	enemy_spawn_parent.add_child(spawner)
 		print("Spawned EnemySpawner ", i + 1, "/", spawner_count_per_wave)
 
 func _is_inside_spawn_bounds(pos: Vector2) -> bool:
@@ -342,8 +346,8 @@ func _change_spawning_state(changeBehavior: spawningBehavior) -> void:
 		else:
 			_spawn_wave_spawners(spawner_count_per_wave)
 
-@onready var ability1_container: ColorRect = $InterfaceElements/NewHUD/UI/Ability1Container
-@onready var rmb_container: ColorRect = $InterfaceElements/NewHUD/UI/RMBContainer
+@onready var ability1_container: TextureRect = $InterfaceElements/NewHUD/UI/QContainer4/TextureRect
+@onready var rmb_container: TextureRect = $InterfaceElements/NewHUD/UI/RMBContainer/TextureRect
 
 var _last_qmove_type: int = -1
 var _last_secondary_size: int = -1
@@ -362,6 +366,8 @@ func _update_ability_ui() -> void:
 				player_node.q_moves != null and
 				player_node.q_moves.ability_type != QMoves.AbilityType.Q_NONE
 			)
+		if player_node.q_moves.equipped_upgrade:
+			ability1_container.texture = player_node.q_moves.equipped_upgrade.icon
 
 	## Only update if secondary actions changed
 	var secondary := player_node.get_node_or_null("SecondaryFire")
@@ -370,6 +376,8 @@ func _update_ability_ui() -> void:
 		_last_secondary_size = current_secondary_size
 		if rmb_container:
 			rmb_container.visible = current_secondary_size > 0
+			if secondary and secondary.equipped_upgrade:
+				rmb_container.texture = secondary.equipped_upgrade.icon
 
 func _on_pause_screen_exit_game() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")

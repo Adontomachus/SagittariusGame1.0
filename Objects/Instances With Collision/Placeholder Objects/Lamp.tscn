@@ -24,11 +24,12 @@ scale = Vector2(0.77050775, 0.77050775)
 script = ExtResource("1_jiugo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]
+position = Vector2(0, -271.5542)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_im2v5")
 
 [node name="GlowEffect" type="PointLight2D" parent="." unique_id=992778420]
-position = Vector2(-19.46768, -236.20792)
+position = Vector2(-19.46768, -507.76205)
 scale = Vector2(17.340075, 8.260429)
 color = Color(2.702384, 3.2944162, 1.6543248, 1)
 energy = 4.0

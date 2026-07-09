@@ -5,6 +5,8 @@ extends Node
 signal player_dash
 signal player_grenade
 
+var equipped_upgrade: UpgradeData
+
 @export var beat_sync: BeatSync_Script
 @export var combo_system: ComboSystems
 

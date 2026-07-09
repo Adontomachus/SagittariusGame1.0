@@ -311,15 +311,19 @@ func apply_upgrade(upgrade: UpgradeData, player: PlayerCharacter) -> void:
 		"secondary_swap_grenade":
 			var secondary = player.get_node("SecondaryFire")
 			secondary.secondary_actions["secondary_fire"] = secondary._secondary_grenade
+			secondary.equipped_upgrade = upgrade
 		"secondary_swap_dash":
 			var secondary = player.get_node("SecondaryFire")
 			secondary.secondary_actions["secondary_fire"] = secondary._secondary_dash
+			secondary.equipped_upgrade = upgrade
 
 		## Q MOVE
 		"qmove_swap_aoe_pulse":
 			player.q_moves.ability_type = QMoves.AbilityType.AOE_PULSE
+			player.q_moves.equipped_upgrade = upgrade
 		"qmove_swap_cone":
 			player.q_moves.ability_type = QMoves.AbilityType.DIRECTIONAL_CONE
+			player.q_moves.equipped_upgrade = upgrade
 		"qmove_aoe_damage":
 			## Lower divisor = more damage
 			player.q_moves.damage_divisor_min = max(0.4, player.q_moves.damage_divisor_min * (1.0 - value / 100.0))

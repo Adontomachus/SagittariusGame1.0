@@ -1,6 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
-
+var clickable_tome := preload("res://Objects/Instances With Collision/ClickableTome.tscn")
 @export_category("Visuals")
 @export var allow_sprite_flip: bool = true
 
@@ -288,18 +288,24 @@ func _delete_and_emit_effects():
 	## If the unit is considered the "final boss of the level", play a cutscene 
 	## of the boss getting defeated and roll out victorious post game statistics
 	if boss_unit:
-		## Completely disables the enemy object and plays the winning animation
 		var cinematics_handler = get_tree().get_first_node_in_group("SceneGroup")
-		print("Current Cinematics Handler: " , cinematics_handler)
-		cinematics_handler.game_is_won = true
+		print("Current Cinematics Handler: ", cinematics_handler)
+		
+		var enemies := get_tree().get_nodes_in_group("GeneralEnemyInstance")
+		for enemy in enemies:
+			if not is_instance_valid(enemy):
+				continue
+			if enemy.has_method("modify_health"):
+				enemy.modify_health(-9999999999)
+
+		## Spawn the tome at the boss's position instead of ending immediately
+		var tome = clickable_tome.instantiate()
+		tome.global_position = self.global_position
+		get_tree().current_scene.add_child(tome)
+		print("Tome spawned — waiting for player to interact")
+
+		## Do NOT call game_is_won yet — wait for browser close
 		self.set_process(false)
-		
-		get_tree().paused = true
-		
-		# Updates current level and unlocks next levels
-		LevelManager.currentLevel += 1 
-		LevelManager._unlock_level(LevelManager.currentLevel)
-		
 		return
 	return
 	

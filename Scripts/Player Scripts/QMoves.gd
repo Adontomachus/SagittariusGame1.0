@@ -4,6 +4,8 @@ extends Node
 # Add here names of new moves
 enum AbilityType {Q_NONE ,AOE_PULSE, DIRECTIONAL_CONE }
 
+var equipped_upgrade: UpgradeData
+
 @export_category("Ability Type")
 @export var ability_type: AbilityType = AbilityType.Q_NONE
 
