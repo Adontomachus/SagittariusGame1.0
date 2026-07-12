@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var url := "https://halohaloapp.com"
+@export var url := "https://www.halohaloapp.com/series/74/526"
 var hovering := false
 var was_hovering := false
 @onready var browser_window := get_tree().get_first_node_in_group("BrowserWindow")
@@ -38,6 +38,6 @@ func _input(event: InputEvent) -> void:
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed and input_pickable:
 		## Pass true so browser window knows to end level on close
-		browser_window.open(url, true)
+		browser_window.open(url, true, "https://www.halohaloapp.com/series/60/437")
 		## Remove the tome once opened so player can't open it again
 		queue_free()

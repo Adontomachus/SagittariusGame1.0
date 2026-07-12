@@ -2018,7 +2018,7 @@ font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_lpnfh"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_p4yn2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
 shader = ExtResource("32_3tu8g")
@@ -2833,13 +2833,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_lpnfh")
+button_group = SubResource("ButtonGroup_p4yn2")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_lpnfh")
+button_group = SubResource("ButtonGroup_p4yn2")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_lpnfh")
+button_group = SubResource("ButtonGroup_p4yn2")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 node_paths=PackedStringArray("powerup_display") instance=ExtResource("21_3825n")]
 visible = false

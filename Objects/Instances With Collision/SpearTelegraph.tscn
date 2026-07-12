@@ -5,11 +5,12 @@
 
 [node name="SpearTelegraph" type="Node2D" unique_id=904275285]
 script = ExtResource("1_hm76p")
-telegraph_texture = ExtResource("2_m2dfr")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1542896258]
+[node name="LavaLine" type="Line2D" parent="." unique_id=1375121775]
+texture = ExtResource("2_m2dfr")
+texture_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=85605281]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Sprite2D" type="TextureRect" parent="ColorRect" unique_id=1242092656]
-layout_mode = 0
