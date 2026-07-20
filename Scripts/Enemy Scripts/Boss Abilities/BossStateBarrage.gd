@@ -7,9 +7,9 @@ extends EnemyState
 ## How many rings to fire before switching state
 @export var rings_to_fire: int = 5
 ## Beats between each ring
-@export var beats_between_rings: int = 4
+@export var beats_between_rings: int = 3
 ## How many projectiles per ring
-@export var projectiles_per_ring: int = 80
+@export var projectiles_per_ring: int = 30
 ## Size of the gap in degrees — bigger = easier to dodge
 @export var gap_size_degrees: float = 20
 ## Damage per projectile

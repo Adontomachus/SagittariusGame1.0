@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7it44ybvgvxf"]
 
 [ext_resource type="Script" uid="uid://bkent1jhnqg5y" path="res://Scripts/Scene Management/MainMenuScript.gd" id="1_xamtj"]
+[ext_resource type="PackedScene" uid="uid://bprfs68wqhg5b" path="res://Scenes/Maps and Levels/LoadingScene.tscn" id="2_b5x3o"]
 [ext_resource type="PackedScene" uid="uid://ctnoi5oldo47k" path="res://Scenes/Interface/TutorialInterface.tscn" id="2_o310p"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="3_o310p"]
 [ext_resource type="Texture2D" uid="uid://1ddfyxpis5at" path="res://Sprites/UI Sprites/Sagittarius_logo.png" id="4_b5x3o"]
@@ -245,6 +246,7 @@ settings = NodePath("Settings")
 tutorial = NodePath("Tutorial")
 main_menu = NodePath("MainMenuContainer")
 main_menu_transition = NodePath("MainMenuAnimations")
+loading_screen_scene = ExtResource("2_b5x3o")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=176429304]
 offset_right = 1920.0

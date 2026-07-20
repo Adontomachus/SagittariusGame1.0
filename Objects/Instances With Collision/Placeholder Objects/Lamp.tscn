@@ -20,6 +20,7 @@ fill_to = Vector2(0.7008547, 0.32478634)
 
 [node name="Clutter" type="StaticBody2D" unique_id=430981844 groups=["MapObstacle"]]
 position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jiugo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381333886]

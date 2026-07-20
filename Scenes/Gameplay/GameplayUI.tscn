@@ -45,6 +45,10 @@
 [ext_resource type="Shader" uid="uid://ddb338jqre7wr" path="res://Scenes/Gameplay/ChainGlow.gdshader" id="39_kpxyp"]
 [ext_resource type="Script" uid="uid://dm4syv3ardxe6" path="res://Scenes/Gameplay/ChainGlow.gd" id="39_xrjep"]
 [ext_resource type="Script" uid="uid://bhpjs75w4xnwa" path="res://Scripts/UI Menu, Settings and Post Game/PowerupDisplay.gd" id="40_kpxyp"]
+[ext_resource type="PackedScene" uid="uid://dajjlofxsj6h6" path="res://Objects/UI Elements/ChainTierPanel.tscn" id="43_u0v1a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
+shader = ExtResource("32_3tu8g")
 
 [sub_resource type="LabelSettings" id="LabelSettings_riqys"]
 font = ExtResource("13_qj281")
@@ -352,7 +356,7 @@ length = 10.066667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
+tracks/0/path = NodePath("../CutsceneBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -364,7 +368,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameOverNode/CutsceneBackground:visible")
+tracks/1/path = NodePath("../CutsceneBackground:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -487,7 +491,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameOverNode/CutsceneBackground:modulate")
+tracks/0/path = NodePath("../CutsceneBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -499,7 +503,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameOverNode/CutsceneBackground:visible")
+tracks/1/path = NodePath("../CutsceneBackground:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -629,7 +633,7 @@ length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneBackground:modulate")
+tracks/0/path = NodePath("../../CutsceneBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -641,7 +645,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CutsceneBackground:visible")
+tracks/1/path = NodePath("../../CutsceneBackground:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -653,11 +657,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WinScreen/GamePausedText:modulate")
+tracks/2/path = NodePath("WinScreen/ResumeButton:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3, 3.2),
+"times": PackedFloat32Array(4.366667, 5.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -665,23 +669,23 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WinScreen/GamePausedText:scale")
+tracks/3/path = NodePath("WinScreen/ExitButton:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(4.366667, 5.366667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WinScreen/ScoreStats:modulate")
+tracks/4/path = NodePath("WinScreen/HighestLevelReached:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(5, 5.5),
+"times": PackedFloat32Array(3.8666668, 4.866667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -689,11 +693,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WinScreen/RhythmAccuracy:modulate")
+tracks/5/path = NodePath("WinScreen/DamageDealt:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(5.5, 6),
+"times": PackedFloat32Array(3.3666668, 3.8666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -701,11 +705,11 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("WinScreen/DamageDealt:modulate")
+tracks/6/path = NodePath("WinScreen/RhythmAccuracy:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(6, 6.5),
+"times": PackedFloat32Array(2.866667, 3.3666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -713,11 +717,11 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("WinScreen/HighestLevelReached:modulate")
+tracks/7/path = NodePath("WinScreen/ScoreStats:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(6.5, 7.5),
+"times": PackedFloat32Array(2.366667, 2.866667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -725,23 +729,23 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("WinScreen/ExitButton:modulate")
+tracks/8/path = NodePath("WinScreen/GamePausedText:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(7, 8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.2666667),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("WinScreen/ResumeButton:modulate")
+tracks/9/path = NodePath("WinScreen/GamePausedText:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(7, 8),
+"times": PackedFloat32Array(1.2666667, 1.4666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -752,7 +756,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CutsceneBackground:modulate")
+tracks/0/path = NodePath("../../CutsceneBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -764,7 +768,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CutsceneBackground:visible")
+tracks/1/path = NodePath("../../CutsceneBackground:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -776,7 +780,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WinScreen/GamePausedText:modulate")
+tracks/2/path = NodePath("WinScreen/ResumeButton:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -788,19 +792,19 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WinScreen/GamePausedText:scale")
+tracks/3/path = NodePath("WinScreen/ExitButton:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WinScreen/ScoreStats:modulate")
+tracks/4/path = NodePath("WinScreen/HighestLevelReached:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -812,7 +816,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WinScreen/RhythmAccuracy:modulate")
+tracks/5/path = NodePath("WinScreen/DamageDealt:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -824,7 +828,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("WinScreen/DamageDealt:modulate")
+tracks/6/path = NodePath("WinScreen/RhythmAccuracy:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -836,7 +840,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("WinScreen/HighestLevelReached:modulate")
+tracks/7/path = NodePath("WinScreen/ScoreStats:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -848,19 +852,19 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("WinScreen/ExitButton:modulate")
+tracks/8/path = NodePath("WinScreen/GamePausedText:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("WinScreen/ResumeButton:modulate")
+tracks/9/path = NodePath("WinScreen/GamePausedText:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -2018,10 +2022,7 @@ font_size = 48
 outline_size = 30
 outline_color = Color(0.31600577, 0.12077648, 4.813075e-08, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_p4yn2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qj38p"]
-shader = ExtResource("32_3tu8g")
+[sub_resource type="ButtonGroup" id="ButtonGroup_u0v1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa3hr"]
 atlas = ExtResource("36_kpxyp")
@@ -2035,9 +2036,9 @@ region = Rect2(303.28845, 266.52203, 251.9812, 262.81708)
 atlas = ExtResource("36_kpxyp")
 region = Rect2(559.995, 217.74886, 326.528, 324.76416)
 
-[sub_resource type="LabelSettings" id="LabelSettings_qj38p"]
+[sub_resource type="LabelSettings" id="LabelSettings_p4yn2"]
 font = ExtResource("13_qj281")
-font_size = 34
+font_size = 36
 font_color = Color(1.0731114, 1.0647249, 0.56991154, 1)
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.8980392)
@@ -2064,6 +2065,71 @@ offset_right = 13.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MinimapHUD" parent="." unique_id=1010004399 instance=ExtResource("22_0if8i")]
+layer = 0
+
+[node name="MinimapContainer" parent="MinimapHUD" index="0" unique_id=1762052833]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = -1
+anchor_left = 0.831
+anchor_top = 0.015
+anchor_right = 0.897
+anchor_bottom = 0.125
+offset_left = 2.4801025
+offset_top = 77.8
+offset_right = 75.76001
+offset_bottom = 159.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" parent="MinimapHUD/MinimapContainer" index="0" unique_id=1472134649]
+visible = false
+offset_left = -8.519897
+offset_top = -7.199997
+offset_right = 256.0
+offset_bottom = 256.8
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=2095466810]
+material = SubResource("ShaderMaterial_qj38p")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.012400513
+anchor_top = 0.0009999848
+anchor_right = -0.012400513
+anchor_bottom = 0.0009999848
+offset_left = -1.5198975
+offset_top = -0.19999695
+offset_right = 198.4801
+offset_bottom = 199.8
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" parent="MinimapHUD/MinimapContainer/SubViewportContainer" index="0" unique_id=2109862884]
+size = Vector2i(200, 200)
+
+[node name="MinimapCamera" parent="MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" index="0" unique_id=1648225918 groups=["MinimapCamera"]]
+position = Vector2(0, 22)
+
+[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.012400513
+anchor_top = 0.0009999848
+anchor_right = 0.9875995
+anchor_bottom = 1.0009999
+offset_left = -1.5198975
+offset_top = -0.19999695
+offset_right = -1.5198975
+offset_bottom = -0.19998169
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MinimapHUD/MinimapContainer" index="3" unique_id=459562973]
+position = Vector2(97, 96)
+scale = Vector2(0.434, 0.434)
+texture = ExtResource("32_7363f")
 
 [node name="QLabel" type="Label" parent="." unique_id=177446406]
 z_index = 9
@@ -2105,7 +2171,7 @@ z_index = 59
 layout_mode = 0
 offset_left = 116.0
 offset_top = 143.0
-offset_right = 228.38992
+offset_right = 228.38986
 offset_bottom = 190.0
 text = "Level Up!"
 label_settings = SubResource("LabelSettings_bhunq")
@@ -2132,15 +2198,6 @@ process_mode = 3
 [node name="GameOverNode" type="Node" parent="CutsceneUI" unique_id=1812883204]
 process_mode = 3
 
-[node name="CutsceneBackground" type="ColorRect" parent="CutsceneUI/GameOverNode" unique_id=785273817]
-process_mode = 3
-visible = false
-modulate = Color(0.71932274, 1, 0, 1)
-z_index = 62
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.8531885, 0.8544415, 0.4723053, 1)
-
 [node name="TelegraphCutscene" type="Sprite2D" parent="CutsceneUI/GameOverNode" unique_id=1039967942]
 modulate = Color(1, 1, 1, 0)
 z_index = 113
@@ -2161,9 +2218,8 @@ position = Vector2(939.00006, 702.00006)
 scale = Vector2(10.312499, 10.312499)
 texture = SubResource("GradientTexture2D_riqys")
 
-[node name="WinScreen" parent="CutsceneUI/GameOverNode" unique_id=1347961824 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("1_r2md4")]
-visible = false
-z_index = 6
+[node name="WinScreen" parent="CutsceneUI/GameOverNode" unique_id=1887214024 node_paths=PackedStringArray("beat_sync_script", "highest_level_reached") instance=ExtResource("1_r2md4")]
+z_index = 7
 beat_sync_script = NodePath("../../../BeatIndicatorElements/BeatIndicator")
 highest_level_reached = NodePath("HighestLevelReached")
 
@@ -2172,9 +2228,11 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="ExitButton" parent="CutsceneUI/GameOverNode/WinScreen" index="2" unique_id=1817500599]
 modulate = Color(1, 1, 1, 0)
+z_index = 11
 
 [node name="ResumeButton" parent="CutsceneUI/GameOverNode/WinScreen" index="3" unique_id=1378675360]
 modulate = Color(1, 1, 1, 0)
+z_index = 11
 
 [node name="ScoreStats" parent="CutsceneUI/GameOverNode/WinScreen" index="4" unique_id=1698478150]
 modulate = Color(1, 1, 1, 0)
@@ -2226,6 +2284,16 @@ libraries/ = SubResource("AnimationLibrary_o710q")
 
 [node name="GameWinAnimations" type="AnimationPlayer" parent="CutsceneUI/GameOverNode" unique_id=1836457363]
 libraries/ = SubResource("AnimationLibrary_wkher")
+
+[node name="CutsceneBackground" type="ColorRect" parent="." unique_id=785273817]
+process_mode = 3
+visible = false
+modulate = Color(0.71932274, 1, 0, 1)
+z_index = 6
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.8531885, 0.8544415, 0.4723053, 1)
 
 [node name="Border Pulse" type="Node" parent="." unique_id=1316466780]
 script = ExtResource("3_3825n")
@@ -2479,9 +2547,9 @@ label_settings = SubResource("LabelSettings_ve3xx")
 [node name="EnemyCounter" type="Label" parent="." unique_id=172310879]
 layout_mode = 0
 offset_left = 1554.0
-offset_top = 402.0
+offset_top = 361.0
 offset_right = 2000.0
-offset_bottom = 430.0
+offset_bottom = 389.0
 theme_override_font_sizes/font_size = 15
 text = "Enemies Left:"
 label_settings = SubResource("LabelSettings_0cpi2")
@@ -2833,84 +2901,19 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_p4yn2")
+button_group = SubResource("ButtonGroup_u0v1a")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_p4yn2")
+button_group = SubResource("ButtonGroup_u0v1a")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_p4yn2")
+button_group = SubResource("ButtonGroup_u0v1a")
 
 [node name="UpgradeUI" parent="." unique_id=699315924 node_paths=PackedStringArray("powerup_display") instance=ExtResource("21_3825n")]
 visible = false
 z_index = 4
 layout_mode = 1
 powerup_display = NodePath("../PowerUpDisplay")
-
-[node name="MinimapHUD" parent="." unique_id=1010004399 instance=ExtResource("22_0if8i")]
-layer = 0
-
-[node name="MinimapContainer" parent="MinimapHUD" index="0" unique_id=1762052833]
-custom_minimum_size = Vector2(200, 200)
-anchors_preset = -1
-anchor_left = 0.831
-anchor_top = 0.015
-anchor_right = 0.897
-anchor_bottom = 0.125
-offset_left = 2.4801025
-offset_top = 77.8
-offset_right = 75.76001
-offset_bottom = 159.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" parent="MinimapHUD/MinimapContainer" index="0" unique_id=1472134649]
-visible = false
-offset_left = -8.519897
-offset_top = -7.199997
-offset_right = 256.0
-offset_bottom = 256.8
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewportContainer" parent="MinimapHUD/MinimapContainer" index="1" unique_id=2095466810]
-material = SubResource("ShaderMaterial_qj38p")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.012400513
-anchor_top = 0.0009999848
-anchor_right = -0.012400513
-anchor_bottom = 0.0009999848
-offset_left = -1.5198975
-offset_top = -0.19999695
-offset_right = 198.4801
-offset_bottom = 199.8
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewport" parent="MinimapHUD/MinimapContainer/SubViewportContainer" index="0" unique_id=2109862884]
-size = Vector2i(200, 200)
-
-[node name="MinimapCamera" parent="MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" index="0" unique_id=1648225918 groups=["MinimapCamera"]]
-position = Vector2(0, 22)
-
-[node name="MinimapDotLayer" parent="MinimapHUD/MinimapContainer" index="2" unique_id=117072874]
-clip_contents = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.012400513
-anchor_top = 0.0009999848
-anchor_right = 0.9875995
-anchor_bottom = 1.0009999
-offset_left = -1.5198975
-offset_top = -0.19999695
-offset_right = -1.5198975
-offset_bottom = -0.19998169
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="MinimapHUD/MinimapContainer" index="3" unique_id=459562973]
-position = Vector2(97, 96)
-scale = Vector2(0.434, 0.434)
-texture = ExtResource("32_7363f")
 
 [node name="EyeControl" type="Node2D" parent="." unique_id=1126182348 node_paths=PackedStringArray("sprite_empty", "sprite_half", "sprite_full")]
 position = Vector2(14, 831)
@@ -2955,7 +2958,7 @@ offset_right = 474.0
 offset_bottom = 597.0
 text = "Sample
 "
-label_settings = SubResource("LabelSettings_qj38p")
+label_settings = SubResource("LabelSettings_p4yn2")
 
 [node name="BannerContainer" type="Control" parent="ChainTierUI" unique_id=1330930065]
 layout_mode = 1
@@ -2979,6 +2982,13 @@ label_settings = SubResource("LabelSettings_xrjep")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ChainTierPanel" parent="." unique_id=1131106582 instance=ExtResource("43_u0v1a")]
+layout_mode = 0
+offset_left = 1583.0
+offset_top = 447.0
+offset_right = 1583.0
+offset_bottom = 447.0
+
 [node name="ChainGlow" type="ColorRect" parent="." unique_id=83664289]
 visible = false
 material = SubResource("ShaderMaterial_sg81t")
@@ -3000,9 +3010,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[editable path="MinimapHUD"]
 [editable path="CutsceneUI/GameOverNode/WinScreen"]
 [editable path="CutsceneUI/GameOverNode/LoseScreen"]
 [editable path="PauseScreen"]
 [editable path="Settings"]
 [editable path="UpgradeUI"]
-[editable path="MinimapHUD"]

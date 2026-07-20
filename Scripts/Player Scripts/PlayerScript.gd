@@ -223,6 +223,8 @@ var can_control_unit: bool = true
 ## CUTSCENE TESTING
 @export var cutscene_handler: Node
 
+var world_parent
+
 func _ready():
 	# Resets upgrades
 	UpgradeSystemScript.reset()
@@ -250,6 +252,10 @@ func _ready():
 	# Player health bar
 	send_maximum_health.emit(maxHealthPoints)
 	send_current_health.emit(healthPoints)
+	
+	world_parent = get_tree().current_scene.get_node_or_null(
+	"GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World"
+	)
 	
 #region Movement and ability inputs
 func get_input() -> void:
@@ -421,6 +427,7 @@ func play_action(action: String):
 	is_locked_in_action = true
 	var animation_name := "%s_%s" % [action, _get_direction_name()]
 	player_sprite.play(animation_name)
+	
 
 	await player_sprite.animation_finished
 	is_locked_in_action = false
@@ -476,7 +483,8 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 			projectile_instance.projectileVelocity *= projectile_speed_multiplier
 
 		projectile_instance.get_node("OrbitingParticles").set_effect_color(color)
-		get_tree().get_root().call_deferred("add_child", projectile_instance)
+		
+		world_parent.call_deferred("add_child", projectile_instance)
 
 		if sarimanok_feather:
 			_shoot_sarimanok_spread(modifier, color)
@@ -530,6 +538,7 @@ func _on_missed_beat():
 		player_sprite.modulate = Color.WHITE
 	_clear_chain_visuals()
 	
+@export var chain_tier_panel: ChainTierPanel  
 func _update_chain_visuals() -> void:
 	var tier := 0
 	var color := Color.WHITE
@@ -549,6 +558,8 @@ func _update_chain_visuals() -> void:
 		chain_border_glow.set_tier(tier, color)
 	if chain_aura:
 		chain_aura.set_tier(tier, color)
+	if chain_tier_panel:
+		chain_tier_panel.show_tier(tier)
 
 
 func _clear_chain_visuals() -> void:
@@ -558,6 +569,8 @@ func _clear_chain_visuals() -> void:
 		chain_border_glow.clear()
 	if chain_aura:
 		chain_aura.set_tier(0, Color.WHITE)
+	if chain_tier_panel:
+		chain_tier_panel.hide_panel()
 
 func _enable_comet_projectile() -> void:
 	comet_sfx.play()
@@ -813,43 +826,6 @@ func upgrade_player_stats() -> void:
 	pass
 #endregion
 	
-	
-#region Secondary Fire
-func _dash() -> void:
-	## Your dash logic here — example:
-	var dash_direction := Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up", "move_down")
-	).normalized()
-	## If no input, dash in the direction of the mouse
-	if dash_direction == Vector2.ZERO:
-		dash_direction = (get_global_mouse_position() - global_position).normalized()
-		
-	velocity += dash_direction * dash_force   
-	## Timer releases the dash after dash_duration seconds
-	await get_tree().create_timer(dash_duration).timeout
-	is_dashing = false
-	dash_velocity = Vector2.ZERO
-
-func _grenade() -> void:
-	if not grenade_ready:
-		print("Grenade on cooldown")
-		return
-
-	var grenade = grenade_scene.instantiate()
-	get_tree().get_root().call_deferred("add_child", grenade)
-	
-	grenade.explosion_damage = grenade_damage / (randf_range(grenade_damage_divisor_min, grenade_divisor_max))
-	grenade.explosion_radius = grenade_radius
-	## Wait one frame so the node is in the tree before calling launch()
-	await get_tree().process_frame
-	grenade.launch(global_position, get_global_mouse_position())
-
-	## Cooldown
-	grenade_ready = false
-	await get_tree().create_timer(grenade_cooldown).timeout
-	grenade_ready = true
-#endregion
 
 #region Agimats Implementation
 ## Nuno Root — regen while still

@@ -121,15 +121,6 @@ func _ready():
 	if movement_stretch:
 		movement_stretch.sprite_to_wrap = state_machine.sprite
 		movement_stretch.velocity_source = self
-	
-	var squash := get_node_or_null("BeatSquashStretch")
-	if squash:
-		squash.target = state_machine.sprite
-		squash.full_beat_intensity = 0.025
-		squash.half_beat_intensity = 0.01
-		squash.recovery_speed = 0.9
-		squash.base_scale = state_machine.sprite.scale
-		print("Squash found in enemy")
 	var hit_flash := get_node_or_null("HitFlashEnemy")
 	if hit_flash:
 		hit_flash.target = state_machine.sprite

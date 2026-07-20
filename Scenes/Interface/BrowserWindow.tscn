@@ -2,15 +2,94 @@
 
 [ext_resource type="Script" uid="uid://l3y85c5608g6" path="res://Scripts/GDCEF/BrowserWindow.gd" id="1_5lmat"]
 [ext_resource type="Script" uid="uid://dd55sccwudd14" path="res://Scenes/Interface/WindowInput.gd" id="2_l1i7r"]
+[ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="3_j4vsn"]
+[ext_resource type="Texture2D" uid="uid://btdtoa4c2smy2" path="res://Sprites/Game Elements/Placeholders/UI Elements/Loading_OuterCircle.png" id="3_t35y2"]
+[ext_resource type="Texture2D" uid="uid://c3hu2usbtvs86" path="res://Sprites/Game Elements/Placeholders/UI Elements/Loading_InnerCircle.png" id="4_qq4n4"]
+[ext_resource type="Texture2D" uid="uid://b5dl0flfw8xej" path="res://Sprites/Game Elements/Placeholders/UI Elements/Frame.png" id="6_ba3gu"]
 
-[node name="BrowserWindow" type="CanvasLayer" unique_id=63176195 node_paths=PackedStringArray("forward_button") groups=["BrowserWindow"]]
+[sub_resource type="LabelSettings" id="LabelSettings_t35y2"]
+font = ExtResource("3_j4vsn")
+font_size = 100
+
+[node name="BrowserWindow" type="CanvasLayer" unique_id=63176195 node_paths=PackedStringArray("forward_button", "back_button", "close_button") groups=["BrowserWindow"]]
 process_mode = 3
 script = ExtResource("1_5lmat")
 forward_button = NodePath("Window/Button2")
+back_button = NodePath("Window/Button3")
+close_button = NodePath("Window/Button")
 
 [node name="Window" type="Panel" parent="." unique_id=1995429228]
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="ColorRect2" type="ColorRect" parent="Window" unique_id=926498137]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 48.0
+offset_right = 1306.0
+offset_bottom = 1032.0
+color = Color(0.042833768, 0.022914693, 0.0037347176, 1)
+
+[node name="LoadingOverlay" type="Control" parent="Window" unique_id=395429294]
+anchors_preset = 0
+offset_left = 654.0
+offset_top = 48.0
+offset_right = 694.0
+offset_bottom = 88.0
+
+[node name="ColorRect" type="ColorRect" parent="Window/LoadingOverlay" unique_id=1503488014]
+layout_mode = 0
+offset_left = -17.0
+offset_right = 658.0
+offset_bottom = 984.0
+color = Color(0.042833768, 0.022914693, 0.0037347176, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Window/LoadingOverlay/ColorRect" unique_id=1946919572]
+position = Vector2(326, 431)
+texture = ExtResource("3_t35y2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Window/LoadingOverlay/ColorRect" unique_id=1891194329]
+position = Vector2(326, 431)
+texture = ExtResource("4_qq4n4")
+
+[node name="Label" type="Label" parent="Window/LoadingOverlay/ColorRect" unique_id=1929380960]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 768.0
+offset_right = 521.0
+offset_bottom = 870.0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_t35y2")
+
+[node name="Button2" type="Button" parent="Window" unique_id=2113678222]
+layout_mode = 0
+offset_left = 1373.0
+offset_top = 436.0
+offset_right = 1469.0
+offset_bottom = 528.0
+text = "->"
+
+[node name="Button3" type="Button" parent="Window" unique_id=248977841]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 436.0
+offset_right = 582.0
+offset_bottom = 528.0
+text = "<-"
+
+[node name="Label" type="Label" parent="Window" unique_id=1801115743]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TextureRect2" type="TextureRect" parent="Window" unique_id=481080012]
+layout_mode = 0
+offset_left = 466.0
+offset_top = -32.0
+offset_right = 1463.0
+offset_bottom = 1102.0
+texture = ExtResource("6_ba3gu")
 
 [node name="TextureRect" type="TextureRect" parent="Window" unique_id=1943658534]
 layout_mode = 1
@@ -19,9 +98,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -316.0
-offset_top = -492.0
-offset_right = 321.66675
+offset_left = -334.0
+offset_top = -502.0
+offset_right = 342.0
 offset_bottom = 492.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -31,23 +110,9 @@ script = ExtResource("2_l1i7r")
 [node name="Button" type="Button" parent="Window" unique_id=121408003]
 layout_mode = 0
 offset_left = 1373.0
-offset_top = 476.0
+offset_top = 133.0
 offset_right = 1469.0
-offset_bottom = 568.0
+offset_bottom = 225.0
 text = "X"
-
-[node name="Button2" type="Button" parent="Window" unique_id=2113678222]
-layout_mode = 0
-offset_left = 1373.0
-offset_top = 646.0
-offset_right = 1469.0
-offset_bottom = 738.0
-text = "->"
-
-[node name="Label" type="Label" parent="Window" unique_id=1801115743]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="pressed" from="Window/Button" to="." method="_on_pressed"]

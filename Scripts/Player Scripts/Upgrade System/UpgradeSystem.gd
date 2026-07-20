@@ -309,12 +309,13 @@ func apply_upgrade(upgrade: UpgradeData, player: PlayerCharacter) -> void:
 		"secondary_dash_force":
 			player.dash_force *= 1.0 + (value / 100.0)
 		"secondary_swap_grenade":
-			var secondary = player.get_node("SecondaryFire")
-			secondary.secondary_actions["secondary_fire"] = secondary._secondary_grenade
-			secondary.equipped_upgrade = upgrade
+			var secondary := player.get_node("SecondaryFire") as SecondaryFire_Script
+			secondary.set_secondary(SecondaryFire_Script.SecondaryType.GRENADE)
+			secondary.equipped_upgrade = upgrade 
+
 		"secondary_swap_dash":
-			var secondary = player.get_node("SecondaryFire")
-			secondary.secondary_actions["secondary_fire"] = secondary._secondary_dash
+			var secondary := player.get_node("SecondaryFire") as SecondaryFire_Script
+			secondary.set_secondary(SecondaryFire_Script.SecondaryType.DASH)
 			secondary.equipped_upgrade = upgrade
 
 		## Q MOVE
@@ -429,21 +430,23 @@ func is_upgrade_available(upgrade: UpgradeData, player: PlayerCharacter) -> bool
 	return true
 
 func _is_secondary_equipped(upgrade_id: String, player: PlayerCharacter) -> bool:
-	var secondary = player.get_node_or_null("SecondaryFire")
+	var secondary := player.get_node_or_null("SecondaryFire") as SecondaryFire_Script
+	print("SecondaryFire node found: ", secondary)
 	if secondary == null:
 		return false
+	print("Current secondary_type: ", secondary.secondary_type)
 	match upgrade_id:
 		"secondary_swap_grenade":
-			return secondary.secondary_actions.get("secondary_fire") == secondary._secondary_grenade
+			return secondary.secondary_type == SecondaryFire_Script.SecondaryType.GRENADE
 		"secondary_swap_dash":
-			return secondary.secondary_actions.get("secondary_fire") == secondary._secondary_dash
+			return secondary.secondary_type == SecondaryFire_Script.SecondaryType.DASH
 	return false
 
 func _has_upgrade(id: String) -> bool:
-	## Returns true if the player has picked this upgrade at least once
 	for u in all_upgrades:
-		if u.id == id and u.current_level > 0:
-			return true
+		if u.id == id:
+			print("Checking ", id, " current_level: ", u.current_level)
+			return u.current_level > 0
 	return false
 
 # Reset used so that each upgrades would not carry over per stage

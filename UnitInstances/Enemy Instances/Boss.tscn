@@ -72,7 +72,6 @@ navAgent = NodePath("Pathfinding")
 boss_unit = true
 stamina_range = Vector2(200, 500)
 maxHealthPoints = 9000
-amountOfPointOrbs = 15
 shoot_point = NodePath("ShootPoint")
 attackPower = 24.0
 
@@ -173,8 +172,6 @@ positioning_state = NodePath("../EnemyStatePositioning")
 [node name="BossStateBarrage" type="Node" parent="EnemyStateMachine" unique_id=1669283952 node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_krrga")
 next_state = NodePath("../EnemyStatePositioning")
-projectiles_per_ring = 30
-projectile_damage = 16.0
 
 [node name="BossStateSummon" type="Node" parent="EnemyStateMachine" unique_id=714371637 node_paths=PackedStringArray("next_state")]
 script = ExtResource("16_kxqtw")

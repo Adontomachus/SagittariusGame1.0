@@ -1,6 +1,12 @@
 extends Area2D
 
-@export var url := "https://www.halohaloapp.com/series/74/526"
+## List of URLs to show in order — first is opened immediately,
+## rest are navigable via back/forward buttons
+@export var url_list: Array[String] = [
+	"https://www.halohaloapp.com/series/74/526",
+	"https://www.halohaloapp.com/series/60/437"
+]
+
 var hovering := false
 var was_hovering := false
 @onready var browser_window := get_tree().get_first_node_in_group("BrowserWindow")
@@ -8,7 +14,7 @@ var was_hovering := false
 
 func _ready() -> void:
 	input_pickable = false
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	input_pickable = true
 
 
@@ -37,7 +43,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed and input_pickable:
-		## Pass true so browser window knows to end level on close
-		browser_window.open(url, true, "https://www.halohaloapp.com/series/60/437")
-		## Remove the tome once opened so player can't open it again
+		if url_list.is_empty():
+			push_error("ClickableTome: url_list is empty")
+			return
+		browser_window.open(url_list[0], true, url_list)
 		queue_free()

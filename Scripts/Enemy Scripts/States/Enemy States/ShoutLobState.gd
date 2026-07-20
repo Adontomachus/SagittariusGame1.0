@@ -27,6 +27,8 @@ func enter() -> void:
 
 # Wait for beats_between_shots before shoot
 func process_frame(_delta: float) -> EnemyState:
+	if parent == null or parent.target == null:
+		return null
 	# Checks the range between unit and player
 	var target_distance = parent.global_position.distance_to(parent.target.global_position)
 	

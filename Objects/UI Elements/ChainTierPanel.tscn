@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dajjlofxsj6h6"]
+
+[ext_resource type="Script" uid="uid://c8r1ade5p33rj" path="res://Scripts/Miscellaneous/ChainTierPanel.gd" id="1_1l2am"]
+[ext_resource type="LabelSettings" uid="uid://ci08ngnmlc4x7" path="res://Fonts/Standard.tres" id="2_ft57d"]
+[ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="2_jq81k"]
+[ext_resource type="Texture2D" uid="uid://cmnq88co8lvyl" path="res://Sprites/Game Elements/Placeholders/UI Elements/Skill_Container.png" id="2_xwld3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xwld3"]
+font = ExtResource("2_jq81k")
+font_color = Color(1.0731114, 1.0647249, 0.56991154, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.8980392)
+
+[node name="ChainTierPanel" type="Control" unique_id=1131106582 node_paths=PackedStringArray("tier_name_label", "tier_desc_label", "panel_container")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1l2am")
+tier_name_label = NodePath("PanelContainer/Name")
+tier_desc_label = NodePath("PanelContainer/Description")
+panel_container = NodePath("PanelContainer")
+
+[node name="PanelContainer" type="Control" parent="." unique_id=201564697]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=1715562140]
+layout_mode = 0
+offset_right = 287.0
+offset_bottom = 184.0
+texture = ExtResource("2_xwld3")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="PanelContainer" unique_id=1128203621]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 264.0
+offset_bottom = 36.0
+label_settings = ExtResource("2_ft57d")
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="PanelContainer" unique_id=1477627066]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 30.0
+offset_right = 279.0
+offset_bottom = 156.0
+label_settings = SubResource("LabelSettings_xwld3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

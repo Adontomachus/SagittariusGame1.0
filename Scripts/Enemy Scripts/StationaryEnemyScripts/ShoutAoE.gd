@@ -116,7 +116,7 @@ func _tick_linger_damage() -> void:
 # Applies DOT for the duration
 func _apply_dot(player: PlayerCharacter) -> void:
 	var dot_beats := 0
-	var dot_last_beat := beat_sync.beat if beat_sync else 0.0
+	var dot_last_beat : float = beat_sync.beat if beat_sync else 0.0
 	while dot_beats < dot_duration_beats:
 		await get_tree().process_frame
 		if not is_alive or beat_sync == null or not is_instance_valid(player):
@@ -134,7 +134,7 @@ func _apply_slow(player: PlayerCharacter) -> void:
 	var original_speed := player.maxMoveSpeed
 	player.moveSpeed *= slow_multiplier
 	var slow_beats := 0
-	var slow_last_beat := beat_sync.beat if beat_sync else 0.0
+	var slow_last_beat : float = beat_sync.beat if beat_sync else 0.0
 	while slow_beats < slow_duration_beats:
 		await get_tree().process_frame
 		if not is_alive or beat_sync == null or not is_instance_valid(player):

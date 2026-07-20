@@ -7,6 +7,8 @@ func enter() -> void:
 	super()
 
 func process_physics(delta: float) -> EnemyState:
+	if parent == null or parent.target == null:
+		return null
 	parent.navAgent.target_position = parent.target.global_position
 	
 	parent.move_enemy(delta)
