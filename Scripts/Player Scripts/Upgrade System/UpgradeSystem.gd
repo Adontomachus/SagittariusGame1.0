@@ -380,8 +380,15 @@ func _unlock_companion(group_name: String, player: PlayerCharacter) -> void:
 	if companion == null:
 		push_error("UpgradeSystem: companion not found in group: ", group_name)
 		return
+	
+	companion.global_position = player.global_position + Vector2(40, 0)
 	companion.visible = true
 	companion.process_mode = Node.PROCESS_MODE_INHERIT
+	companion.modulate.a = 0.0  # Start transparent
+	
+	var tween := companion.create_tween()
+	tween.tween_property(companion, "modulate:a", 1.0, 0.3)
+	
 	print("Unlocked: ", group_name)
 
 

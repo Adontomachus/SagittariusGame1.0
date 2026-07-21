@@ -22,17 +22,19 @@ var can_play: bool = true
 #region Beat Variables
 @export var tempo: float = 107
 
-# Cached inverse values to avoid division in _process
-var _pulse_per_beat: float
-var _half_pulse_per_beat: float
+## PUBLIC: other scripts read these (e.g., ShoutLob)
+var pulsePerBeat: float
+var halfPulsePerBeat: float
+
+## PRIVATE: cached inverses for _process math optimization
 var _inv_pulse: float
 var _inv_half_pulse: float
 
 func _update_tempo_cache() -> void:
-	_pulse_per_beat = 60.0 / tempo
-	_half_pulse_per_beat = _pulse_per_beat * 0.5
-	_inv_pulse = 1.0 / _pulse_per_beat
-	_inv_half_pulse = 1.0 / _half_pulse_per_beat
+	pulsePerBeat = 60.0 / tempo
+	halfPulsePerBeat = pulsePerBeat * 0.5
+	_inv_pulse = 1.0 / pulsePerBeat
+	_inv_half_pulse = 1.0 / halfPulsePerBeat
 
 var halfLastBeat := 0
 var lastBeat := 0
@@ -212,7 +214,7 @@ func evaluate_shot(timing: float) -> Dictionary:
 				return evaluate_shot(perfect_hit * 0.5)
 		return {"damage": 1.0, "color": Color.html("#53bc07ff")}
 
-	## OK HIT — chain breaks
+	## OK HIT
 	if timing < ok_hit:
 		comboCounter += 1
 		player._on_missed_beat()
@@ -230,12 +232,11 @@ func evaluate_shot(timing: float) -> Dictionary:
 	return {"damage": 0.1, "color": Color.html("#ff3b2dff")}
 
 func indicator_pulse() -> void:
-	# print("Total Accuracy: ", PointSystemScript.accuracy, "%")  # Uncomment for debug only
 	if tween and tween.is_valid():
 		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 	scale = Vector2(starting_scale, starting_scale)
-	tween.tween_property(self, "scale", Vector2(1.0, 1.0), _pulse_per_beat)
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat)
 
 func perfect_pulse_feedback() -> void:
 	pass

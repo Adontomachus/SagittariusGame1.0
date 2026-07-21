@@ -1,5 +1,5 @@
 class_name EnemyProjectileHitbox
-extends Node
+extends Area2D
 
 @export var damage_flash_effect: AnimationPlayer
 

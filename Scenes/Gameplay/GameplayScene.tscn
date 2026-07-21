@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://nhw3b4oyyire" path="res://Sprites/Game Elements/Updated and Latest Sprites/ActualGameObjects/Rocks/rocksatlas1.png" id="27_y1plk"]
 [ext_resource type="Texture2D" uid="uid://cug6tym2ibclo" path="res://Sprites/Game Elements/Placeholders/Wall Tiles/newestsprites/newestwals.png" id="29_6uhl4"]
 [ext_resource type="Texture2D" uid="uid://bu4r0qc2mr3jt" path="res://Sprites/Game Elements/Placeholders/Objects/props.png" id="29_y268v"]
-[ext_resource type="PackedScene" uid="uid://bnrvdcksjalq6" path="res://Objects/Instances With Collision/ClickableTome.tscn" id="30_6uhl4"]
+[ext_resource type="Script" uid="uid://r5i2stpbgswf" path="res://Scripts/Miscellaneous/ProjectilePool.gd" id="37_1q4m6"]
 [ext_resource type="PackedScene" uid="uid://dcx5cnan17uax" path="res://Objects/Instances With Collision/Placeholder Objects/Pillar1.tscn" id="48_mfe01"]
 [ext_resource type="PackedScene" uid="uid://cu2w3y1ythpfd" path="res://Scenes/Gameplay/Player.tscn" id="52_fs22w"]
 [ext_resource type="Texture2D" uid="uid://3ucie8ixqomw" path="res://Sprites/Game Elements/Placeholders/Companions/catpink_Transparent.png" id="55_exwru"]
@@ -218,7 +218,7 @@ _data = {
 &"RESET": SubResource("Animation_o710q")
 }
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1q4m6"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_y268v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4xv"]
 font = ExtResource("15_w47cw")
@@ -1070,7 +1070,6 @@ libraries/ = SubResource("AnimationLibrary_mr3qy")
 [node name="MinimapCamera" parent="InterfaceElements/NewHUD/UI/MinimapHUD/MinimapContainer/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2071023402, 1010004399, 2109862884) index="0" unique_id=1648225918 groups=["CameraControl"]]
 
 [node name="WinScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="3" unique_id=1887214024 node_paths=PackedStringArray("game_manager")]
-visible = false
 game_manager = NodePath("../../../../../..")
 
 [node name="LoseScreen" parent="InterfaceElements/NewHUD/UI/CutsceneUI/GameOverNode" parent_id_path=PackedInt32Array(2071023402, 1812883204) index="4" unique_id=1951929927 node_paths=PackedStringArray("game_manager")]
@@ -1138,13 +1137,13 @@ metadata/_edit_use_anchors_ = true
 SettingsScreen = NodePath("../Settings")
 
 [node name="EasyBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_1q4m6")
+button_group = SubResource("ButtonGroup_y268v")
 
 [node name="MediumBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_1q4m6")
+button_group = SubResource("ButtonGroup_y268v")
 
 [node name="HardBox" parent="InterfaceElements/NewHUD/UI/Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(2071023402, 90296623, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_1q4m6")
+button_group = SubResource("ButtonGroup_y268v")
 
 [node name="UpgradeUI" parent="InterfaceElements/NewHUD/UI" index="32" unique_id=699315924 node_paths=PackedStringArray("player", "manager")]
 player = NodePath("../../../../GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World/Player")
@@ -1286,9 +1285,6 @@ y_sort_enabled = true
 scale = Vector2(0.4, 0.4)
 tile_map_data = PackedByteArray("AAAGAP3/LAAEAAEAAAAHAP3/LAAEAAEAAAAIAP3/LAAEAAEAAAAJAP3/LAAJAAEAAAARAAEALAAEAAAAAAAKAAkALAAEAAAAABAAAA4ALAAGAAEAAAAFAB0ALAAGAAEAAAAcAAYALAAGAAEAABAXAA8ALAAHAAEAABAXABAALAAAAAEAABAXABEALAAAAAEAABAXAA4ALAAAAAEAABAXAA0ALAAAAAEAABAXABIALAAIAAEAAAAXAAwALAAIAAEAAAAHABMALAADAAEAAAAIABMALAADAAEAAAAJABMALAADAAEAAAAAABwALAACAAAAAAD//+v/LAACAAAAAAA=")
 tile_set = SubResource("TileSet_p0i5v")
-
-[node name="ClickableTome" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects/World" unique_id=951240953 instance=ExtResource("30_6uhl4")]
-position = Vector2(381, 415)
 
 [node name="BGDecals" type="Node" parent="GameLevelNode/Stage1/EnemyNavRegion/Map Objects" unique_id=1231745277]
 
@@ -1602,6 +1598,9 @@ process_mode = 3
 
 [node name="BrowserWindow" parent="." unique_id=63176195 instance=ExtResource("63_110ka")]
 visible = false
+
+[node name="ProjectilePool" type="Node" parent="." unique_id=1427006879]
+script = ExtResource("37_1q4m6")
 
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD" method="glow_on_beat"]
 [connection signal="pulse_on_beat" from="." to="InterfaceElements/NewHUD/UI/Border Pulse" method="_pulse_to_beat"]
