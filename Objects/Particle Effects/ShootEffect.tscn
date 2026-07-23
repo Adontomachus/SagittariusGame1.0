@@ -44,10 +44,10 @@ var timedShot = lifetime - 0.05
 @export var point_light : PointLight2D
 
 @export_category(\"Light Pulse Settings\")
-@export var light_grow_duration: float = 0.1
-@export var light_shrink_duration: float = 0.05
-@export var light_max_scale: float = 5
-@export var light_max_energy: float = 2
+@export var light_grow_duration: float = 0.2
+@export var light_shrink_duration: float = 0.1
+@export var light_max_scale: float = 7
+@export var light_max_energy: float = 3
 
 func _ready():
 	if process_material:

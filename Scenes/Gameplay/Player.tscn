@@ -93,6 +93,7 @@
 [ext_resource type="Texture2D" uid="uid://dqnwsgfwulnud" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Upright/run4ANIM0011.png" id="71_pb2yo"]
 [ext_resource type="Texture2D" uid="uid://brewf6nh3jln7" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Upright/run4ANIM0013.png" id="72_q0ngm"]
 [ext_resource type="Texture2D" uid="uid://d131yh16ru03c" path="res://Sprites/Game Elements/Updated and Latest Sprites/Turnarounds/Walks/NewWalk/Upright/run4ANIM0015.png" id="73_77avw"]
+[ext_resource type="AudioStream" uid="uid://cigip36ledbdj" path="res://Audio/Sounds/NewSounds/PlayerSounds/442871__qubodup__fire-spell.wav" id="94_x4dqh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8aea"]
 animations = [{
@@ -541,14 +542,14 @@ process_mode = 3
 position = Vector2(0, -21)
 script = ExtResource("1_8espc")
 beatSquash = NodePath("BeatSquashStretch")
-offset_right = Vector2(35, -90)
-offset_down_right = Vector2(40, -95)
-offset_down = Vector2(-50, -75)
-offset_down_left = Vector2(-30, -105)
-offset_left = Vector2(-45, -90)
-offset_up_left = Vector2(-50, -115)
-offset_up = Vector2(-50, -100)
-offset_up_right = Vector2(45, -115)
+offset_right = Vector2(35, -60)
+offset_down_right = Vector2(40, -65)
+offset_down = Vector2(-40, -55)
+offset_down_left = Vector2(-30, -75)
+offset_left = Vector2(-45, -60)
+offset_up_left = Vector2(-50, -85)
+offset_up = Vector2(-50, -70)
+offset_up_right = Vector2(45, -85)
 charge_shot = NodePath("ChargeShot")
 q_moves = NodePath("QMoves")
 grenade_scene = ExtResource("2_aekym")
@@ -603,6 +604,11 @@ bus = &"SFX"
 stream = ExtResource("26_hvbri")
 volume_db = -5.0
 pitch_scale = 1.4
+bus = &"SFX"
+
+[node name="MissSound" type="AudioStreamPlayer" parent="." unique_id=1068631880]
+stream = ExtResource("94_x4dqh")
+pitch_scale = 0.25
 bus = &"SFX"
 
 [node name="CometModeAudio" type="AudioStreamPlayer" parent="." unique_id=683423020]

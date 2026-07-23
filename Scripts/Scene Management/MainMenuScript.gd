@@ -15,7 +15,7 @@ func _ready() -> void:
 	# Stops the time pause which plays the animation again
 	get_tree().paused = false
 	
-	main_menu_transition.play("MainMenuTransitions")
+	#main_menu_transition.play("MainMenuTransitions")
 
 func _on_start_button_pressed() -> void:
 	ScalingSystemScript.reset_scaling()

@@ -42,7 +42,6 @@ companion_hitbox = NodePath("SlashArea/SlashHurtbox")
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=884345963]
 debug_enabled = true
-debug_use_custom = true
 debug_path_custom_color = Color(0.7547807, 1, 0, 1)
 
 [node name="NearestEnemyTarget" type="Marker2D" parent="." unique_id=2016037628]

@@ -362,6 +362,9 @@ func _update_ability_ui() -> void:
 			)
 			if player_node.q_moves and player_node.q_moves.equipped_upgrade:
 				ability1_container.texture = player_node.q_moves.equipped_upgrade.icon
+				## Force square aspect and fill parent
+				ability1_container.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				ability1_container.stretch_mode = TextureRect.STRETCH_SCALE
 
 	var secondary := player_node.get_node_or_null("SecondaryFire")
 	var current_secondary_size: int = secondary.secondary_actions.size() if secondary else 0
@@ -371,6 +374,9 @@ func _update_ability_ui() -> void:
 			rmb_container.visible = current_secondary_size > 0
 			if secondary and secondary.equipped_upgrade:
 				rmb_container.texture = secondary.equipped_upgrade.icon
+				## Force square aspect and fill parent
+				rmb_container.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				rmb_container.stretch_mode = TextureRect.STRETCH_SCALE
 
 func _on_pause_screen_exit_game() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenuScene.tscn")

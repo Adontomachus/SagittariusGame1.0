@@ -169,7 +169,7 @@ bus = &"SFX"
 
 [node name="SpawnSound" type="AudioStreamPlayer" parent="." unique_id=2141652212]
 stream = ExtResource("13_r10nr")
-volume_db = -7.5
+volume_db = -15.0
 pitch_scale = 0.75
 bus = &"SFX"
 

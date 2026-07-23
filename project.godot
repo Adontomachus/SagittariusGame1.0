@@ -13,8 +13,8 @@ config_version=5
 config/name="SagittariusGame"
 run/main_scene="uid://b63q1rayko8rd"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/bg_color=Color(0.14117648, 0.13725491, 0.2, 1)
-boot_splash/image="uid://bo3fr61fwrhr"
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="uid://c8pm272nyxk24"
 
 [audio]

@@ -23,6 +23,7 @@ var attack_power_scaling: float = 1
 var time_accumulator: float = 0.0
 
 func _ready() -> void:
+	var current_scene = get_tree().current_scene
 	if not _initialized:
 		health_scaling = 1
 		attack_power_scaling = 1
@@ -41,8 +42,8 @@ func _load_difficulty() -> void:
 func _update_scaling_rates() -> void:
 	match _cached_difficulty:
 		0:
-			_health_rate = 0.003
-			_attack_rate = 0.001
+			_health_rate = 0.0003
+			_attack_rate = 0.0001
 		1:
 			_health_rate = 0.008
 			_attack_rate = 0.002
@@ -51,7 +52,7 @@ func _update_scaling_rates() -> void:
 			_attack_rate = 0.01
 
 func _process(delta: float) -> void:
-	var current_scene = get_tree().current_scene
+
 	## TEMPORARY
 	#if current_scene == null or current_scene.name != "GameplayScene":
 	#	return

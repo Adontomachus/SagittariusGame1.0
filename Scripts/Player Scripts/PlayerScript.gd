@@ -6,6 +6,11 @@ extends CharacterBody2D
 @export var cadence_sfx: AudioStreamPlayer
 @export var echo_nova_sfx: AudioStreamPlayer
 
+@export_category("Chain Pitch")
+@export var base_pitch: float = 1.0
+@export var max_pitch: float = 1.8        ## pitch at chain x16
+@export var pitch_chain_cap: int = 16 
+
 @export var chain_tier_ui: ChainTierUI
 @export var chain_border_glow: ChainBorderGlow
 @export var chain_aura: ChainAura
@@ -159,6 +164,7 @@ var prototype_pool := ProjectilePool.new()
 @export var pulse_sound_effect: AudioStreamPlayer
 @onready var shot_point: Marker2D = $ShotPoint
 @onready var shot_sound: AudioStreamPlayer = $ShotAudio
+@onready var miss_sound: AudioStreamPlayer = $MissSound
 @onready var charged_shot_particles: CPUParticles2D = $ChargedShotParticles
 @export var charged_shot_ready_interface: Sprite2D
 
@@ -399,12 +405,14 @@ func _physics_process(_delta: float):
 
 #region SHOOTING PROJECTILE
 func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
-	camera.add_trauma(0.5)
+	camera.add_trauma(0.3)
 	play_action("shoot")
 
 	if shot_fire_rate < max_shot_fire_rate:
 		return
 	shot_fire_rate = 0.0
+	
+	_update_shot_pitch()
 
 	var spawn_pos := global_position + _get_facing_offset()
 	var spawn_rotation := _get_projectile_rotation_from_spawn(spawn_pos)
@@ -424,8 +432,11 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 
 		var projectile_instance = prototype_pool.get_projectile()
 
-		if projectile_instance != null:
-			shot_sound.play()
+		if projectile_instance == null:
+			return
+
+		
+		projectile_instance.wake_up()
 
 		var final_damage := projectile_damage * modifier * projectile_damage_multiplier
 		projectile_instance.change_damage(int(final_damage))
@@ -433,6 +444,7 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 		projectile_instance.change_projectile_modulation(color)
 		projectile_instance.position = spawn_pos
 		projectile_instance.rotation_degrees = spawn_rotation
+		projectile_instance.hit_combo_value = _get_combo_value_for_shot(modifier)
 		if this_shot_is_kapre:
 			projectile_instance.is_kapre_shot = true
 			projectile_instance.kapre_damage = final_damage * 1.5
@@ -442,7 +454,6 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 			projectile_instance.projectileVelocity *= projectile_speed_multiplier
 
 		projectile_instance.get_node("OrbitingParticles").set_effect_color(color)
-		#world_parent.call_deferred("add_child", projectile_instance)
 
 		if sarimanok_feather:
 			_shoot_sarimanok_spread(modifier, color)
@@ -451,10 +462,26 @@ func _shoot_projectile(modifier: float = 1.0, color: Color = Color.WHITE):
 
 	var shotEffect = projectileShotEffect.instantiate()
 	var was_perfect := modifier >= 1.45
+	if was_perfect:
+		shot_sound.play()
 	shotEffect.set_effect_color(color, was_perfect)
 	shotEffect.position = spawn_pos
 	get_tree().get_root().call_deferred("add_child", shotEffect)
 	print_debug("Damage: %s" % (projectile_damage * modifier * projectile_damage_multiplier))
+
+# Function that changes shot pitch based on chain combo
+func _update_shot_pitch() -> void:
+	if shot_sound == null:
+		return
+	## Lerp pitch from base to max based on chain progress
+	var t := clampf(float(perfect_chain) / float(pitch_chain_cap), 0.0, 1.0)
+	shot_sound.pitch_scale = lerpf(base_pitch, max_pitch, t)
+
+
+func _reset_shot_pitch() -> void:
+	if shot_sound == null:
+		return
+	shot_sound.pitch_scale = base_pitch
 
 @export var projectile_spawn_offset: float = 20.0
 
@@ -470,6 +497,7 @@ func _on_perfect_hit() -> void:
 		_trigger_echo_nova()
 
 func _on_missed_beat() -> void:
+	miss_sound.play()
 	if kundiman_shield and not kundiman_shield_used:
 		kundiman_shield_used = true
 		print("Kundiman Shield protected combo!")
@@ -486,6 +514,7 @@ func _on_missed_beat() -> void:
 	if player_sprite:
 		player_sprite.modulate = Color.WHITE
 	_clear_chain_visuals()
+	_reset_shot_pitch()
 
 @export var chain_tier_panel: ChainTierPanel
 
@@ -592,6 +621,7 @@ func _trigger_echo_nova() -> void:
 	if player_sprite:
 		player_sprite.modulate = Color.WHITE
 	_clear_chain_visuals()
+	_reset_shot_pitch()
 
 func _get_facing_offset() -> Vector2:
 	match current_facing:

@@ -77,7 +77,6 @@ attackPower = 24.0
 
 [node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1712942711]
 radius = 120.0
-debug_enabled = true
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=370105311]
 scale = Vector2(0.578125, 0.578125)

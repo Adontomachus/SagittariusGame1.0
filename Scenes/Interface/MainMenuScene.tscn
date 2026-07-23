@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bprfs68wqhg5b" path="res://Scenes/Maps and Levels/LoadingScene.tscn" id="2_b5x3o"]
 [ext_resource type="PackedScene" uid="uid://ctnoi5oldo47k" path="res://Scenes/Interface/TutorialInterface.tscn" id="2_o310p"]
 [ext_resource type="PackedScene" uid="uid://c0ad3cbk073wt" path="res://Scenes/Interface/SettingInterface.tscn" id="3_o310p"]
+[ext_resource type="Texture2D" uid="uid://d1g4awrc7wrkv" path="res://Sprites/Game Elements/Placeholders/UI Elements/Splash/splashscreen2.png" id="3_xkfm1"]
 [ext_resource type="Texture2D" uid="uid://1ddfyxpis5at" path="res://Sprites/UI Sprites/Sagittarius_logo.png" id="4_b5x3o"]
 [ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="5_wikew"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_wikew"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_xaw1t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wikew"]
 line_spacing = 4.0
@@ -35,223 +36,23 @@ bg_color = Color(0.15662736, 0.109438084, 0.034887142, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0c00"]
 
-[sub_resource type="Animation" id="Animation_o310p"]
-resource_name = "MainMenuTransitions"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenuContainer/VBoxContainer/PlayButton:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenuContainer/VBoxContainer/StoryButton:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenuContainer/VBoxContainer/SettingsButton:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenuContainer/VBoxContainer/HowToPlayButton:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.75, 1.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MainMenuContainer/VBoxContainer/Exit:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D/TitleLabel:text")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite2D/TitleLabel:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.5, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-1522.8235, 80.941185), Vector2(229.647, 81)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprite2D/TitleLabel:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.98, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_1dxah"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenuContainer/VBoxContainer/PlayButton:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainMenuContainer/VBoxContainer/StoryButton:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenuContainer/VBoxContainer/SettingsButton:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenuContainer/VBoxContainer/HowToPlayButton:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MainMenuContainer/VBoxContainer/Exit:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D/TitleLabel:text")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Sagittarius: The Game"]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite2D/TitleLabel:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-682, 32)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprite2D/TitleLabel:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dxah"]
-_data = {
-&"MainMenuTransitions": SubResource("Animation_o310p"),
-&"RESET": SubResource("Animation_1dxah")
-}
-
 [node name="MainMenu" type="Node2D" unique_id=544361199 node_paths=PackedStringArray("settings", "tutorial", "main_menu", "main_menu_transition")]
 script = ExtResource("1_xamtj")
 settings = NodePath("Settings")
 tutorial = NodePath("Tutorial")
 main_menu = NodePath("MainMenuContainer")
-main_menu_transition = NodePath("MainMenuAnimations")
+main_menu_transition = NodePath("")
 loading_screen_scene = ExtResource("2_b5x3o")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=176429304]
 offset_right = 1920.0
 offset_bottom = 1088.0
 color = Color(0.05193362, 0.0035419262, 0.17472742, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=247352790]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_xkfm1")
 
 [node name="Tutorial" parent="." unique_id=90296623 instance=ExtResource("2_o310p")]
 unique_name_in_owner = true
@@ -271,13 +72,13 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="EasyBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="0" unique_id=1831211852]
-button_group = SubResource("ButtonGroup_wikew")
+button_group = SubResource("ButtonGroup_xaw1t")
 
 [node name="MediumBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="1" unique_id=524195901]
-button_group = SubResource("ButtonGroup_wikew")
+button_group = SubResource("ButtonGroup_xaw1t")
 
 [node name="HardBox" parent="Settings/VBoxContainer/DifficultyContainer/HBoxContainer" parent_id_path=PackedInt32Array(750193702, 1201141894) index="2" unique_id=683023725]
-button_group = SubResource("ButtonGroup_wikew")
+button_group = SubResource("ButtonGroup_xaw1t")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=446567878]
 visible = false
@@ -330,16 +131,17 @@ text = "Level Select Test
 "
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2011769590]
-position = Vector2(420, 176)
-scale = Vector2(0.53125, 0.53125)
+position = Vector2(488, 271)
+scale = Vector2(0.65234375, 0.65234375)
 texture = ExtResource("4_b5x3o")
 
 [node name="TitleLabel" type="Label" parent="Sprite2D" unique_id=1559997822]
+visible = false
 modulate = Color(1, 1, 1, 0)
-offset_left = -682.0
-offset_top = 32.0
-offset_right = -15.0
-offset_bottom = 155.99997
+offset_left = -1522.8235
+offset_top = 80.941185
+offset_right = -855.8235
+offset_bottom = 204.94113
 text = "Sagittarius: The Game"
 label_settings = SubResource("LabelSettings_wikew")
 
@@ -352,17 +154,16 @@ offset_bottom = 550.0
 text = "Background Splash Art"
 
 [node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=879553533]
-offset_left = 80.99999
-offset_top = 602.99994
-offset_right = 668.9492
-offset_bottom = 1020.99994
+offset_left = 169.0
+offset_top = 480.99994
+offset_right = 756.9492
+offset_bottom = 898.99994
 rotation = 0.0003057141
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer" unique_id=1933681317]
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=530956135]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85646725, 0.90982777, 0.2400937, 1)
 theme_override_fonts/font = ExtResource("5_wikew")
@@ -380,7 +181,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_e0c00")
 text = "Start Game"
 
 [node name="StoryButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=1664087111]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.849211, 0.93130827, 0.30403528, 1)
 theme_override_fonts/font = ExtResource("5_wikew")
@@ -389,7 +189,6 @@ text = "Halo Halo App
 "
 
 [node name="SettingsButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=926610218]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81352156, 0.91330606, 0.28060427, 1)
 theme_override_fonts/font = ExtResource("5_wikew")
@@ -398,7 +197,6 @@ text = "Settings
 "
 
 [node name="HowToPlayButton" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=706086452]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.84648824, 0.93378747, 0.2541813, 1)
 theme_override_fonts/font = ExtResource("5_wikew")
@@ -407,16 +205,12 @@ text = "Learn to Play
 "
 
 [node name="Exit" type="Button" parent="MainMenuContainer/VBoxContainer" unique_id=909026264]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87332916, 0.92027265, 0.36795154, 1)
 theme_override_fonts/font = ExtResource("5_wikew")
 theme_override_font_sizes/font_size = 72
 text = "Exit
 "
-
-[node name="MainMenuAnimations" type="AnimationPlayer" parent="." unique_id=1968643926]
-libraries/ = SubResource("AnimationLibrary_1dxah")
 
 [connection signal="pressed" from="StoryMode" to="." method="_on_story_mode_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

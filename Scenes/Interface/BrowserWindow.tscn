@@ -5,18 +5,24 @@
 [ext_resource type="FontFile" uid="uid://vw3l6r1sh4vu" path="res://Fonts/Maragsa.otf" id="3_j4vsn"]
 [ext_resource type="Texture2D" uid="uid://btdtoa4c2smy2" path="res://Sprites/Game Elements/Placeholders/UI Elements/Loading_OuterCircle.png" id="3_t35y2"]
 [ext_resource type="Texture2D" uid="uid://c3hu2usbtvs86" path="res://Sprites/Game Elements/Placeholders/UI Elements/Loading_InnerCircle.png" id="4_qq4n4"]
+[ext_resource type="Texture2D" uid="uid://cmnq88co8lvyl" path="res://Sprites/Game Elements/Placeholders/UI Elements/Skill_Container.png" id="5_qq4n4"]
 [ext_resource type="Texture2D" uid="uid://b5dl0flfw8xej" path="res://Sprites/Game Elements/Placeholders/UI Elements/Frame.png" id="6_ba3gu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t35y2"]
 font = ExtResource("3_j4vsn")
 font_size = 100
 
-[node name="BrowserWindow" type="CanvasLayer" unique_id=63176195 node_paths=PackedStringArray("forward_button", "back_button", "close_button") groups=["BrowserWindow"]]
+[sub_resource type="LabelSettings" id="LabelSettings_qq4n4"]
+font = ExtResource("3_j4vsn")
+font_size = 100
+font_color = Color(1.0731114, 1.0647249, 0.56991154, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.8980392)
+
+[node name="BrowserWindow" type="CanvasLayer" unique_id=63176195 node_paths=PackedStringArray("close_button") groups=["BrowserWindow"]]
 process_mode = 3
 script = ExtResource("1_5lmat")
-forward_button = NodePath("Window/Button2")
-back_button = NodePath("Window/Button3")
-close_button = NodePath("Window/Button")
+close_button = NodePath("Window/Button5")
 
 [node name="Window" type="Panel" parent="." unique_id=1995429228]
 offset_right = 1920.0
@@ -61,35 +67,67 @@ offset_bottom = 870.0
 text = "Loading..."
 label_settings = SubResource("LabelSettings_t35y2")
 
-[node name="Button2" type="Button" parent="Window" unique_id=2113678222]
+[node name="Button2" type="TextureButton" parent="Window" unique_id=688877593]
+visible = false
 layout_mode = 0
 offset_left = 1373.0
 offset_top = 436.0
-offset_right = 1469.0
-offset_bottom = 528.0
-text = "->"
+offset_right = 1521.0
+offset_bottom = 541.0
+texture_normal = ExtResource("5_qq4n4")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Button3" type="Button" parent="Window" unique_id=248977841]
+[node name="Label" type="Label" parent="Window/Button2" unique_id=1135614457]
 layout_mode = 0
-offset_left = 486.0
+offset_right = 143.0
+offset_bottom = 133.0
+text = "   >"
+label_settings = SubResource("LabelSettings_qq4n4")
+
+[node name="Button5" type="TextureButton" parent="Window" unique_id=689415573]
+layout_mode = 0
+offset_left = 1373.0
+offset_top = 87.0
+offset_right = 1521.0
+offset_bottom = 192.0
+texture_normal = ExtResource("5_qq4n4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Window/Button5" unique_id=376583356]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 153.0
+offset_bottom = 141.0
+text = "  X"
+label_settings = SubResource("LabelSettings_qq4n4")
+
+[node name="Button4" type="TextureButton" parent="Window" unique_id=370518222]
+visible = false
+layout_mode = 0
+offset_left = 400.0
 offset_top = 436.0
-offset_right = 582.0
-offset_bottom = 528.0
-text = "<-"
+offset_right = 548.0
+offset_bottom = 541.0
+texture_normal = ExtResource("5_qq4n4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Window/Button4" unique_id=1390194017]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 151.0
+offset_bottom = 133.0
+text = "  <"
+label_settings = SubResource("LabelSettings_qq4n4")
 
 [node name="Label" type="Label" parent="Window" unique_id=1801115743]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="TextureRect2" type="TextureRect" parent="Window" unique_id=481080012]
-layout_mode = 0
-offset_left = 466.0
-offset_top = -32.0
-offset_right = 1463.0
-offset_bottom = 1102.0
-texture = ExtResource("6_ba3gu")
 
 [node name="TextureRect" type="TextureRect" parent="Window" unique_id=1943658534]
 layout_mode = 1
@@ -98,21 +136,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -334.0
-offset_top = -502.0
-offset_right = 342.0
-offset_bottom = 492.0
+offset_left = -341.0
+offset_top = -511.0
+offset_right = 350.0
+offset_bottom = 495.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 script = ExtResource("2_l1i7r")
 
-[node name="Button" type="Button" parent="Window" unique_id=121408003]
+[node name="TextureRect2" type="TextureRect" parent="Window" unique_id=481080012]
 layout_mode = 0
-offset_left = 1373.0
-offset_top = 133.0
-offset_right = 1469.0
-offset_bottom = 225.0
-text = "X"
-
-[connection signal="pressed" from="Window/Button" to="." method="_on_pressed"]
+offset_left = 466.0
+offset_top = -32.0
+offset_right = 1463.0
+offset_bottom = 1102.0
+mouse_filter = 2
+texture = ExtResource("6_ba3gu")

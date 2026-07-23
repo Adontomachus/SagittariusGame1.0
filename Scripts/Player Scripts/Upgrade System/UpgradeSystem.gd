@@ -244,7 +244,7 @@ func _register_upgrades() -> void:
 		"Make ranged companion stronger!",
 		UpgradeData.UpgradeCategory.STAT, 3,
 		[15.0, 15.0, 20.0],
-		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/buffranged.png"
+		"res://Sprites/Game Elements/Placeholders/UpgradeSprites/buffrange.png"
 	))
 
 

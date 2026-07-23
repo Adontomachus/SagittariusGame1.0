@@ -109,6 +109,8 @@ func _ready() -> void:
 	player_shoot_projectile.connect(player._shoot_projectile)
 	increase_player_attack_charge.connect(player.increment_player_charge_attack)
 	audio_latency = AudioServer.get_output_latency()
+	
+	beat_happened.connect(player.q_moves.on_beat)
 
 	scale = Vector2(starting_scale, starting_scale)
 

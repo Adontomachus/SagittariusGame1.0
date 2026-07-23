@@ -281,4 +281,4 @@ func _trigger_kapre_explosion() -> void:
 	## Camera bump
 	var camera := get_tree().get_first_node_in_group("CameraControl")
 	if camera:
-		camera.add_trauma(0.8)
+		camera.add_trauma(0.3)

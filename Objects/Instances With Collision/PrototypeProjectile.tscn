@@ -96,7 +96,7 @@ shape = SubResource("RectangleShape2D_wix7r")
 
 [node name="Emitter" type="CPUParticles2D" parent="." unique_id=1530602264]
 position = Vector2(2, 0)
-amount = 5
+amount = 9
 texture = SubResource("GradientTexture2D_5i23p")
 lifetime = 0.31
 emission_shape = 1
