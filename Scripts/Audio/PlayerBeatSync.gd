@@ -47,6 +47,9 @@ var player
 var beat_consumed: bool = false
 var secondary_ammo: int = 0
 
+## Cached last ammo value to avoid redundant label updates
+var _last_secondary_ammo: int = -1
+
 ## Variables for the full note
 var time: float
 var beat: int
@@ -60,6 +63,9 @@ var audio_latency: float = 0.0
 
 #region UI Combo Counter
 @export var comboCounter := 0
+
+## Cached last comboCounter to avoid redundant pitch recalculations
+var _last_combo_counter: int = -1
 var combo_audio_pitch: float = 1.0
 @onready var p_combo_sound: AudioStreamPlayer2D = $PerfectShotComboSound
 #endregion
@@ -108,8 +114,10 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("PlayerObject")
 	player_shoot_projectile.connect(player._shoot_projectile)
 	increase_player_attack_charge.connect(player.increment_player_charge_attack)
+
+	## Cache audio latency once — it doesn't change during gameplay
 	audio_latency = AudioServer.get_output_latency()
-	
+
 	beat_happened.connect(player.q_moves.on_beat)
 
 	scale = Vector2(starting_scale, starting_scale)
@@ -126,9 +134,16 @@ func _process(_delta: float) -> void:
 	if not game_started:
 		return
 
-	secondary_ammo_counter.shots_available = secondary_ammo
-	p_combo_sound.pitch_scale = combo_audio_pitch
-	combo_audio_pitch = 1.0 + (comboCounter * 0.06)
+	## Only update ammo label when value actually changes
+	if secondary_ammo != _last_secondary_ammo:
+		_last_secondary_ammo = secondary_ammo
+		secondary_ammo_counter.shots_available = secondary_ammo
+
+	## Only recalculate pitch when comboCounter changes
+	if comboCounter != _last_combo_counter:
+		_last_combo_counter = comboCounter
+		combo_audio_pitch = 1.0 + (comboCounter * 0.06)
+		p_combo_sound.pitch_scale = combo_audio_pitch
 
 	if not level_song.playing:
 		return
@@ -175,9 +190,14 @@ func _input(event: InputEvent) -> void:
 		return
 
 	var beat_fraction := fmod(beat_precise, 1.0)
-	var full_beat_timing: float = minf(absf(beat_fraction), absf(1.0 - beat_fraction))
-	var half_beat_timing: float = absf(0.5 - beat_fraction)
-	var timing: float = minf(full_beat_timing, half_beat_timing)
+
+	## Simplified timing math: distance to nearest beat (0.0 or 1.0) vs half beat (0.5)
+	## Use raw subtraction instead of absf/minf chain where possible
+	var dist_to_full: float = beat_fraction
+	if dist_to_full > 0.5:
+		dist_to_full = 1.0 - dist_to_full
+	var dist_to_half: float = absf(0.5 - beat_fraction)
+	var timing: float = dist_to_full if dist_to_full < dist_to_half else dist_to_half
 
 	if event.is_action_pressed("fire_weapon"):
 		var result := evaluate_shot(timing)
@@ -187,7 +207,6 @@ func evaluate_shot(timing: float) -> Dictionary:
 	## PERFECT HIT
 	if timing < perfect_hit:
 		comboCounter += 1
-		combo_audio_pitch = 1.0 + (comboCounter * 0.06)
 		PointSystemScript.playerScore += 1
 		p_feedback.play("PerfectPulse")
 		border_pulse.emit()
@@ -234,10 +253,14 @@ func evaluate_shot(timing: float) -> Dictionary:
 	return {"damage": 0.1, "color": Color.html("#ff3b2dff")}
 
 func indicator_pulse() -> void:
+	## Reuse tween if still valid instead of kill/create every beat
 	if tween and tween.is_valid():
-		tween.kill()
-	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
+		## Tween is still running from last beat, just restart scale
+		scale = Vector2(starting_scale, starting_scale)
+		return
+
 	scale = Vector2(starting_scale, starting_scale)
+	tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), pulsePerBeat)
 
 func perfect_pulse_feedback() -> void:
